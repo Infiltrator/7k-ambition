@@ -266,7 +266,7 @@ const char *LocaleRes::get_messages_locale()
 {
 	const char *locale;
 
-#ifdef HAVE_LC_MESSAGES
+#if defined ENABLE_NLS && defined HAVE_LC_MESSAGES
 	/* setlocale(LC_ALL, "") has been done previously */
 	locale = setlocale(LC_MESSAGES, NULL);
 	if( locale && locale[0] )
