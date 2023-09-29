@@ -45,6 +45,7 @@ public:
 	uint32_t		flags;
 
 	// firm settings
+	char			firm_ai_enable_think_spy_capture;
 	char			firm_mobilize_civilian_aggressive;
 	char			firm_migrate_stricter_rules;
 

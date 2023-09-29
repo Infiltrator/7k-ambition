@@ -227,6 +227,7 @@ err_out:
 //
 void ConfigAdv::reset()
 {
+	firm_ai_enable_think_spy_capture = 0;
 	firm_mobilize_civilian_aggressive = 0;
 	firm_migrate_stricter_rules = 1;
 
@@ -297,6 +298,12 @@ int ConfigAdv::set(char *name, char *value)
 		char *key;
 		if( !read_key(value, &key, &event) || !mouse.bind_key(event.type, key) )
 			return 0;
+	}
+	else if( !strcmp(name, "firm_ai_enable_think_spy_capture") )
+	{
+		if( !read_bool(value, &firm_ai_enable_think_spy_capture) )
+			return 0;
+		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "firm_mobilize_civilian_aggressive") )
 	{
