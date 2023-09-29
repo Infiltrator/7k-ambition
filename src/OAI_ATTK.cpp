@@ -66,18 +66,6 @@ static int sort_attack_camp_function( const void *a, const void *b );
 //
 int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLevel, int defenseMode, int justMoveToFlag, int attackerMinCombatLevel, int leadAttackCampRecno, int useAllCamp)
 {
-/*					// this will be called when the AI tries to capture the town and attack the town's defense.
-#ifdef DEBUG	//----- check for attacking own objects error ------//
-	{
-		int targetNationRecno = get_target_nation_recno(targetXLoc, targetYLoc);
-
-		if( targetNationRecno )
-		{
-			err_when( get_relation(targetNationRecno)->status >= NATION_FRIENDLY );
-		}
-	}
-#endif
-*/
 	//--- order nearby mobile units who are on their way to home camps to join this attack mission. ---//
 
 	if( defenseMode )
@@ -122,6 +110,8 @@ int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLev
 	ai_attack_target_x_loc = targetXLoc;
 	ai_attack_target_y_loc = targetYLoc;
 	ai_attack_target_nation_recno = get_target_nation_recno(targetXLoc, targetYLoc);
+
+	err_when( ai_attack_target_nation_recno == nation_recno );
 
 	attack_camp_count=0;
 

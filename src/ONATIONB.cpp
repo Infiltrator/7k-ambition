@@ -1246,6 +1246,8 @@ NationRelation* NationBase::get_relation(int nationRecno)
 
 void NationBase::set_relation_should_attack(short nationRecno, char newValue, char remoteAction)
 {
+	err_when(nationRecno == nation_recno && newValue); // cannot set attack flag on yourself
+
 	if( !remoteAction && remote.is_enable() )
 	{
 		short *shortPtr = (short *) remote.new_send_queue_msg(MSG_NATION_SET_SHOULD_ATTACK, 3*sizeof(short));
