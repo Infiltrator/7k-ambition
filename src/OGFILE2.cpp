@@ -117,6 +117,7 @@ DBGLOG_DEFAULT_CHANNEL(GameFile);
 static int loaded_random_seed;
 
 bool GameFile::read_file_same_version = true;
+short GameFile::load_file_game_version;
 
 //-------- Begin of function GameFile::write_file -------//
 //
@@ -190,7 +191,7 @@ int GameFile::read_file(File* filePtr)
 
 	int originalRandomSeed = misc.get_random_seed();
 
-	short load_file_game_version = filePtr->file_get_short();
+	load_file_game_version = filePtr->file_get_short();
 
 	// compare if same demo format or not
 	if( demo_format && load_file_game_version > 0

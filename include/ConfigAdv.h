@@ -55,6 +55,9 @@ public:
 	char			fix_sea_travel_final_move;
 	char			fix_town_unjob_worker;
 
+	// game file settings
+	char			game_file_patching;
+
 	// locale settings
 	char			locale[LOCALE_LEN+1];
 

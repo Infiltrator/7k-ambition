@@ -45,6 +45,7 @@ public:
 
 public:
    struct SaveGameHeader;
+   static short load_file_game_version;
 
 private:
    static bool validate_header(const SaveGameHeader* saveGame);

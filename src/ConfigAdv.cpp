@@ -236,6 +236,8 @@ void ConfigAdv::reset()
 	fix_sea_travel_final_move = 1;
 	fix_town_unjob_worker = 1;
 
+	game_file_patching = 1;
+
 	locale[0] = 0;
 
 	mine_unlimited_reserve = 0;
@@ -338,6 +340,12 @@ int ConfigAdv::set(char *name, char *value)
 	else if( !strcmp(name, "fix_town_unjob_worker") )
 	{
 		if( !read_bool(value, &fix_town_unjob_worker) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "game_file_patching") )
+	{
+		if( !read_bool(value, &game_file_patching) )
 			return 0;
 		update_check_sum(name, value);
 	}

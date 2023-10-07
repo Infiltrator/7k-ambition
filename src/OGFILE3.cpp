@@ -43,6 +43,7 @@
 #include <dbglog.h>
 #include <file_io_visitor.h>
 #include <file_reader.h>
+#include <ConfigAdv.h>
 
 #include <OGF_V1.h>
 
@@ -996,6 +997,17 @@ int FirmArray::read_file(File* filePtr)
 
          if( !firmPtr->read_derived_file( filePtr ) )
             return 0;
+
+         if( config_adv.game_file_patching &&
+             GameFile::load_file_game_version < 200 &&
+             firmPtr->firm_id == FIRM_MARKET )
+         {
+            FirmMarket* firmMarket = (FirmMarket*) firmPtr;
+            // Below game version 200, the restock type was not initialized for
+            // human players.
+            if( !firmMarket->firm_ai )
+               firmMarket->restock_type = 0;
+         }
       }
    }
 
