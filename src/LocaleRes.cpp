@@ -140,7 +140,7 @@ void LocaleRes::load(const char *locale)
 			locale = "en_US";
 	}
 
-	setlocale(LC_MESSAGES, locale);
+	setlocale(LC_ALL, locale); // for LC_MESSAGES and LC_CTYPE
 	setenv("LANGUAGE", locale, 1); // if setlocale is not supported
 
 	LocaleRec *localeRec;
