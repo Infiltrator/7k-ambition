@@ -2603,33 +2603,24 @@ void Sys::set_speed(int frameSpeed, int remoteCall)
 void Sys::capture_screen()
 {
    FilePath full_path(dir_config);
-   const char filename_template[] = "7KXX.BMP";
+   const char filename_template[] = "7KXXXXXX.BMP";
 
    full_path += filename_template; // template for screenshot filename
    if( full_path.error_flag )
       return;
 
    char *filename = (char*)full_path+strlen(dir_config);
-   String str("7K");
 
    int i;
-   for( i=0 ; i<=99 ; i++ )
+   for( i=0 ; i<=999999 ; i++ )
    {
-      str  = "7K";
-
-      if( i<10 )
-         str += "0";
-
-      str += i;
-      str += ".BMP";
-
-      memcpy(filename, str, strlen(filename_template));
+      sprintf(filename, "7K%06d.BMP", i);
 
       if( !misc.is_file_exist(full_path) )
          break;
    }
 
-   if( i>99 )        // all file names from DWORLD00 to DWORLD99 have been occupied
+   if( i>999999 )        // all file names from DWORLD00 to DWORLD999999 have been occupied
       return;
 
    if( sys.debug_session )    // in debug session, the buffer is not locked, we need to lock it for capturing the screen
@@ -2646,9 +2637,8 @@ void Sys::capture_screen()
    //------ display msg --------//
 
    String str2;
-   const char *file_name = str;
 
-   snprintf( str2, MAX_STR_LEN+1, _("The current screen has been written to file %s."), file_name );
+   snprintf( str2, MAX_STR_LEN+1, _("The current screen has been written to file %s."), filename );
 
    box.msg( str2 );
 }
