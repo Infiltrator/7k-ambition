@@ -511,9 +511,12 @@ void Vga::handle_messages()
             }
             else if( event.key.keysym.sym == SDLK_TAB )
             {
-               bypass = 1;
-               SDL_Window *window = SDL_GetWindowFromID(event.key.windowID);
-               SDL_MinimizeWindow(window);
+               if( is_full_screen() )
+               {
+                  bypass = 1;
+                  SDL_Window *window = SDL_GetWindowFromID(event.key.windowID);
+                  SDL_MinimizeWindow(window);
+               }
             }
          }
          else if( mod == KMOD_LCTRL || mod == KMOD_RCTRL )
