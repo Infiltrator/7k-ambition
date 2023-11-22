@@ -1648,7 +1648,6 @@ void Sys::detect_letter_key(unsigned scanCode, unsigned skeyState)
    else if( ISKEY(KEYEVENT_OPEN_OPTION_MENU) )
    {
       // ##### begin Gilbert 5/11 #######//
-      // game.in_game_option_menu();
       option_menu.enter(!remote.is_enable());
       // ##### end Gilbert 5/11 #######//
    }
@@ -1780,7 +1779,6 @@ void Sys::detect_function_key(unsigned scanCode, unsigned skeyState)
 
       case KEY_F10:
          // ##### begin Gilbert 5/11 ######//
-         //game.in_game_menu();
          in_game_menu.enter(!remote.is_enable());
          // ##### end Gilbert 5/11 ######//
          break;

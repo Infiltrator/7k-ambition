@@ -105,8 +105,6 @@ public:
 	void			deinit(int loadGameCall=0);
 
 	void			main_menu();
-   void			in_game_menu();
-	int			in_game_option_menu();
 	void 			game_end(int winNationRecno, int playerDestroyed=0, int surrenderToNationRecno=0, int retireFlag=0);
 
 	int 			select_run_scenario();
