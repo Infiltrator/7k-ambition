@@ -174,6 +174,9 @@ int InGameMenu::detect()
    if( !active_flag )
       return 0;
 
+   if( mouse.key_code==KEY_F11 )
+      sys.capture_screen();  // quick way to save map ID with mini map
+
    int i, y=GAME_OPTION_Y1, x2, y2;
 
    for( i=1 ; i<=GAME_OPTION_COUNT ; i++, y+=GAME_OPTION_HEIGHT )
