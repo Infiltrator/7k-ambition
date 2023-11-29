@@ -1049,7 +1049,7 @@ void Unit::disp_build(int refreshFlag)
 //
 void Unit::detect_build()
 {
-	if( button_cancel2.detect() )
+	if( button_cancel2.detect(GETKEY(KEYEVENT_UNIT_CANCEL)) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1085,7 +1085,7 @@ void Unit::disp_settle(int refreshFlag)
 //
 void Unit::detect_settle()
 {
-	if( button_cancel2.detect() )
+	if( button_cancel2.detect(GETKEY(KEYEVENT_UNIT_CANCEL)) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
