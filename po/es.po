@@ -927,7 +927,7 @@ msgstr "Reputación"
 
 #: src/OGAMEND.cpp:484 src/OR_RANK.cpp:92
 msgid "Fryhtan Battling"
-msgstr "Matando Frythan"
+msgstr "Contra Frythan"
 
 #: src/OGAMEND.cpp:531 src/OR_RANK.cpp:140
 msgid "Population Score"
