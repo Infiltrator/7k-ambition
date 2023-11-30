@@ -39,6 +39,7 @@ static int update_x1, update_y1, update_x2, update_y2;          // coordination 
 
 static unsigned any_key_code_map[KEYEVENT_MAX];
 static unsigned shift_key_code_map[KEYEVENT_MAX];
+static unsigned ctrl_key_code_map[KEYEVENT_MAX];
 
 static void reset_key(KeyEventType key_event);
 
@@ -1607,6 +1608,8 @@ int Mouse::bind_key(KeyEventType key_event, const char *key)
 		kc = SDL_GetKeyFromName(key2+1);
 		if( !memcmp(key, "shift", 5) )
 			ke = &shift_key_code_map[key_event];
+		else if( !memcmp(key, "ctrl", 4) )
+			ke = &ctrl_key_code_map[key_event];
 		else
 			return 0;
 	}
@@ -1630,6 +1633,8 @@ int Mouse::is_key_event(KeyEventType key_event)
 	kc = any_key_code_map[key_event];
 	if( skey_state & SHIFT_KEY_MASK )
 		kc = shift_key_code_map[key_event];
+	if( skey_state & CONTROL_KEY_MASK )
+		kc = ctrl_key_code_map[key_event];
 	return kc ? kc == unique_key_code : 0;
 }
 // ------ End of Mouse::is_key_event -------//
@@ -1643,6 +1648,8 @@ unsigned Mouse::get_key_code(KeyEventType key_event)
 		return any_key_code_map[key_event];
 	if( skey_state & SHIFT_KEY_MASK )
 		return shift_key_code_map[key_event];
+	if( skey_state & CONTROL_KEY_MASK )
+		return ctrl_key_code_map[key_event];
 	return SDLK_UNKNOWN;
 }
 // ------ End of Mouse::get_key_code -------//
@@ -1691,5 +1698,6 @@ static void reset_key(KeyEventType key_event)
 {
 	any_key_code_map[key_event] = SDLK_UNKNOWN;
 	shift_key_code_map[key_event] = SDLK_UNKNOWN;
+	ctrl_key_code_map[key_event] = SDLK_UNKNOWN;
 }
 // ------ End of static function reset_key -------//
