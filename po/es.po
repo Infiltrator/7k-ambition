@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: the3dfxdude@gmail.com\n"
 "POT-Creation-Date: 2023-11-08 00:13+0100\n"
-"PO-Revision-Date: 2023-11-08 09:24+0100\n"
-"Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
+"PO-Revision-Date: 2023-05-23 20:54+0200\n"
+"Last-Translator: Jorge Maldonado Ventura\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: src/CmdLine.cpp:48
 #, c-format
@@ -289,15 +289,15 @@ msgstr "Liderazgo"
 
 #: src/OF_FACT.cpp:361
 msgid "Producing Clay Products"
-msgstr "Produciendo arts. de arcilla"
+msgstr "Produciendo productos de arcilla"
 
 #: src/OF_FACT.cpp:362
 msgid "Producing Copper Products"
-msgstr "Produciendo arts. de cobre"
+msgstr "Produciendo productos de cobre"
 
 #: src/OF_FACT.cpp:363
 msgid "Producing Iron Products"
-msgstr "Produciendo arts. de hierro"
+msgstr "Produciendo productos de hierro"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # #-#-#-#-#  -  #-#-#-#-#
@@ -312,7 +312,7 @@ msgstr "Producción mensual"
 # data/resource/help.res:313
 #: src/OF_FACT.cpp:400
 msgid "Raw Material Stock"
-msgstr "Materia prima disponible"
+msgstr "Materia prima en existencia"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/resource/help.res:317
@@ -378,7 +378,7 @@ msgstr "Mina"
 
 #: src/OF_MARK.cpp:519
 msgid "None"
-msgstr "Nada"
+msgstr ""
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/resource/help.res:301
@@ -388,7 +388,7 @@ msgstr "Ingresos anuales"
 
 #: src/OF_MARK.cpp:533
 msgid "Restock From"
-msgstr "Resuplir de"
+msgstr ""
 
 #: src/OF_MINE.cpp:264
 msgid "Mining Clay"
@@ -482,8 +482,9 @@ msgid "Holgh Lair"
 msgstr "Guarida de Holgh"
 
 #: src/OF_MONS.cpp:223
+#, fuzzy
 msgid "Ordos"
-msgstr "Ordos"
+msgstr "Ordo Ick"
 
 #: src/OGAMEMP.cpp:526
 msgid "Create multiplayer session"
@@ -926,7 +927,7 @@ msgstr "Reputación"
 
 #: src/OGAMEND.cpp:484 src/OR_RANK.cpp:92
 msgid "Fryhtan Battling"
-msgstr "Contra Fryhtans"
+msgstr "Matando Frythan"
 
 #: src/OGAMEND.cpp:531 src/OR_RANK.cpp:140
 msgid "Population Score"
@@ -1415,15 +1416,15 @@ msgstr[1] "%d días"
 
 #: src/OINGMENU.cpp:124
 msgid "Small"
-msgstr "Pequeño"
+msgstr ""
 
 #: src/OINGMENU.cpp:125
 msgid "Medium"
-msgstr "Mediano"
+msgstr ""
 
 #: src/OINGMENU.cpp:126
 msgid "Large"
-msgstr "Grande"
+msgstr ""
 
 #: src/OINGMENU.cpp:159
 msgid "Map I.D."
@@ -2844,13 +2845,15 @@ msgstr "Su general %s ha sido golpeado y herido por un rayo."
 
 #. TRANSLATORS: Your King has been struck and killed by lightning.
 #: src/ONEWSENG.cpp:1371
+#, fuzzy
 msgid "Your King has been struck and killed by lightning."
-msgstr "Su rey ha sido golpeado y muerto por un rayo."
+msgstr "Su rey %s ha sido golpeado y muerto por un rayo."
 
 #. TRANSLATORS: Your King has been struck and injured by lightning.
 #: src/ONEWSENG.cpp:1376
+#, fuzzy
 msgid "Your King has been struck and injured by lightning."
-msgstr "Su rey ha sido golpeado y herido por un rayo."
+msgstr "Su rey %s ha sido golpeado y herido por un rayo."
 
 #. TRANSLATORS: Your unit <Name> has been struck and killed by lightning.
 #: src/ONEWSENG.cpp:1384
@@ -3530,8 +3533,9 @@ msgid "3rd"
 msgstr "3.º"
 
 #: src/OR_RANK.cpp:478
+#, fuzzy
 msgid "4th"
-msgstr "4.º"
+msgstr "5.º"
 
 #: src/OR_RANK.cpp:479
 msgid "5th"
@@ -3716,7 +3720,7 @@ msgstr "*Ubicaciones inactivas: %s"
 # data/resource/help.res:289
 #: src/OR_TRADE.cpp:961 src/OR_TRADE.cpp:997
 msgid "Raw Stock"
-msgstr "Materia prima disponible"
+msgstr "Materia prima en existencia"
 
 #: src/OR_TRADE.cpp:986 src/OSITEDRW.cpp:54
 msgid "Reserve"
