@@ -311,13 +311,10 @@ int World::detect()
 int World::detect_scroll()
 {
    int scroll_x = 0, scroll_y = 0;
-   if( !vga.is_input_grabbed() && !mouse.get_scroll(&scroll_x, &scroll_y))
-      return 0;
+
+   mouse.get_scroll(&scroll_x, &scroll_y);
 
    if( mouse_cursor.frame_flag )    // if it's now in frame selection mode
-      return 0;
-
-   if( next_scroll_time && misc.get_time() < next_scroll_time )      // just scrolled not too long ago, wait for a little while before next scroll.
       return 0;
 
    int rc=0;
@@ -327,8 +324,11 @@ int World::detect_scroll()
        zoom_matrix->scroll(scroll_x, scroll_y);
        rc = 1;
    }
-   else
+   else if( vga.is_input_grabbed() )
    {
+       if( next_scroll_time && misc.get_time() < next_scroll_time )      // just scrolled not too long ago, wait for a little while before next scroll.
+           return 0;
+
        //----- scroll left -----//
 
        if (mouse.cur_x <= mouse.bound_x1) {
