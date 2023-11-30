@@ -80,9 +80,8 @@ Info::Info() : report_array(sizeof(short), 50),
 //
 Info::~Info()
 {
+	free_game_scr();
 	deinit();
-
-	err_when( save_buf_1 );
 }
 //--------- End of function Info::~Info ---------//
 
