@@ -1110,15 +1110,15 @@ int MultiPlayer::send(uint32_t to, void *data, uint32_t msg_size)
 			}
 		}
 	} else {
-		ENetPeer *peer;
-
-		peer = get_peer(to);
-		if (!peer) {
-			return 0;
-		}
-
-		enet_peer_send(peer, 0, packet);
+		ENetPeer *peer = get_peer(to);
+		if (peer)
+			enet_peer_send(peer, 0, packet);
 	}
+
+	if( !packet->referenceCount )
+		enet_packet_destroy(packet); // free unused packet
+
+	return packet->referenceCount > 0;
 #endif
 
 	return 1;
