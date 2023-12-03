@@ -41,6 +41,7 @@
 #include <OSE.h>
 #include <OSERES.h>
 #include <OBUTTCUS.h>
+#include <ONEWS.h>
 #include "gettext.h"
 
 
@@ -926,7 +927,7 @@ void FirmWar::process_build()
 			return;
 		}
 
-		unit_array.add_unit( build_unit_id, nation_recno, 0, 0, xLoc, yLoc );
+		int unitRecno = unit_array.add_unit( build_unit_id, nation_recno, 0, 0, xLoc, yLoc );
 
 		if( firm_array.selected_recno == firm_recno )
 		{
@@ -936,7 +937,10 @@ void FirmWar::process_build()
 		}
 
 		if( own_firm() )
+		{
+			news_array.weapon_ship_built(unitRecno, firm_recno);
 			se_res.far_sound(center_x, center_y, 1, 'F', firm_id, "FINS", 'S', unit_res[build_unit_id]->sprite_id);
+		}
 
 		build_unit_id = 0;
 	}
