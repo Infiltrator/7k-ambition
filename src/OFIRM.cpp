@@ -1439,7 +1439,8 @@ void Firm::process_construction()
 		// ##### begin Gilbert 10/10 #######//
 		if( nation_recno == nation_array.player_recno )
 		{
-			news_array.firm_constructed(firm_recno);
+			if( config_adv.news_notify_complete )
+				news_array.firm_constructed(firm_recno);
 			se_res.far_sound(center_x, center_y, 1, 'S', unitPtr->sprite_id,
 				"FINS", 'F',  firm_id);
 		}

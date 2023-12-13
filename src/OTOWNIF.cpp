@@ -2044,7 +2044,8 @@ void Town::finish_train(Unit* unitPtr)
 
 	if( unitPtr->is_own() )
 	{
-		news_array.unit_trained(unitPtr->sprite_recno, town_recno);
+		if( config_adv.news_notify_complete )
+			news_array.unit_trained(unitPtr->sprite_recno, town_recno);
 		se_res.far_sound( xLoc, yLoc, 1, 'S', unitPtr->sprite_id, "RDY");
 	}
 

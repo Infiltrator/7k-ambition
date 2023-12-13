@@ -73,6 +73,9 @@ public:
 	int			nation_start_god_level;
 	int			nation_start_tech_inc_all_level;
 
+	// news settings
+	char			news_notify_complete;
+
 	// race settings
 	char			race_random_list[MAX_RACE];
 	int			race_random_list_max;

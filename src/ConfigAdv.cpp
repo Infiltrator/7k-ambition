@@ -250,6 +250,8 @@ void ConfigAdv::reset()
 	nation_start_god_level = 0;
 	nation_start_tech_inc_all_level = 0;
 
+	news_notify_complete = 0;
+
 	race_random_list_max = MAX_RACE;
 	for (int i = 0; i < race_random_list_max; i++)
 		race_random_list[i] = i+1;
@@ -408,6 +410,11 @@ int ConfigAdv::set(char *name, char *value)
 		if( CHECK_BOUND(nation_start_tech_inc_all_level, 0, 2) )
 			return 0;
 		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "news_notify_complete") )
+	{
+		if( !read_bool(value, &news_notify_complete) )
+			return 0;
 	}
 	else if( !strcmp(name, "race_random_list") )
 	{
