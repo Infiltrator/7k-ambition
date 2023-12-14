@@ -47,6 +47,16 @@ int Nation::ai_defend(int attackerUnitRecno)
 	int attackerXLoc = attackerUnit->next_x_loc();
 	int attackerYLoc = attackerUnit->next_y_loc();
 
+	Location *loc = world.get_loc(attackerXLoc, attackerYLoc);
+	if( loc->unit_recno(UNIT_AIR) == attackerUnit->sprite_recno && loc->unit_recno(UNIT_LAND) )
+	{
+		Unit* landUnit = unit_array[loc->unit_recno(UNIT_LAND)];
+		err_when( landUnit->nation_recno != attackerUnit->nation_recno );
+		// ai can't distinguish between air and land unit past this point
+		if( landUnit->nation_recno != attackerUnit->nation_recno )
+			return 0; //***BUGHERE
+	}
+
 	int hasWar;
 
 	int enemyCombatLevel = mobile_defense_combat_level( attackerXLoc, attackerYLoc,
