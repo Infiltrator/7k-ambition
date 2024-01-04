@@ -175,9 +175,9 @@ int File::file_write(void* dataBuf, unsigned dataSize)
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_write] error occured while writing file: %s\n", file_name);
+			err.run("[File::file_write] error occurred while writing file: %s\n", file_name);
 		else
-			ERR("[File::file_write] error occured while writing file: %s\n", file_name);
+			ERR("[File::file_write] error occurred while writing file: %s\n", file_name);
 		return 0;
 	}
 
@@ -226,9 +226,9 @@ int File::file_read(void* dataBuf, unsigned dataSize)
 	{
 		// This used to prompt for a retry -- was this necessary?
 		if (handle_error)
-			err.run("[File::file_read] error occured while reading file: %s\n", file_name);
+			err.run("[File::file_read] error occurred while reading file: %s\n", file_name);
 		else
-			ERR("[File::file_read] error occured while reading file: %s\n", file_name);
+			ERR("[File::file_read] error occurred while reading file: %s\n", file_name);
 		return 0;
 	}
 
@@ -246,9 +246,9 @@ int File::file_put_char(int8_t value)
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_put_short] error occured while writing file: %s\n", file_name);
+			err.run("[File::file_put_short] error occurred while writing file: %s\n", file_name);
 		else
-			ERR("[File::file_put_short] error occured while writing file: %s\n", file_name);
+			ERR("[File::file_put_short] error occurred while writing file: %s\n", file_name);
 		return 0;
 	}
 
@@ -265,9 +265,9 @@ int8_t File::file_get_char()
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_get_char] error occured while reading file: %s\n", file_name);
+			err.run("[File::file_get_char] error occurred while reading file: %s\n", file_name);
 		else
-			ERR("[File::file_get_char] error occured while reading file: %s\n", file_name);
+			ERR("[File::file_get_char] error occurred while reading file: %s\n", file_name);
 		return 0;
 	}
 
@@ -283,9 +283,9 @@ int File::file_put_short(int16_t value)
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_put_char] error occured while writing file: %s\n", file_name);
+			err.run("[File::file_put_char] error occurred while writing file: %s\n", file_name);
 		else
-			ERR("[File::file_put_char] error occured while writing file: %s\n", file_name);
+			ERR("[File::file_put_char] error occurred while writing file: %s\n", file_name);
 		return 0;
 	}
 
@@ -302,9 +302,9 @@ int16_t File::file_get_short()
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_get_short] error occured while reading file: %s\n", file_name);
+			err.run("[File::file_get_short] error occurred while reading file: %s\n", file_name);
 		else
-			ERR("[File::file_get_short] error occured while reading file: %s\n", file_name);
+			ERR("[File::file_get_short] error occurred while reading file: %s\n", file_name);
 		return 0;
 	}
 
@@ -320,9 +320,9 @@ int File::file_put_unsigned_short(uint16_t value)
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_put_unsigned_short] error occured while writing file: %s\n", file_name);
+			err.run("[File::file_put_unsigned_short] error occurred while writing file: %s\n", file_name);
 		else
-			ERR("[File::file_put_unsigned_short] error occured while writing file: %s\n", file_name);
+			ERR("[File::file_put_unsigned_short] error occurred while writing file: %s\n", file_name);
 		return 0;
 	}
 
@@ -339,9 +339,9 @@ uint16_t File::file_get_unsigned_short()
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_get_unsigned_short] error occured while reading file: %s\n", file_name);
+			err.run("[File::file_get_unsigned_short] error occurred while reading file: %s\n", file_name);
 		else
-			ERR("[File::file_get_unsigned_short] error occured while reading file: %s\n", file_name);
+			ERR("[File::file_get_unsigned_short] error occurred while reading file: %s\n", file_name);
 		return 0;
 	}
 
@@ -357,9 +357,9 @@ int File::file_put_long(int32_t value)
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_put_long] error occured while writing file: %s\n", file_name);
+			err.run("[File::file_put_long] error occurred while writing file: %s\n", file_name);
 		else
-			ERR("[File::file_put_long] error occured while writing file: %s\n", file_name);
+			ERR("[File::file_put_long] error occurred while writing file: %s\n", file_name);
 		return 0;
 	}
 
@@ -376,9 +376,9 @@ int32_t File::file_get_long()
 	if (ferror(file_handle))
 	{
 		if (handle_error)
-			err.run("[File::file_get_long] error occured while reading file: %s\n", file_name);
+			err.run("[File::file_get_long] error occurred while reading file: %s\n", file_name);
 		else
-			ERR("[File::file_get_long] error occured while reading file: %s\n", file_name);
+			ERR("[File::file_get_long] error occurred while reading file: %s\n", file_name);
 		return 0;
 	}
 
