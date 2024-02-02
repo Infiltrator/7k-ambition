@@ -291,6 +291,7 @@ bin_PROGRAMS = 7kaa
 	vgautil2.cpp
 
 AM_CPPFLAGS = \
+	-I$(top_srcdir)/include \
 	-DPACKAGE_DATA_DIR=\"$(pkgdatadir)\" \
 	-DLOCALE_DIR=\"$(localedir)\"
 
