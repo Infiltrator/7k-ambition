@@ -547,16 +547,17 @@ int Unit::think_leader_action()
 	{
 		validate_team();
 
-		unit_array.assign( bestCamp->loc_x1, bestCamp->loc_y1, 0, COMMAND_AI,
+		if( team_info->member_count > 0 )
+		{
+			unit_array.assign( bestCamp->loc_x1, bestCamp->loc_y1, 0, COMMAND_AI,
 								 team_info->member_unit_array, team_info->member_count );
-		return 1;
-	}
-	else  //--- otherwise assign the general only ---//
-	{
-		return nationPtr->add_action(bestCamp->loc_x1, bestCamp->loc_y1, -1, -1, ACTION_AI_ASSIGN_OVERSEER, FIRM_CAMP, 1, sprite_recno);
+			return 1;
+		}
 	}
 
-	return 0;
+	//--- otherwise assign the general only ---//
+
+	return nationPtr->add_action(bestCamp->loc_x1, bestCamp->loc_y1, -1, -1, ACTION_AI_ASSIGN_OVERSEER, FIRM_CAMP, 1, sprite_recno);
 }
 //---------- End of function Unit::think_leader_action --------//
 
