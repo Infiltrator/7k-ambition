@@ -145,6 +145,9 @@ Unit* Nation::find_skilled_unit(int skillId, int raceId, short destX, short dest
 		if( raceId && unitPtr->race_id != raceId )
 			continue;
 
+		if( unitPtr->skill.skill_level < TRAIN_SKILL_LEVEL )
+			continue;
+
 		//---- if this unit is on a mission ----//
 
 		if( unitPtr->home_camp_firm_recno )
