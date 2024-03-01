@@ -587,7 +587,7 @@ int Nation::mobile_defense_combat_level(int targetXLoc, int targetYLoc, int targ
 				if( unitPtr->nation_recno == nation_recno )
 					hasWar = 2;
 				else
-					hasWar = 1;
+					hasWar = MAX(hasWar, 1);
 			}
 
 			//---- if this unit is guarding the town -----//
