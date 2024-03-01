@@ -583,7 +583,7 @@ int Unit::think_normal_human_action()
 	Firm *firmPtr, *bestFirm=NULL;
 	int  regionId = world.get_region_id( next_x_loc(), next_y_loc() );
 	int  skillId  = skill.skill_id;
-	int  skillLevel = skill.skill_level;
+	int  skillLevel = skillId == SKILL_LEADING ? skill.combat_level : skill.skill_level;
 	int  i, curRating, bestRating=0;
 	int  curXLoc = next_x_loc(), curYLoc = next_y_loc();
 
@@ -628,20 +628,21 @@ int Unit::think_normal_human_action()
 
 					for( int j=0 ; j<firmPtr->worker_count ; j++, workerPtr++ )
 					{
-						if( workerPtr->skill_level < minSkill )
-							minSkill = workerPtr->skill_level;
+						int workerSkillLevel = skillId == SKILL_LEADING ? workerPtr->combat_level : workerPtr->skill_level;
+						if( workerSkillLevel < minSkill )
+							minSkill = workerSkillLevel;
 					}
 
 					//------------------------------//
 
 					if( firmPtr->majority_race() == race_id )
 					{
-						if( skill.skill_level < minSkill+10 )
+						if( skillLevel < minSkill+10 )
 							continue;
 					}
 					else //-- for different race, only assign if the skill is significantly higher than the existing ones --//
 					{
-						if( skill.skill_level < minSkill+30 )
+						if( skillLevel < minSkill+30 )
 							continue;
 					}
 				}
