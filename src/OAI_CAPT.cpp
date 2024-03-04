@@ -100,6 +100,11 @@ int Nation::think_capture_independent()
 		if( !has_base_town_in_region(townPtr->region_id) )
 			continue;
 
+		//--- if a unit is already on its way to build firm for capturing this town ---//
+
+		if( is_build_action_exist(FIRM_CAMP, townPtr->loc_x1, townPtr->loc_y1) )
+			continue;
+
 		//---- check if there are already camps linked to this town ----//
 
 		int i;
