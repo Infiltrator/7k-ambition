@@ -145,7 +145,7 @@ Unit* Nation::find_skilled_unit(int skillId, int raceId, short destX, short dest
 		if( raceId && unitPtr->race_id != raceId )
 			continue;
 
-		if( unitPtr->skill.skill_level < TRAIN_SKILL_LEVEL )
+		if( unitPtr->skill.skill_id!=skillId || unitPtr->skill.skill_level < TRAIN_SKILL_LEVEL )
 			continue;
 
 		//---- if this unit is on a mission ----//
@@ -163,8 +163,7 @@ Unit* Nation::find_skilled_unit(int skillId, int raceId, short destX, short dest
 			if( !unitPtr->is_ai_all_stop() )
 				continue;
 
-			if( unitPtr->skill.skill_id==skillId &&
-				 unitPtr->cur_action!=SPRITE_ATTACK && !unitPtr->ai_action_id )
+			if( unitPtr->cur_action!=SPRITE_ATTACK && !unitPtr->ai_action_id )
 			{
 				curDist = misc.points_distance(unitPtr->next_x_loc(), unitPtr->next_y_loc(), destX, destY);
 
