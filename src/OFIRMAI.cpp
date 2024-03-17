@@ -57,6 +57,9 @@ void Firm::process_common_ai()
 //
 void Firm::think_repair()
 {
+	if( builder_recno )
+		return;
+
 	Nation* ownNation = nation_array[nation_recno];
 
 	//----- check if the damage is serious enough -----//
