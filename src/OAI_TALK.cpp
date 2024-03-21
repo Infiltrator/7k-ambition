@@ -26,6 +26,7 @@
 #include <OTECHRES.h>
 #include <OF_MARK.h>
 #include <ONATION.h>
+#include <ConfigAdv.h>
 
 
 //-------- Declare static functions ---------//
@@ -501,7 +502,7 @@ int Nation::should_consider_friendly(int withNationRecno)
 
 	//------- if this is a larger nation -------//
 
-	if( overall_rank_rating() / 100 > 50 )
+	if( config_adv.nation_ai_no_treaty_with_biggest && overall_rank_rating() > 50 )
 	{
 		//--- big nations don't ally with their biggest opponents ---//
 
