@@ -870,6 +870,12 @@ int FirmCamp::think_capture_return()
 //
 int FirmCamp::think_assign_better_overseer(Town* targetTown)
 {
+	if( !overseer_recno )
+		return 1;		// overseer to be assigned, but handled elsewhere
+
+	if( patrol_unit_count )
+		return 1;		// need finish mission first
+
 	//----- check if there is already a queued action -----//
 
 	Nation* ownNation = nation_array[nation_recno];
@@ -880,34 +886,51 @@ int FirmCamp::think_assign_better_overseer(Town* targetTown)
 		return 1;		// there is a queued action being processed already
 	}
 
+	//----- check how the current overseer is doing the job -----//
+
+	Unit* unitPtr = unit_array[overseer_recno];
+	int raceId = unitPtr->race_id;
+
+	if( targetTown->race_pop_array[raceId-1] > 0 )
+	{
+		if( targetTown->race_target_resistance_array[raceId-1][nation_recno-1] == -1 ||
+			targetTown->race_resistance_array[raceId-1][nation_recno-1] >
+			(float) (targetTown->race_target_resistance_array[raceId-1][nation_recno-1]+1) )
+		{
+			// keep the current overseer that is making progress
+			return 0;
+		}
+
+		//-- if resistance is no longer dropping, check if we can get a better overseer --//
+
+		if( targetTown->race_resistance_array[raceId-1][nation_recno-1] > 30 )
+		{
+			return think_assign_better_overseer2(targetTown->town_recno, raceId);
+		}
+	}
+
 	//------ get the two most populated races of the town ----//
 
 	int mostRaceId1, mostRaceId2;
 
 	targetTown->get_most_populated_race(mostRaceId1, mostRaceId2);
 
-	//-- if the resistance of the majority race has already dropped to its lowest possible --//
+	//-- if the majority race is not being worked on and could use an overseer --//
 
-	if( targetTown->race_resistance_array[mostRaceId1-1][nation_recno-1] <=
-		 (float) (targetTown->race_target_resistance_array[mostRaceId1-1][nation_recno-1]+1) )
+	raceId = mostRaceId1;
+	if( targetTown->race_target_resistance_array[raceId-1][nation_recno-1] == -1 &&
+		 targetTown->race_resistance_array[raceId-1][nation_recno-1] > 30 )
 	{
-		if( targetTown->race_resistance_array[mostRaceId1-1][nation_recno-1] > 30 )
-		{
-			if( think_assign_better_overseer2(targetTown->town_recno, mostRaceId1) )
-				return 1;
-		}
+		return think_assign_better_overseer2(targetTown->town_recno, raceId);
 	}
 
-	//-- if the resistance of the 2nd majority race has already dropped to its lowest possible --//
+	//-- if the 2nd majority race is not being worked on and could use an overseer --//
 
-	if( targetTown->race_resistance_array[mostRaceId2-1][nation_recno-1] <=
-		 (float) (targetTown->race_target_resistance_array[mostRaceId2-1][nation_recno-1]+1) )
+	raceId = mostRaceId2;
+	if( targetTown->race_target_resistance_array[raceId-1][nation_recno-1] == -1 &&
+		 targetTown->race_resistance_array[raceId-1][nation_recno-1] > 30 )
 	{
-		if( targetTown->race_resistance_array[mostRaceId2-1][nation_recno-1] > 30 )
-		{
-			if( think_assign_better_overseer2(targetTown->town_recno, mostRaceId2) )
-				return 1;
-		}
+		return think_assign_better_overseer2(targetTown->town_recno, raceId);
 	}
 
 	return 0;
