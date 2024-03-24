@@ -1205,6 +1205,27 @@ int FirmCamp::think_use_cash_to_capture()
 //
 void FirmCamp::think_linked_town_change_nation(int linkedTownRecno, int oldNationRecno, int newNationRecno)
 {
+	//-----------------------------------------------//
+	//
+	// If we are trying to capture an independent town and our
+	// enemies have managed to capture it first.
+	//
+	//-----------------------------------------------//
+
+	Nation* ownNation = nation_array[nation_recno];
+
+	if( oldNationRecno==0 && newNationRecno>0 && newNationRecno != nation_recno  )
+	{
+		Town* townPtr = town_array[linkedTownRecno];
+
+		//--- if the town does not have any protection, then don't remove this camp ---//
+
+		if( townPtr->protection_available()==0 )
+			return;
+
+		should_close_flag = 1;
+		ownNation->firm_should_close_array[firm_id-1]++;
+	}
 }
 //-------- End of function FirmCamp::think_linked_town_change_nation ------//
 
