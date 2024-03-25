@@ -1223,6 +1223,23 @@ void FirmCamp::think_linked_town_change_nation(int linkedTownRecno, int oldNatio
 		if( townPtr->protection_available()==0 )
 			return;
 
+		//--- if there is another town we can capture, then don't remove this camp ---//
+
+		if( think_capture_target_town() )
+			return;
+
+		//--- if this links to one of our towns, then don't remove this camp ---//
+
+		for( int i=0; i<linked_town_count; i++ )
+		{
+			townPtr = town_array[linked_town_array[i]];
+
+			if( townPtr->nation_recno == nation_recno )
+				return;
+		}
+
+		//--- otherwise missed out on capturing, can close this camp ---//
+
 		should_close_flag = 1;
 		ownNation->firm_should_close_array[firm_id-1]++;
 	}
