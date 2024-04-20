@@ -34,6 +34,7 @@
 #include <OF_MINE.h>
 #include <OINFO.h>
 #include <OLOG.h>
+#include <ConfigAdv.h>
 
 //--------- Begin of function Nation::Nation --------//
 
@@ -247,6 +248,17 @@ void Nation::process_ai()
 		if( think_succeed_king() )
 			return;
 
+		if(think_surrender() )
+			return;
+
+		defeated();
+		return;
+	}
+
+	//---- for simulation games, clean up pointless ai players ----//
+
+	if( config_adv.nation_ai_defeat_when_no_towns && total_population == 0 )
+	{
 		if( think_surrender() )
 			return;
 

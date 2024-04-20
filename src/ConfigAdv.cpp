@@ -246,6 +246,7 @@ void ConfigAdv::reset()
 	monster_alternate_attack_curve = 0;
 	monster_attack_divisor = 4;
 
+	nation_ai_defeat_when_no_towns = 0;
 	nation_ai_no_treaty_with_biggest = 1;
 	nation_ai_unite_min_relation_level = NATION_NEUTRAL;
 	nation_start_god_level = 0;
@@ -375,6 +376,12 @@ int ConfigAdv::set(char *name, char *value)
 		if( !read_int(value, &monster_attack_divisor) )
 			return 0;
 		if( CHECK_BOUND(monster_attack_divisor, 1, 6) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "nation_ai_defeat_when_no_towns") )
+	{
+		if( !read_bool(value, &nation_ai_defeat_when_no_towns) )
 			return 0;
 		update_check_sum(name, value);
 	}

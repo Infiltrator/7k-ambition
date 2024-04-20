@@ -69,6 +69,7 @@ public:
 	int			monster_attack_divisor;
 
 	// nation settings
+	char			nation_ai_defeat_when_no_towns;
 	char			nation_ai_no_treaty_with_biggest;
 	char			nation_ai_unite_min_relation_level;
 	int			nation_start_god_level;
