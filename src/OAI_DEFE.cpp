@@ -24,6 +24,7 @@
 #include <ALL.h>
 #include <OTALKRES.h>
 #include <ONATION.h>
+#include <OFIRM.h>
 
 //----- Begin of function Nation::ai_defend -----//
 //
@@ -46,8 +47,50 @@ int Nation::ai_defend(int attackerUnitRecno)
 
 	int attackerXLoc = attackerUnit->next_x_loc();
 	int attackerYLoc = attackerUnit->next_y_loc();
-
 	Location *loc = world.get_loc(attackerXLoc, attackerYLoc);
+
+	if( !attackerUnit->is_visible() )
+	{
+		//***BUGHERE
+		// Find the enemy building as the target since the attacker disappeared into one.
+		// Search around last known location. This search should not be necessary, but
+		// the attacker cannot be found in game information easily right now.
+
+		#define DIMENSION 3
+		#define TEST_LIMIT DIMENSION*DIMENSION
+		int xShift, yShift, checkXLoc, checkYLoc, firmRecno;
+		int haveFirm = 0;
+
+		for( int i=2; i<=TEST_LIMIT; i++)
+		{
+			misc.cal_move_around_a_point(i, DIMENSION, DIMENSION, xShift, yShift);
+
+			checkXLoc = attackerXLoc+xShift;
+			checkYLoc = attackerYLoc+yShift;
+			if(checkXLoc<0 || checkXLoc>=MAX_WORLD_X_LOC || checkYLoc<0 || checkYLoc>=MAX_WORLD_Y_LOC)
+				continue;
+
+			loc = world.get_loc(checkXLoc, checkYLoc);
+			firmRecno = loc->firm_recno();
+			if( firm_array.is_deleted(firmRecno) )
+				continue;
+
+			Firm* firmPtr = firm_array[firmRecno];
+			if( firmPtr->nation_recno == attackerUnit->nation_recno )
+			{
+				haveFirm = 1;
+				attackerXLoc = firmPtr->loc_x1;
+				attackerYLoc = firmPtr->loc_y1;
+				loc = world.get_loc(attackerXLoc, attackerYLoc);
+				break;
+			}
+		}
+
+		err_when( !haveFirm );
+		if( !haveFirm )
+			return 0; //***BUGHERE
+	}
+
 	if( loc->unit_recno(UNIT_AIR) == attackerUnit->sprite_recno && loc->unit_recno(UNIT_LAND) )
 	{
 		Unit* landUnit = unit_array[loc->unit_recno(UNIT_LAND)];
