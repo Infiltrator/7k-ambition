@@ -673,8 +673,6 @@ void UnitCaravan::set_stop(int stopId, int stopXLoc, int stopYLoc, char remoteAc
 //--------- Begin of function UnitCaravan::del_stop ---------//
 void UnitCaravan::del_stop(int stopId, char remoteAction)
 {
-	err_when(action_para || action_para2);
-
 	if(!remoteAction && remote.is_enable())
 	{
 		// packet structure : <unit recno> <stop id>
