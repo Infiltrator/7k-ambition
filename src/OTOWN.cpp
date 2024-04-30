@@ -812,7 +812,12 @@ void Town::set_nation(int newNationRecno)
 	//---- if there is unit being trained currently, change its nation ---//
 
 	if( train_unit_recno )
-		unit_array[train_unit_recno]->change_nation(newNationRecno);
+	{
+		if( newNationRecno )
+			unit_array[train_unit_recno]->change_nation(newNationRecno);
+		else // independent nations cannot train units
+			cancel_train_unit();
+	}
 
 	//-------- update loyalty ---------//
 
