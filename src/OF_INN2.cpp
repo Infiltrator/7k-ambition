@@ -102,6 +102,9 @@ int FirmInn::think_hire_spy()
 {
 	Nation* ownNation = nation_array[nation_recno];
 
+	if( ownNation->total_spy_count > ownNation->total_population * (10+ownNation->pref_spy/5) / 100 )
+		return 0;
+
 	if( !ownNation->ai_should_spend(ownNation->pref_spy/2) )
 		return 0;
 
