@@ -1560,37 +1560,101 @@ void Sys::process_key(unsigned scanCode, unsigned skeyState)
 //
 void Sys::detect_letter_key(unsigned scanCode, unsigned skeyState)
 {
-   int keyCode;
+   //---- keys for unit groups ----//
 
-   if((keyCode = mouse.is_key(scanCode, skeyState, (unsigned short) 0, K_IS_CTRL)))
+   if( ISKEY(KEYEVENT_SET_GROUP_1) )
    {
-      int groupId;
-      switch(keyCode)
-      {
-         case '1': case '2': case '3': case '4': case '5':
-         case '6': case '7': case '8': case '9':
-            groupId = keyCode-'0';
-            group_select.group_units(groupId);
-            break;
-      }
+      group_select.group_units(1);
    }
 
-   if((keyCode = mouse.is_key(scanCode, skeyState, (unsigned short) 0, K_IS_ALT)))
+   else if( ISKEY(KEYEVENT_SET_GROUP_2) )
    {
-      int groupId;
-      switch(keyCode)
-      {
-         case '1': case '2': case '3': case '4': case '5':
-         case '6': case '7': case '8': case '9':
-            groupId = keyCode-'0';
-            group_select.select_grouped_units(groupId);
-            break;
-      }
+      group_select.group_units(2);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_3) )
+   {
+      group_select.group_units(3);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_4) )
+   {
+      group_select.group_units(4);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_5) )
+   {
+      group_select.group_units(5);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_6) )
+   {
+      group_select.group_units(6);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_7) )
+   {
+      group_select.group_units(7);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_8) )
+   {
+      group_select.group_units(8);
+   }
+
+   else if( ISKEY(KEYEVENT_SET_GROUP_9) )
+   {
+      group_select.group_units(9);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_1) )
+   {
+      group_select.select_grouped_units(1);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_2) )
+   {
+      group_select.select_grouped_units(2);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_3) )
+   {
+      group_select.select_grouped_units(3);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_4) )
+   {
+      group_select.select_grouped_units(4);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_5) )
+   {
+      group_select.select_grouped_units(5);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_6) )
+   {
+      group_select.select_grouped_units(6);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_7) )
+   {
+      group_select.select_grouped_units(7);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_8) )
+   {
+      group_select.select_grouped_units(8);
+   }
+
+   else if( ISKEY(KEYEVENT_SEL_GROUP_9) )
+   {
+      group_select.select_grouped_units(9);
    }
 
    //---- keys for toggling map mode ----//
 
-   if( ISKEY(KEYEVENT_MAP_MODE_CYCLE) )
+   else if( ISKEY(KEYEVENT_MAP_MODE_CYCLE) )
    {
       world.map_matrix->cycle_map_mode();
    }
