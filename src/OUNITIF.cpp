@@ -361,7 +361,8 @@ int Unit::detect_basic_info()
 {
 	//--- detect pressing on the name to center the unit on the screen ---//
 
-	if( is_visible() && mouse.single_click( INFO_X1, INFO_Y1, INFO_X2, INFO_Y1+21 ) )
+	if( is_visible() && ( ISKEY(KEYEVENT_GOTO_SELECTED) ||
+		mouse.single_click(INFO_X1, INFO_Y1, INFO_X2, INFO_Y1+21) ) )
 	{
 		world.go_loc( next_x_loc(), next_y_loc() );
 		return 1;

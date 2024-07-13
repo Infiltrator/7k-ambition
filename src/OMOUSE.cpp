@@ -177,6 +177,7 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_GOTO_SPY, "Y");
 	bind_key(KEYEVENT_GOTO_SHIP, "H");
 	bind_key(KEYEVENT_GOTO_CAMP, "F");
+	/* not bound: KEYEVENT_GOTO_SELECTED */
 
 	bind_key(KEYEVENT_CHEAT_ENABLE1, "shift+1");
 	bind_key(KEYEVENT_CHEAT_ENABLE2, "shift+2");
