@@ -137,6 +137,7 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_UNIT_RETURN, "R");
 	bind_key(KEYEVENT_UNIT_SETTLE, "T");
 	bind_key(KEYEVENT_UNIT_UNLOAD, "R");
+	reset_key(KEYEVENT_UNIT_CANCEL);
 
 #ifdef BUILD_HOTKEYS
 	bind_key(KEYEVENT_BUILD_BASE, "P");
@@ -150,7 +151,21 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_BUILD_WAR_FACTORY, "W");
 
 	bind_key(KEYEVENT_MAP_MODE_CYCLE, "E");
+	reset_key(KEYEVENT_MAP_MODE0);
+	reset_key(KEYEVENT_MAP_MODE1);
+	reset_key(KEYEVENT_MAP_MODE2);
 #else
+	reset_key(KEYEVENT_BUILD_BASE);
+	reset_key(KEYEVENT_BUILD_CAMP);
+	reset_key(KEYEVENT_BUILD_FACTORY);
+	reset_key(KEYEVENT_BUILD_HARBOR);
+	reset_key(KEYEVENT_BUILD_INN);
+	reset_key(KEYEVENT_BUILD_MARKET);
+	reset_key(KEYEVENT_BUILD_MINE);
+	reset_key(KEYEVENT_BUILD_RESEARCH);
+	reset_key(KEYEVENT_BUILD_WAR_FACTORY);
+
+	reset_key(KEYEVENT_MAP_MODE_CYCLE);
 	bind_key(KEYEVENT_MAP_MODE0, "Q");
 	bind_key(KEYEVENT_MAP_MODE1, "W");
 	bind_key(KEYEVENT_MAP_MODE2, "E");
@@ -177,7 +192,7 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_GOTO_SPY, "Y");
 	bind_key(KEYEVENT_GOTO_SHIP, "H");
 	bind_key(KEYEVENT_GOTO_CAMP, "F");
-	/* not bound: KEYEVENT_GOTO_SELECTED */
+	reset_key(KEYEVENT_GOTO_SELECTED);
 
 	bind_key(KEYEVENT_CHEAT_ENABLE1, "shift+1");
 	bind_key(KEYEVENT_CHEAT_ENABLE2, "shift+2");
