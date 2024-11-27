@@ -2317,8 +2317,13 @@ int Unit::can_spy_change_nation()
          if( unit_array.is_deleted(unitRecno) )    // the unit is dying, its recno is still in the location
             continue;
 
-         if( unit_array[unitRecno]->true_nation_recno() != trueNationRecno )
+         Unit* unitPtr = unit_array[unitRecno];
+
+         if( unitPtr->true_nation_recno() != trueNationRecno &&
+             unitPtr->nation_recno != trueNationRecno )
+         {
             return 0;
+         }
       }
    }
 
