@@ -102,13 +102,16 @@ int Nation::consider_talk_msg(TalkMsg* talkMsg)
 	switch( talkMsg->talk_id )
 	{
 		case TALK_PROPOSE_TRADE_TREATY:
+			if( config_adv.fix_ai_consider_trade_treaty )
+				return consider_trade_treaty(talkMsg->from_nation_recno);
+			//***BUGHERE : always accepts because the return is actually boolean
 			return consider_trade_treaty(talkMsg->from_nation_recno) >= 0;		// the returned value is the curRating - acceptRating, if >=0, means it accepts
 
 		case TALK_PROPOSE_FRIENDLY_TREATY:
-			return consider_friendly_treaty(talkMsg->from_nation_recno) >= 0;
+			return consider_friendly_treaty(talkMsg->from_nation_recno) >= 0;	// the returned value is the curRating - acceptRating, if >=0, means it accepts
 
 		case TALK_PROPOSE_ALLIANCE_TREATY:
-			return consider_alliance_treaty(talkMsg->from_nation_recno) >= 0;
+			return consider_alliance_treaty(talkMsg->from_nation_recno) >= 0;	// the returned value is the curRating - acceptRating, if >=0, means it accepts
 
 		case TALK_REQUEST_MILITARY_AID:
 			return consider_military_aid(talkMsg);
@@ -117,7 +120,7 @@ int Nation::consider_talk_msg(TalkMsg* talkMsg)
 			return consider_trade_embargo(talkMsg);
 
 		case TALK_REQUEST_CEASE_WAR:
-			return consider_cease_war(talkMsg->from_nation_recno) >= 0;
+			return consider_cease_war(talkMsg->from_nation_recno) >= 0;		// the returned value is the curRating - acceptRating, if >=0, means it accepts
 
 		case TALK_REQUEST_DECLARE_WAR:
 			return consider_declare_war(talkMsg);
