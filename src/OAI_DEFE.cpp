@@ -91,12 +91,16 @@ int Nation::ai_defend(int attackerUnitRecno)
 			return 0; //***BUGHERE
 	}
 
-	if( loc->unit_recno(UNIT_AIR) == attackerUnit->sprite_recno && loc->unit_recno(UNIT_LAND) )
+	if( loc->has_unit(UNIT_LAND) && loc->has_unit(UNIT_AIR) &&
+		loc->unit_recno(UNIT_LAND) == attackerUnit->sprite_recno )
 	{
-		Unit* landUnit = unit_array[loc->unit_recno(UNIT_LAND)];
-		err_when( landUnit->nation_recno != attackerUnit->nation_recno );
+		Unit* airUnit = unit_array[loc->unit_recno(UNIT_AIR)];
+		err_when( airUnit->nation_recno != nation_recno &&
+			airUnit->nation_recno != attackerUnit->nation_recno );
 		// ai can't distinguish between air and land unit past this point
-		if( landUnit->nation_recno != attackerUnit->nation_recno )
+		// see Nation::get_target_nation_recno
+		if( airUnit->nation_recno != nation_recno &&
+				airUnit->nation_recno != attackerUnit->nation_recno )
 			return 0; //***BUGHERE
 	}
 
