@@ -459,6 +459,7 @@ public:
 	int 			ai_should_attack_friendly(int friendlyNationRecno, int attackTemptation);
 
 	void			enable_should_attack_on_target(int targetXLoc, int targetYLoc);
+	int			get_target_nation_recno(int targetXLoc, int targetYLoc);
 
 	//------------------------------------------------------------//
 	// economic related functions
