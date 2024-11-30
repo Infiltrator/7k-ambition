@@ -166,7 +166,8 @@ int Unit::think_change_attack_target()
 			if( unit_array.is_deleted(unitRecno) )
 				continue;
 
-			if( unit_array[unitRecno]->nation_recno != nation_recno &&
+			Unit* unitPtr = unit_array[unitRecno];
+			if( unitPtr->nation_recno != nation_recno &&
 				 idle_detect_unit_checking(unitRecno) )
 			{
 				save_original_action();
@@ -174,7 +175,7 @@ int Unit::think_change_attack_target()
 				original_target_x_loc = xLoc;
 				original_target_y_loc = yLoc;
 
-				attack_unit(xLoc, yLoc);
+				attack_unit(unitPtr->sprite_recno);
 				return 1;
 			}
 		}
