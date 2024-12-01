@@ -113,7 +113,7 @@ int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLev
 	//### begin jesse 28/11/2024 ###//
 	err_when( ai_attack_target_nation_recno == nation_recno );
 	err_when( ai_attack_target_nation_recno < 0 );
-	//### end trevor 28/11/2024 ###//
+	//### end jesse 28/11/2024 ###//
 
 	attack_camp_count=0;
 
