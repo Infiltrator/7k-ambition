@@ -3,6 +3,7 @@
  *
  * Copyright 1997,1998 Enlight Software Ltd.
  * Copyright 2023 P. J. McDermott
+ * Copyright 2025 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -92,6 +93,8 @@ static NewsInfo news_info_array[] =
 	{ &News::firm_constructed, 0 },
 	{ &News::unit_trained, 0 },
 	{ &News::weapon_ship_built, 0 },
+	{ &News::firm_attacked, 0 },
+	{ &News::town_attacked, 0 },
 };
 
 //------- Define static variables --------//
@@ -479,6 +482,64 @@ void News::new_king()
 //------- End of function News::new_king -----//
 
 
+const char* firm_attacked_by_nation[MAX_FIRM_TYPE] =
+{
+	// TRANSLATORS: Your <Firm> near <Town> is under attack by <King>'s Kingdom<Colour>.
+	N_("Your Seat of Power near %s is under attack by %s's Kingdom%s."),
+	N_("Your Factory near %s is under attack by %s's Kingdom%s."),
+	N_("Your Inn near %s is under attack by %s's Kingdom%s."),
+	N_("Your Market near %s is under attack by %s's Kingdom%s."),
+	N_("Your Fort near %s is under attack by %s's Kingdom%s."),
+	N_("Your Mine near %s is under attack by %s's Kingdom%s."),
+	N_("Your Tower of Science near %s is under attack by %s's Kingdom%s."),
+	N_("Your War Factory near %s is under attack by %s's Kingdom%s."),
+	N_("Your Harbor near %s is under attack by %s's Kingdom%s."),
+	("Your Fryhtan Lair near %s is under attack by %s's Kingdom%s."),
+};
+const char* firm_attacked_by_rebels[MAX_FIRM_TYPE] =
+{
+	// TRANSLATORS: Your <Firm> near <Town> is under attack by Rebels.
+	N_("Your Seat of Power near %s is under attack by Rebels."),
+	N_("Your Factory near %s is under attack by Rebels."),
+	N_("Your Inn near %s is under attack by Rebels."),
+	N_("Your Market near %s is under attack by Rebels."),
+	N_("Your Fort near %s is under attack by Rebels."),
+	N_("Your Mine near %s is under attack by Rebels."),
+	N_("Your Tower of Science near %s is under attack by Rebels."),
+	N_("Your War Factroy near %s is under attack by Rebels."),
+	N_("Your Harbor near %s is under attack by Rebels."),
+	("Your Fryhtan Lair near %s is under attack by Rebels."),
+};
+const char* firm_attacked_by_monster[MAX_FIRM_TYPE] =
+{
+	// TRANSLATORS: Your <Firm> near <Town> is under attack by Fryhtans.
+	N_("Your Seat of Power near %s is under attack by Fryhtans."),
+	N_("Your Factory near %s is under attack by Fryhtans."),
+	N_("Your Inn near %s is under attack by Fryhtans."),
+	N_("Your Market near %s is under attack by Fryhtans."),
+	N_("Your Fort near %s is under attack by Fryhtans."),
+	N_("Your Mine near %s is under attack by Fryhtans."),
+	N_("Your Tower of Science near %s is under attack by Fryhtans."),
+	N_("Your War Factory near %s is under attack by Fryhtans."),
+	N_("Your Harbor near %s is under attack by Fryhtans."),
+	("Your Fryhtan Lair near %s is under attack by Fryhtans."),
+};
+const char* firm_attacked_by_unknown[MAX_FIRM_TYPE] =
+{
+	// TRANSLATORS: Your <Firm> near <Town> is under attack.
+	N_("Your Seat of Power near %s is under attack."),
+	N_("Your Factory near %s is under attack."),
+	N_("Your Inn near %s is under attack."),
+	N_("Your Market near %s is under attack."),
+	N_("Your Fort near %s is under attack."),
+	N_("Your Mine near %s is under attack."),
+	N_("Your Tower of Science near %s is under attack."),
+	N_("Your War Factory near %s is under attack."),
+	N_("Your Harbor near %s is under attack."),
+	("Your Fryhtan Lair near %s is under attack."),
+};
+
+
 const char *firm_destroyed_by_nation[MAX_FIRM_TYPE] =
 {
 	// TRANSLATORS: Your <Firm> near <Town> has been destroyed by <King>'s Kingdom<Color>.
@@ -535,6 +596,48 @@ const char *firm_destroyed_by_unknown[MAX_FIRM_TYPE] =
 	N_("Your Harbor near %s has been destroyed."),
 	("Your Fryhtan Lair near %s has been destroyed."),
 };
+
+
+//------ Begin of function News::firm_attacked -----//
+//
+// short_para1 :Name ID of the firm destroyed.
+// short_para2 :ID of the town where the firm is located.
+// short_para3 :Attacker type: 1 :a nation, 2 :rebels, 3 :Fryhtans.
+//
+void News::firm_attacked()
+{
+	// Text Format
+	//
+	// Your <firm type> near <town name> is under attack by <kingdom name>.
+	// Your <firm type> near <town name> is under attack by Rebels.
+	// Your <firm type> near <town name> is under attack by Fryhtans.
+
+	const char* newsText = NULL;
+
+	switch( short_para3 )
+	{
+	case DESTROYER_NATION:
+		newsText = _(firm_attacked_by_nation[short_para1 - 1]);
+		break;
+
+	case DESTROYER_REBEL:
+		newsText = _(firm_attacked_by_rebels[short_para1 - 1]);
+		break;
+
+	case DESTROYER_MONSTER:
+		newsText = _(firm_attacked_by_monster[short_para1 - 1]);
+		break;
+
+	case DESTROYER_UNKNOWN:
+		newsText = _(firm_attacked_by_unknown[short_para1 - 1]);
+		break;
+	}
+
+	snprintf(str, MAX_STR_LEN + 1, newsText, town_res.get_name(short_para2), king_name2(), nation_color_str2());
+}
+//------- End of function News::firm_attacked -----//
+
+
 //------ Begin of function News::firm_destroyed -----//
 //
 // short_para1 - name id. of the firm destroyed.
@@ -635,6 +738,50 @@ void News::firm_captured()
 	}
 }
 //------- End of function News::firm_captured -----//
+
+
+//------ Begin of function News::town_attacked -----//
+//
+// short_para1 :Name ID of the town.
+// short_para2 :Attacker type.
+//
+void News::town_attacked()
+{
+	// Text Format
+	//
+	// Your village of <name name> is under attack by <kingdom name>.
+	// Your village of <name name> is under attack by Rebels.
+	// Your village of <name name> is under attack by Fryhtans.
+
+	const char* newsText = NULL;
+
+	switch( short_para2 )
+	{
+	case DESTROYER_NATION:
+		// TRANSLATORS: Your village of <Town> is being attacked by <King>'s
+		// Kingdom<Colour>.
+		newsText = _("Your village of %s is being attacked by %s's Kingdom%s.");
+		break;
+
+	case DESTROYER_REBEL:
+		// TRANSLATORS: Your village of <Town> is being attacked by Rebels.
+		newsText = _("Your village of %s is being attacked by Rebels.");
+		break;
+
+	case DESTROYER_MONSTER:
+		// TRANSLATORS: Your village of <Town> is being attacked by Fryhtans.
+		newsText = _("Your village of %s is being attacked by Fryhtans.");
+		break;
+
+	case DESTROYER_UNKNOWN:
+		// TRANSLATORS: Your village of <Town> is being attacked.
+		newsText = _("Your village of %s is being attacked.");
+		break;
+	}
+
+	snprintf(str, MAX_STR_LEN + 1, newsText, town_res.get_name(short_para1), king_name2(), nation_color_str2());
+}
+//------- End of function News::town_attacked -----//
 
 
 //------ Begin of function News::town_destroyed -----//

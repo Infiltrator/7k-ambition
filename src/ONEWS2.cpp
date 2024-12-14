@@ -3,6 +3,7 @@
  *
  * Copyright 1997,1998 Enlight Software Ltd.
  * Copyright 2023 P. J. McDermott
+ * Copyright 2025 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -231,6 +232,70 @@ void NewsArray::new_king(int nationRecno, int kingUnitRecno)
 //------- End of function NewsArray::new_king -----//
 
 
+//------ Begin of function NewsArray::firm_attacked -----//
+//
+// <int> firmRecno: Recno of the firm attacked.
+// <Unit*> attackingUnit: Recno of the attacking unit.
+// <short> attackerNationRecno: Recno of the nation that is attacking the firm.
+//
+// short_para1: ID of the firm attacked.
+// short_para2: Name ID of the town where the firm is located.
+// short_para3: Attacker type: 1: a nation, 2: rebels, 3: Fryhtans.
+//
+void NewsArray::firm_attacked(const int firmRecno, const Unit* attackingUnit, const short attackerNationRecno)
+{
+	Firm* firm = firm_array[firmRecno];
+
+	err_when(firm->nation_recno != nation_array.player_recno);
+
+	News* news = add_news(NEWS_FIRM_ATTACKED, NEWS_NORMAL, firm->nation_recno, attackerNationRecno);
+
+	 // Only news of nations that have contact with the player are added.
+	if( !news )
+	{
+		return;
+	}
+
+	news->short_para1 = firm->firm_id;
+
+	if( firm->closest_town_name_id )
+	{
+		news->short_para2 = firm->closest_town_name_id;
+	}
+	else
+	{
+		news->short_para2 = firm->get_closest_town_name_id();
+	}
+
+	// Set the attacker type.
+	news->short_para3 = DESTROYER_UNKNOWN;
+
+	if( attackerNationRecno )
+	{
+		if( !nation_array.is_deleted(attackerNationRecno) )
+		{
+			news->short_para3 = DESTROYER_NATION;
+		}
+	}
+	else if( attackingUnit )
+	{
+		if( attackingUnit->unit_mode == UNIT_MODE_REBEL )
+		{
+			news->short_para3 = DESTROYER_REBEL;
+		}
+		else if( unit_res[attackingUnit->unit_id]->unit_class == UNIT_CLASS_MONSTER )
+		{
+			news->short_para3 = DESTROYER_MONSTER;
+		}
+	}
+
+	//--------- set location ---------//
+
+	news->set_loc(firm->center_x, firm->center_y, NEWS_LOC_ANY);
+}
+//------- End of function NewsArray::firm_attacked -----//
+
+
 //------ Begin of function NewsArray::firm_destroyed -----//
 //
 // <int>   firmRecno  - recno of the firm destroyed.
@@ -319,6 +384,53 @@ void NewsArray::firm_captured(int firmRecno, int takeoverNationRecno, int spyTak
 	newsPtr->set_loc( firmPtr->center_x, firmPtr->center_y, NEWS_LOC_FIRM, firmRecno );
 }
 //------- End of function NewsArray::firm_captured -----//
+
+
+//------ Begin of function NewsArray::town_attacked -----//
+//
+// <int> townNameId :Name ID of the town destroyed.
+// <int> xLoc, yLoc :Location of the town.
+// <Unit*> attackingUnit :Recno to the attacking unit.
+// <short> destroyerNationRecno :Recno of the nation that destroyed the firm.
+//
+// short_para1 :Name ID of the town destroyed.
+// short_para2 :Attacker type: 1 :a nation, 2 :rebels, 3 :Fryhtans.
+//
+void NewsArray::town_attacked(const int townNameId, const int xLoc, const int yLoc, const Unit* attackingUnit, const short attackingNationRecno)
+{
+	News* news = add_news(NEWS_TOWN_ATTACKED, NEWS_NORMAL, nation_array.player_recno, attackingNationRecno);
+
+	if (!news)
+	{
+		return;
+	}
+
+	news->short_para1 = townNameId;
+
+	news->short_para2 = DESTROYER_UNKNOWN;
+
+	if( attackingNationRecno )
+	{
+		if( !nation_array.is_deleted(attackingNationRecno) )
+		{
+			news->short_para2 = DESTROYER_NATION;
+		}
+	}
+	else if( attackingUnit )
+	{
+		if( attackingUnit->unit_mode == UNIT_MODE_REBEL )
+		{
+			news->short_para2 = DESTROYER_REBEL;
+		}
+		else if( unit_res[attackingUnit->unit_id]->unit_class == UNIT_CLASS_MONSTER )
+		{
+			news->short_para2 = DESTROYER_MONSTER;
+		}
+	}
+
+	news->set_loc(xLoc, yLoc, NEWS_LOC_ANY);
+}
+//------- End of function NewsArray::town_attacked -----//
 
 
 //------ Begin of function NewsArray::town_destroyed -----//

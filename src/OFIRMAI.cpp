@@ -2,6 +2,7 @@
  * Seven Kingdoms: Ancient Adversaries
  *
  * Copyright 1997,1998 Enlight Software Ltd.
+ * Copyright 2025 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +27,7 @@
 #include <OF_FACT.h>
 #include <OF_CAMP.h>
 #include <OF_MARK.h>
+#include "ONEWS.h"
 #include <OUNITRES.h>
 #include <OTALKRES.h>
 #include <ONATION.h>
@@ -223,6 +225,13 @@ int Firm::think_hire_inn_unit()
 //
 void Firm::being_attacked(int attackerUnitRecno)
 {
+	const Unit* attackingUnit = unit_array[attackerUnitRecno];
+
+	if( info.game_date >= last_attacked_date + 7 && nation_recno == nation_array.player_recno )
+	{
+		news_array.firm_attacked(firm_recno, attackingUnit, attackingUnit->nation_recno);
+	}
+
 	last_attacked_date = info.game_date;
 
 	if( nation_recno && firm_ai )

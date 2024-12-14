@@ -2698,6 +2698,11 @@ void Town::being_attacked(int attackerUnitRecno, float attackDamage)
 
 	int attackerNationRecno = attackerUnit->nation_recno;
 
+	if( info.game_date >= last_being_attacked_date + 7 && nation_recno == nation_array.player_recno )
+	{
+		news_array.town_attacked(town_name_id, loc_x1, loc_y1, attackerUnit, attackerNationRecno);
+	}
+
 	last_being_attacked_date = info.game_date;
 
 	//--------- store attacker nation recno -----------//

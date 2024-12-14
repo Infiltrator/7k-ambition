@@ -2,6 +2,7 @@
  * Seven Kingdoms: Ancient Adversaries
  *
  * Copyright 1997,1998 Enlight Software Ltd.
+ * Copyright 2025 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -93,6 +94,8 @@ enum { NEWS_DIPLOMACY=1,
 		 NEWS_FIRM_CONSTRUCTED,
 		 NEWS_UNIT_TRAINED,
 		 NEWS_WEAPON_SHIP_BUILT,
+		 NEWS_FIRM_ATTACKED,
+		 NEWS_TOWN_ATTACKED,
 	  };
 
 //------- Define struct News ---------//
@@ -155,8 +158,10 @@ public:
 	void 	nation_surrender();
 	void  king_die();
 	void  new_king();
+	void  firm_attacked();
 	void  firm_destroyed();
 	void  firm_captured();
+	void  town_attacked();
 	void  town_destroyed();
 	void  town_abandoned();
 	void	town_surrendered();
@@ -240,8 +245,10 @@ public:
 	void	nation_surrender(int nationRecno, int toNationRecno);
 	void  king_die(int nationRecno);
 	void  new_king(int nationRecno, int kingUnitRecno);
+	void  firm_attacked(const int firmRecno, const Unit* attackUnit, const short attackerNationRecno);
 	void  firm_destroyed(int firmRecno, Unit* attackUnit, short destroyerNationRecno);
 	void  firm_captured(int firmRecno, int takeoverNationRecno, int spyTakeover);
+	void  town_attacked(const int townNameId, const int xLoc, const int yLoc, const Unit* attackUnit, const short destroyerNationRecno);
 	void  town_destroyed(int townNameId, int xLoc, int yLoc, Unit* attackUnit, short destroyerNationRecno);
 	void  town_abandoned(int townRecno);
 	void	town_surrendered(int townRecno, int toNationRecno);
