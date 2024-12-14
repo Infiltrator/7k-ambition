@@ -38,15 +38,17 @@
 
 //------------- Define coordinations -----------//
 
-enum { SPY_BROWSE_X1 = INFO_X1,
+#define SPY_BROWSE_X1 INFO_X1
+#define SPY_BROWSE_X2 INFO_X2
+enum {
 		 SPY_BROWSE_Y1 = INFO_Y1+75,
-		 SPY_BROWSE_X2 = INFO_X2,
 		 SPY_BROWSE_Y2 = SPY_BROWSE_Y1+130,
 	  };
 
-enum { BUTTON_X1 = INFO_X1,
+#define BUTTON_X1 INFO_X1
+#define BUTTON_X2 INFO_X2
+enum {
 		 BUTTON_Y1 = SPY_BROWSE_Y2+28,
-		 BUTTON_X2 = INFO_X2,
 		 BUTTON_Y2 = BUTTON_Y1+50,
 	  };
 
