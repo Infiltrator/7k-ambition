@@ -32,6 +32,7 @@
 #include "OAUDIO.h"
 #include "OFIRM.h"
 #include "OIMGRES.h"
+#include "ONATIONA.h"
 #include "OREMOTE.h"
 #include "OSNOW.h"
 #include "OSYS.h"
@@ -153,6 +154,38 @@ void delayFrame(
     ) {
       break;
     }
+  }
+}
+
+void drawFirmBuilderIcon(
+  Firm* firm
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto FRAME_COUNT = 2;
+  constexpr auto FRAME_RATE = 2;
+  constexpr auto MILLISECONDS_PER_FRAME = 1000 / FRAME_RATE;
+
+  // If there is a builder, draw an icon.
+  if(firm->own_firm()
+     && firm->builder_recno
+     && unit_array[firm->builder_recno]->skill.skill_id == SKILL_CONSTRUCTION
+  ) {
+    const auto x = firm->loc_x1 * ZOOM_LOC_WIDTH - world.view_top_x + ZOOM_X1;
+    const auto y = firm->loc_y1 * ZOOM_LOC_HEIGHT - world.view_top_y + ZOOM_Y1;
+    char iconName[] = "REPAIR-1";
+
+    if (firm->hit_points < firm->max_hit_points
+        && nation_array[firm->nation_recno]->cash > 0
+        && info.game_date > firm->last_attacked_date
+    ) {
+      iconName[7]
+        = '1' + ((SDL_GetTicks64() / MILLISECONDS_PER_FRAME) % FRAME_COUNT);
+    }
+    const auto icon = image_icon.get_ptr(iconName);
+    world.zoom_matrix->put_bitmap_clip(x, y, icon, 1);
   }
 }
 

@@ -107,6 +107,8 @@ void Firm::draw(int displayLayer)
 			draw_frame(cur_frame, displayLayer);
 		}
 	}
+
+   Ambition::drawFirmBuilderIcon(this);
 }
 //--------- End of function Firm::draw -----------//
 
