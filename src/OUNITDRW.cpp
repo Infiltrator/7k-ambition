@@ -139,20 +139,6 @@ void Unit::draw()
 		}
 	}
 
-	//--------- if the unit is a spy ---------//
-
-	else if( spy_recno &&
-			  (true_nation_recno() == nation_array.player_recno ||
-				config.show_ai_info) )
-	{
-		int dispX1 = ZOOM_X1 + cur_x - World::view_top_x;
-		int dispY1 = ZOOM_Y1 + cur_y - World::view_top_y - 20;
-		int maxHitBarWidth = ZOOM_LOC_WIDTH * sprite_info->loc_width - 11;
-
-		world.zoom_matrix->put_bitmap_clip(dispX1+maxHitBarWidth+1,
-			dispY1-3, image_icon.get_ptr("U_SPY") );
-	}
-
 	if( (is_own() || config.show_ai_info || skill.skill_id == SKILL_LEADING ) )		// || rank_id > RANK_SOLDIER) )
 	{
 		if( !selected_flag && config.show_all_unit_icon )
