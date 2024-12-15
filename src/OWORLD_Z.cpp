@@ -185,12 +185,29 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 			continue;
 
 		//-----------------------------------------------------------//
+		const auto baseX
+			= ZOOM_X1
+			+ (ZOOM_LOC_WIDTH / 2)
+			- (world.zoom_matrix->top_x_loc * ZOOM_LOC_WIDTH);
+		const auto baseY
+			= ZOOM_Y1
+			+ (ZOOM_LOC_HEIGHT / 2)
+			- (world.zoom_matrix->top_y_loc * ZOOM_LOC_HEIGHT);
+
 		if(unitPtr->cur_x!=unitPtr->go_x || unitPtr->cur_y!=unitPtr->go_y)
 		{
 			lineFromX = unitPtr->go_x - world.zoom_matrix->top_x_loc*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
 			lineFromY = unitPtr->go_y - world.zoom_matrix->top_y_loc*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
 			lineToX = unitPtr->cur_x - world.zoom_matrix->top_x_loc*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
 			lineToY = unitPtr->cur_y - world.zoom_matrix->top_y_loc*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
+
+			if (Ambition::config.enhancementsAvailable()) {
+				lineFromX = baseX + unitPtr->cur_x;
+				lineFromY = baseY + unitPtr->cur_y;
+				lineToX = baseX + unitPtr->go_x;
+				lineToY = baseY + unitPtr->go_y;
+			}
+
 			anim_line.draw_line(&vga_back, lineFromX, lineFromY, lineToX, lineToY);
 		}
 
@@ -200,13 +217,31 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 		resultNode2 = resultNode1 + 1;
 		lineToX = (resultNode1->node_x - world.zoom_matrix->top_x_loc)*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
 		lineToY = (resultNode1->node_y - world.zoom_matrix->top_y_loc)*ZOOM_LOC_HEIGHT	+ ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
+
+		if (Ambition::config.enhancementsAvailable()) {
+			lineFromX = baseX + resultNode1->node_x * ZOOM_LOC_WIDTH;
+			lineFromY = baseY + resultNode1->node_y * ZOOM_LOC_HEIGHT;
+		}
+
 		for(j=resultNodeRecno+1; j<=resultNodeCount; j++, resultNode1++, resultNode2++)
 		{
-			lineFromX = (resultNode2->node_x - world.zoom_matrix->top_x_loc)*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
-			lineFromY = (resultNode2->node_y - world.zoom_matrix->top_y_loc)*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
+			if (Ambition::config.enhancementsAvailable()) {
+				lineToX = baseX + resultNode2->node_x * ZOOM_LOC_WIDTH;
+				lineToY = baseY + resultNode2->node_y * ZOOM_LOC_HEIGHT;
+			} else {
+				lineFromX = (resultNode2->node_x - world.zoom_matrix->top_x_loc)*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
+				lineFromY = (resultNode2->node_y - world.zoom_matrix->top_y_loc)*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
+			}
+
 			anim_line.draw_line(&vga_back, lineFromX, lineFromY, lineToX, lineToY);
-			lineToX = lineFromX;
-			lineToY = lineFromY;
+
+			if (Ambition::config.enhancementsAvailable()) {
+				lineFromX = lineToX;
+				lineFromY = lineToY;
+			} else {
+				lineToX = lineFromX;
+				lineToY = lineFromY;
+			}
 		}
 	}
 }
