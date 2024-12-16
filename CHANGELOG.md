@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Make game look smoother by running at at a graphical 60 FPS.
+- Make game look smoother by continuing rain and snow while game is paused.
 
 ### Fixed
 

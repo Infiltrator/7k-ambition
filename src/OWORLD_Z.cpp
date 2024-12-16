@@ -22,6 +22,9 @@
 //Description : Object ZoomMatrix
 
 #include <math.h>
+
+#include "ambition/Ambition_config.hh"
+
 #include <OVGA.h>
 #include <OSYS.h>
 #include <OFONT.h>
@@ -620,8 +623,9 @@ void ZoomMatrix::draw_weather_effects()
 	}
 
 	// ##### begin Gilbert 6/9 #######//
-	if( config.frame_speed > 0)
-	{
+	if (config.frame_speed > 0
+		 || Ambition::config.enhancementsAvailable()
+	) {
 		rain.new_drops();
 		if( config.rain_visual)
 		{
@@ -686,8 +690,13 @@ void ZoomMatrix::draw_weather_effects()
 		}
 	}
 	// ###### begin Gilbert 6/9 #######//
-	if( snowScale > 0 && config.snow_visual && config.frame_speed > 0)
+	if (snowScale > 0
+		&& config.snow_visual
+		&& (config.frame_speed > 0
+			 || Ambition::config.enhancementsAvailable())
+	) {
 		snow.draw_step(&vga_back);
+	}
 	// ###### end Gilbert 6/9 #######//
 	init_snow = snowScale;
 
