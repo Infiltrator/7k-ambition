@@ -30,6 +30,7 @@
 # include <mach-o/dyld.h>
 #endif
 
+#include "ambition/Ambition_config.hh"
 #include "ambition/Ambition_vga.hh"
 
 #include <ALL.h>
@@ -875,9 +876,16 @@ void Sys::main_loop(int isLoadedGame)
 					firstUnreadyTime = misc.get_time();
 				// ####### patch end Gilbert 17/11 ######//
 
+				const auto nextDispFrameTime = lastDispFrameTime
+					+ (Ambition::config.enhancementsAvailable()
+						? 16
+						: 1000 / config.frame_speed);
+
             // although it's not time for new frame, check
             // if we still need to redraw the screen
-            if( config.frame_speed == 0 || markTime-lastDispFrameTime >= uint32_t(1000/config.frame_speed)
+				if((!Ambition::config.enhancementsAvailable()
+					 && config.frame_speed == 0)
+					|| SDL_TICKS_PASSED(markTime, nextDispFrameTime)
 					|| zoom_need_redraw || map_need_redraw
 					)
             {
@@ -978,10 +986,8 @@ void Sys::main_loop(int isLoadedGame)
 
          vga_front.unlock_buf();
 
-      if (config.frame_speed == 0) {
+      if (config.frame_speed < 99) {
         Ambition::delayFrame(startTime + 16);
-      } else if (config.frame_speed < 99) {
-        Ambition::delayFrame(startTime + 1000 / config.frame_speed);
       }
    }
 

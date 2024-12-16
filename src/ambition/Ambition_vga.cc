@@ -33,11 +33,22 @@
 #include "OFIRM.h"
 #include "OIMGRES.h"
 #include "OREMOTE.h"
+#include "OSNOW.h"
 #include "OSYS.h"
 
 #include "ambition/Ambition_config.hh"
 
 namespace Ambition {
+
+short calculateRainSpeed(
+  const short _7kaaCalculation
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return _7kaaCalculation / 4;
+}
 
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64
@@ -71,6 +82,29 @@ void delayFrame(
       break;
     }
   }
+}
+
+bool initialiseSnowLayer(
+  SnowLayer& layer,
+  const int level,
+  const char animationSpeed,
+  double slideSpeed
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  layer.init(
+    15 + 10 * level + animationSpeed,
+    20 + 10 * level + animationSpeed,
+    1 + level,
+    level + 2,
+    level / 2,
+    slideSpeed,
+    animationSpeed
+  );
+
+  return true;
 }
 
 } // namespace Ambition

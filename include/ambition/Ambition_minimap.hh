@@ -20,29 +20,21 @@
 /**
  * @file
  *
- * Header file for Ambition::Vga.
+ * Header file for Ambition::Minimap.
  */
 
 #pragma once
 
-class SnowLayer;
+class MapMatrix;
 
 
 namespace Ambition {
 
-short calculateRainSpeed(
-  const short _7kaaCalculation
-);
-
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
-);
-
-bool initialiseSnowLayer(
-  SnowLayer& layer,
-  const int level,
-  const char animationSpeed,
-  double slideSpeed
-);
+class Minimap {
+public:
+  static bool drawViewBoundsBox(
+    const MapMatrix* _7kaaMapMatrix
+  );
+};
 
 } // namespace Ambition

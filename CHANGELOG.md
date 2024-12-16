@@ -9,6 +9,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Make game look smoother by running at at a graphical 60 FPS.
+
 ### Fixed
 
 - Fixed 100% CPU usage all the time.
