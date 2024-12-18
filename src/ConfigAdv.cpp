@@ -21,6 +21,8 @@
 //Filename    : ConfigAdv.cpp
 //Description : Advanced Config
 
+#include <stdlib.h>
+
 #include <ConfigAdv.h>
 
 #include "ambition/Ambition_config.hh"

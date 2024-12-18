@@ -21,6 +21,8 @@
 //Filename    : CmdLine.cpp
 //Description : Command line processing
 
+#include <stdlib.h>
+
 #include <CmdLine.h>
 #include <ConfigAdv.h>
 #include <OCONFIG.h>
