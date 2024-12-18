@@ -46,6 +46,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .items = {
           _("Updated the Catalan translation, thanks to Júlia Rosell Saldaña."),
           _("Updated the German translation, thanks to Einheit-101."),
+          _("Improved the Russian translation somewhat."),
           _("Made the What's New section spacing look nicer and less cramped."),
           _("Made development slightly easier."),
         },
