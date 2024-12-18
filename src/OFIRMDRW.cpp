@@ -21,6 +21,9 @@
 //Filename    : OFIRMDRW.CPP
 //Description : Firm drawing routines
 
+#include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_vga.hh"
+
 #include <COLCODE.h>
 #include "OFIRM.h"
 #include <OSYS.h>
@@ -95,6 +98,8 @@ void Firm::draw(int displayLayer)
 				draw_frame(1, displayLayer);
 				draw_frame(2, displayLayer);
 			}
+		} else if (Ambition::config.enhancementsAvailable()) {
+		   Ambition::drawFirmFrame(this, displayLayer);
 		}
 		else
 		{
@@ -162,6 +167,8 @@ void Firm::draw_full_size(int displayLayer)
 
 	else
 		firmBitmap = firm_res.get_bitmap(firmBuild->first_bitmap(cur_frame));
+
+	firmBitmap = Ambition::calculateFirmBitmap(firmBitmap, this);
 
 	// ------ check if the display layer is correct ---------//
 	if( !firmBitmap || !(firmBitmap->display_layer & displayLayer) )

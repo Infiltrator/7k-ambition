@@ -40,6 +40,30 @@
 
 namespace Ambition {
 
+int calculateFirmFrame(
+  const Firm* firm
+);
+
+FirmBitmap* calculateFirmBitmap(
+  FirmBitmap* _7kaaCalculation,
+  Firm* firm
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  if (!firm->under_construction
+    && firm->is_operating()
+  ) {
+    const auto firmBuild = firm_res.get_build(firm->firm_build_id);
+    return firm_res.get_bitmap(
+      firmBuild->first_bitmap(calculateFirmFrame(firm))
+    );
+  }
+
+  return _7kaaCalculation;
+}
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 ) {
@@ -48,6 +72,26 @@ short calculateRainSpeed(
   }
 
   return _7kaaCalculation / 4;
+}
+
+char calculateTownFlagNumber(
+  const char _7kaaCalculation,
+  const int townRecordNumber
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto STEP_COUNT = 4;
+  constexpr auto STEPS_PER_SECOND = 4;
+  constexpr auto MILLISECONDS_PER_STEP = 1000 / STEPS_PER_SECOND;
+
+  return
+    '1'
+    + (char)(
+      (SDL_GetTicks64() / MILLISECONDS_PER_STEP + townRecordNumber)
+      % STEP_COUNT
+    );
 }
 
 void delayFrame(
@@ -84,6 +128,22 @@ void delayFrame(
   }
 }
 
+void drawFirmFrame(
+  Firm* firm,
+  const int displayLayer
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto firmBuild = firm_res.get_build(firm->firm_build_id);
+
+  if (!firmBuild->animate_full_size) {
+    firm->draw_frame(1, displayLayer);
+  }
+  firm->draw_frame(calculateFirmFrame(firm), displayLayer);
+}
+
 bool initialiseSnowLayer(
   SnowLayer& layer,
   const int level,
@@ -105,6 +165,42 @@ bool initialiseSnowLayer(
   );
 
   return true;
+}
+
+
+/** Private functions. */
+
+int calculateFirmFrame(
+  const Firm* firm
+) {
+  constexpr auto STEPS_PER_SECOND = 12;
+  constexpr auto MILLISECONDS_PER_STEP = 1000 / STEPS_PER_SECOND;
+
+  const auto firmBuild = firm_res.get_build(firm->firm_build_id);
+
+  const auto startingFrame = firmBuild->animate_full_size ? 1 : 2;
+  const auto animatedFrameCount = firmBuild->frame_count - startingFrame + 1;
+
+  int totalSteps = 0;
+
+  short frameSteps[animatedFrameCount];
+  for (int i = 0; i < animatedFrameCount; i++) {
+    frameSteps[i] = 1 + firmBuild->frame_delay(i);
+    totalSteps += frameSteps[i];
+  }
+
+  auto step
+    = (SDL_GetTicks64() / MILLISECONDS_PER_STEP
+      + firm->firm_recno)
+    % totalSteps;
+
+  int frame = startingFrame;
+  while(step > frameSteps[frame - startingFrame]) {
+    step -= frameSteps[frame - startingFrame];
+    frame++;
+  }
+
+  return frame;
 }
 
 } // namespace Ambition

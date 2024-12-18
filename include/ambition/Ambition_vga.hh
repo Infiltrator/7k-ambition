@@ -25,13 +25,25 @@
 
 #pragma once
 
+class Firm;
 class SnowLayer;
+struct FirmBitmap;
 
 
 namespace Ambition {
 
+FirmBitmap* calculateFirmBitmap(
+  FirmBitmap* _7kaaCalculation,
+  Firm* firm
+);
+
 short calculateRainSpeed(
   const short _7kaaCalculation
+);
+
+char calculateTownFlagNumber(
+  const char _7kaaCalculation,
+  const int townRecordNumber
 );
 
 void delayFrame(
@@ -43,6 +55,11 @@ bool initialiseSnowLayer(
   const int level,
   const char animationSpeed,
   double slideSpeed
+);
+
+void drawFirmFrame(
+  Firm* firm,
+  const int displayLayer
 );
 
 } // namespace Ambition
