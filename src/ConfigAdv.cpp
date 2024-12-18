@@ -203,6 +203,11 @@ int ConfigAdv::load(char *filename)
 		line++;
 
 		fileTxt.match_chars(" \t");
+		if(fileTxt.match_chars("#"))
+		{
+			fileTxt.next_line();
+			continue;
+		}
 		name = fileTxt.data_ptr;
 		if( !fileTxt.match_chars_ex("= \t\r\n\x1a") )
 		{
