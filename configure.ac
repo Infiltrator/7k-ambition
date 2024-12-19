@@ -60,7 +60,7 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE(
     GLOBAL_CFLAGS="$GLOBAL_CFLAGS -fsigned-char"
   ],[
     AC_MSG_RESULT(no)
-    AC_ERROR([The compiler must interpret char as signed])
+    AC_MSG_ERROR(The compiler must interpret char as signed)
   ]
 )
 CXXFLAGS="$save_CXXFLAGS"
@@ -210,7 +210,7 @@ AS_IF([test "$enable_multiplayer" != yes], [
 AS_IF([test "$enable_asm" = yes], [
   JWASM_CMD=$(which jwasm)
   AS_IF([test -z "$JWASM_CMD"], [
-    AC_ERROR([jwasm not found])
+    AC_MSG_ERROR(jwasm not found)
   ])
   AC_ARG_VAR([JWASM_CMD],[jwasm command])
   AC_SUBST([JWASM_FMT],["$jwasm_fmt"])
@@ -255,7 +255,7 @@ AS_IF([test "$audio_backend" = openal], [
       [Define to the equivalent of <AL/alc.h> on your system])
   ], [
     AM_PATH_OPENAL([], [
-      AC_ERROR([OpenAL not found])
+      AC_MSG_ERROR(OpenAL not found)
     ])
   ])
 
@@ -263,7 +263,7 @@ AS_IF([test "$audio_backend" = openal], [
 ])
 
 AM_PATH_SDL2([2.0.4], [], [
-  AC_ERROR([SDL not found])
+  AC_MSG_ERROR(SDL not found)
 ])
 dnl FIXME: SDLmain can screw up some autoconf macros
 LIBS="$SDL_LIBS $LIBS"
@@ -271,7 +271,7 @@ LIBS="$SDL_LIBS $LIBS"
 AS_IF([test "$enable_enet" = yes], [
   PKG_CHECK_MODULES([ENET], [libenet], [], [
     SEARCH_LIB_FLAGS([enet_initialize], ["-lenet -lws2_32 -lwinmm" -lenet],, [
-      AC_ERROR([enet not found])
+      AC_MSG_ERROR(enet not found)
     ])
   ])
 
@@ -280,7 +280,7 @@ AS_IF([test "$enable_enet" = yes], [
 
 AS_IF([test "$enable_curl" = yes], [
   PKG_CHECK_MODULES([CURL], [libcurl], [], [
-    AC_ERROR([curl not found])
+    AC_MSG_ERROR(curl not found)
   ])
 
   LIBS="$LIBS $CURL_LIBS"
@@ -327,7 +327,7 @@ AS_CASE(["$video_backend"],
   [sdl], [
     # Define later
   ], [
-    AC_ERROR([Unknown video backend: $video_backend])
+    AC_MSG_ERROR(Unknown video backend: $video_backend)
 ])
 
 AS_CASE(["$audio_backend"],
@@ -336,14 +336,14 @@ AS_CASE(["$audio_backend"],
       Define to 1 if using OpenAL as the audio backend
     ])
   ], [
-    AC_ERROR([Unknown audio backend: $audio_backend])
+    AC_MSG_ERROR(Unknown audio backend: $audio_backend)
 ])
 
 AS_CASE(["$input_backend"],
   [sdl], [
     # Define later
   ], [
-    AC_ERROR([Unknown input backend: $input_backend])
+    AC_MSG_ERROR(Unknown input backend: $input_backend)
 ])
 
 AS_IF([test "$input_backend" = sdl || test "$video_backend" = sdl], [
