@@ -1116,9 +1116,13 @@ int MultiPlayer::send(uint32_t to, void *data, uint32_t msg_size)
 	}
 
 	if( !packet->referenceCount )
+	{
 		enet_packet_destroy(packet); // free unused packet
+		return 0;
+	}
 
-	return packet->referenceCount > 0;
+	// packet is freed by enet
+	return 1;
 #endif
 
 	return 1;
