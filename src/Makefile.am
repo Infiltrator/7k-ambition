@@ -108,6 +108,7 @@ bin_PROGRAMS = 7kaa
 	OGFILE.cpp \
 	OGFILE2.cpp \
 	OGFILE3.cpp \
+	OGF_REC.cpp \
 	OGF_V1.cpp \
 	OGODRES.cpp \
 	OGRPSEL.cpp \

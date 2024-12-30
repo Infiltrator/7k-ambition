@@ -91,6 +91,8 @@ enum { EXPENSE_GENERAL,
 
 //----- Define struct NationRelation -------//
 
+struct NationRelationGF;
+
 #pragma pack(1)
 struct NationRelation			// many-to-many relationships between nations
 {
@@ -130,6 +132,9 @@ struct NationRelation			// many-to-many relationships between nations
 
 	static const char* relation_status_str_array[5];
 	static const char* duration_of_status_str_array[5];
+
+	void	write_record(NationRelationGF *r);
+	void	read_record(NationRelationGF *r);
 };
 #pragma pack()
 

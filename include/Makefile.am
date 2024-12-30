@@ -62,6 +62,7 @@ noinst_HEADERS = \
 	OGET.h \
 	OGETA.h \
 	OGFILE.h \
+	OGF_REC.h \
 	OGF_V1.h \
 	OGODRES.h \
 	OGRPSEL.h \

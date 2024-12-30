@@ -1,0 +1,556 @@
+/*
+ * Seven Kingdoms: Ancient Adversaries
+ *
+ * Copyright 2024 Jesse Allen
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+//Filename    : OGF_REC.H
+//Description : File records for game objects
+
+#ifndef __OGF_REC_H
+#define __OGF_REC_H
+
+#include <stdint.h>
+
+#include <OGF_V1.h>
+#include <ONATIONB.h>
+
+struct MarketGoodsGFRec;
+struct SpriteGFRec;
+struct TradeStopGFRec;
+
+#pragma pack(1)
+struct DynArrayGF
+{
+	int32_t              ele_num;
+	int32_t              block_num;
+	int32_t              cur_pos;
+	int32_t              last_ele;
+	int32_t              ele_size;
+	int32_t              sort_offset;
+	int8_t               sort_type;
+	uint32_t             body_buf; //zero
+};
+
+struct AIRegionGF
+{
+	uint8_t              region_id;
+	int8_t               town_count;
+	int8_t               base_town_count;
+};
+
+struct ActionNodeGF
+{
+	int8_t               action_mode;
+	int8_t               action_type;
+	int16_t              action_para;
+	int16_t              action_para2;
+	uint16_t             action_id;
+	int32_t              add_date;
+	int16_t              unit_recno;
+	int16_t              action_x_loc;
+	int16_t              action_y_loc;
+	int16_t              ref_x_loc;
+	int16_t              ref_y_loc;
+	int8_t               retry_count;
+	int8_t               instance_count;
+	int16_t              group_unit_array[ActionNode::MAX_ACTION_GROUP_UNIT];
+	int8_t               processing_instance_count;
+	int8_t               processed_instance_count;
+	int32_t              next_retry_date;
+};
+
+struct AttackCampGF
+{
+	int16_t              firm_recno;
+	int16_t              combat_level;
+	int16_t              distance;
+	int32_t              patrol_date;
+};
+
+struct NationRelationGF
+{
+	int8_t               has_contact;
+	int8_t               should_attack;
+	int8_t               trade_treaty;
+	int8_t               status;
+	int32_t              last_change_status_date;
+	int8_t               ai_relation_level;
+	int8_t               ai_secret_attack;
+	int8_t               ai_demand_trade_treaty;
+	float                good_relation_duration_rating;
+	int16_t              started_war_on_us_count;
+	float                cur_year_import[IMPORT_TYPE_COUNT];
+	float                last_year_import[IMPORT_TYPE_COUNT];
+	float                lifetime_import[IMPORT_TYPE_COUNT];
+	int32_t              last_talk_reject_date_array[MAX_TALK_TYPE];
+	int32_t              last_military_aid_date;
+	int32_t              last_give_gift_date;
+	int16_t              total_given_gift_amount;
+	int8_t               contact_msg_flag;
+};
+
+struct NationGF
+{
+	uint32_t             vtp;
+
+	// NationBase
+	int16_t              nation_recno;
+	int8_t               nation_type;
+	int8_t               race_id;
+	int8_t               color_scheme_id;
+	int8_t               nation_color;
+	int16_t              king_unit_recno;
+	int8_t               king_leadership;
+	int32_t              nation_name_id;
+	int8_t               nation_name_str[NationBase::NATION_NAME_LEN+1];
+	uint32_t             player_id;
+	int8_t               next_frame_ready;
+	int16_t              last_caravan_id;
+	int16_t              nation_firm_count;
+	int32_t              last_build_firm_date;
+	int8_t               know_base_array[MAX_RACE];
+	int8_t               base_count_array[MAX_RACE];
+	int8_t               is_at_war_today;
+	int8_t               is_at_war_yesterday;
+	int32_t              last_war_date;
+	int16_t              last_attacker_unit_recno;
+	int32_t              last_independent_unit_join_date;
+	int8_t               cheat_enabled_flag;
+	float                cash;
+	float                food;
+	float                reputation;
+	float                kill_monster_score;
+	int16_t              auto_collect_tax_loyalty;
+	int16_t              auto_grant_loyalty;
+	float                cur_year_profit;
+	float                last_year_profit;
+	float                cur_year_fixed_income;
+	float                last_year_fixed_income;
+	float                cur_year_fixed_expense;
+	float                last_year_fixed_expense;
+	float                cur_year_income_array[INCOME_TYPE_COUNT];
+	float                last_year_income_array[INCOME_TYPE_COUNT];
+	float                cur_year_income;
+	float                last_year_income;
+	float                cur_year_expense_array[EXPENSE_TYPE_COUNT];
+	float                last_year_expense_array[EXPENSE_TYPE_COUNT];
+	float                cur_year_expense;
+	float                last_year_expense;
+	float                cur_year_cheat;
+	float                last_year_cheat;
+	float                cur_year_food_in;
+	float                last_year_food_in;
+	float                cur_year_food_out;
+	float                last_year_food_out;
+	float                cur_year_food_change;
+	float                last_year_food_change;
+	float                cur_year_reputation_change;
+	float                last_year_reputation_change;
+	NationRelationGF     relation_array[MAX_NATION];
+	int8_t               relation_status_array[MAX_NATION];
+	int8_t               relation_passable_array[MAX_NATION];
+	int8_t               relation_should_attack_array[MAX_NATION];
+	int8_t               is_allied_with_player;
+	int32_t              total_population;
+	int32_t              total_jobless_population;
+	int32_t              total_unit_count;
+	int32_t              total_human_count;
+	int32_t              total_general_count;
+	int32_t              total_weapon_count;
+	int32_t              total_ship_count;
+	int32_t              total_firm_count;
+	int32_t              total_spy_count;
+	int32_t              total_ship_combat_level;
+	int16_t              largest_town_recno;
+	int16_t              largest_town_pop;
+	int16_t              raw_count_array[MAX_RAW];
+	uint16_t             last_unit_name_id_array[MAX_UNIT_TYPE];
+	int32_t              population_rating;
+	int32_t              military_rating;
+	int32_t              economic_rating;
+	int32_t              overall_rating;
+	int32_t              enemy_soldier_killed;
+	int32_t              own_soldier_killed;
+	int32_t              enemy_civilian_killed;
+	int32_t              own_civilian_killed;
+	int32_t              enemy_weapon_destroyed;
+	int32_t              own_weapon_destroyed;
+	int32_t              enemy_ship_destroyed;
+	int32_t              own_ship_destroyed;
+	int32_t              enemy_firm_destroyed;
+	int32_t              own_firm_destroyed;
+
+	// Nation
+	DynArrayGF           action_array;
+	uint16_t             last_action_id;
+	uint32_t             ai_town_array; //zero
+	uint32_t             ai_base_array; //zero
+	uint32_t             ai_mine_array; //zero
+	uint32_t             ai_factory_array; //zero
+	uint32_t             ai_camp_array; //zero
+	uint32_t             ai_research_array; //zero
+	uint32_t             ai_war_array; //zero
+	uint32_t             ai_harbor_array; //zero
+	uint32_t             ai_market_array; //zero
+	uint32_t             ai_inn_array; //zero
+	uint32_t             ai_general_array; //zero
+	uint32_t             ai_caravan_array; //zero
+	uint32_t             ai_ship_array; //zero
+	int16_t              ai_town_size;
+	int16_t              ai_base_size;
+	int16_t              ai_mine_size;
+	int16_t              ai_factory_size;
+	int16_t              ai_camp_size;
+	int16_t              ai_research_size;
+	int16_t              ai_war_size;
+	int16_t              ai_harbor_size;
+	int16_t              ai_market_size;
+	int16_t              ai_inn_size;
+	int16_t              ai_general_size;
+	int16_t              ai_caravan_size;
+	int16_t              ai_ship_size;
+	int16_t              ai_town_count;
+	int16_t              ai_base_count;
+	int16_t              ai_mine_count;
+	int16_t              ai_factory_count;
+	int16_t              ai_camp_count;
+	int16_t              ai_research_count;
+	int16_t              ai_war_count;
+	int16_t              ai_harbor_count;
+	int16_t              ai_market_count;
+	int16_t              ai_inn_count;
+	int16_t              ai_general_count;
+	int16_t              ai_caravan_count;
+	int16_t              ai_ship_count;
+	int16_t              ai_base_town_count;
+	int16_t              firm_should_close_array[MAX_FIRM_TYPE];
+	AIRegionGF           ai_region_array[MAX_AI_REGION];
+	int8_t               ai_region_count;
+	int8_t               pref_force_projection;
+	int8_t               pref_military_development;
+	int8_t               pref_economic_development;
+	int8_t               pref_inc_pop_by_capture;
+	int8_t               pref_inc_pop_by_growth;
+	int8_t               pref_peacefulness;
+	int8_t               pref_military_courage;
+	int8_t               pref_territorial_cohesiveness;
+	int8_t               pref_trading_tendency;
+	int8_t               pref_allying_tendency;
+	int8_t               pref_honesty;
+	int8_t               pref_town_harmony;
+	int8_t               pref_loyalty_concern;
+	int8_t               pref_forgiveness;
+	int8_t               pref_collect_tax;
+	int8_t               pref_hire_unit;
+	int8_t               pref_use_weapon;
+	int8_t               pref_keep_general;
+	int8_t               pref_keep_skilled_unit;
+	int8_t               pref_diplomacy_retry;
+	int8_t               pref_attack_monster;
+	int8_t               pref_spy;
+	int8_t               pref_counter_spy;
+	int8_t               pref_food_reserve;
+	int8_t               pref_cash_reserve;
+	int8_t               pref_use_marine;
+	int8_t               pref_unit_chase_distance;
+	int8_t               pref_repair_concern;
+	int8_t               pref_scout;
+	int16_t              ai_capture_enemy_town_recno;
+	int32_t              ai_capture_enemy_town_plan_date;
+	int32_t              ai_capture_enemy_town_start_attack_date;
+	int8_t               ai_capture_enemy_town_use_all_camp;
+	int32_t              ai_last_defend_action_date;
+	int16_t              ai_attack_target_x_loc;
+	int16_t              ai_attack_target_y_loc;
+	int16_t              ai_attack_target_nation_recno;
+	AttackCampGF         attack_camp_array[MAX_SUITABLE_ATTACK_CAMP];
+	int16_t              attack_camp_count;
+	int16_t              lead_attack_camp_recno;
+};
+
+struct NationArrayGF
+{
+	int16_t              nation_count;
+	int16_t              ai_nation_count;
+	int32_t              last_del_nation_date;
+	int32_t              last_new_nation_date;
+	int32_t              max_nation_population;
+	int32_t              all_nation_population;
+	int16_t              independent_town_count;
+	int16_t              independent_town_count_race_array[MAX_RACE];
+	int32_t              max_nation_units;
+	int32_t              max_nation_humans;
+	int32_t              max_nation_generals;
+	int32_t              max_nation_weapons;
+	int32_t              max_nation_ships;
+	int32_t              max_nation_spies;
+	int32_t              max_nation_firms;
+	int32_t              max_nation_tech_level;
+	int32_t              max_population_rating;
+	int32_t              max_military_rating;
+	int32_t              max_economic_rating;
+	int32_t              max_reputation;
+	int32_t              max_kill_monster_score;
+	int32_t              max_overall_rating;
+	int16_t              max_population_nation_recno;
+	int16_t              max_military_nation_recno;
+	int16_t              max_economic_nation_recno;
+	int16_t              max_reputation_nation_recno;
+	int16_t              max_kill_monster_nation_recno;
+	int16_t              max_overall_nation_recno;
+	int32_t              last_alliance_id;
+	int32_t              nation_peace_days;
+	int16_t              player_recno;
+	uint32_t             player_ptr; //zero
+	int8_t               nation_color_array[MAX_NATION+1];
+	int8_t               nation_power_color_array[MAX_NATION+2];
+	int8_t               human_name_array[HUMAN_NAME_LEN+1][MAX_NATION];
+};
+
+struct Version_1_NationGF
+{
+	uint32_t             vtp;
+
+	// NationBase
+	int16_t              nation_recno;
+	int8_t               nation_type;
+	int8_t               race_id;
+	int8_t               color_scheme_id;
+	int8_t               nation_color;
+	int16_t              king_unit_recno;
+	int8_t               king_leadership;
+	int32_t              nation_name_id;
+	int8_t               nation_name_str[NationBase::NATION_NAME_LEN+1];
+	uint32_t             player_id;
+	int8_t               next_frame_ready;
+	int16_t              last_caravan_id;
+	int16_t              nation_firm_count;
+	int32_t              last_build_firm_date;
+	int8_t               know_base_array[VERSION_1_MAX_RACE];
+	int8_t               base_count_array[VERSION_1_MAX_RACE];
+	int8_t               is_at_war_today;
+	int8_t               is_at_war_yesterday;
+	int32_t              last_war_date;
+	int16_t              last_attacker_unit_recno;
+	int32_t              last_independent_unit_join_date;
+	int8_t               cheat_enabled_flag;
+	float                cash;
+	float                food;
+	float                reputation;
+	float                kill_monster_score;
+	int16_t              auto_collect_tax_loyalty;
+	int16_t              auto_grant_loyalty;
+	float                cur_year_profit;
+	float                last_year_profit;
+	float                cur_year_fixed_income;
+	float                last_year_fixed_income;
+	float                cur_year_fixed_expense;
+	float                last_year_fixed_expense;
+	float                cur_year_income_array[INCOME_TYPE_COUNT];
+	float                last_year_income_array[INCOME_TYPE_COUNT];
+	float                cur_year_income;
+	float                last_year_income;
+	float                cur_year_expense_array[EXPENSE_TYPE_COUNT];
+	float                last_year_expense_array[EXPENSE_TYPE_COUNT];
+	float                cur_year_expense;
+	float                last_year_expense;
+	float                cur_year_cheat;
+	float                last_year_cheat;
+	float                cur_year_food_in;
+	float                last_year_food_in;
+	float                cur_year_food_out;
+	float                last_year_food_out;
+	float                cur_year_food_change;
+	float                last_year_food_change;
+	float                cur_year_reputation_change;
+	float                last_year_reputation_change;
+	NationRelationGF     relation_array[MAX_NATION];
+	int8_t               relation_status_array[MAX_NATION];
+	int8_t               relation_passable_array[MAX_NATION];
+	int8_t               relation_should_attack_array[MAX_NATION];
+	int8_t               is_allied_with_player;
+	int32_t              total_population;
+	int32_t              total_jobless_population;
+	int32_t              total_unit_count;
+	int32_t              total_human_count;
+	int32_t              total_general_count;
+	int32_t              total_weapon_count;
+	int32_t              total_ship_count;
+	int32_t              total_firm_count;
+	int32_t              total_spy_count;
+	int32_t              total_ship_combat_level;
+	int16_t              largest_town_recno;
+	int16_t              largest_town_pop;
+	int16_t              raw_count_array[MAX_RAW];
+	uint16_t             last_unit_name_id_array[VERSION_1_MAX_UNIT_TYPE];
+	int32_t              population_rating;
+	int32_t              military_rating;
+	int32_t              economic_rating;
+	int32_t              overall_rating;
+	int32_t              enemy_soldier_killed;
+	int32_t              own_soldier_killed;
+	int32_t              enemy_civilian_killed;
+	int32_t              own_civilian_killed;
+	int32_t              enemy_weapon_destroyed;
+	int32_t              own_weapon_destroyed;
+	int32_t              enemy_ship_destroyed;
+	int32_t              own_ship_destroyed;
+	int32_t              enemy_firm_destroyed;
+	int32_t              own_firm_destroyed;
+
+	// Nation
+	DynArrayGF           action_array;
+	uint16_t             last_action_id;
+	uint32_t             ai_town_array; //zero
+	uint32_t             ai_base_array; //zero
+	uint32_t             ai_mine_array; //zero
+	uint32_t             ai_factory_array; //zero
+	uint32_t             ai_camp_array; //zero
+	uint32_t             ai_research_array; //zero
+	uint32_t             ai_war_array; //zero
+	uint32_t             ai_harbor_array; //zero
+	uint32_t             ai_market_array; //zero
+	uint32_t             ai_inn_array; //zero
+	uint32_t             ai_general_array; //zero
+	uint32_t             ai_caravan_array; //zero
+	uint32_t             ai_ship_array; //zero
+	int16_t              ai_town_size;
+	int16_t              ai_base_size;
+	int16_t              ai_mine_size;
+	int16_t              ai_factory_size;
+	int16_t              ai_camp_size;
+	int16_t              ai_research_size;
+	int16_t              ai_war_size;
+	int16_t              ai_harbor_size;
+	int16_t              ai_market_size;
+	int16_t              ai_inn_size;
+	int16_t              ai_general_size;
+	int16_t              ai_caravan_size;
+	int16_t              ai_ship_size;
+	int16_t              ai_town_count;
+	int16_t              ai_base_count;
+	int16_t              ai_mine_count;
+	int16_t              ai_factory_count;
+	int16_t              ai_camp_count;
+	int16_t              ai_research_count;
+	int16_t              ai_war_count;
+	int16_t              ai_harbor_count;
+	int16_t              ai_market_count;
+	int16_t              ai_inn_count;
+	int16_t              ai_general_count;
+	int16_t              ai_caravan_count;
+	int16_t              ai_ship_count;
+	int16_t              ai_base_town_count;
+	int16_t              firm_should_close_array[MAX_FIRM_TYPE];
+	AIRegionGF           ai_region_array[MAX_AI_REGION];
+	int8_t               ai_region_count;
+	int8_t               pref_force_projection;
+	int8_t               pref_military_development;
+	int8_t               pref_economic_development;
+	int8_t               pref_inc_pop_by_capture;
+	int8_t               pref_inc_pop_by_growth;
+	int8_t               pref_peacefulness;
+	int8_t               pref_military_courage;
+	int8_t               pref_territorial_cohesiveness;
+	int8_t               pref_trading_tendency;
+	int8_t               pref_allying_tendency;
+	int8_t               pref_honesty;
+	int8_t               pref_town_harmony;
+	int8_t               pref_loyalty_concern;
+	int8_t               pref_forgiveness;
+	int8_t               pref_collect_tax;
+	int8_t               pref_hire_unit;
+	int8_t               pref_use_weapon;
+	int8_t               pref_keep_general;
+	int8_t               pref_keep_skilled_unit;
+	int8_t               pref_diplomacy_retry;
+	int8_t               pref_attack_monster;
+	int8_t               pref_spy;
+	int8_t               pref_counter_spy;
+	int8_t               pref_food_reserve;
+	int8_t               pref_cash_reserve;
+	int8_t               pref_use_marine;
+	int8_t               pref_unit_chase_distance;
+	int8_t               pref_repair_concern;
+	int8_t               pref_scout;
+	int16_t              ai_capture_enemy_town_recno;
+	int32_t              ai_capture_enemy_town_plan_date;
+	int32_t              ai_capture_enemy_town_start_attack_date;
+	int8_t               ai_capture_enemy_town_use_all_camp;
+	int32_t              ai_last_defend_action_date;
+	int16_t              ai_attack_target_x_loc;
+	int16_t              ai_attack_target_y_loc;
+	int16_t              ai_attack_target_nation_recno;
+	AttackCampGF         attack_camp_array[MAX_SUITABLE_ATTACK_CAMP];
+	int16_t              attack_camp_count;
+	int16_t              lead_attack_camp_recno;
+};
+
+struct Version_1_NationArrayGF
+{
+	int16_t              nation_count;
+	int16_t              ai_nation_count;
+	int32_t              last_del_nation_date;
+	int32_t              last_new_nation_date;
+	int32_t              max_nation_population;
+	int32_t              all_nation_population;
+	int16_t              independent_town_count;
+	int16_t              independent_town_count_race_array[VERSION_1_MAX_RACE];
+	int32_t              max_nation_units;
+	int32_t              max_nation_humans;
+	int32_t              max_nation_generals;
+	int32_t              max_nation_weapons;
+	int32_t              max_nation_ships;
+	int32_t              max_nation_spies;
+	int32_t              max_nation_firms;
+	int32_t              max_nation_tech_level;
+	int32_t              max_population_rating;
+	int32_t              max_military_rating;
+	int32_t              max_economic_rating;
+	int32_t              max_reputation;
+	int32_t              max_kill_monster_score;
+	int32_t              max_overall_rating;
+	int16_t              max_population_nation_recno;
+	int16_t              max_military_nation_recno;
+	int16_t              max_economic_nation_recno;
+	int16_t              max_reputation_nation_recno;
+	int16_t              max_kill_monster_nation_recno;
+	int16_t              max_overall_nation_recno;
+	int32_t              last_alliance_id;
+	int32_t              nation_peace_days;
+	int16_t              player_recno;
+	uint32_t             player_ptr; //zero
+	int8_t               nation_color_array[MAX_NATION+1];
+	int8_t               nation_power_color_array[MAX_NATION+2];
+	int8_t               human_name_array[HUMAN_NAME_LEN+1][MAX_NATION];
+};
+#pragma pack()
+
+
+union GFRec
+{
+	DynArrayGF dyn_array;
+	NationGF nation;
+	NationArrayGF nation_array;
+	Version_1_NationGF nation_v1;
+	Version_1_NationArrayGF nation_array_v1;
+};
+
+extern GFRec gf_rec;
+
+#endif
