@@ -76,6 +76,222 @@ void DynArray::read_record(DynArrayGF *r)
 	// skip body_buf // the unknown array type must be restored by derived users
 }
 
+void Skill::write_record(SkillGF *r)
+{
+	WriteInt8(combat_level);
+	WriteInt8(skill_id);
+	WriteInt8(skill_level);
+	WriteInt8(combat_level_minor);
+	WriteInt8(skill_level_minor);
+	WriteInt8(skill_potential);
+}
+
+void Skill::read_record(SkillGF *r)
+{
+	ReadInt8(combat_level);
+	ReadInt8(skill_id);
+	ReadInt8(skill_level);
+	ReadInt8(combat_level_minor);
+	ReadInt8(skill_level_minor);
+	ReadInt8(skill_potential);
+}
+
+void Unit::write_record(UnitGF *r)
+{
+	WriteZero(vtp);
+
+	// Sprite
+	WriteInt16(sprite_id);
+	WriteInt16(sprite_recno);
+	WriteInt8(mobile_type);
+	WriteInt8(cur_action);
+	WriteInt8(cur_dir);
+	WriteInt8(cur_frame);
+	WriteInt8(cur_attack);
+	WriteInt8(final_dir);
+	WriteInt8(turn_delay);
+	WriteInt8(guard_count);
+	WriteInt8(remain_attack_delay);
+	WriteInt8(remain_frames_per_step);
+	WriteInt16(cur_x);
+	WriteInt16(cur_y);
+	WriteInt16(go_x);
+	WriteInt16(go_y);
+	WriteInt16(next_x);
+	WriteInt16(next_y);
+	WriteZero(sprite_info);
+
+	// Unit
+	WriteInt8(unit_id);
+	WriteInt8(rank_id);
+	WriteInt8(race_id);
+	WriteInt8(nation_recno);
+	WriteInt8(ai_unit);
+	WriteInt16(name_id);
+	WriteInt32(unit_group_id);
+	WriteInt32(team_id);
+	WriteInt8(selected_flag);
+	WriteInt8(group_select_id);
+	WriteInt8(waiting_term);
+	WriteInt8(blocked_by_member);
+	WriteInt8(swapping);
+	WriteInt16(leader_unit_recno);
+	WriteInt8(action_misc);
+	WriteInt16(action_misc_para);
+	WriteInt8(action_mode);
+	WriteInt16(action_para);
+	WriteInt16(action_x_loc);
+	WriteInt16(action_y_loc);
+	WriteInt8(action_mode2);
+	WriteInt16(action_para2);
+	WriteInt16(action_x_loc2);
+	WriteInt16(action_y_loc2);
+	WriteInt8Array(blocked_edge, 4);
+	WriteInt8(attack_dir);
+	WriteInt16(range_attack_x_loc);
+	WriteInt16(range_attack_y_loc);
+	WriteInt16(move_to_x_loc);
+	WriteInt16(move_to_y_loc);
+	WriteInt8(loyalty);
+	WriteInt8(target_loyalty);
+	WriteFloat(hit_points);
+	WriteInt16(max_hit_points);
+	WriteCall(skill);
+	WriteInt8(unit_mode);
+	WriteInt16(unit_mode_para);
+	WriteInt16(spy_recno);
+	WriteInt16(nation_contribution);
+	WriteInt16(total_reward);
+	WriteZero(attack_info_array);
+	WriteInt8(attack_count);
+	WriteInt8(attack_range);
+	WriteInt16(cur_power);
+	WriteInt16(max_power);
+	r->has_result_node_array = result_node_array ? 0xdeadbeef : 0;
+	WriteInt32(result_node_count);
+	WriteInt16(result_node_recno);
+	WriteInt16(result_path_dist);
+	r->has_way_point_array = way_point_array ? 0xdeadbeef : 0;
+	WriteInt16(way_point_array_size);
+	WriteInt16(way_point_count);
+	WriteInt16(ai_action_id);
+	WriteInt8(original_action_mode);
+	WriteInt16(original_action_para);
+	WriteInt16(original_action_x_loc);
+	WriteInt16(original_action_y_loc);
+	WriteInt16(original_target_x_loc);
+	WriteInt16(original_target_y_loc);
+	WriteInt16(ai_original_target_x_loc);
+	WriteInt16(ai_original_target_y_loc);
+	WriteInt8(ai_no_suitable_action);
+	WriteInt8(can_guard_flag);
+	WriteInt8(can_attack_flag);
+	WriteInt8(force_move_flag);
+	WriteInt16(home_camp_firm_recno);
+	WriteInt8(aggressive_mode);
+	WriteInt8(seek_path_fail_count);
+	WriteInt8(ignore_power_nation);
+	r->has_team_info = team_info ? 0xdeadbeef : 0;
+}
+
+void Unit::read_record(UnitGF *r)
+{
+	// skip vtp
+
+	// Sprite
+	ReadInt16(sprite_id);
+	ReadInt16(sprite_recno);
+	ReadInt8(mobile_type);
+	ReadInt8(cur_action);
+	ReadInt8(cur_dir);
+	ReadInt8(cur_frame);
+	ReadInt8(cur_attack);
+	ReadInt8(final_dir);
+	ReadInt8(turn_delay);
+	ReadInt8(guard_count);
+	ReadInt8(remain_attack_delay);
+	ReadInt8(remain_frames_per_step);
+	ReadInt16(cur_x);
+	ReadInt16(cur_y);
+	ReadInt16(go_x);
+	ReadInt16(go_y);
+	ReadInt16(next_x);
+	ReadInt16(next_y);
+	// skip sprite_info
+
+	// Unit
+	ReadInt8(unit_id);
+	ReadInt8(rank_id);
+	ReadInt8(race_id);
+	ReadInt8(nation_recno);
+	ReadInt8(ai_unit);
+	ReadInt16(name_id);
+	ReadInt32(unit_group_id);
+	ReadInt32(team_id);
+	ReadInt8(selected_flag);
+	ReadInt8(group_select_id);
+	ReadInt8(waiting_term);
+	ReadInt8(blocked_by_member);
+	ReadInt8(swapping);
+	ReadInt16(leader_unit_recno);
+	ReadInt8(action_misc);
+	ReadInt16(action_misc_para);
+	ReadInt8(action_mode);
+	ReadInt16(action_para);
+	ReadInt16(action_x_loc);
+	ReadInt16(action_y_loc);
+	ReadInt8(action_mode2);
+	ReadInt16(action_para2);
+	ReadInt16(action_x_loc2);
+	ReadInt16(action_y_loc2);
+	ReadInt8Array(blocked_edge, 4);
+	ReadInt8(attack_dir);
+	ReadInt16(range_attack_x_loc);
+	ReadInt16(range_attack_y_loc);
+	ReadInt16(move_to_x_loc);
+	ReadInt16(move_to_y_loc);
+	ReadInt8(loyalty);
+	ReadInt8(target_loyalty);
+	ReadFloat(hit_points);
+	ReadInt16(max_hit_points);
+	ReadCall(skill);
+	ReadInt8(unit_mode);
+	ReadInt16(unit_mode_para);
+	ReadInt16(spy_recno);
+	ReadInt16(nation_contribution);
+	ReadInt16(total_reward);
+	// skip attack_info_array
+	ReadInt8(attack_count);
+	ReadInt8(attack_range);
+	ReadInt16(cur_power);
+	ReadInt16(max_power);
+	result_node_array = r->has_result_node_array ? (ResultNode*)0xdeadbeef : 0;
+	ReadInt32(result_node_count);
+	ReadInt16(result_node_recno);
+	ReadInt16(result_path_dist);
+	way_point_array = r->has_way_point_array ? (ResultNode*)0xdeadbeef : 0;
+	ReadInt16(way_point_array_size);
+	ReadInt16(way_point_count);
+	ReadInt16(ai_action_id);
+	ReadInt8(original_action_mode);
+	ReadInt16(original_action_para);
+	ReadInt16(original_action_x_loc);
+	ReadInt16(original_action_y_loc);
+	ReadInt16(original_target_x_loc);
+	ReadInt16(original_target_y_loc);
+	ReadInt16(ai_original_target_x_loc);
+	ReadInt16(ai_original_target_y_loc);
+	ReadInt8(ai_no_suitable_action);
+	ReadInt8(can_guard_flag);
+	ReadInt8(can_attack_flag);
+	ReadInt8(force_move_flag);
+	ReadInt16(home_camp_firm_recno);
+	ReadInt8(aggressive_mode);
+	ReadInt8(seek_path_fail_count);
+	ReadInt8(ignore_power_nation);
+	team_info = r->has_team_info ? (TeamInfo*)0xdeadbeef : 0;
+}
+
 void AIRegion::write_record(AIRegionGF *r)
 {
 	WriteInt8(region_id);

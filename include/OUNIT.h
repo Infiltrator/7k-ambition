@@ -199,9 +199,11 @@ struct TeamInfo
 };
 #pragma pack()
 
-struct UnitCrc;
 
 //----------- Define class Unit -----------//
+
+struct UnitCrc;
+struct UnitGF;
 
 #pragma pack(1)
 class Unit : public Sprite
@@ -564,6 +566,8 @@ public:
 
 	int   write_file(File* filePtr);
 	int   read_file(File* filePtr);
+	void  write_record(UnitGF* r);
+	void  read_record(UnitGF* r);
 
 	virtual int write_derived_file(File* filePtr);
 	virtual int read_derived_file(File* filePtr);

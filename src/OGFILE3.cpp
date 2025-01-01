@@ -212,91 +212,6 @@ int UnitArray::read_file(File* filePtr)
 }
 //--------- End of function UnitArray::read_file ---------------//
 
-template <typename Visitor>
-static void visit_unit(Visitor *v, Unit *u)
-{
-	/* Sprite */
-	visit_sprite(v, u);
-
-	/* Unit */
-	visit<int8_t>(v, &u->unit_id);
-	visit<int8_t>(v, &u->rank_id);
-	visit<int8_t>(v, &u->race_id);
-	visit<int8_t>(v, &u->nation_recno);
-	visit<int8_t>(v, &u->ai_unit);
-	visit<uint16_t>(v, &u->name_id);
-	visit<uint32_t>(v, &u->unit_group_id);
-	visit<uint32_t>(v, &u->team_id);
-	visit<int8_t>(v, &u->selected_flag);
-	visit<int8_t>(v, &u->group_select_id);
-	visit<int8_t>(v, &u->waiting_term);
-	visit<int8_t>(v, &u->blocked_by_member);
-	visit<int8_t>(v, &u->swapping);
-	visit<int16_t>(v, &u->leader_unit_recno);
-	visit<int8_t>(v, &u->action_misc);
-	visit<int16_t>(v, &u->action_misc_para);
-	visit<int8_t>(v, &u->action_mode);
-	visit<int16_t>(v, &u->action_para);
-	visit<int16_t>(v, &u->action_x_loc);
-	visit<int16_t>(v, &u->action_y_loc);
-	visit<int8_t>(v, &u->action_mode2);
-	visit<int16_t>(v, &u->action_para2);
-	visit<int16_t>(v, &u->action_x_loc2);
-	visit<int16_t>(v, &u->action_y_loc2);
-	visit_array<int8_t>(v, u->blocked_edge, 4);
-	visit<uint8_t>(v, &u->attack_dir);
-	visit<int16_t>(v, &u->range_attack_x_loc);
-	visit<int16_t>(v, &u->range_attack_y_loc);
-	visit<int16_t>(v, &u->move_to_x_loc);
-	visit<int16_t>(v, &u->move_to_y_loc);
-	visit<int8_t>(v, &u->loyalty);
-	visit<int8_t>(v, &u->target_loyalty);
-	visit<float>(v, &u->hit_points);
-	visit<int16_t>(v, &u->max_hit_points);
-
-	visit<int8_t>(v, &u->skill.combat_level);
-	visit<int8_t>(v, &u->skill.skill_id);
-	visit<int8_t>(v, &u->skill.skill_level);
-	visit<uint8_t>(v, &u->skill.combat_level_minor);
-	visit<uint8_t>(v, &u->skill.skill_level_minor);
-	visit<uint8_t>(v, &u->skill.skill_potential);
-
-	visit<int8_t>(v, &u->unit_mode);
-	visit<int16_t>(v, &u->unit_mode_para);
-	visit<int16_t>(v, &u->spy_recno);
-	visit<int16_t>(v, &u->nation_contribution);
-	visit<int16_t>(v, &u->total_reward);
-	visit_pointer(v, &u->attack_info_array);
-	visit<int8_t>(v, &u->attack_count);
-	visit<int8_t>(v, &u->attack_range);
-	visit<int16_t>(v, &u->cur_power);
-	visit<int16_t>(v, &u->max_power);
-	visit_pointer(v, &u->result_node_array);
-	visit<int32_t>(v, &u->result_node_count);
-	visit<int16_t>(v, &u->result_node_recno);
-	visit<int16_t>(v, &u->result_path_dist);
-	visit_pointer(v, &u->way_point_array);
-	visit<int16_t>(v, &u->way_point_array_size);
-	visit<int16_t>(v, &u->way_point_count);
-	visit<uint16_t>(v, &u->ai_action_id);
-	visit<int8_t>(v, &u->original_action_mode);
-	visit<int16_t>(v, &u->original_action_para);
-	visit<int16_t>(v, &u->original_action_x_loc);
-	visit<int16_t>(v, &u->original_action_y_loc);
-	visit<int16_t>(v, &u->original_target_x_loc);
-	visit<int16_t>(v, &u->original_target_y_loc);
-	visit<int16_t>(v, &u->ai_original_target_x_loc);
-	visit<int16_t>(v, &u->ai_original_target_y_loc);
-	visit<int8_t>(v, &u->ai_no_suitable_action);
-	visit<int8_t>(v, &u->can_guard_flag);
-	visit<int8_t>(v, &u->can_attack_flag);
-	visit<int8_t>(v, &u->force_move_flag);
-	visit<int16_t>(v, &u->home_camp_firm_recno);
-	visit<int8_t>(v, &u->aggressive_mode);
-	visit<int8_t>(v, &u->seek_path_fail_count);
-	visit<int8_t>(v, &u->ignore_power_nation);
-	visit_pointer(v, &u->team_info);
-}
 
 //--------- Begin of function Unit::write_file ---------//
 //
@@ -307,10 +222,11 @@ static void visit_unit(Visitor *v, Unit *u)
 //
 int Unit::write_file(File* filePtr)
 {
-	if (!write_with_record_size(filePtr, this, &visit_unit<FileWriterVisitor>, 169))
+	write_record(&gf_rec.unit);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitGF)) )
 		return 0;
 
-   //--------------- write memory data ----------------//
+	//--------------- write memory data ----------------//
 
 	if( result_node_array )
 	{
@@ -367,20 +283,9 @@ static void visit_sprite(Visitor *v, Sprite *s)
 //
 int Unit::read_file(File* filePtr)
 {
-	FileReader r;
-	FileReaderVisitor v;
-
-	if (!r.init(filePtr))
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitGF)) )
 		return 0;
-
-	r.check_record_size(169);
-	v.init(&r);
-	visit_unit(&v, this);
-
-	if (!r.good())
-		return 0;
-
-	r.deinit();
+	read_record(&gf_rec.unit);
 
 	//--------------- read in memory data ----------------//
 

@@ -46,6 +46,114 @@ struct DynArrayGF
 	uint32_t             body_buf; //zero
 };
 
+struct SkillGF
+{
+	int8_t               combat_level;
+	int8_t               skill_id;
+	int8_t               skill_level;
+	uint8_t              combat_level_minor;
+	uint8_t              skill_level_minor;
+	uint8_t              skill_potential;
+};
+
+struct UnitGF
+{
+	uint32_t             vtp; //zero
+
+	// Sprite
+	int16_t              sprite_id;
+	int16_t              sprite_recno;
+	int8_t               mobile_type;
+	uint8_t              cur_action;
+	uint8_t              cur_dir;
+	uint8_t              cur_frame;
+	uint8_t              cur_attack;
+	uint8_t              final_dir;
+	int8_t               turn_delay;
+	int8_t               guard_count;
+	uint8_t              remain_attack_delay;
+	uint8_t              remain_frames_per_step;
+	int16_t              cur_x;
+	int16_t              cur_y;
+	int16_t              go_x;
+	int16_t              go_y;
+	int16_t              next_x;
+	int16_t              next_y;
+	uint32_t             sprite_info; //zero
+
+	// Unit
+	int8_t               unit_id;
+	int8_t               rank_id;
+	int8_t               race_id;
+	int8_t               nation_recno;
+	int8_t               ai_unit;
+	uint16_t             name_id;
+	uint32_t             unit_group_id;
+	uint32_t             team_id;
+	int8_t               selected_flag;
+	int8_t               group_select_id;
+	int8_t               waiting_term;
+	int8_t               blocked_by_member;
+	int8_t               swapping;
+	int16_t              leader_unit_recno;
+	int8_t               action_misc;
+	int16_t              action_misc_para;
+	int8_t               action_mode;
+	int16_t              action_para;
+	int16_t              action_x_loc;
+	int16_t              action_y_loc;
+	int8_t               action_mode2;
+	int16_t              action_para2;
+	int16_t              action_x_loc2;
+	int16_t              action_y_loc2;
+	int8_t               blocked_edge[4];
+	uint8_t              attack_dir;
+	int16_t              range_attack_x_loc;
+	int16_t              range_attack_y_loc;
+	int16_t              move_to_x_loc;
+	int16_t              move_to_y_loc;
+	int8_t               loyalty;
+	int8_t               target_loyalty;
+	float                hit_points;
+	int16_t              max_hit_points;
+	SkillGF              skill;
+	int8_t               unit_mode;
+	int16_t              unit_mode_para;
+	int16_t              spy_recno;
+	int16_t              nation_contribution;
+	int16_t              total_reward;
+	uint32_t             attack_info_array; //zero
+	int8_t               attack_count;
+	int8_t               attack_range;
+	int16_t              cur_power;
+	int16_t              max_power;
+	uint32_t             has_result_node_array;
+	int32_t              result_node_count;
+	int16_t              result_node_recno;
+	int16_t              result_path_dist;
+	uint32_t             has_way_point_array;
+	int16_t              way_point_array_size;
+	int16_t              way_point_count;
+	uint16_t             ai_action_id;
+	int8_t               original_action_mode;
+	int16_t              original_action_para;
+	int16_t              original_action_x_loc;
+	int16_t              original_action_y_loc;
+	int16_t              original_target_x_loc;
+	int16_t              original_target_y_loc;
+	int16_t              ai_original_target_x_loc;
+	int16_t              ai_original_target_y_loc;
+	int8_t               ai_no_suitable_action;
+	int8_t               can_guard_flag;
+	int8_t               can_attack_flag;
+	int8_t               force_move_flag;
+	int16_t              home_camp_firm_recno;
+	int8_t               aggressive_mode;
+	int8_t               seek_path_fail_count;
+	int8_t               ignore_power_nation;
+	uint32_t             has_team_info;
+};
+
 struct AIRegionGF
 {
 	uint8_t              region_id;
@@ -547,6 +655,7 @@ union GFRec
 	DynArrayGF dyn_array;
 	NationGF nation;
 	NationArrayGF nation_array;
+	UnitGF unit;
 	Version_1_NationGF nation_v1;
 	Version_1_NationArrayGF nation_array_v1;
 };
