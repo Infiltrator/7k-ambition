@@ -9,6 +9,7 @@
 tags
 .cache
 compile_commands.json
+cscope.files
 cscope.out
 7k-ambition
 Makefile
