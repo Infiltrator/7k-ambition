@@ -366,7 +366,12 @@ void Game::disp_version()
 
 	String str;
 
-	str  = _("Version");
+	str += _("compatible with 7kfans' 7kaa");
+	str += " ";
+
+	//----------- Display 7kaa version string. --------//
+
+	str += _("Version");
 	str += " ";
 	str += GAME_VERSION_STR;
 
@@ -388,12 +393,10 @@ void Game::disp_version()
 
 	#ifdef BETA
 		str = "This is a Beta version. Unauthorized distribution of this Beta is illegal.";
-	#endif
-
-	if( str.len() > 40 )
 		font_news.center_put( 0, VGA_HEIGHT-20, VGA_WIDTH-1, VGA_HEIGHT-1, str );
-	else
+	#else
 		font_news.right_put( VGA_WIDTH-10, VGA_HEIGHT-20, str );
+	#endif
 }
 //---------- End of function Game::disp_version ---------//
 

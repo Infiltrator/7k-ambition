@@ -1941,7 +1941,7 @@ int Game::mp_select_session()
 				if (mp_obj.is_update_available() > 0)
 				{
 					String update_message;
-					update_message = _("There is a new version of Seven Kingdoms: Ancient Adversaries at www.7kfans.com");
+					update_message = _("There is a new version of Seven Kingdoms: Ambition at https://seven-kingdoms-ambition.sourceforge.io/");
 					vga_front.d3_panel_up(60, 65, VGA_WIDTH-60, 100, 2);
 					font_san.put(70, 75, update_message, 0, VGA_WIDTH-70);
 				}

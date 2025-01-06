@@ -84,7 +84,7 @@ my @dbf_list = (
 #	['NAME', 'Unit|Name'],
 ]);
 
-print "# POT extraction from 7KAA data files\n";
+print "# POT extraction from 7K:A data files\n";
 foreach (@dbf_list) {
 	pot_extract_dbf(@$_);
 }

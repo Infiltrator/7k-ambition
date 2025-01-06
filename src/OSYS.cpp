@@ -1165,7 +1165,12 @@ void Sys::show_error_dialog(const char *formatStr, ...)
    va_end( argPtr );
 
    deinit_directx(); // in case vga is full screen, destroy game window to ensure dialog is visible
-   SDL_ShowSimpleMessageBox( SDL_MESSAGEBOX_ERROR, "Seven Kingdoms", resultStr, NULL );
+   SDL_ShowSimpleMessageBox(
+	  SDL_MESSAGEBOX_ERROR,
+	  WIN_TITLE,
+	  resultStr,
+	  NULL
+	);
 }
 //----------- End of function Sys::show_error_dialog ----------//
 

@@ -2,8 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.65])
-AC_INIT([7kaa], [2.15.6], [the3dfxdude@gmail.com], [],
-	[http://7kfans.com/])
+AC_INIT(
+  [Seven Kingdoms: Ambition],
+  [m4_esyscmd_s([git describe --always --dirty --tags])],
+  [seven-kingdoms-ambition-bugs@lists.sourceforge.net],
+  [7k-ambition],
+  [https://seven-kingdoms-ambition.sourceforge.io/]
+)
 AC_CONFIG_SRCDIR([src/AM.cpp])
 AC_CONFIG_HEADERS([include/config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -398,7 +403,9 @@ AC_CONFIG_FILES([
   Makefile
   data/Makefile
   include/Makefile
+  include/ambition/Makefile
   src/Makefile
+  src/ambition/Makefile
   src/curl/Makefile
   src/enet/Makefile
   src/imgfun/Makefile
