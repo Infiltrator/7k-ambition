@@ -1,4 +1,4 @@
-SUBDIRS = enet imgfun openal
+SUBDIRS = ambition enet imgfun openal
 if USE_CURL
 SUBDIRS += curl
 endif
@@ -300,6 +300,8 @@ AM_CXXFLAGS += $(SDL_CFLAGS)
 AM_LDFLAGS = $(GLOBAL_LDFLAGS)
 
 7k_ambition_LDADD =
+
+7k_ambition_LDADD += ./ambition/libambition.a
 
 if AUDIO_OPENAL
 7k_ambition_LDADD += ./openal/libaudio_openal.a

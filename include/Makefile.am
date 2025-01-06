@@ -1,3 +1,5 @@
+SUBDIRS = ambition
+
 noinst_HEADERS = \
 	ALL.h \
 	COLCODE.h \

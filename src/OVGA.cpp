@@ -22,6 +22,9 @@
 //Filename    : OVGA.cpp
 //Description : VGA management class (SDL version)
 
+#include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_version.hh"
+
 #include <OVGA.h>
 #include <OMOUSE.h>
 #include <OCOLTBL.h>
@@ -827,6 +830,13 @@ void Vga::save_status_report()
    if( !file )
       return;
 
+	fprintf(
+	  file,
+	  ("= Seven Kingdoms: Ambition " + Ambition::versionString()
+		+ " running in mode " + Ambition::ambitionConfig.modeString()
+		+ " =\n"
+	  ).c_str()
+	);
    fprintf(file, "=== Seven Kingdoms " SKVERSION " ===\n");
    s = SDL_GetPlatform();
    fprintf(file, "Platform: %s\n", s);

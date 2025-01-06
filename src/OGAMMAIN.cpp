@@ -21,6 +21,8 @@
 //Filename    : OGAMMAIN.CPP
 //Description : Main Game Object - Main menu
 
+#include "ambition/Ambition_version.hh"
+
 #include <version.h>
 #include <OVGA.h>
 #include <vga_util.h>
@@ -366,6 +368,11 @@ void Game::disp_version()
 
 	String str;
 
+	str = _("Version");
+	str += " ";
+	str += Ambition::versionString().c_str();
+
+	str += " ";
 	str += _("compatible with 7kfans' 7kaa");
 	str += " ";
 
