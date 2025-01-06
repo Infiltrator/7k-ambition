@@ -1,0 +1,13 @@
+{
+	 "compilation": {
+		  "compilers_to_recognize": [
+            {
+                "executable": "/usr/bin/g++",
+					 "flags_to_remove": [
+						  "-fsigned-char",
+						  "-mfpmath=387"
+					 ]
+            }
+        ]
+	 }
+}
