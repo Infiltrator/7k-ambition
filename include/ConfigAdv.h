@@ -35,6 +35,7 @@ public:
 		FLAG_DEVEL_VER = 2,
 		FLAG_CKSUM_REQ = 4,
 		FLAG_UNKNOWN_BUILD = 8,
+		FLAG_NOT_7KAA_COMPATIBLE = 0b1 << 31,
 	};
 
 	enum {

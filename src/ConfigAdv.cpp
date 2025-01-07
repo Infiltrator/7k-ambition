@@ -22,6 +22,9 @@
 //Description : Advanced Config
 
 #include <ConfigAdv.h>
+
+#include "ambition/Ambition_config.hh"
+
 #include <FilePath.h>
 #include <ONATIONB.h>
 #include <OFILETXT.h>
@@ -125,6 +128,10 @@ ConfigAdv::ConfigAdv()
 	#ifndef HAVE_KNOWN_BUILD
 		flags |= FLAG_UNKNOWN_BUILD;
 	#endif
+
+	if (!Ambition::ambitionConfig.compatibleWith7kaa()) {
+	  flags |= FLAG_NOT_7KAA_COMPATIBLE;
+	}
 
 	// this is set on program load for LocaleRes
 	locale[0] = 0;
