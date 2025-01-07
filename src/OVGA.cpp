@@ -833,7 +833,7 @@ void Vga::save_status_report()
 	fprintf(
 	  file,
 	  ("= Seven Kingdoms: Ambition " + Ambition::versionString()
-		+ " running in mode " + Ambition::ambitionConfig.modeString()
+		+ " running in mode " + Ambition::config.modeString()
 		+ " =\n"
 	  ).c_str()
 	);

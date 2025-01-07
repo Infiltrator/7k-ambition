@@ -131,7 +131,7 @@ ConfigAdv::ConfigAdv()
 		flags |= FLAG_UNKNOWN_BUILD;
 	#endif
 
-	if (!Ambition::ambitionConfig.compatibleWith7kaa()) {
+	if (!Ambition::config.compatibleWith7kaa()) {
 	  flags |= FLAG_NOT_7KAA_COMPATIBLE;
 	}
 

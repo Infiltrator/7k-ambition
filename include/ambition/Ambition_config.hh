@@ -73,7 +73,7 @@ private:
 };
 
 /** The global Ambition Config. */
-extern Config ambitionConfig;
+extern Config config;
 
 } // namespace Ambition
 

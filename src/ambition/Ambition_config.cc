@@ -10,7 +10,8 @@
 
 namespace Ambition {
 
-Config ambitionConfig;
+/** The global Ambition Config. */
+Config config;
 
 std::string
 Config::modeString(
