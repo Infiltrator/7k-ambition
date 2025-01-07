@@ -24,6 +24,8 @@
 
 #include <OANLINE.h>
 
+#include "ambition/Ambition_config.hh"
+
 #include "OERROR.h"
 #include <OVGABUF.h>
 #include <math.h>
@@ -349,6 +351,11 @@ void AnimLine::basic_line(VgaBuf *vgabuf, short x1, short y1, short x2, short y2
 		do
 		{
 			x += inc_x;
+			if (Ambition::config.enhancementsAvailable()
+				 && animatedFlag
+			) {
+				linePhase = (unsigned short)(phase + x * inc_x) % ANIMLINE_PERIOD;
+			}
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -379,6 +386,11 @@ void AnimLine::basic_line(VgaBuf *vgabuf, short x1, short y1, short x2, short y2
 		do
 		{
 			y += inc_y;
+			if (Ambition::config.enhancementsAvailable()
+				 && animatedFlag
+			) {
+ 				linePhase = (unsigned short)(phase + y * inc_y) % ANIMLINE_PERIOD;
+			}
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -418,6 +430,11 @@ void AnimLine::basic_hline(VgaBuf *vgabuf, short x1, short x2, short y1, int ani
 		// from left to right
 		for(short x = x1; x <= x2; ++x, ++bufPtr)
 		{
+			if (Ambition::config.enhancementsAvailable()
+				 && animatedFlag
+			) {
+				linePhase = (unsigned short)(phase + x) % ANIMLINE_PERIOD;
+			}
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -428,6 +445,11 @@ void AnimLine::basic_hline(VgaBuf *vgabuf, short x1, short x2, short y1, int ani
 		// from right to left
 		for( short x = x1; x >= x2; --x, --bufPtr)
 		{
+			if (Ambition::config.enhancementsAvailable()
+				 && animatedFlag
+			) {
+				linePhase = (unsigned short)(phase - x) % ANIMLINE_PERIOD;
+			}
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -456,6 +478,11 @@ void AnimLine::basic_vline(VgaBuf *vgabuf, short x1, short y1, short y2, int ani
 		// from top to bottom
 		for(short y = y1; y <= y2; ++y, bufPtr += lPitch)
 		{
+			if (Ambition::config.enhancementsAvailable()
+				 && animatedFlag
+			) {
+				linePhase = (unsigned short)(phase + y) % ANIMLINE_PERIOD;
+			}
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -466,6 +493,11 @@ void AnimLine::basic_vline(VgaBuf *vgabuf, short x1, short y1, short y2, int ani
 		// from bottom to top
 		for( short y = y1; y >= y2; --y, bufPtr -= lPitch)
 		{
+			if (Ambition::config.enhancementsAvailable()
+				 && animatedFlag
+			) {
+				linePhase = (unsigned short)(phase - y) % ANIMLINE_PERIOD;
+			}
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
