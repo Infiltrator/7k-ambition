@@ -140,6 +140,7 @@ jwasm_fmt="-elf -zt0"
 # enable_debug=no
 # enable_dynamic_support_libs=no
 # enable_enet=yes
+# enable_mem_class=no
 # enable_multiplayer=yes
 
 # Configuration options
@@ -157,6 +158,12 @@ AC_ARG_ENABLE([curl],
 AC_ARG_ENABLE([debug],
   AS_HELP_STRING([--enable-debug], [enable debugging features]),
   [], [enable_debug=no]
+)
+
+AC_ARG_ENABLE([mem-class],
+  AS_HELP_STRING([--enable-mem-class],
+  [enable Mem class for memory managementmonitoring]),
+  [], [enable_mem_class=no]
 )
 
 AC_ARG_ENABLE([multiplayer],
@@ -366,12 +373,15 @@ AS_IF([test "$enable_curl" = yes], [
 	    [Define to 1 if using libcurl])
 ])
 
-AC_DEFINE([NO_MEM_CLASS], [1], [Define to 1 if not monitoring memory alloc])
 AS_IF([test "$enable_debug" = yes], [
   AC_DEFINE([DEBUG], [1], [Define to 1 if building with debugging features])
   AC_DEFINE([DYNARRAY_DEBUG_ELEMENT_ACCESS], [1], [
 	 Define to 1 if building with element access checking for dynamic arrays
   ])
+])
+
+AS_IF([test "$enable_mem_class" != yes], [
+  AC_DEFINE([NO_MEM_CLASS], [1], [Define to 1 if not monitoring memory alloc])
 ])
 
 AS_IF([test "$enable_asm" = yes], [
@@ -424,3 +434,4 @@ echo
 AC_MSG_NOTICE([x86 asm: $enable_asm])
 AC_MSG_NOTICE([multiplayer: menu=$enable_multiplayer curl=$enable_curl enet=$enable_enet fpu=$fpu_type])
 AC_MSG_NOTICE([debugging features: $enable_debug])
+AC_MSG_NOTICE([memory management monitoring features: $enable_mem_class])
