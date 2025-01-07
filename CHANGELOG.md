@@ -15,3 +15,47 @@ speaking, considered to be the player's experience.
 
 - Forked _Seven Kingdoms: Ancient Adversaries_ into _Seven Kingdoms: Ambition_.
 - Made development slightly easier.
+
+## [2.15.6] - 2023-09-22
+
+### Added
+
+- Added display of the land mass size in the F10 menu
+- Enabled town peasant migration
+- Created button for markets to control stocking type -- thanks MicroVirus and
+   sraboy
+- Enabled the ability for AI to scout the map
+- Added Phoenix vision on fryhtan lairs
+
+### Fixed
+
+- Fixed bugs related to rebelling
+- Fixed several crash bugs
+- Fixed small graphic update bugs
+- Fixed bug when assigning to ship
+- Fixed AI declare war bug
+- Fixed AI give tribute bug
+- Cleaned up some deinit code
+- Fixed bugs related to AI surrenders
+- Fixed bug on trade ship docking and exiting
+- Fixed some path finding issues
+- Fixed screen edge mouse handling bug
+- Fixed exploit when spying on an enemy nation report
+- Improved distance calculating so placing buildings and towns on any side is
+   treated the same
+
+### Changed
+
+- Improved AI on handling rebellions
+- Greatly improved AI sea based missions
+- Improved AI on training and recruiting
+- Improved handling of town migration with workers
+- Improved AI to be move aggressive in attack missions
+- Improved validation of attack actions
+- Improved AI at building harbors
+- Improved locale code
+- Made English the default language on Windows
+- Increased the max number of raw resource sites to 10
+- Reduced penalty on trade unit destruction
+- Increased the speed of speed level 9
+- Improved AI handling on granting money to towns and recruiting
