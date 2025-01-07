@@ -9,6 +9,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+## [2.9156.0] - 2025-01-07
+
 ### Changed
 
 - Forked _Seven Kingdoms: Ancient Adversaries_ into _Seven Kingdoms: Ambition_.
+- Made development slightly easier.
