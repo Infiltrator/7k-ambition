@@ -1952,6 +1952,7 @@ static bool read_nation(File *file, Nation *nat)
 	if (!read_with_record_size(file, nat, &visit_nation<FileReaderVisitor>, NATION_RECORD_SIZE))
 		return false;
 
+	mem_del(nat->action_array.body_buf);
 	memset(&nat->action_array, 0, sizeof(nat->action_array));
 	return true;
 }
@@ -1963,6 +1964,8 @@ int Nation::read_file(File* filePtr)
 	if(!GameFile::read_file_same_version)
 	{
 		Version_1_Nation *oldNationPtr = (Version_1_Nation*) mem_add(sizeof(Version_1_Nation));
+
+		mem_del(action_array.body_buf);
 
 		if (!read_version_1_nation(filePtr, oldNationPtr))
 		{

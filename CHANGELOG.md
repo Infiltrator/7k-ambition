@@ -9,6 +9,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- A memory leak when loading a saved game.
+
 ## [2.9156.0] - 2025-01-07
 
 ### Changed
