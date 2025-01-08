@@ -11,6 +11,7 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed 100% CPU usage all the time.
 - A memory leak when loading a saved game.
 - A memory leak with unit waypoints.
 

@@ -794,21 +794,14 @@ void Vga::set_window_grab(WinGrab mode)
 //-------- Beginning of function Vga::flip ----------//
 void Vga::flip()
 {
-   static Uint32 ticks = 0;
-   Uint32 cur_ticks;
-
    if( !is_inited() )
       return;
 
-   cur_ticks = SDL_GetTicks();
-   if (cur_ticks > ticks + 17 || cur_ticks < ticks) {
-      ticks = cur_ticks;
-      SDL_BlitSurface(vga_front.surface, NULL, target, NULL);
-      SDL_UpdateTexture(texture, NULL, target->pixels, target->pitch);
-      SDL_RenderClear(renderer);
-      SDL_RenderCopy(renderer, texture, NULL, NULL);
-      SDL_RenderPresent(renderer);
-   }
+	SDL_BlitSurface(vga_front.surface, NULL, target, NULL);
+	SDL_UpdateTexture(texture, NULL, target->pixels, target->pitch);
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_RenderPresent(renderer);
 }
 //-------- End of function Vga::flip ----------//
 

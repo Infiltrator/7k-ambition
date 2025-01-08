@@ -22,6 +22,9 @@
 //Description : Save Game Array / UI.
 
 #include <OSaveGameArray.h>
+
+#include "ambition/Ambition_vga.hh"
+
 #include <KEY.h>
 #include <OSYS.h>
 #include <ODATE.h>
@@ -536,6 +539,10 @@ int SaveGameArray::menu(int actionMode, int *recno)
 				box.msg(_("Cannot delete this slot"));
 			}
 			refreshFlag = LSOPTION_ALL;
+		}
+
+		if (!refreshFlag) {
+			Ambition::delayFrame();
 		}
 	}
 

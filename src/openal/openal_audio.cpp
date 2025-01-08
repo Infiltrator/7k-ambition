@@ -778,11 +778,6 @@ int OpenALAudio::is_loop_wav_fading(int id)
 
 void OpenALAudio::yield()
 {
-	/* FIXME: This object causes a frame flip.  Looks like a hack that could
-	 * use some fixing.
-	 */
-	VgaFrontLock vgaLock;
-
 	StreamMap::iterator si;
 
 	for (si = this->streams.begin(); si != this->streams.end();)

@@ -21,6 +21,8 @@
 // Filename    : OOPTMENU.CPP
 // Description : in-game option menu (async version)
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OVGABUF.h>
@@ -189,8 +191,16 @@ void OptionMenu::enter(char untilExitFlag)
 
 	if( untilExitFlag )
 	{
+		auto firstCycle = true;
+
 		while( is_active() )
 		{
+			if (firstCycle) {
+				firstCycle = false;
+			} else {
+				Ambition::delayFrame();
+			}
+
 			sys.yield();
 			vga.flip();
 			mouse.get_event();

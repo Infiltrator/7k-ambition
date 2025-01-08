@@ -21,6 +21,8 @@
 // Filename    : OINGMENU.H
 // Description : in-game menu (async version)
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OVGA.h>
 #include <OVGABUF.h>
 #include <OSYS.h>
@@ -99,8 +101,16 @@ void InGameMenu::enter(char untilExitFlag)
 
    if( untilExitFlag )
    {
+      auto firstCycle = true;
+
       while( is_active() )
       {
+         if (firstCycle) {
+            firstCycle = false;
+         } else {
+            Ambition::delayFrame();
+         }
+
          sys.yield();
          vga.flip();
          mouse.get_event();

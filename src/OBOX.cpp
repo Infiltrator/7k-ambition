@@ -25,6 +25,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#include "ambition/Ambition_vga.hh"
+
 #include <KEY.h>
 #include <OSYS.h>
 #include <OVGA.h>
@@ -237,6 +239,8 @@ int Box::ask_button(const char* buttonDes1, const char* buttonDes2, int rightCli
 			mouse.get_event();
 			return 0;
 		}
+
+		Ambition::delayFrame();
 	}
 }
 //--------- End of function Box::ask_button --------//

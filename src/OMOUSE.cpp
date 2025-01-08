@@ -23,6 +23,9 @@
 //Description : Input event class
 
 #include <OMOUSE.h>
+
+#include "ambition/Ambition_vga.hh"
+
 #include <OMOUSECR.h>
 #include <OMOUSE2.h>
 #include <OPOWER.h>
@@ -1026,10 +1029,12 @@ int Mouse::wait_press(int timeOutSecond)
 		sys.yield();
 		vga.flip();
 		mouse.get_event();
+      Ambition::delayFrame();
 	}
 
 	int rc=0;
 	unsigned int timeOutTime = misc.get_time() + timeOutSecond*1000;
+	const auto timeout = SDL_GetTicks64() + timeOutSecond * 1000;
 
 	while(1)
 	{
@@ -1059,6 +1064,12 @@ int Mouse::wait_press(int timeOutSecond)
 
 		if( timeOutSecond && misc.get_time() > timeOutTime )
 			break;
+
+		if (timeOutSecond) {
+			Ambition::delayFrame(timeout);
+		} else {
+			Ambition::delayFrame();
+		}
 	}
 
 	while( mouse.left_press || mouse.any_click() || mouse.key_code )		// avoid repeat clicking 

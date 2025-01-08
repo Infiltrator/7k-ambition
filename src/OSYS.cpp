@@ -30,6 +30,8 @@
 # include <mach-o/dyld.h>
 #endif
 
+#include "ambition/Ambition_vga.hh"
+
 #include <ALL.h>
 #include <OAUDIO.h>
 #include <OBOX.h>
@@ -776,6 +778,8 @@ void Sys::main_loop(int isLoadedGame)
 
    while( 1 )
    {
+      const auto startTime = SDL_GetTicks64();
+
          // #### begin Gilbert 31/10 ######//
          int rc = 0;
          // #### end Gilbert 31/10 ######//
@@ -973,6 +977,12 @@ void Sys::main_loop(int isLoadedGame)
          }
 
          vga_front.unlock_buf();
+
+      if (config.frame_speed == 0) {
+        Ambition::delayFrame(startTime + 16);
+      } else if (config.frame_speed < 99) {
+        Ambition::delayFrame(startTime + 1000 / config.frame_speed);
+      }
    }
 
    // #### begin Gilbert 23/10 #######//

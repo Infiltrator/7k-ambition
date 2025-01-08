@@ -21,6 +21,8 @@
 //Filename    : OBUTTON.CPP
 //Description : Button Object
 
+#include "ambition/Ambition_vga.hh"
+
 #include <KEY.h>
 #include <ALL.h>
 #include <OHELP.h>
@@ -487,11 +489,14 @@ void Button::wait_press(int timeOut)
 
 	int   lastMouseX= -1, lastMouseY;
 	unsigned long timeOutTime = misc.get_time()+INACTIVE_TIMEOUT_SECONDS*1000;
+	auto idleTimeout = SDL_GetTicks64() + INACTIVE_TIMEOUT_SECONDS * 1000;
 
 	mouse.get_event();			// clean up previous mouse events
 
 	while( !detect(KEY_RETURN,KEY_ESC) && !mouse.any_click(1) )  // 1-only right mouse button
 	{
+		Ambition::delayFrame(idleTimeout);
+
 		sys.yield();
 		vga.flip();
 		mouse.get_event();
@@ -516,6 +521,7 @@ void Button::wait_press(int timeOut)
 				lastMouseX  = mouse.cur_x;
 				lastMouseY  = mouse.cur_y;
 				timeOutTime = misc.get_time()+INACTIVE_TIMEOUT_SECONDS*1000;
+				idleTimeout = SDL_GetTicks64() + INACTIVE_TIMEOUT_SECONDS * 1000;
 			}
 		}
 	}

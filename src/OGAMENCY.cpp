@@ -21,6 +21,8 @@
 // Filename    : OGAMENCY.CPP
 // description : view encyclopedia
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OIMGRES.h>
 #include <OVGA.h>
 #include <vga_util.h>
@@ -294,6 +296,8 @@ void Game::view_encyclopedia()
 			if( disp_picture(main_class_id, sub_class_id_array[main_class_id-1]) )
 				nextDisplayTime = misc.get_time() + SLIDE_MODE_TIME;
 		}
+
+		Ambition::delayFrame(SDL_GetTicks64() + SLIDE_MODE_TIME);
 	}
 
 	//------- exiting: turn dark --------//

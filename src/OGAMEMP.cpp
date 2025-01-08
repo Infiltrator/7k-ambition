@@ -21,6 +21,8 @@
 //Filename    : OGAMEMP.CPP
 //Description : Main Game Object - Multiplayer Game (using Imagic multiplayer SDK)
 
+#include "ambition/Ambition_vga.hh"
+
 #include <version.h>
 #include <OSYS.h>
 #include <OMOUSE.h>
@@ -1183,6 +1185,8 @@ int Game::mp_select_service()
 			break;
 
 		vga_front.unlock_buf();
+
+		Ambition::delayFrame();
 	}
 
 	if( !vga_front.buf_locked )
@@ -1414,6 +1418,8 @@ int Game::mp_select_mode(char *defSaveFileName, int service_mode)
 		}
 
 		vga_front.unlock_buf();
+
+		Ambition::delayFrame();
 	}
 	if( !vga_front.buf_locked )
 		vga_front.lock_buf();
@@ -1721,6 +1727,8 @@ int Game::input_name_pass(const char *txt[], char *name, int name_len, char *pas
 			music.stop();
 
 		vga_front.unlock_buf();
+
+		Ambition::delayFrame();
 	}
 	if (!vga_front.buf_locked)
 		vga_front.lock_buf();
@@ -2022,6 +2030,10 @@ int Game::mp_select_session()
 		}
 
 		vga_front.unlock_buf();
+
+		if (!refreshFlag) {
+			Ambition::delayFrame(refreshTime + pollTime);
+		}
 	}
 exit_poll:
 
@@ -2113,6 +2125,8 @@ int Game::mp_join_session(int session_id)
 			music.stop();
 
 		vga_front.unlock_buf();
+
+		Ambition::delayFrame(SDL_GetTicks64() + 100);
 	}
 
 END:
@@ -2205,6 +2219,8 @@ void Game::mp_close_session()
 			music.stop();
 
 		vga_front.unlock_buf();
+
+		Ambition::delayFrame(SDL_GetTicks64() + 100);
 	}
 
 	if (!vga_front.buf_locked)
@@ -2265,6 +2281,8 @@ int Game::mp_get_leader_board()
 			music.stop();
 
 		vga_front.unlock_buf();
+
+		Ambition::delayFrame(SDL_GetTicks64() + 100);
 	}
 	if (!vga_front.buf_locked)
 		vga_front.lock_buf();
@@ -3950,6 +3968,10 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 		// ####### begin Gilbert 24/10 #######//
 		vga_front.unlock_buf();
 		// ####### end Gilbert 24/10 #######//
+
+		if (!refreshFlag && !mRefreshFlag) {
+			Ambition::delayFrame(SDL_GetTicks64() + 100);
+		}
 	}
 
 	// ###### begin Gilbert 24/10 #######//
@@ -5358,6 +5380,10 @@ int Game::mp_select_load_option(char *fileName)
 		// ####### begin Gilbert 24/10 #######//
 		vga_front.unlock_buf();
 		// ####### end Gilbert 24/10 #######//
+
+		if (!refreshFlag) {
+			Ambition::delayFrame();
+		}
 	}
 
 	// ###### begin Gilbert 24/10 #######//

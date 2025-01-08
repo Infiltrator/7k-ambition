@@ -22,6 +22,7 @@
 //Description : Main Game Object - Main menu
 
 #include "ambition/Ambition_version.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -269,6 +270,10 @@ void Game::main_menu()
 
 		if( sys.signal_exit_flag == 1 || i == MAIN_OPTION_COUNT-1 )			// quit the system now
 			break;
+
+		if (!refreshFlag) {
+			Ambition::delayFrame();
+		}
 	}
 
 	//--------------------------------------//
@@ -651,6 +656,10 @@ void Game::single_player_menu()
 				return;
 			}
 		}
+
+		if (!refreshFlag) {
+			Ambition::delayFrame();
+		}
 	}
 
 	if( menuBitmap )
@@ -893,6 +902,10 @@ void Game::multi_player_menu(int lobbied, char *game_host)
 
 				return;
 			}
+		}
+
+		if (!refreshFlag) {
+			Ambition::delayFrame();
 		}
 	}
 

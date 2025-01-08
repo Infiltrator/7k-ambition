@@ -21,6 +21,7 @@
 //Filename    : OTUTOR2.CPP
 //Description : Class Tutor
 
+#include "ambition/Ambition_vga.hh"
 
 #include <OSYS.h>
 #include <OMOUSE.h>
@@ -405,6 +406,10 @@ int Tutor::select_tutor(int actionMode)
 			refreshFlag = TUOPTION_ALL;
 			retFlag = browseRecno;
 			break;
+		}
+
+		if (!refreshFlag) {
+			Ambition::delayFrame();
 		}
 	}
 
