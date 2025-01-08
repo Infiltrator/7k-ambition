@@ -26,6 +26,8 @@ Config::modeString(
   case Mode::Ambition:
 	 return "ambition";
   }
+
+  return "ERROR:UNKNOWN";
 }
 
 bool
