@@ -90,7 +90,9 @@ char calculateRockRemainingDelay(
 
 char* calculateTerrainBitmap(
   char* _7kaaCalculation,
-  const short terrainId
+  const short terrainId,
+  const int x,
+  const int y
 ) {
   if (!config.enhancementsAvailable()) {
     return _7kaaCalculation;
@@ -98,6 +100,7 @@ char* calculateTerrainBitmap(
 
   return terrain_res[terrainId]->get_bitmap(
     misc.get_time() / MILLISECONDS_PER_STEP
+    + x - y
   );
 }
 

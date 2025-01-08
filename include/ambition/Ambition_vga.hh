@@ -47,7 +47,9 @@ char calculateRockRemainingDelay(
 
 char* calculateTerrainBitmap(
   char* _7kaaCalculation,
-  const short terrainId
+  const short terrainId,
+  const int x,
+  const int y
 );
 
 char calculateTownFlagNumber(

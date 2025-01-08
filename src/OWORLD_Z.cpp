@@ -349,7 +349,9 @@ void ZoomMatrix::draw()
 				char *overlayBitmap = terrain_res[locPtr->terrain_id]->get_bitmap(sys.frame_count /4);
 				overlayBitmap = Ambition::calculateTerrainBitmap(
 					overlayBitmap,
-					locPtr->terrain_id
+					locPtr->terrain_id,
+					xLoc,
+					yLoc
 				);
 				if( overlayBitmap)
 					vga_back.put_bitmap_trans_decompress( x, y, overlayBitmap);
