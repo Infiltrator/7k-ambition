@@ -24,6 +24,7 @@
 #include <math.h>
 
 #include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include <OVGA.h>
 #include <OSYS.h>
@@ -346,6 +347,10 @@ void ZoomMatrix::draw()
 
 				vga_back.put_bitmap_32x32( x, y, terrain_res[locPtr->terrain_id]->bitmap_ptr );
 				char *overlayBitmap = terrain_res[locPtr->terrain_id]->get_bitmap(sys.frame_count /4);
+				overlayBitmap = Ambition::calculateTerrainBitmap(
+					overlayBitmap,
+					locPtr->terrain_id
+				);
 				if( overlayBitmap)
 					vga_back.put_bitmap_trans_decompress( x, y, overlayBitmap);
 

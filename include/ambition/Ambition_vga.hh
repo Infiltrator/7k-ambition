@@ -41,6 +41,15 @@ short calculateRainSpeed(
   const short _7kaaCalculation
 );
 
+char calculateRockRemainingDelay(
+  const char _7kaaCalculation
+);
+
+char* calculateTerrainBitmap(
+  char* _7kaaCalculation,
+  const short terrainId
+);
+
 char calculateTownFlagNumber(
   const char _7kaaCalculation,
   const int townRecordNumber

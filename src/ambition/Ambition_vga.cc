@@ -35,10 +35,14 @@
 #include "OREMOTE.h"
 #include "OSNOW.h"
 #include "OSYS.h"
+#include "OTERRAIN.h"
 
 #include "ambition/Ambition_config.hh"
 
 namespace Ambition {
+
+constexpr auto STEPS_PER_SECOND = 4;
+constexpr auto MILLISECONDS_PER_STEP = 1000 / STEPS_PER_SECOND;
 
 int calculateFirmFrame(
   const Firm* firm
@@ -74,6 +78,29 @@ short calculateRainSpeed(
   return _7kaaCalculation / 4;
 }
 
+char calculateRockRemainingDelay(
+  const char _7kaaCalculation
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return _7kaaCalculation * 3;
+}
+
+char* calculateTerrainBitmap(
+  char* _7kaaCalculation,
+  const short terrainId
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return terrain_res[terrainId]->get_bitmap(
+    misc.get_time() / MILLISECONDS_PER_STEP
+  );
+}
+
 char calculateTownFlagNumber(
   const char _7kaaCalculation,
   const int townRecordNumber
@@ -83,8 +110,6 @@ char calculateTownFlagNumber(
   }
 
   constexpr auto STEP_COUNT = 4;
-  constexpr auto STEPS_PER_SECOND = 4;
-  constexpr auto MILLISECONDS_PER_STEP = 1000 / STEPS_PER_SECOND;
 
   return
     '1'
