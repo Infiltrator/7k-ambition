@@ -1551,3 +1551,85 @@ void Version_1_NationArray::read_record(Version_1_NationArrayGF *r)
 	ReadInt8Array(nation_power_color_array, MAX_NATION+2);
 	ReadInt8Array(human_name_array, (HUMAN_NAME_LEN+1)*MAX_NATION);
 }
+
+void Bullet::write_record(BulletGF *r)
+{
+	WriteZero(vtp);
+
+	// Sprite
+	WriteInt16(sprite_id);
+	WriteInt16(sprite_recno);
+	WriteInt8(mobile_type);
+	WriteInt8(cur_action);
+	WriteInt8(cur_dir);
+	WriteInt8(cur_frame);
+	WriteInt8(cur_attack);
+	WriteInt8(final_dir);
+	WriteInt8(turn_delay);
+	WriteInt8(guard_count);
+	WriteInt8(remain_attack_delay);
+	WriteInt8(remain_frames_per_step);
+	WriteInt16(cur_x);
+	WriteInt16(cur_y);
+	WriteInt16(go_x);
+	WriteInt16(go_y);
+	WriteInt16(next_x);
+	WriteInt16(next_y);
+	WriteZero(sprite_info);
+
+	// Bullet
+	WriteInt8(parent_type);
+	WriteInt16(parent_recno);
+	WriteInt8(target_mobile_type);
+	WriteFloat(attack_damage);
+	WriteInt16(damage_radius);
+	WriteInt16(nation_recno);
+	WriteInt8(fire_radius);
+	WriteInt16(origin_x);
+	WriteInt16(origin_y);
+	WriteInt16(target_x_loc);
+	WriteInt16(target_y_loc);
+	WriteInt8(cur_step);
+	WriteInt8(total_step);
+}
+
+void Bullet::read_record(BulletGF *r)
+{
+	// skip vtp
+
+	// Sprite
+	ReadInt16(sprite_id);
+	ReadInt16(sprite_recno);
+	ReadInt8(mobile_type);
+	ReadInt8(cur_action);
+	ReadInt8(cur_dir);
+	ReadInt8(cur_frame);
+	ReadInt8(cur_attack);
+	ReadInt8(final_dir);
+	ReadInt8(turn_delay);
+	ReadInt8(guard_count);
+	ReadInt8(remain_attack_delay);
+	ReadInt8(remain_frames_per_step);
+	ReadInt16(cur_x);
+	ReadInt16(cur_y);
+	ReadInt16(go_x);
+	ReadInt16(go_y);
+	ReadInt16(next_x);
+	ReadInt16(next_y);
+	// skip sprite_info
+
+	// Bullet
+	ReadInt8(parent_type);
+	ReadInt16(parent_recno);
+	ReadInt8(target_mobile_type);
+	ReadFloat(attack_damage);
+	ReadInt16(damage_radius);
+	ReadInt16(nation_recno);
+	ReadInt8(fire_radius);
+	ReadInt16(origin_x);
+	ReadInt16(origin_y);
+	ReadInt16(target_x_loc);
+	ReadInt16(target_y_loc);
+	ReadInt8(cur_step);
+	ReadInt8(total_step);
+}

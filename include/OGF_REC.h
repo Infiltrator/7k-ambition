@@ -26,6 +26,7 @@
 
 #include <stdint.h>
 
+#include <OBULLET.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
 #include <OU_CARA.h>
@@ -785,11 +786,53 @@ struct Version_1_NationArrayGF
 	int8_t               nation_power_color_array[MAX_NATION+2];
 	int8_t               human_name_array[HUMAN_NAME_LEN+1][MAX_NATION];
 };
+
+struct BulletGF
+{
+	uint32_t             vtp; //zero
+
+	// Sprite
+	int16_t              sprite_id;
+	int16_t              sprite_recno;
+	int8_t               mobile_type;
+	uint8_t              cur_action;
+	uint8_t              cur_dir;
+	uint8_t              cur_frame;
+	uint8_t              cur_attack;
+	uint8_t              final_dir;
+	int8_t               turn_delay;
+	int8_t               guard_count;
+	uint8_t              remain_attack_delay;
+	uint8_t              remain_frames_per_step;
+	int16_t              cur_x;
+	int16_t              cur_y;
+	int16_t              go_x;
+	int16_t              go_y;
+	int16_t              next_x;
+	int16_t              next_y;
+	uint32_t             sprite_info; //zero
+
+	// Bullet
+	int8_t               parent_type;
+	int16_t              parent_recno;
+	int8_t               target_mobile_type;
+	float                attack_damage;
+	int16_t              damage_radius;
+	int16_t              nation_recno;
+	int8_t               fire_radius;
+	int16_t              origin_x;
+	int16_t              origin_y;
+	int16_t              target_x_loc;
+	int16_t              target_y_loc;
+	int8_t               cur_step;
+	int8_t               total_step;
+};
 #pragma pack()
 
 
 union GFRec
 {
+	BulletGF bullet;
 	DynArrayGF dyn_array;
 	NationGF nation;
 	NationArrayGF nation_array;

@@ -644,45 +644,28 @@ int BulletArray::read_file(File* filePtr)
 }
 //--------- End of function BulletArray::read_file ---------------//
 
-template <typename Visitor>
-static void visit_bullet(Visitor *v, Bullet *b)
-{
-	visit_sprite(v, b);
-	visit<int8_t>(v, &b->parent_type);
-	visit<int16_t>(v, &b->parent_recno);
-	visit<int8_t>(v, &b->target_mobile_type);
-	visit<float>(v, &b->attack_damage);
-	visit<int16_t>(v, &b->damage_radius);
-	visit<int16_t>(v, &b->nation_recno);
-	visit<int8_t>(v, &b->fire_radius);
-	visit<int16_t>(v, &b->origin_x);
-	visit<int16_t>(v, &b->origin_y);
-	visit<int16_t>(v, &b->target_x_loc);
-	visit<int16_t>(v, &b->target_y_loc);
-	visit<int8_t>(v, &b->cur_step);
-	visit<int8_t>(v, &b->total_step);
-}
-
-enum { BULLET_RECORD_SIZE = 57 };
 
 //--------- Begin of function Bullet::write_file ---------//
 //
 int Bullet::write_file(File* filePtr)
 {
-	return write_with_record_size(filePtr, this, &visit_bullet<FileWriterVisitor>,
-											BULLET_RECORD_SIZE);
+	write_record(&gf_rec.bullet);
+	if( !filePtr->file_write(&gf_rec, sizeof(BulletGF)) )
+		return 0;
+	return 1;
 }
 //----------- End of function Bullet::write_file ---------//
+
 
 //--------- Begin of function Bullet::read_file ---------//
 //
 int Bullet::read_file(File* filePtr)
 {
-	if (!read_with_record_size(filePtr, this, &visit_bullet<FileReaderVisitor>,
-										BULLET_RECORD_SIZE))
+	if( !filePtr->file_read(&gf_rec, sizeof(BulletGF)) )
 		return 0;
+	read_record(&gf_rec.bullet);
 
-   //------------ post-process the data read ----------//
+	//------------ post-process the data read ----------//
 
 	sprite_info = sprite_res[sprite_id];
 
