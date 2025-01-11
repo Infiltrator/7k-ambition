@@ -1668,6 +1668,162 @@ void Projectile::read_derived_record(ProjectileGF *r)
 	ReadCall(bullet_shadow);
 }
 
+void Worker::write_record(WorkerGF *r)
+{
+	WriteInt8(race_id);
+	WriteInt8(unit_id);
+	WriteInt16(town_recno);
+	WriteInt16(name_id);
+	WriteInt8(skill_id);
+	WriteInt8(skill_level);
+	WriteInt8(skill_level_minor);
+	WriteInt8(skill_potential);
+	WriteInt8(combat_level);
+	WriteInt8(combat_level_minor);
+	WriteInt16(spy_recno);
+	WriteInt8(rank_id);
+	WriteInt8(worker_loyalty);
+	WriteInt16(hit_points);
+	WriteInt16(extra_para);
+}
+
+void Worker::read_record(WorkerGF *r)
+{
+	ReadInt8(race_id);
+	ReadInt8(unit_id);
+	ReadInt16(town_recno);
+	ReadInt16(name_id);
+	ReadInt8(skill_id);
+	ReadInt8(skill_level);
+	ReadInt8(skill_level_minor);
+	ReadInt8(skill_potential);
+	ReadInt8(combat_level);
+	ReadInt8(combat_level_minor);
+	ReadInt16(spy_recno);
+	ReadInt8(rank_id);
+	ReadInt8(worker_loyalty);
+	ReadInt16(hit_points);
+	ReadInt16(extra_para);
+}
+
+void Firm::write_record(FirmGF *r)
+{
+	WriteZero(vtp); //zero
+
+	WriteInt8(firm_id);
+	WriteInt16(firm_build_id);
+	WriteInt16(firm_recno);
+	WriteInt8(firm_ai);
+	WriteInt8(ai_processed);
+	WriteInt8(ai_status);
+	WriteInt8(ai_link_checked);
+	WriteInt8(ai_sell_flag);
+	WriteInt8(race_id);
+	WriteInt16(nation_recno);
+	WriteInt16(closest_town_name_id);
+	WriteInt16(firm_name_instance_id);
+	WriteInt16(loc_x1);
+	WriteInt16(loc_y1);
+	WriteInt16(loc_x2);
+	WriteInt16(loc_y2);
+	WriteInt16(abs_x1);
+	WriteInt16(abs_y1);
+	WriteInt16(abs_x2);
+	WriteInt16(abs_y2);
+	WriteInt16(center_x);
+	WriteInt16(center_y);
+	WriteInt8(region_id);
+	WriteInt8(cur_frame);
+	WriteInt8(remain_frame_delay);
+	WriteFloat(hit_points);
+	WriteFloat(max_hit_points);
+	WriteInt8(under_construction);
+	WriteInt8(firm_skill_id);
+	WriteInt16(overseer_recno);
+	WriteInt16(overseer_town_recno);
+	WriteInt16(builder_recno);
+	WriteInt8(builder_region_id);
+	WriteFloat(productivity);
+	WriteZero(worker_array);
+	WriteInt8(worker_count);
+	WriteInt8(selected_worker_id);
+	WriteInt8(player_spy_count);
+	WriteInt8(sabotage_level);
+	WriteInt8(linked_firm_count);
+	WriteInt8(linked_town_count);
+	WriteInt16Array(linked_firm_array, MAX_LINKED_FIRM_FIRM);
+	WriteInt16Array(linked_town_array, MAX_LINKED_FIRM_TOWN);
+	WriteInt8Array(linked_firm_enable_array, MAX_LINKED_FIRM_FIRM);
+	WriteInt8Array(linked_town_enable_array, MAX_LINKED_FIRM_TOWN);
+	WriteFloat(last_year_income);
+	WriteFloat(cur_year_income);
+	WriteInt32(setup_date);
+	WriteInt8(should_set_power);
+	WriteInt32(last_attacked_date);
+	WriteInt8(should_close_flag);
+	WriteInt8(no_neighbor_space);
+	WriteInt8(ai_should_build_factory_count);
+}
+
+void Firm::read_record(FirmGF *r)
+{
+	// skip vtp
+
+	ReadInt8(firm_id);
+	ReadInt16(firm_build_id);
+	ReadInt16(firm_recno);
+	ReadInt8(firm_ai);
+	ReadInt8(ai_processed);
+	ReadInt8(ai_status);
+	ReadInt8(ai_link_checked);
+	ReadInt8(ai_sell_flag);
+	ReadInt8(race_id);
+	ReadInt16(nation_recno);
+	ReadInt16(closest_town_name_id);
+	ReadInt16(firm_name_instance_id);
+	ReadInt16(loc_x1);
+	ReadInt16(loc_y1);
+	ReadInt16(loc_x2);
+	ReadInt16(loc_y2);
+	ReadInt16(abs_x1);
+	ReadInt16(abs_y1);
+	ReadInt16(abs_x2);
+	ReadInt16(abs_y2);
+	ReadInt16(center_x);
+	ReadInt16(center_y);
+	ReadInt8(region_id);
+	ReadInt8(cur_frame);
+	ReadInt8(remain_frame_delay);
+	ReadFloat(hit_points);
+	ReadFloat(max_hit_points);
+	ReadInt8(under_construction);
+	ReadInt8(firm_skill_id);
+	ReadInt16(overseer_recno);
+	ReadInt16(overseer_town_recno);
+	ReadInt16(builder_recno);
+	ReadInt8(builder_region_id);
+	ReadFloat(productivity);
+	// skip worker_array
+	ReadInt8(worker_count);
+	ReadInt8(selected_worker_id);
+	ReadInt8(player_spy_count);
+	ReadInt8(sabotage_level);
+	ReadInt8(linked_firm_count);
+	ReadInt8(linked_town_count);
+	ReadInt16Array(linked_firm_array, MAX_LINKED_FIRM_FIRM);
+	ReadInt16Array(linked_town_array, MAX_LINKED_FIRM_TOWN);
+	ReadInt8Array(linked_firm_enable_array, MAX_LINKED_FIRM_FIRM);
+	ReadInt8Array(linked_town_enable_array, MAX_LINKED_FIRM_TOWN);
+	ReadFloat(last_year_income);
+	ReadFloat(cur_year_income);
+	ReadInt32(setup_date);
+	ReadInt8(should_set_power);
+	ReadInt32(last_attacked_date);
+	ReadInt8(should_close_flag);
+	ReadInt8(no_neighbor_space);
+	ReadInt8(ai_should_build_factory_count);
+}
+
 void Tornado::write_record(TornadoGF *r)
 {
 	WriteZero(vtp); //zero

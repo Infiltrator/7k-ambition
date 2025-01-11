@@ -848,6 +848,84 @@ struct ProjectileGF
 	SpriteGF             bullet_shadow;
 };
 
+struct WorkerGF
+{
+	int8_t               race_id;
+	int8_t               unit_id;
+	int16_t              town_recno;
+	uint16_t             name_id;
+	int8_t               skill_id;
+	int8_t               skill_level;
+	int8_t               skill_level_minor;
+	int8_t               skill_potential;
+	int8_t               combat_level;
+	int8_t               combat_level_minor;
+	int16_t              spy_recno;
+	int8_t               rank_id;
+	int8_t               worker_loyalty;
+	int16_t              hit_points;
+	int16_t              extra_para;
+};
+
+struct FirmGF
+{
+	uint32_t             vtp; //zero
+
+	int8_t               firm_id;
+	int16_t              firm_build_id;
+	int16_t              firm_recno;
+	int8_t               firm_ai;
+	int8_t               ai_processed;
+	int8_t               ai_status;
+	int8_t               ai_link_checked;
+	int8_t               ai_sell_flag;
+	int8_t               race_id;
+	int16_t              nation_recno;
+	int16_t              closest_town_name_id;
+	int16_t              firm_name_instance_id;
+	int16_t              loc_x1;
+	int16_t              loc_y1;
+	int16_t              loc_x2;
+	int16_t              loc_y2;
+	int16_t              abs_x1;
+	int16_t              abs_y1;
+	int16_t              abs_x2;
+	int16_t              abs_y2;
+	int16_t              center_x;
+	int16_t              center_y;
+	uint8_t              region_id;
+	int8_t               cur_frame;
+	int8_t               remain_frame_delay;
+	float                hit_points;
+	float                max_hit_points;
+	int8_t               under_construction;
+	int8_t               firm_skill_id;
+	int16_t              overseer_recno;
+	int16_t              overseer_town_recno;
+	int16_t              builder_recno;
+	uint8_t              builder_region_id;
+	float                productivity;
+	uint32_t             worker_array; //zero
+	int8_t               worker_count;
+	int8_t               selected_worker_id;
+	int8_t               player_spy_count;
+	uint8_t              sabotage_level;
+	int8_t               linked_firm_count;
+	int8_t               linked_town_count;
+	int16_t              linked_firm_array[MAX_LINKED_FIRM_FIRM];
+	int16_t              linked_town_array[MAX_LINKED_FIRM_TOWN];
+	int8_t               linked_firm_enable_array[MAX_LINKED_FIRM_FIRM];
+	int8_t               linked_town_enable_array[MAX_LINKED_FIRM_TOWN];
+	float                last_year_income;
+	float                cur_year_income;
+	int32_t              setup_date;
+	int8_t               should_set_power;
+	int32_t              last_attacked_date;
+	int8_t               should_close_flag;
+	int8_t               no_neighbor_space;
+	int8_t               ai_should_build_factory_count;
+};
+
 struct TornadoGF
 {
 	uint32_t             vtp; //zero
@@ -887,6 +965,7 @@ union GFRec
 	BulletGF bullet;
 	BulletHomingGF bullet_homing;
 	DynArrayGF dyn_array;
+	FirmGF firm;
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;

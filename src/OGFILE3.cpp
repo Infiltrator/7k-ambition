@@ -740,83 +740,6 @@ int Projectile::read_derived_file(File *filePtr)
 
 //*****//
 
-template <typename Visitor>
-static void visit_firm(Visitor *v, Firm *f)
-{
-	v->skip(4); /* virtual table pointer */
-
-	visit<int8_t>(v, &f->firm_id);
-	visit<int16_t>(v, &f->firm_build_id);
-	visit<int16_t>(v, &f->firm_recno);
-	visit<int8_t>(v, &f->firm_ai);
-	visit<int8_t>(v, &f->ai_processed);
-	visit<int8_t>(v, &f->ai_status);
-	visit<int8_t>(v, &f->ai_link_checked);
-	visit<int8_t>(v, &f->ai_sell_flag);
-	visit<int8_t>(v, &f->race_id);
-	visit<int16_t>(v, &f->nation_recno);
-	visit<int16_t>(v, &f->closest_town_name_id);
-	visit<int16_t>(v, &f->firm_name_instance_id);
-	visit<int16_t>(v, &f->loc_x1);
-	visit<int16_t>(v, &f->loc_y1);
-	visit<int16_t>(v, &f->loc_x2);
-	visit<int16_t>(v, &f->loc_y2);
-	visit<int16_t>(v, &f->abs_x1);
-	visit<int16_t>(v, &f->abs_y1);
-	visit<int16_t>(v, &f->abs_x2);
-	visit<int16_t>(v, &f->abs_y2);
-	visit<int16_t>(v, &f->center_x);
-	visit<int16_t>(v, &f->center_y);
-	visit<uint8_t>(v, &f->region_id);
-	visit<int8_t>(v, &f->cur_frame);
-	visit<int8_t>(v, &f->remain_frame_delay);
-	visit<float>(v, &f->hit_points);
-	visit<float>(v, &f->max_hit_points);
-	visit<int8_t>(v, &f->under_construction);
-	visit<int8_t>(v, &f->firm_skill_id);
-	visit<int16_t>(v, &f->overseer_recno);
-	visit<int16_t>(v, &f->overseer_town_recno);
-	visit<int16_t>(v, &f->builder_recno);
-	visit<uint8_t>(v, &f->builder_region_id);
-	visit<float>(v, &f->productivity);
-	visit_pointer(v, &f->worker_array);
-	visit<int8_t>(v, &f->worker_count);
-	visit<int8_t>(v, &f->selected_worker_id);
-	visit<int8_t>(v, &f->player_spy_count);
-	visit<uint8_t>(v, &f->sabotage_level);
-	visit<int8_t>(v, &f->linked_firm_count);
-	visit<int8_t>(v, &f->linked_town_count);
-	visit_array<int16_t>(v, f->linked_firm_array, MAX_LINKED_FIRM_FIRM);
-	visit_array<int16_t>(v, f->linked_town_array, MAX_LINKED_FIRM_TOWN);
-
-	visit_array<int8_t>(v, f->linked_firm_enable_array,
-							  MAX_LINKED_FIRM_FIRM);
-
-	visit_array<int8_t>(v, f->linked_town_enable_array,
-							  MAX_LINKED_FIRM_TOWN);
-
-	visit<float>(v, &f->last_year_income);
-	visit<float>(v, &f->cur_year_income);
-	visit<int32_t>(v, &f->setup_date);
-	visit<int8_t>(v, &f->should_set_power);
-	visit<int32_t>(v, &f->last_attacked_date);
-	visit<int8_t>(v, &f->should_close_flag);
-	visit<int8_t>(v, &f->no_neighbor_space);
-	visit<int8_t>(v, &f->ai_should_build_factory_count);
-}
-
-enum { FIRM_RECORD_SIZE = 254 };
-
-static bool read_firm(File *file, Firm *firm)
-{
-	return read_with_record_size(file, firm, &visit_firm<FileReaderVisitor>, FIRM_RECORD_SIZE);
-}
-
-static bool write_firm(File *file, Firm *firm)
-{
-	return write_with_record_size(file, firm, &visit_firm<FileWriterVisitor>, FIRM_RECORD_SIZE);
-}
-
 //-------- Start of function FirmArray::write_file -------------//
 //
 int FirmArray::write_file(File* filePtr)
@@ -851,16 +774,8 @@ int FirmArray::write_file(File* filePtr)
 
          //------ write data in base class --------//
 
-			if (!write_firm(filePtr, firmPtr))
-			  return 0;
-
-         //--------- write worker_array ---------//
-
-         if( firmPtr->worker_array )
-         {
-            if( !filePtr->file_write( firmPtr->worker_array, MAX_WORKER*sizeof(Worker) ) )
-               return 0;
-         }
+			if( !firmPtr->write_file(filePtr) )
+				return 0;
 
          //------ write data in derived class ------//
 
@@ -876,6 +791,7 @@ int FirmArray::write_file(File* filePtr)
    return 1;
 }
 //--------- End of function FirmArray::write_file ---------------//
+
 
 //-------- Start of function FirmArray::read_file -------------//
 //
@@ -908,25 +824,10 @@ int FirmArray::read_file(File* filePtr)
          firmRecno = create_firm( firmId );
          firmPtr   = firm_array[firmRecno];
 
-			if (!read_firm(filePtr, firmPtr))
-			  return 0;
-
          //---- read data in base class -----//
 
-			if(!GameFile::read_file_same_version && firmPtr->firm_id > FIRM_BASE)
-				firmPtr->firm_build_id += MAX_RACE - VERSION_1_MAX_RACE;
-
-         //--------- read worker_array ---------//
-
-         if( firm_res[firmId]->need_worker )
-         {
-            firmPtr->worker_array = (Worker*) mem_add( MAX_WORKER*sizeof(Worker) );
-
-            if( !filePtr->file_read( firmPtr->worker_array, MAX_WORKER*sizeof(Worker) ) )
-               return 0;
-
-            firmPtr->sort_worker(); // if this one selected, refresh interface
-         }
+			if( !firmPtr->read_file(filePtr) )
+				return 0;
 
          //----- read data in derived class -----//
 
@@ -965,6 +866,76 @@ int FirmArray::read_file(File* filePtr)
    return 1;
 }
 //--------- End of function FirmArray::read_file ---------------//
+
+
+//--------- Begin of function Firm::write_file ---------//
+//
+int Firm::write_file(File* filePtr)
+{
+	write_record(&gf_rec.firm);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmGF)) )
+		return 0;
+
+	//--------- write worker_array ---------//
+
+	if( worker_array )
+	{
+		WorkerGF *worker_record_array = (WorkerGF*) mem_add( MAX_WORKER*sizeof(WorkerGF) );
+
+		for( int i=0; i<MAX_WORKER; i++ )
+		{
+			Worker *workerPtr = worker_array+i;
+			workerPtr->write_record(worker_record_array+i);
+		}
+		if( !filePtr->file_write(worker_record_array, MAX_WORKER*sizeof(WorkerGF)) )
+		{
+			mem_del(worker_record_array);
+			return 0;
+		}
+		mem_del(worker_record_array);
+	}
+
+	return 1;
+}
+//----------- End of function Firm::write_file ---------//
+
+
+//--------- Begin of function Firm::read_file ---------//
+//
+int Firm::read_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmGF)) )
+		return 0;
+	read_record(&gf_rec.firm);
+
+	if( !GameFile::read_file_same_version && firm_id > FIRM_BASE )
+		firm_build_id += MAX_RACE - VERSION_1_MAX_RACE;
+
+	//--------- read worker_array ---------//
+
+	if( firm_res[firm_id]->need_worker )
+	{
+		WorkerGF *worker_record_array = (WorkerGF*) mem_add( MAX_WORKER*sizeof(WorkerGF) );
+		worker_array = (Worker*) mem_add( MAX_WORKER*sizeof(Worker) );
+
+		if( !filePtr->file_read(worker_record_array, MAX_WORKER*sizeof(WorkerGF)) )
+		{
+			mem_del(worker_record_array);
+			return 0;
+		}
+		for( int i=0; i<MAX_WORKER; i++ )
+		{
+			Worker *workerPtr = worker_array+i;
+			workerPtr->read_record(worker_record_array+i);
+		}
+		mem_del(worker_record_array);
+
+		sort_worker(); // if this one selected, refresh interface
+	}
+
+	return 1;
+}
+//----------- End of function Firm::read_file ---------//
 
 
 //--------- Begin of function Firm::write_derived_file ---------//
