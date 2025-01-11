@@ -28,10 +28,12 @@
 
 #include <OGF_V1.h>
 #include <ONATIONB.h>
-
-struct MarketGoodsGFRec;
-struct SpriteGFRec;
-struct TradeStopGFRec;
+#include <OU_CARA.h>
+#include <OU_CART.h>
+#include <OU_GOD.h>
+#include <OU_MARI.h>
+#include <OU_MONS.h>
+#include <OU_VEHI.h>
 
 #pragma pack(1)
 struct DynArrayGF
@@ -44,6 +46,50 @@ struct DynArrayGF
 	int32_t              sort_offset;
 	int8_t               sort_type;
 	uint32_t             body_buf; //zero
+};
+
+struct SpriteGF
+{
+	uint32_t             vtp; //zero
+
+	int16_t              sprite_id;
+	int16_t              sprite_recno;
+	int8_t               mobile_type;
+	uint8_t              cur_action;
+	uint8_t              cur_dir;
+	uint8_t              cur_frame;
+	uint8_t              cur_attack;
+	uint8_t              final_dir;
+	int8_t               turn_delay;
+	int8_t               guard_count;
+	uint8_t              remain_attack_delay;
+	uint8_t              remain_frames_per_step;
+	int16_t              cur_x;
+	int16_t              cur_y;
+	int16_t              go_x;
+	int16_t              go_y;
+	int16_t              next_x;
+	int16_t              next_y;
+	uint32_t             sprite_info; //zero
+};
+
+struct AttackInfoGF
+{
+	uint8_t              combat_level;
+	uint8_t              attack_delay;
+	uint8_t              attack_range;
+	uint8_t              attack_damage;
+	uint8_t              pierce_damage;
+	int16_t              bullet_out_frame;
+	int8_t               bullet_speed;
+	int8_t               bullet_radius;
+	int8_t               bullet_sprite_id;
+	int8_t               dll_bullet_sprite_id;
+	int8_t               eqv_attack_next;
+	int16_t              min_power;
+	int16_t              consume_power;
+	int8_t               fire_radius;
+	int16_t              effect_id;
 };
 
 struct SkillGF
@@ -152,6 +198,98 @@ struct UnitGF
 	int8_t               seek_path_fail_count;
 	int8_t               ignore_power_nation;
 	uint32_t             has_team_info;
+};
+
+struct CaravanStopGF
+{
+	// TradeStop
+	int16_t              firm_recno;
+	int16_t              firm_loc_x1;
+	int16_t              firm_loc_y1;
+	int8_t               pick_up_type;
+	int8_t               pick_up_array[MAX_PICK_UP_GOODS];
+
+	// CaravanStop
+	int8_t               firm_id;
+};
+
+struct UnitCaravanGF
+{
+	int16_t              caravan_id;
+	int8_t               journey_status;
+	int8_t               dest_stop_id;
+	int8_t               stop_defined_num;
+	int8_t               wait_count;
+	int16_t              stop_x_loc;
+	int16_t              stop_y_loc;
+	CaravanStopGF        stop_array[MAX_STOP_FOR_CARAVAN];
+	int32_t              last_set_stop_date;
+	int32_t              last_load_goods_date;
+	int16_t              raw_qty_array[MAX_RAW];
+	int16_t              product_raw_qty_array[MAX_PRODUCT];
+};
+
+struct UnitExpCartGF
+{
+	int8_t               triggered;
+};
+
+struct UnitGodGF
+{
+	int16_t              god_id;
+	int16_t              base_firm_recno;
+	int8_t               cast_power_type;
+	int16_t              cast_origin_x;
+	int16_t              cast_origin_y;
+	int16_t              cast_target_x;
+	int16_t              cast_target_y;
+};
+
+struct ShipStopGF
+{
+	// TradeStop
+	int16_t              firm_recno;
+	int16_t              firm_loc_x1;
+	int16_t              firm_loc_y1;
+	int8_t               pick_up_type;
+	int8_t               pick_up_array[MAX_PICK_UP_GOODS];
+};
+
+struct UnitMarineGF
+{
+	SpriteGF             splash;
+	int8_t               menu_mode;
+	int8_t               extra_move_in_beach;
+	int8_t               in_beach;
+	int8_t               selected_unit_id;
+	int16_t              unit_recno_array[MAX_UNIT_IN_SHIP];
+	int8_t               unit_count;
+	int8_t               journey_status;
+	int8_t               dest_stop_id;
+	int8_t               stop_defined_num;
+	int8_t               wait_count;
+	int16_t              stop_x_loc;
+	int16_t              stop_y_loc;
+	int8_t               auto_mode;
+	int16_t              cur_firm_recno;
+	int16_t              carry_goods_capacity;
+	ShipStopGF           stop_array[MAX_STOP_FOR_SHIP];
+	int16_t              raw_qty_array[MAX_RAW];
+	int16_t              product_raw_qty_array[MAX_PRODUCT];
+	AttackInfoGF         ship_attack_info;
+	uint8_t              attack_mode_selected;
+	int32_t              last_load_goods_date;
+};
+
+struct UnitMonsterGF
+{
+	int8_t               monster_action_mode;
+};
+
+struct UnitVehicleGF
+{
+	int16_t              solider_hit_points;
+	int16_t              vehicle_hit_points;
 };
 
 struct AIRegionGF
@@ -656,6 +794,12 @@ union GFRec
 	NationGF nation;
 	NationArrayGF nation_array;
 	UnitGF unit;
+	UnitCaravanGF unit_caravan;
+	UnitExpCartGF unit_exp_cart;
+	UnitGodGF unit_god;
+	UnitMarineGF unit_marine;
+	UnitMonsterGF unit_monster;
+	UnitVehicleGF unit_vehicle;
 	Version_1_NationGF nation_v1;
 	Version_1_NationArrayGF nation_array_v1;
 };

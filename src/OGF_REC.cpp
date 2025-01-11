@@ -76,6 +76,94 @@ void DynArray::read_record(DynArrayGF *r)
 	// skip body_buf // the unknown array type must be restored by derived users
 }
 
+void Sprite::write_record(SpriteGF *r)
+{
+	WriteZero(vtp); //zero
+
+	WriteInt16(sprite_id);
+	WriteInt16(sprite_recno);
+	WriteInt8(mobile_type);
+	WriteInt8(cur_action);
+	WriteInt8(cur_dir);
+	WriteInt8(cur_frame);
+	WriteInt8(cur_attack);
+	WriteInt8(final_dir);
+	WriteInt8(turn_delay);
+	WriteInt8(guard_count);
+	WriteInt8(remain_attack_delay);
+	WriteInt8(remain_frames_per_step);
+	WriteInt16(cur_x);
+	WriteInt16(cur_y);
+	WriteInt16(go_x);
+	WriteInt16(go_y);
+	WriteInt16(next_x);
+	WriteInt16(next_y);
+	WriteZero(sprite_info);
+}
+
+void Sprite::read_record(SpriteGF *r)
+{
+	// skip vtp
+
+	ReadInt16(sprite_id);
+	ReadInt16(sprite_recno);
+	ReadInt8(mobile_type);
+	ReadInt8(cur_action);
+	ReadInt8(cur_dir);
+	ReadInt8(cur_frame);
+	ReadInt8(cur_attack);
+	ReadInt8(final_dir);
+	ReadInt8(turn_delay);
+	ReadInt8(guard_count);
+	ReadInt8(remain_attack_delay);
+	ReadInt8(remain_frames_per_step);
+	ReadInt16(cur_x);
+	ReadInt16(cur_y);
+	ReadInt16(go_x);
+	ReadInt16(go_y);
+	ReadInt16(next_x);
+	ReadInt16(next_y);
+	// skip sprite_info
+}
+
+void AttackInfo::write_record(AttackInfoGF *r)
+{
+	WriteInt8(combat_level);
+	WriteInt8(attack_delay);
+	WriteInt8(attack_range);
+	WriteInt8(attack_damage);
+	WriteInt8(pierce_damage);
+	WriteInt16(bullet_out_frame);
+	WriteInt8(bullet_speed);
+	WriteInt8(bullet_radius);
+	WriteInt8(bullet_sprite_id);
+	WriteInt8(dll_bullet_sprite_id);
+	WriteInt8(eqv_attack_next);
+	WriteInt16(min_power);
+	WriteInt16(consume_power);
+	WriteInt8(fire_radius);
+	WriteInt16(effect_id);
+}
+
+void AttackInfo::read_record(AttackInfoGF *r)
+{
+	ReadInt8(combat_level);
+	ReadInt8(attack_delay);
+	ReadInt8(attack_range);
+	ReadInt8(attack_damage);
+	ReadInt8(pierce_damage);
+	ReadInt16(bullet_out_frame);
+	ReadInt8(bullet_speed);
+	ReadInt8(bullet_radius);
+	ReadInt8(bullet_sprite_id);
+	ReadInt8(dll_bullet_sprite_id);
+	ReadInt8(eqv_attack_next);
+	ReadInt16(min_power);
+	ReadInt16(consume_power);
+	ReadInt8(fire_radius);
+	ReadInt16(effect_id);
+}
+
 void Skill::write_record(SkillGF *r)
 {
 	WriteInt8(combat_level);
@@ -290,6 +378,190 @@ void Unit::read_record(UnitGF *r)
 	ReadInt8(seek_path_fail_count);
 	ReadInt8(ignore_power_nation);
 	team_info = r->has_team_info ? (TeamInfo*)0xdeadbeef : 0;
+}
+
+void CaravanStop::write_record(CaravanStopGF *r)
+{
+	// TradeStop
+	WriteInt16(firm_recno);
+	WriteInt16(firm_loc_x1);
+	WriteInt16(firm_loc_y1);
+	WriteInt8(pick_up_type);
+	WriteInt8Array(pick_up_array, MAX_PICK_UP_GOODS);
+
+	// CaravanStop
+	WriteInt8(firm_id);
+}
+
+void CaravanStop::read_record(CaravanStopGF *r)
+{
+	// TradeStop
+	ReadInt16(firm_recno);
+	ReadInt16(firm_loc_x1);
+	ReadInt16(firm_loc_y1);
+	ReadInt8(pick_up_type);
+	ReadInt8Array(pick_up_array, MAX_PICK_UP_GOODS);
+
+	// CaravanStop
+	ReadInt8(firm_id);
+}
+
+void UnitCaravan::write_derived_record(UnitCaravanGF *r)
+{
+	WriteInt16(caravan_id);
+	WriteInt8(journey_status);
+	WriteInt8(dest_stop_id);
+	WriteInt8(stop_defined_num);
+	WriteInt8(wait_count);
+	WriteInt16(stop_x_loc);
+	WriteInt16(stop_y_loc);
+	WriteCallArray(stop_array, MAX_STOP_FOR_CARAVAN);
+	WriteInt32(last_set_stop_date);
+	WriteInt32(last_load_goods_date);
+	WriteInt16Array(raw_qty_array, MAX_RAW);
+	WriteInt16Array(product_raw_qty_array, MAX_PRODUCT);
+}
+
+void UnitCaravan::read_derived_record(UnitCaravanGF *r)
+{
+	ReadInt16(caravan_id);
+	ReadInt8(journey_status);
+	ReadInt8(dest_stop_id);
+	ReadInt8(stop_defined_num);
+	ReadInt8(wait_count);
+	ReadInt16(stop_x_loc);
+	ReadInt16(stop_y_loc);
+	ReadCallArray(stop_array, MAX_STOP_FOR_CARAVAN);
+	ReadInt32(last_set_stop_date);
+	ReadInt32(last_load_goods_date);
+	ReadInt16Array(raw_qty_array, MAX_RAW);
+	ReadInt16Array(product_raw_qty_array, MAX_PRODUCT);
+}
+
+void UnitExpCart::write_derived_record(UnitExpCartGF *r)
+{
+	WriteInt8(triggered);
+}
+
+void UnitExpCart::read_derived_record(UnitExpCartGF *r)
+{
+	ReadInt8(triggered);
+}
+
+void UnitGod::write_derived_record(UnitGodGF *r)
+{
+	WriteInt16(god_id);
+	WriteInt16(base_firm_recno);
+	WriteInt8(cast_power_type);
+	WriteInt16(cast_origin_x);
+	WriteInt16(cast_origin_y);
+	WriteInt16(cast_target_x);
+	WriteInt16(cast_target_y);
+}
+
+void UnitGod::read_derived_record(UnitGodGF *r)
+{
+	ReadInt16(god_id);
+	ReadInt16(base_firm_recno);
+	ReadInt8(cast_power_type);
+	ReadInt16(cast_origin_x);
+	ReadInt16(cast_origin_y);
+	ReadInt16(cast_target_x);
+	ReadInt16(cast_target_y);
+}
+
+void ShipStop::write_record(ShipStopGF *r)
+{
+	// TradeStop
+	WriteInt16(firm_recno);
+	WriteInt16(firm_loc_x1);
+	WriteInt16(firm_loc_y1);
+	WriteInt8(pick_up_type);
+	WriteInt8Array(pick_up_array, MAX_PICK_UP_GOODS);
+}
+
+void ShipStop::read_record(ShipStopGF *r)
+{
+	// TradeStop
+	ReadInt16(firm_recno);
+	ReadInt16(firm_loc_x1);
+	ReadInt16(firm_loc_y1);
+	ReadInt8(pick_up_type);
+	ReadInt8Array(pick_up_array, MAX_PICK_UP_GOODS);
+}
+
+void UnitMarine::write_derived_record(UnitMarineGF *r)
+{
+	WriteCall(splash);
+	WriteInt8(menu_mode);
+	WriteInt8(extra_move_in_beach);
+	WriteInt8(in_beach);
+	WriteInt8(selected_unit_id);
+	WriteInt16Array(unit_recno_array, MAX_UNIT_IN_SHIP);
+	WriteInt8(unit_count);
+	WriteInt8(journey_status);
+	WriteInt8(dest_stop_id);
+	WriteInt8(stop_defined_num);
+	WriteInt8(wait_count);
+	WriteInt16(stop_x_loc);
+	WriteInt16(stop_y_loc);
+	WriteInt8(auto_mode);
+	WriteInt16(cur_firm_recno);
+	WriteInt16(carry_goods_capacity);
+	WriteCallArray(stop_array, MAX_STOP_FOR_SHIP);
+	WriteInt16Array(raw_qty_array, MAX_RAW);
+	WriteInt16Array(product_raw_qty_array, MAX_PRODUCT);
+	WriteCall(ship_attack_info);
+	WriteInt8(attack_mode_selected);
+	WriteInt32(last_load_goods_date);
+}
+
+void UnitMarine::read_derived_record(UnitMarineGF *r)
+{
+	ReadCall(splash);
+	ReadInt8(menu_mode);
+	ReadInt8(extra_move_in_beach);
+	ReadInt8(in_beach);
+	ReadInt8(selected_unit_id);
+	ReadInt16Array(unit_recno_array, MAX_UNIT_IN_SHIP);
+	ReadInt8(unit_count);
+	ReadInt8(journey_status);
+	ReadInt8(dest_stop_id);
+	ReadInt8(stop_defined_num);
+	ReadInt8(wait_count);
+	ReadInt16(stop_x_loc);
+	ReadInt16(stop_y_loc);
+	ReadInt8(auto_mode);
+	ReadInt16(cur_firm_recno);
+	ReadInt16(carry_goods_capacity);
+	ReadCallArray(stop_array, MAX_STOP_FOR_SHIP);
+	ReadInt16Array(raw_qty_array, MAX_RAW);
+	ReadInt16Array(product_raw_qty_array, MAX_PRODUCT);
+	ReadCall(ship_attack_info);
+	ReadInt8(attack_mode_selected);
+	ReadInt32(last_load_goods_date);
+}
+
+void UnitMonster::write_derived_record(UnitMonsterGF *r)
+{
+	WriteInt8(monster_action_mode);
+}
+
+void UnitMonster::read_derived_record(UnitMonsterGF *r)
+{
+	ReadInt8(monster_action_mode);
+}
+
+void UnitVehicle::write_derived_record(UnitVehicleGF *r)
+{
+	WriteInt16(solider_hit_points);
+	WriteInt16(vehicle_hit_points);
+}
+
+void UnitVehicle::read_derived_record(UnitVehicleGF *r)
+{
+	ReadInt16(solider_hit_points);
+	ReadInt16(vehicle_hit_points);
 }
 
 void AIRegion::write_record(AIRegionGF *r)

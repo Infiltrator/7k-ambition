@@ -373,74 +373,90 @@ int Unit::read_derived_file(File* filePtr)
 }
 //----------- End of function Unit::read_derived_file ---------//
 
-template <typename Visitor>
-static void visit_trade_stop(Visitor *v, TradeStop *ts)
+
+//--------- Begin of function UnitCaravan::write_derived_file ---------//
+int UnitCaravan::write_derived_file(File *filePtr)
 {
-	visit<int16_t>(v, &ts->firm_recno);
-	visit<int16_t>(v, &ts->firm_loc_x1);
-	visit<int16_t>(v, &ts->firm_loc_y1);
-	visit<int8_t>(v, &ts->pick_up_type);
-	visit_array<int8_t>(v, ts->pick_up_array, MAX_PICK_UP_GOODS);
+	write_derived_record(&gf_rec.unit_caravan);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitCaravanGF)) )
+		return 0;
+	return 1;
 }
+//--------- End of function UnitCaravan::write_derived_file ---------//
 
-template <typename Visitor>
-static void visit_attack_info(Visitor *v, AttackInfo *ai)
+
+//--------- Begin of function UnitCaravan::read_derived_file ---------//
+int UnitCaravan::read_derived_file(File* filePtr)
 {
-	visit<uint8_t>(v, &ai->combat_level);
-	visit<uint8_t>(v, &ai->attack_delay);
-	visit<uint8_t>(v, &ai->attack_range);
-	visit<uint8_t>(v, &ai->attack_damage);
-   visit<uint8_t>(v, &ai->pierce_damage);
-	visit<int16_t>(v, &ai->bullet_out_frame);
-	visit<int8_t>(v, &ai->bullet_speed);
-	visit<int8_t>(v, &ai->bullet_radius);
-	visit<int8_t>(v, &ai->bullet_sprite_id);
-	visit<int8_t>(v, &ai->dll_bullet_sprite_id);
-	visit<int8_t>(v, &ai->eqv_attack_next);
-	visit<int16_t>(v, &ai->min_power);
-	visit<int16_t>(v, &ai->consume_power);
-	visit<int8_t>(v, &ai->fire_radius);
-	visit<int16_t>(v, &ai->effect_id);
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitCaravanGF)) )
+		return 0;
+	read_derived_record(&gf_rec.unit_caravan);
+	return 1;
 }
+//--------- End of function UnitCaravan::read_derived_file ---------//
 
-template <typename Visitor>
-static void visit_unit_marine_derived(Visitor *v, UnitMarine *u)
+
+//--------- Begin of function UnitExpCart::write_derived_file ---------//
+int UnitExpCart::write_derived_file(File *filePtr)
 {
-	visit_sprite(v, &u->splash);
-	visit<int8_t>(v, &u->menu_mode);
-	visit<int8_t>(v, &u->extra_move_in_beach);
-	visit<int8_t>(v, &u->in_beach);
-	visit<int8_t>(v, &u->selected_unit_id);
-	visit_array<int16_t>(v, u->unit_recno_array, MAX_UNIT_IN_SHIP);
-	visit<int8_t>(v, &u->unit_count);
-	visit<int8_t>(v, &u->journey_status);
-	visit<int8_t>(v, &u->dest_stop_id);
-	visit<int8_t>(v, &u->stop_defined_num);
-	visit<int8_t>(v, &u->wait_count);
-	visit<int16_t>(v, &u->stop_x_loc);
-	visit<int16_t>(v, &u->stop_y_loc);
-	visit<int8_t>(v, &u->auto_mode);
-	visit<int16_t>(v, &u->cur_firm_recno);
-	visit<int16_t>(v, &u->carry_goods_capacity);
-
-	for (int n = 0; n < MAX_STOP_FOR_SHIP; n++)
-		visit_trade_stop(v, &u->stop_array[n]);
-
-	visit_array<int16_t>(v, u->raw_qty_array, MAX_RAW);
-	visit_array<int16_t>(v, u->product_raw_qty_array, MAX_PRODUCT);
-	visit_attack_info(v, &u->ship_attack_info);
-	visit<uint8_t>(v, &u->attack_mode_selected);
-	visit<int32_t>(v, &u->last_load_goods_date);
+	write_derived_record(&gf_rec.unit_exp_cart);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitExpCartGF)) )
+		return 0;
+	return 1;
 }
+//--------- End of function UnitExpCart::write_derived_file ---------//
 
-enum { UNIT_MARINE_DERIVED_RECORD_SIZE = 145 };
+
+//--------- Begin of function UnitExpCart::read_derived_file ---------//
+int UnitExpCart::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitExpCartGF)) )
+		return 0;
+	read_derived_record(&gf_rec.unit_exp_cart);
+	return 1;
+}
+//--------- End of function UnitExpCart::read_derived_file ---------//
+
+
+//--------- Begin of function UnitGod::write_derived_file ---------//
+int UnitGod::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.unit_god);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitGodGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function UnitGod::write_derived_file ---------//
+
+
+//--------- Begin of function UnitGod::read_derived_file ---------//
+int UnitGod::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitGodGF)) )
+		return 0;
+	read_derived_record(&gf_rec.unit_god);
+	return 1;
+}
+//--------- End of function UnitGod::read_derived_file ---------//
+
+
+//--------- Begin of function UnitMarine::write_derived_file ---------//
+int UnitMarine::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.unit_marine);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitMarineGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function UnitMarine::write_derived_file ---------//
+
 
 //--------- Begin of function UnitMarine::read_derived_file ---------//
 int UnitMarine::read_derived_file(File* filePtr)
 {
-	if (!read_with_record_size(filePtr, this, &visit_unit_marine_derived<FileReaderVisitor>,
-										UNIT_MARINE_DERIVED_RECORD_SIZE))
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitMarineGF)) )
 		return 0;
+	read_derived_record(&gf_rec.unit_marine);
 
 	// ------- post-process the data read --------//
 	splash.sprite_info = sprite_res[splash.sprite_id];
@@ -450,11 +466,49 @@ int UnitMarine::read_derived_file(File* filePtr)
 }
 //--------- End of function UnitMarine::read_derived_file ---------//
 
-int UnitMarine::write_derived_file(File *filePtr)
+
+//--------- Begin of function UnitMonster::write_derived_file ---------//
+int UnitMonster::write_derived_file(File *filePtr)
 {
-	return write_with_record_size(filePtr, this, &visit_unit_marine_derived<FileWriterVisitor>,
-											UNIT_MARINE_DERIVED_RECORD_SIZE);
+	write_derived_record(&gf_rec.unit_monster);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitMonsterGF)) )
+		return 0;
+	return 1;
 }
+//--------- End of function UnitMonster::write_derived_file ---------//
+
+
+//--------- Begin of function UnitMonster::read_derived_file ---------//
+int UnitMonster::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitMonsterGF)) )
+		return 0;
+	read_derived_record(&gf_rec.unit_monster);
+	return 1;
+}
+//--------- End of function UnitMonster::read_derived_file ---------//
+
+
+//--------- Begin of function UnitVehicle::write_derived_file ---------//
+int UnitVehicle::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.unit_vehicle);
+	if( !filePtr->file_write(&gf_rec, sizeof(UnitVehicleGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function UnitVehicle::write_derived_file ---------//
+
+
+//--------- Begin of function UnitVehicle::read_derived_file ---------//
+int UnitVehicle::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(UnitVehicleGF)) )
+		return 0;
+	read_derived_record(&gf_rec.unit_vehicle);
+	return 1;
+}
+//--------- End of function UnitVehicle::read_derived_file ---------//
 
 
 //*****//
