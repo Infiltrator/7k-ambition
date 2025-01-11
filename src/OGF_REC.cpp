@@ -1667,3 +1667,67 @@ void Projectile::read_derived_record(ProjectileGF *r)
 	ReadCall(act_bullet);
 	ReadCall(bullet_shadow);
 }
+
+void Tornado::write_record(TornadoGF *r)
+{
+	WriteZero(vtp); //zero
+
+	// Sprite
+	WriteInt16(sprite_id);
+	WriteInt16(sprite_recno);
+	WriteInt8(mobile_type);
+	WriteInt8(cur_action);
+	WriteInt8(cur_dir);
+	WriteInt8(cur_frame);
+	WriteInt8(cur_attack);
+	WriteInt8(final_dir);
+	WriteInt8(turn_delay);
+	WriteInt8(guard_count);
+	WriteInt8(remain_attack_delay);
+	WriteInt8(remain_frames_per_step);
+	WriteInt16(cur_x);
+	WriteInt16(cur_y);
+	WriteInt16(go_x);
+	WriteInt16(go_y);
+	WriteInt16(next_x);
+	WriteInt16(next_y);
+	WriteZero(sprite_info);
+
+	// Tornado
+	WriteFloat(attack_damage);
+	WriteInt16(life_time);
+	WriteInt16(dmg_offset_x);
+	WriteInt16(dmg_offset_y);
+}
+
+void Tornado::read_record(TornadoGF *r)
+{
+	// skip vtp
+
+	// Sprite
+	ReadInt16(sprite_id);
+	ReadInt16(sprite_recno);
+	ReadInt8(mobile_type);
+	ReadInt8(cur_action);
+	ReadInt8(cur_dir);
+	ReadInt8(cur_frame);
+	ReadInt8(cur_attack);
+	ReadInt8(final_dir);
+	ReadInt8(turn_delay);
+	ReadInt8(guard_count);
+	ReadInt8(remain_attack_delay);
+	ReadInt8(remain_frames_per_step);
+	ReadInt16(cur_x);
+	ReadInt16(cur_y);
+	ReadInt16(go_x);
+	ReadInt16(go_y);
+	ReadInt16(next_x);
+	ReadInt16(next_y);
+	// skip sprite_info
+
+	// Tornado
+	ReadFloat(attack_damage);
+	ReadInt16(life_time);
+	ReadInt16(dmg_offset_x);
+	ReadInt16(dmg_offset_y);
+}

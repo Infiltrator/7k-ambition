@@ -253,31 +253,6 @@ int Unit::write_file(File* filePtr)
 }
 //----------- End of function Unit::write_file ---------//
 
-template <typename Visitor>
-static void visit_sprite(Visitor *v, Sprite *s)
-{
-	v->skip(4); /* virtual table pointer */
-
-	visit<int16_t>(v, &s->sprite_id);
-	visit<int16_t>(v, &s->sprite_recno);
-	visit<int8_t>(v, &s->mobile_type);
-	visit<uint8_t>(v, &s->cur_action);
-	visit<uint8_t>(v, &s->cur_dir);
-	visit<uint8_t>(v, &s->cur_frame);
-	visit<uint8_t>(v, &s->cur_attack);
-	visit<uint8_t>(v, &s->final_dir);
-	visit<int8_t>(v, &s->turn_delay);
-	visit<int8_t>(v, &s->guard_count);
-	visit<uint8_t>(v, &s->remain_attack_delay);
-	visit<uint8_t>(v, &s->remain_frames_per_step);
-	visit<int16_t>(v, &s->cur_x);
-	visit<int16_t>(v, &s->cur_y);
-	visit<int16_t>(v, &s->go_x);
-	visit<int16_t>(v, &s->go_y);
-	visit<int16_t>(v, &s->next_x);
-	visit<int16_t>(v, &s->next_y);
-	visit_pointer(v, &s->sprite_info);
-}
 
 //--------- Begin of function Unit::read_file ---------//
 //
@@ -1568,38 +1543,30 @@ int TornadoArray::read_file(File* filePtr)
 }
 //--------- End of function TornadoArray::read_file ---------------//
 
-template <typename Visitor>
-static void visit_tornado(Visitor *v, Tornado *t)
-{
-	visit_sprite(v, t);
-   visit<float>(v, &t->attack_damage);
-   visit<int16_t>(v, &t->life_time);
-   visit<int16_t>(v, &t->dmg_offset_x);
-   visit<int16_t>(v, &t->dmg_offset_y);
-}
-
-enum { TORNADO_RECORD_SIZE = 44 };
 
 //--------- Begin of function Tornado::write_file ---------//
 //
 int Tornado::write_file(File* filePtr)
 {
-	return write_with_record_size(filePtr, this, &visit_tornado<FileWriterVisitor>,
-											TORNADO_RECORD_SIZE);
+	write_record(&gf_rec.tornado);
+	if( !filePtr->file_write(&gf_rec, sizeof(TornadoGF)) )
+		return 0;
+	return 1;
 }
 //----------- End of function Tornado::write_file ---------//
+
 
 //--------- Begin of function Tornado::read_file ---------//
 //
 int Tornado::read_file(File* filePtr)
 {
-	if (!read_with_record_size(filePtr, this, &visit_tornado<FileReaderVisitor>,
-										TORNADO_RECORD_SIZE))
+	if( !filePtr->file_read(&gf_rec, sizeof(TornadoGF)) )
 		return 0;
+	read_record(&gf_rec.tornado);
 
-   //------------ post-process the data read ----------//
+	//------------ post-process the data read ----------//
 
-   sprite_info = sprite_res[sprite_id];
+	sprite_info = sprite_res[sprite_id];
 
 	sprite_info->load_bitmap_res();
 

@@ -31,6 +31,7 @@
 #include <OB_PROJ.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
+#include <OTORNADO.h>
 #include <OU_CARA.h>
 #include <OU_CART.h>
 #include <OU_GOD.h>
@@ -846,6 +847,38 @@ struct ProjectileGF
 	SpriteGF             act_bullet;
 	SpriteGF             bullet_shadow;
 };
+
+struct TornadoGF
+{
+	uint32_t             vtp; //zero
+
+	// Sprite
+	int16_t              sprite_id;
+	int16_t              sprite_recno;
+	int8_t               mobile_type;
+	uint8_t              cur_action;
+	uint8_t              cur_dir;
+	uint8_t              cur_frame;
+	uint8_t              cur_attack;
+	uint8_t              final_dir;
+	int8_t               turn_delay;
+	int8_t               guard_count;
+	uint8_t              remain_attack_delay;
+	uint8_t              remain_frames_per_step;
+	int16_t              cur_x;
+	int16_t              cur_y;
+	int16_t              go_x;
+	int16_t              go_y;
+	int16_t              next_x;
+	int16_t              next_y;
+	uint32_t             sprite_info; //zero
+
+	// Tornado
+	float                attack_damage;
+	int16_t              life_time;
+	int16_t              dmg_offset_x;
+	int16_t              dmg_offset_y;
+};
 #pragma pack()
 
 
@@ -857,6 +890,7 @@ union GFRec
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
+	TornadoGF tornado;
 	UnitGF unit;
 	UnitCaravanGF unit_caravan;
 	UnitExpCartGF unit_exp_cart;
