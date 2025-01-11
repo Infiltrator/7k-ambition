@@ -712,31 +712,48 @@ int Bullet::read_derived_file(File *filePtr)
 }
 //----------- End of function Bullet::read_derived_file ---------//
 
-template <typename Visitor>
-static void visit_projectile(Visitor *v, Projectile *p)
+
+//--------- Begin of function BulletHoming::write_derived_file ---------//
+int BulletHoming::write_derived_file(File *filePtr)
 {
-	visit<float>(v, &p->z_coff);
-	visit_sprite(v, &p->act_bullet);
-	visit_sprite(v, &p->bullet_shadow);
+	write_derived_record(&gf_rec.bullet_homing);
+	if( !filePtr->file_write(&gf_rec, sizeof(BulletHomingGF)) )
+		return 0;
+	return 1;
 }
+//--------- End of function BulletHoming::write_derived_file ---------//
 
-enum { PROJECTILE_RECORD_SIZE = 72 };
 
-//----------- Begin of function Projectile::read_derived_file ---------//
+//--------- Begin of function BulletHoming::read_derived_file ---------//
+int BulletHoming::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(BulletHomingGF)) )
+		return 0;
+	read_derived_record(&gf_rec.bullet_homing);
+	return 1;
+}
+//--------- End of function BulletHoming::read_derived_file ---------//
 
+
+//----------- Begin of function Projectile::write_derived_file ---------//
 int Projectile::write_derived_file(File *filePtr)
 {
-	return write_with_record_size(filePtr, this, &visit_projectile<FileWriterVisitor>,
-											PROJECTILE_RECORD_SIZE);
+	write_derived_record(&gf_rec.projectile);
+	if( !filePtr->file_write(&gf_rec, sizeof(ProjectileGF)) )
+		return 0;
+	return 1;
 }
+//----------- End of function Projectile::write_derived_file ---------//
 
+
+//----------- Begin of function Projectile::read_derived_file ---------//
 int Projectile::read_derived_file(File *filePtr)
 {
-	if (!read_with_record_size(filePtr, this, &visit_projectile<FileReaderVisitor>,
-										PROJECTILE_RECORD_SIZE))
+	if( !filePtr->file_read(&gf_rec, sizeof(ProjectileGF)) )
 		return 0;
+	read_derived_record(&gf_rec.projectile);
 
-   //----------- post-process the data read ----------//
+	//----------- post-process the data read ----------//
 	act_bullet.sprite_info = sprite_res[act_bullet.sprite_id];
 	act_bullet.sprite_info->load_bitmap_res();
 	bullet_shadow.sprite_info = sprite_res[bullet_shadow.sprite_id];

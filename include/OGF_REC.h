@@ -27,6 +27,8 @@
 #include <stdint.h>
 
 #include <OBULLET.h>
+#include <OB_HOMIN.h>
+#include <OB_PROJ.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
 #include <OU_CARA.h>
@@ -827,15 +829,34 @@ struct BulletGF
 	int8_t               cur_step;
 	int8_t               total_step;
 };
+
+struct BulletHomingGF
+{
+	int8_t               max_step;
+	int8_t               target_type;
+	int16_t              target_recno;
+	int16_t              speed;
+	int16_t              origin2_x;
+	int16_t              origin2_y;
+};
+
+struct ProjectileGF
+{
+	float                z_coff;
+	SpriteGF             act_bullet;
+	SpriteGF             bullet_shadow;
+};
 #pragma pack()
 
 
 union GFRec
 {
 	BulletGF bullet;
+	BulletHomingGF bullet_homing;
 	DynArrayGF dyn_array;
 	NationGF nation;
 	NationArrayGF nation_array;
+	ProjectileGF projectile;
 	UnitGF unit;
 	UnitCaravanGF unit_caravan;
 	UnitExpCartGF unit_exp_cart;

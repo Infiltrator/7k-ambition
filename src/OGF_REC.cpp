@@ -1633,3 +1633,37 @@ void Bullet::read_record(BulletGF *r)
 	ReadInt8(cur_step);
 	ReadInt8(total_step);
 }
+
+void BulletHoming::write_derived_record(BulletHomingGF *r)
+{
+	WriteInt8(max_step);
+	WriteInt8(target_type);
+	WriteInt16(target_recno);
+	WriteInt16(speed);
+	WriteInt16(origin2_x);
+	WriteInt16(origin2_y);
+}
+
+void BulletHoming::read_derived_record(BulletHomingGF *r)
+{
+	ReadInt8(max_step);
+	ReadInt8(target_type);
+	ReadInt16(target_recno);
+	ReadInt16(speed);
+	ReadInt16(origin2_x);
+	ReadInt16(origin2_y);
+}
+
+void Projectile::write_derived_record(ProjectileGF *r)
+{
+	WriteFloat(z_coff);
+	WriteCall(act_bullet);
+	WriteCall(bullet_shadow);
+}
+
+void Projectile::read_derived_record(ProjectileGF *r)
+{
+	ReadFloat(z_coff);
+	ReadCall(act_bullet);
+	ReadCall(bullet_shadow);
+}
