@@ -48,6 +48,7 @@
 #define WriteInt32Array(a,n) for(int __i=0; __i<(n); __i++) WriteInt32(a[__i])
 #define WriteFloatArray(a,n) for(int __i=0;__i<(n);__i++) WriteFloat(a[__i])
 #define WriteCallArray(a,n) for(int __i=0;__i<(n);__i++) WriteCall(a[__i])
+#define WriteZeroArray(a,n) for(int __i=0;__i<(n);__i++) WriteZero(a[__i])
 #define WriteZeroBytes(a,n) memset(&r->a,0,n)
 
 union GFRec gf_rec;
@@ -1822,6 +1823,330 @@ void Firm::read_record(FirmGF *r)
 	ReadInt8(should_close_flag);
 	ReadInt8(no_neighbor_space);
 	ReadInt8(ai_should_build_factory_count);
+}
+
+void FirmBase::write_derived_record(FirmBaseGF *r)
+{
+	WriteInt16(god_id);
+	WriteInt16(god_unit_recno);
+	WriteFloat(pray_points);
+}
+
+void FirmBase::read_derived_record(FirmBaseGF *r)
+{
+	ReadInt16(god_id);
+	ReadInt16(god_unit_recno);
+	ReadFloat(pray_points);
+}
+
+void DefenseUnit::write_record(DefenseUnitGF *r)
+{
+	WriteInt16(unit_recno);
+	WriteInt8(status);
+}
+
+void DefenseUnit::read_record(DefenseUnitGF *r)
+{
+	ReadInt16(unit_recno);
+	ReadInt8(status);
+}
+
+void FirmCamp::write_derived_record(FirmCampGF *r)
+{
+	WriteCallArray(defense_array, MAX_WORKER+1);
+	WriteInt8(employ_new_worker);
+	WriteInt16(defend_target_recno);
+	WriteInt8(defense_flag);
+	WriteInt8(patrol_unit_count);
+	WriteInt16Array(patrol_unit_array, MAX_WORKER+1);
+	WriteInt8(coming_unit_count);
+	WriteInt16Array(coming_unit_array, MAX_WORKER+1);
+	WriteInt16(ai_capture_town_recno);
+	WriteInt8(ai_recruiting_soldier);
+	WriteInt8(is_attack_camp);
+}
+
+void FirmCamp::read_derived_record(FirmCampGF *r)
+{
+	ReadCallArray(defense_array, MAX_WORKER+1);
+	ReadInt8(employ_new_worker);
+	ReadInt16(defend_target_recno);
+	ReadInt8(defense_flag);
+	ReadInt8(patrol_unit_count);
+	ReadInt16Array(patrol_unit_array, MAX_WORKER+1);
+	ReadInt8(coming_unit_count);
+	ReadInt16Array(coming_unit_array, MAX_WORKER+1);
+	ReadInt16(ai_capture_town_recno);
+	ReadInt8(ai_recruiting_soldier);
+	ReadInt8(is_attack_camp);
+}
+
+void FirmFactory::write_derived_record(FirmFactoryGF *r)
+{
+	WriteInt32(product_raw_id);
+	WriteFloat(stock_qty);
+	WriteFloat(max_stock_qty);
+	WriteFloat(raw_stock_qty);
+	WriteFloat(max_raw_stock_qty);
+	WriteFloat(cur_month_production);
+	WriteFloat(last_month_production);
+	WriteInt16(next_output_link_id);
+	WriteInt16(next_output_firm_recno);
+}
+
+void FirmFactory::read_derived_record(FirmFactoryGF *r)
+{
+	ReadInt32(product_raw_id);
+	ReadFloat(stock_qty);
+	ReadFloat(max_stock_qty);
+	ReadFloat(raw_stock_qty);
+	ReadFloat(max_raw_stock_qty);
+	ReadFloat(cur_month_production);
+	ReadFloat(last_month_production);
+	ReadInt16(next_output_link_id);
+	ReadInt16(next_output_firm_recno);
+}
+
+void FirmHarbor::write_derived_record(FirmHarborGF *r)
+{
+	WriteInt16Array(ship_recno_array, MAX_SHIP_IN_HARBOR);
+	WriteInt16(ship_count);
+	WriteInt16(build_unit_id);
+	WriteInt32(start_build_frame_no);
+	WriteInt8Array(build_queue_array, MAX_BUILD_SHIP_QUEUE);
+	WriteInt8(build_queue_count);
+	WriteInt8(land_region_id);
+	WriteInt8(sea_region_id);
+	WriteInt8(link_checked);
+	WriteInt8(linked_mine_num);
+	WriteInt8(linked_factory_num);
+	WriteInt8(linked_market_num);
+	WriteInt16Array(linked_mine_array, MAX_LINKED_FIRM_FIRM);
+	WriteInt16Array(linked_factory_array, MAX_LINKED_FIRM_FIRM);
+	WriteInt16Array(linked_market_array, MAX_LINKED_FIRM_FIRM);
+}
+
+void FirmHarbor::read_derived_record(FirmHarborGF *r)
+{
+	ReadInt16Array(ship_recno_array, MAX_SHIP_IN_HARBOR);
+	ReadInt16(ship_count);
+	ReadInt16(build_unit_id);
+	ReadInt32(start_build_frame_no);
+	ReadInt8Array(build_queue_array, MAX_BUILD_SHIP_QUEUE);
+	ReadInt8(build_queue_count);
+	ReadInt8(land_region_id);
+	ReadInt8(sea_region_id);
+	ReadInt8(link_checked);
+	ReadInt8(linked_mine_num);
+	ReadInt8(linked_factory_num);
+	ReadInt8(linked_market_num);
+	ReadInt16Array(linked_mine_array, MAX_LINKED_FIRM_FIRM);
+	ReadInt16Array(linked_factory_array, MAX_LINKED_FIRM_FIRM);
+	ReadInt16Array(linked_market_array, MAX_LINKED_FIRM_FIRM);
+}
+
+void InnUnit::write_record(InnUnitGF *r)
+{
+	WriteInt8(unit_id);
+	WriteCall(skill);
+	WriteInt16(hire_cost);
+	WriteInt16(stay_count);
+	WriteInt16(spy_recno);
+}
+
+void InnUnit::read_record(InnUnitGF *r)
+{
+	ReadInt8(unit_id);
+	ReadCall(skill);
+	ReadInt16(hire_cost);
+	ReadInt16(stay_count);
+	ReadInt16(spy_recno);
+}
+
+void FirmInn::write_derived_record(FirmInnGF *r)
+{
+	WriteInt16(next_skill_id);
+	WriteCallArray(inn_unit_array, MAX_INN_UNIT);
+	WriteInt16(inn_unit_count);
+}
+
+void FirmInn::read_derived_record(FirmInnGF *r)
+{
+	ReadInt16(next_skill_id);
+	ReadCallArray(inn_unit_array, MAX_INN_UNIT);
+	ReadInt16(inn_unit_count);
+}
+
+void MarketGoods::write_record(MarketGoodsGF *r)
+{
+	WriteInt8(raw_id);
+	WriteInt8(product_raw_id);
+	WriteInt16(input_firm_recno);
+	WriteFloat(stock_qty);
+	WriteFloat(cur_month_supply);
+	WriteFloat(last_month_supply);
+	WriteFloat(month_demand);
+	WriteFloat(cur_month_sale_qty);
+	WriteFloat(last_month_sale_qty);
+	WriteFloat(cur_year_sales);
+	WriteFloat(last_year_sales);
+}
+
+void MarketGoods::read_record(MarketGoodsGF *r)
+{
+	ReadInt8(raw_id);
+	ReadInt8(product_raw_id);
+	ReadInt16(input_firm_recno);
+	ReadFloat(stock_qty);
+	ReadFloat(cur_month_supply);
+	ReadFloat(last_month_supply);
+	ReadFloat(month_demand);
+	ReadFloat(cur_month_sale_qty);
+	ReadFloat(last_month_sale_qty);
+	ReadFloat(cur_year_sales);
+	ReadFloat(last_year_sales);
+}
+
+void FirmMarket::write_derived_record(FirmMarketGF *r)
+{
+	WriteFloat(max_stock_qty);
+	WriteCallArray(market_goods_array, MAX_MARKET_GOODS);
+	WriteZeroArray(market_raw_array, MAX_RAW);
+	WriteZeroArray(market_product_array, MAX_PRODUCT);
+	WriteInt16(next_output_link_id);
+	WriteInt16(next_output_firm_recno);
+	WriteInt32(no_linked_town_since_date);
+	WriteInt32(last_import_new_goods_date);
+	WriteInt8(restock_type);
+}
+
+void FirmMarket::read_derived_record(FirmMarketGF *r)
+{
+	ReadFloat(max_stock_qty);
+	ReadCallArray(market_goods_array, MAX_MARKET_GOODS);
+	// skip market_raw_array
+	// skip market_product_array
+	ReadInt16(next_output_link_id);
+	ReadInt16(next_output_firm_recno);
+	ReadInt32(no_linked_town_since_date);
+	ReadInt32(last_import_new_goods_date);
+	ReadInt8(restock_type);
+}
+
+void FirmMine::write_derived_record(FirmMineGF *r)
+{
+	WriteInt16(raw_id);
+	WriteInt16(site_recno);
+	WriteFloat(reserve_qty);
+	WriteFloat(stock_qty);
+	WriteFloat(max_stock_qty);
+	WriteInt16(next_output_link_id);
+	WriteInt16(next_output_firm_recno);
+	WriteFloat(cur_month_production);
+	WriteFloat(last_month_production);
+}
+
+void FirmMine::read_derived_record(FirmMineGF *r)
+{
+	ReadInt16(raw_id);
+	ReadInt16(site_recno);
+	ReadFloat(reserve_qty);
+	ReadFloat(stock_qty);
+	ReadFloat(max_stock_qty);
+	ReadInt16(next_output_link_id);
+	ReadInt16(next_output_firm_recno);
+	ReadFloat(cur_month_production);
+	ReadFloat(last_month_production);
+}
+
+void MonsterInFirm::write_record(MonsterInFirmGF *r)
+{
+	WriteInt8(monster_id);
+	WriteInt8(_unused);
+	WriteInt16(mobile_unit_recno);
+	WriteInt8(combat_level);
+	WriteInt16(hit_points);
+	WriteInt16(max_hit_points);
+	WriteInt8(soldier_monster_id);
+	WriteInt8(soldier_count);
+}
+
+void MonsterInFirm::read_record(MonsterInFirmGF *r)
+{
+	ReadInt8(monster_id);
+	ReadInt8(_unused);
+	ReadInt16(mobile_unit_recno);
+	ReadInt8(combat_level);
+	ReadInt16(hit_points);
+	ReadInt16(max_hit_points);
+	ReadInt8(soldier_monster_id);
+	ReadInt8(soldier_count);
+}
+
+void FirmMonster::write_derived_record(FirmMonsterGF *r)
+{
+	WriteInt16(monster_id);
+	WriteInt16(monster_general_count);
+	WriteInt8(monster_aggressiveness);
+	WriteInt8(defending_king_count);
+	WriteInt8(defending_general_count);
+	WriteInt8(defending_soldier_count);
+	WriteCall(monster_king);
+	WriteCallArray(monster_general_array, MAX_MONSTER_GENERAL_IN_FIRM);
+	WriteInt8(waiting_soldier_count);
+	WriteInt16Array(waiting_soldier_array, MAX_WAITING_SOLDIER);
+	WriteInt8(monster_nation_relation);
+	WriteInt16(defend_target_recno);
+	WriteInt8(patrol_unit_count);
+	WriteInt16Array(patrol_unit_array, MAX_SOLDIER_PER_GENERAL+1);
+}
+
+void FirmMonster::read_derived_record(FirmMonsterGF *r)
+{
+	ReadInt16(monster_id);
+	ReadInt16(monster_general_count);
+	ReadInt8(monster_aggressiveness);
+	ReadInt8(defending_king_count);
+	ReadInt8(defending_general_count);
+	ReadInt8(defending_soldier_count);
+	ReadCall(monster_king);
+	ReadCallArray(monster_general_array, MAX_MONSTER_GENERAL_IN_FIRM);
+	ReadInt8(waiting_soldier_count);
+	ReadInt16Array(waiting_soldier_array, MAX_WAITING_SOLDIER);
+	ReadInt8(monster_nation_relation);
+	ReadInt16(defend_target_recno);
+	ReadInt8(patrol_unit_count);
+	ReadInt16Array(patrol_unit_array, MAX_SOLDIER_PER_GENERAL+1);
+}
+
+void FirmResearch::write_derived_record(FirmResearchGF *r)
+{
+	WriteInt16(tech_id);
+	WriteFloat(complete_percent);
+}
+
+void FirmResearch::read_derived_record(FirmResearchGF *r)
+{
+	ReadInt16(tech_id);
+	ReadFloat(complete_percent);
+}
+
+void FirmWar::write_derived_record(FirmWarGF *r)
+{
+	WriteInt16(build_unit_id);
+	WriteInt32(last_process_build_frame_no);
+	WriteFloat(build_progress_days);
+	WriteInt8Array(build_queue_array, MAX_BUILD_QUEUE);
+	WriteInt8(build_queue_count);
+}
+
+void FirmWar::read_derived_record(FirmWarGF *r)
+{
+	ReadInt16(build_unit_id);
+	ReadInt32(last_process_build_frame_no);
+	ReadFloat(build_progress_days);
+	ReadInt8Array(build_queue_array, MAX_BUILD_QUEUE);
+	ReadInt8(build_queue_count);
 }
 
 void Tornado::write_record(TornadoGF *r)

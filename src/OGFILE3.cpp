@@ -826,24 +826,13 @@ int FirmArray::read_file(File* filePtr)
 
          //---- read data in base class -----//
 
-			if( !firmPtr->read_file(filePtr) )
-				return 0;
+         if( !firmPtr->read_file(filePtr) )
+            return 0;
 
          //----- read data in derived class -----//
 
          if( !firmPtr->read_derived_file( filePtr ) )
             return 0;
-
-         if( config_adv.game_file_patching &&
-             GameFile::load_file_game_version < 200 &&
-             firmPtr->firm_id == FIRM_MARKET )
-         {
-            FirmMarket* firmMarket = (FirmMarket*) firmPtr;
-            // Below game version 200, the restock type was not initialized for
-            // human players.
-            if( !firmMarket->firm_ai )
-               firmMarket->restock_type = 0;
-         }
       }
    }
 
@@ -986,6 +975,267 @@ int Firm::read_derived_file(File* filePtr)
    return 1;
 }
 //----------- End of function Firm::read_derived_file ---------//
+
+
+//--------- Begin of function FirmBase::write_derived_file ---------//
+int FirmBase::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_base);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmBaseGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmBase::write_derived_file ---------//
+
+
+//--------- Begin of function FirmBase::read_derived_file ---------//
+int FirmBase::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmBaseGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_base);
+	return 1;
+}
+//--------- End of function FirmBase::read_derived_file ---------//
+
+
+//--------- Begin of function FirmCamp::write_derived_file ---------//
+int FirmCamp::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_camp);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmCampGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmCamp::write_derived_file ---------//
+
+
+//--------- Begin of function FirmCamp::read_derived_file ---------//
+int FirmCamp::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmCampGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_camp);
+	return 1;
+}
+//--------- End of function FirmCamp::read_derived_file ---------//
+
+
+//--------- Begin of function FirmFactory::write_derived_file ---------//
+int FirmFactory::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_factory);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmFactoryGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmFactory::write_derived_file ---------//
+
+
+//--------- Begin of function FirmFactory::read_derived_file ---------//
+int FirmFactory::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmFactoryGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_factory);
+	return 1;
+}
+//--------- End of function FirmFactory::read_derived_file ---------//
+
+
+//--------- Begin of function FirmHarbor::write_derived_file ---------//
+int FirmHarbor::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_harbor);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmHarborGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmHarbor::write_derived_file ---------//
+
+
+//--------- Begin of function FirmHarbor::read_derived_file ---------//
+int FirmHarbor::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmHarborGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_harbor);
+	return 1;
+}
+//--------- End of function FirmHarbor::read_derived_file ---------//
+
+
+//--------- Begin of function FirmInn::write_derived_file ---------//
+int FirmInn::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_inn);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmInnGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmInn::write_derived_file ---------//
+
+
+//--------- Begin of function FirmInn::read_derived_file ---------//
+int FirmInn::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmInnGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_inn);
+	return 1;
+}
+//--------- End of function FirmInn::read_derived_file ---------//
+
+
+//--------- Begin of function FirmMarket::write_derived_file ---------//
+int FirmMarket::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_market);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmMarketGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmMarket::write_derived_file ---------//
+
+
+//--------- Begin of function FirmMarket::read_derived_file ---------//
+int FirmMarket::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmMarketGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_market);
+
+	//----- reset market_raw_array[] & market_product_array[] ----//
+
+	int i;
+	for( i=0 ; i<MAX_RAW ; i++ )
+	{
+		market_raw_array[i]     = NULL;
+		market_product_array[i] = NULL;
+	}
+
+	//------- rebuild market_product_array --------//
+
+	int rawId, productId;
+
+	for( i=0 ; i<MAX_MARKET_GOODS ; i++ )
+	{
+		rawId     = market_goods_array[i].raw_id;
+		productId = market_goods_array[i].product_raw_id;
+
+		if( rawId )
+			market_raw_array[rawId-1] = market_goods_array + i;
+
+		if( productId )
+			market_product_array[productId-1] = market_goods_array + i;
+	}
+
+        //---- force ai to update restocking type and links after load ----//
+
+	if( firm_ai )
+		ai_link_checked = 0;
+
+	if( config_adv.game_file_patching &&
+		GameFile::load_file_game_version < 200 &&
+		firm_id == FIRM_MARKET )
+	{
+		// Below game version 200, the restock type was not initialized
+		// for human players.
+		if( !firm_ai )
+			restock_type = 0;
+	}
+
+	return 1;
+}
+//--------- End of function FirmMarket::read_derived_file ---------//
+
+
+//--------- Begin of function FirmMine::write_derived_file ---------//
+int FirmMine::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_mine);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmMineGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmMine::write_derived_file ---------//
+
+
+//--------- Begin of function FirmMine::read_derived_file ---------//
+int FirmMine::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmMineGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_mine);
+	return 1;
+}
+//--------- End of function FirmMine::read_derived_file ---------//
+
+
+//--------- Begin of function FirmMonster::write_derived_file ---------//
+int FirmMonster::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_monster);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmMonsterGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmMonster::write_derived_file ---------//
+
+
+//--------- Begin of function FirmMonster::read_derived_file ---------//
+int FirmMonster::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmMonsterGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_monster);
+	return 1;
+}
+//--------- End of function FirmMonster::read_derived_file ---------//
+
+
+//--------- Begin of function FirmResearch::write_derived_file ---------//
+int FirmResearch::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_research);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmResearchGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmResearch::write_derived_file ---------//
+
+
+//--------- Begin of function FirmResearch::read_derived_file ---------//
+int FirmResearch::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmResearchGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_research);
+	return 1;
+}
+//--------- End of function FirmResearch::read_derived_file ---------//
+
+
+//--------- Begin of function FirmWar::write_derived_file ---------//
+int FirmWar::write_derived_file(File *filePtr)
+{
+	write_derived_record(&gf_rec.firm_war);
+	if( !filePtr->file_write(&gf_rec, sizeof(FirmWarGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function FirmWar::write_derived_file ---------//
+
+
+//--------- Begin of function FirmWar::read_derived_file ---------//
+int FirmWar::read_derived_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(FirmWarGF)) )
+		return 0;
+	read_derived_record(&gf_rec.firm_war);
+	return 1;
+}
+//--------- End of function FirmWar::read_derived_file ---------//
 
 
 //*****//

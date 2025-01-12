@@ -29,6 +29,16 @@
 #include <OBULLET.h>
 #include <OB_HOMIN.h>
 #include <OB_PROJ.h>
+#include <OF_BASE.h>
+#include <OF_CAMP.h>
+#include <OF_FACT.h>
+#include <OF_HARB.h>
+#include <OF_INN.h>
+#include <OF_MARK.h>
+#include <OF_MINE.h>
+#include <OF_MONS.h>
+#include <OF_RESE.h>
+#include <OF_WAR.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
 #include <OTORNADO.h>
@@ -926,6 +936,168 @@ struct FirmGF
 	int8_t               ai_should_build_factory_count;
 };
 
+struct FirmBaseGF
+{
+	int16_t              god_id;
+	int16_t              god_unit_recno;
+	float                pray_points;
+};
+
+struct DefenseUnitGF
+{
+	int16_t              unit_recno;
+	int8_t               status;
+};
+
+struct FirmCampGF
+{
+	DefenseUnitGF        defense_array[MAX_WORKER+1];
+	int8_t               employ_new_worker;
+	int16_t              defend_target_recno;
+	int8_t               defense_flag;
+	int8_t               patrol_unit_count;
+	int16_t              patrol_unit_array[MAX_WORKER+1];
+	int8_t               coming_unit_count;
+	int16_t              coming_unit_array[MAX_WORKER+1];
+	int16_t              ai_capture_town_recno;
+	int8_t               ai_recruiting_soldier;
+	int8_t               is_attack_camp;
+};
+
+struct FirmFactoryGF
+{
+	int32_t              product_raw_id;
+	float                stock_qty;
+	float                max_stock_qty;
+	float                raw_stock_qty;
+	float                max_raw_stock_qty;
+	float                cur_month_production;
+	float                last_month_production;
+	int16_t              next_output_link_id;
+	int16_t              next_output_firm_recno;
+};
+
+struct FirmHarborGF
+{
+	int16_t              ship_recno_array[MAX_SHIP_IN_HARBOR];
+	int16_t              ship_count;
+	int16_t              build_unit_id;
+	uint32_t             start_build_frame_no;
+	int8_t               build_queue_array[MAX_BUILD_SHIP_QUEUE];
+	int8_t               build_queue_count;
+	uint8_t              land_region_id;
+	uint8_t              sea_region_id;
+	int8_t               link_checked;
+	int8_t               linked_mine_num;
+	int8_t               linked_factory_num;
+	int8_t               linked_market_num;
+	int16_t              linked_mine_array[MAX_LINKED_FIRM_FIRM];
+	int16_t              linked_factory_array[MAX_LINKED_FIRM_FIRM];
+	int16_t              linked_market_array[MAX_LINKED_FIRM_FIRM];
+};
+
+struct InnUnitGF
+{
+	int8_t               unit_id;
+	SkillGF              skill;
+	int16_t              hire_cost;
+	int16_t              stay_count;
+	int16_t              spy_recno;
+};
+
+struct FirmInnGF
+{
+	int16_t              next_skill_id;
+	InnUnitGF            inn_unit_array[MAX_INN_UNIT];
+	int16_t              inn_unit_count;
+};
+
+struct MarketGoodsGF
+{
+	int8_t               raw_id;
+	int8_t               product_raw_id;
+	int16_t              input_firm_recno;
+	float                stock_qty;
+	float                cur_month_supply;
+	float                last_month_supply;
+	float                month_demand;
+	float                cur_month_sale_qty;
+	float                last_month_sale_qty;
+	float                cur_year_sales;
+	float                last_year_sales;
+};
+
+struct FirmMarketGF
+{
+	float                max_stock_qty;
+	MarketGoodsGF        market_goods_array[MAX_MARKET_GOODS];
+	uint32_t             market_raw_array[MAX_RAW]; //zero
+	uint32_t             market_product_array[MAX_PRODUCT]; //zero
+	int16_t              next_output_link_id;
+	int16_t              next_output_firm_recno;
+	int32_t              no_linked_town_since_date;
+	int32_t              last_import_new_goods_date;
+	int8_t               restock_type;
+};
+
+struct FirmMineGF
+{
+	int16_t              raw_id;
+	int16_t              site_recno;
+	float                reserve_qty;
+	float                stock_qty;
+	float                max_stock_qty;
+	int16_t              next_output_link_id;
+	int16_t              next_output_firm_recno;
+	float                cur_month_production;
+	float                last_month_production;
+};
+
+struct MonsterInFirmGF
+{
+	int8_t               monster_id;
+	int8_t               _unused;
+	int16_t              mobile_unit_recno;
+	int8_t               combat_level;
+	int16_t              hit_points;
+	int16_t              max_hit_points;
+	int8_t               soldier_monster_id;
+	int8_t               soldier_count;
+};
+
+struct FirmMonsterGF
+{
+	int16_t              monster_id;
+	int16_t              monster_general_count;
+	int8_t               monster_aggressiveness;
+	int8_t               defending_king_count;
+	int8_t               defending_general_count;
+	int8_t               defending_soldier_count;
+	MonsterInFirmGF      monster_king;
+	MonsterInFirmGF      monster_general_array[MAX_MONSTER_GENERAL_IN_FIRM];
+	int8_t               waiting_soldier_count;
+	int16_t              waiting_soldier_array[FirmMonster::MAX_WAITING_SOLDIER];
+	int8_t               monster_nation_relation;
+	int16_t              defend_target_recno;
+	int8_t               patrol_unit_count;
+	int16_t              patrol_unit_array[MAX_SOLDIER_PER_GENERAL+1];
+};
+
+struct FirmResearchGF
+{
+	int16_t              tech_id;
+	float                complete_percent;
+};
+
+struct FirmWarGF
+{
+	int16_t              build_unit_id;
+	uint32_t             last_process_build_frame_no;
+	float                build_progress_days;
+	int8_t               build_queue_array[MAX_BUILD_QUEUE];
+	int8_t               build_queue_count;
+};
+
 struct TornadoGF
 {
 	uint32_t             vtp; //zero
@@ -966,6 +1138,16 @@ union GFRec
 	BulletHomingGF bullet_homing;
 	DynArrayGF dyn_array;
 	FirmGF firm;
+	FirmBaseGF firm_base;
+	FirmCampGF firm_camp;
+	FirmFactoryGF firm_factory;
+	FirmHarborGF firm_harbor;
+	FirmInnGF firm_inn;
+	FirmMarketGF firm_market;
+	FirmMineGF firm_mine;
+	FirmMonsterGF firm_monster;
+	FirmResearchGF firm_research;
+	FirmWarGF firm_war;
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
