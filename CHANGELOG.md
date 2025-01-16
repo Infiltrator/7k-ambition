@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - A memory leak when loading a saved game.
+- A memory leak with unit waypoints.
 
 ## [2.9156.0] - 2025-01-07
 
