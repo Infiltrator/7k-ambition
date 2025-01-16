@@ -84,6 +84,9 @@ Unit::Unit()
 Unit::~Unit()
 {
    deinit();
+   if (way_point_array) {
+      mem_del(way_point_array);
+   }
 }
 //----------- End of function Unit::~Unit -----------//
 
