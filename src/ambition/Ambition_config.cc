@@ -18,7 +18,7 @@
  */
 
 /**
- * \file Ambition_config.cc
+ * @file Ambition_config.cc
  *
  * Implementation file for Ambition::Config.
  */

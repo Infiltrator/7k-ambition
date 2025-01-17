@@ -18,7 +18,7 @@
  */
 
 /**
- * \file Ambition_version.hh
+ * @file Ambition_version.hh
  *
  * Version information for Seven Kingdoms: Ambition.
  */
