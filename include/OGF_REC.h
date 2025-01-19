@@ -41,6 +41,7 @@
 #include <OF_WAR.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
+#include <OREBEL.h>
 #include <OSITE.h>
 #include <OTORNADO.h>
 #include <OU_CARA.h>
@@ -1142,6 +1143,18 @@ struct TornadoGF
 	int16_t              dmg_offset_x;
 	int16_t              dmg_offset_y;
 };
+
+struct RebelGF
+{
+	int16_t              rebel_recno;
+	int16_t              leader_unit_recno;
+	int8_t               action_mode;
+	int16_t              action_para;
+	int16_t              action_para2;
+	int16_t              mobile_rebel_count;
+	int16_t              town_recno;
+	int8_t               hostile_nation_bits;
+};
 #pragma pack()
 
 
@@ -1164,6 +1177,7 @@ union GFRec
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
+	RebelGF rebel;
 	TornadoGF tornado;
 	UnitGF unit;
 	UnitCaravanGF unit_caravan;

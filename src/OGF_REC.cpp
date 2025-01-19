@@ -2236,3 +2236,27 @@ void Tornado::read_record(TornadoGF *r)
 	ReadInt16(dmg_offset_x);
 	ReadInt16(dmg_offset_y);
 }
+
+void Rebel::write_record(RebelGF *r)
+{
+	WriteInt16(rebel_recno);
+	WriteInt16(leader_unit_recno);
+	WriteInt8(action_mode);
+	WriteInt16(action_para);
+	WriteInt16(action_para2);
+	WriteInt16(mobile_rebel_count);
+	WriteInt16(town_recno);
+	WriteInt8(hostile_nation_bits);
+}
+
+void Rebel::read_record(RebelGF *r)
+{
+	ReadInt16(rebel_recno);
+	ReadInt16(leader_unit_recno);
+	ReadInt8(action_mode);
+	ReadInt16(action_para);
+	ReadInt16(action_para2);
+	ReadInt16(mobile_rebel_count);
+	ReadInt16(town_recno);
+	ReadInt8(hostile_nation_bits);
+}

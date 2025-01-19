@@ -1861,7 +1861,35 @@ int Tornado::read_file(File* filePtr)
 //
 int RebelArray::write_file(File* filePtr)
 {
-	return write_ptr_array(filePtr, sizeof(Rebel));
+	int   i;
+
+	filePtr->file_put_short(size());
+
+	for( i=1; i<=size(); i++ )
+	{
+		Rebel *rebelPtr = (Rebel*) get_ptr(i);
+
+		//----- write 0 if the object is deleted -----//
+
+		if( !rebelPtr )    // the object is deleted
+		{
+			filePtr->file_put_short(0);
+		}
+		else    // the object exists
+		{
+			filePtr->file_put_short(1);
+
+			rebelPtr->write_record(&gf_rec.rebel);
+			if( !filePtr->file_write(&gf_rec, sizeof(RebelGF)) )
+				return 0;
+		}
+	}
+
+	//------- write empty room array --------//
+
+	write_empty_room(filePtr);
+
+	return 1;
 }
 //--------- End of function RebelArray::write_file ---------------//
 
@@ -1870,22 +1898,47 @@ int RebelArray::write_file(File* filePtr)
 //
 int RebelArray::read_file(File* filePtr)
 {
-	return read_ptr_array(filePtr, sizeof(Rebel), create_rebel_func);
+	int   i;
+
+	int eleCount = filePtr->file_get_short();
+
+	for( i=1; i<=eleCount; i++ )
+	{
+		if( filePtr->file_get_short()==0 )    // the object is deleted
+		{
+			add_blank(1);    // it's a DynArrayB function
+		}
+		else    // the object exists
+		{
+			if( !filePtr->file_read(&gf_rec, sizeof(RebelGF)) )
+				return 0;
+
+			Rebel *rebelPtr = new Rebel;
+			rebelPtr->read_record(&gf_rec.rebel);
+
+			rebel_array.linkin(&rebelPtr);
+		}
+	}
+
+	//-------- linkout() those record added by add_blank() ----------//
+	//-- So they will be marked deleted in DynArrayB and can be -----//
+	//-- undeleted and used when a new record is going to be added --//
+
+	for( i=size(); i>0; i-- )
+	{
+		DynArrayB::go(i);             // since DynArrayB has its own go() which will call GroupArray::go()
+
+		if( get_ptr() == NULL )       // add_blank() record
+			linkout();
+	}
+
+	//------- read empty room array --------//
+
+	read_empty_room(filePtr);
+
+	return 1;
 }
 //--------- End of function RebelArray::read_file ---------------//
-
-
-//-------- Start of static function create_rebel_func ---------//
-//
-static char* create_rebel_func()
-{
-	Rebel *rebelPtr = new Rebel;
-
-	rebel_array.linkin(&rebelPtr);
-
-	return (char*) rebelPtr;
-}
-//--------- End of static function create_rebel_func ----------//
 
 
 //*****//
