@@ -1251,7 +1251,33 @@ int SiteArray::write_file(File* filePtr)
 	filePtr->file_put_short(gold_coin_count);
 	filePtr->file_put_short(std_raw_site_count);
 
-	return DynArrayB::write_file( filePtr );
+	write_record(&gf_rec.dyn_array);
+	if( !filePtr->file_write(&gf_rec, sizeof(DynArrayGF)) )
+		return 0;
+
+	//---------- write body_buf ---------//
+
+	if( last_ele > 0 )
+	{
+		SiteGF *site_record_array = (SiteGF*) mem_add(sizeof(SiteGF)*last_ele);
+		for( int i=1; i<=last_ele; i++ )
+		{
+			Site *sitePtr = (Site*) get(i);
+			sitePtr->write_record(site_record_array+i-1);
+		}
+		if( !filePtr->file_write(site_record_array, sizeof(SiteGF)*last_ele) )
+		{
+			mem_del(site_record_array);
+			return 0;
+		}
+		mem_del(site_record_array);
+	}
+
+	//---------- write empty_room_array ---------//
+
+	write_empty_room(filePtr);
+
+	return 1;
 }
 //--------- End of function SiteArray::write_file ---------------//
 
@@ -1266,7 +1292,39 @@ int SiteArray::read_file(File* filePtr)
 	gold_coin_count	 =	filePtr->file_get_short();
 	std_raw_site_count =	filePtr->file_get_short();
 
-	return DynArrayB::read_file( filePtr );
+	if( !filePtr->file_read(&gf_rec, sizeof(DynArrayGF)) )
+		return 0;
+	read_record(&gf_rec.dyn_array);
+
+	//---------- read body_buf ---------//
+
+	body_buf = mem_resize(body_buf, ele_num*ele_size);
+
+	if( last_ele > 0 )
+	{
+		SiteGF *site_record_array = (SiteGF*) mem_add(sizeof(SiteGF)*last_ele);
+		if( !filePtr->file_read(site_record_array, sizeof(SiteGF)*last_ele) )
+		{
+			mem_del(site_record_array);
+			return 0;
+		}
+		for( int i=1; i<=last_ele; i++ )
+		{
+			Site *sitePtr = (Site*) get(i);
+			sitePtr->read_record(site_record_array+i-1);
+		}
+		mem_del(site_record_array);
+	}
+
+	//---------- read empty_room_array ---------//
+
+	read_empty_room(filePtr);
+
+	//------------------------------------------//
+
+	start();    // go top
+
+	return 1;
 }
 //--------- End of function SiteArray::read_file ---------------//
 

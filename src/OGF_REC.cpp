@@ -2149,6 +2149,30 @@ void FirmWar::read_derived_record(FirmWarGF *r)
 	ReadInt8(build_queue_count);
 }
 
+void Site::write_record(SiteGF *r)
+{
+	WriteInt16(site_recno);
+	WriteInt8(site_type);
+	WriteInt16(object_id);
+	WriteInt32(reserve_qty);
+	WriteInt8(has_mine);
+	WriteInt16(map_x_loc);
+	WriteInt16(map_y_loc);
+	WriteInt8(region_id);
+}
+
+void Site::read_record(SiteGF *r)
+{
+	ReadInt16(site_recno);
+	ReadInt8(site_type);
+	ReadInt16(object_id);
+	ReadInt32(reserve_qty);
+	ReadInt8(has_mine);
+	ReadInt16(map_x_loc);
+	ReadInt16(map_y_loc);
+	ReadInt8(region_id);
+}
+
 void Tornado::write_record(TornadoGF *r)
 {
 	WriteZero(vtp); //zero

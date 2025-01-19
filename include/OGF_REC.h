@@ -41,6 +41,7 @@
 #include <OF_WAR.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
+#include <OSITE.h>
 #include <OTORNADO.h>
 #include <OU_CARA.h>
 #include <OU_CART.h>
@@ -1096,6 +1097,18 @@ struct FirmWarGF
 	float                build_progress_days;
 	int8_t               build_queue_array[MAX_BUILD_QUEUE];
 	int8_t               build_queue_count;
+};
+
+struct SiteGF
+{
+	int16_t              site_recno;
+	int8_t               site_type;
+	int16_t              object_id;
+	int32_t              reserve_qty;
+	int8_t               has_mine;
+	int16_t              map_x_loc;
+	int16_t              map_y_loc;
+	uint8_t              region_id;
 };
 
 struct TornadoGF
