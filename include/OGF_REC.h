@@ -41,6 +41,7 @@
 #include <OF_WAR.h>
 #include <OGF_V1.h>
 #include <ONATIONB.h>
+#include <ONEWS.h>
 #include <OREBEL.h>
 #include <OSITE.h>
 #include <OTORNADO.h>
@@ -1154,6 +1155,29 @@ struct RebelGF
 	int16_t              mobile_rebel_count;
 	int16_t              town_recno;
 	int8_t               hostile_nation_bits;
+};
+
+struct NewsGF
+{
+	int8_t               id;
+	int8_t               type;
+	int32_t              news_date;
+	int8_t               nation_color1;
+	int8_t               nation_color2;
+	int8_t               nation_race_id1;
+	int8_t               nation_race_id2;
+	int32_t              nation_name_id1;
+	int32_t              nation_name_id2;
+	int16_t              short_para1;
+	int16_t              short_para2;
+	int16_t              short_para3;
+	int16_t              short_para4;
+	int16_t              short_para5;
+	int8_t               loc_type;
+	int16_t              loc_type_para;
+	uint16_t             loc_type_para2;
+	int16_t              loc_x;
+	int16_t              loc_y;
 };
 #pragma pack()
 

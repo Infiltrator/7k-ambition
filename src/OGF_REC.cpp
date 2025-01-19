@@ -2260,3 +2260,49 @@ void Rebel::read_record(RebelGF *r)
 	ReadInt16(town_recno);
 	ReadInt8(hostile_nation_bits);
 }
+
+void News::write_record(NewsGF *r)
+{
+	WriteInt8(id);
+	WriteInt8(type);
+	WriteInt32(news_date);
+	WriteInt8(nation_color1);
+	WriteInt8(nation_color2);
+	WriteInt8(nation_race_id1);
+	WriteInt8(nation_race_id2);
+	WriteInt32(nation_name_id1);
+	WriteInt32(nation_name_id2);
+	WriteInt16(short_para1);
+	WriteInt16(short_para2);
+	WriteInt16(short_para3);
+	WriteInt16(short_para4);
+	WriteInt16(short_para5);
+	WriteInt8(loc_type);
+	WriteInt16(loc_type_para);
+	WriteInt16(loc_type_para2);
+	WriteInt16(loc_x);
+	WriteInt16(loc_y);
+}
+
+void News::read_record(NewsGF *r)
+{
+	ReadInt8(id);
+	ReadInt8(type);
+	ReadInt32(news_date);
+	ReadInt8(nation_color1);
+	ReadInt8(nation_color2);
+	ReadInt8(nation_race_id1);
+	ReadInt8(nation_race_id2);
+	ReadInt32(nation_name_id1);
+	ReadInt32(nation_name_id2);
+	ReadInt16(short_para1);
+	ReadInt16(short_para2);
+	ReadInt16(short_para3);
+	ReadInt16(short_para4);
+	ReadInt16(short_para5);
+	ReadInt8(loc_type);
+	ReadInt16(loc_type_para);
+	ReadInt16(loc_type_para2);
+	ReadInt16(loc_x);
+	ReadInt16(loc_y);
+}

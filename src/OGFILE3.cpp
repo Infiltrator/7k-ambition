@@ -2209,16 +2209,36 @@ int RegionArray::read_file(File* filePtr)
 //
 int NewsArray::write_file(File* filePtr)
 {
-   //----- save news_array parameters -----//
+	//----- save news_array parameters -----//
 
-   filePtr->file_write( news_type_option, sizeof(news_type_option) );
+	filePtr->file_write(news_type_option, sizeof(news_type_option));
 
-   filePtr->file_put_short(news_who_option);
-   filePtr->file_put_long (last_clear_recno);
+	filePtr->file_put_short(news_who_option);
+	filePtr->file_put_long(last_clear_recno);
 
-   //---------- save news data -----------//
+	//---------- save news data -----------//
 
-   return DynArray::write_file(filePtr);
+	write_record(&gf_rec.dyn_array);
+	if( !filePtr->file_write(&gf_rec, sizeof(DynArrayGF)) )
+		return 0;
+
+	if( last_ele > 0 )
+	{
+		NewsGF *news_record_array = (NewsGF*) mem_add(sizeof(NewsGF)*last_ele);
+		for( int i=1; i<=last_ele; i++ )
+		{
+			News *newsPtr = (News*) get(i);
+			newsPtr->write_record(news_record_array+i-1);
+		}
+		if( !filePtr->file_write(news_record_array, sizeof(NewsGF)*last_ele) )
+		{
+			mem_del(news_record_array);
+			return 0;
+		}
+		mem_del(news_record_array);
+	}
+
+	return 1;
 }
 //--------- End of function NewsArray::write_file ---------------//
 
@@ -2227,15 +2247,39 @@ int NewsArray::write_file(File* filePtr)
 //
 int NewsArray::read_file(File* filePtr)
 {
-   //----- read news_array parameters -----//
+	//----- read news_array parameters -----//
 
-   filePtr->file_read( news_type_option, sizeof(news_type_option) );
+	filePtr->file_read(news_type_option, sizeof(news_type_option));
 
-   news_who_option   = (char) filePtr->file_get_short();
-   last_clear_recno  = filePtr->file_get_long();
+	news_who_option   = (char) filePtr->file_get_short();
+	last_clear_recno  = filePtr->file_get_long();
 
-   //---------- read news data -----------//
+	//---------- read news data -----------//
 
-   return DynArray::read_file(filePtr);
+	if( !filePtr->file_read(&gf_rec, sizeof(DynArrayGF)) )
+		return 0;
+	read_record(&gf_rec.dyn_array);
+
+	body_buf = mem_resize(body_buf, ele_num*ele_size);
+
+	if( last_ele > 0 )
+	{
+		NewsGF *news_record_array = (NewsGF*) mem_add(sizeof(NewsGF)*last_ele);
+		if( !filePtr->file_read(news_record_array, sizeof(NewsGF)*last_ele) )
+		{
+			mem_del(news_record_array);
+			return 0;
+		}
+		for( int i=1; i<=last_ele; i++ )
+		{
+			News *newsPtr = (News*) get(i);
+			newsPtr->read_record(news_record_array+i-1);
+		}
+		mem_del(news_record_array);
+	}
+
+	start();    // go top
+
+	return 1;
 }
 //--------- End of function NewsArray::read_file ---------------//

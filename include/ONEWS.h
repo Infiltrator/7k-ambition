@@ -97,6 +97,8 @@ enum { NEWS_DIPLOMACY=1,
 
 //------- Define struct News ---------//
 
+struct NewsGF;
+
 #pragma pack(1)
 struct News
 {
@@ -183,6 +185,9 @@ public:
 	void  firm_constructed();
 	void  unit_trained();
 	void  weapon_ship_built();
+
+	void  write_record(NewsGF *r);
+	void  read_record(NewsGF *r);
 };
 #pragma pack()
 
