@@ -33,7 +33,7 @@
 #define ReadInt8Array(a,n) memcpy(&a,&r->a,n)
 #define ReadInt16Array(a,n) for(int __i=0;__i<(n);__i++) ReadInt16(a[__i])
 #define ReadInt32Array(a,n) for(int __i=0;__i<(n);__i++) ReadInt32(a[__i])
-#define ReadFloatArray(a,n) for(int __i=0;__i<(n);__i++) ReadFloat(a[__i])
+#define ReadFloatArray(a,n) copy_float_array((float*)a,(float*)r->a,n)
 #define ReadCallArray(a,n) for(int __i=0;__i<(n);__i++) ReadCall(a[__i])
 
 #define WriteInt8(a) r->a=a
@@ -46,10 +46,16 @@
 #define WriteInt8Array(a,n) memcpy(&r->a,&a,n)
 #define WriteInt16Array(a,n) for(int __i=0;__i<(n);__i++) WriteInt16(a[__i])
 #define WriteInt32Array(a,n) for(int __i=0; __i<(n); __i++) WriteInt32(a[__i])
-#define WriteFloatArray(a,n) for(int __i=0;__i<(n);__i++) WriteFloat(a[__i])
+#define WriteFloatArray(a,n) copy_float_array((float*)r->a,(float*)a,n)
 #define WriteCallArray(a,n) for(int __i=0;__i<(n);__i++) WriteCall(a[__i])
 #define WriteZeroArray(a,n) for(int __i=0;__i<(n);__i++) WriteZero(a[__i])
 #define WriteZeroBytes(a,n) memset(&r->a,0,n)
+
+static void copy_float_array(float *d, float *s, size_t n)
+{
+	for( size_t i=0; i<n; i++ )
+		d[i] = SDL_SwapFloatLE(s[i]);
+}
 
 union GFRec gf_rec;
 
@@ -2171,6 +2177,282 @@ void Site::read_record(SiteGF *r)
 	ReadInt16(map_x_loc);
 	ReadInt16(map_y_loc);
 	ReadInt8(region_id);
+}
+
+void Town::write_record(TownGF *r)
+{
+	WriteInt16(town_recno);
+	WriteInt16(town_name_id);
+	WriteInt16(nation_recno);
+	WriteInt16(rebel_recno);
+	WriteInt8(race_id);
+	WriteInt32(setup_date);
+	WriteInt8(ai_town);
+	WriteInt8(ai_link_checked);
+	WriteInt8(independ_town_nation_relation);
+	WriteInt8(has_linked_own_camp);
+	WriteInt8(has_linked_enemy_camp);
+	WriteInt8(is_base_town);
+	WriteInt16(loc_x1);
+	WriteInt16(loc_y1);
+	WriteInt16(loc_x2);
+	WriteInt16(loc_y2);
+	WriteInt16(abs_x1);
+	WriteInt16(abs_y1);
+	WriteInt16(abs_x2);
+	WriteInt16(abs_y2);
+	WriteInt16(center_x);
+	WriteInt16(center_y);
+	WriteInt8(region_id);
+	WriteInt16(layout_id);
+	WriteInt16(first_slot_id);
+	WriteInt16Array(slot_object_id_array, MAX_TOWN_LAYOUT_SLOT);
+	WriteInt16(population);
+	WriteInt16(jobless_population);
+	WriteInt16Array(max_race_pop_array, MAX_RACE);
+	WriteInt16Array(race_pop_array, MAX_RACE);
+	WriteInt8Array(race_pop_growth_array, MAX_RACE);
+	WriteInt16Array(jobless_race_pop_array, MAX_RACE);
+	WriteFloatArray(race_loyalty_array, MAX_RACE);
+	WriteInt8Array(race_target_loyalty_array, MAX_RACE);
+	WriteInt16Array(race_spy_count_array, MAX_RACE);
+	WriteFloatArray(race_resistance_array, MAX_NATION*MAX_RACE);
+	WriteInt8Array(race_target_resistance_array, MAX_NATION*MAX_RACE);
+	WriteInt16(town_defender_count);
+	WriteInt32(last_being_attacked_date);
+	WriteFloat(received_hit_count);
+	WriteInt8Array(train_queue_skill_array, MAX_TRAIN_QUEUE);
+	WriteInt8Array(train_queue_race_array, MAX_TRAIN_QUEUE);
+	WriteInt8(train_queue_count);
+	WriteInt16(train_unit_recno);
+	WriteInt32(train_unit_action_id);
+	WriteInt32(start_train_frame_no);
+	WriteInt16(defend_target_recno);
+	WriteInt32(accumulated_collect_tax_penalty);
+	WriteInt32(accumulated_reward_penalty);
+	WriteInt32(accumulated_recruit_penalty);
+	WriteInt32(accumulated_enemy_grant_penalty);
+	WriteInt32(last_rebel_date);
+	WriteInt16(independent_unit_join_nation_min_rating);
+	WriteInt16(quality_of_life);
+	WriteInt16(auto_collect_tax_loyalty);
+	WriteInt16(auto_grant_loyalty);
+	WriteInt8(town_combat_level);
+	WriteInt8Array(has_product_supply, MAX_PRODUCT);
+	WriteInt8(no_neighbor_space);
+	WriteInt16(linked_firm_count);
+	WriteInt16(linked_town_count);
+	WriteInt16Array(linked_firm_array, MAX_LINKED_FIRM_TOWN);
+	WriteInt16Array(linked_town_array, MAX_LINKED_TOWN_TOWN);
+	WriteInt8Array(linked_firm_enable_array, MAX_LINKED_FIRM_TOWN);
+	WriteInt8Array(linked_town_enable_array, MAX_LINKED_TOWN_TOWN);
+}
+
+void Town::read_record(TownGF *r)
+{
+	ReadInt16(town_recno);
+	ReadInt16(town_name_id);
+	ReadInt16(nation_recno);
+	ReadInt16(rebel_recno);
+	ReadInt8(race_id);
+	ReadInt32(setup_date);
+	ReadInt8(ai_town);
+	ReadInt8(ai_link_checked);
+	ReadInt8(independ_town_nation_relation);
+	ReadInt8(has_linked_own_camp);
+	ReadInt8(has_linked_enemy_camp);
+	ReadInt8(is_base_town);
+	ReadInt16(loc_x1);
+	ReadInt16(loc_y1);
+	ReadInt16(loc_x2);
+	ReadInt16(loc_y2);
+	ReadInt16(abs_x1);
+	ReadInt16(abs_y1);
+	ReadInt16(abs_x2);
+	ReadInt16(abs_y2);
+	ReadInt16(center_x);
+	ReadInt16(center_y);
+	ReadInt8(region_id);
+	ReadInt16(layout_id);
+	ReadInt16(first_slot_id);
+	ReadInt16Array(slot_object_id_array, MAX_TOWN_LAYOUT_SLOT);
+	ReadInt16(population);
+	ReadInt16(jobless_population);
+	ReadInt16Array(max_race_pop_array, MAX_RACE);
+	ReadInt16Array(race_pop_array, MAX_RACE);
+	ReadInt8Array(race_pop_growth_array, MAX_RACE);
+	ReadInt16Array(jobless_race_pop_array, MAX_RACE);
+	ReadFloatArray(race_loyalty_array, MAX_RACE);
+	ReadInt8Array(race_target_loyalty_array, MAX_RACE);
+	ReadInt16Array(race_spy_count_array, MAX_RACE);
+	ReadFloatArray(race_resistance_array, MAX_NATION*MAX_RACE);
+	ReadInt8Array(race_target_resistance_array, MAX_NATION*MAX_RACE);
+	ReadInt16(town_defender_count);
+	ReadInt32(last_being_attacked_date);
+	ReadFloat(received_hit_count);
+	ReadInt8Array(train_queue_skill_array, MAX_TRAIN_QUEUE);
+	ReadInt8Array(train_queue_race_array, MAX_TRAIN_QUEUE);
+	ReadInt8(train_queue_count);
+	ReadInt16(train_unit_recno);
+	ReadInt32(train_unit_action_id);
+	ReadInt32(start_train_frame_no);
+	ReadInt16(defend_target_recno);
+	ReadInt32(accumulated_collect_tax_penalty);
+	ReadInt32(accumulated_reward_penalty);
+	ReadInt32(accumulated_recruit_penalty);
+	ReadInt32(accumulated_enemy_grant_penalty);
+	ReadInt32(last_rebel_date);
+	ReadInt16(independent_unit_join_nation_min_rating);
+	ReadInt16(quality_of_life);
+	ReadInt16(auto_collect_tax_loyalty);
+	ReadInt16(auto_grant_loyalty);
+	ReadInt8(town_combat_level);
+	ReadInt8Array(has_product_supply, MAX_PRODUCT);
+	ReadInt8(no_neighbor_space);
+	ReadInt16(linked_firm_count);
+	ReadInt16(linked_town_count);
+	ReadInt16Array(linked_firm_array, MAX_LINKED_FIRM_TOWN);
+	ReadInt16Array(linked_town_array, MAX_LINKED_TOWN_TOWN);
+	ReadInt8Array(linked_firm_enable_array, MAX_LINKED_FIRM_TOWN);
+	ReadInt8Array(linked_town_enable_array, MAX_LINKED_TOWN_TOWN);
+}
+
+void Version_1_Town::write_record(Version_1_TownGF *r)
+{
+	WriteInt16(town_recno);
+	WriteInt16(town_name_id);
+	WriteInt16(nation_recno);
+	WriteInt16(rebel_recno);
+	WriteInt8(race_id);
+	WriteInt32(setup_date);
+	WriteInt8(ai_town);
+	WriteInt8(ai_link_checked);
+	WriteInt8(independ_town_nation_relation);
+	WriteInt8(has_linked_own_camp);
+	WriteInt8(has_linked_enemy_camp);
+	WriteInt8(is_base_town);
+	WriteInt16(loc_x1);
+	WriteInt16(loc_y1);
+	WriteInt16(loc_x2);
+	WriteInt16(loc_y2);
+	WriteInt16(abs_x1);
+	WriteInt16(abs_y1);
+	WriteInt16(abs_x2);
+	WriteInt16(abs_y2);
+	WriteInt16(center_x);
+	WriteInt16(center_y);
+	WriteInt8(region_id);
+	WriteInt16(layout_id);
+	WriteInt16(first_slot_id);
+	WriteInt16Array(slot_object_id_array, MAX_TOWN_LAYOUT_SLOT);
+	WriteInt16(population);
+	WriteInt16(jobless_population);
+	WriteInt16Array(max_race_pop_array, VERSION_1_MAX_RACE);
+	WriteInt16Array(race_pop_array, VERSION_1_MAX_RACE);
+	WriteInt8Array(race_pop_growth_array, VERSION_1_MAX_RACE);
+	WriteInt16Array(jobless_race_pop_array, VERSION_1_MAX_RACE);
+	WriteFloatArray(race_loyalty_array, VERSION_1_MAX_RACE);
+	WriteInt8Array(race_target_loyalty_array, VERSION_1_MAX_RACE);
+	WriteInt16Array(race_spy_count_array, VERSION_1_MAX_RACE);
+	WriteFloatArray(race_resistance_array, MAX_NATION*VERSION_1_MAX_RACE);
+	WriteInt8Array(race_target_resistance_array, MAX_NATION*VERSION_1_MAX_RACE);
+	WriteInt16(town_defender_count);
+	WriteInt32(last_being_attacked_date);
+	WriteFloat(received_hit_count);
+	WriteInt8Array(train_queue_skill_array, MAX_TRAIN_QUEUE);
+	WriteInt8Array(train_queue_race_array, MAX_TRAIN_QUEUE);
+	WriteInt8(train_queue_count);
+	WriteInt16(train_unit_recno);
+	WriteInt32(train_unit_action_id);
+	WriteInt32(start_train_frame_no);
+	WriteInt16(defend_target_recno);
+	WriteInt32(accumulated_collect_tax_penalty);
+	WriteInt32(accumulated_reward_penalty);
+	WriteInt32(accumulated_recruit_penalty);
+	WriteInt32(accumulated_enemy_grant_penalty);
+	WriteInt32(last_rebel_date);
+	WriteInt16(independent_unit_join_nation_min_rating);
+	WriteInt16(quality_of_life);
+	WriteInt16(auto_collect_tax_loyalty);
+	WriteInt16(auto_grant_loyalty);
+	WriteInt8(town_combat_level);
+	WriteInt8Array(has_product_supply, MAX_PRODUCT);
+	WriteInt8(no_neighbor_space);
+	WriteInt16(linked_firm_count);
+	WriteInt16(linked_town_count);
+	WriteInt16Array(linked_firm_array, MAX_LINKED_FIRM_TOWN);
+	WriteInt16Array(linked_town_array, MAX_LINKED_TOWN_TOWN);
+	WriteInt8Array(linked_firm_enable_array, MAX_LINKED_FIRM_TOWN);
+	WriteInt8Array(linked_town_enable_array, MAX_LINKED_TOWN_TOWN);
+}
+
+void Version_1_Town::read_record(Version_1_TownGF *r)
+{
+	ReadInt16(town_recno);
+	ReadInt16(town_name_id);
+	ReadInt16(nation_recno);
+	ReadInt16(rebel_recno);
+	ReadInt8(race_id);
+	ReadInt32(setup_date);
+	ReadInt8(ai_town);
+	ReadInt8(ai_link_checked);
+	ReadInt8(independ_town_nation_relation);
+	ReadInt8(has_linked_own_camp);
+	ReadInt8(has_linked_enemy_camp);
+	ReadInt8(is_base_town);
+	ReadInt16(loc_x1);
+	ReadInt16(loc_y1);
+	ReadInt16(loc_x2);
+	ReadInt16(loc_y2);
+	ReadInt16(abs_x1);
+	ReadInt16(abs_y1);
+	ReadInt16(abs_x2);
+	ReadInt16(abs_y2);
+	ReadInt16(center_x);
+	ReadInt16(center_y);
+	ReadInt8(region_id);
+	ReadInt16(layout_id);
+	ReadInt16(first_slot_id);
+	ReadInt16Array(slot_object_id_array, MAX_TOWN_LAYOUT_SLOT);
+	ReadInt16(population);
+	ReadInt16(jobless_population);
+	ReadInt16Array(max_race_pop_array, VERSION_1_MAX_RACE);
+	ReadInt16Array(race_pop_array, VERSION_1_MAX_RACE);
+	ReadInt8Array(race_pop_growth_array, VERSION_1_MAX_RACE);
+	ReadInt16Array(jobless_race_pop_array, VERSION_1_MAX_RACE);
+	ReadFloatArray(race_loyalty_array, VERSION_1_MAX_RACE);
+	ReadInt8Array(race_target_loyalty_array, VERSION_1_MAX_RACE);
+	ReadInt16Array(race_spy_count_array, VERSION_1_MAX_RACE);
+	ReadFloatArray(race_resistance_array, MAX_NATION*VERSION_1_MAX_RACE);
+	ReadInt8Array(race_target_resistance_array, MAX_NATION*VERSION_1_MAX_RACE);
+	ReadInt16(town_defender_count);
+	ReadInt32(last_being_attacked_date);
+	ReadFloat(received_hit_count);
+	ReadInt8Array(train_queue_skill_array, MAX_TRAIN_QUEUE);
+	ReadInt8Array(train_queue_race_array, MAX_TRAIN_QUEUE);
+	ReadInt8(train_queue_count);
+	ReadInt16(train_unit_recno);
+	ReadInt32(train_unit_action_id);
+	ReadInt32(start_train_frame_no);
+	ReadInt16(defend_target_recno);
+	ReadInt32(accumulated_collect_tax_penalty);
+	ReadInt32(accumulated_reward_penalty);
+	ReadInt32(accumulated_recruit_penalty);
+	ReadInt32(accumulated_enemy_grant_penalty);
+	ReadInt32(last_rebel_date);
+	ReadInt16(independent_unit_join_nation_min_rating);
+	ReadInt16(quality_of_life);
+	ReadInt16(auto_collect_tax_loyalty);
+	ReadInt16(auto_grant_loyalty);
+	ReadInt8(town_combat_level);
+	ReadInt8Array(has_product_supply, MAX_PRODUCT);
+	ReadInt8(no_neighbor_space);
+	ReadInt16(linked_firm_count);
+	ReadInt16(linked_town_count);
+	ReadInt16Array(linked_firm_array, MAX_LINKED_FIRM_TOWN);
+	ReadInt16Array(linked_town_array, MAX_LINKED_TOWN_TOWN);
+	ReadInt8Array(linked_firm_enable_array, MAX_LINKED_FIRM_TOWN);
+	ReadInt8Array(linked_town_enable_array, MAX_LINKED_TOWN_TOWN);
 }
 
 void Tornado::write_record(TornadoGF *r)

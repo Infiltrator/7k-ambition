@@ -42,6 +42,8 @@
 #define	VERSION_1_GODRES_GOD_COUNT				7
 #define	VERSION_1_TECH_COUNT						7
 
+struct Version_1_TownGF;
+
 #pragma pack(1)
 class Version_1_Town
 {
@@ -131,6 +133,9 @@ public:
 
 public:
 	void	convert_to_version_2(Town *townPtr);
+
+	void	write_record(Version_1_TownGF *r);
+	void	read_record(Version_1_TownGF *r);
 };
 #pragma pack()
 

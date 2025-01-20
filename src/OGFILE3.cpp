@@ -1365,8 +1365,9 @@ int TownArray::write_file(File* filePtr)
 
 			filePtr->file_put_short(1);      // the town exists
 
-         if( !filePtr->file_write( townPtr, sizeof(Town) - Town::SIZEOF_NONSAVED_ELEMENTS ) )
-            return 0;
+			townPtr->write_record(&gf_rec.town);
+			if( !filePtr->file_write(&gf_rec, sizeof(TownGF)) )
+				return 0;
       }
    }
 
@@ -1414,19 +1415,21 @@ int TownArray::read_file(File* filePtr)
 			if(!GameFile::read_file_same_version)
 			{
 				Version_1_Town *oldTown = (Version_1_Town*) mem_add(sizeof(Version_1_Town));
-				if(!filePtr->file_read(oldTown, sizeof(Version_1_Town)))
+				if( !filePtr->file_read(&gf_rec, sizeof(Version_1_TownGF)) )
 				{
 					mem_del(oldTown);
 					return 0;
 				}
 
+				oldTown->read_record(&gf_rec.town_v1);
 				oldTown->convert_to_version_2(townPtr);
 				mem_del(oldTown);
 			}
 			else
 			{
-				if( !filePtr->file_read( townPtr, sizeof(Town) - Town::SIZEOF_NONSAVED_ELEMENTS ) )
+				if( !filePtr->file_read(&gf_rec, sizeof(TownGF)) )
 					return 0;
+				townPtr->read_record(&gf_rec.town);
 			}
 
 			#ifdef DEBUG

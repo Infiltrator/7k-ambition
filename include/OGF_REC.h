@@ -45,6 +45,7 @@
 #include <OREBEL.h>
 #include <OSITE.h>
 #include <OTORNADO.h>
+#include <OTOWN.h>
 #include <OU_CARA.h>
 #include <OU_CART.h>
 #include <OU_GOD.h>
@@ -1113,6 +1114,144 @@ struct SiteGF
 	uint8_t              region_id;
 };
 
+struct TownGF
+{
+	int16_t              town_recno;
+	int16_t              town_name_id;
+	int16_t              nation_recno;
+	int16_t              rebel_recno;
+	int8_t               race_id;
+	int32_t              setup_date;
+	int8_t               ai_town;
+	int8_t               ai_link_checked;
+	int8_t               independ_town_nation_relation;
+	int8_t               has_linked_own_camp;
+	int8_t               has_linked_enemy_camp;
+	int8_t               is_base_town;
+	int16_t              loc_x1;
+	int16_t              loc_y1;
+	int16_t              loc_x2;
+	int16_t              loc_y2;
+	int16_t              abs_x1;
+	int16_t              abs_y1;
+	int16_t              abs_x2;
+	int16_t              abs_y2;
+	int16_t              center_x;
+	int16_t              center_y;
+	uint8_t              region_id;
+	int16_t              layout_id;
+	int16_t              first_slot_id;
+	int16_t              slot_object_id_array[MAX_TOWN_LAYOUT_SLOT];
+	int16_t              population;
+	int16_t              jobless_population;
+	int16_t              max_race_pop_array[MAX_RACE];
+	int16_t              race_pop_array[MAX_RACE];
+	uint8_t              race_pop_growth_array[MAX_RACE];
+	int16_t              jobless_race_pop_array[MAX_RACE];
+	float                race_loyalty_array[MAX_RACE];
+	int8_t               race_target_loyalty_array[MAX_RACE];
+	int16_t              race_spy_count_array[MAX_RACE];
+	float                race_resistance_array[MAX_RACE][MAX_NATION];
+	int8_t               race_target_resistance_array[MAX_RACE][MAX_NATION];
+	int16_t              town_defender_count;
+	int32_t              last_being_attacked_date;
+	float                received_hit_count;
+	int8_t               train_queue_skill_array[MAX_TRAIN_QUEUE];
+	int8_t               train_queue_race_array[MAX_TRAIN_QUEUE];
+	int8_t               train_queue_count;
+	int16_t              train_unit_recno;
+	int32_t              train_unit_action_id;
+	uint32_t             start_train_frame_no;
+	int16_t              defend_target_recno;
+	int32_t              accumulated_collect_tax_penalty;
+	int32_t              accumulated_reward_penalty;
+	int32_t              accumulated_recruit_penalty;
+	int32_t              accumulated_enemy_grant_penalty;
+	int32_t              last_rebel_date;
+	int16_t              independent_unit_join_nation_min_rating;
+	int16_t              quality_of_life;
+	int16_t              auto_collect_tax_loyalty;
+	int16_t              auto_grant_loyalty;
+	int8_t               town_combat_level;
+	int8_t               has_product_supply[MAX_PRODUCT];
+	int8_t               no_neighbor_space;
+	int16_t              linked_firm_count;
+	int16_t              linked_town_count;
+	int16_t              linked_firm_array[MAX_LINKED_FIRM_TOWN];
+	int16_t              linked_town_array[MAX_LINKED_TOWN_TOWN];
+	int8_t               linked_firm_enable_array[MAX_LINKED_FIRM_TOWN];
+	int8_t               linked_town_enable_array[MAX_LINKED_TOWN_TOWN];
+};
+
+struct Version_1_TownGF
+{
+	int16_t              town_recno;
+	int16_t              town_name_id;
+	int16_t              nation_recno;
+	int16_t              rebel_recno;
+	int8_t               race_id;
+	int32_t              setup_date;
+	int8_t               ai_town;
+	int8_t               ai_link_checked;
+	int8_t               independ_town_nation_relation;
+	int8_t               has_linked_own_camp;
+	int8_t               has_linked_enemy_camp;
+	int8_t               is_base_town;
+	int16_t              loc_x1;
+	int16_t              loc_y1;
+	int16_t              loc_x2;
+	int16_t              loc_y2;
+	int16_t              abs_x1;
+	int16_t              abs_y1;
+	int16_t              abs_x2;
+	int16_t              abs_y2;
+	int16_t              center_x;
+	int16_t              center_y;
+	uint8_t              region_id;
+	int16_t              layout_id;
+	int16_t              first_slot_id;
+	int16_t              slot_object_id_array[MAX_TOWN_LAYOUT_SLOT];
+	int16_t              population;
+	int16_t              jobless_population;
+	int16_t              max_race_pop_array[VERSION_1_MAX_RACE];
+	int16_t              race_pop_array[VERSION_1_MAX_RACE];
+	uint8_t              race_pop_growth_array[VERSION_1_MAX_RACE];
+	int16_t              jobless_race_pop_array[VERSION_1_MAX_RACE];
+	float                race_loyalty_array[VERSION_1_MAX_RACE];
+	int8_t               race_target_loyalty_array[VERSION_1_MAX_RACE];
+	int16_t              race_spy_count_array[VERSION_1_MAX_RACE];
+	float                race_resistance_array[MAX_NATION][VERSION_1_MAX_RACE];
+	int8_t               race_target_resistance_array[MAX_NATION][VERSION_1_MAX_RACE];
+	int16_t              town_defender_count;
+	int32_t              last_being_attacked_date;
+	float                received_hit_count;
+	int8_t               train_queue_skill_array[MAX_TRAIN_QUEUE];
+	int8_t               train_queue_race_array[MAX_TRAIN_QUEUE];
+	int8_t               train_queue_count;
+	int16_t              train_unit_recno;
+	int32_t              train_unit_action_id;
+	uint32_t             start_train_frame_no;
+	int16_t              defend_target_recno;
+	int32_t              accumulated_collect_tax_penalty;
+	int32_t              accumulated_reward_penalty;
+	int32_t              accumulated_recruit_penalty;
+	int32_t              accumulated_enemy_grant_penalty;
+	int32_t              last_rebel_date;
+	int16_t              independent_unit_join_nation_min_rating;
+	int16_t              quality_of_life;
+	int16_t              auto_collect_tax_loyalty;
+	int16_t              auto_grant_loyalty;
+	int8_t               town_combat_level;
+	int8_t               has_product_supply[MAX_PRODUCT];
+	int8_t               no_neighbor_space;
+	int16_t              linked_firm_count;
+	int16_t              linked_town_count;
+	int16_t              linked_firm_array[MAX_LINKED_FIRM_TOWN];
+	int16_t              linked_town_array[MAX_LINKED_TOWN_TOWN];
+	int8_t               linked_firm_enable_array[MAX_LINKED_FIRM_TOWN];
+	int8_t               linked_town_enable_array[MAX_LINKED_TOWN_TOWN];
+};
+
 struct TornadoGF
 {
 	uint32_t             vtp; //zero
@@ -1203,6 +1342,7 @@ union GFRec
 	ProjectileGF projectile;
 	RebelGF rebel;
 	TornadoGF tornado;
+	TownGF town;
 	UnitGF unit;
 	UnitCaravanGF unit_caravan;
 	UnitExpCartGF unit_exp_cart;
@@ -1212,6 +1352,7 @@ union GFRec
 	UnitVehicleGF unit_vehicle;
 	Version_1_NationGF nation_v1;
 	Version_1_NationArrayGF nation_array_v1;
+	Version_1_TownGF town_v1;
 };
 
 extern GFRec gf_rec;
