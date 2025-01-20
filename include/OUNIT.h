@@ -188,6 +188,8 @@ enum  {  KEEP_PRESERVE_ACTION = 1,  // used for stop2() to keep preserve action
 
 //----------- Define TeamInfo -------------//
 
+struct TeamInfoGF;
+
 #pragma pack(1)
 struct TeamInfo
 {
@@ -196,6 +198,9 @@ struct TeamInfo
    char  member_count;
    short member_unit_array[MAX_TEAM_MEMBER];
    int   ai_last_request_defense_date;
+
+	void write_record(TeamInfoGF *r);
+	void read_record(TeamInfoGF *r);
 };
 #pragma pack()
 

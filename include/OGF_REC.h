@@ -112,6 +112,12 @@ struct AttackInfoGF
 	int16_t              effect_id;
 };
 
+struct ResultNodeGF
+{
+	int16_t              node_x;
+	int16_t              node_y;
+};
+
 struct SkillGF
 {
 	int8_t               combat_level;
@@ -120,6 +126,13 @@ struct SkillGF
 	uint8_t              combat_level_minor;
 	uint8_t              skill_level_minor;
 	uint8_t              skill_potential;
+};
+
+struct TeamInfoGF
+{
+	int8_t               member_count;
+	int16_t              member_unit_array[MAX_TEAM_MEMBER];
+	int32_t              ai_last_request_defense_date;
 };
 
 struct UnitGF
@@ -1363,6 +1376,7 @@ union GFRec
 	RebelGF rebel;
 	RegionArrayGF region_array;
 	SnowGroundArrayGF snow_ground_array;
+	TeamInfoGF team_info;
 	TornadoGF tornado;
 	TownGF town;
 	UnitGF unit;

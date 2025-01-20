@@ -171,6 +171,18 @@ void AttackInfo::read_record(AttackInfoGF *r)
 	ReadInt16(effect_id);
 }
 
+void ResultNode::write_record(ResultNodeGF *r)
+{
+	WriteInt16(node_x);
+	WriteInt16(node_y);
+}
+
+void ResultNode::read_record(ResultNodeGF *r)
+{
+	ReadInt16(node_x);
+	ReadInt16(node_y);
+}
+
 void Skill::write_record(SkillGF *r)
 {
 	WriteInt8(combat_level);
@@ -189,6 +201,20 @@ void Skill::read_record(SkillGF *r)
 	ReadInt8(combat_level_minor);
 	ReadInt8(skill_level_minor);
 	ReadInt8(skill_potential);
+}
+
+void TeamInfo::write_record(TeamInfoGF *r)
+{
+	WriteInt8(member_count);
+	WriteInt16Array(member_unit_array, MAX_TEAM_MEMBER);
+	WriteInt32(ai_last_request_defense_date);
+}
+
+void TeamInfo::read_record(TeamInfoGF *r)
+{
+	ReadInt8(member_count);
+	ReadInt16Array(member_unit_array, MAX_TEAM_MEMBER);
+	ReadInt32(ai_last_request_defense_date);
 }
 
 void Unit::write_record(UnitGF *r)

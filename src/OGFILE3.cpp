@@ -219,26 +219,47 @@ int Unit::write_file(File* filePtr)
 
 	if( result_node_array )
 	{
-		if( !filePtr->file_write( result_node_array, sizeof(ResultNode) * result_node_count ) )
+		ResultNodeGF *node_record_array = (ResultNodeGF*) mem_add(sizeof(ResultNode)*result_node_count);
+		for( int i=0; i<result_node_count; i++ )
+		{
+			ResultNode *node = result_node_array+i;
+			node->write_record(node_record_array+i);
+		}
+		if( !filePtr->file_write(node_record_array, sizeof(ResultNodeGF)*result_node_count) )
+		{
+			mem_del(node_record_array);
 			return 0;
+		}
+		mem_del(node_record_array);
 	}
 
 	//### begin alex 15/10 ###//
 	if(way_point_array)
 	{
 		err_when(way_point_array_size==0 || way_point_array_size<way_point_count);
-		if(!filePtr->file_write(way_point_array, sizeof(ResultNode)*way_point_array_size))
+		ResultNodeGF *node_record_array = (ResultNodeGF*) mem_add(sizeof(ResultNodeGF)*way_point_array_size);
+		for( int i=0; i<way_point_array_size; i++ )
+		{
+			ResultNode *node = way_point_array+i;
+			node->write_record(node_record_array+i);
+		}
+		if( !filePtr->file_write(node_record_array, sizeof(ResultNodeGF)*way_point_array_size) )
+		{
+			mem_del(node_record_array);
 			return 0;
+		}
+		mem_del(node_record_array);
 	}
 	//#### end alex 15/10 ####//
 
 	if( team_info )
 	{
-		if( !filePtr->file_write( team_info, sizeof(TeamInfo) ) )
+		team_info->write_record(&gf_rec.team_info);
+		if( !filePtr->file_write(&gf_rec, sizeof(TeamInfoGF)) )
 			return 0;
-   }
+	}
 
-   return 1;
+	return 1;
 }
 //----------- End of function Unit::write_file ---------//
 
@@ -255,47 +276,57 @@ int Unit::read_file(File* filePtr)
 
 	if( result_node_array )
 	{
-		result_node_array = (ResultNode*) mem_add( sizeof(ResultNode) * result_node_count );
+		ResultNodeGF *node_record_array = (ResultNodeGF*) mem_add(sizeof(ResultNode)*result_node_count);
 
-		if( !filePtr->file_read( result_node_array, sizeof(ResultNode) * result_node_count ) )
+		if( !filePtr->file_read(node_record_array, sizeof(ResultNodeGF)*result_node_count) )
+		{
+			mem_del(node_record_array);
 			return 0;
+		}
+		result_node_array = (ResultNode*) mem_add(sizeof(ResultNode) * result_node_count);
+		for( int i=0; i<result_node_count; i++ )
+		{
+			ResultNode *node = result_node_array+i;
+			node->read_record(node_record_array+i);
+		}
+		mem_del(node_record_array);
 	}
 
 	//### begin alex 15/10 ###//
 	if(way_point_array)
 	{
-		way_point_array = (ResultNode*) mem_add(sizeof(ResultNode) * way_point_array_size);
+		ResultNodeGF *node_record_array = (ResultNodeGF*) mem_add(sizeof(ResultNodeGF)*way_point_array_size);
 
-		if(!filePtr->file_read(way_point_array, sizeof(ResultNode)*way_point_array_size))
+		if( !filePtr->file_read(node_record_array, sizeof(ResultNodeGF)*way_point_array_size) )
+		{
+			mem_del(node_record_array);
 			return 0;
+		}
+		way_point_array = (ResultNode*) mem_add(sizeof(ResultNode)*way_point_array_size);
+		for( int i=0; i<way_point_array_size; i++ )
+		{
+			ResultNode *node = way_point_array+i;
+			node->read_record(node_record_array+i);
+		}
+		mem_del(node_record_array);
 	}
 	//#### end alex 15/10 ####//
 
 	if( team_info )
 	{
-		team_info = (TeamInfo*) mem_add( sizeof(TeamInfo) );
-
-		if( !filePtr->file_read( team_info, sizeof(TeamInfo) ) )
+		if( !filePtr->file_read(&gf_rec, sizeof(TeamInfoGF)) )
 			return 0;
+		team_info = (TeamInfo*) mem_add(sizeof(TeamInfo));
+		team_info->read_record(&gf_rec.team_info);
 	}
 
 	//----------- post-process the data read ----------//
 
-	// attack_info_array = unit_res.attack_info_array+unit_res[unit_id]->first_attack-1;
 	sprite_info       = sprite_res[sprite_id];
 
 	sprite_info->load_bitmap_res();
 
-	//--------- special process of UNIT_MARINE --------//
-
-	// move to read_derived_file
-	//if( unit_res[unit_id]->unit_class == UNIT_CLASS_SHIP )
-	//{
-	//	((UnitMarine*)this)->splash.sprite_info = sprite_res[sprite_id];
-	//	((UnitMarine*)this)->splash.sprite_info->load_bitmap_res();
-	//}
-
-   return 1;
+	return 1;
 }
 //----------- End of function Unit::read_file ---------//
 
