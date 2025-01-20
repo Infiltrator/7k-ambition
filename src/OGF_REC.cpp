@@ -2205,6 +2205,23 @@ void Site::read_record(SiteGF *r)
 	ReadInt8(region_id);
 }
 
+void TownArray::write_record(TownArrayGF *r)
+{
+	WriteInt32Array(race_wander_pop_array, MAX_RACE);
+}
+
+void TownArray::read_record(TownArrayGF *r)
+{
+	ReadInt32Array(race_wander_pop_array, MAX_RACE);
+}
+
+void TownArray::read_record_v1(Version_1_TownArrayGF *r)
+{
+	ReadInt32Array(race_wander_pop_array, VERSION_1_MAX_RACE);
+	for( int i=VERSION_1_MAX_RACE; i<MAX_RACE; i++ )
+		race_wander_pop_array[i] = 0;
+}
+
 void Town::write_record(TownGF *r)
 {
 	WriteInt16(town_recno);

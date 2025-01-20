@@ -1129,6 +1129,16 @@ struct SiteGF
 	uint8_t              region_id;
 };
 
+struct TownArrayGF
+{
+	int32_t              race_wander_pop_array[MAX_RACE];
+};
+
+struct Version_1_TownArrayGF
+{
+	int32_t              race_wander_pop_array[VERSION_1_MAX_RACE];
+};
+
 struct TownGF
 {
 	int16_t              town_recno;
@@ -1379,6 +1389,7 @@ union GFRec
 	TeamInfoGF team_info;
 	TornadoGF tornado;
 	TownGF town;
+	TownArrayGF town_array;
 	UnitGF unit;
 	UnitCaravanGF unit_caravan;
 	UnitExpCartGF unit_exp_cart;
@@ -1389,6 +1400,7 @@ union GFRec
 	Version_1_NationGF nation_v1;
 	Version_1_NationArrayGF nation_array_v1;
 	Version_1_TownGF town_v1;
+	Version_1_TownArrayGF town_array_v1;
 };
 
 extern GFRec gf_rec;

@@ -1359,7 +1359,8 @@ int TownArray::write_file(File* filePtr)
 
 	filePtr->file_put_short( size()  );  // no. of towns in town_array
 	filePtr->file_put_short( selected_recno );
-	filePtr->file_write( race_wander_pop_array, sizeof(race_wander_pop_array) );
+	write_record(&gf_rec.town_array);
+	filePtr->file_write(&gf_rec, sizeof(TownArrayGF));
 
 	filePtr->file_put_short( Town::if_town_recno );
 
@@ -1410,11 +1411,14 @@ int TownArray::read_file(File* filePtr)
 
 	if(!GameFile::read_file_same_version)
 	{
-		memset(race_wander_pop_array, 0, sizeof(race_wander_pop_array));
-		filePtr->file_read( race_wander_pop_array, sizeof(race_wander_pop_array[0])*VERSION_1_MAX_RACE );
+		filePtr->file_read(&gf_rec, sizeof(Version_1_TownArrayGF));
+		read_record_v1(&gf_rec.town_array_v1);
 	}
 	else
-		filePtr->file_read( race_wander_pop_array, sizeof(race_wander_pop_array) );
+	{
+		filePtr->file_read(&gf_rec, sizeof(TownArrayGF));
+		read_record(&gf_rec.town_array);
+	}
 
 	Town::if_town_recno = filePtr->file_get_short();
 

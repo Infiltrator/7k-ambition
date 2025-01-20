@@ -412,6 +412,9 @@ private:
 
 //-------- Begin of class TownArray ------------//
 
+struct TownArrayGF;
+struct Version_1_TownArrayGF;
+
 class TownArray : public DynArrayB
 {
 public:
@@ -446,8 +449,11 @@ public:
 
 	void	stop_attack_nation(short nationRecno);
 
-   int   write_file(File*);
-   int   read_file(File*);
+	int   write_file(File*);
+	int   read_file(File*);
+	void  write_record(TownArrayGF *r);
+	void  read_record(TownArrayGF *r);
+	void  read_record_v1(Version_1_TownArrayGF *r);
 
 	int   is_deleted(int recNo);
 
