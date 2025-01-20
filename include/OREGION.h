@@ -65,6 +65,7 @@ struct RegionInfo
 //------- Define class RegionArray ----------//
 
 class RegionStat;
+struct RegionArrayGF;
 
 #pragma pack(1)
 class RegionArray
@@ -104,6 +105,8 @@ public:
 
 	int 	write_file(File* filePtr);
 	int	read_file(File* filePtr);
+	void	write_record(RegionArrayGF *r);
+	void	read_record(RegionArrayGF *r);
 
 	//--------------------------------------//
 

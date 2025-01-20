@@ -43,6 +43,7 @@
 #include <ONATIONB.h>
 #include <ONEWS.h>
 #include <OREBEL.h>
+#include <OREGION.h>
 #include <OSITE.h>
 #include <OSNOWG.h>
 #include <OTORNADO.h>
@@ -1304,6 +1305,17 @@ struct SnowGroundArrayGF
 	int32_t              snow_pattern;
 };
 
+struct RegionArrayGF
+{
+	int32_t              init_flag;
+	uint32_t             region_info_array; //zero
+	int32_t              region_info_count;
+	uint32_t             region_stat_array; //zero
+	int32_t              region_stat_count;
+	uint32_t             connect_bits; //zero
+	uint8_t              region_sorted_array[MAX_REGION];
+};
+
 struct NewsGF
 {
 	int8_t               id;
@@ -1349,6 +1361,7 @@ union GFRec
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
 	RebelGF rebel;
+	RegionArrayGF region_array;
 	SnowGroundArrayGF snow_ground_array;
 	TornadoGF tornado;
 	TownGF town;

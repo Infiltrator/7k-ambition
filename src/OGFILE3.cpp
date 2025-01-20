@@ -39,20 +39,12 @@
 #include <OTORNADO.h>
 #include <OTOWN.h>
 #include <OU_MARI.h>
-#include <OSaveGameArray.h>
-#include <file_io_visitor.h>
-#include <file_reader.h>
-#include <ConfigAdv.h>
 
+#include <ConfigAdv.h>
 #include <OGF_V1.h>
 #include <OGF_REC.h>
 
-using namespace FileIOVisitor;
-
 //------- declare static functions -------//
-
-static char* create_monster_func();
-static char* create_rebel_func();
 
 static void write_ai_info(File* filePtr, short* aiInfoArray, short aiInfoCount, short aiInfoSize);
 static void read_ai_info(File* filePtr, short** aiInfoArrayPtr, short& aiInfoCount, short& aiInfoSize);
@@ -2106,26 +2098,12 @@ int SnowGroundArray::read_file(File* filePtr)
 
 //*****//
 
-template <typename Visitor>
-static void visit_region_array(Visitor *v, RegionArray *ra)
-{
-	visit<int32_t>(v, &ra->init_flag);
-	visit_pointer(v, &ra->region_info_array);
-	visit<int32_t>(v, &ra->region_info_count);
-	visit_pointer(v, &ra->region_stat_array);
-	visit<int32_t>(v, &ra->region_stat_count);
-	visit_pointer(v, &ra->connect_bits);
-	visit_array<uint8_t>(v, ra->region_sorted_array, MAX_REGION);
-}
-
-enum { REGION_ARRAY_RECORD_SIZE = 279 };
-
 //-------- Start of function RegionArray::write_file -------------//
 //
 int RegionArray::write_file(File* filePtr)
 {
-	if (!write_with_record_size(filePtr, this, &visit_region_array<FileWriterVisitor>,
-										 REGION_ARRAY_RECORD_SIZE))
+	write_record(&gf_rec.region_array);
+	if( !filePtr->file_write(&gf_rec, sizeof(RegionArrayGF)) )
 		return 0;
 
 	if( !filePtr->file_write( region_info_array, sizeof(RegionInfo)*region_info_count ) )
@@ -2158,17 +2136,17 @@ int RegionArray::write_file(File* filePtr)
 //
 int RegionArray::read_file(File* filePtr)
 {
-	if (!read_with_record_size(filePtr, this, &visit_region_array<FileReaderVisitor>,
-										REGION_ARRAY_RECORD_SIZE))
+	if( !filePtr->file_read(&gf_rec, sizeof(RegionArrayGF)) )
 		return 0;
+	read_record(&gf_rec.region_array);
 
-   if( region_info_count > 0 )
-      region_info_array = (RegionInfo *) mem_add(sizeof(RegionInfo)*region_info_count);
-   else
-      region_info_array = NULL;
+	if( region_info_count > 0 )
+		region_info_array = (RegionInfo *) mem_add(sizeof(RegionInfo)*region_info_count);
+	else
+		region_info_array = NULL;
 
-   if( !filePtr->file_read( region_info_array, sizeof(RegionInfo)*region_info_count))
-      return 0;
+	if( !filePtr->file_read(region_info_array, sizeof(RegionInfo)*region_info_count) )
+		return 0;
 
 	//-------- read RegionStat ----------//
 

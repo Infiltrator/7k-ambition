@@ -2557,6 +2557,28 @@ void SnowGroundArray::read_record(SnowGroundArrayGF *r)
 	ReadInt32(snow_pattern);
 }
 
+void RegionArray::write_record(RegionArrayGF *r)
+{
+	WriteInt32(init_flag);
+	WriteZero(region_info_array);
+	WriteInt32(region_info_count);
+	WriteZero(region_stat_array);
+	WriteInt32(region_stat_count);
+	WriteZero(connect_bits);
+	WriteInt8Array(region_sorted_array, MAX_REGION);
+}
+
+void RegionArray::read_record(RegionArrayGF *r)
+{
+	ReadInt32(init_flag);
+	// skip region_info_array
+	ReadInt32(region_info_count);
+	// skip region_stat_array
+	ReadInt32(region_stat_count);
+	// skip connect_bits
+	ReadInt8Array(region_sorted_array, MAX_REGION);
+}
+
 void News::write_record(NewsGF *r)
 {
 	WriteInt8(id);
