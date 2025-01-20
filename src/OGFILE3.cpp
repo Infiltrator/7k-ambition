@@ -40,7 +40,6 @@
 #include <OTOWN.h>
 #include <OU_MARI.h>
 #include <OSaveGameArray.h>
-#include <dbglog.h>
 #include <file_io_visitor.h>
 #include <file_reader.h>
 #include <ConfigAdv.h>
@@ -49,8 +48,6 @@
 #include <OGF_REC.h>
 
 using namespace FileIOVisitor;
-
-DBGLOG_DEFAULT_CHANNEL(GameFile);
 
 //------- declare static functions -------//
 
@@ -966,8 +963,6 @@ int Firm::read_derived_file(File* filePtr)
 
    if( readSize > 0 )
    {
-		MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
-
       if( !filePtr->file_read( (char*) this + sizeof(Firm), readSize ) )
          return 0;
    }
@@ -2088,12 +2083,11 @@ int SpyArray::read_file(File* filePtr)
 //
 int SnowGroundArray::write_file(File* filePtr)
 {
-	MSG(__FILE__":%d: file_write(this, ...);\n", __LINE__);
+	write_record(&gf_rec.snow_ground_array);
+	if( !filePtr->file_write(&gf_rec, sizeof(SnowGroundArrayGF)) )
+		return 0;
 
-   if( !filePtr->file_write( this, sizeof(SnowGroundArray)) )
-      return 0;
-
-   return 1;
+	return 1;
 }
 //--------- End of function SnowGroundArray::write_file ---------------//
 
@@ -2102,12 +2096,11 @@ int SnowGroundArray::write_file(File* filePtr)
 //
 int SnowGroundArray::read_file(File* filePtr)
 {
-	MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
+	if( !filePtr->file_read(&gf_rec, sizeof(SnowGroundArrayGF)) )
+		return 0;
+	read_record(&gf_rec.snow_ground_array);
 
-   if( !filePtr->file_read( this, sizeof(SnowGroundArray)) )
-      return 0;
-
-   return 1;
+	return 1;
 }
 //--------- End of function SnowGroundArray::read_file ---------------//
 

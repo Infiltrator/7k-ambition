@@ -44,6 +44,7 @@
 #include <ONEWS.h>
 #include <OREBEL.h>
 #include <OSITE.h>
+#include <OSNOWG.h>
 #include <OTORNADO.h>
 #include <OTOWN.h>
 #include <OU_CARA.h>
@@ -1296,6 +1297,13 @@ struct RebelGF
 	int8_t               hostile_nation_bits;
 };
 
+struct SnowGroundArrayGF
+{
+	uint32_t             seed;
+	int32_t              snow_thick;
+	int32_t              snow_pattern;
+};
+
 struct NewsGF
 {
 	int8_t               id;
@@ -1341,6 +1349,7 @@ union GFRec
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
 	RebelGF rebel;
+	SnowGroundArrayGF snow_ground_array;
 	TornadoGF tornado;
 	TownGF town;
 	UnitGF unit;

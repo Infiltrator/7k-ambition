@@ -2543,6 +2543,20 @@ void Rebel::read_record(RebelGF *r)
 	ReadInt8(hostile_nation_bits);
 }
 
+void SnowGroundArray::write_record(SnowGroundArrayGF *r)
+{
+	WriteInt32(seed);
+	WriteInt32(snow_thick);
+	WriteInt32(snow_pattern);
+}
+
+void SnowGroundArray::read_record(SnowGroundArrayGF *r)
+{
+	ReadInt32(seed);
+	ReadInt32(snow_thick);
+	ReadInt32(snow_pattern);
+}
+
 void News::write_record(NewsGF *r)
 {
 	WriteInt8(id);
