@@ -1622,14 +1622,13 @@ int Nation::write_file(File* filePtr)
 		return 0;
 	if( action_array.last_ele )
 	{
-		int action_node_bytes = sizeof(ActionNodeGF)*action_array.last_ele;
-		ActionNodeGF *action_node_array = (ActionNodeGF*)mem_add(action_node_bytes);
+		ActionNodeGF *action_node_array = (ActionNodeGF*)mem_add(sizeof(ActionNodeGF)*action_array.last_ele);
 		for( int i=1; i<=action_array.last_ele; i++ )
 		{
 			ActionNode *actionNodePtr = (ActionNode*)action_array.get(i);
 			actionNodePtr->write_record(action_node_array+i-1);
 		}
-		if( !filePtr->file_write(action_node_array, action_node_bytes) )
+		if( !filePtr->file_write(action_node_array, sizeof(ActionNodeGF)*action_array.last_ele) )
 		{
 			mem_del(action_node_array);
 			return 0;
@@ -1702,9 +1701,8 @@ int Nation::read_file(File* filePtr)
 	action_array.resize(action_array.ele_num); //alloc body_buf again
 	if( action_array.last_ele )
 	{
-		int action_node_bytes = sizeof(ActionNodeGF)*action_array.last_ele;
-		ActionNodeGF *action_node_array = (ActionNodeGF*)mem_add(action_node_bytes);
-		if( !filePtr->file_read(action_node_array, action_node_bytes) )
+		ActionNodeGF *action_node_array = (ActionNodeGF*)mem_add(sizeof(ActionNodeGF)*action_array.last_ele);
+		if( !filePtr->file_read(action_node_array, sizeof(ActionNodeGF)*action_array.last_ele) )
 		{
 			mem_del(action_node_array);
 			return 0;
