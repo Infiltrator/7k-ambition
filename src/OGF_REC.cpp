@@ -2600,6 +2600,92 @@ void SnowGroundArray::read_record(SnowGroundArrayGF *r)
 	ReadInt32(snow_pattern);
 }
 
+void RegionInfo::write_record(RegionInfoGF *r)
+{
+	WriteInt8(region_id);
+	WriteInt8(region_stat_id);
+	r->region_type = SDL_SwapLE32(region_type);
+	WriteInt32(adj_offset_bit);
+	WriteInt32(region_size);
+	WriteInt16(center_x);
+	WriteInt16(center_y);
+}
+
+void RegionInfo::read_record(RegionInfoGF *r)
+{
+	ReadInt8(region_id);
+	ReadInt8(region_stat_id);
+	region_type = (RegionType)SDL_SwapLE32(r->region_type);
+	ReadInt32(adj_offset_bit);
+	ReadInt32(region_size);
+	ReadInt16(center_x);
+	ReadInt16(center_y);
+}
+
+void RegionPath::write_record(RegionPathGF *r)
+{
+	WriteInt8(sea_region_id);
+	WriteInt8(land_region_stat_id);
+}
+
+void RegionPath::read_record(RegionPathGF *r)
+{
+	ReadInt8(sea_region_id);
+	ReadInt8(land_region_stat_id);
+}
+
+void RegionStat::write_record(RegionStatGF *r)
+{
+	WriteInt8(region_id);
+	WriteInt8Array(nation_is_present_array, MAX_NATION);
+	WriteInt8(nation_presence_count);
+	WriteInt16Array(firm_type_count_array, MAX_FIRM_TYPE);
+	WriteInt16Array(firm_nation_count_array, MAX_NATION);
+	WriteInt16Array(camp_nation_count_array, MAX_NATION);
+	WriteInt16Array(mine_nation_count_array, MAX_NATION);
+	WriteInt16Array(harbor_nation_count_array, MAX_NATION);
+	WriteInt16(total_firm_count);
+	WriteInt16Array(town_nation_count_array, MAX_NATION);
+	WriteInt16Array(base_town_nation_count_array, MAX_NATION);
+	WriteInt16(independent_town_count);
+	WriteInt16(total_town_count);
+	WriteInt16Array(nation_population_array, MAX_NATION);
+	WriteInt16Array(nation_jobless_population_array, MAX_NATION);
+	WriteInt16Array(unit_nation_count_array, MAX_NATION);
+	WriteInt16(independent_unit_count);
+	WriteInt16(total_unit_count);
+	WriteInt16(site_count);
+	WriteInt16(raw_count);
+	WriteCallArray(reachable_region_array, MAX_REACHABLE_REGION_PER_STAT);
+	WriteInt8(reachable_region_count);
+}
+
+void RegionStat::read_record(RegionStatGF *r)
+{
+	ReadInt8(region_id);
+	ReadInt8Array(nation_is_present_array, MAX_NATION);
+	ReadInt8(nation_presence_count);
+	ReadInt16Array(firm_type_count_array, MAX_FIRM_TYPE);
+	ReadInt16Array(firm_nation_count_array, MAX_NATION);
+	ReadInt16Array(camp_nation_count_array, MAX_NATION);
+	ReadInt16Array(mine_nation_count_array, MAX_NATION);
+	ReadInt16Array(harbor_nation_count_array, MAX_NATION);
+	ReadInt16(total_firm_count);
+	ReadInt16Array(town_nation_count_array, MAX_NATION);
+	ReadInt16Array(base_town_nation_count_array, MAX_NATION);
+	ReadInt16(independent_town_count);
+	ReadInt16(total_town_count);
+	ReadInt16Array(nation_population_array, MAX_NATION);
+	ReadInt16Array(nation_jobless_population_array, MAX_NATION);
+	ReadInt16Array(unit_nation_count_array, MAX_NATION);
+	ReadInt16(independent_unit_count);
+	ReadInt16(total_unit_count);
+	ReadInt16(site_count);
+	ReadInt16(raw_count);
+	ReadCallArray(reachable_region_array, MAX_REACHABLE_REGION_PER_STAT);
+	ReadInt8(reachable_region_count);
+}
+
 void RegionArray::write_record(RegionArrayGF *r)
 {
 	WriteInt32(init_flag);

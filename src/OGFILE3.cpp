@@ -2141,15 +2141,35 @@ int RegionArray::write_file(File* filePtr)
 	if( !filePtr->file_write(&gf_rec, sizeof(RegionArrayGF)) )
 		return 0;
 
-	if( !filePtr->file_write( region_info_array, sizeof(RegionInfo)*region_info_count ) )
+	RegionInfoGF* region_info_record_array = (RegionInfoGF*) mem_add(sizeof(RegionInfoGF)*region_info_count);
+	for( int i=0; i<region_info_count; i++ )
+	{
+		RegionInfo* region = region_info_array+i;
+		region->write_record(region_info_record_array+i);
+	}
+	if( !filePtr->file_write(region_info_record_array, sizeof(RegionInfoGF)*region_info_count) )
+	{
+		mem_del(region_info_record_array);
 		return 0;
+	}
+	mem_del(region_info_record_array);
 
 	//-------- write RegionStat ----------//
 
 	filePtr->file_put_short( region_stat_count );
 
-	if( !filePtr->file_write( region_stat_array, sizeof(RegionStat)*region_stat_count ) )
+	RegionStatGF* region_stat_record_array = (RegionStatGF*) mem_add(sizeof(RegionStatGF)*region_stat_count);
+	for( int i=0; i<region_stat_count; i++ )
+	{
+		RegionStat* region = region_stat_array+i;
+		region->write_record(region_stat_record_array+i);
+	}
+	if( !filePtr->file_write(region_stat_record_array, sizeof(RegionStatGF)*region_stat_count) )
+	{
+		mem_del(region_stat_record_array);
 		return 0;
+	}
+	mem_del(region_stat_record_array);
 
 	//--------- write connection bits ----------//
 
@@ -2176,21 +2196,45 @@ int RegionArray::read_file(File* filePtr)
 	read_record(&gf_rec.region_array);
 
 	if( region_info_count > 0 )
+	{
+		RegionInfoGF* region_info_record_array = (RegionInfoGF*) mem_add(sizeof(RegionInfoGF)*region_info_count);
+		if( !filePtr->file_read(region_info_record_array, sizeof(RegionInfoGF)*region_info_count) )
+		{
+			mem_del(region_info_record_array);
+			return 0;
+		}
+
 		region_info_array = (RegionInfo *) mem_add(sizeof(RegionInfo)*region_info_count);
+
+		for( int i=0; i<region_info_count; i++ )
+		{
+			RegionInfo* region = region_info_array+i;
+			region->read_record(region_info_record_array+i);
+		}
+		mem_del(region_info_record_array);
+	}
 	else
 		region_info_array = NULL;
-
-	if( !filePtr->file_read(region_info_array, sizeof(RegionInfo)*region_info_count) )
-		return 0;
 
 	//-------- read RegionStat ----------//
 
 	region_stat_count = filePtr->file_get_short();
 
-	region_stat_array = (RegionStat*) mem_add( region_stat_count * sizeof(RegionStat) );
-
-	if( !filePtr->file_read( region_stat_array, sizeof(RegionStat)*region_stat_count ) )
+	RegionStatGF* region_stat_record_array = (RegionStatGF*) mem_add(sizeof(RegionStatGF)*region_stat_count);
+	if( !filePtr->file_read(region_stat_record_array, sizeof(RegionStatGF)*region_stat_count) )
+	{
+		mem_del(region_stat_record_array);
 		return 0;
+	}
+
+	region_stat_array = (RegionStat*) mem_add(region_stat_count*sizeof(RegionStat) );
+
+	for( int i=0; i<region_stat_count; i++ )
+	{
+		RegionStat* region = region_stat_array+i;
+		region->read_record(region_stat_record_array+i);
+	}
+	mem_del(region_stat_record_array);
 
 	//--------- read connection bits ----------//
 

@@ -44,6 +44,7 @@
 #include <ONEWS.h>
 #include <OREBEL.h>
 #include <OREGION.h>
+#include <OREGIONS.h>
 #include <OSITE.h>
 #include <OSNOWG.h>
 #include <OTORNADO.h>
@@ -1326,6 +1327,49 @@ struct SnowGroundArrayGF
 	uint32_t             seed;
 	int32_t              snow_thick;
 	int32_t              snow_pattern;
+};
+
+struct RegionInfoGF
+{
+	uint8_t              region_id;
+	uint8_t              region_stat_id;
+	int32_t              region_type;
+	int32_t              adj_offset_bit;
+	int32_t              region_size;
+	int16_t              center_x;
+	int16_t              center_y;
+};
+
+struct RegionPathGF
+{
+	uint8_t              sea_region_id;
+	uint8_t              land_region_stat_id;
+};
+
+struct RegionStatGF
+{
+	uint8_t              region_id;
+	int8_t               nation_is_present_array[MAX_NATION];
+	int8_t               nation_presence_count;
+	int16_t              firm_type_count_array[MAX_FIRM_TYPE];
+	int16_t              firm_nation_count_array[MAX_NATION];
+	int16_t              camp_nation_count_array[MAX_NATION];
+	int16_t              mine_nation_count_array[MAX_NATION];
+	int16_t              harbor_nation_count_array[MAX_NATION];
+	int16_t              total_firm_count;
+	int16_t              town_nation_count_array[MAX_NATION];
+	int16_t              base_town_nation_count_array[MAX_NATION];
+	int16_t              independent_town_count;
+	int16_t              total_town_count;
+	int16_t              nation_population_array[MAX_NATION];
+	int16_t              nation_jobless_population_array[MAX_NATION];
+	int16_t              unit_nation_count_array[MAX_NATION];
+	int16_t              independent_unit_count;
+	int16_t              total_unit_count;
+	int16_t              site_count;
+	int16_t              raw_count;
+	RegionPathGF         reachable_region_array[MAX_REACHABLE_REGION_PER_STAT];
+	int8_t               reachable_region_count;
 };
 
 struct RegionArrayGF
