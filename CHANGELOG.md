@@ -15,6 +15,7 @@ speaking, considered to be the player's experience.
 - Add rudimentary running mode switcher with a button at the top-right of the
   main menu.
 - Make game look smoother by running at at a graphical 60 FPS.
+- Add cyan highlight to selected units, making for easier identification.
 - Add builder icon to buildings with builders in them, allowing easy at-a-glance
   identification of them.
 - Make game look smoother by constantly animating buildings at a fixed rate.
@@ -35,6 +36,7 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Use yellow colour for highlighting units on hover instead of cyan.
 - Made development slightly easier.
 
 ## [2.9156.0] - 2025-01-07

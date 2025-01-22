@@ -21,6 +21,8 @@
 //Filename    : OUNITDRW.CPP
 //Description : Object Unit Drawing routines
 
+#include "ambition/Ambition_config.hh"
+
 #include <OFIRMRES.h>
 #include <OIMGRES.h>
 #include <OSYS.h>
@@ -78,7 +80,10 @@ void Unit::draw(const int outlined)
 
 	//------- get the color remap table for this sprite ------//
 
-	char* colorRemapTable = game.get_color_remap_table(nation_recno, outlined);
+	const auto showOutline
+		= outlined
+		?: Ambition::config.enhancementsAvailable() && selected_flag;
+	auto colorRemapTable = game.get_color_remap_table(nation_recno, showOutline);
 
 	//---- only portion of the sprite is inside the view area ------//
 
@@ -355,6 +360,6 @@ int Unit::is_shealth()
 //
 void Unit::draw_outlined()
 {
-   draw(1);
+   draw(2);
 }
 //----------- End of function Unit::draw_outlined -----------//
