@@ -37,6 +37,7 @@
 #include "OSNOW.h"
 #include "OSYS.h"
 #include "OTERRAIN.h"
+#include "OUNIT.h"
 
 #include "ambition/Ambition_config.hh"
 
@@ -262,6 +263,37 @@ int calculateFirmFrame(
   }
 
   return frame;
+}
+
+void drawHitbarOutline(
+  const bool isOwn,
+  const int x,
+  const int y,
+  const int width,
+  const int height
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto pitch = width + 2;
+
+  auto dataPtr = sys.common_data_buf;
+
+  *((short*)dataPtr) = pitch;
+  *(((short*)dataPtr) + 1) = height + 2;
+
+  dataPtr += sizeof(short) * 2;
+
+  const auto outlineColour = isOwn ? VGA_LIGHT_GREEN : VGA_RED;
+
+  IMGbar(dataPtr, pitch, 1, 1, width, height, 0xFF);
+  IMGbar(dataPtr, pitch, 0, 0, width + 1, 0, outlineColour);
+  IMGbar(dataPtr, pitch, 0, 0, 0, height + 1, outlineColour);
+  IMGbar(dataPtr, pitch, 0, height + 1, width + 1, height + 1, outlineColour);
+  IMGbar(dataPtr, pitch, width + 1, 0, width + 1, height + 1, outlineColour);
+
+  world.zoom_matrix->put_bitmap_clip(x - 1, y - 1, sys.common_data_buf);
 }
 
 } // namespace Ambition

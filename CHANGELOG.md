@@ -16,6 +16,8 @@ speaking, considered to be the player's experience.
   main menu.
 - Make game look smoother by running at at a graphical 60 FPS.
 - Add cyan highlight to selected units, making for easier identification.
+- Add coloured outline to hit bars, making it easier to distinguish friendly
+  units' hit bars from enemies'.
 - Add builder icon to buildings with builders in them, allowing easy at-a-glance
   identification of them.
 - Make game look smoother by constantly animating buildings at a fixed rate.

@@ -22,6 +22,7 @@
 //Description : Object Unit Drawing routines
 
 #include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include <OFIRMRES.h>
 #include <OIMGRES.h>
@@ -255,6 +256,14 @@ void Unit::draw_selected()
 	//--------- display the bar now ---------//
 
 	world.zoom_matrix->put_bitmap_clip(dispX1, dispY1, sys.common_data_buf);
+
+	Ambition::drawHitbarOutline(
+		is_own(),
+		dispX1,
+		dispY1,
+		curBarWidth,
+		HIT_BAR_HEIGHT
+	);
 
 	//----- display skill/rank icon (only for own units) -----//
 
