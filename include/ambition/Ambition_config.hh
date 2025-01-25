@@ -18,7 +18,7 @@
  */
 
 /**
- * @file Ambition_config.hh
+ * @file
  *
  * Header file for Ambition::Config.
  */
