@@ -23,8 +23,7 @@
  * Header file for Ambition::Config.
  */
 
-#ifndef Ambition_config_hh_
-#define Ambition_config_hh_
+#pragma once
 
 #include <string>
 
@@ -76,5 +75,3 @@ private:
 extern Config config;
 
 } // namespace Ambition
-
-#endif

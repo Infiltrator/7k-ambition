@@ -23,8 +23,7 @@
  * Version information for Seven Kingdoms: Ambition.
  */
 
-#ifndef Ambition_version_hh_
-#define Ambition_version_hh_
+#pragma once
 
 #include <string>
 
@@ -37,5 +36,3 @@ constexpr auto PATCH_VERSION = 0;
 std::string versionString();
 
 } // namespace Ambition
-
-#endif
