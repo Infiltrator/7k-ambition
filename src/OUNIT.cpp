@@ -22,28 +22,20 @@
 //Description : Object Unit
 
 #include <ALL.h>
-#include <ODATE.h>
 #include <OWORLD.h>
-#include <OVGA.h>
 #include <OSTR.h>
 #include <ONEWS.h>
-#include <OREBEL.h>
 #include <OSPY.h>
 #include <ONATION.h>
-#include <OFONT.h>
-#include <OBULLET.h>
 #include <OGAME.h>
 #include <OTOWN.h>
 #include <ORACERES.h>
-#include <ORAWRES.h>
 #include <OPOWER.h>
 #include <OU_VEHI.h>
 #include <OU_MARI.h>
 #include <OU_MONS.h>
-#include <OF_CAMP.h>
 #include <OF_MONS.h>
 #include <OF_HARB.h>
-#include <OMONSRES.h>
 #include <OREMOTE.h>
 #include <OSYS.h>
 #include "gettext.h"

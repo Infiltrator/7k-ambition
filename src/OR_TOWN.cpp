@@ -21,17 +21,13 @@
 //Filename    : OR_TOWN.CPP
 //Description : Town Report
 
-#include <OVGA.h>
+#include "OFIRM.h"
+#include "OFIRMA.h"
 #include <OFONT.h>
-#include <OIMGRES.h>
 #include <OVBROWIF.h>
-#include <OBUTTON.h>
 #include <ORACERES.h>
-#include <OFIRM.h>
-#include <OFIRM.h>
 #include <OWORLD.h>
 #include <ONATION.h>
-#include <OUNIT.h>
 #include <OINFO.h>
 #include "gettext.h"
 

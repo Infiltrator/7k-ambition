@@ -22,7 +22,6 @@
 // Description : War point
 
 
-#include <COLOR.h>
 #include <OVGABUF.h>
 #include <OWORLD.h>
 #include <OWARPT.h>

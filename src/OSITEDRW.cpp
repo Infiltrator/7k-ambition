@@ -21,7 +21,6 @@
 //Filename    : OSITE2.CPP
 //Description : Object Site Material - display info functions
 
-#include <OVGA.h>
 #include <vga_util.h>
 #include <OINFO.h>
 #include <OFONT.h>

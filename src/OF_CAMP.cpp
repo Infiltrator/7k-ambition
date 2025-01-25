@@ -22,26 +22,19 @@
 //Description : Firm Military Camp
 
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
-#include <ODATE.h>
 #include <OIMGRES.h>
 #include <OHELP.h>
 #include <OSYS.h>
 #include <OSTR.h>
 #include <OFONT.h>
 #include <OMOUSE.h>
-#include <OBUTTON.h>
 #include <OBUTT3D.h>
 #include <OPOWER.h>
 #include <OUNIT.h>
-#include <OINFO.h>
-#include <OGAME.h>
-#include <OSPY.h>
 #include <ONATION.h>
 #include <ORACERES.h>
-#include <OTERRAIN.h>
-#include <OWORLD.h>
 #include <OF_CAMP.h>
 #include <OREMOTE.h>
 #include <OSERES.h>

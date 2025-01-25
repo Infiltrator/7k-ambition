@@ -22,26 +22,21 @@
 //Description : Battle Object
 
 #include <OSYS.h>
+#include "OU_GOD.h"
 #include <OWORLD.h>
 #include <OPOWER.h>
 #include <OCONFIG.h>
 #include <OSPY.h>
-#include <OMOUSE.h>
 #include <OMUSIC.h>
 #include <OSITE.h>
 #include <ORACERES.h>
-#include <OGODRES.h>
 #include <OTECHRES.h>
-#include <OCONFIG.h>
 #include <OREMOTE.h>
 #include <OTOWN.h>
 #include <OFIRM.h>
-#include <ONEWS.h>
 #include <ONATION.h>
 #include <OMONSRES.h>
-#include <OWALLRES.h>
 #include <OINFO.h>
-#include <OUNITALL.h>
 #include <OGAME.h>
 #include <OBATTLE.h>
 #include <OMOUSECR.h>

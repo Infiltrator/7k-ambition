@@ -21,7 +21,6 @@
 //Filename   : OAI_MILI.CPP
 //Description: AI - think about expanding the military force
 
-#include <ALL.h>
 #include <OTOWN.h>
 #include <OF_CAMP.h>
 #include <ONATION.h>

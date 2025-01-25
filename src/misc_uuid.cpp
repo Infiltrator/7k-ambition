@@ -37,8 +37,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #ifndef USE_WINDOWS
 #include <unistd.h>
 #include <sys/time.h>

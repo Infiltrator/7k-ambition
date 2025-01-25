@@ -23,9 +23,6 @@
 
 #include <ONATION.h>
 #include <OINFO.h>
-#include <OTOWN.h>
-#include <OUNIT.h>
-#include <OTECHRES.h>
 #include <OF_WAR.h>
 
 //--------- Begin of function FirmWar::process_ai ---------//

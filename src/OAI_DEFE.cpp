@@ -21,7 +21,6 @@
 //Filename   : OAI_DEFE.CPP
 //Description: AI on defense
 
-#include <ALL.h>
 #include <OTALKRES.h>
 #include <ONATION.h>
 

@@ -21,7 +21,7 @@
 // Filename    : OREMOTEQ.CPP
 // Description : remote message queue
 
-#include <ALL.h>
+#include "OERROR.h"
 #include <OREMOTEQ.h>
 #include <OREMOTE.h>
 #include <stdint.h>

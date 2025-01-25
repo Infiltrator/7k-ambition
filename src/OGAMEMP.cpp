@@ -24,7 +24,6 @@
 #include <version.h>
 #include <OSYS.h>
 #include <OMOUSE.h>
-#include <OMOUSECR.h>
 #include <OBOX.h>
 #include <OVGA.h>
 #include <vga_util.h>
@@ -42,7 +41,6 @@
 #include <OERRCTRL.h>
 #include <OCONFIG.h>
 #include <OIMGRES.h>
-#include <OGET.h>
 #include <KEY.h>
 #include <OMUSIC.h>
 #include <OBUTTCUS.h>

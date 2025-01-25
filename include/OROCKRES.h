@@ -27,7 +27,6 @@
 #define __OROCKRES_H
 
 
-#include <GAMEDEF.h>
 #include <ORESDB.h>
 
 // ----------- Define constant ----------//

@@ -24,7 +24,8 @@
 
 
 #include <OROCKRES.h>
-#include <OGAMESET.h>
+
+#include "ODB.h"
 #include <OMISC.h>
 #include <OWORLD.h>
 #include <OVGABUF.h>

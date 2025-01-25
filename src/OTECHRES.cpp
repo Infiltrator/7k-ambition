@@ -22,7 +22,6 @@
 //Description : Tech class
 
 #include <ALL.h>
-#include <OGAME.h>
 #include <OGAMESET.h>
 #include <OF_RESE.h>
 #include <OUNIT.h>

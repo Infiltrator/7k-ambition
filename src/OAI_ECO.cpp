@@ -22,8 +22,7 @@
 //Description: AI economy functions
 
 #include <ALL.h>
-#include <OUNIT.h>
-#include <OFIRMALL.h>
+#include "OFIRM.h"
 #include <ONATION.h>
 
 

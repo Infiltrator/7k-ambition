@@ -21,15 +21,11 @@
 //Filename    : OINFOMIL.CPP
 //Description : Economy information screen
 
-#include <OVGA.h>
+#include "OFIRM.h"
+#include "OFIRMA.h"
 #include <OFONT.h>
-#include <OSPY.h>
-#include <OIMGRES.h>
 #include <OUNITRES.h>
-#include <ORACERES.h>
 #include <OVBROWIF.h>
-#include <OBUTTON.h>
-#include <OF_CAMP.h>
 #include <ONATION.h>
 #include <OUNIT.h>
 #include <OINFO.h>

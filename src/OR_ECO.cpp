@@ -21,17 +21,10 @@
 //Filename    : OINFOECO.CPP
 //Description : Economy information screen
 
-#include <OVGA.h>
 #include <OSYS.h>
 #include <OFONT.h>
-#include <OIMGRES.h>
 #include <OVBROWIF.h>
-#include <OBUTTON.h>
-#include <OFIRM.h>
-#include <OFIRMRES.h>
-#include <ORACERES.h>
 #include <ONATION.h>
-#include <OUNIT.h>
 #include <OINFO.h>
 #include "gettext.h"
 

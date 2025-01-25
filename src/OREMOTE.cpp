@@ -22,18 +22,9 @@
 //Description : Object Remote
 
 #include <ALL.h>
-#include <OBOX.h>
-#include <OVGA.h>
-#include <OSTR.h>
-#include <OFONT.h>
 #include <OSYS.h>
-#include <OWORLD.h>
-#include <OGAME.h>
-#include <OPOWER.h>
-#include <ONATION.h>
 #include <OREMOTE.h>
 #include <multiplayer.h>
-#include <OERRCTRL.h>
 #include <ReplayFile.h>
 #include <FilePath.h>
 #include <ConfigAdv.h>

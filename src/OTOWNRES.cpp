@@ -21,9 +21,7 @@
 //Filename    : OTOWNRES.CPP
 //Description : Town resource object
 
-#include <OSYS.h>
 #include <OGAMESET.h>
-#include <OWORLD.h>
 #include <OIMGRES.h>
 #include <ORACERES.h>
 #include <OTOWNRES.h>

@@ -22,17 +22,14 @@
 //Description : Object Help
 
 #include <ALL.h>
+#include "OCONFIG.h"
 #include <OSYS.h>
 #include <OSTR.h>
 #include <OVGA.h>
 #include <OMUSIC.h>
 #include <OFONT.h>
-#include <OINFO.h>
-#include <OGAME.h>
 #include <OUNIT.h>
-#include <OBOX.h>
 #include <OMOUSE.h>
-#include <OVBROWSE.h>
 #include <OFILETXT.h>
 #include <OHELP.h>
 #include "gettext.h"

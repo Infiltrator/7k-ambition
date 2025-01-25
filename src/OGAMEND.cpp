@@ -23,7 +23,6 @@
 
 #include <OVGA.h>
 #include <vga_util.h>
-#include <OVGALOCK.h>
 #include <ODATE.h>
 #include <OREMOTE.h>
 #include <OBOX.h>
@@ -32,7 +31,6 @@
 #include <OSYS.h>
 #include <OFONT.h>
 #include <OMOUSE.h>
-#include <OIMGRES.h>
 #include <ORACERES.h>
 #include <OGAME.h>
 #include <OGAMHALL.h>

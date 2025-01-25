@@ -21,20 +21,23 @@
 //Filename    : OTOWNAI.CPP
 //Description : Object Town AI
 
+#include "OF_BASE.h"
+#include "OF_CAMP.h"
+#include "OF_MARK.h"
+#include "OF_RESE.h"
+#include "OF_WAR.h"
+#include "OFIRMA.h"
 #include <OWORLD.h>
 #include <OUNIT.h>
 #include <OCONFIG.h>
 #include <OSITE.h>
-#include <ONEWS.h>
 #include <OTECHRES.h>
 #include <OWALLRES.h>
-#include <ORACERES.h>
 #include <OGODRES.h>
 #include <OSPY.h>
 #include <OTOWN.h>
 #include <ONATION.h>
 #include <OINFO.h>
-#include <OFIRMALL.h>
 #include <OLOG.h>
 
 

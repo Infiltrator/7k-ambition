@@ -21,7 +21,6 @@
 // Filename    : OGAMENCY.CPP
 // description : view encyclopedia
 
-#include <ALL.h>
 #include <OIMGRES.h>
 #include <OVGA.h>
 #include <vga_util.h>

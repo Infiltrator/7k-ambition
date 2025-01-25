@@ -22,16 +22,12 @@
 //Description : Object news msg generating routines
 
 #include <OSTR.h>
-#include <OTOWN.h>
 #include <OFIRMRES.h>
 #include <ONATION.h>
 #include <OUNIT.h>
 #include <OSPY.h>
-#include <OFONT.h>
 #include <OTECHRES.h>
-#include <OMONSRES.h>
 #include <OREMOTE.h>
-#include <OGODRES.h>
 #include <ORACERES.h>
 #include <OTALKRES.h>
 #include <ONEWS.h>

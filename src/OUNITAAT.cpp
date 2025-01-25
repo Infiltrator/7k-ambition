@@ -22,16 +22,11 @@
 //Description : Object UnitArray - part 2
 
 #include <ALL.h>
-#include <OVGA.h>
-#include <OSYS.h>
-#include <OSTR.h>
 #include <OREMOTE.h>
 #include <OWORLD.h>
 #include <ONATION.h>
 #include <OFIRM.h>
 #include <OTOWN.h>
-#include <OTERRAIN.h>
-#include <OU_MARI.h>
 
 #ifdef NO_DEBUG_UNIT
 #undef err_when

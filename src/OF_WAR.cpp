@@ -22,22 +22,18 @@
 //Description : Firm War Factory
 
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
-#include <ODATE.h>
 #include <OSTR.h>
 #include <OCONFIG.h>
 #include <OFONT.h>
 #include <OMOUSE.h>
 #include <OBUTT3D.h>
-#include <OPOWER.h>
 #include <OUNIT.h>
-#include <OGAME.h>
 #include <OSYS.h>
 #include <ONATION.h>
 #include <OF_WAR.h>
 #include <OREMOTE.h>
-#include <OIMGRES.h>
 #include <OSE.h>
 #include <OSERES.h>
 #include <OBUTTCUS.h>

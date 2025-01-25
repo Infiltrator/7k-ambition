@@ -21,13 +21,11 @@
 //Filename   : OAI_MARI.CPP
 //Description: AI functions on sea exploration, trading
 
+#include "OFIRM.h"
+#include "OFIRMA.h"
 #include <OTOWN.h>
 #include <OREGIONS.h>
-#include <OU_MARI.h>
 #include <OUNITRES.h>
-#include <OSITE.h>
-#include <OF_HARB.h>
-#include <OF_CAMP.h>
 #include <ONATION.h>
 
 //--------- Begin of function Nation::think_marine --------//

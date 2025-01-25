@@ -23,9 +23,9 @@
 //Owner		  : Alex
 
 #include <ALL.h>
+#include "OCONFIG.h"
 #include <OWORLD.h>
 #include <OF_HARB.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <OU_MARI.h>
 #include <OSPATH.h>

@@ -21,14 +21,10 @@
 //Filename    : OREBEL.CPP
 //Description : Object Rebel
 
-#include <OPOWER.h>
-#include <OGAME.h>
 #include <OUNIT.h>
 #include <OFIRM.h>
 #include <OTOWN.h>
-#include <ONEWS.h>
 #include <OREBEL.h>
-#include <ORACERES.h>
 #include <ONATION.h>
 
 

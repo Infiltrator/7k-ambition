@@ -23,7 +23,6 @@
 //Ownership   : Gilbert
 
 #include <OSYS.h>
-#include <OVGA.h>
 #include <OUNIT.h>
 #include <OTORNADO.h>
 #include <OWORLD.h>

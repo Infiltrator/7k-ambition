@@ -22,17 +22,14 @@
 //Description : Hall of Fame
 
 #include <OGAMHALL.h>
-#include <OVGA.h>
+
+#include "OCONFIG.h"
 #include <vga_util.h>
-#include <OVGALOCK.h>
 #include <ODATE.h>
 #include <OSTR.h>
 #include <OSYS.h>
 #include <OFONT.h>
 #include <OMOUSE.h>
-#include <OIMGRES.h>
-#include <ORACERES.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <dbglog.h>
 #include "gettext.h"

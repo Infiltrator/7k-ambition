@@ -22,19 +22,14 @@
 //Description : Firm Magic Tower
 
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
-#include <ODATE.h>
 #include <OSTR.h>
 #include <ONEWS.h>
 #include <OFONT.h>
 #include <OCONFIG.h>
 #include <OBUTT3D.h>
 #include <OMOUSE.h>
-#include <OSYS.h>
-#include <OPOWER.h>
-#include <OUNIT.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <OTECHRES.h>
 #include <OF_RESE.h>

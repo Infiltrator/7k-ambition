@@ -26,7 +26,6 @@
 #include <ALL.h>
 #include <OWORLD.h>
 #include <OUNIT.h>
-#include <OGAME.h>
 
 #ifdef NO_DEBUG_UNIT
 #undef err_when

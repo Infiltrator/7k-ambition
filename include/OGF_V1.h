@@ -29,10 +29,6 @@
 #include <ONATIONA.h>
 #endif
 
-#ifndef __NATION_H
-#include <ONATION.h>
-#endif
-
 //------------ Define constant for game version == 1xx -----------------//
 #define	VERSION_1_MAX_RACE						7
 #define	VERSION_1_MAX_UNIT_TYPE					37

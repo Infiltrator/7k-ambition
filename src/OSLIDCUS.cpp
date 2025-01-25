@@ -21,8 +21,7 @@
 // Filename    : OSLIDCUS.CPP
 // Description : custom slide bar
 
-
-#include <ALL.h>
+#include "OERROR.h"
 #include <OMOUSE.h>
 #include <OSLIDCUS.h>
 

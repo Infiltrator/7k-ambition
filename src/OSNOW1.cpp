@@ -23,9 +23,10 @@
 // Onwership  : Gilbert
 
 #include <OSNOW.h>
+
+#include "OERROR.h"
 #include <OVGABUF.h>
 #include <COLOR.h>
-#include <ALL.h>
 
 //---------- Define constant -------------//
 

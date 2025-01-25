@@ -38,7 +38,6 @@ typedef void * ENetHost;
 typedef void * ENetSocket;
 typedef void ENetPeer;
 #endif
-#include <OMISC.h>
 
 
 #define MP_SERVICE_PROVIDER_NAME_LEN 64

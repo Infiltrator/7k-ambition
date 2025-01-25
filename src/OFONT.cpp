@@ -28,13 +28,10 @@
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OSTR.h>
-#include <OSYS.h>
-#include <ORES.h>
 #include <OINFO.h>
 #include <OGAME.h>
 #include <OMOUSE.h>
 #include <ONATION.h>
-#include <OGAME.h>
 #include <OHELP.h>
 #include <LocaleRes.h>
 #include <OFONT.h>

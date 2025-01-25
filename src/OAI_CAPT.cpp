@@ -25,7 +25,6 @@
 #include <ALL.h>
 #include <OCONFIG.h>
 #include <OUNIT.h>
-#include <OF_CAMP.h>
 #include <OF_INN.h>
 #include <ONATION.h>
 

@@ -21,17 +21,13 @@
 //Filename    : OMONSRES.CPP
 //Description : Monster resource class
 
-#include <OSYS.h>
 #include <OGAMESET.h>
 #include <OWORLD.h>
-#include <OSPRTRES.h>
-#include <OUNIT.h>
 #include <OUNITRES.h>
 #include <OTOWN.h>
 #include <OFIRM.h>
 #include <OF_MONS.h>
 #include <OMONSRES.h>
-#include "gettext.h"
 
 //---------- #define constant ------------//
 

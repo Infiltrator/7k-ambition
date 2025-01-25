@@ -29,7 +29,6 @@
 #include <OF_MONS.h>
 #include <OTOWN.h>
 #include <OSPY.h>
-#include <OREBEL.h>
 #include <OSYS.h>
 #include <OU_GOD.h>
 

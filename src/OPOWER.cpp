@@ -31,7 +31,6 @@
 #include <ONATION.h>
 #include <OBOX.h>
 #include <OIMGRES.h>
-#include <OMOUSECR.h>
 #include <OWORLD.h>
 #include <OINFO.h>
 #include <OU_CARA.h>

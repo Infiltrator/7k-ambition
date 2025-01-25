@@ -23,8 +23,6 @@
 // Description : Multiplayer game support.
 
 #include <multiplayer.h>
-#include <ALL.h>
-#include <version.h>
 #include <string.h>
 #include <stdint.h>
 #include <dbglog.h>

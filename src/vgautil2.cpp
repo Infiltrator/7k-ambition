@@ -21,11 +21,9 @@
 //Filename    : vgautil2.cpp
 //Description : VGA drawing functions
 
-#include <ALL.h>
 #include <IMGFUN.h>
 #include <OMOUSE.h>
 #include <OMOUSECR.h>
-#include <OCOLTBL.h>
 #include <OVGA.h>
 #include <vga_util.h>
 

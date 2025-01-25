@@ -21,9 +21,6 @@
 //Filename    : OSFRMRES.CPP
 //Description : Object Sprite Frame Resource
 
-#include <ALL.h>
-#include <OSTR.h>
-#include <OSYS.h>
 #include <OGAMESET.h>
 #include <OSFRMRES.h>
 

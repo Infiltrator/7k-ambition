@@ -22,13 +22,11 @@
 //Description : Object Nation Array
 
 #include <COLOR.h>
-#include <OPOWER.h>
-#include <OGAME.h>
+#include "OCONFIG.h"
 #include <OF_CAMP.h>
 #include <OUNIT.h>
 #include <OINFO.h>
 #include <OSYS.h>
-#include <ORACERES.h>
 #include <OSPY.h>
 #include <ONATIONA.h>
 #include <OREMOTE.h>

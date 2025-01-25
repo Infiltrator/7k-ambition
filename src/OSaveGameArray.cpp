@@ -35,7 +35,6 @@
 #include <vga_util.h>
 #include <OBOX.h>
 #include <OFONT.h>
-#include <OINFO.h>
 #include <OGAME.h>
 #include <OGAMESET.h>
 #include <OGFILE.h>

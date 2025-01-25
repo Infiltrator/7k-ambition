@@ -21,7 +21,6 @@
 //Filename    : OFIRMA.CPP
 //Description : Object Firm Array
 
-#include <OVGA.h>
 #include <OWORLD.h>
 #include <OPOWER.h>
 #include <ONATION.h>

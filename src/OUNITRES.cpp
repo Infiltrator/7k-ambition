@@ -23,12 +23,10 @@
 
 #include <ALL.h>
 #include <OSTR.h>
-#include <OSYS.h>
 #include <OGAMESET.h>
 #include <ONATION.h>
 #include <OSPRTRES.h>
 #include <OUNITRES.h>
-#include "gettext.h"
 
 #ifdef NO_DEBUG_UNIT
 #undef err_when

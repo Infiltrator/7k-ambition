@@ -24,9 +24,7 @@
 #include <OWORLD.h>
 #include <OUNIT.h>
 #include <ONEWS.h>
-#include <OCONFIG.h>
 #include <ORACERES.h>
-#include <OGODRES.h>
 #include <OTECHRES.h>
 #include <OREGIONS.h>
 #include <OFIRM.h>

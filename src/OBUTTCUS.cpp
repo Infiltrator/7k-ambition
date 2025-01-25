@@ -21,11 +21,9 @@
 //Filename    : OBUTTCUS.CPP
 //Description : Custom Button Object
 
-#include <OSYS.h>
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OMOUSE.h>
-#include <OIMGRES.h>
 #include <OBUTTCUS.h>
 #include <OFONT.h>
 

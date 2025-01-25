@@ -22,7 +22,6 @@
 // Description : Generate hill
 // Ownership   : Gilbert
 
-#include <ALL.h>
 #include <OWORLD.h>
 #include <OMATRIX.h>
 #include <OHILLRES.h>

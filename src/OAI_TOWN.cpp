@@ -22,8 +22,6 @@
 //Description: AI - processing town
 
 #include <ALL.h>
-#include <OUNIT.h>
-#include <OF_INN.h>
 #include <OTOWN.h>
 #include <OREGIONS.h>
 #include <ONATION.h>

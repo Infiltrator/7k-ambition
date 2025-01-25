@@ -23,9 +23,7 @@
 // Ownership   : Gilbert
 
 #include	<math.h>
-#include <time.h>
 #include <OVGABUF.h>
-#include <OMISC.h>
 #include <OLIGHTN.h>
 #include <OWORLDMT.h>
 #include <COLOR.h>

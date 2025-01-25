@@ -21,7 +21,6 @@
 //Filename   : OAI_UNIT.CPP
 //Description: AI - unit related functions
 
-#include <ALL.h>
 #include <OUNIT.h>
 #include <OF_INN.h>
 #include <OTOWN.h>

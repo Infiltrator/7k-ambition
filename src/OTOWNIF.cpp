@@ -22,8 +22,7 @@
 //Description : Town interface routines
 
 #include <OINFO.h>
-#include <OBOX.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
 #include <OSYS.h>
 #include <OHELP.h>
@@ -36,7 +35,6 @@
 #include <ONATION.h>
 #include <OBUTT3D.h>
 #include <OIMGRES.h>
-#include <ORAWRES.h>
 #include <ORACERES.h>
 #include <OWORLD.h>
 #include <OUNIT.h>

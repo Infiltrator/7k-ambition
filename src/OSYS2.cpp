@@ -26,9 +26,7 @@
 #include <OMOUSE.h>
 #include <OFONT.h>
 #include <OBUTT3D.h>
-#include <OVBROWSE.h>
 #include <ONATION.h>
-#include <OFIRM.h>
 #include <OTOWN.h>
 #include <OSITE.h>
 #include <OUNIT.h>
@@ -45,10 +43,8 @@
 #include <OSYS.h>
 #include <ORAWRES.h>
 #include <OTALKRES.h>
-#include <OWEATHER.h>
 #include <OANLINE.h>
 #include <OTORNADO.h>
-#include <OSE.h>
 #include <OSNOWG.h>
 #include <OROCK.h>
 #include <OEFFECT.h>

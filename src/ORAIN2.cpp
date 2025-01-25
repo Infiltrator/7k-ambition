@@ -23,8 +23,6 @@
 // Ownership   : Gilbert
 
 #include <ORAIN.h>
-#include <OVGABUF.h>
-
 
 //------- Begin of function Rain::start_rain --------------//
 //

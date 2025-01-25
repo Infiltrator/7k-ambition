@@ -19,6 +19,9 @@
  */
 #include <input_stream.h>
 
+#include <stdint.h>
+
+
 /*
  * Reads a non-integer little-endian value of the same size as the integer
  * type AliasT.

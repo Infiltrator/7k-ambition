@@ -21,15 +21,9 @@
 //Filename    : OGAME.CPP
 //Description : Main Game Object
 
-#include <ALL.h>
 #include <COLCODE.h>
-#include <OSYS.h>
 #include <OVGA.h>
-#include <OFONT.h>
-#include <OMOUSE.h>
 #include <OMOUSECR.h>
-#include <OBUTTON.h>
-#include <OUNITALL.h>
 #include <OBULLET.h>
 #include <OTERRAIN.h>
 #include <OPLANT.h>
@@ -37,7 +31,6 @@
 #include <OPOWER.h>
 #include <OSITE.h>
 #include <ORACERES.h>
-#include <OWALLRES.h>
 #include <OTECHRES.h>
 #include <OGODRES.h>
 #include <OMONSRES.h>

@@ -22,16 +22,12 @@
 //Description : Object Unit attack processing function
 //Owner		  : Alex
 
-#include <ALL.h>
 #include <OWORLD.h>
 #include <ONATION.h>
 #include <OBULLET.h>
 #include <OU_MARI.h>
 #include <OFIRM.h>
-#include <OGAME.h>
 #include <OTOWN.h>
-#include <OF_CAMP.h>
-#include <OEFFECT.h>
 #include <OU_CART.h>
 #include <ConfigAdv.h>
 

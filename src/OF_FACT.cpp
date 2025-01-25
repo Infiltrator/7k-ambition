@@ -22,19 +22,13 @@
 //Description : Firm Factory
 
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
 #include <OSTR.h>
-#include <OUNIT.h>
-#include <OGAME.h>
 #include <OFONT.h>
-#include <OMOUSE.h>
 #include <OBUTT3D.h>
 #include <ONATION.h>
 #include <ORAWRES.h>
-#include <ORACERES.h>
-#include <OTOWNRES.h>
-#include <OWORLD.h>
 #include <OF_MINE.h>
 #include <OF_MARK.h>
 #include <OF_FACT.h>

@@ -21,9 +21,6 @@
 //Filename    : OSPRITEA.CPP
 //Description : Object SpriteArray
 
-#include <ALL.h>
-#include <OVGA.h>
-#include <OSTR.h>
 #include <OSYS.h>
 #include <OSPRTRES.h>
 #include <OSPRITE.h>

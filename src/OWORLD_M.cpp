@@ -21,17 +21,12 @@
 //Filename    : OWORLD_M.CPP
 //Description : Object MapMatrix
 
-#include <OVGA.h>
 #include <OMOUSE.h>
 #include <OIMGRES.h>
-#include <OBUTTON.h>
 #include <OPLANT.h>
-#include <OTOWN.h>
 #include <ONATION.h>
-#include <OFIRM.h>
 #include <OSYS.h>
 #include <OPOWER.h>
-#include <OGAME.h>
 #include <OWORLD.h>
 #include <OTERRAIN.h>
 

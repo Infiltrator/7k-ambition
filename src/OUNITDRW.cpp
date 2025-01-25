@@ -21,13 +21,8 @@
 //Filename    : OUNITDRW.CPP
 //Description : Object Unit Drawing routines
 
-#include <OVGA.h>
-#include <OMOUSE.h>
-#include <OFONT.h>
-#include <OINFO.h>
 #include <OFIRMRES.h>
 #include <OIMGRES.h>
-#include <OPOWER.h>
 #include <OSYS.h>
 #include <OGAME.h>
 #include <ONATION.h>

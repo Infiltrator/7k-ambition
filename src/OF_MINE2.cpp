@@ -22,14 +22,8 @@
 //Description : Firm Mine - AI functions
 
 #include <OINFO.h>
-#include <OUNIT.h>
-#include <ORACERES.h>
-#include <OGAME.h>
-#include <OWORLD.h>
 #include <ONATION.h>
-#include <OSITE.h>
 #include <OF_MINE.h>
-#include <OF_FACT.h>
 #include <OF_MARK.h>
 
 

@@ -21,10 +21,9 @@
 //Filename    : OWORLD.CPP
 //Description : Object World
 
+#include "OCONFIG.h"
 #include <OSYS.h>
-#include <OGAME.h>
 #include <OVGA.h>
-#include <OFONT.h>
 #include <OMOUSE.h>
 #include <OMOUSECR.h>
 #include <OFIRMRES.h>

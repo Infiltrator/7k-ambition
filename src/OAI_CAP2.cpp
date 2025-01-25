@@ -23,11 +23,11 @@
 
 #include <stdlib.h>
 #include <ALL.h>
+#include "OF_CAMP.h"
+#include "OF_MINE.h"
 #include <OGAME.h>
 #include <OCONFIG.h>
 #include <OUNIT.h>
-#include <OFIRMALL.h>
-#include <OTALKRES.h>
 #include <ONATION.h>
 
 //--------- Begin of function Nation::think_capture_new_enemy_town --------//

@@ -21,7 +21,6 @@
 //Filename    : OR_SPY.CPP
 //Description : Spy Report
 
-#include <OVGA.h>
 #include <OFONT.h>
 #include <OFIRMRES.h>
 #include <ONATION.h>

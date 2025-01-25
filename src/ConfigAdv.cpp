@@ -34,8 +34,6 @@
 #include <OMOUSE.h>
 #include <OSYS.h>
 #include <posix_string_compat.h>
-#include <version.h>
-#include <errno.h>
 #include "gettext.h"
 
 #define CHECK_BOUND(n,x,y) n<x || n>y

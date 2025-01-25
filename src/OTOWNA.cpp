@@ -21,8 +21,6 @@
 //Filename    : OTOWNA.CPP
 //Description : Object Town Array
 
-#include <stdlib.h>
-#include <OBOX.h>
 #include <OWORLD.h>
 #include <OINFO.h>
 #include <OCONFIG.h>

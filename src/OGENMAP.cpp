@@ -22,13 +22,12 @@
 //Description : World Map generation function part 1
 //Ownership   : Gilbert
 
-#include <time.h>
 #include <stdlib.h>
 
 #include <ALL.h>
 #include <OGAME.h>
-#include <OVGA.h>
 #include <OTERRAIN.h>
+#include "OVGABUF.h"
 #include <OWORLD.h>
 #include <OPLASMA.h>
 #include <OREGION.h>

@@ -22,11 +22,8 @@
 //Description : Terrain resource object
 //Ownership   : Gilbert
 
+#include "ODB.h"
 #include <OIMGRES.h>
-#include <COLOR.h>
-#include <OSYS.h>
-#include <OGAMESET.h>
-#include <OWORLD.h>
 #include <OTERRAIN.h>
 #include <OCONFIG.h>
 

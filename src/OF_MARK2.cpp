@@ -23,13 +23,10 @@
 
 #include <OINFO.h>
 #include <ORAWRES.h>
-#include <ORACERES.h>
 #include <OTOWN.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <OU_CARA.h>
 #include <OWORLD.h>
-#include <OSYS.h>
 #include <OF_FACT.h>
 #include <OF_MINE.h>
 #include <OF_MARK.h>

@@ -24,12 +24,9 @@
 #include <math.h>
 
 #include <ALL.h>
-#include <OVGA.h>
-#include <OSYS.h>
-#include <OSTR.h>
+#include "ONATIONB.h"
 #include <OREMOTE.h>
 #include <OWORLD.h>
-#include <ONATION.h>
 #include <OFIRM.h>
 #include <OTOWN.h>
 #include <OTERRAIN.h>

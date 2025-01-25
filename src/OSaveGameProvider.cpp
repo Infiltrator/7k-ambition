@@ -32,7 +32,6 @@
 #include <OPOWER.h> // TODO: There might be an even better (higher-level / UI) place to do this (power.win_opened)
 #include <OMOUSECR.h>
 #include <dbglog.h>
-#include "gettext.h"
 #include <FilePath.h>
 #include <OGAME.h>
 

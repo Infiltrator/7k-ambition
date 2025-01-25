@@ -23,11 +23,8 @@
 
 #define DEBUG_LOG_LOCAL 1
 #include <ALL.h>
-#include <OVGA.h>
-#include <OSTR.h>
 #include <OFONT.h>
 #include <OSYS.h>
-#include <OWORLD.h>
 #include <OPOWER.h>
 #include <ONATION.h>
 #include <OREMOTE.h>

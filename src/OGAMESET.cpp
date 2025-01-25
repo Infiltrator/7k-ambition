@@ -24,7 +24,6 @@
 #include <ALL.h>
 #include <OSTR.h>
 #include <ODIR.h>
-#include <OSYS.h>
 #include <OGAMESET.h>
 
 

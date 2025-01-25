@@ -23,14 +23,6 @@
 
 #if( !defined(GERMAN) && !defined(FRENCH) && !defined(SPANISH) )
 
-#include <OMOUSE.h>
-#include <OSYS.h>
-#include <OVGA.h>
-#include <OINFO.h>
-#include <OFONT.h>
-#include <OTECHRES.h>
-#include <OGAMESET.h>
-#include <ONEWS.h>
 #include <ONATION.h>
 #include <OTALKRES.h>
 #include "gettext.h"

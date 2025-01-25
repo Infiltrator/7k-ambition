@@ -23,22 +23,15 @@
 
 #include <string.h>
 #include <ALL.h>
-#include <OVGA.h>
 #include <OWORLD.h>
 #include <OSYS.h>
-#include <OIMGRES.h>
-#include <ONEWS.h>
-#include <OCONFIG.h>
-#include <OFONT.h>
 #include <OINFO.h>
 #include <OPLANT.h>
-#include <ODATE.h>
 #include <OSPY.h>
 #include <OCONFIG.h>
 #include <OF_MARK.h>
 #include <OF_CAMP.h>
 #include <OUNIT.h>
-#include <OTERRAIN.h>
 #include <OREBEL.h>
 #include <OSPRTRES.h>
 #include <ORACERES.h>
@@ -47,7 +40,6 @@
 #include <OTOWN.h>
 #include <OTownNetwork.h>
 #include <ONEWS.h>
-#include <OANLINE.h>
 // ##### begin Gilbert 9/10 ######//
 #include <OSE.h>
 // ##### end Gilbert 9/10 ######//

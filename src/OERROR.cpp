@@ -32,8 +32,6 @@
 
 #include <OSYS.h>
 #include <OBOX.h>
-#include <OVGA.h>
-#include <ALL.h>
 
 #include <dbglog.h>
 #include <CmdLine.h>

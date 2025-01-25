@@ -21,7 +21,6 @@
 //Filename    : OBUTT3D.CPP
 //Description : 3D Button Object
 
-#include <OSYS.h>
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OHELP.h>

@@ -22,16 +22,13 @@
 //Description : Object Unit misc. actions excluding attacking and moving functions
 //Owner		  : Alex
 
-#include <ALL.h>
 #include <OWORLD.h>
 #include <OFIRM.h>
 #include <ONATION.h>
-#include <ORACERES.h>
 #include <OTOWN.h>
 #include <OU_MARI.h>
 #include <OF_CAMP.h>
 #include <OREMOTE.h>
-#include <OF_MONS.h>
 #include <OU_GOD.h>
 #include <OF_HARB.h>
 

@@ -22,9 +22,7 @@
 //Filename		: OAI_INFO.CPP
 //Description	: AI - A.I. info structure
 
-#include <OSYS.h>
 #include <OTOWN.h>
-#include <OF_MARK.h>
 #include <OU_CARA.h>
 #include <ONATION.h>
 

@@ -22,12 +22,11 @@
 //Description : Plant resource object
 //Owner       : Gilbert
 
-#include <OSYS.h>
-#include <OVGA.h>
-#include <OGAMESET.h>
+#include "COLOR.h"
+#include "ODB.h"
+#include "OVGABUF.h"
 #include <OWORLD.h>
 #include <OTERRAIN.h>
-#include <OINFO.h>
 #include <OPLANT.h>
 #include <OCONFIG.h>
 

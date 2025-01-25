@@ -22,7 +22,6 @@
 //Description: AI functions for processing AI marine actions
 
 #include <OTOWN.h>
-#include <OREGIONS.h>
 #include <OU_MARI.h>
 #include <OF_HARB.h>
 #include <ONATION.h>

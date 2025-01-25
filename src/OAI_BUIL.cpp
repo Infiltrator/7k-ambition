@@ -22,9 +22,9 @@
 //Description: AI - building firms
 
 #include <ALL.h>
+#include "OFIRMA.h"
 #include <OUNIT.h>
 #include <OF_CAMP.h>
-#include <OREGIONS.h>
 #include <OCONFIG.h>
 #include <OSITE.h>
 #include <ONATION.h>

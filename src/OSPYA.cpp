@@ -21,13 +21,8 @@
 //Filename    : OSPY.CPP
 //Description : Object Spy
 
-#include <OPOWER.h>
-#include <OGAME.h>
-#include <ODATE.h>
-#include <ONEWS.h>
 #include <OFONT.h>
 #include <OUNIT.h>
-#include <OWORLD.h>
 #include <OBUTTON.h>
 #include <OFIRM.h>
 #include <OTOWN.h>
