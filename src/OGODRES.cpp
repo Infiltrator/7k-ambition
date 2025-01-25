@@ -21,7 +21,6 @@
 //Filename    : OGODRES.CPP
 //Description : God resource class
 
-#include <OSYS.h>
 #include <OGAMESET.h>
 #include <OWORLD.h>
 #include <OSPRTRES.h>

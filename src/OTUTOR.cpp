@@ -21,6 +21,7 @@
 //Filename    : OTUTOR.CPP
 //Description : Class Tutor
 
+#include "ODB.h"
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OSYS.h>
@@ -29,15 +30,11 @@
 #include <OFONT.h>
 #include <OF_MONS.h>
 #include <OMONSRES.h>
-#include <OIMGRES.h>
 #include <OBUTTON.h>
 #include <OBUTT3D.h>
 #include <OGFILE.h>
-#include <OSaveGameArray.h>
 #include <OSaveGameProvider.h>
 #include <OGAME.h>
-#include <OGAMESET.h>
-#include <OWORLD.h>
 #include <OFILETXT.h>
 #include <OTUTOR.h>
 #include <OBOX.h>

@@ -24,7 +24,6 @@
 #include <ALL.h>
 #include <IMGFUN.h>
 #include <OMOUSE.h>
-#include <OPOWER.h>
 #include <OCOLTBL.h>
 #include <OVGA.h>
 #include <OVGABUF.h>

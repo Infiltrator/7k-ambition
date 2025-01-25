@@ -25,6 +25,8 @@
 #ifndef __OREMOTEQ_H
 #define __OREMOTEQ_H
 
+#include <stdlib.h>
+
 #include <OVQUEUE.h>
 #include <stdint.h>
 

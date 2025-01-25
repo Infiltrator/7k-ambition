@@ -22,9 +22,8 @@
 //Description : Hill resource object
 //Onwership   : Gilbert
 
-#include <OSYS.h>
-#include <OVGA.h>
-#include <OGAMESET.h>
+#include "ODB.h"
+#include "OVGABUF.h"
 #include <OWORLD.h>
 #include <OHILLRES.h>
 #include <OCONFIG.h>

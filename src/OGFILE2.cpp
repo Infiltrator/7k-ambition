@@ -26,7 +26,6 @@
 #include <OFIRMRES.h>
 
 #include <OBULLET.h>
-#include <OFIRM.h>
 #include <OFIRMDIE.h>
 #include <OGAME.h>
 #include <OGFILE.h>
@@ -34,7 +33,6 @@
 #include <OGODRES.h>
 #include <OINFO.h>
 #include <OMONSRES.h>
-#include <ONATION.h>
 #include <ONEWS.h>
 #include <OPOWER.h>
 #include <ORACERES.h>
@@ -55,7 +53,6 @@
 #include <OUNIT.h>
 #include <OWEATHER.h>
 #include <OWORLD.h>
-#include <OSaveGameArray.h>
 #include <dbglog.h>
 #include <file_io_visitor.h>
 

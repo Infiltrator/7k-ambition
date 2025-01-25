@@ -22,19 +22,14 @@
 //Description : Firm Mine
 
 #include <OINFO.h>
-#include <OVGA.h>
 #include <vga_util.h>
 #include <OSTR.h>
 #include <OFONT.h>
 #include <ONEWS.h>
-#include <OUNIT.h>
-#include <ORACERES.h>
-#include <OGAME.h>
 #include <OWORLD.h>
 #include <ONATION.h>
 #include <OSITE.h>
 #include <OF_MINE.h>
-#include <OF_FACT.h>
 #include <OBUTT3D.h>
 #include "gettext.h"
 #include <ConfigAdv.h>

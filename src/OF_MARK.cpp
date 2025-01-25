@@ -21,22 +21,19 @@
 //Filename    : OF_MARK.CPP
 //Description : Firm Market Place
 
+#include "OCONFIG.h"
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
 #include <OSTR.h>
 #include <OBUTTON.h>
 #include <OBUTT3D.h>
 #include <OFONT.h>
 #include <ORAWRES.h>
-#include <OIMGRES.h>
-#include <ORACERES.h>
 #include <OTOWN.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <OU_CARA.h>
 #include <OWORLD.h>
-#include <OSYS.h>
 #include <OF_FACT.h>
 #include <OF_MINE.h>
 #include <OF_MARK.h>

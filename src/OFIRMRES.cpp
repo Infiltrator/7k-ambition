@@ -21,13 +21,11 @@
 //Filename    : OFIRMRES.CPP
 //Description : Firm material resource object
 
-#include <OSYS.h>
 #include <OGAMESET.h>
 #include <OWORLD.h>
 #include <OUNIT.h>
 #include <ONATION.h>
 #include <OFIRMRES.h>
-#include "gettext.h"
 
 //---------- #define constant ------------//
 

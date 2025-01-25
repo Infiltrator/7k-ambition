@@ -23,9 +23,10 @@
 // Owner       : Gilbert
 
 #include <OSNOWG.h>
+
+#include "OMISC.h"
 #include <OSNOWRES.h>
 #include <OWEATHER.h>
-#include <OWORLDMT.h>
 
 // ------- Define constant --------//
 #define SCAN_DENSITY 4

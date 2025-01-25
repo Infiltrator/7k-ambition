@@ -30,8 +30,6 @@
 #include <OFIRM.h>
 #include <OTOWN.h>
 #include <OUNIT.h>
-#include <OSYS.h>
-#include <ONATION.h>
 
 #ifdef NO_DEBUG_SEARCH
 #undef err_when

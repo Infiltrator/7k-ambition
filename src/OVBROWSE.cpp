@@ -25,8 +25,6 @@
 #include <OINFO.h>
 #include <OMOUSE.h>
 #include <OVGA.h>
-#include <OFONT.h>
-#include <OPOWER.h>
 #include <OVBROWSE.h>
 
 //--------- Begin of function VBrowse::init --------//

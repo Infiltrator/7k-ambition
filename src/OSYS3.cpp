@@ -22,7 +22,6 @@
 #include <OSYS.h>
 #include <OMISC.h>
 #include <OMOUSE.h>
-#include <OMOUSE2.h>
 #include <stdio.h>
 
 #define	MAX_SEED_TABLE_SIZE	10 * 4000

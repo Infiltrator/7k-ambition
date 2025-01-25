@@ -28,7 +28,8 @@
 
 #include <stdint.h>
 
-#include <ALL.h>
+
+class File;
 
 //--------- Define constant ----------//
 #define MAX_WEATHER_FORECAST 3

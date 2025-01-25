@@ -23,7 +23,6 @@
 
 #include "ambition/Ambition_version.hh"
 
-#include <version.h>
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OIMGRES.h>
@@ -32,13 +31,11 @@
 #include <OMOUSECR.h>
 #include <OFONT.h>
 #include <OTUTOR.h>
-#include <OBUTTON.h>
 #include <OBATTLE.h>
 #include <OSaveGameArray.h>
 #include <OGAMHALL.h>
 #include <OMUSIC.h>
 #include <OGAME.h>
-#include <OVGALOCK.h>
 #include "gettext.h"
 
 #ifdef DEMO

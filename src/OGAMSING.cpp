@@ -30,7 +30,6 @@
 #include <ORACERES.h>
 #include <OINFO.h>
 #include <OBUTT3D.h>
-#include <OGET.h>
 #include <OBATTLE.h>
 #include <OGAME.h>
 #include <OCONFIG.h>

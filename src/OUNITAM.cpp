@@ -23,12 +23,7 @@
 //
 // For the detail, see ounitam.txt
 
-#include <math.h>
-
 #include <ALL.h>
-#include <OVGA.h>
-#include <OSYS.h>
-#include <OSTR.h>
 #include <OREMOTE.h>
 #include <OWORLD.h>
 #include <OTERRAIN.h>

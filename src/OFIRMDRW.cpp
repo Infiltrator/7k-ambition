@@ -22,18 +22,15 @@
 //Description : Firm drawing routines
 
 #include <COLCODE.h>
+#include "OFIRM.h"
 #include <OSYS.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <ONATION.h>
-#include <OSPRITE.h>
-#include <OINFO.h>
-#include <ORAWRES.h>
 #include <OPOWER.h>
 #include <OGAME.h>
 #include <OANLINE.h>
 #include <OIMGRES.h>
 #include <OWORLD.h>
-#include <OF_BASE.h>
 #include <OSE.h>
 #include <OREMOTE.h>
 

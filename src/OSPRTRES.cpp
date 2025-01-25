@@ -23,7 +23,7 @@
 
 #include <ALL.h>
 #include <OSYS.h>
-#include <OWORLD.h>
+#include "OWORLDMT.h"
 #include <OGAMESET.h>
 #include <OSPRTRES.h>
 #include <OWEATHER.h>

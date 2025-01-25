@@ -23,15 +23,9 @@
 
 #include <ALL.h>
 #include <OVGA.h>
-#include <OMOUSE.h>
 #include <OSYS.h>
-#include <OSITE.h>
-#include <OFIRM.h>
 #include <OTERRAIN.h>
-#include <OPLANT.h>
-#include <OPOWER.h>
 #include <OUNIT.h>
-#include <OWORLD.h>
 #include <OHILLRES.h>
 
 // --------- define constant ----------//

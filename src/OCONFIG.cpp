@@ -23,12 +23,8 @@
 
 #include <OSYS.h>
 #include <OHELP.h>
-#include <ONATION.h>
-#include <OUNITRES.h>
-#include <OFIRMRES.h>
 #include <OCONFIG.h>
 #include <dbglog.h>
-#include "gettext.h"
 #include <FilePath.h>
 
 DBGLOG_DEFAULT_CHANNEL(Config);

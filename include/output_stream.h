@@ -20,8 +20,6 @@
 #ifndef OUTPUT_STREAM_H
 #define OUTPUT_STREAM_H
 
-#include <stdint.h>
-#include <stdio.h>
 
 class OutputStream
 {

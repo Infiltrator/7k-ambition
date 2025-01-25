@@ -19,6 +19,9 @@
  */
 #include <output_stream.h>
 
+#include <stdint.h>
+
+
 /*
  * Writes a non-integer little-endian value of the same size as the integer
  * type AliasT.

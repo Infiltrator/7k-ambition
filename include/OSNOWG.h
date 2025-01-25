@@ -27,7 +27,8 @@
 
 #include <stdint.h>
 
-#include <ODYNARRB.h>
+
+class File;
 
 class SnowGround
 {

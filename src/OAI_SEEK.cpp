@@ -22,9 +22,7 @@
 //Description: AI - action progressing functions
 
 #include <ALL.h>
-#include <OUNIT.h>
 #include <OF_MINE.h>
-#include <OF_FACT.h>
 #include <OF_HARB.h>
 #include <OTOWN.h>
 #include <OSITE.h>

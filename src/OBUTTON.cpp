@@ -29,7 +29,6 @@
 #include <OMOUSE.h>
 #include <OVGA.h>
 #include <vga_util.h>
-#include <OIMGRES.h>
 #include <OBUTTON.h>
 
 //----------- Begin of function Button::Button -----------//

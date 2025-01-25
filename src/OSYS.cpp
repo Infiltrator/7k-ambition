@@ -23,7 +23,6 @@
 
 #include <cstdio>
 #include <cstdlib>
-#include <limits.h>
 #include <stdint.h>
 #include <string>
 
@@ -31,10 +30,8 @@
 # include <mach-o/dyld.h>
 #endif
 
-#include <RESOURCE.h>
 #include <ALL.h>
 #include <OAUDIO.h>
-#include <ODATE.h>
 #include <OBOX.h>
 #include <OFONT.h>
 #include <OSTR.h>
@@ -46,7 +43,6 @@
 #include <OSaveGameProvider.h>
 #include <OGAMHALL.h>
 #include <OINFO.h>
-#include <OVBROWSE.h>
 #include <OIMGRES.h>
 #include <OMOUSE.h>
 #include <OMOUSE2.h>
@@ -60,17 +56,14 @@
 #include <OSYS.h>
 #include <OREMOTE.h>
 #include <OTECHRES.h>
-#include <OTALKRES.h>
 #include <OGODRES.h>
 #include <OHELP.h>
 #include <OTUTOR.h>
 #include <OF_BASE.h>
 #include <OTOWN.h>
-#include <OBULLET.h>
 #include <ONATION.h>
 #include <OFLAME.h>
 #include <OPOWER.h>
-#include <OTERRAIN.h>
 #include <OWORLD.h>
 #include <OANLINE.h>
 #include <OSE.h>
@@ -78,8 +71,6 @@
 #include <OERRCTRL.h>
 #include <OMUSIC.h>
 #include <OLZW.h>
-#include <OLONGLOG.h>
-#include <OVGALOCK.h>
 #include <OGRPSEL.h>
 #include <OCRC_STO.h>
 #include <OF_HARB.h>

@@ -22,9 +22,8 @@
 //Description : Firm Base
 
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
-#include <ODATE.h>
 #include <OMOUSE.h>
 #include <OIMGRES.h>
 #include <OHELP.h>
@@ -32,19 +31,11 @@
 #include <OFONT.h>
 #include <OCONFIG.h>
 #include <OUNIT.h>
-#include <OSPY.h>
-#include <OGAME.h>
 #include <OBUTT3D.h>
 #include <ONATION.h>
-#include <ORACERES.h>
-#include <OWALLRES.h>
 #include <OGODRES.h>
-#include <OPOWER.h>
-#include <OTOWN.h>
-#include <OWORLD.h>
 #include <OF_BASE.h>
 #include <OREMOTE.h>
-#include <OSERES.h>
 #include <OSE.h>
 #include "gettext.h"
 

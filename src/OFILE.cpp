@@ -21,12 +21,11 @@
 //Filename    : OFILE.CPP
 //Description : Object File
 
-#include <ALL.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <ctype.h>
 #include <string.h>
 #include <dbglog.h>
+#include "OERROR.h"
 #include <OFILE.h>
 #include <errno.h>
 

@@ -22,7 +22,6 @@
 // Description : volume unit type
 
 #include <OAUDIO.h>
-#include <OCONFIG.h>
 #include <OVOLUME.h>
 
 const int DEFAULT_VOL_DROP = 100;	// distance 100, no sound

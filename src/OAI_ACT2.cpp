@@ -22,9 +22,6 @@
 //Description: AI - action progressing functions
 
 #include <ALL.h>
-#include <OBOX.h>
-#include <OSYS.h>
-#include <OSPY.h>
 #include <OINFO.h>
 #include <OUNIT.h>
 #include <OFIRM.h>

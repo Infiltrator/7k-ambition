@@ -35,7 +35,6 @@
 #include <OSPREUSE.h>
 
 #ifdef DEBUG
-#include <OSYS.h>
 
 static ResultNode*	debugSrePtr; // for debug only
 static ResultNode*	debugSreNode1;

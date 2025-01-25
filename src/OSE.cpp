@@ -24,7 +24,6 @@
 
 #include <OSE.h>
 #include <OAUDIO.h>
-#include <OGAMESET.h>
 #include <OMISC.h>
 #include <OCONFIG.h>
 

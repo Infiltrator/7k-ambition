@@ -21,11 +21,7 @@
 //Filename    : OUNITA.CPP
 //Description : Object UnitArray
 
-#include <ALL.h>
-#include <OVGA.h>
 #include <OSYS.h>
-#include <OSTR.h>
-#include <OSPY.h>
 #include <OREMOTE.h>
 #include <ONATION.h>
 #include <OREBEL.h>
@@ -36,7 +32,6 @@
 #include <OGAME.h>
 #include <OANLINE.h>
 #include <OFONT.h>
-#include <CRC.h>
 #include <OPOWER.h>
 
 #ifdef NO_DEBUG_UNIT

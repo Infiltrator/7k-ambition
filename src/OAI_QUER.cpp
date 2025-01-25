@@ -21,7 +21,6 @@
 //Filename   : OAI_QUER.CPP
 //Description: AI - query functions
 
-#include <ALL.h>
 #include <OTOWN.h>
 #include <OFIRM.h>
 #include <ONATION.h>

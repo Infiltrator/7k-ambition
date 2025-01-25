@@ -23,8 +23,7 @@
 
 #include <ALL.h>
 #include <OVGA.h>
-#include <OSYS.h>
-#include <OWORLD.h>
+#include "OWORLDMT.h"
 #include <ODB.h>
 #include <OMOUSE.h>
 #include <OMOUSECR.h>

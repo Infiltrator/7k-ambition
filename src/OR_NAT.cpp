@@ -21,7 +21,6 @@
 //Filename    : OR_NAT.CPP
 //Description : Nation Report
 
-#include <stdlib.h>
 #include <KEY.h>
 #include <OCONFIG.h>
 #include <OVGA.h>
@@ -31,7 +30,6 @@
 #include <OGETA.h>
 #include <ODATE.h>
 #include <OMOUSE.h>
-#include <OIMGRES.h>
 #include <OVBROWIF.h>
 #include <OBUTTON.h>
 #include <OSYS.h>
@@ -39,7 +37,6 @@
 #include <OTALKRES.h>
 #include <OINFO.h>
 #include <OREMOTE.h>
-#include <locale.h>
 #include "gettext.h"
 
 //------------- Define coordinations -----------//

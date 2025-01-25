@@ -30,7 +30,6 @@
 #endif
 
 #include <OANLINE.h>
-#include <OAUDIO.h>
 #include <OBATTLE.h>
 #include <OBOX.h>
 #include <OBULLET.h>
@@ -85,7 +84,6 @@
 #include <OSNOWG.h>
 #include <OROCKRES.h>
 #include <OROCK.h>
-#include <OEFFECT.h>
 #include <OEXPMASK.h>
 #include <OREGION.h>
 #include <OWARPT.h>
@@ -110,7 +108,6 @@
 #include <CmdLine.h>
 #include <LocaleRes.h>
 #include <PlayerStats.h>
-#include "gettext.h"
 #include <ConfigAdv.h>
 
 //------- define game version constant --------//

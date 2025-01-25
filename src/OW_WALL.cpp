@@ -28,7 +28,6 @@
 #include <OWALLRES.h>
 #include <OTOWN.h>
 #include <OREMOTE.h>
-#include <ONATIONA.h>
 
 #define WALL_GROWTH_RATE 6
 

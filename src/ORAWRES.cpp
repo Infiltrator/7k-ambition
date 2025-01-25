@@ -24,8 +24,6 @@
 #include <OINFO.h>
 #include <OVGA.h>
 #include <OHELP.h>
-#include <OFONT.h>
-#include <OSYS.h>
 #include <OGAMESET.h>
 #include <OF_FACT.h>
 #include <OF_MINE.h>

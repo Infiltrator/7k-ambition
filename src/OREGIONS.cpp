@@ -21,7 +21,6 @@
 // Filename    : OREGIONS.CPP
 // Description : functions on RegionStat
 
-#include <stdlib.h>
 #include <ONATION.h>
 #include <OSITE.h>
 #include <OFIRM.h>

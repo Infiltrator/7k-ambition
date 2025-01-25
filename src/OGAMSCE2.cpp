@@ -35,12 +35,10 @@
 #include <OFONT.h>
 #include <KEY.h>
 #include <OBLOB.h>
-#include <OINFO.h>
 #include <OFILETXT.h>
 #include <OVQUEUE.h>
 #include <OGETA.h>
 #include <PlayerStats.h>
-#include <OGFILE.h>
 // ####### begin Gilbert 4/11 #######//
 #include <OMUSIC.h>
 // ####### end Gilbert 4/11 #######//

@@ -21,9 +21,6 @@
 //Filename    : OSKILL.CPP
 //Description : Skill class
 
-#include <OSTR.h>
-#include <OFIRMID.h>
-#include <OSITE.h>
 #include <OSKILL.h>
 #include "gettext.h"
 

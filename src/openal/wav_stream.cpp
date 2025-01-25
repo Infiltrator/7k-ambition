@@ -17,15 +17,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include <assert.h>
-#include <limits.h>
 #include <string.h>
 #include <stdlib.h>
 
 #include <ALL.h>
 #include <dbglog.h>
 #include <file_input_stream.h>
-#include <file_util.h>
 #include <wav_stream.h>
 
 DBGLOG_DEFAULT_CHANNEL(Audio);

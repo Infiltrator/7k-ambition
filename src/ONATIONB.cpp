@@ -23,15 +23,10 @@
 
 #include <OSTR.h>
 #include <OSYS.h>
-#include <ODATE.h>
-#include <OBOX.h>
 #include <OVGA.h>
-#include <OFONT.h>
 #include <ONEWS.h>
-#include <OWORLD.h>
 #include <OFIRM.h>
 #include <OGAME.h>
-#include <OPOWER.h>
 #include <OREGIONS.h>
 #include <ORACERES.h>
 #include <OTALKRES.h>
@@ -39,9 +34,6 @@
 #include <OGODRES.h>
 #include <OTOWN.h>
 #include <OSPY.h>
-#include <OF_MARK.h>
-#include <OF_BASE.h>
-#include <OF_MONS.h>
 #include <OTECHRES.h>
 #include <ONATION.h>
 #include <OREBEL.h>

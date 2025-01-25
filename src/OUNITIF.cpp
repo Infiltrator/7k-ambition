@@ -26,7 +26,6 @@
 #include <vga_util.h>
 #include <OMOUSE.h>
 #include <OFONT.h>
-#include <OMOUSE.h>
 #include <OHELP.h>
 #include <OINFO.h>
 #include <OFIRMRES.h>
@@ -39,13 +38,11 @@
 #include <OGAME.h>
 #include <ONATION.h>
 #include <OWORLD.h>
-#include <OU_VEHI.h>
 #include <OREMOTE.h>
 #include <OSE.h>
 #include <OSERES.h>
 #include <OBUTTCUS.h>
 
-#include <OU_MARI.h>
 #include "gettext.h"
 
 #ifdef NO_DEBUG_UNIT

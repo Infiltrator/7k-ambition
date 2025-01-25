@@ -24,7 +24,6 @@
 
 
 #include <OLOG.h>
-#include <stdio.h>
 #include <OFILE.h>
 #ifdef USE_WINDOWS
 #include <windows.h> // OutputDebugString

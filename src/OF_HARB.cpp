@@ -22,9 +22,8 @@
 //Description : Firm Harbor
 
 #include <OINFO.h>
-#include <OVGA.h>
+#include "OVGABUF.h"
 #include <vga_util.h>
-#include <ODATE.h>
 #include <OHELP.h>
 #include <OMOUSE.h>
 #include <OSTR.h>
@@ -33,11 +32,8 @@
 #include <OBUTTON.h>
 #include <OBUTT3D.h>
 #include <OVBROWIF.h>
-#include <OTERRAIN.h>
 #include <OPOWER.h>
-#include <OREGIONS.h>
 #include <OU_MARI.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <OF_HARB.h>
 #include <OREMOTE.h>

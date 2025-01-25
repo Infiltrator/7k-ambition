@@ -21,13 +21,11 @@
 //Filename    : OSCROLL.CPP
 //Description : Object scroll bar
 
-#include <ALL.h>
 #include <KEY.h>
 #include <OSYS.h>
 #include <OMOUSE.h>
 #include <OVGA.h>
 #include <vga_util.h>
-#include <OINFO.h>
 #include <OIMGRES.h>
 #include <OSCROLL.h>
 

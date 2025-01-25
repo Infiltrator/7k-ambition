@@ -26,7 +26,6 @@
 #include <OF_FACT.h>
 #include <OF_MARK.h>
 #include <OU_CARA.h>
-#include <OREMOTE.h>
 
 static char		 processed_raw_qty_array[MAX_RAW];					// 1 for not unload but can up load, 2 for unload but not up load
 static char		 processed_product_raw_qty_array[MAX_PRODUCT];	// ditto

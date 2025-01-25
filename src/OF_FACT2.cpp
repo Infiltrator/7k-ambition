@@ -22,14 +22,7 @@
 //Description : Firm Factory - AI functions
 
 #include <OINFO.h>
-#include <OUNIT.h>
-#include <OGAME.h>
-#include <OFONT.h>
 #include <ONATION.h>
-#include <ORAWRES.h>
-#include <ORACERES.h>
-#include <OTOWNRES.h>
-#include <OWORLD.h>
 #include <OF_MINE.h>
 #include <OF_MARK.h>
 #include <OF_FACT.h>

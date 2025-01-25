@@ -23,9 +23,6 @@
 // Ownership   : Gilbert
 
 #include	<math.h>
-#include <stdlib.h>
-#include <ALL.h>
-#include <OVGABUF.h>
 #include <OLIGHTN.h>
 
 //------------ Define constant ----------//

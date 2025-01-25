@@ -23,15 +23,12 @@
 
 #include <OSYS.h>
 #include <ONATION.h>
-#include <OWORLD.h>
 #include <OGAME.h>
 #include <OSPY.h>
 #include <OCONFIG.h>
 #include <OUNIT.h>
 #include <OFIRM.h>
 #include <OTOWN.h>
-#include <OTALKRES.h>
-#include <OF_MINE.h>
 #include <OINFO.h>
 #include <OLOG.h>
 

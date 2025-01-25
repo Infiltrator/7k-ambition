@@ -22,27 +22,18 @@
 //Description : Object Firm
 
 #include <string.h>
-#include <OVGA.h>
-#include <ODATE.h>
-#include <OMLINK.h>
 #include <OWORLD.h>
 #include <OPOWER.h>
 #include <OCONFIG.h>
-#include <OGAME.h>
 #include <OUNIT.h>
 #include <ONEWS.h>
 #include <OSYS.h>
 #include <OSPY.h>
-#include <OSITE.h>
 #include <OINFO.h>
-#include <ONEWS.h>
 #include <ONATION.h>
 #include <OFIRM.h>
 #include <ORACERES.h>
 #include <OTOWN.h>
-#include <OSPRITE.h>
-#include <OFIRMRES.h>
-#include <OF_MARK.h>
 #include <OREMOTE.h>
 #include <OF_CAMP.h>
 #include <OF_HARB.h>

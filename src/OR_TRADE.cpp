@@ -22,13 +22,11 @@
 //Filename    : OR_TRADE.CPP
 //Description : Trade Report
 
-#include <OVGA.h>
 #include <OSTR.h>
 #include <OFONT.h>
 #include <OIMGRES.h>
 #include <OVBROWIF.h>
 #include <OBUTTON.h>
-#include <ORACERES.h>
 #include <OFIRM.h>
 #include <OWORLD.h>
 #include <ONATION.h>

@@ -22,15 +22,10 @@
 //Description : Object Game file, save game and restore game
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 #include <OGFILE.h>
 #include <OFILE.h>
-#include <OSTR.h>
 #include <OTALKRES.h>
-#include <ONATION.h>
-#include <OWORLD.h>
 #include <OGAME.h>
 #include <OTownNetwork.h>
 #include <OINFO.h>

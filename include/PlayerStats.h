@@ -24,11 +24,8 @@
 #ifndef __PLAYERSTATS_H
 #define __PLAYERSTATS_H
 
-#include <OGAME.h>
-#ifndef __ODYNARR_H
-#include <ODYNARR.h>
-#endif
-
+#include <cstddef>
+#include <stdint.h>
 
 namespace nsPlayerStats {
 

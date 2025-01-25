@@ -23,10 +23,7 @@
 
 #include <OVGA.h>
 #include <OSYS.h>
-#include <OFONT.h>
 #include <OMOUSE.h>
-#include <OBUTTON.h>
-#include <OINFO.h>
 #include <OIMGRES.h>
 #include <OPOWER.h>
 #include <OWORLD.h>

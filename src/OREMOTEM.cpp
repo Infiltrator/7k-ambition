@@ -21,26 +21,29 @@
 //Filename    : OREMOTEM.CPP
 //Description : Object RemoteMsg
 
-#include <ALL.h>
-#include <OFONT.h>
+#include "OF_BASE.h"
+#include "OF_CAMP.h"
+#include "OF_FACT.h"
+#include "OF_HARB.h"
+#include "OF_INN.h"
+#include "OF_RESE.h"
+#include "OF_WAR.h"
+#include "OFONT.h"
 #include <ONEWS.h>
 #include <OSYS.h>
+#include "OU_CARA.h"
+#include "OU_MARI.h"
+#include "OU_VEHI.h"
 #include <ONATION.h>
 #include <OUNIT.h>
 #include <OGAME.h>
 #include <OREMOTE.h>
 #include <OFIRM.h>
-#include <OFIRMALL.h>
 #include <OTOWN.h>
 #include <OLOG.h>
-#include <OUNITALL.h>
 #include <OSPY.h>
 #include <OTALKRES.h>
-#include <OLONGLOG.h>
 #include <OCRC_STO.h>
-// ##### patch begin Gilbert 20/1 #######//
-#include <OBOX.h>
-// ##### patch end Gilbert 20/1 #######//
 #include <gettext.h>
 
 //---------------- Define variable type ---------------//

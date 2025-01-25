@@ -21,14 +21,11 @@
 //Filename    : OR_TECH.CPP
 //Description : Technology Report
 
-#include <OVGA.h>
 #include <vga_util.h>
 #include <OFONT.h>
 #include <OIMGRES.h>
 #include <OVBROWIF.h>
-#include <OBUTTON.h>
 #include <OTECHRES.h>
-#include <OGODRES.h>
 #include <ORACERES.h>
 #include <ONATION.h>
 #include <OU_GOD.h>

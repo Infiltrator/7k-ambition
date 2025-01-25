@@ -25,7 +25,6 @@
 
 #include <ReplayFile.h>
 #include <OCONFIG.h>
-#include <OERROR.h>
 #include <ONATIONA.h>
 #include <OREMOTE.h>
 #include <OREMOTEQ.h>

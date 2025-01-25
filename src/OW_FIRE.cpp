@@ -26,7 +26,6 @@
 #include <OWORLD.h>
 #include <OMATRIX.h>
 #include <OWEATHER.h>
-#include <OWORLDMT.h>
 #include <OTERRAIN.h>
 #include <OUNIT.h>
 #include <OFIRM.h>

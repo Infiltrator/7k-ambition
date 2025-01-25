@@ -22,16 +22,12 @@
 //Description : Object Directory
 
 #include <stdlib.h>
-#include <string.h>
-#include <ODATE.h>
 #include <ODIR.h>
 
 #ifdef USE_WINDOWS
 #include <windows.h>
 #endif
 #ifdef USE_POSIX
-#include <dirent.h>
-#include <ctype.h>
 #include <sys/stat.h>
 #include <glob.h>
 #include <time.h>

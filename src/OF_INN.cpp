@@ -22,19 +22,15 @@
 //Description : Firm Military Inn
 
 #include <OINFO.h>
-#include <OBOX.h>
-#include <OVGA.h>
 #include <vga_util.h>
 #include <OSTR.h>
 #include <OFONT.h>
 #include <OMOUSE.h>
 #include <OHELP.h>
 #include <OVBROWIF.h>
-#include <OGAME.h>
 #include <OTOWN.h>
 #include <OBUTT3D.h>
 #include <ONATION.h>
-#include <ORAWRES.h>
 #include <ORACERES.h>
 #include <OWORLD.h>
 #include <OSPY.h>

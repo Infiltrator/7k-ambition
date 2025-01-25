@@ -26,14 +26,10 @@
 #include <OIMGRES.h>
 #include <OSPY.h>
 #include <OSTR.h>
-#include <OBUTTON.h>
-#include <OMOUSE.h>
 #include <OFIRM.h>
-#include <OSTR.h>
 #include <ONEWS.h>
 #include <ONATION.h>
 #include <OFONT.h>
-#include <ODATE.h>
 #include <OTOWN.h>
 #include <ODATE.h>
 #include <OGAME.h>
@@ -42,7 +38,6 @@
 #include <OWALLRES.h>
 #include <OSYS.h>
 #include <OUNIT.h>
-#include <OCOLTBL.h>
 #include <OINFO.h>
 #include <OOPTMENU.h>
 #include "gettext.h"

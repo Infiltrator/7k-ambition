@@ -26,7 +26,6 @@
 #include <OMOUSE.h>
 #include <IMGFUN.h>
 #include <OSYS.h>
-#include <OWORLD.h>
 #include <OVGA.h>
 #include <OVGABUF.h>
 #include <gettext.h>

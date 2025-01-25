@@ -20,8 +20,6 @@
 #ifndef INPUT_STREAM_H
 #define INPUT_STREAM_H
 
-#include <stdint.h>
-#include <stdio.h>
 
 class InputStream
 {

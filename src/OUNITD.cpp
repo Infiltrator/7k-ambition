@@ -22,7 +22,6 @@
 //Description : Object Unit defense functions
 //Owner		  : Alex
 
-#include <ALL.h>
 #include <OUNIT.h>
 #include <OWORLD.h>
 #include <OFIRM.h>

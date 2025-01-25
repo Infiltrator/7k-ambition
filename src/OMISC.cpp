@@ -21,23 +21,19 @@
 //Filename    : OMISC.CPP
 //Description : Object of Misc useful functions
 
+#include <SDL_timer.h>
 #ifdef USE_WINDOWS
 #include <windows.h>
 #endif
 #ifdef USE_POSIX
 #include <unistd.h>
-#include <sys/time.h>
 #include <sys/stat.h>
 #include <errno.h>
 #endif 
 
-#include <SDL.h>
-
 #include <string.h>
 #include <stdlib.h>
-#include <c99_printf.h>
 #include <time.h>
-#include <ctype.h>
 #include <math.h>
 
 #include <ALL.h>

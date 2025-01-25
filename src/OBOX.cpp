@@ -24,7 +24,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include <time.h>
 
 #include <KEY.h>
 #include <OSYS.h>
@@ -32,7 +31,6 @@
 #include <OMOUSE.h>
 #include <OFONT.h>
 #include <OBUTTON.h>
-#include <OPOWER.h>
 #include <OBOX.h>
 #include "gettext.h"
 

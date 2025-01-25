@@ -27,7 +27,6 @@
 #include <OWORLD.h>
 #include <ONATION.h>
 #include <OU_MARI.h>
-#include <OSPY.h>
 #include <OGAME.h>
 #include <OTOWN.h>
 #include <OF_CAMP.h>

@@ -39,7 +39,6 @@
 #include <OTORNADO.h>
 #include <OTOWN.h>
 #include <OU_MARI.h>
-#include <OSaveGameArray.h>
 #include <dbglog.h>
 #include <file_io_visitor.h>
 #include <file_reader.h>

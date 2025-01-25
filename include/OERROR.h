@@ -24,6 +24,8 @@
 #ifndef __OERROR_H
 #define __OERROR_H
 
+#include <stdlib.h>
+
 //------- Define Class Error ------------//
 
 typedef void (*ExtraHandler)();

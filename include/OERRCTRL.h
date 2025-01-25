@@ -25,7 +25,6 @@
 #define __OERRCTRL_H
 
 #include <GAMEDEF.h>
-#include <MPTYPES.h>
 #include <OVQUEUE.h>
 
 struct EcMsgHeader

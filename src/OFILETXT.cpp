@@ -24,7 +24,6 @@
 #include <stdlib.h>
 
 #include <ALL.h>
-#include <KEY.h>
 #include <OFILETXT.h>
 
 

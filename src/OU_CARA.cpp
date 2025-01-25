@@ -30,10 +30,8 @@
 #include <OINFO.h>
 #include <OCONFIG.h>
 #include <OIMGRES.h>
-#include <OMOUSE.h>
 #include <OPOWER.h>
 #include <OBUTTON.h>
-#include <OBUTT3D.h>
 #include <ONATION.h>
 #include <OU_CARA.h>
 #include <OREMOTE.h>

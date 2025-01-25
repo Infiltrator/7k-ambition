@@ -18,7 +18,6 @@
  *
  */
 
-#include <memory.h>
 #include <OGRPSEL.h>
 #include <OPOWER.h>
 #include <OUNIT.h>

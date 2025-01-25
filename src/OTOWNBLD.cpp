@@ -21,11 +21,10 @@
 //Filename    : OTOWNSE2.CPP
 //Description : Object TownZone
 
-#include <OVGA.h>
 #include <OGAME.h>
-#include <OINFO.h>
 #include <OTOWN.h>
 #include <OWORLD.h>
+#include "OVGABUF.h"
 #include <OTOWNRES.h>
 
 

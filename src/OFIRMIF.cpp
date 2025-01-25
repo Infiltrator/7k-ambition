@@ -29,11 +29,8 @@
 #include <OMOUSE.h>
 #include <OFONT.h>
 #include <OBUTT3D.h>
-#include <OBUTTON.h>
-#include <OSLIDER.h>
 #include <ONATION.h>
 #include <OINFO.h>
-#include <ORACERES.h>
 #include <OUNIT.h>
 #include <OSPY.h>
 #include <OTOWN.h>

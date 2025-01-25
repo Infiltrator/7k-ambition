@@ -21,11 +21,9 @@
 //Filename    : OR_AI.CPP
 //Description : Report for displaying AI actions
 
-#include <OVGA.h>
 #include <ODATE.h>
 #include <OFONT.h>
 #include <OVBROWIF.h>
-#include <OBUTTON.h>
 #include <OFIRMRES.h>
 #include <ONATION.h>
 #include <OINFO.h>

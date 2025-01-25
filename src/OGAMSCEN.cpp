@@ -26,7 +26,6 @@
 #include <ONEWS.h>
 #include <ODATE.h>
 #include <OGFILE.h>
-#include <OSaveGameArray.h>
 #include <OSaveGameProvider.h>
 #include <OF_MONS.h>
 #include <OMONSRES.h>

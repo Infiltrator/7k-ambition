@@ -22,7 +22,6 @@
 //Description : Firm Base - part 2, the AI functions
 
 #include <ONATION.h>
-#include <OTOWN.h>
 #include <OF_BASE.h>
 
 //--------- Begin of function FirmBase::process_ai ---------//

@@ -23,10 +23,9 @@
 
 #include <string.h>
 
-#include <ALL.h>
-#include <OVGA.h>
 #include <OMOUSE.h>
 #include <OIMGRES.h>
+#include "OVGABUF.h"
 
 
 //--------- Format of RES file ------------//

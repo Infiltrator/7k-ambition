@@ -23,8 +23,9 @@
 // Onwership   : Gilbert
 
 #include <OANLINE.h>
+
+#include "OERROR.h"
 #include <OVGABUF.h>
-#include <ALL.h>
 #include <math.h>
 
 // ----------- Define color table

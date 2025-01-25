@@ -21,23 +21,18 @@
 //Filename    : OF_MONS.CPP
 //Description : Fryhtan Lair
 
+#include "OCONFIG.h"
 #include <OINFO.h>
-#include <OVGA.h>
 #include <vga_util.h>
-#include <ODATE.h>
 #include <OSTR.h>
 #include <OSYS.h>
 #include <OSITE.h>
 #include <OFONT.h>
-#include <OBUTTON.h>
-#include <OPOWER.h>
 #include <OTOWN.h>
 #include <OU_MONS.h>
-#include <OGAME.h>
 #include <ONATION.h>
 #include <OMONSRES.h>
 #include <OF_MONS.h>
-#include <locale.h>
 #include <ConfigAdv.h>
 #include "gettext.h"
 

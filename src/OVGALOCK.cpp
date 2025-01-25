@@ -24,11 +24,9 @@
 // Mainly used by ODPLAY.CPP to separate OVGA.H
 // some GUID initialization problems exist if OVGA.H is included in ODPLAY.CPP
 
-#include <OSYS.h>
 #include <OVGALOCK.h>
 #include <OVGABUF.h>
 #include <OVGA.h>
-#include <OFILE.h>
 #include <OMOUSE.h>
 
 

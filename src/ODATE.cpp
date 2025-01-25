@@ -22,8 +22,6 @@
 //Description : Date Information Object
 
 #include <locale.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include <OSTR.h>
 #include <OMISC.h>

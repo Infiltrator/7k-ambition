@@ -21,7 +21,6 @@
 #include <OSPREUSE.h>
 #include <OUNIT.h>
 #include <OWORLD.h>
-#include <OMISC.h>
 
 #ifdef NO_DEBUG_SEARCH
 #undef err_when
@@ -37,10 +36,6 @@
 #undef debug_reuse_check_path
 #define debug_reuse_check_path()
 #undef DEBUG
-#endif
-
-#ifdef DEBUG
-#include <OSYS.h>
 #endif
 
 //------------------- static function --------------------//

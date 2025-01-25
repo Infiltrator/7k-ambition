@@ -22,11 +22,8 @@
 //Description : Object Sprite
 
 #include <ALL.h>
-#include <OSTR.h>
+#include "OCONFIG.h"
 #include <OVGA.h>
-#include <OINFO.h>
-#include <OGAME.h>
-#include <ONATION.h>
 #include <OSPRITE.h>
 #include <OCOLTBL.h>
 

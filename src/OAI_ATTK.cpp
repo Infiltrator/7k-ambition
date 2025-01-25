@@ -23,9 +23,11 @@
 
 #include <stdlib.h>
 #include <ALL.h>
+#include "OF_CAMP.h"
+#include "OF_MARK.h"
+#include "OFIRMA.h"
 #include <OUNIT.h>
 #include <OCONFIG.h>
-#include <OFIRMALL.h>
 #include <OTALKRES.h>
 #include <ONATION.h>
 

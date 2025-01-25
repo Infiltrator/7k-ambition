@@ -19,7 +19,6 @@
  */
 
 #include <OSPREUSE.h>
-#include <OUNIT.h>
 
 #ifdef NO_DEBUG_SEARCH
 #undef err_when
