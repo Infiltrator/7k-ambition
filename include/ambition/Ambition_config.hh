@@ -67,11 +67,22 @@ public:
 	 const Mode mode
   );
 
+  /**
+   * The current running mode.
+   */
+  Mode currentMode() const;
+
 private:
   Mode _mode {Mode::Enhanced};
 };
 
 /** The global Ambition Config. */
 extern Config config;
+
+
+/**
+ * Draw the current running mode onto the top-right of the screen.
+ */
+void drawModeInformation();
 
 } // namespace Ambition

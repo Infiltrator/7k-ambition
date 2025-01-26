@@ -27,6 +27,11 @@
 
 #include <stdexcept>
 
+#include "ConfigAdv.h"
+#include "OFONT.h"
+
+#include "ambition/Ambition_vga.hh"
+
 namespace Ambition {
 
 /** The global Ambition Config. */
@@ -75,6 +80,29 @@ void Config::setMode(
   } else {
     config_adv.flags &= ~ConfigAdv::FLAG_NOT_7KAA_COMPATIBLE;
   }
+}
+
+Config::Mode Config::currentMode(
+) const {
+  return _mode;
+}
+
+
+constexpr auto MODE_INFORMATION_TOP = 6;
+constexpr auto MODE_INFORMATION_RIGHT = 794;
+
+void drawModeInformation(
+) {
+  font_news.right_put(
+    MODE_INFORMATION_RIGHT,
+    MODE_INFORMATION_TOP,
+    (char*)"Current mode:"
+  );
+  font_news.right_put(
+    MODE_INFORMATION_RIGHT,
+    MODE_INFORMATION_TOP + 12,
+    (char*)(config.modeString()).c_str()
+  );
 }
 
 } // namespace Ambition
