@@ -42,15 +42,17 @@
 
 //------------- Define coordinations -----------//
 
-enum { HIRE_BROWSE_X1 = INFO_X1,
+#define HIRE_BROWSE_X1 INFO_X1
+#define HIRE_BROWSE_X2 INFO_X2
+enum {
 		 HIRE_BROWSE_Y1 = INFO_Y1+52,
-		 HIRE_BROWSE_X2 = INFO_X2,
 		 HIRE_BROWSE_Y2 = HIRE_BROWSE_Y1+144
 	  };
 
-enum { HIRE_DET_X1 = INFO_X1,
+#define HIRE_DET_X1 INFO_X1
+#define HIRE_DET_X2 INFO_X2
+enum {
 		 HIRE_DET_Y1 = HIRE_BROWSE_Y2+5,
-		 HIRE_DET_X2 = INFO_X2,
 		 HIRE_DET_Y2 = HIRE_DET_Y1+54
 	  };
 

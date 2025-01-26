@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed 100% CPU usage all the time.
+- Centred the info pane (the one below the minimap) so that it's no longer
+  off-centre.
 - A memory leak when loading a saved game.
 - A memory leak with unit waypoints.
 
