@@ -311,6 +311,87 @@ int16_t File::file_get_short()
 	return value;
 }
 
+//-------- Begin of function File::file_put_short_array ----------//
+//
+// Put a short array that has count elements.
+//
+// return : 1-success, 0-fail
+//
+int File::file_put_short_array(int16_t *out, int count)
+{
+	err_when( !file_handle );
+
+	unsigned dataSize = count*sizeof(int16_t);
+	if( file_type == File::STRUCTURED )
+	{
+		if( dataSize > 0xFFFF )
+			file_put_unsigned_short(0);
+		else
+			file_put_unsigned_short(dataSize);
+	}
+
+	for( int i=0; i<count; i++ )
+		file_put_short(out[i]);
+
+	if( ferror(file_handle) )
+	{
+		if( handle_error )
+			err.run("error occurred while writing file: %s\n", file_name);
+		return 0;
+	}
+
+	return 1;
+}
+//---------- End of function File::file_put_short_array ----------//
+
+
+//-------- Begin of function File::file_get_short_array ----------//
+//
+// Get a short array that has count elements, and returns the data in out. No
+// allocation is performed, so the user provides the appropriate space at the
+// address provided.
+//
+// return : 1-success, 0-fail
+//
+int File::file_get_short_array(int16_t *in, int count)
+{
+	err_when( !file_handle );
+
+	unsigned arrayBytes = count*sizeof(int16_t);
+	unsigned bytesToRead = arrayBytes;
+	unsigned recordBytes = arrayBytes;
+	if( file_type == File::STRUCTURED )
+	{
+		recordBytes = file_get_unsigned_short();
+		bytesToRead = MIN(arrayBytes, recordBytes);
+	}
+
+	for( int i=0; i<bytesToRead/sizeof(int16_t); i++ )
+		in[i] = file_get_short();
+
+	//-------- if the data size has been reduced ----------//
+
+	if( bytesToRead < recordBytes )
+		file_seek(recordBytes - bytesToRead, SEEK_CUR);
+
+	//---- if the data size has been increased, reset the unread area ---//
+
+	if( recordBytes < arrayBytes )
+		memset((char*)in + recordBytes, 0, arrayBytes - recordBytes);
+
+	if( ferror(file_handle) )
+	{
+		if( handle_error )
+			err.run("error occurred while reading file: %s\n", file_name);
+
+		return 0;
+	}
+
+	return 1;
+}
+//---------- End of function File::file_get_short_array ----------//
+
+
 int File::file_put_unsigned_short(uint16_t value)
 {
     	err_when(!file_handle);

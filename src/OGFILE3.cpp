@@ -1665,7 +1665,7 @@ static void write_ai_info(File* filePtr, short* aiInfoArray, short aiInfoCount, 
 {
 	filePtr->file_put_short( aiInfoCount );
 	filePtr->file_put_short( aiInfoSize  );
-	filePtr->file_write( aiInfoArray, sizeof(short) * aiInfoCount );
+	filePtr->file_put_short_array( aiInfoArray, aiInfoCount );
 }
 //----------- End of static function write_ai_info ---------//
 
@@ -1747,7 +1747,7 @@ static void read_ai_info(File* filePtr, short** aiInfoArrayPtr, short& aiInfoCou
 
 	*aiInfoArrayPtr = (short*) mem_add( aiInfoSize * sizeof(short) );
 
-	filePtr->file_read( *aiInfoArrayPtr, sizeof(short) * aiInfoCount );
+	filePtr->file_get_short_array( *aiInfoArrayPtr, aiInfoCount );
 }
 //----------- End of static function read_ai_info ---------//
 

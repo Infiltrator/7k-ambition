@@ -807,10 +807,10 @@ int UnitRes::write_file(File* filePtr)
 		if( !filePtr->file_write( unitInfo->nation_tech_level_array, sizeof(unitInfo->nation_tech_level_array) ) )
 			return 0;
 
-		if( !filePtr->file_write( unitInfo->nation_unit_count_array, sizeof(unitInfo->nation_unit_count_array) ) )
+		if( !filePtr->file_put_short_array( unitInfo->nation_unit_count_array, MAX_NATION ) )
 			return 0;
 
-		if( !filePtr->file_write( unitInfo->nation_general_count_array, sizeof(unitInfo->nation_general_count_array) ) )
+		if( !filePtr->file_put_short_array( unitInfo->nation_general_count_array, MAX_NATION ) )
 			return 0;
 	}
 
@@ -840,10 +840,10 @@ int UnitRes::read_file(File* filePtr)
 		if( !filePtr->file_read( unitInfo->nation_tech_level_array, sizeof(unitInfo->nation_tech_level_array) ) )
 			return 0;
 
-		if( !filePtr->file_read( unitInfo->nation_unit_count_array, sizeof(unitInfo->nation_unit_count_array) ) )
+		if( !filePtr->file_get_short_array( unitInfo->nation_unit_count_array, MAX_NATION ) )
 			return 0;
 
-		if( !filePtr->file_read( unitInfo->nation_general_count_array, sizeof(unitInfo->nation_general_count_array) ) )
+		if( !filePtr->file_get_short_array( unitInfo->nation_general_count_array, MAX_NATION ) )
 			return 0;
 	}
 
@@ -1115,7 +1115,7 @@ int GodRes::read_file(File* filePtr)
 //
 int MonsterRes::write_file(File* filePtr)
 {
-	return filePtr->file_write( active_monster_array, sizeof(active_monster_array) );
+	return filePtr->file_put_short_array( active_monster_array, MAX_ACTIVE_MONSTER );
 }
 //--------- End of function MonsterRes::write_file ---------------//
 
@@ -1124,7 +1124,7 @@ int MonsterRes::write_file(File* filePtr)
 //
 int MonsterRes::read_file(File* filePtr)
 {
-	return filePtr->file_read( active_monster_array, sizeof(active_monster_array) );
+	return filePtr->file_get_short_array( active_monster_array, MAX_ACTIVE_MONSTER );
 }
 //--------- End of function MonsterRes::read_file ---------------//
 
