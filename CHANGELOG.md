@@ -17,6 +17,10 @@ speaking, considered to be the player's experience.
 - A memory leak when loading a saved game.
 - A memory leak with unit waypoints.
 
+### Changed
+
+- Made development slightly easier.
+
 ## [2.9156.0] - 2025-01-07
 
 ### Changed
