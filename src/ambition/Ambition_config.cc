@@ -69,6 +69,12 @@ void Config::setMode(
   // }
 
   _mode = mode;
+
+  if (!compatibleWith7kaa()) {
+    config_adv.flags |= ConfigAdv::FLAG_NOT_7KAA_COMPATIBLE;
+  } else {
+    config_adv.flags &= ~ConfigAdv::FLAG_NOT_7KAA_COMPATIBLE;
+  }
 }
 
 } // namespace Ambition
