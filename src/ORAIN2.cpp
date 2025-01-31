@@ -24,6 +24,9 @@
 
 #include <ORAIN.h>
 
+#include "ambition/Ambition_vga.hh"
+
+
 //------- Begin of function Rain::start_rain --------------//
 //
 // short density = no. of drop created per turn (usually 2 to 12)
@@ -81,6 +84,7 @@ void Rain::new_drops()
 			short fromX = bound_x1+rand_seed()%(bound_x2-bound_x1);
 			short height = (bound_y2-bound_y1)/8 + rand_seed()%(((bound_y2-bound_y1)*7)/8);
 			short speed = height / 4;
+         speed = Ambition::calculateRainSpeed(speed);
 			drop[i].init(this, fromX, (short)bound_y1, short(fromX+height*wind_slope),
 				short(bound_y1+height), speed );
 			drop_flag[i] = 1;

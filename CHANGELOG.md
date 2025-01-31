@@ -9,6 +9,16 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Make game look smoother by running at at a graphical 60 FPS.
+- Make game look smoother by constantly animating buildings at a fixed rate.
+- Make game look smoother by constantly animating water and other terrain at a
+  fixed rate.
+- Make game look smoother by having the water be more sloshy and run
+  approximately into the south-western direction as the waves imply.
+- Make game look smoother by continuing rain and snow while game is paused.
+
 ### Fixed
 
 - Fixed 100% CPU usage all the time.

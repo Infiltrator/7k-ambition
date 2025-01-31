@@ -21,6 +21,8 @@
 //Filename	  : OSYS2.CPP
 //Description : System resource management object
 
+#include "ambition/Ambition_config.hh"
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OMOUSE.h>
@@ -162,15 +164,17 @@ void Sys::process()
 	LOG_MSG("end snow_ground_array.process()");
 	LOG_MSG(misc.get_random_seed());
 
-	LOG_MSG("begin rock_array.process()");
-	rock_array.process();
-	LOG_MSG("end rock_array.process()");
-	LOG_MSG(misc.get_random_seed());
+	if (!Ambition::config.enhancementsAvailable()) {
+	  LOG_MSG("begin rock_array.process()");
+	  rock_array.process();
+	  LOG_MSG("end rock_array.process()");
+	  LOG_MSG(misc.get_random_seed());
 
-	LOG_MSG("begin dirt_array.process()");
-	dirt_array.process();
-	LOG_MSG("end dirt_array.process()");
-	LOG_MSG(misc.get_random_seed());
+	  LOG_MSG("begin dirt_array.process()");
+	  dirt_array.process();
+	  LOG_MSG("end dirt_array.process()");
+	  LOG_MSG(misc.get_random_seed());
+	}
 
 	LOG_MSG("begin effect_array.process()");
 	effect_array.process();
@@ -531,6 +535,11 @@ void Sys::disp_frame()
 	}
 	else
 	{
+		if (Ambition::config.enhancementsAvailable()) {
+			dirt_array.process();
+			rock_array.process();
+		}
+
 		// -------- re-draw the whole screen if needed, such as after task switching ---------//
 
 		if( need_redraw_flag )

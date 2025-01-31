@@ -21,6 +21,8 @@
 //Filename    : OTOWNDRW.CPP
 //Description : Town drawing routines
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OVGA.h>
 #include <OSYS.h>
 #include <OMOUSE.h>
@@ -109,6 +111,7 @@ void Town::draw_flag(int absBaseX, int absBaseY)
 	char flagName[] = "FLAG-1";
 
 	flagName[5] = '1' + (char) ((sys.frame_count+town_recno)%8) / 2;
+   flagName[5] = Ambition::calculateTownFlagNumber(flagName[5], town_recno);
 
 	char* colorRemapTable = game.get_color_remap_table(nation_recno, 0);
 

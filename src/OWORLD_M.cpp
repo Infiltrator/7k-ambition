@@ -21,6 +21,8 @@
 //Filename    : OWORLD_M.CPP
 //Description : Object MapMatrix
 
+#include "ambition/Ambition_minimap.hh"
+
 #include <OMOUSE.h>
 #include <OIMGRES.h>
 #include <OPLANT.h>
@@ -315,6 +317,10 @@ void MapMatrix::disp()
 //
 void MapMatrix::draw_square()
 {
+	if (Ambition::Minimap::drawViewBoundsBox(this)) {
+		return;
+	}
+
 	//-------- draw the map-to-zoom highlight box --------//
 
 	static int squareFrameCount=0, squareFrameStep=1;

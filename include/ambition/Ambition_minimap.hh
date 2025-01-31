@@ -20,57 +20,21 @@
 /**
  * @file
  *
- * Header file for Ambition::Vga.
+ * Header file for Ambition::Minimap.
  */
 
 #pragma once
 
-class Firm;
-class SnowLayer;
-struct FirmBitmap;
+class MapMatrix;
 
 
 namespace Ambition {
 
-FirmBitmap* calculateFirmBitmap(
-  FirmBitmap* _7kaaCalculation,
-  Firm* firm
-);
-
-short calculateRainSpeed(
-  const short _7kaaCalculation
-);
-
-char calculateRockRemainingDelay(
-  const char _7kaaCalculation
-);
-
-char* calculateTerrainBitmap(
-  char* _7kaaCalculation,
-  const short terrainId,
-  const int x,
-  const int y
-);
-
-char calculateTownFlagNumber(
-  const char _7kaaCalculation,
-  const int townRecordNumber
-);
-
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
-);
-
-bool initialiseSnowLayer(
-  SnowLayer& layer,
-  const int level,
-  const char animationSpeed,
-  double slideSpeed
-);
-
-void drawFirmFrame(
-  Firm* firm,
-  const int displayLayer
-);
+class Minimap {
+public:
+  static bool drawViewBoundsBox(
+    const MapMatrix* _7kaaMapMatrix
+  );
+};
 
 } // namespace Ambition
