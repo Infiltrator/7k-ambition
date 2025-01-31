@@ -18,6 +18,7 @@ speaking, considered to be the player's experience.
 - Add cyan highlight to selected units, making for easier identification.
 - Add coloured outline to hit bars, making it easier to distinguish friendly
   units' hit bars from enemies'.
+- Show a hitbar for firms when they are at less than 100% HP.
 - Add builder icon to buildings with builders in them, allowing easy at-a-glance
   identification of them.
 - Make game look smoother by constantly animating buildings at a fixed rate.

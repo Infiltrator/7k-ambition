@@ -108,6 +108,7 @@ void Firm::draw(int displayLayer)
 		}
 	}
 
+   Ambition::drawFirmHitBar(this);
    Ambition::drawFirmBuilderIcon(this);
 }
 //--------- End of function Firm::draw -----------//

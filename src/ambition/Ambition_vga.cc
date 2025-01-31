@@ -50,6 +50,17 @@ int calculateFirmFrame(
   const Firm* firm
 );
 
+void drawHitbar(
+  const bool isOwn,
+  const char baseColour,
+  const double filledFraction,
+  const int x,
+  const int y,
+  const int width,
+  const int height
+);
+
+
 FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm
@@ -168,6 +179,7 @@ void drawFirmBuilderIcon(
   constexpr auto FRAME_COUNT = 2;
   constexpr auto FRAME_RATE = 2;
   constexpr auto MILLISECONDS_PER_FRAME = 1000 / FRAME_RATE;
+  constexpr auto ICON_VERTICAL_OFFSET = 10;
 
   // If there is a builder, draw an icon.
   if(firm->own_firm()
@@ -175,7 +187,10 @@ void drawFirmBuilderIcon(
      && unit_array[firm->builder_recno]->skill.skill_id == SKILL_CONSTRUCTION
   ) {
     const auto x = firm->loc_x1 * ZOOM_LOC_WIDTH - world.view_top_x + ZOOM_X1;
-    const auto y = firm->loc_y1 * ZOOM_LOC_HEIGHT - world.view_top_y + ZOOM_Y1;
+    const auto y
+      = firm->loc_y1 * ZOOM_LOC_HEIGHT
+      - world.view_top_y + ZOOM_Y1
+      + ICON_VERTICAL_OFFSET;
     char iconName[] = "REPAIR-1";
 
     if (firm->hit_points < firm->max_hit_points
@@ -204,6 +219,37 @@ void drawFirmFrame(
     firm->draw_frame(1, displayLayer);
   }
   firm->draw_frame(calculateFirmFrame(firm), displayLayer);
+}
+
+void drawFirmHitBar(
+  Firm* firm
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  if(firm->hit_points >= firm->max_hit_points) {
+    return;
+  }
+
+  // If the firm is not at 100% HP, draw a hit bar.
+  const auto barWidth = ZOOM_LOC_WIDTH * (firm->loc_x2 - firm->loc_x1 + 1);
+  constexpr auto BAR_HEIGHT = 5;
+
+  const auto barX = firm->loc_x1 * ZOOM_LOC_WIDTH - world.view_top_x + ZOOM_X1;
+  const auto barY = firm->loc_y1 * ZOOM_LOC_HEIGHT - world.view_top_y + ZOOM_Y1;
+
+  const auto hitpointsFraction = firm->hit_points / firm->max_hit_points;
+
+  drawHitbar(
+    firm->own_firm(),
+    VGA_DARK_BLUE,
+    hitpointsFraction,
+    barX,
+    barY,
+    barWidth,
+    BAR_HEIGHT
+  );
 }
 
 bool initialiseSnowLayer(
@@ -263,6 +309,76 @@ int calculateFirmFrame(
   }
 
   return frame;
+}
+
+void drawHitbar(
+  const bool isOwn,
+  const char baseColour,
+  const double filledFraction,
+  const int x,
+  const int y,
+  const int width,
+  const int height
+) {
+  const auto HITBAR_LIGHT_BORDER_COLOUR = baseColour;
+  const auto HITBAR_DARK_BORDER_COLOUR = baseColour + 3;
+  const auto HITBAR_BODY_COLOUR = baseColour + 1;
+
+  constexpr auto EMPTY_BASE_COLOUR = 0x40;
+  constexpr auto EMPTY_LIGHT_BORDER_COLOUR = EMPTY_BASE_COLOUR + 11;
+  constexpr auto EMPTY_DARK_BORDER_COLOUR = EMPTY_BASE_COLOUR + 3;
+  constexpr auto EMPTY_BODY_COLOUR = EMPTY_BASE_COLOUR + 7;
+
+  auto dataPtr = sys.common_data_buf;
+  const auto pitch = width;
+  /** The separating point between the filled and empty areas. */
+  const int emptyX = (width - 1) * filledFraction;
+
+  *((short*)dataPtr) = pitch;
+  *(((short*)dataPtr)+1) = height;
+
+  dataPtr += sizeof(short) * 2;
+
+  const auto bottomY = height - 1;
+  const auto darkY = bottomY - 2;
+
+#define drawBar(x1, y1, x2, y2, colour) \
+  IMGbar(dataPtr, pitch, (x1), (y1), (x2), (y2), (colour))
+
+  // Light left line filled.
+  drawBar(0, 0, 0, bottomY, HITBAR_LIGHT_BORDER_COLOUR);
+
+  // Light top line filled.
+  drawBar(0, 0, emptyX, 0, HITBAR_LIGHT_BORDER_COLOUR);
+  // Light top line empty.
+  if (emptyX < width - 1) {
+    drawBar(emptyX + 1, 0, width - 1, 0, EMPTY_LIGHT_BORDER_COLOUR);
+  }
+
+  // Dark right line.
+  if (emptyX == width - 1) { // Filled.
+    drawBar(width - 1, 1, width - 1, 1, HITBAR_DARK_BORDER_COLOUR);
+  } else { // Empty.
+    drawBar(width - 1, 1, width - 1, 1, EMPTY_DARK_BORDER_COLOUR);
+  }
+
+  // Bar body filled.
+  drawBar(1, 1, std::min(emptyX, width - 2), 1, HITBAR_BODY_COLOUR);
+  // Bar body empty.
+  if (emptyX < width - 2) {
+    drawBar(emptyX + 1, 1, width - 2, darkY, EMPTY_BODY_COLOUR);
+  }
+
+  // Dark bottom line filled.
+  drawBar(1, darkY, emptyX, bottomY, HITBAR_DARK_BORDER_COLOUR);
+  // Dark bottom line empty.
+  if (emptyX < width - 1) {
+    drawBar(emptyX + 1, darkY, width - 1, bottomY, EMPTY_DARK_BORDER_COLOUR);
+  }
+
+  world.zoom_matrix->put_bitmap_clip(x, y, sys.common_data_buf);
+
+  drawHitbarOutline(isOwn, x, y, pitch, height);
 }
 
 void drawHitbarOutline(

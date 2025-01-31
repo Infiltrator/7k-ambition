@@ -86,6 +86,15 @@ void drawFirmFrame(
 );
 
 /**
+ * Draw the hitbar for a Firm.
+ *
+ * @param firm The Firm for which to draw a hitbar.
+ */
+void drawFirmHitBar(
+  Firm* firm
+);
+
+/**
  * Draw a hitbar outline based on the owneship.
  *
  * @param isOwn Whether the hitbar's object is owned by the Nation to draw for.
