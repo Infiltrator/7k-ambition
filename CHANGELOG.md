@@ -15,6 +15,8 @@ speaking, considered to be the player's experience.
 - Add rudimentary running mode switcher with a button at the top-right of the
   main menu.
 - Make game look smoother by running at at a graphical 60 FPS.
+- Add builder icon to buildings with builders in them, allowing easy at-a-glance
+  identification of them.
 - Make game look smoother by constantly animating buildings at a fixed rate.
 - Make game look smoother by constantly animating water and other terrain at a
   fixed rate.

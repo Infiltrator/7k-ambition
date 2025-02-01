@@ -68,6 +68,17 @@ bool initialiseSnowLayer(
   double slideSpeed
 );
 
+/**
+ * Draw a builder icon for the firm if it has a builder.
+ *
+ * Also animate it if repair is currently in progress.
+ *
+ * @param firm A pointer to the Firm for which to draw the icon.
+ */
+void drawFirmBuilderIcon(
+  Firm* firm
+);
+
 void drawFirmFrame(
   Firm* firm,
   const int displayLayer
