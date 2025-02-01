@@ -21,6 +21,7 @@
 //Filename    : OGAMMAIN.CPP
 //Description : Main Game Object - Main menu
 
+#include "ambition/Ambition_config.hh"
 #include "ambition/Ambition_version.hh"
 #include "ambition/Ambition_vga.hh"
 
@@ -218,6 +219,8 @@ void Game::main_menu()
 		}
 		// ######### end Gilbert 23/7 ##########//
 
+      Ambition::drawModeInformation();
+
 		sys.blt_virtual_buf();		// blt the virtual front buffer to the screen
 
 		//---------- detect buttons -----------//
@@ -225,6 +228,8 @@ void Game::main_menu()
 		sys.yield();
 		vga.flip();
 		mouse.get_event();
+
+      refreshFlag = Ambition::detectModeSelectClick();
 
 		optionInfo = main_option_array;
 

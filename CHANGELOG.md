@@ -11,6 +11,9 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Display current running mode in top-right of main menu.
+- Add rudimentary running mode switcher with a button at the top-right of the
+  main menu.
 - Make game look smoother by running at at a graphical 60 FPS.
 - Make game look smoother by constantly animating buildings at a fixed rate.
 - Make game look smoother by constantly animating water and other terrain at a
