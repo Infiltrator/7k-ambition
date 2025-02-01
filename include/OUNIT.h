@@ -366,7 +366,7 @@ public:
 			  void del_team_member(int);
 			  void validate_team();
 
-			  void draw();
+			  void draw(const int outlined = 0);
 	virtual void draw_outlined();
 			  void draw_selected();
 			  void draw_skill_icon();

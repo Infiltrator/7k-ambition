@@ -21,6 +21,8 @@
 //Filename    : OGAME.CPP
 //Description : Main Game Object
 
+#include "ambition/Ambition_config.hh"
+
 #include <COLCODE.h>
 #include <OVGA.h>
 #include <OMOUSECR.h>
@@ -426,6 +428,13 @@ char* Game::get_color_remap_table(int nationRecno, int selectedFlag)
    {
       colorRemapTable[OUTLINE_CODE] = (char) TRANSPARENT_CODE;
       colorRemapTable[OUTLINE_SHADOW_CODE] = (char) SHADOW_CODE;
+   }
+
+   if (Ambition::config.enhancementsAvailable()
+       && selectedFlag == 2
+   ) {
+      colorRemapTable[OUTLINE_CODE] = VGA_YELLOW + 1;
+      colorRemapTable[OUTLINE_SHADOW_CODE] = VGA_YELLOW + 1;
    }
 
    return colorRemapTable;
