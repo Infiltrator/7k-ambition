@@ -42,6 +42,7 @@ speaking, considered to be the player's experience.
 - Use yellow colour for highlighting units on hover instead of cyan.
 - Made it easier to see when units are low on hitpoints by making the unit
   hitbars wider.
+- Change right and bottom cursor boundaries to allow the cursor to go further.
 - Made development slightly easier.
 
 ## [2.9156.0] - 2025-01-07
