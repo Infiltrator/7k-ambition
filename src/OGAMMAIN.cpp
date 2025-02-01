@@ -229,6 +229,8 @@ void Game::main_menu()
 		vga.flip();
 		mouse.get_event();
 
+      refreshFlag = Ambition::detectModeSelectClick();
+
 		optionInfo = main_option_array;
 
 		// Reset exit-to-main-menu flag

@@ -81,6 +81,14 @@ extern Config config;
 
 
 /**
+ * Detect whether the mode selection button was clicked and then run the mode
+ * selection screen.
+ *
+ * @return Whether anything was drawn to the screen and it needs to be redrawn.
+ */
+bool detectModeSelectClick();
+
+/**
  * Draw the current running mode onto the top-right of the screen.
  */
 void drawModeInformation();
