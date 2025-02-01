@@ -40,6 +40,8 @@ speaking, considered to be the player's experience.
 ### Changed
 
 - Use yellow colour for highlighting units on hover instead of cyan.
+- Made it easier to see when units are low on hitpoints by making the unit
+  hitbars wider.
 - Made development slightly easier.
 
 ## [2.9156.0] - 2025-01-07

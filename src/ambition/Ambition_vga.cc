@@ -135,6 +135,29 @@ char calculateTownFlagNumber(
     );
 }
 
+int calculateUnitHitbarWidth(
+  const int _7kaaCalculation
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return ZOOM_LOC_WIDTH - 2;
+}
+
+int calculateUnitIconY(
+  const int _7kaaCalculation
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto UNIT_HITBAR_HEIGHT = 4;
+  constexpr auto ICON_OFFSET = UNIT_HITBAR_HEIGHT + 4;
+
+  return _7kaaCalculation + ICON_OFFSET;
+}
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64
 ) {

@@ -197,6 +197,8 @@ void Unit::draw_selected()
 		else
 			maxHitBarWidth = ZOOM_LOC_WIDTH;
 
+		maxHitBarWidth = Ambition::calculateUnitHitbarWidth(maxHitBarWidth);
+
 		dispX1 = ZOOM_X1 + cur_x - World::view_top_x;
 		dispY1 = ZOOM_Y1 + cur_y - World::view_top_y - 20;
 	}
@@ -326,6 +328,8 @@ void Unit::draw_skill_icon()
 				str = "";
 			break;
 	}
+
+	dispY1 = Ambition::calculateUnitIconY(dispY1);
 
 	int y=dispY1-3;
 

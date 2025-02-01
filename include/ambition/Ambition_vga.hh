@@ -58,6 +58,14 @@ char calculateTownFlagNumber(
   const int townRecordNumber
 );
 
+int calculateUnitHitbarWidth(
+  const int _7kaaCalculation
+);
+
+int calculateUnitIconY(
+  const int _7kaaCalculation
+);
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
