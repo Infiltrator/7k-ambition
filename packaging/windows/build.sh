@@ -16,14 +16,14 @@
 
 # Finally, you will need TeXLive to build the manual.
 
-HOST=i686-w64-mingw32.shared
+HOST=i686-w64-mingw32
 HOST_OPT=--host=$HOST
 STRIP=${HOST}-strip
 
 ./configure --disable-silent-rules $HOST_OPT
 make -j6 pkgdatadir="" localedir=locale
 make install DESTDIR=`pwd`/dest bindir=/ docdir=/ pkgdatadir=/ localedir=/locale
-$STRIP dest/7kaa.exe
+$STRIP dest/7k-ambition.exe
 
 cd doc
 latexmk
