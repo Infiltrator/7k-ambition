@@ -16,6 +16,9 @@ speaking, considered to be the player's experience.
   main menu.
 - Make game look smoother by running at at a graphical 60 FPS.
 - Add cyan highlight to selected units, making for easier identification.
+- Add coloured outline to hit bars, making it easier to distinguish friendly
+  units' hit bars from enemies'.
+- Show a hitbar for firms when they are at less than 100% HP.
 - Add builder icon to buildings with builders in them, allowing easy at-a-glance
   identification of them.
 - Make game look smoother by constantly animating buildings at a fixed rate.
@@ -37,6 +40,8 @@ speaking, considered to be the player's experience.
 ### Changed
 
 - Use yellow colour for highlighting units on hover instead of cyan.
+- Made it easier to see when units are low on hitpoints by making the unit
+  hitbars wider.
 - Made development slightly easier.
 
 ## [2.9156.0] - 2025-01-07

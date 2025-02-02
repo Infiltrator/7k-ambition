@@ -22,6 +22,7 @@
 //Description : Object Unit Drawing routines
 
 #include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include <OFIRMRES.h>
 #include <OIMGRES.h>
@@ -196,6 +197,8 @@ void Unit::draw_selected()
 		else
 			maxHitBarWidth = ZOOM_LOC_WIDTH;
 
+		maxHitBarWidth = Ambition::calculateUnitHitbarWidth(maxHitBarWidth);
+
 		dispX1 = ZOOM_X1 + cur_x - World::view_top_x;
 		dispY1 = ZOOM_Y1 + cur_y - World::view_top_y - 20;
 	}
@@ -255,6 +258,14 @@ void Unit::draw_selected()
 	//--------- display the bar now ---------//
 
 	world.zoom_matrix->put_bitmap_clip(dispX1, dispY1, sys.common_data_buf);
+
+	Ambition::drawHitbarOutline(
+		is_own(),
+		dispX1,
+		dispY1,
+		curBarWidth,
+		HIT_BAR_HEIGHT
+	);
 
 	//----- display skill/rank icon (only for own units) -----//
 
@@ -317,6 +328,8 @@ void Unit::draw_skill_icon()
 				str = "";
 			break;
 	}
+
+	dispY1 = Ambition::calculateUnitIconY(dispY1);
 
 	int y=dispY1-3;
 

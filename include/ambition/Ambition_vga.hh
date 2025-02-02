@@ -27,6 +27,7 @@
 
 class Firm;
 class SnowLayer;
+class Unit;
 struct FirmBitmap;
 
 
@@ -57,6 +58,14 @@ char calculateTownFlagNumber(
   const int townRecordNumber
 );
 
+int calculateUnitHitbarWidth(
+  const int _7kaaCalculation
+);
+
+int calculateUnitIconY(
+  const int _7kaaCalculation
+);
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
@@ -82,6 +91,32 @@ void drawFirmBuilderIcon(
 void drawFirmFrame(
   Firm* firm,
   const int displayLayer
+);
+
+/**
+ * Draw the hitbar for a Firm.
+ *
+ * @param firm The Firm for which to draw a hitbar.
+ */
+void drawFirmHitBar(
+  Firm* firm
+);
+
+/**
+ * Draw a hitbar outline based on the owneship.
+ *
+ * @param isOwn Whether the hitbar's object is owned by the Nation to draw for.
+ * @param x The pixel x-coordinate of the top-left of the hitbar.
+ * @param y The pixel y-coordinate of the top-left of the hitbar.
+ * @param width The pixel width of the hitbar.
+ * @param height The pixel height of the hitbar.
+ */
+void drawHitbarOutline(
+  const bool isOwn,
+  const int x,
+  const int y,
+  const int width,
+  const int height
 );
 
 } // namespace Ambition
