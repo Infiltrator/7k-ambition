@@ -21,6 +21,8 @@
 //Filename    : OWORLD.CPP
 //Description : Object World
 
+#include "ambition/Ambition_input.hh"
+
 #include "OCONFIG.h"
 #include <OSYS.h>
 #include <OVGA.h>
@@ -320,6 +322,8 @@ int World::detect_scroll()
       return 0;
 
    int rc=0;
+
+   Ambition::calculateScroll(scroll_x, scroll_y);
 
    if ( scroll_x || scroll_y )
    {

@@ -1,6 +1,7 @@
 noinst_LIBRARIES = libambition.a
 libambition_a_SOURCES = \
 	Ambition_config.cc \
+	Ambition_input.cc \
 	Ambition_minimap.cc \
 	Ambition_version.cc \
 	Ambition_vga.cc

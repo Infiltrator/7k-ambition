@@ -25,6 +25,8 @@
 #ifndef __OMOUSE_H
 #define __OMOUSE_H
 
+#include "ambition/Ambition_config.hh"
+
 //-------- Define macro constant --------//
 //
 // Button id, for Mouse internal use only,
@@ -150,8 +152,10 @@ struct MouseEvent               // event buffer structure
 
 //----- Define the upper limit for mouse coordination ------//
 
-#define MOUSE_X_UPPER_LIMIT   (VGA_WIDTH-5)
-#define MOUSE_Y_UPPER_LIMIT	(VGA_HEIGHT-5)
+#define MOUSE_X_UPPER_LIMIT \
+  (VGA_WIDTH - (Ambition::config.enhancementsAvailable() ? 1 : 5))
+#define MOUSE_Y_UPPER_LIMIT \
+  (VGA_HEIGHT - (Ambition::config.enhancementsAvailable() ? 1 : 5))
 
 //------ Default settting ---------//
 

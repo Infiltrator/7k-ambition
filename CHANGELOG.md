@@ -31,6 +31,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed 100% CPU usage all the time.
+- Fixed scrolling to the right and down.
 - Fixed unit path line flow direction to go from the unit to its destination.
 - Centred the info pane (the one below the minimap) so that it's no longer
   off-centre.
@@ -42,6 +43,7 @@ speaking, considered to be the player's experience.
 - Use yellow colour for highlighting units on hover instead of cyan.
 - Made it easier to see when units are low on hitpoints by making the unit
   hitbars wider.
+- Change right and bottom cursor boundaries to allow the cursor to go further.
 - Made development slightly easier.
 
 ## [2.9156.0] - 2025-01-07
