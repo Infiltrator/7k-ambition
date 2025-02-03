@@ -23,6 +23,8 @@
 
 #include "ambition/Ambition_config.hh"
 
+#include "ambition/Ambition_remote.hh"
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OMOUSE.h>
@@ -1031,6 +1033,8 @@ void Sys::disp_zoom()
 				font_news.disp( ZOOM_X1+10, ZOOM_Y1+30, _("Multiplayer Random Seed Sync Error"), MAP_X2 );
 			else if( !(remote.sync_test_level & 2) )
 				font_news.disp( ZOOM_X1+10, ZOOM_Y1+30, _("Multiplayer Object Sync Error"), MAP_X2 );
+
+         Ambition::printSyncError();
 
 			vga.use_front();
 		}
