@@ -5382,7 +5382,7 @@ int Game::mp_select_load_option(char *fileName)
 		// ####### end Gilbert 24/10 #######//
 
 		if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::delayFrame(SDL_GetTicks64() + 100);
 		}
 	}
 
