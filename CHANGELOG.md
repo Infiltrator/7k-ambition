@@ -11,32 +11,35 @@ speaking, considered to be the player's experience.
 
 ### Added
 
-- Display current running mode in top-right of main menu.
-- Add rudimentary running mode switcher with a button at the top-right of the
-  main menu.
-- Make game look smoother by running at at a graphical 60 FPS.
-- Add cyan highlight to selected units, making for easier identification.
-- Add coloured outline to hit bars, making it easier to distinguish friendly
+- Display the current running mode in top-right of the main menu.
+- Added a rudimentary running mode switcher accessible from a button at the
+  top-right of the main menu.
+- Made the game look smoother by running at at a graphical 60 FPS.
+- Added cyan highlight to selected units, making for easier identification.
+- Added coloured outline to hit bars, making it easier to distinguish friendly
   units' hit bars from enemies'.
 - Show a hitbar for firms when they are at less than 100% HP.
-- Add builder icon to buildings with builders in them, allowing easy at-a-glance
-  identification of them.
-- Make game look smoother by constantly animating buildings at a fixed rate.
-- Make game look smoother by constantly animating water and other terrain at a
-  fixed rate.
-- Make game look smoother by having the water be more sloshy and run
+- Added builder icon to buildings with builders in them, allowing easy
+  at-a-glance identification of them.
+- Made the game look smoother by constantly animating buildings at a fixed rate.
+- Made the game look smoother by constantly animating water and other terrain at
+  a fixed rate.
+- Made the game look smoother by having the water be more sloshy and run
   approximately into the south-western direction as the waves imply.
-- Make game look smoother by continuing rain and snow while game is paused.
+- Made the game look smoother by continuing rain and snow while game is paused.
+- Display more details when a multiplayer sync error occurs to help hunt down
+  and fix the cause.
 
 ### Fixed
 
-- Fixed 100% CPU usage all the time.
-- Fixed scrolling to the right and down.
-- Fixed unit path line flow direction to go from the unit to its destination.
+- Fixed the 100% CPU usage all the time problem.
+- Fixed scrolling to the right and down not working properly.
+- Fixed the unit path line flow direction to go from the unit to its destination
+  instead of backwards.
 - Centred the info pane (the one below the minimap) so that it's no longer
   off-centre.
-- A memory leak when loading a saved game.
-- A memory leak with unit waypoints.
+- Fixed a memory leak when loading a saved game.
+- Fixed a memory leak with unit waypoints.
 
 ### Changed
 
@@ -46,14 +49,16 @@ speaking, considered to be the player's experience.
 - Change right and bottom cursor boundaries to allow the cursor to go further.
 - Made development slightly easier.
 
-## [2.9156.0] - 2025-01-07
+
+## [2.9156.0] — 2025-01-07
 
 ### Changed
 
 - Forked _Seven Kingdoms: Ancient Adversaries_ into _Seven Kingdoms: Ambition_.
 - Made development slightly easier.
 
-## [2.15.6] - 2023-09-22
+
+## 7K:AA [2.15.6] — 2023-09-22
 
 ### Added
 
