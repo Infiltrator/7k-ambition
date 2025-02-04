@@ -5,6 +5,12 @@ Project website: <https://seven-kingdoms-ambition.sourceforge.io/>
 Downloads and source repo:
 <https://sourceforge.net/projects/seven-kingdoms-ambition/>
 
+Help and support:
+<https://sourceforge.net/p/seven-kingdoms-ambition/discussion/>
+
+Bug reports: <https://sourceforge.net/p/seven-kingdoms-ambition/tickets/>
+
+
 ## About
 
 _Seven Kingdoms: Ambition_ is a fork of 7kfans' _Seven Kingdoms: Ancient
@@ -36,14 +42,17 @@ Supported architectures for multiplayer
 Building the game
 ---------
 
+If you have trouble building the game, need some help, or have suggestions for
+improving the build procces, please post in the [Building Help
+forum](https://sourceforge.net/p/seven-kingdoms-ambition/discussion/help-building/).
+
 The build process is based on autotools, as this easily runs on all typical
 Windows, Linux and Unix-like systems with minimal requirements. Below are the
 additional things that you are expected to provide in your build environment.
 
 For building for Windows, the environment we use is mingw-w64 with a cross-
 compiler under Linux. The same mingw-w64 is available from MSYS native to
-Windows. There are other similar environments, but we cannot help people
-configure their system -- you are expected to know how to use your tools.
+Windows.
 
 Required dependencies
 * GCC 4.6+ C++11 compliant compiler
@@ -53,7 +62,7 @@ Required dependencies
 
 Optional dependencies
 * libcurl for full 7kfans multiplayer integration (website requires TLS1.2)
-* gettext 0.19
+* gettext 0.20
 * Game music: 7kaa-music-2.15
   -> Packagers: Copy music into program data folder or PACKAGE_DATA_DIR
   -> Make sure the file names are in upper-case
@@ -76,4 +85,3 @@ folder. The game data folder is set by the environment variable SKDATA. In
 a bash shell, this can be accomplished by
 
     $ SKDATA=data src/7k-ambition
-
