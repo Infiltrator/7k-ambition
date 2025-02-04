@@ -15,10 +15,14 @@ AM_CXXFLAGS += $(AMBITION_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
 
 git_string.h:
-	echo -n '#define GIT_STRING "' > git_string.h \
-	&& git describe --always --dirty --long --tags \
-		| cut -f2- -d- | tr -d '\n' >> git_string.h \
-	&& echo '"' >> git_string.h
+	git describe --always --dirty --long --tags \
+    | awk --field-separator="-" \
+      '{OFS=FS; \
+        sub(/-rc[[:digit:]]+/,""); \
+        $$1=""; \
+        print "#define GIT_STRING \""$$(0)"\"" \
+      }' \
+      > git_string.h
 
 .PHONY: git_string.h
 
