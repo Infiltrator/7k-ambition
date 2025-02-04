@@ -9,6 +9,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.0.0-rc1] — 2025-02-03
+
 ### Added
 
 - Display the current running mode in top-right of the main menu.

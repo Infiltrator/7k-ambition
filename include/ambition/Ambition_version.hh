@@ -29,10 +29,10 @@
 
 namespace Ambition {
 
-constexpr auto MAJOR_VERSION = 2;
-constexpr auto MINOR_VERSION = 9156;
+constexpr auto MAJOR_VERSION = 3;
+constexpr auto MINOR_VERSION = 0;
 constexpr auto PATCH_VERSION = 0;
-constexpr auto RELEASE_CANDIDATE_NUMBER = 0;
+constexpr auto RELEASE_CANDIDATE_NUMBER = 1;
 
 std::string versionString();
 
