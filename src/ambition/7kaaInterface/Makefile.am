@@ -5,6 +5,7 @@ lib7kaa_ambition_interface_a_SOURCES = \
   draw.cc \
   inn.cc \
   input.cc \
+  serialisation.cc \
   unit.cc \
   # end
 

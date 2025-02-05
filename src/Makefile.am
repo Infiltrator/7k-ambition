@@ -298,11 +298,14 @@ AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
 
 AM_LDFLAGS = $(GLOBAL_LDFLAGS)
+AM_LDFLAGS += $(BOOST_LDFLAGS)
 
 7k_ambition_LDADD =
 
 7k_ambition_LDADD += ./ambition/7kaaInterface/lib7kaa-ambition-interface.a
 7k_ambition_LDADD += ./ambition/libambition.a
+
+7k_ambition_LDADD += $(BOOST_SERIALIZATION_LIB)
 
 if AUDIO_OPENAL
 7k_ambition_LDADD += ./openal/libaudio_openal.a

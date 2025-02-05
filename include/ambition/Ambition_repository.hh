@@ -83,6 +83,10 @@ public:
   );
 
 private:
+  friend void write(
+    const std::string filename
+  );
+
   struct Record;
 
   std::map<unsigned long long int, Record> records;

@@ -298,6 +298,9 @@ AS_IF([test "$enable_curl" = yes], [
   LIBS="$LIBS $CURL_LIBS"
 ])
 
+AX_BOOST_BASE([1.74],, [AC_MSG_ERROR([7k-ambition needs Boost, but it was not found in your system])])
+AX_BOOST_SERIALIZATION
+
 AS_IF([test "$platform" = windows], [
   LIBS="-lole32 -lmsvcrt -lwinmm $LIBS"
 

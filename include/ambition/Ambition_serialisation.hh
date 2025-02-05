@@ -20,45 +20,36 @@
 /**
  * @file
  *
- * Header file for Ambition::Entity.
+ * Header file for Ambition::Serialisation.
  */
 
 #pragma once
 
-#include <boost/serialization/access.hpp>
-#include <boost/serialization/nvp.hpp>
 #include <boost/serialization/version.hpp>
+#include <string>
 
 
 namespace Ambition {
 
-class Entity {
-public:
-  const unsigned long long int recordNumber;
-
-  Entity(
-    unsigned long long int recordNumber
-  );
-
-  virtual ~Entity() = default;
-
-protected:
-  friend class boost::serialization::access;
-
-  /** To be used only by Boost serialisation. */
-  Entity() :
-    recordNumber()
-  { }
-
+struct SavefileInformation {
   template<class Archive>
   void serialize(
     Archive& archive,
     const unsigned int version
   ) {
-    archive & boost::serialization::make_nvp("recordNumber", const_cast<unsigned long long int&>(recordNumber));
   }
 };
 
+
+void read(
+  const std::string filename,
+  const long startingPosition
+);
+
+void write(
+  const std::string filename
+);
+
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Entity, 0)
+BOOST_CLASS_VERSION(Ambition::SavefileInformation, 0)

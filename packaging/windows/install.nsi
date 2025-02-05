@@ -122,6 +122,7 @@ Section "7k-ambition (required)" 7kareq
   File ".\libgcc_s_seh-1.dll"
   File ".\libwinpthread-1.dll"
   File ".\libstdc++-6.dll"
+  File ".\libboost_serialization-mt.dll"
   
   ;Reset Install path
   ;SetOutPath "$INSTDIR"
@@ -226,6 +227,7 @@ Section "Uninstall"
   Delete "$INSTDIR\libgcc_s_dw2-1.dll"
   Delete "$INSTDIR\libwinpthread-1.dll"
   Delete "$INSTDIR\libstdc++-6.dll"
+  Delete ".\libboost_serialization-mt.dll"
   Delete "$INSTDIR\Uninstall.exe"
 
   ; Remove shortcuts

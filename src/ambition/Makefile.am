@@ -10,6 +10,7 @@ libambition_a_SOURCES = \
 	Ambition_minimap.cc \
 	Ambition_remote.cc \
 	Ambition_repository.cc \
+	Ambition_serialisation.cc \
 	Ambition_unit.cc \
 	Ambition_version.cc \
 	Ambition_vga.cc \
@@ -22,6 +23,7 @@ AM_CPPFLAGS = \
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(AMBITION_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
+AM_CXXFLAGS += $(BOOST_CPPFLAGS)
 
 Ambition_version.cc: git_string.h
 

@@ -23,6 +23,8 @@
 
 #include <stdio.h>
 
+#include "ambition/7kaaInterface/serialisation.hh"
+
 #include <OGFILE.h>
 #include <OFILE.h>
 #include <OTALKRES.h>
@@ -101,6 +103,8 @@ bool GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
 	}
 
 	file.file_close();
+
+	Ambition::Serialisation::saveGame(filePath);
 
 	//------- when saving error ---------//
 
@@ -185,7 +189,11 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 		}
 	}
 
+	const auto position = file.file_pos();
+
 	file.file_close();
+
+	Ambition::Serialisation::loadGame(filePath, position);
 
 	//---------------------------------------//
 
