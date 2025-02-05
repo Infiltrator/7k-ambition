@@ -10,6 +10,13 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
+## [3.0.0-rc2] — [Unreleased]
+
+### Fixed
+
+- Fixed the builder icon sometimes showing as repairing while under attack.
+
+
 ## [3.0.0-rc1] — 2025-02-03
 
 ### Added
