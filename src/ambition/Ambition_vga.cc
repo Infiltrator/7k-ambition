@@ -299,7 +299,7 @@ bool initialiseSnowLayer(
 }
 
 
-/** Private functions. */
+/* Private functions. */
 
 int calculateFirmFrame(
   const Firm* firm
