@@ -27,7 +27,7 @@
 Name "Seven Kingdoms: Ambition"
 
 ; The installer file name
-OutFile "7k-ambition-install-win32.exe"
+OutFile "7k-ambition-install-win32-amd64.exe"
 
 ; The default installation directory
 InstallDir $PROGRAMFILES\7k-ambition
@@ -117,9 +117,9 @@ Section "7k-ambition (required)" 7kareq
   File /r ".\TUTORIAL"
   File .\7k-ambition.exe
   File ".\SDL2.dll"
-  File ".\libcurl.dll"
+  File ".\libcurl-x64.dll"
   File ".\libenet-7.dll"
-  File ".\libgcc_s_dw2-1.dll"
+  File ".\libgcc_s_seh-1.dll"
   File ".\libwinpthread-1.dll"
   File ".\libstdc++-6.dll"
   
@@ -221,7 +221,7 @@ Section "Uninstall"
   Delete "$INSTDIR\README-music.txt"
   Delete "$INSTDIR\libopenal-1.dll"
   Delete "$INSTDIR\SDL2.dll"
-  Delete "$INSTDIR\libcurl.dll"
+  Delete "$INSTDIR\libcurl-x64.dll"
   Delete "$INSTDIR\libenet-7.dll"
   Delete "$INSTDIR\libgcc_s_dw2-1.dll"
   Delete "$INSTDIR\libwinpthread-1.dll"

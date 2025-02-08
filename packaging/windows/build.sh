@@ -16,19 +16,20 @@
 
 # Finally, you will need TeXLive to build the manual.
 
-HOST=i686-w64-mingw32
+DESTINATION_DIRECTORY="$(pwd)/dist/windows/amd64"
+HOST=x86_64-w64-mingw32
 HOST_OPT=--host=$HOST
 STRIP=${HOST}-strip
 
 ./configure --disable-silent-rules $HOST_OPT
 make -j6 pkgdatadir="" localedir=locale
-make install DESTDIR=`pwd`/dest bindir=/ docdir=/ pkgdatadir=/ localedir=/locale
-$STRIP dest/7k-ambition.exe
+make install DESTDIR="${DESTINATION_DIRECTORY}" bindir=/ docdir=/ pkgdatadir=/ localedir=/locale
+$STRIP "${DESTINATION_DIRECTORY}/7k-ambition.exe"
 
 cd doc
 latexmk
 cd ..
-cp doc/main.pdf dest/7kaa-manual.pdf
+cp doc/main.pdf "${DESTINATION_DIRECTORY}/7kaa-manual.pdf"
 
 # Still need to add music and dlls
 # then run NSIS on install.nsi
