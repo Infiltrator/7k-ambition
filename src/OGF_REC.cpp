@@ -113,6 +113,58 @@ void FirmInfo::read_record(FirmInfoGF *r)
 	ReadInt8Array(nation_tech_level_array, MAX_NATION);
 }
 
+void TechClass::write_record(TechClassGF *r)
+{
+	WriteInt16(class_id);
+	WriteInt16(first_tech_id);
+	WriteInt16(tech_count);
+	WriteInt16(icon_index);
+	WriteInt16Array(nation_research_firm_recno_array, MAX_NATION);
+}
+
+void TechClass::read_record(TechClassGF *r)
+{
+	ReadInt16(class_id);
+	ReadInt16(first_tech_id);
+	ReadInt16(tech_count);
+	ReadInt16(icon_index);
+	ReadInt16Array(nation_research_firm_recno_array, MAX_NATION);
+}
+
+void TechInfo::write_record(TechInfoGF *r)
+{
+	WriteInt16(tech_id);
+	WriteInt16(class_id);
+	WriteInt16(max_tech_level);
+	WriteInt16(complex_level);
+	WriteInt16(unit_id);
+	WriteInt16(firm_id);
+	WriteInt16(parent_unit_id);
+	WriteInt16(parent_firm_id);
+	WriteInt8(parent_level);
+	WriteInt16(icon_index);
+	WriteInt8Array(nation_tech_level_array, MAX_NATION);
+	WriteInt8Array(nation_is_researching_array, MAX_NATION);
+	WriteFloatArray(nation_research_progress_array, MAX_NATION);
+}
+
+void TechInfo::read_record(TechInfoGF *r)
+{
+	ReadInt16(tech_id);
+	ReadInt16(class_id);
+	ReadInt16(max_tech_level);
+	ReadInt16(complex_level);
+	ReadInt16(unit_id);
+	ReadInt16(firm_id);
+	ReadInt16(parent_unit_id);
+	ReadInt16(parent_firm_id);
+	ReadInt8(parent_level);
+	ReadInt16(icon_index);
+	ReadInt8Array(nation_tech_level_array, MAX_NATION);
+	ReadInt8Array(nation_is_researching_array, MAX_NATION);
+	ReadFloatArray(nation_research_progress_array, MAX_NATION);
+}
+
 void DynArray::write_record(DynArrayGF *r)
 {
 	WriteInt32(ele_num);

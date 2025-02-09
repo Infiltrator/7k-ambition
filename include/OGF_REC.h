@@ -47,6 +47,7 @@
 #include <OREGIONS.h>
 #include <OSITE.h>
 #include <OSNOWG.h>
+#include <OTECHRES.h>
 #include <OTORNADO.h>
 #include <OTOWN.h>
 #include <OU_CARA.h>
@@ -82,6 +83,32 @@ struct FirmInfoGF
 	int16_t              total_firm_count;
 	int16_t              nation_firm_count_array[MAX_NATION];
 	int8_t               nation_tech_level_array[MAX_NATION];
+};
+
+struct TechClassGF
+{
+	int16_t              class_id;
+	int16_t              first_tech_id;
+	int16_t              tech_count;
+	int16_t              icon_index;
+	int16_t              nation_research_firm_recno_array[MAX_NATION];
+};
+
+struct TechInfoGF
+{
+	int16_t              tech_id;
+	int16_t              class_id;
+	int16_t              max_tech_level;
+	int16_t              complex_level;
+	int16_t              unit_id;
+	int16_t              firm_id;
+	int16_t              parent_unit_id;
+	int16_t              parent_firm_id;
+	int8_t               parent_level;
+	int16_t              icon_index;
+	int8_t               nation_tech_level_array[MAX_NATION];
+	int8_t               nation_is_researching_array[MAX_NATION];
+	float                nation_research_progress_array[MAX_NATION];
 };
 
 struct DynArrayGF

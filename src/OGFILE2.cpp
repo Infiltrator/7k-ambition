@@ -930,11 +930,37 @@ int TownRes::read_file(File* filePtr)
 //
 int TechRes::write_file(File* filePtr)
 {
-	if( !filePtr->file_write( tech_class_array, tech_class_count * sizeof(TechClass) ) )
-		return 0;
+	TechClassGF* techClassArray = (TechClassGF*) mem_add(tech_class_count*sizeof(TechClassGF));
 
-	if( !filePtr->file_write( tech_info_array, tech_count * sizeof(TechInfo) ) )
+	for( int i=0; i<tech_class_count; i++ )
+	{
+		TechClass* techClass = tech_class_array+i;
+		techClass->write_record(techClassArray+i);
+	}
+
+	if( !filePtr->file_write(techClassArray, tech_class_count*sizeof(TechClassGF)) )
+	{
+		mem_del(techClassArray);
 		return 0;
+	}
+
+	mem_del(techClassArray);
+
+	TechInfoGF* techInfoArray = (TechInfoGF*) mem_add(tech_count*sizeof(TechInfoGF));
+
+	for( int i=0; i<tech_count; i++ )
+	{
+		TechInfo* techInfo = tech_info_array+i;
+		techInfo->write_record(techInfoArray+i);
+	}
+
+	if( !filePtr->file_write(techInfoArray, tech_count*sizeof(TechInfoGF)) )
+	{
+		mem_del(techInfoArray);
+		return 0;
+	}
+
+	mem_del(techInfoArray);
 
 	return 1;
 }
@@ -945,13 +971,39 @@ int TechRes::write_file(File* filePtr)
 //
 int TechRes::read_file(File* filePtr)
 {
-	if( !filePtr->file_read( tech_class_array, tech_class_count * sizeof(TechClass) ) )
+	TechClassGF* techClassArray = (TechClassGF*) mem_add(tech_class_count*sizeof(TechClassGF));
+
+	if( !filePtr->file_read(techClassArray, tech_class_count*sizeof(TechClassGF)) )
+	{
+		mem_del(techClassArray);
 		return 0;
+	}
+
+	for( int i=0; i<tech_class_count; i++ )
+	{
+		TechClass* techClass = tech_class_array+i;
+		techClass->read_record(techClassArray+i);
+	}
+
+	mem_del(techClassArray);
 
 	if(!GameFile::read_file_same_version)
 	{
-		if(!filePtr->file_read( tech_info_array, VERSION_1_TECH_COUNT * sizeof(TechInfo) ) )
+		TechInfoGF* techInfoArray = (TechInfoGF*) mem_add(VERSION_1_TECH_COUNT*sizeof(TechInfoGF));
+
+		if( !filePtr->file_read(techInfoArray, VERSION_1_TECH_COUNT*sizeof(TechInfoGF)) )
+		{
+			mem_del(techInfoArray);
 			return 0;
+		}
+
+		for( int i=0; i<VERSION_1_TECH_COUNT; i++ )
+		{
+			TechInfo* techInfo = tech_info_array+i;
+			techInfo->read_record(techInfoArray+i);
+		}
+
+		mem_del(techInfoArray);
 
 		TechInfo *techInfoPtr = tech_info_array + VERSION_1_TECH_COUNT;
 		for(int i=VERSION_1_TECH_COUNT; i<tech_count; ++i, techInfoPtr++)
@@ -963,8 +1015,20 @@ int TechRes::read_file(File* filePtr)
 	}
 	else
 	{
-		if( !filePtr->file_read( tech_info_array, tech_count * sizeof(TechInfo) ) )
+		TechInfoGF* techInfoArray = (TechInfoGF*) mem_add(tech_count*sizeof(TechInfoGF));
+		if( !filePtr->file_read(techInfoArray, tech_count*sizeof(TechInfoGF)) )
+		{
+			mem_del(techInfoArray);
 			return 0;
+		}
+
+		for( int i=0; i<tech_count; i++ )
+		{
+			TechInfo* techInfo = tech_info_array+i;
+			techInfo->read_record(techInfoArray+i);
+		}
+
+		mem_del(techInfoArray);
 	}
 
 	return 1;
