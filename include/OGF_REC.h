@@ -57,6 +57,33 @@
 #include <OU_VEHI.h>
 
 #pragma pack(1)
+struct FirmInfoGF
+{
+	int8_t               firm_id;
+	int8_t               name[FirmInfo::NAME_LEN+1]; //zero
+	int8_t               short_name[FirmInfo::SHORT_NAME_LEN+1]; //zero
+	int8_t               overseer_title[FirmInfo::TITLE_LEN+1]; //zero
+	int8_t               worker_title[FirmInfo::TITLE_LEN+1]; //zero
+	int8_t               tera_type;
+	int8_t               buildable;
+	int8_t               live_in_town;
+	int16_t              max_hit_points;
+	int8_t               need_overseer;
+	int8_t               need_worker;
+	int16_t              setup_cost;
+	int16_t              year_cost;
+	int16_t              first_build_id; //zero
+	int16_t              build_count; //zero
+	int16_t              loc_width;
+	int16_t              loc_height;
+	int8_t               firm_skill_id;
+	int8_t               firm_race_id;
+	int8_t               is_linkable_to_town;
+	int16_t              total_firm_count;
+	int16_t              nation_firm_count_array[MAX_NATION];
+	int8_t               nation_tech_level_array[MAX_NATION];
+};
+
 struct DynArrayGF
 {
 	int32_t              ele_num;

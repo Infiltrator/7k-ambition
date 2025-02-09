@@ -58,6 +58,7 @@
 #include <OSaveGameArray.h>
 #include <dbglog.h>
 #include <file_io_visitor.h>
+#include <OGF_REC.h>
 
 using namespace FileIOVisitor;
 
@@ -857,7 +858,19 @@ int UnitRes::read_file(File* filePtr)
 //
 int FirmRes::write_file(File* filePtr)
 {
-	return filePtr->file_write( firm_info_array, firm_count * sizeof(FirmInfo) );
+	FirmInfoGF* firmInfoArray = (FirmInfoGF*) mem_add(firm_count*sizeof(FirmInfoGF));
+
+	for( int i=0; i<firm_count; i++ )
+	{
+		FirmInfo* firmInfo = firm_info_array+i;
+		firmInfo->write_record(firmInfoArray+i);
+	}
+
+	int rc = filePtr->file_write(firmInfoArray, firm_count*sizeof(FirmInfoGF));
+
+	mem_del(firmInfoArray);
+
+	return rc;
 }
 //--------- End of function FirmRes::write_file ---------------//
 
@@ -866,32 +879,23 @@ int FirmRes::write_file(File* filePtr)
 //
 int FirmRes::read_file(File* filePtr)
 {
-	int arraySize = firm_count * sizeof(FirmInfo);
+	FirmInfoGF* firmInfoArray = (FirmInfoGF*) mem_add(firm_count*sizeof(FirmInfoGF));
 
-	//----- save the firm names, so that it won't be overwritten by the saved game file ----//
-
-	FirmInfo* oldFirmInfoArray = (FirmInfo*) mem_add(arraySize);
-
-	memcpy( oldFirmInfoArray, firm_info_array, arraySize );
-
-	int rc = filePtr->file_read( firm_info_array, arraySize );
-
-	for( int i=0 ; i<firm_count ; i++ )
+	if( !filePtr->file_read(firmInfoArray, firm_count*sizeof(FirmInfoGF)) )
 	{
-		memcpy( firm_info_array[i].name			  , oldFirmInfoArray[i].name			  , FirmInfo::NAME_LEN+1 );
-		memcpy( firm_info_array[i].short_name	  , oldFirmInfoArray[i].short_name	  , FirmInfo::SHORT_NAME_LEN+1 );
-		memcpy( firm_info_array[i].overseer_title, oldFirmInfoArray[i].overseer_title, FirmInfo::TITLE_LEN+1 );
-		memcpy( firm_info_array[i].worker_title  , oldFirmInfoArray[i].worker_title  , FirmInfo::TITLE_LEN+1 );
-
-		// ###### patch begin Gilbert 11/3 ########//
-		firm_info_array[i].first_build_id = oldFirmInfoArray[i].first_build_id;
-		firm_info_array[i].build_count = oldFirmInfoArray[i].build_count;
-		// ###### patch end Gilbert 11/3 ########//
+		mem_del(firmInfoArray);
+		return 0;
 	}
 
-	mem_del( oldFirmInfoArray );
+	for( int i=0; i<firm_count; i++ )
+	{
+		FirmInfo* firmInfo = firm_info_array+i;
+		firmInfo->read_record(firmInfoArray+i);
+	}
 
-	return rc;
+	mem_del(firmInfoArray);
+
+	return 1;
 }
 //--------- End of function FirmRes::read_file ---------------//
 

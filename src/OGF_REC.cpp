@@ -59,6 +59,60 @@ static void copy_float_array(float *d, float *s, size_t n)
 
 union GFRec gf_rec;
 
+void FirmInfo::write_record(FirmInfoGF *r)
+{
+	WriteInt8(firm_id);
+	WriteZeroBytes(name, NAME_LEN+1);
+	WriteZeroBytes(short_name, SHORT_NAME_LEN+1);
+	WriteZeroBytes(overseer_title, TITLE_LEN+1);
+	WriteZeroBytes(worker_title, TITLE_LEN+1);
+	WriteInt8(tera_type);
+	WriteInt8(buildable);
+	WriteInt8(live_in_town);
+	WriteInt16(max_hit_points);
+	WriteInt8(need_overseer);
+	WriteInt8(need_worker);
+	WriteInt16(setup_cost);
+	WriteInt16(year_cost);
+	WriteZero(first_build_id);
+	WriteZero(build_count);
+	WriteInt16(loc_width);
+	WriteInt16(loc_height);
+	WriteInt8(firm_skill_id);
+	WriteInt8(firm_race_id);
+	WriteInt8(is_linkable_to_town);
+	WriteInt16(total_firm_count);
+	WriteInt16Array(nation_firm_count_array, MAX_NATION);
+	WriteInt8Array(nation_tech_level_array, MAX_NATION);
+}
+
+void FirmInfo::read_record(FirmInfoGF *r)
+{
+	ReadInt8(firm_id);
+	// skip name
+	// skip short_name
+	// skip overseer_title
+	// skip worker_title
+	ReadInt8(tera_type);
+	ReadInt8(buildable);
+	ReadInt8(live_in_town);
+	ReadInt16(max_hit_points);
+	ReadInt8(need_overseer);
+	ReadInt8(need_worker);
+	ReadInt16(setup_cost);
+	ReadInt16(year_cost);
+	// skip first_build_id
+	// skip build_count
+	ReadInt16(loc_width);
+	ReadInt16(loc_height);
+	ReadInt8(firm_skill_id);
+	ReadInt8(firm_race_id);
+	ReadInt8(is_linkable_to_town);
+	ReadInt16(total_firm_count);
+	ReadInt16Array(nation_firm_count_array, MAX_NATION);
+	ReadInt8Array(nation_tech_level_array, MAX_NATION);
+}
+
 void DynArray::write_record(DynArrayGF *r)
 {
 	WriteInt32(ele_num);
