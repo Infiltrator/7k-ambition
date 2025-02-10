@@ -47,6 +47,7 @@
 #include <OREGIONS.h>
 #include <OSITE.h>
 #include <OSNOWG.h>
+#include <OTALKRES.h>
 #include <OTECHRES.h>
 #include <OTORNADO.h>
 #include <OTOWN.h>
@@ -121,6 +122,47 @@ struct DynArrayGF
 	int32_t              sort_offset;
 	int8_t               sort_type;
 	uint32_t             body_buf; //zero
+};
+
+struct DynArrayB_Unused
+{
+	int8_t               bytes[10]; //zero
+};
+
+struct TalkMsgGF
+{
+	int16_t              talk_id;
+	int16_t              talk_para1;
+	int16_t              talk_para2;
+	int32_t              date;
+	int8_t               from_nation_recno;
+	int8_t               to_nation_recno;
+	int8_t               reply_type;
+	int32_t              reply_date;
+	int8_t               relation_status;
+};
+
+struct TalkChoiceGF
+{
+	uint32_t             str; //zero
+	int16_t              para;
+};
+
+struct TalkResGF
+{
+	int8_t               init_flag;
+	int16_t              reply_talk_msg_recno;
+	TalkMsgGF            cur_talk_msg;
+	uint32_t             choice_question; //zero
+	uint32_t             choice_question_second_line; //zero
+	int16_t              talk_choice_count; //zero
+	TalkChoiceGF         talk_choice_array[MAX_TALK_CHOICE];
+	int8_t               available_talk_id_array[MAX_TALK_TYPE];
+	int16_t              cur_choice_id;
+	int8_t               save_view_mode;
+	int8_t               msg_add_nation_color;
+	DynArrayGF           talk_msg_array; //zero
+	DynArrayB_Unused     empty_room_bytes; //zero
 };
 
 struct SpriteGF
@@ -1484,6 +1526,7 @@ union GFRec
 	RebelGF rebel;
 	RegionArrayGF region_array;
 	SnowGroundArrayGF snow_ground_array;
+	TalkResGF talk_res;
 	TeamInfoGF team_info;
 	TornadoGF tornado;
 	TownGF town;

@@ -189,6 +189,78 @@ void DynArray::read_record(DynArrayGF *r)
 	// skip body_buf // the unknown array type must be restored by derived users
 }
 
+void TalkMsg::write_record(TalkMsgGF *r)
+{
+	WriteInt16(talk_id);
+	WriteInt16(talk_para1);
+	WriteInt16(talk_para2);
+	WriteInt32(date);
+	WriteInt8(from_nation_recno);
+	WriteInt8(to_nation_recno);
+	WriteInt8(reply_type);
+	WriteInt32(reply_date);
+	WriteInt8(relation_status);
+}
+
+void TalkMsg::read_record(TalkMsgGF *r)
+{
+	ReadInt16(talk_id);
+	ReadInt16(talk_para1);
+	ReadInt16(talk_para2);
+	ReadInt32(date);
+	ReadInt8(from_nation_recno);
+	ReadInt8(to_nation_recno);
+	ReadInt8(reply_type);
+	ReadInt32(reply_date);
+	ReadInt8(relation_status);
+}
+
+void TalkChoice::write_record(TalkChoiceGF *r)
+{
+	WriteZero(str);
+	WriteInt16(para);
+}
+
+void TalkChoice::read_record(TalkChoiceGF *r)
+{
+	str = NULL;
+	ReadInt16(para);
+}
+
+void TalkRes::write_record(TalkResGF *r)
+{
+	WriteInt8(init_flag);
+	WriteInt16(reply_talk_msg_recno);
+	WriteCall(cur_talk_msg);
+	WriteZero(choice_question);
+	WriteZero(choice_question_second_line);
+	WriteZero(talk_choice_count);
+	WriteCallArray(talk_choice_array, MAX_TALK_CHOICE);
+	WriteInt8Array(available_talk_id_array, MAX_TALK_TYPE);
+	WriteInt16(cur_choice_id);
+	WriteInt8(save_view_mode);
+	WriteInt8(msg_add_nation_color);
+	WriteZeroBytes(talk_msg_array, sizeof(DynArrayGF));
+	WriteZeroBytes(empty_room_bytes, sizeof(DynArrayB_Unused));
+}
+
+void TalkRes::read_record(TalkResGF *r)
+{
+	ReadInt8(init_flag);
+	ReadInt16(reply_talk_msg_recno);
+	ReadCall(cur_talk_msg);
+	choice_question = NULL;
+	choice_question_second_line = NULL;
+	talk_choice_count = 0;
+	ReadCallArray(talk_choice_array, MAX_TALK_CHOICE);
+	ReadInt8Array(available_talk_id_array, MAX_TALK_TYPE);
+	ReadInt16(cur_choice_id);
+	ReadInt8(save_view_mode);
+	ReadInt8(msg_add_nation_color);
+	// skip talk_msg_array
+	// skip empty_room_bytes
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero

@@ -1037,59 +1037,40 @@ int TechRes::read_file(File* filePtr)
 
 //***//
 
-template <typename Visitor>
-static void visit_talk_msg(Visitor *v, TalkMsg *tm)
-{
-	visit<int16_t>(v, &tm->talk_id);
-	visit<int16_t>(v, &tm->talk_para1);
-	visit<int16_t>(v, &tm->talk_para2);
-	visit<int32_t>(v, &tm->date);
-	visit<int8_t>(v, &tm->from_nation_recno);
-	visit<int8_t>(v, &tm->to_nation_recno);
-	visit<int8_t>(v, &tm->reply_type);
-	visit<int32_t>(v, &tm->reply_date);
-	visit<int8_t>(v, &tm->relation_status);
-}
-
-template <typename Visitor>
-static void visit_talk_choice(Visitor *v, TalkChoice *tc)
-{
-	visit_pointer(v, &tc->str);
-	visit<int16_t>(v, &tc->para);
-}
-
-template <typename Visitor>
-static void visit_talk_res(Visitor *v, TalkRes *tr)
-{
-	visit<int8_t>(v, &tr->init_flag);
-	visit<int16_t>(v, &tr->reply_talk_msg_recno);
-	visit_talk_msg(v, &tr->cur_talk_msg);
-	visit_pointer(v, &tr->choice_question);
-	visit_pointer(v, &tr->choice_question_second_line);
-	visit<int16_t>(v, &tr->talk_choice_count);
-
-	for (int n = 0; n < MAX_TALK_CHOICE; n++)
-		visit_talk_choice(v, &tr->talk_choice_array[n]);
-
-	visit_array<int8_t>(v, tr->available_talk_id_array, MAX_TALK_TYPE);
-	visit<int16_t>(v, &tr->cur_choice_id);
-	visit<int8_t>(v, &tr->save_view_mode);
-	visit<int8_t>(v, &tr->msg_add_nation_color);
-	v->skip(39); /* &tr->talk_msg_array */
-}
-
-enum { TALK_RES_RECORD_SIZE = 214 };
-
 //-------- Start of function TalkRes::write_file -------------//
 //
 int TalkRes::write_file(File* filePtr)
 {
-	if (!write_with_record_size(filePtr, this, &visit_talk_res<FileWriterVisitor>,
-										 TALK_RES_RECORD_SIZE))
+	write_record(&gf_rec.talk_res);
+	if( !filePtr->file_write(&gf_rec, sizeof(TalkResGF)) )
 		return 0;
 
-	if( !talk_msg_array.write_file(filePtr) )
+	DynArrayB* p = &talk_msg_array;
+
+	p->write_record(&gf_rec.dyn_array);
+	if( !filePtr->file_write(&gf_rec, sizeof(DynArrayGF)) )
 		return 0;
+
+	if( p->last_ele > 0 )
+	{
+		TalkMsgGF* talkMsgArray = (TalkMsgGF*) mem_add(p->last_ele*sizeof(TalkMsgGF));
+
+		for( int i=1; i<=p->last_ele; i++ )
+		{
+			TalkMsg* talkMsg = (TalkMsg*) p->get(i);
+			talkMsg->write_record(talkMsgArray+i-1);
+		}
+
+		if( !filePtr->file_write(talkMsgArray, p->last_ele*sizeof(TalkMsgGF)) )
+		{
+			mem_del(talkMsgArray);
+			return 0;
+		}
+
+		mem_del(talkMsgArray);
+	}
+
+	p->write_empty_room(filePtr);
 
 	return 1;
 }
@@ -1100,16 +1081,40 @@ int TalkRes::write_file(File* filePtr)
 //
 int TalkRes::read_file(File* filePtr)
 {
-	if (!read_with_record_size(filePtr, this, &visit_talk_res<FileReaderVisitor>,
-										TALK_RES_RECORD_SIZE))
+	if( !filePtr->file_read(&gf_rec, sizeof(TalkResGF)) )
 		return 0;
+	read_record(&gf_rec.talk_res);
 
-	if( !talk_msg_array.read_file(filePtr) )
+	DynArrayB* p = &talk_msg_array;
+
+	if( !filePtr->file_read(&gf_rec, sizeof(DynArrayGF)) )
 		return 0;
+	p->read_record(&gf_rec.dyn_array);
 
-	this->choice_question = NULL;
-	this->choice_question_second_line = NULL;
-	this->talk_choice_count = 0;
+	p->body_buf = mem_resize(p->body_buf, p->ele_num*p->ele_size);
+
+	if( p->last_ele > 0 )
+	{
+		TalkMsgGF* talkMsgArray = (TalkMsgGF*) mem_add(p->last_ele*sizeof(TalkMsgGF));
+
+		if( !filePtr->file_read(talkMsgArray, p->last_ele*sizeof(TalkMsgGF)) )
+		{
+			mem_del(talkMsgArray);
+			return 0;
+		}
+
+		for( int i=1; i<=p->last_ele; i++ )
+		{
+			TalkMsg* talkMsg = (TalkMsg*) p->get(i);
+			talkMsg->read_record(talkMsgArray+i-1);
+		}
+
+		mem_del(talkMsgArray);
+	}
+
+	p->read_empty_room(filePtr);
+
+	p->start();    // go top
 
 	return 1;
 }
