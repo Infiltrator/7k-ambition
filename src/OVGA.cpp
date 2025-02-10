@@ -825,10 +825,9 @@ void Vga::save_status_report()
 
 	fprintf(
 	  file,
-	  ("= Seven Kingdoms: Ambition " + Ambition::versionString()
-		+ " running in mode " + Ambition::config.modeString()
-		+ " =\n"
-	  ).c_str()
+	  "= Seven Kingdoms: Ambition v%s running in %s mode =\n",
+     Ambition::versionString().c_str(),
+     Ambition::config.modeString().c_str()
 	);
    fprintf(file, "=== Seven Kingdoms " SKVERSION " ===\n");
    s = SDL_GetPlatform();
