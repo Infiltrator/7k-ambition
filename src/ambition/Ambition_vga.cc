@@ -218,7 +218,7 @@ void drawFirmBuilderIcon(
 
     if (firm->hit_points < firm->max_hit_points
         && nation_array[firm->nation_recno]->cash > 0
-        && info.game_date > firm->last_attacked_date
+        && info.game_date > firm->last_attacked_date + 1
     ) {
       iconName[7]
         = '1' + ((SDL_GetTicks64() / MILLISECONDS_PER_FRAME) % FRAME_COUNT);
