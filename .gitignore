@@ -103,3 +103,5 @@ tools/bmpicn
 tools/genfont
 tools/icnpack
 src/ambition/git_string.h
+dist/
+debian/
