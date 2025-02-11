@@ -22,6 +22,8 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Display inn guest list from newest at the top to oldest at the bottom, so that
+  it's quicker to check inns for new mercenaries.
 - Use a four-slot screen for the mode selection.  This gives more space to
   expand the description text.
 - Use roman numerals for numbering modes on the mode selection screen.  This
