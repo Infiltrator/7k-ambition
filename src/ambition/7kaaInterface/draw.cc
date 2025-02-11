@@ -193,6 +193,30 @@ void buildingRallyPoint(
   Ambition::drawBuildingRallyPoint(_7kaaTown);
 }
 
+void buildMarkerGridLines(
+  const int left,
+  const int top,
+  const int right,
+  const int bottom
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto buildMarker = Ambition::UserInterface::Rectangle {
+    .start = {
+      .left = left,
+      .top = top,
+    },
+    .end = {
+      .left = right,
+      .top = bottom,
+    },
+  };
+
+  Ambition::drawBuildMarkerGridLines(buildMarker);
+}
+
 void buttonCost(
   Font& font,
   const int cost,

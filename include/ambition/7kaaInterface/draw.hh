@@ -116,6 +116,13 @@ void buildingRallyPoint(
   Town* _7kaaTown
 );
 
+void buildMarkerGridLines(
+  const int left,
+  const int top,
+  const int right,
+  const int bottom
+);
+
 void buttonCost(
   Font& font,
   const int cost,
