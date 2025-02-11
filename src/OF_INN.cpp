@@ -21,6 +21,8 @@
 //Filename    : OF_INN.CPP
 //Description : Firm Military Inn
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OINFO.h>
 #include <vga_util.h>
 #include <OSTR.h>
@@ -44,17 +46,13 @@
 
 #define HIRE_BROWSE_X1 INFO_X1
 #define HIRE_BROWSE_X2 INFO_X2
-enum {
-		 HIRE_BROWSE_Y1 = INFO_Y1+52,
-		 HIRE_BROWSE_Y2 = HIRE_BROWSE_Y1+144
-	  };
+#define HIRE_BROWSE_Y1 (INFO_Y1+52 + (Ambition::config.enhancementsAvailable() ? 22 : 0))
+#define HIRE_BROWSE_Y2 (HIRE_BROWSE_Y1+144 - (Ambition::config.enhancementsAvailable() ? 8 : 0))
 
 #define HIRE_DET_X1 INFO_X1
 #define HIRE_DET_X2 INFO_X2
-enum {
-		 HIRE_DET_Y1 = HIRE_BROWSE_Y2+5,
-		 HIRE_DET_Y2 = HIRE_DET_Y1+54
-	  };
+#define HIRE_DET_Y1 (HIRE_BROWSE_Y2+5)
+#define HIRE_DET_Y2 (HIRE_DET_Y1+54 + (Ambition::config.enhancementsAvailable() ? 8 : 0))
 
 //----------- Define static variables ----------//
 
@@ -156,6 +154,8 @@ void FirmInn::put_info(int refreshFlag)
 
 	if( refreshFlag == INFO_REPAINT )
 	{
+		Ambition::drawInnGuestCount(inn_unit_count, refreshFlag);
+
 		browse_hire.init( HIRE_BROWSE_X1, HIRE_BROWSE_Y1, HIRE_BROWSE_X2, HIRE_BROWSE_Y2,
 								0, 25, inn_unit_count, put_hire_rec );
 
@@ -173,6 +173,8 @@ void FirmInn::put_info(int refreshFlag)
 			}
 
 			last_hire_count = inn_unit_count;
+
+			Ambition::drawInnGuestCount(inn_unit_count, refreshFlag);
 
 			browse_hire.refresh(-1, inn_unit_count);
 

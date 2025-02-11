@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Added game speed display to top-right of the map and "PAUSED" in the middle.
+- Show the guest count in an inn, to make it easy to know whether scrolling is
+  even required.
 
 ### Fixed
 
