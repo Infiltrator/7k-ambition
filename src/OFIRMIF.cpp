@@ -54,7 +54,6 @@ static Firm*    cur_firm_ptr;
 
 //---------- Declare static function ------------//
 
-static void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints);
 static int sort_worker_id_function(const void *a, const void *b);
 
 //--------- Begin of function Firm::disp_info_both ---------//
@@ -586,7 +585,7 @@ int Firm::detect_worker_list()
 
 //--------- Begin of function disp_worker_hit_points ---------//
 //
-static void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints)
+void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints)
 {
 	//------- determine the hit bar type -------//
 
