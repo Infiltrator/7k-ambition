@@ -15,6 +15,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed the builder icon sometimes showing as repairing while under attack.
+- Fixed a crash when pausing in Classic mode.
 
 
 ## [3.0.0-rc1] — 2025-02-03

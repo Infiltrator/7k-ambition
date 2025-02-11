@@ -879,7 +879,7 @@ void Sys::main_loop(int isLoadedGame)
 				const auto nextDispFrameTime = lastDispFrameTime
 					+ (Ambition::config.enhancementsAvailable()
 						? 16
-						: 1000 / config.frame_speed);
+						: 1000 / (config.frame_speed ?: 1));
 
             // although it's not time for new frame, check
             // if we still need to redraw the screen
