@@ -1003,6 +1003,7 @@ void Firm::assign_worker(int workerUnitRecno)
 
 	workerPtr->skill_id = firm_skill_id;
 	workerPtr->skill_level = unitPtr->skill.get_skill(firm_skill_id);
+	workerPtr->skill_level_minor = unitPtr->skill.skill_level_minor;
 
 	if( workerPtr->skill_level == 0 && workerPtr->race_id )
 		workerPtr->skill_level = CITIZEN_SKILL_LEVEL;
@@ -1020,6 +1021,7 @@ void Firm::assign_worker(int workerUnitRecno)
 	#endif*/
 
 	workerPtr->combat_level = unitPtr->skill.combat_level;
+	workerPtr->combat_level_minor = unitPtr->skill.combat_level_minor;
 	workerPtr->hit_points   = (int) unitPtr->hit_points;
 
 	err_when( workerPtr->combat_level <= 0 || workerPtr->combat_level > 100 );
