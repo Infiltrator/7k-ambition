@@ -23,6 +23,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in accuracy over time and based on the spy's skill.  But keep in mind that your spies do not know about enemy spies."),
           _("Added an assassination confirmation screen with a Spy-estimated success chance.  This estimate varies in accuracy over time and based on the spy's skill."),
           _("Added a steal report confirmation screen with a Spy-estimated escape chance.  This estimate varies in accuracy over time and based on the spy's skill."),
+          _("Show the surplus (or deficit) number of peasants that you have on the Villages Report.  This is how many extra peasants you currently have over the amount you need to exactly balance food production and consumption."),
         },
       },
       {

@@ -20,6 +20,9 @@ speaking, considered to be the player's experience.
   skill.
 - Added a steal report confirmation screen with a Spy-estimated escape chance.
   This estimate varies in accuracy over time and based on the spy's skill.
+- Show the surplus (or deficit) number of peasants that you have on the Villages
+  Report.  This is how many extra peasants you currently have over the amount
+  you need to exactly balance food production and consumption.
 
 ### Fixed
 

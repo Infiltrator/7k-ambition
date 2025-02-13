@@ -21,6 +21,7 @@
 //Filename    : OR_TOWN.CPP
 //Description : Town Report
 
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 
 #include "OFIRM.h"
@@ -207,15 +208,19 @@ static void disp_total()
 
    //-------------------------------//
 
-	snprintf( str, MAX_STR_LEN+1, _("Total Villagers: %s"), misc.format(total_population) );
+	if (!Ambition::Draw::villagesReportUpperTotals(total_population, total_peasant)) {
 
-	font_san.put( x+180, y, str );
+		snprintf( str, MAX_STR_LEN+1, _("Total Villagers: %s"), misc.format(total_population) );
 
-	//-------------------------------//
+		font_san.put( x+180, y, str );
 
-	snprintf( str, MAX_STR_LEN+1, _("Total Peasants: %s"), misc.format(total_peasant) );
+		//-------------------------------//
 
-	font_san.put( x+360, y, str );
+		snprintf( str, MAX_STR_LEN+1, _("Total Peasants: %s"), misc.format(total_peasant) );
+
+		font_san.put( x+360, y, str );
+
+	}
 
 	//------- display other totals --------//
 

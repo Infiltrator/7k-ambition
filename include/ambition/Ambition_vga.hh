@@ -329,6 +329,12 @@ void printMilitaryReportTotalCost(
   const UserInterface::Rectangle rowArea
 );
 
+void printVillagesReportUpperTotals(
+  const int totalVillagers,
+  const int totalPeasants,
+  Nation* target7kaaNation
+);
+
 void printWarMachineInBuildingInformation(
   const Worker* _7kaaWorker
 );

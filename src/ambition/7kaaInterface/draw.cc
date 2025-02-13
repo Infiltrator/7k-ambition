@@ -788,11 +788,11 @@ void militaryReportCostLine(
 
   const auto rowArea = Ambition::UserInterface::Rectangle {
     .start = {
-      .left = Ambition::UserInterface::REPORT_AREA.start.left,
+      .left = Ambition::UserInterface::Report::AREA.start.left,
       .top = top,
     },
     .end = {
-      .left = Ambition::UserInterface::REPORT_AREA.end.left,
+      .left = Ambition::UserInterface::Report::AREA.end.left,
       .top = top + rowHeight,
     },
   };
@@ -810,11 +810,11 @@ void militaryReportTotalCost(
 
   const auto rowArea = Ambition::UserInterface::Rectangle {
     .start = {
-      .left = Ambition::UserInterface::REPORT_AREA.start.left,
+      .left = Ambition::UserInterface::Report::AREA.start.left,
       .top = top,
     },
     .end = {
-      .left = Ambition::UserInterface::REPORT_AREA.end.left,
+      .left = Ambition::UserInterface::Report::AREA.end.left,
       .top = top + rowHeight,
     },
   };
@@ -982,6 +982,22 @@ bool printSaveFilename(
     textArea,
     Ambition::UserInterface::Clear::None,
     Ambition::UserInterface::HorizontalAlignment::Right
+  );
+  return true;
+}
+
+bool villagesReportUpperTotals(
+  const int totalVillagers,
+  const int totalPeasants
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  Ambition::printVillagesReportUpperTotals(
+    totalVillagers,
+    totalPeasants,
+    nation_array[info.viewing_nation_recno]
   );
   return true;
 }
