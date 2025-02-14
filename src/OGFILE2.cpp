@@ -1122,16 +1122,52 @@ int TalkRes::read_file(File* filePtr)
 
 //***//
 
+static int dynarray_short_write_file(File* filePtr, DynArray* a)
+{
+	a->write_record(&gf_rec.dyn_array);
+	if( !filePtr->file_write(&gf_rec, sizeof(DynArrayGF)) )
+		return 0;
+
+	if( a->last_ele > 0 )
+	{
+		if( !filePtr->file_put_short_array((int16_t*)a->body_buf, a->last_ele) )
+			return 0;
+	}
+
+	return 1;
+}
+
+static int dynarray_short_read_file(File* filePtr, DynArray* a)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(DynArrayGF)) )
+		return 0;
+	a->read_record(&gf_rec.dyn_array);
+
+	a->body_buf = mem_resize(a->body_buf, a->ele_num*a->ele_size);
+
+	if( a->last_ele > 0 )
+	{
+		if( !filePtr->file_get_short_array((int16_t*)a->body_buf, a->last_ele) )
+			return 0;
+	}
+
+	a->start();    // go top
+
+	return 1;
+}
+
 //-------- Start of function RawRes::write_file -------------//
 //
 int RawRes::write_file(File* filePtr)
 {
 	for( int i=0 ; i<MAX_RAW ; i++ )
 	{
-		if( !raw_info_array[i].raw_supply_firm_array.write_file(filePtr) )
+		DynArray* a = &raw_info_array[i].raw_supply_firm_array;
+		if( !dynarray_short_write_file(filePtr, a) )
 			return 0;
 
-		if( !raw_info_array[i].product_supply_firm_array.write_file(filePtr) )
+		a = &raw_info_array[i].product_supply_firm_array;
+		if( !dynarray_short_write_file(filePtr, a) )
 			return 0;
 	}
 
@@ -1146,10 +1182,12 @@ int RawRes::read_file(File* filePtr)
 {
 	for( int i=0 ; i<MAX_RAW ; i++ )
 	{
-		if( !raw_info_array[i].raw_supply_firm_array.read_file(filePtr) )
+		DynArray* a = &raw_info_array[i].raw_supply_firm_array;
+		if( !dynarray_short_read_file(filePtr, a) )
 			return 0;
 
-		if( !raw_info_array[i].product_supply_firm_array.read_file(filePtr) )
+		a = &raw_info_array[i].product_supply_firm_array;
+		if( !dynarray_short_read_file(filePtr, a) )
 			return 0;
 	}
 
