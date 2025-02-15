@@ -194,6 +194,89 @@ struct GameGF
 	ColorRemapGF         color_remap_array[MAX_COLOR_SCHEME+1];
 };
 
+struct ConfigGF
+{
+	int16_t              difficulty_rating;
+	int8_t               ai_nation_count;
+	int16_t              start_up_cash;
+	int16_t              ai_start_up_cash;
+	int8_t               ai_aggressiveness;
+	int16_t              start_up_independent_town;
+	int16_t              start_up_raw_site;
+	int8_t               difficulty_level;
+	int8_t               explore_whole_map;
+	int8_t               fog_of_war;
+	int16_t              terrain_set;
+	int16_t              latitude;
+	int8_t               weather_effect;
+	int8_t               land_mass;
+	int8_t               new_independent_town_emerge;
+	int8_t               independent_town_resistance;
+	int8_t               random_event_frequency;
+	int8_t               new_nation_emerge;
+	int8_t               monster_type;
+	int8_t               start_up_has_mine_nearby;
+	int8_t               random_start_up;
+	int8_t               goal_destroy_monster;
+	int8_t               goal_population_flag;
+	int8_t               goal_economic_score_flag;
+	int8_t               goal_total_score_flag;
+	int8_t               goal_year_limit_flag;
+	int32_t              goal_population;
+	int32_t              goal_economic_score;
+	int32_t              goal_total_score;
+	int32_t              goal_year_limit;
+	int8_t               fire_spread_rate;
+	int8_t               wind_spread_fire_rate;
+	int8_t               fire_fade_rate;
+	int8_t               fire_restore_prob;
+	int8_t               rain_reduce_fire_rate;
+	int8_t               fire_damage;
+	int8_t               show_ai_info;
+	int8_t               fast_build;
+	int8_t               disable_ai_flag;
+	int8_t               king_undie_flag;
+	int8_t               race_id;
+	int8_t               player_name[HUMAN_NAME_LEN+1];
+	int8_t               player_nation_color;
+	int8_t               expired_flag;
+	int8_t               opaque_report;
+	int8_t               disp_news_flag;
+	int16_t              scroll_speed;
+	int16_t              frame_speed;
+	int8_t               help_mode;
+	int8_t               disp_town_name;
+	int8_t               disp_spy_sign;
+	int8_t               show_all_unit_icon;
+	int8_t               show_unit_path;
+	int8_t               music_flag;
+	int16_t              cd_music_volume;
+	int16_t              wav_music_volume;
+	int8_t               sound_effect_flag;
+	int16_t              sound_effect_volume;
+	int8_t               pan_control;
+	int8_t               lightning_visual;
+	int8_t               earthquake_visual;
+	int8_t               rain_visual;
+	int8_t               snow_visual;
+	int8_t               snow_ground;
+	int8_t               lightning_audio;
+	int8_t               earthquake_audio;
+	int8_t               rain_audio;
+	int8_t               snow_audio;
+	int8_t               wind_audio;
+	int32_t              lightning_brightness;
+	int32_t              cloud_darkness;
+	int32_t              lightning_volume;
+	int32_t              earthquake_volume;
+	int32_t              rain_volume;
+	int32_t              snow_volume;
+	int32_t              wind_volume;
+	int8_t               blacken_map;
+	int8_t               explore_mask_method;
+	int8_t               fog_mask_method;
+};
+
 struct SpriteGF
 {
 	uint32_t             vtp; //zero
@@ -1537,6 +1620,7 @@ union GFRec
 {
 	BulletGF bullet;
 	BulletHomingGF bullet_homing;
+	ConfigGF config;
 	DynArrayGF dyn_array;
 	FirmGF firm;
 	FirmBaseGF firm_base;

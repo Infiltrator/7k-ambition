@@ -57,10 +57,7 @@
 #include <OWORLD.h>
 #include <OSaveGameArray.h>
 #include <dbglog.h>
-#include <file_io_visitor.h>
 #include <OGF_REC.h>
-
-using namespace FileIOVisitor;
 
 DBGLOG_DEFAULT_CHANNEL(GameFile);
 
@@ -1292,108 +1289,22 @@ int Game::read_file(File* filePtr)
 
 //***//
 
-template <typename Visitor>
-static void visit_config(Visitor *v, Config *cfg)
-{
-	visit<int16_t>(v, &cfg->difficulty_rating);
-	visit<int8_t>(v, &cfg->ai_nation_count);
-	visit<int16_t>(v, &cfg->start_up_cash);
-	visit<int16_t>(v, &cfg->ai_start_up_cash);
-	visit<int8_t>(v, &cfg->ai_aggressiveness);
-	visit<int16_t>(v, &cfg->start_up_independent_town);
-	visit<int16_t>(v, &cfg->start_up_raw_site);
-	visit<int8_t>(v, &cfg->difficulty_level);
-	visit<int8_t>(v, &cfg->explore_whole_map);
-	visit<int8_t>(v, &cfg->fog_of_war);
-	visit<int16_t>(v, &cfg->terrain_set);
-	visit<int16_t>(v, &cfg->latitude);
-	visit<int8_t>(v, &cfg->weather_effect);
-	visit<int8_t>(v, &cfg->land_mass);
-	visit<int8_t>(v, &cfg->new_independent_town_emerge);
-	visit<int8_t>(v, &cfg->independent_town_resistance);
-	visit<int8_t>(v, &cfg->random_event_frequency);
-	visit<int8_t>(v, &cfg->new_nation_emerge);
-	visit<int8_t>(v, &cfg->monster_type);
-	visit<int8_t>(v, &cfg->start_up_has_mine_nearby);
-	visit<int8_t>(v, &cfg->random_start_up);
-	visit<int8_t>(v, &cfg->goal_destroy_monster);
-	visit<int8_t>(v, &cfg->goal_population_flag);
-	visit<int8_t>(v, &cfg->goal_economic_score_flag);
-	visit<int8_t>(v, &cfg->goal_total_score_flag);
-	visit<int8_t>(v, &cfg->goal_year_limit_flag);
-	visit<int32_t>(v, &cfg->goal_population);
-	visit<int32_t>(v, &cfg->goal_economic_score);
-	visit<int32_t>(v, &cfg->goal_total_score);
-	visit<int32_t>(v, &cfg->goal_year_limit);
-	visit<int8_t>(v, &cfg->fire_spread_rate);
-	visit<int8_t>(v, &cfg->wind_spread_fire_rate);
-	visit<int8_t>(v, &cfg->fire_fade_rate);
-	visit<int8_t>(v, &cfg->fire_restore_prob);
-	visit<int8_t>(v, &cfg->rain_reduce_fire_rate);
-	visit<int8_t>(v, &cfg->fire_damage);
-	visit<int8_t>(v, &cfg->show_ai_info);
-	visit<int8_t>(v, &cfg->fast_build);
-	visit<int8_t>(v, &cfg->disable_ai_flag);
-	visit<int8_t>(v, &cfg->king_undie_flag);
-	visit<int8_t>(v, &cfg->race_id);
-	visit_array<int8_t>(v, cfg->player_name, HUMAN_NAME_LEN+1);
-	visit<int8_t>(v, &cfg->player_nation_color);
-	visit<int8_t>(v, &cfg->expired_flag);
-	visit<int8_t>(v, &cfg->opaque_report);
-	visit<int8_t>(v, &cfg->disp_news_flag);
-	visit<int16_t>(v, &cfg->scroll_speed);
-	visit<int16_t>(v, &cfg->frame_speed);
-	visit<int8_t>(v, &cfg->help_mode);
-	visit<int8_t>(v, &cfg->disp_town_name);
-	visit<int8_t>(v, &cfg->disp_spy_sign);
-	visit<int8_t>(v, &cfg->show_all_unit_icon);
-	visit<int8_t>(v, &cfg->show_unit_path);
-	visit<int8_t>(v, &cfg->music_flag);
-	visit<int16_t>(v, &cfg->cd_music_volume);
-	visit<int16_t>(v, &cfg->wav_music_volume);
-	visit<int8_t>(v, &cfg->sound_effect_flag);
-	visit<int16_t>(v, &cfg->sound_effect_volume);
-	visit<int8_t>(v, &cfg->pan_control);
-	visit<int8_t>(v, &cfg->lightning_visual);
-	visit<int8_t>(v, &cfg->earthquake_visual);
-	visit<int8_t>(v, &cfg->rain_visual);
-	visit<int8_t>(v, &cfg->snow_visual);
-	visit<int8_t>(v, &cfg->snow_ground);
-	visit<int8_t>(v, &cfg->lightning_audio);
-	visit<int8_t>(v, &cfg->earthquake_audio);
-	visit<int8_t>(v, &cfg->rain_audio);
-	visit<int8_t>(v, &cfg->snow_audio);
-	visit<int8_t>(v, &cfg->wind_audio);
-	visit<int32_t>(v, &cfg->lightning_brightness);
-	visit<int32_t>(v, &cfg->cloud_darkness);
-	visit<int32_t>(v, &cfg->lightning_volume);
-	visit<int32_t>(v, &cfg->earthquake_volume);
-	visit<int32_t>(v, &cfg->rain_volume);
-	visit<int32_t>(v, &cfg->snow_volume);
-	visit<int32_t>(v, &cfg->wind_volume);
-	visit<int8_t>(v, &cfg->blacken_map);
-	visit<int8_t>(v, &cfg->explore_mask_method);
-	visit<int8_t>(v, &cfg->fog_mask_method);
-}
-
-enum { CONFIG_RECORD_SIZE = 144 };
-
 //-------- Start of function Config::write_file -------------//
 //
 int Config::write_file(File* filePtr)
 {
-	return write_with_record_size(filePtr, this, &visit_config<FileWriterVisitor>,
-											CONFIG_RECORD_SIZE);
+	write_record(&gf_rec.config);
+	if( !filePtr->file_write(&gf_rec, sizeof(ConfigGF)) )
+		return 0;
+	return 1;
 }
 //--------- End of function Config::write_file ---------------//
+
 
 //-------- Start of function Config::read_file -------------//
 //
 int Config::read_file(File* filePtr, int keepSysSettings)
 {
-	FileReader r;
-	FileReaderVisitor v;
-
 	//--- these settings are not game dependent -----//
 
 	char  musicFlag 		 = music_flag;
@@ -1403,12 +1314,9 @@ int Config::read_file(File* filePtr, int keepSysSettings)
 	short	soundEffectVol  = sound_effect_volume;
 	char	helpMode			 = help_mode;
 
-	if (!r.init(filePtr))
+	if( !filePtr->file_read(&gf_rec, sizeof(ConfigGF)) )
 		return 0;
-
-	r.check_record_size(CONFIG_RECORD_SIZE);
-	v.init(&r);
-	visit_config(&v, this);
+	read_record(&gf_rec.config);
 
 	if( keepSysSettings )
 	{
@@ -1420,7 +1328,7 @@ int Config::read_file(File* filePtr, int keepSysSettings)
 		help_mode			= helpMode;
 	}
 
-	return r.good();
+	return 1;
 }
 //--------- End of function Config::read_file ---------------//
 
