@@ -60,6 +60,7 @@
 #include <OU_MARI.h>
 #include <OU_MONS.h>
 #include <OU_VEHI.h>
+#include <OWEATHER.h>
 
 #pragma pack(1)
 struct FirmInfoGF
@@ -337,6 +338,36 @@ struct PowerGF
 	int8_t               win_opened;
 	int8_t               enable_flag;
 	int32_t              key_str_pos[MAX_KEY_STR];
+};
+
+struct WeatherGF
+{
+	uint32_t             seed;
+	int16_t              season_phase;
+	int16_t              day_to_quake;
+	int16_t              avg_temp;
+	int16_t              temp_amp;
+	int16_t              wind_spd;
+	int32_t              high_wind_day;
+	int16_t              wind_dir;
+	int16_t              windy_speed;
+	int16_t              tornado_count;
+	int8_t               cur_cloud_str;
+	int8_t               cur_cloud_len;
+	int8_t               cur_cloud_type;
+	int32_t              quake_frequency;
+	int16_t              quake_x;
+	int16_t              quake_y;
+};
+
+struct MagicWeatherGF
+{
+	int8_t               rain_str;
+	int16_t              wind_spd;
+	int16_t              wind_dir;
+	int16_t              rain_day;
+	int16_t              wind_day;
+	int16_t              lightning_day;
 };
 
 struct SpriteGF
@@ -1697,6 +1728,7 @@ union GFRec
 	FirmWarGF firm_war;
 	GameGF game;
 	InfoGF info;
+	MagicWeatherGF magic_weather;
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
@@ -1716,6 +1748,7 @@ union GFRec
 	UnitMarineGF unit_marine;
 	UnitMonsterGF unit_monster;
 	UnitVehicleGF unit_vehicle;
+	WeatherGF weather;
 	Version_1_NationGF nation_v1;
 	Version_1_NationArrayGF nation_array_v1;
 	Version_1_TownGF town_v1;

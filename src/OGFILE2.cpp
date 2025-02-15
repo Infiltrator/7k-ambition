@@ -1428,7 +1428,10 @@ int Sys::read_file(File* filePtr)
 //
 int Weather::write_file(File* filePtr)
 {
-	return filePtr->file_write( this, sizeof(Weather) );
+	write_record(&gf_rec.weather);
+	if( !filePtr->file_write(&gf_rec, sizeof(WeatherGF)) )
+		return 0;
+	return 1;
 }
 //--------- End of function Weather::write_file ---------------//
 
@@ -1437,8 +1440,10 @@ int Weather::write_file(File* filePtr)
 //
 int Weather::read_file(File* filePtr)
 {
-	MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
-	return filePtr->file_read( this, sizeof(Weather) );
+	if( !filePtr->file_read(&gf_rec, sizeof(WeatherGF)) )
+		return 0;
+	read_record(&gf_rec.weather);
+	return 1;
 }
 //--------- End of function Weather::read_file ---------------//
 
@@ -1448,7 +1453,10 @@ int Weather::read_file(File* filePtr)
 //
 int MagicWeather::write_file(File* filePtr)
 {
-	return filePtr->file_write( this, sizeof(MagicWeather) );
+	write_record(&gf_rec.magic_weather);
+	if( !filePtr->file_write(&gf_rec, sizeof(MagicWeatherGF)) )
+		return 0;
+	return 1;
 }
 //--------- End of function MagicWeahter::write_file ---------------//
 
@@ -1457,8 +1465,10 @@ int MagicWeather::write_file(File* filePtr)
 //
 int MagicWeather::read_file(File* filePtr)
 {
-	MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
-	return filePtr->file_read( this, sizeof(MagicWeather) );
+	if( !filePtr->file_read(&gf_rec, sizeof(MagicWeatherGF)) )
+		return 0;
+	read_record(&gf_rec.magic_weather);
+	return 1;
 }
 //--------- End of function MagicWeahter::read_file ---------------//
 

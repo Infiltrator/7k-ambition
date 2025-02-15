@@ -603,6 +603,66 @@ void Power::read_record(PowerGF *r)
 	ReadInt32Array(key_str_pos, MAX_KEY_STR);
 }
 
+void Weather::write_record(WeatherGF *r)
+{
+	WriteInt32(seed);
+	WriteInt16(season_phase);
+	WriteInt16(day_to_quake);
+	WriteInt16(avg_temp);
+	WriteInt16(temp_amp);
+	WriteInt16(wind_spd);
+	WriteInt32(high_wind_day);
+	WriteInt16(wind_dir);
+	WriteInt16(windy_speed);
+	WriteInt16(tornado_count);
+	WriteInt8(cur_cloud_str);
+	WriteInt8(cur_cloud_len);
+	WriteInt8(cur_cloud_type);
+	WriteInt32(quake_frequency);
+	WriteInt16(quake_x);
+	WriteInt16(quake_y);
+}
+
+void Weather::read_record(WeatherGF *r)
+{
+	ReadInt32(seed);
+	ReadInt16(season_phase);
+	ReadInt16(day_to_quake);
+	ReadInt16(avg_temp);
+	ReadInt16(temp_amp);
+	ReadInt16(wind_spd);
+	ReadInt32(high_wind_day);
+	ReadInt16(wind_dir);
+	ReadInt16(windy_speed);
+	ReadInt16(tornado_count);
+	ReadInt8(cur_cloud_str);
+	ReadInt8(cur_cloud_len);
+	ReadInt8(cur_cloud_type);
+	ReadInt32(quake_frequency);
+	ReadInt16(quake_x);
+	ReadInt16(quake_y);
+}
+
+void MagicWeather::write_record(MagicWeatherGF *r)
+{
+	WriteInt8(rain_str);
+	WriteInt16(wind_spd);
+	WriteInt16(wind_dir);
+	WriteInt16(rain_day);
+	WriteInt16(wind_day);
+	WriteInt16(lightning_day);
+}
+
+void MagicWeather::read_record(MagicWeatherGF *r)
+{
+	ReadInt8(rain_str);
+	ReadInt16(wind_spd);
+	ReadInt16(wind_dir);
+	ReadInt16(rain_day);
+	ReadInt16(wind_day);
+	ReadInt16(lightning_day);
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero
