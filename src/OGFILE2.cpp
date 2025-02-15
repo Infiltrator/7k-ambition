@@ -1363,7 +1363,10 @@ int Info::read_file(File* filePtr)
 //
 int Power::write_file(File* filePtr)
 {
-	return filePtr->file_write( this, sizeof(Power) );
+	write_record(&gf_rec.power);
+	if( !filePtr->file_write(&gf_rec, sizeof(PowerGF)) )
+		return 0;
+	return 1;
 }
 //--------- End of function Power::write_file ---------------//
 
@@ -1372,8 +1375,10 @@ int Power::write_file(File* filePtr)
 //
 int Power::read_file(File* filePtr)
 {
-	MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
-	return filePtr->file_read( this, sizeof(Power) );
+	if( !filePtr->file_read(&gf_rec, sizeof(PowerGF)) )
+		return 0;
+	read_record(&gf_rec.power);
+	return 1;
 }
 //--------- End of function Power::read_file ---------------//
 

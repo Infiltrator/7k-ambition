@@ -44,6 +44,7 @@
 #include <OGODRES.h>
 #include <ONATIONB.h>
 #include <ONEWS.h>
+#include <OPOWER.h>
 #include <OREBEL.h>
 #include <OREGION.h>
 #include <OREGIONS.h>
@@ -326,6 +327,16 @@ struct InfoGF
 	int8_t               chat_receiver_type;
 	int8_t               player_chat_str[CHAT_STR_LEN+1];
 	ChatInfoGF           remote_chat_array[MAX_REMOTE_CHAT_STR];
+};
+
+struct PowerGF
+{
+	int32_t              command_id;
+	int32_t              command_unit_recno;
+	int32_t              command_para;
+	int8_t               win_opened;
+	int8_t               enable_flag;
+	int32_t              key_str_pos[MAX_KEY_STR];
 };
 
 struct SpriteGF
@@ -1689,6 +1700,7 @@ union GFRec
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
+	PowerGF power;
 	RebelGF rebel;
 	RegionArrayGF region_array;
 	SnowGroundArrayGF snow_ground_array;

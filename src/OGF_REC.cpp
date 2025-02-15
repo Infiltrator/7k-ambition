@@ -583,6 +583,26 @@ void Info::read_record(InfoGF *r)
 	ReadCallArray(remote_chat_array, MAX_REMOTE_CHAT_STR);
 }
 
+void Power::write_record(PowerGF *r)
+{
+	WriteInt32(command_id);
+	WriteInt32(command_unit_recno);
+	WriteInt32(command_para);
+	WriteInt8(win_opened);
+	WriteInt8(enable_flag);
+	WriteInt32Array(key_str_pos, MAX_KEY_STR);
+}
+
+void Power::read_record(PowerGF *r)
+{
+	ReadInt32(command_id);
+	ReadInt32(command_unit_recno);
+	ReadInt32(command_para);
+	ReadInt8(win_opened);
+	ReadInt8(enable_flag);
+	ReadInt32Array(key_str_pos, MAX_KEY_STR);
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero
