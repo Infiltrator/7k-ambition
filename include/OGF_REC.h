@@ -40,6 +40,7 @@
 #include <OF_RESE.h>
 #include <OF_WAR.h>
 #include <OGF_V1.h>
+#include <OGODRES.h>
 #include <ONATIONB.h>
 #include <ONEWS.h>
 #include <OREBEL.h>
@@ -163,6 +164,18 @@ struct TalkResGF
 	int8_t               msg_add_nation_color;
 	DynArrayGF           talk_msg_array; //zero
 	DynArrayB_Unused     empty_room_bytes; //zero
+};
+
+struct GodInfoGF
+{
+	int8_t               god_id;
+	int8_t               race_id;
+	int8_t               unit_id;
+	int16_t              exist_pray_points;
+	int16_t              power_pray_points;
+	int8_t               can_cast_power;
+	int8_t               cast_power_range;
+	int8_t               nation_know_array[MAX_NATION];
 };
 
 struct SpriteGF

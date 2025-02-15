@@ -261,6 +261,30 @@ void TalkRes::read_record(TalkResGF *r)
 	// skip empty_room_bytes
 }
 
+void GodInfo::write_record(GodInfoGF *r)
+{
+	WriteInt8(god_id);
+	WriteInt8(race_id);
+	WriteInt8(unit_id);
+	WriteInt16(exist_pray_points);
+	WriteInt16(power_pray_points);
+	WriteInt8(can_cast_power);
+	WriteInt8(cast_power_range);
+	WriteInt8Array(nation_know_array, MAX_NATION);
+}
+
+void GodInfo::read_record(GodInfoGF *r)
+{
+	ReadInt8(god_id);
+	ReadInt8(race_id);
+	ReadInt8(unit_id);
+	ReadInt16(exist_pray_points);
+	ReadInt16(power_pray_points);
+	ReadInt8(can_cast_power);
+	ReadInt8(cast_power_range);
+	ReadInt8Array(nation_know_array, MAX_NATION);
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero

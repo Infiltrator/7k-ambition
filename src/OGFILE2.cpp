@@ -1201,7 +1201,19 @@ int RawRes::read_file(File* filePtr)
 //
 int GodRes::write_file(File* filePtr)
 {
-	return filePtr->file_write( god_info_array, sizeof(GodInfo) * god_count );
+	GodInfoGF* godInfoArray = (GodInfoGF*) mem_add(god_count*sizeof(GodInfoGF));
+
+	for( int i=0; i<god_count; i++ )
+	{
+		GodInfo* godInfo = god_info_array+i;
+		godInfo->write_record(godInfoArray+i);
+	}
+
+	int rc = filePtr->file_write(godInfoArray, god_count*sizeof(GodInfoGF));
+
+	mem_del(godInfoArray);
+
+	return rc;
 }
 //--------- End of function GodRes::write_file ---------------//
 
@@ -1210,13 +1222,27 @@ int GodRes::write_file(File* filePtr)
 //
 int GodRes::read_file(File* filePtr)
 {
-	if(!GameFile::read_file_same_version)
+	short count = god_count;
+	if( !GameFile::read_file_same_version )
+		count = VERSION_1_GODRES_GOD_COUNT;
+
+	GodInfoGF* godInfoArray = (GodInfoGF*) mem_add(count*sizeof(GodInfoGF));
+
+	if( !filePtr->file_read(godInfoArray, count*sizeof(GodInfoGF)) )
 	{
-		memset(god_info_array, 0, sizeof(god_info_array));
-		return filePtr->file_read( god_info_array, sizeof(GodInfo) * VERSION_1_GODRES_GOD_COUNT );
+		mem_del(godInfoArray);
+		return 0;
 	}
-	else
-		return filePtr->file_read( god_info_array, sizeof(GodInfo) * god_count );
+
+	for( int i=0; i<count; i++ )
+	{
+		GodInfo* godInfo = god_info_array+i;
+		godInfo->read_record(godInfoArray+i);
+	}
+
+	mem_del(godInfoArray);
+
+	return 1;
 }
 //--------- End of function GodRes::read_file ---------------//
 
