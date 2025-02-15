@@ -285,6 +285,36 @@ void GodInfo::read_record(GodInfoGF *r)
 	ReadInt8Array(nation_know_array, MAX_NATION);
 }
 
+void ColorRemap::write_record(ColorRemapGF *r)
+{
+	WriteInt8(main_color);
+	WriteInt8Array(color_table, 256);
+}
+
+void ColorRemap::read_record(ColorRemapGF *r)
+{
+	ReadInt8(main_color);
+	ReadInt8Array(color_table, 256);
+}
+
+void Game::write_record(GameGF *r)
+{
+	WriteInt8(init_flag);
+	WriteInt8(started_flag);
+	WriteInt8(game_mode);
+	WriteInt8(game_has_ended);
+	WriteCallArray(color_remap_array, MAX_COLOR_SCHEME+1);
+}
+
+void Game::read_record(GameGF *r)
+{
+	ReadInt8(init_flag);
+	ReadInt8(started_flag);
+	ReadInt8(game_mode);
+	ReadInt8(game_has_ended);
+	ReadCallArray(color_remap_array, MAX_COLOR_SCHEME+1);
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero

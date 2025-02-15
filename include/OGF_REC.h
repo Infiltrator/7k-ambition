@@ -39,6 +39,7 @@
 #include <OF_MONS.h>
 #include <OF_RESE.h>
 #include <OF_WAR.h>
+#include <OGAME.h>
 #include <OGF_V1.h>
 #include <OGODRES.h>
 #include <ONATIONB.h>
@@ -176,6 +177,21 @@ struct GodInfoGF
 	int8_t               can_cast_power;
 	int8_t               cast_power_range;
 	int8_t               nation_know_array[MAX_NATION];
+};
+
+struct ColorRemapGF
+{
+	int8_t               main_color;
+	int8_t               color_table[256];
+};
+
+struct GameGF
+{
+	int8_t               init_flag;
+	int8_t               started_flag;
+	int8_t               game_mode;
+	int8_t               game_has_ended;
+	ColorRemapGF         color_remap_array[MAX_COLOR_SCHEME+1];
 };
 
 struct SpriteGF
@@ -1533,6 +1549,7 @@ union GFRec
 	FirmMonsterGF firm_monster;
 	FirmResearchGF firm_research;
 	FirmWarGF firm_war;
+	GameGF game;
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;

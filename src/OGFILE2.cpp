@@ -1271,7 +1271,10 @@ int MonsterRes::read_file(File* filePtr)
 //
 int Game::write_file(File* filePtr)
 {
-	return filePtr->file_write( this, sizeof(Game) );
+	write_record(&gf_rec.game);
+	if( !filePtr->file_write(&gf_rec, sizeof(GameGF)) )
+		return 0;
+	return 1;
 }
 //--------- End of function Game::write_file ---------------//
 
@@ -1280,8 +1283,10 @@ int Game::write_file(File* filePtr)
 //
 int Game::read_file(File* filePtr)
 {
-	MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
-	return filePtr->file_read( this, sizeof(Game) );
+	if( !filePtr->file_read(&gf_rec, sizeof(GameGF)) )
+		return 0;
+	read_record(&gf_rec.game);
+	return 1;
 }
 //--------- End of function Game::read_file ---------------//
 
