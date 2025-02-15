@@ -22,6 +22,7 @@
 //Description : Object File
 
 #include <ALL.h>
+#include <SDL.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <ctype.h>
@@ -278,6 +279,7 @@ int File::file_put_short(int16_t value)
 {
 	err_when(!file_handle);
 
+	value = SDL_SwapLE16(value);
 	fwrite(&value, 1, sizeof(int16_t), file_handle);
 
 	if (ferror(file_handle))
@@ -296,8 +298,8 @@ int16_t File::file_get_short()
 {
     	err_when(!file_handle);
 
-    int16_t value;
-    fread(&value, 1, sizeof(int16_t), file_handle);
+	int16_t value;
+	fread(&value, 1, sizeof(int16_t), file_handle);
 
 	if (ferror(file_handle))
 	{
@@ -308,7 +310,7 @@ int16_t File::file_get_short()
 		return 0;
 	}
 
-	return value;
+	return SDL_SwapLE16(value);
 }
 
 //-------- Begin of function File::file_put_short_array ----------//
@@ -396,7 +398,8 @@ int File::file_put_unsigned_short(uint16_t value)
 {
     	err_when(!file_handle);
 
-    fwrite(&value, 1, sizeof(uint16_t), file_handle);
+	value = SDL_SwapLE16(value);
+	fwrite(&value, 1, sizeof(uint16_t), file_handle);
 
 	if (ferror(file_handle))
 	{
@@ -414,8 +417,8 @@ uint16_t File::file_get_unsigned_short()
 {
     	err_when(!file_handle);
 
-    uint16_t value;
-    fread(&value, 1, sizeof(uint16_t), file_handle);
+	uint16_t value;
+	fread(&value, 1, sizeof(uint16_t), file_handle);
 
 	if (ferror(file_handle))
 	{
@@ -426,14 +429,15 @@ uint16_t File::file_get_unsigned_short()
 		return 0;
 	}
 
-	return value;
+	return SDL_SwapLE16(value);
 }
 
 int File::file_put_long(int32_t value)
 {
     	err_when(!file_handle);
 
-    fwrite(&value, 1, sizeof(int32_t), file_handle);
+	value = SDL_SwapLE32(value);
+	fwrite(&value, 1, sizeof(int32_t), file_handle);
 
 	if (ferror(file_handle))
 	{
@@ -451,8 +455,8 @@ int32_t File::file_get_long()
 {
     	err_when(!file_handle);
 
-    int32_t value;
-    fread(&value, 1, sizeof(int32_t), file_handle);
+	int32_t value;
+	fread(&value, 1, sizeof(int32_t), file_handle);
 
 	if (ferror(file_handle))
 	{
@@ -463,7 +467,7 @@ int32_t File::file_get_long()
 		return 0;
 	}
 
-	return value;
+	return SDL_SwapLE32(value);
 }
 
 //---------- Start of function File::file_seek ---------//
