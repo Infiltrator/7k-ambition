@@ -1480,7 +1480,21 @@ int World::write_file(File* filePtr)
 {
 	//--------- save map -------------//
 
-	if( !filePtr->file_write(loc_matrix, max_x_loc*max_y_loc*sizeof(Location) ) )
+	int mapCells = max_x_loc*max_y_loc;
+	size_t writeSize = mapCells*sizeof(LocationGF);
+	LocationGF* locMatrix = (LocationGF*) mem_add(writeSize);
+
+	for( int i=0; i<mapCells; i++ )
+	{
+		Location* locPtr = loc_matrix+i;
+		locPtr->write_record(locMatrix+i);
+	}
+
+	int rc = filePtr->file_write(locMatrix, writeSize);
+
+	mem_del(locMatrix);
+
+	if( !rc )
 		return 0;
 
 	//--------- save vars -----------//
@@ -1519,11 +1533,27 @@ int World::read_file(File* filePtr)
 {
 	//-------- read in the map --------//
 
-	loc_matrix = (Location*) mem_resize( loc_matrix, max_x_loc * max_y_loc
+	int mapCells = max_x_loc*max_y_loc;
+
+	loc_matrix = (Location*) mem_resize( loc_matrix, mapCells
 					  * sizeof(Location) );
 
-	if( !filePtr->file_read(loc_matrix, max_x_loc*max_y_loc*sizeof(Location) ) )
+	size_t readSize = mapCells*sizeof(LocationGF);
+	LocationGF* locMatrix = (LocationGF*) mem_add(readSize);
+
+	if( !filePtr->file_read(locMatrix, readSize) )
+	{
+		mem_del(locMatrix);
 		return 0;
+	}
+
+	for( int i=0; i<mapCells; i++ )
+	{
+		Location* locPtr = loc_matrix+i;
+		locPtr->read_record(locMatrix+i);
+	}
+
+	mem_del(locMatrix);
 
 	assign_map();
 

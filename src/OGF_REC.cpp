@@ -663,6 +663,34 @@ void MagicWeather::read_record(MagicWeatherGF *r)
 	ReadInt16(lightning_day);
 }
 
+void Location::write_record(LocationGF *r)
+{
+	WriteInt16(loc_flag);
+	WriteInt16(terrain_id);
+	WriteInt16(cargo_recno);
+	WriteInt16(air_cargo_recno);
+	WriteInt8(extra_para);
+	WriteInt8(fire_level);
+	WriteInt8(flammability);
+	WriteInt8(power_nation_recno);
+	WriteInt8(region_id);
+	WriteInt8(visit_level);
+}
+
+void Location::read_record(LocationGF *r)
+{
+	ReadInt16(loc_flag);
+	ReadInt16(terrain_id);
+	ReadInt16(cargo_recno);
+	ReadInt16(air_cargo_recno);
+	ReadInt8(extra_para);
+	ReadInt8(fire_level);
+	ReadInt8(flammability);
+	ReadInt8(power_nation_recno);
+	ReadInt8(region_id);
+	ReadInt8(visit_level);
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero

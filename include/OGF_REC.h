@@ -370,6 +370,20 @@ struct MagicWeatherGF
 	int16_t              lightning_day;
 };
 
+struct LocationGF
+{
+	uint16_t             loc_flag;
+	int16_t              terrain_id;
+	int16_t              cargo_recno;
+	int16_t              air_cargo_recno;
+	uint8_t              extra_para;
+	int8_t               fire_level;
+	int8_t               flammability;
+	int8_t               power_nation_recno;
+	uint8_t              region_id;
+	uint8_t              visit_level;
+};
+
 struct SpriteGF
 {
 	uint32_t             vtp; //zero
