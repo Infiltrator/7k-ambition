@@ -1338,11 +1338,10 @@ int Config::read_file(File* filePtr, int keepSysSettings)
 //
 int Info::write_file(File* filePtr)
 {
-	int writeSize = (char*)(&last_write_offset) - (char*)(this);
-
-	//---------- write the info data -----------//
-
-	return filePtr->file_write( this, writeSize );
+	write_record(&gf_rec.info);
+	if( !filePtr->file_write(&gf_rec, sizeof(InfoGF)) )
+		return 0;
+	return 1;
 }
 //--------- End of function Info::write_file ---------------//
 
@@ -1351,12 +1350,10 @@ int Info::write_file(File* filePtr)
 //
 int Info::read_file(File* filePtr)
 {
-	int readSize = (char*)(&last_write_offset) - (char*)(this);
-
-	//------- read the info data ----------//
-
-	MSG(__FILE__":%d: file_read(this, ...);\n", __LINE__);
-	return filePtr->file_read( this, readSize );
+	if( !filePtr->file_read(&gf_rec, sizeof(InfoGF)) )
+		return 0;
+	read_record(&gf_rec.info);
+	return 1;
 }
 //--------- End of function Info::read_file ---------------//
 

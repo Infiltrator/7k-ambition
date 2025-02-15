@@ -481,6 +481,108 @@ void Config::read_record(ConfigGF *r)
 	ReadInt8(fog_mask_method);
 }
 
+void ChatInfo::write_record(ChatInfoGF *r)
+{
+	WriteInt32(received_date);
+	WriteInt8(from_nation_recno);
+	WriteInt8Array(chat_str, CHAT_STR_LEN+1);
+}
+
+void ChatInfo::read_record(ChatInfoGF *r)
+{
+	ReadInt32(received_date);
+	ReadInt8(from_nation_recno);
+	ReadInt8Array(chat_str, CHAT_STR_LEN+1);
+}
+
+void Info::write_record(InfoGF *r)
+{
+	WriteInt32(game_start_date);
+	WriteInt32(game_date);
+	WriteInt32(game_day);
+	WriteInt32(game_month);
+	WriteInt32(game_year);
+	WriteInt32(goal_deadline);
+	WriteInt16(goal_difficulty);
+	WriteInt16(goal_score_bonus);
+	WriteInt32(week_day);
+	WriteInt32(year_day);
+	WriteInt32(year_passed);
+	WriteInt32(random_seed);
+	WriteInt32(start_play_time);
+	WriteInt32(total_play_time);
+	WriteInt16(viewing_nation_recno);
+	WriteInt16(viewing_spy_recno);
+	WriteInt16(default_viewing_nation_recno);
+	WriteInt16(browse_nation_recno);
+	WriteInt16(browse_race_recno);
+	WriteInt16(browse_firm_recno);
+	WriteInt16(browse_income_recno);
+	WriteInt16(browse_expense_recno);
+	WriteInt16(browse_troop_recno);
+	WriteInt16(browse_unit_recno);
+	WriteInt16(browse_tech_recno);
+	WriteInt16(browse_god_recno);
+	WriteInt16(browse_town_recno);
+	WriteInt16(browse_spy_recno);
+	WriteInt16(browse_caravan_recno);
+	WriteInt16(browse_ship_recno);
+	WriteInt16(browse_talk_msg_recno);
+	WriteInt16(browse_news_recno);
+	WriteInt16(browse_ai_action_recno);
+	WriteInt16(browse_ai_attack_recno);
+	WriteInt8(nation_report_mode);
+	WriteInt16(last_talk_nation_recno);
+	WriteInt8(player_reply_mode);
+	WriteInt8(chat_receiver_type);
+	WriteInt8Array(player_chat_str, CHAT_STR_LEN+1);
+	WriteCallArray(remote_chat_array, MAX_REMOTE_CHAT_STR);
+}
+
+void Info::read_record(InfoGF *r)
+{
+	ReadInt32(game_start_date);
+	ReadInt32(game_date);
+	ReadInt32(game_day);
+	ReadInt32(game_month);
+	ReadInt32(game_year);
+	ReadInt32(goal_deadline);
+	ReadInt16(goal_difficulty);
+	ReadInt16(goal_score_bonus);
+	ReadInt32(week_day);
+	ReadInt32(year_day);
+	ReadInt32(year_passed);
+	ReadInt32(random_seed);
+	ReadInt32(start_play_time);
+	ReadInt32(total_play_time);
+	ReadInt16(viewing_nation_recno);
+	ReadInt16(viewing_spy_recno);
+	ReadInt16(default_viewing_nation_recno);
+	ReadInt16(browse_nation_recno);
+	ReadInt16(browse_race_recno);
+	ReadInt16(browse_firm_recno);
+	ReadInt16(browse_income_recno);
+	ReadInt16(browse_expense_recno);
+	ReadInt16(browse_troop_recno);
+	ReadInt16(browse_unit_recno);
+	ReadInt16(browse_tech_recno);
+	ReadInt16(browse_god_recno);
+	ReadInt16(browse_town_recno);
+	ReadInt16(browse_spy_recno);
+	ReadInt16(browse_caravan_recno);
+	ReadInt16(browse_ship_recno);
+	ReadInt16(browse_talk_msg_recno);
+	ReadInt16(browse_news_recno);
+	ReadInt16(browse_ai_action_recno);
+	ReadInt16(browse_ai_attack_recno);
+	ReadInt8(nation_report_mode);
+	ReadInt16(last_talk_nation_recno);
+	ReadInt8(player_reply_mode);
+	ReadInt8(chat_receiver_type);
+	ReadInt8Array(player_chat_str, CHAT_STR_LEN+1);
+	ReadCallArray(remote_chat_array, MAX_REMOTE_CHAT_STR);
+}
+
 void Sprite::write_record(SpriteGF *r)
 {
 	WriteZero(vtp); //zero

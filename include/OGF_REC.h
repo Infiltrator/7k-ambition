@@ -277,6 +277,57 @@ struct ConfigGF
 	int8_t               fog_mask_method;
 };
 
+struct ChatInfoGF
+{
+	int32_t              received_date;
+	int8_t               from_nation_recno;
+	int8_t               chat_str[CHAT_STR_LEN+1];
+};
+
+struct InfoGF
+{
+	int32_t              game_start_date;
+	int32_t              game_date;
+	int32_t              game_day;
+	int32_t              game_month;
+	int32_t              game_year;
+	int32_t              goal_deadline;
+	int16_t              goal_difficulty;
+	int16_t              goal_score_bonus;
+	int32_t              week_day;
+	int32_t              year_day;
+	int32_t              year_passed;
+	int32_t              random_seed;
+	uint32_t             start_play_time;
+	uint32_t             total_play_time;
+	int16_t              viewing_nation_recno;
+	int16_t              viewing_spy_recno;
+	int16_t              default_viewing_nation_recno;
+	int16_t              browse_nation_recno;
+	int16_t              browse_race_recno;
+	int16_t              browse_firm_recno;
+	int16_t              browse_income_recno;
+	int16_t              browse_expense_recno;
+	int16_t              browse_troop_recno;
+	int16_t              browse_unit_recno;
+	int16_t              browse_tech_recno;
+	int16_t              browse_god_recno;
+	int16_t              browse_town_recno;
+	int16_t              browse_spy_recno;
+	int16_t              browse_caravan_recno;
+	int16_t              browse_ship_recno;
+	int16_t              browse_talk_msg_recno;
+	int16_t              browse_news_recno;
+	int16_t              browse_ai_action_recno;
+	int16_t              browse_ai_attack_recno;
+	int8_t               nation_report_mode;
+	int16_t              last_talk_nation_recno;
+	int8_t               player_reply_mode;
+	int8_t               chat_receiver_type;
+	int8_t               player_chat_str[CHAT_STR_LEN+1];
+	ChatInfoGF           remote_chat_array[MAX_REMOTE_CHAT_STR];
+};
+
 struct SpriteGF
 {
 	uint32_t             vtp; //zero
@@ -1634,6 +1685,7 @@ union GFRec
 	FirmResearchGF firm_research;
 	FirmWarGF firm_war;
 	GameGF game;
+	InfoGF info;
 	NationGF nation;
 	NationArrayGF nation_array;
 	ProjectileGF projectile;
