@@ -41,6 +41,7 @@
 #include <OF_WAR.h>
 #include <OGAME.h>
 #include <OGF_V1.h>
+#include <OGFILE.h>
 #include <OGODRES.h>
 #include <ONATIONB.h>
 #include <ONEWS.h>
@@ -63,6 +64,20 @@
 #include <OWEATHER.h>
 
 #pragma pack(1)
+typedef GameFileDate GameFileDateGF;
+
+struct GameFileHeader
+{
+	uint32_t             class_size;
+	int8_t               file_name[FilePath::MAX_FILE_PATH+1];
+	int8_t               player_name[HUMAN_NAME_LEN+1];
+	int8_t               race_id;
+	int8_t               nation_color;
+	int32_t              game_date;
+	GameFileDateGF       file_date;
+	int16_t              terrain_set;
+};
+
 struct FirmInfoGF
 {
 	int8_t               firm_id;
@@ -1741,6 +1756,7 @@ union GFRec
 	FirmResearchGF firm_research;
 	FirmWarGF firm_war;
 	GameGF game;
+	GameFileHeader game_file;
 	InfoGF info;
 	MagicWeatherGF magic_weather;
 	NationGF nation;

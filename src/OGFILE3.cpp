@@ -917,7 +917,7 @@ int Firm::read_file(File* filePtr)
 		return 0;
 	read_record(&gf_rec.firm);
 
-	if( !GameFile::read_file_same_version && firm_id > FIRM_BASE )
+	if( !game_file.read_file_same_version && firm_id > FIRM_BASE )
 		firm_build_id += MAX_RACE - VERSION_1_MAX_RACE;
 
 	//--------- read worker_array ---------//
@@ -1154,7 +1154,7 @@ int FirmMarket::read_derived_file(File* filePtr)
 		ai_link_checked = 0;
 
 	if( config_adv.game_file_patching &&
-		GameFile::load_file_game_version < 200 &&
+		game_file.load_file_game_version < 200 &&
 		firm_id == FIRM_MARKET )
 	{
 		// Below game version 200, the restock type was not initialized
@@ -1409,7 +1409,7 @@ int TownArray::read_file(File* filePtr)
 	int townCount = filePtr->file_get_short();  // get no. of towns from file
 	selected_recno = filePtr->file_get_short();
 
-	if(!GameFile::read_file_same_version)
+	if(!game_file.read_file_same_version)
 	{
 		filePtr->file_read(&gf_rec, sizeof(Version_1_TownArrayGF));
 		read_record_v1(&gf_rec.town_array_v1);
@@ -1434,7 +1434,7 @@ int TownArray::read_file(File* filePtr)
 		{
 			townPtr = town_array.create_town();
 
-			if(!GameFile::read_file_same_version)
+			if(!game_file.read_file_same_version)
 			{
 				Version_1_Town *oldTown = (Version_1_Town*) mem_add(sizeof(Version_1_Town));
 				if( !filePtr->file_read(&gf_rec, sizeof(Version_1_TownGF)) )
@@ -1536,7 +1536,7 @@ int NationArray::write_file(File* filePtr)
 int NationArray::read_file(File* filePtr)
 {
    //------ read info in NationArray ------//
-	if(!GameFile::read_file_same_version)
+	if(!game_file.read_file_same_version)
 	{
 		Version_1_NationArray *oldNationArrayPtr = (Version_1_NationArray*) mem_add(sizeof(Version_1_NationArray));
 		if( !filePtr->file_read(&gf_rec, sizeof(Version_1_NationArrayGF)) )
@@ -1674,7 +1674,7 @@ static void write_ai_info(File* filePtr, short* aiInfoArray, short aiInfoCount, 
 //
 int Nation::read_file(File* filePtr)
 {
-	if(!GameFile::read_file_same_version)
+	if(!game_file.read_file_same_version)
 	{
 		Version_1_Nation *oldNationPtr = (Version_1_Nation*) mem_add(sizeof(Version_1_Nation));
 		if( !filePtr->file_read(&gf_rec, sizeof(Version_1_NationGF)) )

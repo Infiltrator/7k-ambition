@@ -401,7 +401,7 @@ void Tutor::run(int tutorId, int inGameCall)
 
 		if (rc <= 0)
 		{
-			box.msg(GameFile::status_str());
+			box.msg(game_file.status_str());
 			return;
 		}
 

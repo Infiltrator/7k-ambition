@@ -679,7 +679,7 @@ int SaveGameArray::process_action(int saveNew)
 			SaveGame* saveGame = (*this)[browse_recno];
 			if( !SaveGameProvider::save_game(saveGame->file_info.name, /*out*/ &saveGame->header) )
 			{
-				box.msg(GameFile::status_str());
+				box.msg(game_file.status_str());
 				return -1;
 			}
 
@@ -702,7 +702,7 @@ int SaveGameArray::process_action(int saveNew)
 		}
 		else
 		{
-			box.msg(GameFile::status_str());
+			box.msg(game_file.status_str());
 		}
 		return rc;
 	}
@@ -790,7 +790,7 @@ int SaveGameArray::save_new_game(const char* newFileName)
 	}
 	else
 	{
-		box.msg(GameFile::status_str());
+		box.msg(game_file.status_str());
 		return 0;
 	}
 }

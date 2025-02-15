@@ -114,9 +114,6 @@ DBGLOG_DEFAULT_CHANNEL(GameFile);
 
 static int loaded_random_seed;
 
-bool GameFile::read_file_same_version = true;
-short GameFile::load_file_game_version;
-
 //-------- Begin of function GameFile::write_file -------//
 //
 // Save a game to file
@@ -776,11 +773,11 @@ int RaceRes::read_file(File* filePtr)
 
 	for( int i=1 ; i<=race_res.race_count ; i++, raceInfo++ )
 	{
-		raceInfo->town_name_used_count = (!GameFile::read_file_same_version && i>VERSION_1_MAX_RACE) ?
+		raceInfo->town_name_used_count = (!game_file.read_file_same_version && i>VERSION_1_MAX_RACE) ?
 													0 : filePtr->file_get_short();
 	}
 
-	if(!GameFile::read_file_same_version)
+	if(!game_file.read_file_same_version)
 	{
 		memset(name_used_array, 0, sizeof(name_used_array[0]) * name_count);
 		return filePtr->file_read( name_used_array, sizeof(name_used_array[0]) * VERSION_1_RACERES_NAME_COUNT );
@@ -827,7 +824,7 @@ int UnitRes::read_file(File* filePtr)
 
 	for( int i=1 ; i<=unit_res.unit_info_count ; i++, unitInfo++ )
 	{
-			if(!GameFile::read_file_same_version && i > VERSION_1_UNITRES_UNIT_INFO_COUNT)
+			if(!game_file.read_file_same_version && i > VERSION_1_UNITRES_UNIT_INFO_COUNT)
 			{
 				memset(unitInfo->nation_tech_level_array, 0, sizeof(unitInfo->nation_tech_level_array));
 				memset(unitInfo->nation_unit_count_array, 0, sizeof(unitInfo->nation_unit_count_array));
@@ -911,7 +908,7 @@ int TownRes::write_file(File* filePtr)
 //
 int TownRes::read_file(File* filePtr)
 {
-	if(!GameFile::read_file_same_version)
+	if(!game_file.read_file_same_version)
 	{
 		memset(town_name_used_array, 0, sizeof(town_name_used_array));
 		return filePtr->file_read( town_name_used_array, sizeof(town_name_used_array[0]) * VERSION_1_TOWNRES_TOWN_NAME_COUNT );
@@ -984,7 +981,7 @@ int TechRes::read_file(File* filePtr)
 
 	mem_del(techClassArray);
 
-	if(!GameFile::read_file_same_version)
+	if(!game_file.read_file_same_version)
 	{
 		TechInfoGF* techInfoArray = (TechInfoGF*) mem_add(VERSION_1_TECH_COUNT*sizeof(TechInfoGF));
 
@@ -1220,7 +1217,7 @@ int GodRes::write_file(File* filePtr)
 int GodRes::read_file(File* filePtr)
 {
 	short count = god_count;
-	if( !GameFile::read_file_same_version )
+	if( !game_file.read_file_same_version )
 		count = VERSION_1_GODRES_GOD_COUNT;
 
 	GodInfoGF* godInfoArray = (GodInfoGF*) mem_add(count*sizeof(GodInfoGF));

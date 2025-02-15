@@ -59,6 +59,32 @@ static void copy_float_array(float *d, float *s, size_t n)
 
 union GFRec gf_rec;
 
+void GameFile::write_record(GameFileHeader *r)
+{
+	WriteInt32(class_size);
+	WriteInt8Array(file_name, FilePath::MAX_FILE_PATH+1);
+	WriteInt8Array(player_name, HUMAN_NAME_LEN+1);
+	WriteInt8(race_id);
+	WriteInt8(nation_color);
+	WriteInt32(game_date);
+	WriteInt32(file_date.dwLowDateTime);
+	WriteInt32(file_date.dwHighDateTime);
+	WriteInt16(terrain_set);
+}
+
+void GameFile::read_record(GameFileHeader *r)
+{
+	ReadInt32(class_size);
+	ReadInt8Array(file_name, FilePath::MAX_FILE_PATH+1);
+	ReadInt8Array(player_name, HUMAN_NAME_LEN+1);
+	ReadInt8(race_id);
+	ReadInt8(nation_color);
+	ReadInt32(game_date);
+	ReadInt32(file_date.dwLowDateTime);
+	ReadInt32(file_date.dwHighDateTime);
+	ReadInt16(terrain_set);
+}
+
 void FirmInfo::write_record(FirmInfoGF *r)
 {
 	WriteInt8(firm_id);

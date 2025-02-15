@@ -197,7 +197,7 @@ int Game::run_scenario(ScenInfo* scenInfo)
 		}
 		else
 		{
-			box.msg(GameFile::status_str());
+			box.msg(game_file.status_str());
 		}
 		game.deinit();
 		return 1;

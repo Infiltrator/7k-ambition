@@ -19,61 +19,88 @@
  */
 
 //Filename    : OGFILE.H
-//Description : Oject Game file, save and restore game
+//Description : Object Game file, save and restore game
 
 #ifndef __OGFILE_H
 #define __OGFILE_H
 
+#include <cstdint>
+#include <FilePath.h>
+
+#ifndef __ONATION_H
+#include <ONATION.h>
+#endif
+
 class File;
-class String;
 struct SaveGameInfo;
 
+//-------- Define class GameFile -----------//
 
-//-------- Define static class GameFile -----------//
+// Struct is binary compatible to FILETIME on Windows
+#pragma pack(1)
+struct GameFileDate {
+	uint32_t dwLowDateTime;
+	uint32_t dwHighDateTime;
+};
+#pragma pack()
+
+//-------- Define class GameFile -----------//
+
+struct GameFileHeader;
 
 class GameFile
 {
 public:
-   // Saves the current game under the given filePath. Returns true on success.
-   static bool save_game(const char* filePath, const SaveGameInfo& saveGameInfo);
-   // Loads the saved game given by directory and fileName. Updates saveGameInfo in with the new savegame information. Returns 1, 0, or -1 for success, recoverable failure, failure.
-   static int load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo);
+	uint32_t     class_size;    // for version compare
+	char         file_name[FilePath::MAX_FILE_PATH+1];
 
-   // Reads the given file and fills the save game info from the header. Returns true if successful.
-   static bool read_header(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo);
-   static const char *status_str();
+	char         player_name[HUMAN_NAME_LEN+1];
 
-public:
-   struct SaveGameHeader;
-   static short load_file_game_version;
+	char         race_id;
+	char         nation_color;
 
-private:
-   static bool validate_header(const SaveGameHeader* saveGame);
-
-   static void  save_process();
-   static void  load_process();
-   static int   write_game_header(const SaveGameInfo& saveGameInfo, File* filePtr);
-
-   static int   write_file(File*);
-   static int   write_file_1(File*);
-   static int   write_file_2(File*);
-   static int   write_file_3(File*);
-
-   static int   read_file(File*);
-   static int   read_file_1(File*);
-   static int   read_file_2(File*);
-   static int   read_file_3(File*);
-
-   static void  write_book_mark(File* filePtr, short bookMark);
-   static int   read_book_mark(File* filePtr, short bookMark);
+	int          game_date;     // the game date of the saved game
+	GameFileDate file_date;     // saving game date
+	short        terrain_set;
 
 public:
-	static bool read_file_same_version;				// true if major version of the game being loaded is same as that of the program
+	short        load_file_game_version;
+	bool         read_file_same_version;
 
-   // Static class has no constructors
+public:
+	int   save_game(const char* filePath, const SaveGameInfo& saveGameInfo);
+	int   load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo);
+
+	int   read_header(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo);
+
+	const char *status_str();
+
 private:
-   GameFile() = delete;
-   GameFile(const GameFile&) = delete;
+	int   validate_header();
+
+	void  save_process();
+	void  load_process();
+	int   write_game_header(const SaveGameInfo& saveGameInfo, File* filePtr);
+
+	int   write_file(File*);
+	int   write_file_1(File*);
+	int   write_file_2(File*);
+	int   write_file_3(File*);
+
+	int   read_file(File*);
+	int   read_file_1(File*);
+	int   read_file_2(File*);
+	int   read_file_3(File*);
+
+	void  write_book_mark(File* filePtr, short bookMark);
+	int   read_book_mark(File* filePtr, short bookMark);
+
+	void  write_record(GameFileHeader* r);
+	void  read_record(GameFileHeader* r);
 };
+
+extern GameFile game_file;
+
+//-------------------------------------//
 
 #endif

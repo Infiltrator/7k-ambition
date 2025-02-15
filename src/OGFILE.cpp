@@ -25,6 +25,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+#ifdef USE_WINDOWS
+#include <objbase.h>
+#endif
+
 #include <OGFILE.h>
 #include <OFILE.h>
 #include <OSTR.h>
@@ -40,18 +44,18 @@
 #include <OSaveGameInfo.h>
 #include <dbglog.h>
 #include "gettext.h"
+#include <OGF_REC.h>
 
 DBGLOG_DEFAULT_CHANNEL(GameFile);
 
 #pragma pack(1)
-struct GameFile::SaveGameHeader
+struct SaveGameHeader
 {
 	uint32_t class_size;    // for version compare
 	SaveGameInfo info;
 };
 #pragma pack()
 
-typedef GameFile::SaveGameHeader SaveGameHeader;
 enum {CLASS_SIZE = 302};
 static_assert(sizeof(SaveGameHeader) == CLASS_SIZE, "Savegame header size mismatch"); // (no packing)
 
@@ -73,7 +77,7 @@ static int last_status = ERROR_NONE;
 // Saves the current game under the given filePath.
 // On error, returns false.
 //
-bool GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
+int GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
 {
 	File file;
 	bool fileOpened = false;
@@ -140,15 +144,17 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 
 	//-------- read in the GameFile class --------//
 
-	SaveGameHeader saveGameHeader;
 	if( rc )
 	{
-		if( !file.file_read(&saveGameHeader, CLASS_SIZE) )	// read the whole object from the saved game file
+		if( !file.file_read(&gf_rec, sizeof(GameFileHeader)) )	// read the whole object from the saved game file
 		{
 			rc = 0;
 			last_status = ERROR_FILE_HEADER;
 		}
-		else if( !validate_header(&saveGameHeader) )
+
+		read_record(&gf_rec.game_file);
+
+		if( !validate_header() )
 		{
 			rc = 0;
 			last_status = ERROR_FILE_FORMAT;
@@ -159,7 +165,7 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 																  // 1=allow the writing size and the read size to be different
 	if( rc )
 	{
-		config.terrain_set = saveGameHeader.info.terrain_set;
+		config.terrain_set = terrain_set;
 
 		game.deinit(1);		// deinit last game first, 1-it is called during loading of a game
 		game.init(1);			// init game
@@ -196,8 +202,15 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 
 	if (rc > 0)
 	{
-		*saveGameInfo = saveGameHeader.info;
-		strncpy(scenario_file_name, saveGameInfo->file_name, FilePath::MAX_FILE_PATH);
+		strcpy(saveGameInfo->file_name, file_name);
+		strcpy(saveGameInfo->player_name, player_name);
+		saveGameInfo->race_id = race_id;
+		saveGameInfo->nation_color = nation_color;
+		saveGameInfo->game_date = game_date;
+		saveGameInfo->file_date.dwLowDateTime = file_date.dwLowDateTime;
+		saveGameInfo->file_date.dwHighDateTime = file_date.dwHighDateTime;
+		saveGameInfo->terrain_set = terrain_set;
+		strncpy(scenario_file_name, file_name, FilePath::MAX_FILE_PATH);
 		scenario_file_name[FilePath::MAX_FILE_PATH] = 0;
 	}
 
@@ -210,35 +223,30 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 //
 // Reads the given file and fills the save game info from the header. Returns true if successful.
 //
-bool GameFile::read_header(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo)
+int GameFile::read_header(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo)
 {
-	bool success;
+	int rc = 1;
 	File file;
 	SaveGameHeader saveGameHeader;
-	if( file.file_open(filePath, 0, 1)      // last 1=allow varying read & write size
-		&& file.file_read(&saveGameHeader, sizeof(SaveGameHeader)) )
+
+	if( !file.file_open(filePath, 0, 1) )
+		return 0;
+	if( !file.file_read(&saveGameHeader, sizeof(SaveGameHeader)) )
 	{
-		if( !validate_header(&saveGameHeader) )
-		{
-			success = false;
-		}
-		else
-		{
-			success = true;
-		}
+		rc = 0;
+	}
+	else if( !(saveGameHeader.class_size == CLASS_SIZE &&
+		saveGameHeader.info.terrain_set > 0) )
+	{
+		rc = 0;
 	}
 	else
 	{
-		success = false;
+		*saveGameInfo = saveGameHeader.info;
 	}
 	file.file_close();
 
-	if (success)
-	{
-		*saveGameInfo = saveGameHeader.info;
-	}
-
-	return success;
+	return rc;
 }
 //--------- End of function GameFile::read_header --------//
 
@@ -301,18 +309,40 @@ void GameFile::load_process()
 //
 int GameFile::write_game_header(const SaveGameInfo& saveGameInfo, File* filePtr)
 {
-	SaveGameHeader saveGameHeader;
-	saveGameHeader.class_size = CLASS_SIZE;
-	saveGameHeader.info = saveGameInfo;
-	return filePtr->file_write( &saveGameHeader, sizeof(SaveGameHeader) );     // write the whole object to the saved game file
+	class_size = sizeof(GameFileHeader);
+
+	Nation* playerNation = ~nation_array;
+
+	strncpy( player_name, playerNation->king_name(), HUMAN_NAME_LEN );
+	player_name[HUMAN_NAME_LEN] = '\0';
+
+	race_id      = playerNation->race_id;
+	nation_color = playerNation->nation_color;
+	terrain_set  = config.terrain_set;
+
+	game_date    = info.game_date;
+
+	//----- set the file date ------//
+
+#ifdef USE_WINDOWS
+	CoFileTimeNow((FILETIME*)&file_date);
+#else
+	file_date.dwLowDateTime = 0;
+	file_date.dwHighDateTime = 0;
+#endif
+
+	//------- write GameFile to the saved game file -------//
+
+	write_record(&gf_rec.game_file);
+	return filePtr->file_write(&gf_rec, sizeof(GameFileHeader));     // write the whole object to the saved game file
 }
 //--------- End of function GameFile::write_game_header -------//
 
 
 //--------- Begin of function GameFile::validate_header -------//
-bool GameFile::validate_header(const SaveGameHeader* saveGameHeader)
+int GameFile::validate_header()
 {
-	return saveGameHeader->class_size == CLASS_SIZE && saveGameHeader->info.terrain_set > 0;
+	return class_size == sizeof(GameFileHeader) && terrain_set > 0;
 }
 //--------- End of function GameFile::validate_header -------//
 

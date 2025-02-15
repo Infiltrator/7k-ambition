@@ -76,7 +76,7 @@ void SaveGameProvider::enumerate_savegames(const char* filenameWildcard, const s
 			continue;
 
 		SaveGame saveGame;
-		if( GameFile::read_header(save_game_path, &saveGame.header) )
+		if( game_file.read_header(save_game_path, &saveGame.header) )
 		{
 			saveGame.file_info = *saveGameDirectory[i];
 			callback(&saveGame);
@@ -132,7 +132,7 @@ bool SaveGameProvider::save_game(const char* newFileName, SaveGameInfo* /*out*/ 
 	power.win_opened=1;				// to disable power.mouse_handler()
 
 	SaveGameInfo newSaveGameInfo = SaveGameInfoFromCurrentGame(newFileName);
-	success = success && GameFile::save_game(full_path, newSaveGameInfo);
+	success = success && game_file.save_game(full_path, newSaveGameInfo);
 
 	power.win_opened=0;
 
@@ -203,7 +203,7 @@ int SaveGameProvider::load_game_from_file(const char* filePath, SaveGameInfo* /*
 	mouse_cursor.set_icon( CURSOR_WAITING );
 	const int powerEnableFlag = power.enable_flag;
 
-	int rc = GameFile::load_game(filePath, /*out*/ saveGameInfo);
+	int rc = game_file.load_game(filePath, /*out*/ saveGameInfo);
 
 	mouse_cursor.set_frame(0);		// to fix a frame bug with loading game
 

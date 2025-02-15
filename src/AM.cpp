@@ -41,6 +41,7 @@
 #include <OFONT.h>
 #include <OGAME.h>
 #include <OGAMESET.h>
+#include <OGFILE.h>
 #include <OSaveGameArray.h>
 #include <OGAMHALL.h>
 #include <OGODRES.h>
@@ -233,6 +234,7 @@ Power             power;
 World             world;
 char              scenario_file_name[FilePath::MAX_FILE_PATH+1];
 SaveGameArray     save_game_array;
+GameFile          game_file;
 nsPlayerStats::PlayerStats playerStats;
 HallOfFame        hall_of_fame;
 // ###### begin Gilbert 23/10 #######//
