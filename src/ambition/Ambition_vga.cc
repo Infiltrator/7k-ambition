@@ -162,6 +162,20 @@ int calculateUnitIconY(
   return _7kaaCalculation + ICON_OFFSET;
 }
 
+int calculateWorkerPortraitX(
+  const int _7kaaCalculation,
+  const int workerIndex
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto COLUMN_COUNT = 4;
+  constexpr auto COLUMN_SIZE = 50;
+
+  return INFO_X1 + 2 + (workerIndex % COLUMN_COUNT) * COLUMN_SIZE;
+}
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64
 ) {

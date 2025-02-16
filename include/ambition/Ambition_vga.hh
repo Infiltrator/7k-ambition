@@ -67,6 +67,11 @@ int calculateUnitIconY(
   const int _7kaaCalculation
 );
 
+int calculateWorkerPortraitX(
+  const int _7kaaCalculation,
+  const int workerIndex
+);
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );

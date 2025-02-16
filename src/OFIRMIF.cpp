@@ -21,6 +21,8 @@
 //Filename    : OFIRMIF.CPP
 //Description : Firm interface routines
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OSTR.h>
 #include <KEY.h>
 #include <OVGA.h>
@@ -440,6 +442,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 	{
 		workerPtr = &worker_array[worker_id_array[i]-1];
 		x = INFO_X1+4+i%4*50;
+		x = Ambition::calculateWorkerPortraitX(x, i);
 		y = dispY1+i/4*29;
 
 		if( i<worker_count )
