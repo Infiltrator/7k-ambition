@@ -85,6 +85,19 @@ FirmBitmap* calculateFirmBitmap(
   return _7kaaCalculation;
 }
 
+int calculateHitbarWidth(
+  const int availableWidth,
+  const double maximumHitpoints
+) {
+  if (!config.enhancementsAvailable()) {
+    return availableWidth;
+  }
+
+  constexpr auto FULL_WIDTH_HITPOINTS = 200.0;
+
+  return availableWidth * std::sqrt(maximumHitpoints / FULL_WIDTH_HITPOINTS);
+}
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 ) {

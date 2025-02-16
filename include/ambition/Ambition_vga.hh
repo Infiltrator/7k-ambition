@@ -39,6 +39,11 @@ FirmBitmap* calculateFirmBitmap(
   Firm* firm
 );
 
+int calculateHitbarWidth(
+  const int availableWidth,
+  const double maximumHitpoints
+);
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 );

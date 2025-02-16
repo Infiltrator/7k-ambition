@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Changed
+
+- Scale unit hitbar widths with the (square root of) their maximum hitpoints, to
+  give a better idea of units' toughness at a glance.
+
 
 ## [3.0.1] — 2025-02-25
 
