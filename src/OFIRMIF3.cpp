@@ -23,6 +23,7 @@
 
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/spy.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -92,11 +93,11 @@ void Firm::disp_bribe_menu(int refreshFlag)
 		disp_bribe_unit( y );
 		y+=49;
 
-		for( int i=0 ; i<BRIBE_AMOUNT_COUNT ; i++ )
+		for( int i=0 ; i<Ambition::Spy::bribeChoiceCount() ; i++ )
 		{
-			disp_bribe_button( y, bribe_amount_array[i], 1);
+			disp_bribe_button( y, Ambition::Spy::bribeChoiceAmount(i, bribe_amount_array), 1);
 
-			err_when( bribe_amount_array[i] > MAX_BRIBE_AMOUNT );
+			err_when( Ambition::Spy::bribeChoiceAmount(i, bribe_amount_array) > MAX_BRIBE_AMOUNT );
 
 			y += BRIBE_OPTION_HEIGHT+2;
 		}
@@ -159,11 +160,11 @@ void Firm::detect_bribe_menu()
 
 	int i, y=INFO_Y1+22+49;
 
-	for( i=0 ; i<BRIBE_AMOUNT_COUNT ; i++ )
+	for( i=0 ; i<Ambition::Spy::bribeChoiceCount() ; i++ )
 	{
 		if( mouse.single_click(INFO_X1, y, INFO_X2, y+BRIBE_OPTION_HEIGHT-1) )
 		{
-			disp_bribe_button( y, bribe_amount_array[i], 0);		// 0-display pressed button
+			disp_bribe_button( y, Ambition::Spy::bribeChoiceAmount(i, bribe_amount_array), 0);		// 0-display pressed button
 
 			while( mouse.left_press )
 			{
@@ -177,7 +178,7 @@ void Firm::detect_bribe_menu()
 			// ####### begin Gilbert 13/10 #######//
 			if( !remote.is_enable() )
 			{
-				spy_bribe(bribe_amount_array[i], action_spy_recno, selected_worker_id);
+				spy_bribe(Ambition::Spy::bribeChoiceAmount(i, bribe_amount_array), action_spy_recno, selected_worker_id);
 				action_spy_recno = 0;
 			}
 			else
@@ -187,7 +188,7 @@ void Firm::detect_bribe_menu()
 				*shortPtr = firm_recno;
 				shortPtr[1] = action_spy_recno;
 				shortPtr[2] = selected_worker_id;
-				shortPtr[3] = bribe_amount_array[i];
+				shortPtr[3] = Ambition::Spy::bribeChoiceAmount(i, bribe_amount_array);
 			}
 			// ####### end Gilbert 13/10 #######//
 		}

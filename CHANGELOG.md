@@ -27,6 +27,10 @@ speaking, considered to be the player's experience.
   report stolen.  Now, different report types will have different chances of
   escape after stealing them.
 
+### Changed
+
+- Increased bribe choices to include $2500 and $3500.
+
 
 ## [3.2.2] — 2025-08-18
 

@@ -31,6 +31,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed Spy steal report escape chances not actually depending on the type of report stolen.  Now, different report types will have different chances of escape after stealing them."),
         },
       },
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Increased bribe choices to include $2500 and $3500."),
+        },
+      },
     },
   },
   {
