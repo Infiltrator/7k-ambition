@@ -42,6 +42,11 @@ bool setFoodPurchasePrices(
   const int quantity
 );
 
+bool setTributeQuantities(
+  TalkRes* _7kaaDiplomaticMessageResource,
+  const Nation* source7kaaNation
+);
+
 } // namespace _7kaaAmbitionInterface::Diplomacy
 
 #ifndef _AMBITION_IMPLEMENTATION

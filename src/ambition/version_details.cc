@@ -26,6 +26,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Show the surplus (or deficit) number of peasants that you have on the Villages Report.  This is how many extra peasants you currently have over the amount you need to exactly balance food production and consumption."),
           _("Increased bribe choices to include $2500 and $3500."),
           _("Added more food purchasing quantity and price options."),
+          _("Added more aid and tribute amount options."),
         },
       },
       {

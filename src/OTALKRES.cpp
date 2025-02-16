@@ -392,6 +392,10 @@ int TalkRes::add_tribute_choices()
 	if( cur_talk_msg.talk_para1 )
 		return 0;
 
+	if (Ambition::Diplomacy::setTributeQuantities(this, ~nation_array)) {
+		return 1;
+	}
+
 	static const char* tributeStrArray[] = { "$500.", "$1000.", "$2000.", "$3000.", "$4000." };
 	static short tributeAmtArray[] = { 500, 1000, 2000, 3000, 4000 };
 

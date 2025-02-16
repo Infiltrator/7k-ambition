@@ -122,6 +122,45 @@ bool setFoodPurchasePrices(
   return true;
 }
 
+bool setTributeQuantities(
+  TalkRes* _7kaaDiplomaticMessageResource,
+  const Nation* source7kaaNation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  constexpr auto AMOUNTS = std::array {
+    500,
+    1'000,
+    2'000,
+    3'000,
+    4'000,
+    5'000,
+    10'000,
+    20'000,
+    32'000,
+  };
+
+  for (const auto& amount : AMOUNTS) {
+    assert (amount <= std::numeric_limits<short>::max());
+
+    if (_7kaaDiplomaticMessageResource->cur_talk_msg.talk_id != TALK_DEMAND_TRIBUTE
+      && _7kaaDiplomaticMessageResource->cur_talk_msg.talk_id != TALK_DEMAND_AID
+      && source7kaaNation->cash < amount
+    ) {
+      break;
+    }
+
+    add7kaaTalkChoice(
+      _7kaaDiplomaticMessageResource,
+      format("$%d.", amount),
+      amount
+    );
+  }
+  return true;
+}
+
 
 /* Private functions. */
 

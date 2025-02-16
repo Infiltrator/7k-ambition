@@ -25,6 +25,7 @@ speaking, considered to be the player's experience.
   you need to exactly balance food production and consumption.
 - Increased bribe choices to include $2500 and $3500.
 - Added more food purchasing quantity and price options.
+- Added more aid and tribute amount options.
 
 ### Fixed
 
