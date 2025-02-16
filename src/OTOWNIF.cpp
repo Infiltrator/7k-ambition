@@ -21,6 +21,8 @@
 //Filename    : OTOWNIF.CPP
 //Description : Town interface routines
 
+#include "ambition/Ambition_vga.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -58,10 +60,8 @@ enum {
 
 #define BUTTON_X1 INFO_X1
 #define BUTTON_X2 INFO_X2
-enum {
-		 BUTTON_Y1 = RACE_BROWSE_Y2+28,
-		 BUTTON_Y2 = BUTTON_Y1+50,
-     };
+#define BUTTON_Y1 (RACE_BROWSE_Y2+28 + (Ambition::config.enhancementsAvailable() ? 24 : 0))
+#define BUTTON_Y2 (BUTTON_Y1+50)
 
 //---------- Define constant ------------//
 
@@ -349,6 +349,8 @@ void Town::disp_main_menu(int refreshFlag)
 		font_mid.put( RACE_BROWSE_X1+165, RACE_BROWSE_Y2+6, average_resistance(nation_array.player_recno), 1 );
 
 	//------ if this town is controlled by a rebel group -----//
+
+	Ambition::displayTownQualityOfLife(this, refreshFlag, RACE_BROWSE_Y2+23+3);
 
 	int x=BUTTON_X1, y=BUTTON_Y1;
 
