@@ -3,6 +3,7 @@ lib7kaa_ambition_interface_a_SOURCES = \
   building.cc \
   config.cc \
   control.cc \
+  diplomacy.cc \
   draw.cc \
   inn.cc \
   input.cc \

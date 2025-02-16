@@ -24,6 +24,7 @@ speaking, considered to be the player's experience.
   Report.  This is how many extra peasants you currently have over the amount
   you need to exactly balance food production and consumption.
 - Increased bribe choices to include $2500 and $3500.
+- Added more food purchasing quantity and price options.
 
 ### Fixed
 
