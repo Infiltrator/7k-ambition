@@ -26,6 +26,8 @@ speaking, considered to be the player's experience.
   it's quicker to check inns for new mercenaries.
 - Preferentially use builders from undamaged buildings further away instead of
   from closer buildings that are still not fully repaired.
+- Use all of the available space in the building info pane to show wider unit
+  hitbars, so that they're easier to comprehend.
 - Properly centre units in the building info pane, so that the hitbars are
   clearly discernible.
 - Use a four-slot screen for the mode selection.  This gives more space to

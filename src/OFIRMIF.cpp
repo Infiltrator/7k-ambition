@@ -21,6 +21,7 @@
 //Filename    : OFIRMIF.CPP
 //Description : Firm interface routines
 
+#include "ambition/Ambition_config.hh"
 #include "ambition/Ambition_vga.hh"
 
 #include <OSTR.h>
@@ -463,7 +464,9 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 
 			//------ display hit points bar --------//
 
-			disp_worker_hit_points( x+2, y+24, x+25, workerPtr->hit_points, workerPtr->max_hit_points() );
+			const auto end
+				= x + (Ambition::config.enhancementsAvailable() ? 48 : 25);
+			disp_worker_hit_points( x+2, y+24, end, workerPtr->hit_points, workerPtr->max_hit_points() );
 
 			//----- display combat or skill level ------//
 
@@ -506,7 +509,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 			{
 				vga_front.put_bitmap( x+30, y+6, image_icon.get_ptr(spyIconName) );
 				vga_util.blt_buf( x+40, y+6, x+49, y+15, 0 );
-				vga_util.blt_buf( x+30, y+16, x+49, y+26, 0 );
+				vga_util.blt_buf( x+30, y+16, x+49, y+23, 0 );
 			}
 			else
 			{
