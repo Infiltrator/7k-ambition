@@ -86,6 +86,12 @@ void displayGameSpeed(
   int speed
 );
 
+void displayUnitContribution(
+  Unit* unit,
+  const int x,
+  const int y
+);
+
 /**
  * Draw a hitbar in the info pane for an occupant of a building.
  *

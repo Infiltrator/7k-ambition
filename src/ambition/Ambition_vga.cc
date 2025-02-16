@@ -250,6 +250,37 @@ void displayGameSpeed(
   }
 }
 
+void displayUnitContribution(
+  Unit* unit,
+  const int x,
+  const int y
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+   if (unit->rank_id == RANK_KING
+       || unit->is_civilian()
+       || unit->is_own_spy()
+   ) {
+     return;
+   }
+
+   String str = misc.format(unit->nation_contribution, 1);
+   str += "/";
+   str += misc.format(unit->total_reward, 2);
+
+   font_san.field(
+     x,
+     y,
+     "_UNUSED",
+     x + 92,
+     str,
+     INFO_X2 - 2,
+     INFO_SPECIAL
+   );
+}
+
 bool drawBuildingOccupantHitbar(
   const int leftX,
   const int topY,
