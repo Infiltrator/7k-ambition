@@ -30,6 +30,7 @@ speaking, considered to be the player's experience.
   hitbars, so that they're easier to comprehend.
 - Show the missing portion of unit hitbars in the building info pane, so that
   it's easier to tell when a unit is missing hitpoints.
+- Draw a hitbar for the general/king in a camp, so that you can see his health.
 - Properly centre units in the building info pane, so that the hitbars are
   clearly discernible.
 - Use a four-slot screen for the mode selection.  This gives more space to

@@ -21,6 +21,9 @@
 //Filename    : OF_CAMP.CPP
 //Description : Firm Military Camp
 
+#include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_vga.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -350,9 +353,11 @@ void FirmCamp::put_info(int refreshFlag)
 	if( !should_show_info() )
 		return;
 
+	const auto yOffset = Ambition::config.enhancementsAvailable() ? 6 : 0;
+
 	disp_camp_info(INFO_Y1+54, refreshFlag);
-	disp_worker_list(INFO_Y1+104, refreshFlag);
-	disp_worker_info(INFO_Y1+168, refreshFlag);
+	disp_worker_list(INFO_Y1+104+yOffset, refreshFlag);
+	disp_worker_info(INFO_Y1+168+yOffset, refreshFlag);
 
 	//------ display button -------//
 
@@ -362,9 +367,9 @@ void FirmCamp::put_info(int refreshFlag)
 	{
 		if( refreshFlag==INFO_REPAINT )
 		{
-			button_patrol.paint( INFO_X1, INFO_Y1+242, 'A', "PATROL" );
-			button_reward.paint( INFO_X1+BUTTON_ACTION_WIDTH, INFO_Y1+242, 'A', "REWARDCB" );
-			button_defense.paint( INFO_X2-BUTTON_ACTION_WIDTH, INFO_Y1+242, 'A', defense_flag ? (char*)"DEFENSE1" : (char*)"DEFENSE0" );
+			button_patrol.paint( INFO_X1, INFO_Y1+242+yOffset, 'A', "PATROL" );
+			button_reward.paint( INFO_X1+BUTTON_ACTION_WIDTH, INFO_Y1+242+yOffset, 'A', "REWARDCB" );
+			button_defense.paint( INFO_X2-BUTTON_ACTION_WIDTH, INFO_Y1+242+yOffset, 'A', defense_flag ? (char*)"DEFENSE1" : (char*)"DEFENSE0" );
 		}
 
 		if( overseer_recno || worker_count )
@@ -388,7 +393,7 @@ void FirmCamp::put_info(int refreshFlag)
 	else
 		x=INFO_X1;
 
-	disp_spy_button(x, INFO_Y1+242, refreshFlag);
+	disp_spy_button(x, INFO_Y1+242+yOffset, refreshFlag);
 
 	#ifdef DEBUG
 		if( sys.testing_session || sys.debug_session )
@@ -413,12 +418,14 @@ int FirmCamp::detect_info()
 	int rc = mouse.any_click(INFO_X1+6, INFO_Y1+58, INFO_X1+5+UNIT_LARGE_ICON_WIDTH, INFO_Y1+57+UNIT_LARGE_ICON_HEIGHT, LEFT_BUTTON) ? 1 
 		: mouse.any_click(INFO_X1+6, INFO_Y1+58, INFO_X1+5+UNIT_LARGE_ICON_WIDTH, INFO_Y1+57+UNIT_LARGE_ICON_HEIGHT, RIGHT_BUTTON) ? 2 : 0;
 
+	const auto yOffset = Ambition::config.enhancementsAvailable() ? 6 : 0;
+
 	if( rc==1 )		// display this overseer's info
 	{
 		selected_worker_id = 0;
 		disp_camp_info(INFO_Y1+54, INFO_UPDATE);
-		disp_worker_list(INFO_Y1+104, INFO_UPDATE);
-		disp_worker_info(INFO_Y1+168, INFO_UPDATE);
+		disp_worker_list(INFO_Y1+104+yOffset, INFO_UPDATE);
+		disp_worker_info(INFO_Y1+168+yOffset, INFO_UPDATE);
 		return 1;
 	}
 
@@ -427,8 +434,8 @@ int FirmCamp::detect_info()
 	if( detect_worker_list() )
 	{
 		disp_camp_info(INFO_Y1+54, INFO_UPDATE);
-		disp_worker_list(INFO_Y1+104, INFO_UPDATE);
-		disp_worker_info(INFO_Y1+168, INFO_UPDATE);
+		disp_worker_list(INFO_Y1+104+yOffset, INFO_UPDATE);
+		disp_worker_info(INFO_Y1+168+yOffset, INFO_UPDATE);
 		return 1;
 	}
 
@@ -606,7 +613,18 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 		}
 
 		vga_util.blt_buf( x2, y-1, INFO_X2-2, dispY1+44, 0 );
+		y += 14;
 	}
+
+	y += 3;
+	Ambition::drawBuildingOccupantHitbar(
+		INFO_X1,
+		y,
+		INFO_X2 - INFO_X1 - 2,
+		overseerUnit->hit_points,
+		overseerUnit->max_hit_points
+	);
+	y += 6;
 }
 //----------- End of function FirmCamp::disp_camp_info -----------//
 
