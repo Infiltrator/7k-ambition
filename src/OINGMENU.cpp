@@ -101,12 +101,12 @@ void InGameMenu::enter(char untilExitFlag)
 
    if( untilExitFlag )
    {
-      auto firstCycle = true;
+      auto cycle = 0;
 
       while( is_active() )
       {
-         if (firstCycle) {
-            firstCycle = false;
+         if (cycle < 2) {
+            cycle++;
          } else {
             Ambition::delayFrame();
          }
