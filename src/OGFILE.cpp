@@ -296,6 +296,9 @@ void GameFile::load_process()
 	{
 		music.stop();
 	}
+
+	firm_array.update_firm_links();
+	town_array.update_town_links();
 }
 //--------- End of function GameFile::load_process -------//
 

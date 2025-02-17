@@ -778,3 +778,23 @@ void FirmArray::disp_next(int seekDir, int sameNation)
 	}
 }
 //---------- End of function FirmArray::disp_next ----------//
+
+
+//--------- Begin of function FirmArray::update_firm_links --------//
+//
+// The purpose of this is to initialize links that are missing in
+// saved games from old versions of the game.
+//
+void FirmArray::update_firm_links()
+{
+	for( int i=size() ; i>0 ; i-- )
+	{
+		Firm* firmPtr = (Firm*) get_ptr(i);
+
+		if( !firmPtr )
+			continue;
+
+		firmPtr->setup_link(1);
+	}
+}
+//----------- End of function FirmArray::update_firm_links --------//

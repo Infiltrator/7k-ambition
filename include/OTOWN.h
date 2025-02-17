@@ -239,13 +239,15 @@ public:
 	int 	pick_random_race(int pickNonRecruitableAlso, int pickSpyFlag);
 	int 	camp_influence(int unitRecno);
 
-	void  setup_link();
+	void  setup_link(int reload=0);
 	void  release_link();
 	void  release_firm_link(int);
 	void  release_town_link(int);
 	int	  linked_active_camp_count();
 	int   can_toggle_firm_link(int firmRecno);
 	void  update_camp_link();
+	int   is_linked_to_firm(short townRecno);
+	int   is_linked_to_town(short townRecno);
 
 	void  init_pop(int raceId, int addPop, int loyalty, int hasJob=0, int firstInit=0);
 	void  inc_pop(int raceId, int unitHasJob, int unitLoyalty);
@@ -464,6 +466,7 @@ public:
 	#endif
 
 	void  disp_next(int seekDir, int sameNation);
+	void  update_town_links();
 };
 
 extern TownArray town_array;

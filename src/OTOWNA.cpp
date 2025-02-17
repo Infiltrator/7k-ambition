@@ -896,3 +896,23 @@ static char random_race()
 	return config_adv.race_random_list[num];
 }
 //--------- End of static function random_race ---------//
+
+
+//--------- Begin of function TownArray::update_town_links --------//
+//
+// The purpose of this is to initialize links that are missing in
+// saved games from old versions of the game.
+//
+void TownArray::update_town_links()
+{
+	for( int i=size() ; i>0 ; i-- )
+	{
+		Town* townPtr = (Town*) get_ptr(i);
+
+		if( !townPtr )
+			continue;
+
+		townPtr->setup_link(1);
+	}
+}
+//----------- End of function TownArray::update_town_links --------//
