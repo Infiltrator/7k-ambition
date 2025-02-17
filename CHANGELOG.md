@@ -16,6 +16,9 @@ speaking, considered to be the player's experience.
 
 - Fixed speed 9 (the pseudo-speed for fastest possible speed) being slower than
   it used to in 7kaa.
+- Fixed the in-game menu not showing straight away after clicking it.
+- Fixed the option, save and load game, and tutor in-game menu selections not
+  showing straight away after clicking them.
 
 
 ## [3.0.0-rc2] — 2025-02-16
