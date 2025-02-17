@@ -193,6 +193,7 @@ int Tutor::select_tutor(int actionMode)
 	Blob textArea;
 #endif
 
+   auto firstCycle = true;
 	while(1)
 	{
 		//---------- yield --------//
@@ -408,7 +409,9 @@ int Tutor::select_tutor(int actionMode)
 			break;
 		}
 
-		if (!refreshFlag) {
+		if (firstCycle) {
+			firstCycle = false;
+		} else if (!refreshFlag) {
 			Ambition::delayFrame();
 		}
 	}

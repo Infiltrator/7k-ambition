@@ -291,6 +291,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
 	Blob browseArea[MAX_BROWSE_DISP_REC];
 	Blob scrollArea;
 
+   auto firstCycle = true;
 	while(1)
 	{
 		//---------- yield --------//
@@ -541,7 +542,9 @@ int SaveGameArray::menu(int actionMode, int *recno)
 			refreshFlag = LSOPTION_ALL;
 		}
 
-		if (!refreshFlag) {
+      if (firstCycle) {
+			firstCycle = false;
+		} else if (!refreshFlag) {
 			Ambition::delayFrame();
 		}
 	}
