@@ -493,9 +493,14 @@ void Button::wait_press(int timeOut)
 
 	mouse.get_event();			// clean up previous mouse events
 
+	auto firstCycle = true;
 	while( !detect(KEY_RETURN,KEY_ESC) && !mouse.any_click(1) )  // 1-only right mouse button
 	{
-		Ambition::delayFrame(idleTimeout);
+		if (firstCycle) {
+			firstCycle = false;
+		} else {
+			Ambition::delayFrame(idleTimeout);
+		}
 
 		sys.yield();
 		vga.flip();

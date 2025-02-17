@@ -17,6 +17,8 @@ speaking, considered to be the player's experience.
 - Fixed own spy icons not showing all the time.  Own spy icons used to show all
   the time before, regardless of selection or icon showing setting.
 - Fixed icons not showing on hover.
+- Fixed the no games to load message not showing straight away after clicking
+  load game on the in-game menu.
 
 
 ## [3.0.0-rc3] — 2025-02-17
