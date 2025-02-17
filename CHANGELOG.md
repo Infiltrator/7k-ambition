@@ -9,6 +9,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added game speed display to top-right of the map and "PAUSED" in the middle.
+
 ### Fixed
 
 - Fixed high CPU usage when moving the mouse cursor in-game.

@@ -18,6 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: src/ambition/Ambition_vga.cc:203
+msgid "Speed: "
+msgstr ""
+
+#: src/ambition/Ambition_vga.cc:205
+msgid "PAUSED"
+msgstr ""
+
+#: src/ambition/Ambition_vga.cc:207
+msgid "UNLIMITED"
+msgstr ""
+
+#: src/ambition/Ambition_vga.cc:214
+msgid "GAME IS PAUSED"
+msgstr ""
+
 #: src/CmdLine.cpp:46
 #, c-format
 msgid "The command line option %s requires an argument."

@@ -26,15 +26,18 @@
 #include "Ambition_vga.hh"
 
 #include <algorithm>
+#include <gettext.h>
 #include <SDL_events.h>
 #include <SDL_timer.h>
 
 #include "OAUDIO.h"
 #include "OFIRM.h"
+#include "OFONT.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OREMOTE.h"
 #include "OSNOW.h"
+#include "OSTR.h"
 #include "OSYS.h"
 #include "OTERRAIN.h"
 #include "OUNIT.h"
@@ -190,6 +193,42 @@ void delayFrame(
       break;
     }
   }
+}
+
+void displayGameSpeed(
+  int speed
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  vga.use_back();
+
+  String str = _("Speed: ");
+  if (speed == 0) {
+    str += _("PAUSED");
+  } else if (speed >= 99) {
+    str += _("UNLIMITED");
+  } else {
+    str += speed / 3;
+  }
+  font_news.right_put(
+    ZOOM_X2 - 4,
+    ZOOM_Y1 + 4,
+    str
+  );
+
+  if (speed == 0) {
+    font_news.center_put(
+      ZOOM_X1,
+      ZOOM_Y1,
+      ZOOM_X2,
+      ZOOM_Y2,
+      _("GAME IS PAUSED")
+    );
+  }
+
+  vga.use_front();
 }
 
 void drawFirmBuilderIcon(

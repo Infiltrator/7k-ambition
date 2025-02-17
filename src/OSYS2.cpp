@@ -23,6 +23,7 @@
 
 #include "ambition/Ambition_config.hh"
 #include "ambition/Ambition_remote.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -1022,6 +1023,8 @@ void Sys::disp_zoom()
 	if( view_mode==MODE_NORMAL )
 	{
 		disp_frames_per_second();
+
+		Ambition::displayGameSpeed(config.frame_speed);
 
 		if( (remote.is_enable() || remote.is_replay()) && (remote.sync_test_level & 0x40) )
 		{
