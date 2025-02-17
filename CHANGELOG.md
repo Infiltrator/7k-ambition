@@ -10,7 +10,7 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
-## [3.0.0-rc3] — [unreleased]
+## [3.0.0-rc3] — 2025-02-17
 
 ### Fixed
 
