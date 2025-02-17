@@ -298,6 +298,26 @@ bool initialiseSnowLayer(
   return true;
 }
 
+void unlockBuffer(
+  VgaBuf& buffer
+) {
+  constexpr auto TARGET_FPS = 60;
+  constexpr auto MILLISECONDS_PER_FRAME = 1000 / TARGET_FPS;
+
+  static auto nextFlipTick = SDL_GetTicks64();
+
+  const auto currentTick = SDL_GetTicks64();
+  if (currentTick >= nextFlipTick) {
+    nextFlipTick = currentTick + MILLISECONDS_PER_FRAME;
+
+    if (buffer.buf_locked) {
+      buffer.unlock_buf();
+    }
+  } else {
+    buffer.buf_locked = 0;
+  }
+}
+
 
 /* Private functions. */
 
