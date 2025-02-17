@@ -32,10 +32,8 @@ namespace Ambition {
 std::string versionString() {
   return std::to_string(MAJOR_VERSION)
 	 + "." + std::to_string(MINOR_VERSION)
-	 + "." + std::to_string(PATCH_VERSION)
-    + (RELEASE_CANDIDATE_NUMBER > 0
-       ? "-rc" + std::to_string(RELEASE_CANDIDATE_NUMBER)
-       : "")
+    + (RELEASE_CANDIDATE ? "-rc" : ".")
+    + std::to_string(PATCH_VERSION)
 	 + GIT_STRING;
 }
 
