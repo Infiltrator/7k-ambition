@@ -39,6 +39,11 @@ FirmBitmap* calculateFirmBitmap(
   Firm* firm
 );
 
+int calculateHitbarBaseColour(
+  const int _7kaaCalculation,
+  const double maximumHitpoints
+);
+
 int calculateHitbarWidth(
   const int availableWidth,
   const double maximumHitpoints

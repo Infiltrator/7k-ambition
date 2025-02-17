@@ -190,6 +190,8 @@ void Unit::draw_selected()
 		}
 	}
 
+   hitBarColor = Ambition::calculateHitbarBaseColour(hitBarColor, max_hit_points);
+
 	//----- draw the hit point bar in a buffer -----//
 
 	enum { HIT_BAR_HEIGHT=3 };
