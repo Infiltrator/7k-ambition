@@ -22,10 +22,11 @@
 //Filename    : OVGA.cpp
 //Description : VGA management class (SDL version)
 
+#include "OVGA.h"
+
 #include "ambition/Ambition_config.hh"
 #include "ambition/Ambition_version.hh"
 
-#include <OVGA.h>
 #include <OMOUSE.h>
 #include <OCOLTBL.h>
 #include <OSYS.h>

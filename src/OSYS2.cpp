@@ -22,7 +22,6 @@
 //Description : System resource management object
 
 #include "ambition/Ambition_config.hh"
-
 #include "ambition/Ambition_remote.hh"
 
 #include <OVGA.h>
