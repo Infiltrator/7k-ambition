@@ -9,6 +9,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed high CPU usage when moving the mouse cursor in-game.
+
 
 ## [3.0.0] — 2025-02-21
 
