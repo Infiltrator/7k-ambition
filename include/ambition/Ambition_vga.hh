@@ -28,6 +28,7 @@
 class Firm;
 class SnowLayer;
 class Unit;
+class VgaBuf;
 struct FirmBitmap;
 
 
@@ -117,6 +118,18 @@ void drawHitbarOutline(
   const int y,
   const int width,
   const int height
+);
+
+/**
+ * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
+ *
+ * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
+ * and we want to control when the flips occur.
+ *
+ * @param buffer The VgaBuf to unlock.
+ */
+void unlockBuffer(
+  VgaBuf& buffer
 );
 
 } // namespace Ambition

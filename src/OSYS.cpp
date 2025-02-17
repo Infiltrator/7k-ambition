@@ -984,9 +984,11 @@ void Sys::main_loop(int isLoadedGame)
             }
          }
 
+      if (config.frame_speed >= 99) {
+         Ambition::unlockBuffer(vga_front);
+      } else {
          vga_front.unlock_buf();
 
-      if (config.frame_speed < 99) {
         Ambition::delayFrame(startTime + 16);
       }
    }
