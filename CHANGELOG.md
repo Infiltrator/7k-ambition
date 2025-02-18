@@ -10,6 +10,15 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
+## [3.0.0-rc4] — [unreleased]
+
+### Fixed
+
+- Fixed own spy icons not showing all the time.  Own spy icons used to show all
+  the time before, regardless of selection or icon showing setting.
+- Fixed icons not showing on hover.
+
+
 ## [3.0.0-rc3] — 2025-02-17
 
 ### Fixed
