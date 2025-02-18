@@ -445,12 +445,13 @@ void drawHitbarOutline(
   dataPtr += sizeof(short) * 2;
 
   const auto outlineColour = isOwn ? VGA_LIGHT_GREEN : VGA_RED;
+  const auto shadowColour = outlineColour + 3;
 
   IMGbar(dataPtr, pitch, 1, 1, width, height, 0xFF);
   IMGbar(dataPtr, pitch, 0, 0, width + 1, 0, outlineColour);
   IMGbar(dataPtr, pitch, 0, 0, 0, height + 1, outlineColour);
-  IMGbar(dataPtr, pitch, 0, height + 1, width + 1, height + 1, outlineColour);
-  IMGbar(dataPtr, pitch, width + 1, 0, width + 1, height + 1, outlineColour);
+  IMGbar(dataPtr, pitch, 1, height + 1, width + 1, height + 1, shadowColour);
+  IMGbar(dataPtr, pitch, width + 1, 1, width + 1, height + 1, shadowColour);
 
   world.zoom_matrix->put_bitmap_clip(x - 1, y - 1, sys.common_data_buf);
 }

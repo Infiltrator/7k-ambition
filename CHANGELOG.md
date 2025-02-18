@@ -20,6 +20,11 @@ speaking, considered to be the player's experience.
 - Fixed the no games to load message not showing straight away after clicking
   load game on the in-game menu.
 
+### Changed
+
+- Make the hitbar outline (friendly vs enemy) look less flat by giving it a
+  shadow.
+
 
 ## [3.0.0-rc3] — 2025-02-17
 
