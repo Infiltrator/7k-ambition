@@ -390,5 +390,13 @@ int Unit::is_shealth()
 void Unit::draw_outlined()
 {
    draw(2);
+
+	if( (is_own() || config.show_ai_info || skill.skill_id == SKILL_LEADING || rank_id > RANK_SOLDIER) )
+	{
+		if( !selected_flag )
+		{
+			draw_skill_icon();
+		}
+	}
 }
 //----------- End of function Unit::draw_outlined -----------//
