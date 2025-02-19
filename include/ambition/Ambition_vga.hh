@@ -86,6 +86,20 @@ void displayGameSpeed(
   int speed
 );
 
+/**
+ * Draw a hitbar in the info pane for an occupant of a building.
+ *
+ * @return true when the Ambition code has taken effect and 7kaa should skip the
+ * rest of its.
+ */
+bool drawBuildingOccupantHitbar(
+  const int leftX,
+  const int topY,
+  const int width,
+  const int currentHitpoints,
+  const int maximumHitpoints
+);
+
 bool initialiseSnowLayer(
   SnowLayer& layer,
   const int level,

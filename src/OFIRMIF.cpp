@@ -587,6 +587,10 @@ int Firm::detect_worker_list()
 //
 void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints)
 {
+	if (Ambition::drawBuildingOccupantHitbar(x1, y1, x2 - x1, hitPoints, maxHitPoints)) {
+		return;
+	}
+
 	//------- determine the hit bar type -------//
 
 	#define HIT_BAR_TYPE_COUNT  3

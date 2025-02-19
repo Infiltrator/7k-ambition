@@ -28,6 +28,8 @@ speaking, considered to be the player's experience.
   from closer buildings that are still not fully repaired.
 - Use all of the available space in the building info pane to show wider unit
   hitbars, so that they're easier to comprehend.
+- Show the missing portion of unit hitbars in the building info pane, so that
+  it's easier to tell when a unit is missing hitpoints.
 - Properly centre units in the building info pane, so that the hitbars are
   clearly discernible.
 - Use a four-slot screen for the mode selection.  This gives more space to
