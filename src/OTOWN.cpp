@@ -4212,7 +4212,7 @@ void Town::get_most_populated_race(int& mostRaceId1, int& mostRaceId2)
 			mostRaceId2 = mostRaceId1;
 			mostRaceId1 = i+1;
 		}
-		else if( racePop >= mostRaceId2 )
+		else if( racePop >= mostRacePop2 )
 		{
 			mostRacePop2 = racePop;
 			mostRaceId2  = i+1;
