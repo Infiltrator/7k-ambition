@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
+## [3.0.0] — 2025-02-21
+
+First full release.  See [the v3.0.0-rc1](#3-0-0-rc1) section for more details.
+
+
 ## [3.0.0-rc4] — 2025-02-18
 
 ### Fixed
@@ -45,6 +50,7 @@ speaking, considered to be the player's experience.
 - Fixed a crash when pausing in Classic mode.
 
 
+<a id="3-0-0-rc1"></a>
 ## [3.0.0-rc1] — 2025-02-03
 
 ### Added
