@@ -23,6 +23,7 @@
 
 #include "ambition/Ambition_config.hh"
 #include "ambition/Ambition_remote.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -395,6 +396,8 @@ void Sys::detect_button()
 
 	if( button_menu.detect() )
 	{
+		update_view();
+		Ambition::displayGameSpeed(0);
 		// ##### begin Gilbert 5/11 #######//
 		// game.in_game_menu();
 		in_game_menu.enter(!remote.is_enable());
@@ -574,6 +577,8 @@ void Sys::disp_frame()
 		//--------- display the map and info area --------//
 
 		disp_map();
+
+		Ambition::displayGameSpeed(config.frame_speed);
 
 		blt_virtual_buf();
 

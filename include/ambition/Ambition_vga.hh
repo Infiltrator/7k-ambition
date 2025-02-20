@@ -71,6 +71,16 @@ void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
 
+/**
+ * Display the given game speed on the screen.
+ *
+ * @param speed The speed to display.  Special value 0 means paused.  Special
+ * value 99 means unlimited.
+ */
+void displayGameSpeed(
+  int speed
+);
+
 bool initialiseSnowLayer(
   SnowLayer& layer,
   const int level,

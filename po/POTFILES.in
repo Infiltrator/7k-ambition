@@ -1,4 +1,5 @@
 # List of source files which contain translatable strings.
+src/ambition/Ambition_vga.cc
 src/AM.cpp
 src/CmdLine.cpp
 src/ConfigAdv.cpp

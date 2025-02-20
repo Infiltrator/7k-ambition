@@ -1791,6 +1791,8 @@ void Sys::detect_function_key(unsigned scanCode, unsigned skeyState)
          break;
 
       case KEY_F10:
+			update_view();
+         Ambition::displayGameSpeed(0);
          // ##### begin Gilbert 5/11 ######//
          //game.in_game_menu();
          in_game_menu.enter(!remote.is_enable());
