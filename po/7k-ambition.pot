@@ -43,7 +43,7 @@ msgid "Current mode:"
 msgstr ""
 
 #: src/ambition/Ambition_config.cc:187
-msgid "1. Classic"
+msgid "I. Classic"
 msgstr ""
 
 #: src/ambition/Ambition_config.cc:189
@@ -53,7 +53,7 @@ msgid ""
 msgstr ""
 
 #: src/ambition/Ambition_config.cc:194
-msgid "2. Enhanced"
+msgid "II. Enhanced"
 msgstr ""
 
 #: src/ambition/Ambition_config.cc:196

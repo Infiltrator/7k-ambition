@@ -21,6 +21,8 @@ speaking, considered to be the player's experience.
 
 - Use a four-slot screen for the mode selection.  This gives more space to
   expand the description text.
+- Use roman numerals for numbering modes on the mode selection screen.  This
+  aesthetic is more appropriate.
 - Make mode selection screen translatable.  No translations have been completed
   yet, though.
 

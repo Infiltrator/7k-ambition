@@ -184,14 +184,14 @@ void runModeSelectionScreen(
 
   const ModeText modeText[MODE_SELECTION_COUNT] = {
     {
-      .name = _("1. Classic"),
+      .name = _("I. Classic"),
       .description = _(
         "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer"
         " with 7K:AA."
       ),
     },
     {
-      .name = _("2. Enhanced"),
+      .name = _("II. Enhanced"),
       .description = _(
         "Add enhancements that do not affect gameplay.  Allows for multiplayer"
         " with 7K:AA."
