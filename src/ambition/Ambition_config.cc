@@ -36,6 +36,7 @@
 #include "OMOUSE.h"
 #include "OMOUSECR.h"
 #include "OSYS.h"
+#include "vga_util.h"
 
 #include "ambition/Ambition_vga.hh"
 
@@ -156,7 +157,7 @@ void drawModeInformation(
 void runModeSelectionScreen(
 ) {
   constexpr auto BROWSE_X1 = 30;
-  constexpr auto BROWSE_Y1 = 292;
+  constexpr auto BROWSE_Y1 = 336;
   constexpr auto SLOT_WIDTH  = 725;
   constexpr auto SLOT_HEIGHT = 44;
   constexpr auto BROWSE_X2 = BROWSE_X1 + SLOT_WIDTH - 1;
@@ -169,7 +170,7 @@ void runModeSelectionScreen(
   constexpr auto TEXT_X = BROWSE_X1 + 11;
   constexpr auto TEXT_OFFSET_Y = 9;
 
-  constexpr auto SLOT_COUNT = 5;
+  constexpr auto SLOT_COUNT = 4;
   constexpr auto MODE_SELECTION_COUNT = 2;
 
   constexpr auto BUTTON_TOP = 529;
@@ -210,7 +211,9 @@ void runModeSelectionScreen(
     if (refreshFlag) {
       mouse.hide();
 
-      image_interface.put_front(0, 0, "TUTORIAL");
+      image_interface.put_front(0, 0, "SCENARIO");
+      image_interface.put_back(0, 0, "TUTORIAL");
+      vga_util.blt_buf(0, 499, 799, 599);
 
       startButton.paint();
       backButton.paint();

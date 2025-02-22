@@ -17,6 +17,11 @@ speaking, considered to be the player's experience.
 
 - Fixed high CPU usage when moving the mouse cursor in-game.
 
+### Changed
+
+- Use a four-slot screen for the mode selection.  This gives more space to
+  expand the description text.
+
 
 ## [3.0.0] — 2025-02-21
 
