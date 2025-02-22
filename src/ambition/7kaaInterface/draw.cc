@@ -421,6 +421,15 @@ bool buildingInformationPanel(
 
   return Ambition::Vga::drawBuildingInformationPanel(_7kaaFirm);
 }
+bool buildingInformationPanel(
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return Ambition::Vga::drawBuildingInformationPanel(_7kaaTown);
+}
 
 void buildingProgressBar(
   const Firm* firm

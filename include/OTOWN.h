@@ -94,7 +94,7 @@ public:
 
 	short town_recno;
 	short	town_name_id;
-	char* town_name()			{ return town_res.get_name(town_name_id); }
+	char* town_name() const { return town_res.get_name(town_name_id); }
 
 	short nation_recno;
 	short rebel_recno;		// whether this town is controlled by a rebel
@@ -148,10 +148,10 @@ public:
 	int   race_harmony(int raceId);
 	int   majority_race();		// the race that has the majority of the population
 
-	int	average_loyalty();
-	int	average_target_loyalty();
-	int	average_resistance(int nationRecno);
-	int	average_target_resistance(int nationRecno);
+	int average_loyalty() const;
+	int average_target_loyalty() const;
+	int average_resistance(int nationRecno) const;
+	int average_target_resistance(int nationRecno) const;
 
 	short	town_defender_count;			// no. of units currently defending this town
 	int	last_being_attacked_date;
@@ -300,7 +300,7 @@ public:
 	void  toggle_town_link(int linkId, int toggleFlag, char remoteAction, int setBoth=0);
 
 	void	auto_defense(short targetRecno);
-	int	has_player_spy();
+	int has_player_spy() const;
 	void 	verify_slot_object_id_array();
 
 	void 	set_auto_collect_tax_loyalty(int loyaltyLevel);

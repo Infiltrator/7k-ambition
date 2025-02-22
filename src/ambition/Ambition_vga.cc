@@ -67,6 +67,7 @@
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_polity.hh"
+#include "Ambition_population.hh"
 #include "Ambition_spy.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
@@ -689,6 +690,102 @@ bool drawBuildingInformationPanel(
       break;
     }
     }
+  }
+
+  if (lines.empty()) {
+    return false;
+  }
+
+  return UserInterface::drawInformationPanel(
+    UserInterface::VIEWPORT,
+    panelArea,
+    lines
+  );
+}
+bool drawBuildingInformationPanel(
+  const Town* _7kaaTown
+) {
+  if (::config.help_mode == NO_HELP) {
+    return false;
+  }
+
+  const auto townArea = UserInterface::Rectangle::fromWorldRectangle(
+    Coordinates::Rectangle::from7kaaRectangle(
+      { .x = _7kaaTown->loc_x1, .y = _7kaaTown->loc_y1 },
+      { .x = _7kaaTown->loc_x2, .y = _7kaaTown->loc_y2 }
+    )
+  );
+
+  if (::config.help_mode == BRIEF_HELP
+    && town_array.selected_recno != _7kaaTown->town_recno
+    && !UserInterface::mouseCursorInArea(townArea)
+  ) {
+    return false;
+  }
+
+  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
+  constexpr auto PANEL_HEIGHT = 70;
+
+  const auto panelArea = townArea.internal(
+    { .width = townArea.width() - PANEL_SIDE_MARGINS, .height = PANEL_HEIGHT },
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+
+  if (!UserInterface::VIEWPORT.intersects(panelArea)) {
+    return false;
+  }
+
+  std::vector<std::string> lines;
+
+  if (::config.disp_town_name) {
+    lines.push_back(_7kaaTown->town_name());
+
+    const auto raceCount = Ambition::Population::raceCount(_7kaaTown);
+    const auto countString = raceCount > 1 ? format(" (%d)", raceCount) : "";
+
+    lines.push_back(
+      format(
+        "%s: %d/%d%s",
+        _("Pop"),
+        _7kaaTown->jobless_population,
+        _7kaaTown->population,
+        countString.c_str()
+      )
+    );
+
+    const auto levelName = _7kaaTown->nation_recno ? _("Lty") : _("Rst");
+
+    const auto currentLevel
+      = _7kaaTown->nation_recno
+      ? _7kaaTown->average_loyalty()
+      : _7kaaTown->average_resistance(nation_array.player_recno);
+    const auto targetLevel
+      = _7kaaTown->nation_recno
+      ? _7kaaTown->average_target_loyalty()
+      : _7kaaTown->average_target_resistance(nation_array.player_recno);
+
+    if (targetLevel == currentLevel
+      || (!_7kaaTown->nation_recno && targetLevel >= currentLevel)
+    ) {
+      lines.push_back(format("%s: %d", levelName, currentLevel, targetLevel));
+    } else {
+      const auto iconKey = targetLevel < currentLevel ? "ARROWDWN" : "ARROWUP";
+
+      lines.push_back(
+        format(
+          "%s: %d@ICN(%s)%d",
+          levelName,
+          currentLevel,
+          iconKey,
+          targetLevel
+        )
+      );
+    }
+  }
+
+  if (::config.disp_spy_sign && _7kaaTown->has_player_spy()) {
+    lines.push_back(_("(Spy)"));
   }
 
   if (lines.empty()) {

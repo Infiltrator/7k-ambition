@@ -11,6 +11,7 @@ noinst_HEADERS = \
 	Ambition_minimap.hh \
 	Ambition_news.hh \
 	Ambition_polity.hh \
+	Ambition_population.hh \
 	Ambition_remote.hh \
 	Ambition_repository.hh \
 	Ambition_serialisation.hh \

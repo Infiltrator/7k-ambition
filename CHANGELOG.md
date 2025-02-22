@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Show an information panel for Towns, with the number of peasants, total
+  population, number of races, and loyalty or resistance.
 - Show an information panel for Fryhtan Lairs with their species name and level.
   The level is an approximate relative reflection of the species' strength and
   the gold reward for killing Ordos.  Note that this reflects only the species,

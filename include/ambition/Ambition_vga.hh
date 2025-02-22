@@ -169,6 +169,9 @@ namespace Vga {
 bool drawBuildingInformationPanel(
   const Firm* _7kaaFirm
 );
+bool drawBuildingInformationPanel(
+  const Town* _7kaaTown
+);
 
 } // namespace Ambition::Vga
 

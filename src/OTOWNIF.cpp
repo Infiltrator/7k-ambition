@@ -1691,7 +1691,7 @@ int Town::detect_spy_menu()
 //
 // Whether this town has any player spies.
 //
-int Town::has_player_spy()
+int Town::has_player_spy() const
 {
 	int i;
 	for( i=0 ; i<MAX_RACE ; i++ )

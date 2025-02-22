@@ -28,7 +28,9 @@
 #include <ranges>
 
 #define _AMBITION_IMPLEMENTATION
+#include "COLCODE.h"
 #include "KEY.h"
+#include "OIMGRES.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OSYS.h"
@@ -45,6 +47,12 @@ namespace Ambition::UserInterface {
 constexpr auto PIXELS_PER_DISTANCE = 32.0 / Coordinates::SCALING_FACTOR;
 
 
+struct Section {
+  std::string text;
+  char* bitmap;
+};
+
+
 int rankReportComparison7kaaNationRecordNumber = 0;
 
 BuildingMenu buildingMenu = BuildingMenu::_7kaa;
@@ -54,6 +62,10 @@ short selected7kaaFirmOrTownRecordNumber = 0;
 
 char _7kaaJustification(
   const HorizontalAlignment horizontalAlignment
+);
+
+std::vector<Section> processCodes(
+  const std::string text
 );
 
 
@@ -437,8 +449,24 @@ void printText(
   const VerticalAlignment verticalAlignment,
   const Rectangle& bounds
 ) {
-  const auto textWidth = font.text_width(text.c_str());
-  const auto textHeight = font.text_height();
+  const auto sections = processCodes(text);
+
+  constexpr auto BITMAP_MARGIN_LEFT = 1;
+  constexpr auto BITMAP_MARGIN_RIGHT = 2;
+  constexpr auto TOTAL_BITMAP_MARGIN = BITMAP_MARGIN_LEFT + BITMAP_MARGIN_RIGHT;
+
+  int textWidth = 0;
+  int textHeight = 0;
+  for (const auto& section : sections) {
+    if (section.bitmap) {
+      const auto iconSize = bitmapSize(section.bitmap);
+      textWidth += iconSize.width + TOTAL_BITMAP_MARGIN;
+      textHeight = std::max(textHeight, iconSize.height);
+    } else {
+      textWidth += font.text_width(section.text.c_str());
+      textHeight = std::max(textHeight, font.text_height());
+    }
+  }
 
   const auto textArea = area.internal(
     {
@@ -476,18 +504,40 @@ void printText(
   const auto bufferPitch
     = withinBounds ? vga.active_buf->buf_pitch() : drawArea.width();
 
-  const auto printArea = Rectangle::fromPoint(
+  auto printArea = Rectangle::fromPoint(
     { .left = 0, .top = 0 },
     drawArea.size()
   );
 
-  font.put_to_buffer(
-    drawBuffer,
-    bufferPitch,
-    printArea.start.left,
-    printArea.start.top,
-    text.c_str()
-  );
+  for (const auto& section : sections) {
+    if (section.bitmap) {
+      const auto iconArea
+        = printArea
+        .inner(BITMAP_MARGIN_LEFT, 0, 0, font.max_font_height - font.font_height)
+        .internal(
+          bitmapSize(section.bitmap),
+          HorizontalAlignment::Left,
+          VerticalAlignment::Centre
+        );
+      IMGbltTrans(
+        drawBuffer,
+        bufferPitch,
+        iconArea.start.left,
+        iconArea.start.top,
+        section.bitmap
+      );
+      printArea = printArea.inner(iconArea.width() + TOTAL_BITMAP_MARGIN, 0, 0);
+    } else {
+      font.put_to_buffer(
+        drawBuffer,
+        bufferPitch,
+        printArea.start.left,
+        printArea.start.top,
+        section.text.c_str()
+      );
+      printArea = printArea.inner(font.text_width(section.text.c_str()), 0, 0);
+    }
+  }
 
   if (!withinBounds) {
     const auto inside = bounds.intersection(drawArea);
@@ -537,6 +587,45 @@ char _7kaaJustification(
   }
 
   return Font::AUTO_JUSTIFY;
+}
+
+Section processSection(
+  const std::string text
+) {
+  constexpr auto ICON_CODE = "@ICN(";
+  if (text.starts_with(ICON_CODE)) {
+    const auto iconKey = text.substr(5);
+    return { "@ERR", image_icon.read(iconKey.c_str()) };
+  }
+
+  return { text, nullptr };
+}
+std::vector<Section> processCodes(
+  const std::string text
+) {
+  std::vector<Section> sections;
+
+  std::string buffer;
+  for (auto character : text) {
+    if (buffer[0] == '@') {
+      if (character == ')') {
+        sections.push_back(processSection(buffer));
+        buffer.clear();
+        continue;
+      }
+    } else {
+      if (character == '@') {
+        sections.push_back(processSection(buffer));
+        buffer.clear();
+      }
+    }
+
+    buffer.push_back(character);
+  }
+
+  sections.push_back(processSection(buffer));
+
+  return sections;
 }
 
 } // namespace Ambition::UserInterface

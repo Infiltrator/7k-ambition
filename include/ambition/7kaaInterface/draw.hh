@@ -110,6 +110,9 @@ bool buildingOccupantHitbar(
 bool buildingInformationPanel(
   const Firm* _7kaaFirm
 );
+bool buildingInformationPanel(
+  const Town* _7kaaTown
+);
 
 void buildingProgressBar(
   const Firm* firm
