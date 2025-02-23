@@ -36,6 +36,7 @@
 #include "OMOUSE.h"
 #include "OMOUSECR.h"
 #include "OSYS.h"
+#include "vga_util.h"
 
 #include "ambition/Ambition_vga.hh"
 
@@ -51,16 +52,16 @@ Config::modeString(
 ) const {
   switch (_mode) {
   case Mode::Classic:
-	 return "classic";
+	 return _("classic");
   case Mode::Enhanced:
-	 return "enhanced";
+	 return _("enhanced");
   case Mode::Advanced:
-	 return "advanced";
+    return _("advanced");
   case Mode::Ambition:
-	 return "ambition";
+    return _("ambition");
   }
 
-  return "ERROR:UNKNOWN";
+  return _("ERROR:UNKNOWN");
 }
 
 bool
@@ -127,7 +128,7 @@ void drawModeInformation(
   font_news.right_put(
     MODE_INFORMATION_RIGHT,
     MODE_INFORMATION_TOP,
-    (char*)"Current mode:"
+    _("Current mode:")
   );
   font_news.right_put(
     MODE_INFORMATION_RIGHT,
@@ -156,7 +157,7 @@ void drawModeInformation(
 void runModeSelectionScreen(
 ) {
   constexpr auto BROWSE_X1 = 30;
-  constexpr auto BROWSE_Y1 = 292;
+  constexpr auto BROWSE_Y1 = 336;
   constexpr auto SLOT_WIDTH  = 725;
   constexpr auto SLOT_HEIGHT = 44;
   constexpr auto BROWSE_X2 = BROWSE_X1 + SLOT_WIDTH - 1;
@@ -169,7 +170,7 @@ void runModeSelectionScreen(
   constexpr auto TEXT_X = BROWSE_X1 + 11;
   constexpr auto TEXT_OFFSET_Y = 9;
 
-  constexpr auto SLOT_COUNT = 5;
+  constexpr auto SLOT_COUNT = 4;
   constexpr auto MODE_SELECTION_COUNT = 2;
 
   constexpr auto BUTTON_TOP = 529;
@@ -181,16 +182,20 @@ void runModeSelectionScreen(
     const char* description;
   };
 
-  constexpr ModeText modeText[MODE_SELECTION_COUNT] = {
+  const ModeText modeText[MODE_SELECTION_COUNT] = {
     {
-      .name = "1. Classic",
-      .description = "Run everything the exact same as 7Kfans' 7kaa.  Allows"
-      " for multiplayer with 7K:AA.",
+      .name = _("I. Classic"),
+      .description = _(
+        "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer"
+        " with 7K:AA."
+      ),
     },
     {
-      .name = "2. Enhanced",
-      .description = "Add enhancements that do not affect gameplay.  Allows for"
-      " multiplayer with 7K:AA.",
+      .name = _("II. Enhanced"),
+      .description = _(
+        "Add enhancements that do not affect gameplay.  Allows for multiplayer"
+        " with 7K:AA."
+      ),
     },
   };
 
@@ -210,7 +215,9 @@ void runModeSelectionScreen(
     if (refreshFlag) {
       mouse.hide();
 
-      image_interface.put_front(0, 0, "TUTORIAL");
+      image_interface.put_front(0, 0, "SCENARIO");
+      image_interface.put_back(0, 0, "TUTORIAL");
+      vga_util.blt_buf(0, 499, 799, 599);
 
       startButton.paint();
       backButton.paint();

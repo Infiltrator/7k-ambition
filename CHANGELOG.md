@@ -17,6 +17,15 @@ speaking, considered to be the player's experience.
 
 - Fixed high CPU usage when moving the mouse cursor in-game.
 
+### Changed
+
+- Use a four-slot screen for the mode selection.  This gives more space to
+  expand the description text.
+- Use roman numerals for numbering modes on the mode selection screen.  This
+  aesthetic is more appropriate.
+- Make mode selection screen translatable.  No translations have been completed
+  yet, though.
+
 
 ## [3.0.0] — 2025-02-21
 

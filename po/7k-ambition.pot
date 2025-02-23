@@ -18,6 +18,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: src/ambition/Ambition_config.cc:55
+msgid "classic"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:57
+msgid "enhanced"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:59
+msgid "advanced"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:61
+msgid "ambition"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:64
+msgid "ERROR:UNKNOWN"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:131
+msgid "Current mode:"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:187
+msgid "I. Classic"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:189
+msgid ""
+"Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer with "
+"7K:AA."
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:194
+msgid "II. Enhanced"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:196
+msgid ""
+"Add enhancements that do not affect gameplay.  Allows for multiplayer with "
+"7K:AA."
+msgstr ""
+
 #: src/ambition/Ambition_vga.cc:203
 msgid "Speed: "
 msgstr ""
