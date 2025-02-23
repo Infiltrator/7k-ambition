@@ -66,7 +66,7 @@ bool Minimap::drawViewBoundsBox(
   /** Cycle from 0 to COLOUR_COUNT - 1 and then back down again, giving a
       colour-flashing effect. */
   const auto colourOffset
-    = std::abs((frameCount / FRAMES_PER_COLOUR) - HALF_CYCLE_COUNT);
+    = std::abs((frameCount - HALF_CYCLE_COUNT) / FRAMES_PER_COLOUR);
   vga_back.rect(x1, y1, x2, y2, 1, VGA_YELLOW + colourOffset);
 
   frameCount = (frameCount + 1) % FULL_CYCLE_COUNT;

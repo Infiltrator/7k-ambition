@@ -16,6 +16,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed high CPU usage when moving the mouse cursor in-game.
+- Fixed minimap bounding box colours.
 
 ### Changed
 
