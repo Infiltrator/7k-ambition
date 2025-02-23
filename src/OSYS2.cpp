@@ -396,6 +396,8 @@ void Sys::detect_button()
 
 	if( button_menu.detect() )
 	{
+		update_view();
+		Ambition::displayGameSpeed(0);
 		// ##### begin Gilbert 5/11 #######//
 		// game.in_game_menu();
 		in_game_menu.enter(!remote.is_enable());
@@ -575,6 +577,8 @@ void Sys::disp_frame()
 		//--------- display the map and info area --------//
 
 		disp_map();
+
+		Ambition::displayGameSpeed(config.frame_speed);
 
 		blt_virtual_buf();
 
@@ -1023,8 +1027,6 @@ void Sys::disp_zoom()
 	if( view_mode==MODE_NORMAL )
 	{
 		disp_frames_per_second();
-
-		Ambition::displayGameSpeed(config.frame_speed);
 
 		if( (remote.is_enable() || remote.is_replay()) && (remote.sync_test_level & 0x40) )
 		{

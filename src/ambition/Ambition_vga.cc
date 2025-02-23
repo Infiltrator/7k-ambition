@@ -202,7 +202,9 @@ void displayGameSpeed(
     return;
   }
 
-  vga.use_back();
+  const auto savedUseBackBuffer = vga.use_back_buf;
+
+  vga.use_front();
 
   String str = _("Speed: ");
   if (speed == 0) {
@@ -228,7 +230,9 @@ void displayGameSpeed(
     );
   }
 
-  vga.use_front();
+  if (savedUseBackBuffer) {
+    vga.use_back();
+  }
 }
 
 void drawFirmBuilderIcon(
