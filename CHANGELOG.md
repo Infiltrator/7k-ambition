@@ -21,6 +21,8 @@ speaking, considered to be the player's experience.
 
 - Use a four-slot screen for the mode selection.  This gives more space to
   expand the description text.
+- Make mode selection screen translatable.  No translations have been completed
+  yet, though.
 
 
 ## [3.0.0] — 2025-02-21

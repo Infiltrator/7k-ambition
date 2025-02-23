@@ -52,16 +52,16 @@ Config::modeString(
 ) const {
   switch (_mode) {
   case Mode::Classic:
-	 return "classic";
+	 return _("classic");
   case Mode::Enhanced:
-	 return "enhanced";
+	 return _("enhanced");
   case Mode::Advanced:
-	 return "advanced";
+    return _("advanced");
   case Mode::Ambition:
-	 return "ambition";
+    return _("ambition");
   }
 
-  return "ERROR:UNKNOWN";
+  return _("ERROR:UNKNOWN");
 }
 
 bool
@@ -128,7 +128,7 @@ void drawModeInformation(
   font_news.right_put(
     MODE_INFORMATION_RIGHT,
     MODE_INFORMATION_TOP,
-    (char*)"Current mode:"
+    _("Current mode:")
   );
   font_news.right_put(
     MODE_INFORMATION_RIGHT,
@@ -182,16 +182,20 @@ void runModeSelectionScreen(
     const char* description;
   };
 
-  constexpr ModeText modeText[MODE_SELECTION_COUNT] = {
+  const ModeText modeText[MODE_SELECTION_COUNT] = {
     {
-      .name = "1. Classic",
-      .description = "Run everything the exact same as 7Kfans' 7kaa.  Allows"
-      " for multiplayer with 7K:AA.",
+      .name = _("1. Classic"),
+      .description = _(
+        "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer"
+        " with 7K:AA."
+      ),
     },
     {
-      .name = "2. Enhanced",
-      .description = "Add enhancements that do not affect gameplay.  Allows for"
-      " multiplayer with 7K:AA.",
+      .name = _("2. Enhanced"),
+      .description = _(
+        "Add enhancements that do not affect gameplay.  Allows for multiplayer"
+        " with 7K:AA."
+      ),
     },
   };
 
