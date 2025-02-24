@@ -162,6 +162,20 @@ int calculateUnitIconY(
   return _7kaaCalculation + ICON_OFFSET;
 }
 
+int calculateWorkerPortraitX(
+  const int _7kaaCalculation,
+  const int workerIndex
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto COLUMN_COUNT = 4;
+  constexpr auto COLUMN_SIZE = 50;
+
+  return INFO_X1 + 2 + (workerIndex % COLUMN_COUNT) * COLUMN_SIZE;
+}
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64
 ) {
@@ -234,6 +248,79 @@ void displayGameSpeed(
   if (savedUseBackBuffer) {
     vga.use_back();
   }
+}
+
+bool drawBuildingOccupantHitbar(
+  const int leftX,
+  const int topY,
+  const int width,
+  const int currentHitpoints,
+  const int maximumHitpoints
+) {
+  if (!config.enhancementsAvailable()) {
+    return false;
+  }
+
+  constexpr auto HITBAR_COLOUR_COUNT = 3;
+  constexpr auto GREY_COLOUR = VGA_GRAY + 8;
+
+  struct ColourThreshold {
+    int threshold;
+    unsigned char colour;
+  };
+
+  constexpr ColourThreshold BASE_COLOUR_THRESHOLDS[HITBAR_COLOUR_COUNT] = {
+    {
+      .threshold = 0,
+      .colour = VGA_LIGHT_GREEN + 1,
+    },
+    {
+      .threshold = 50,
+      .colour = VGA_YELLOW + 1,
+    },
+    {
+      .threshold = 100,
+      .colour = VGA_PURPLE + 1,
+    },
+  };
+
+  unsigned char _baseColour;
+
+  for (auto i = 0; i < HITBAR_COLOUR_COUNT; i++) {
+    if (maximumHitpoints >= BASE_COLOUR_THRESHOLDS[i].threshold) {
+      _baseColour = BASE_COLOUR_THRESHOLDS[i].colour;
+    } else {
+      break;
+    }
+  }
+
+  const auto baseColour = _baseColour;
+  const auto darkColour = baseColour + 2;
+  const auto filledWidth = width * currentHitpoints / maximumHitpoints;
+  /** The separating point between the filled and empty areas. */
+  const auto emptyX = leftX + filledWidth;
+  const auto rightX = leftX + width;
+
+  // Top two lines filled.
+  vga_front.bar(leftX, topY, emptyX, topY + 1, baseColour);
+  // Clear out the empty portion.
+  if (filledWidth < width) {
+    vga_util.blt_buf(emptyX + 1, topY, rightX, topY + 1, V_BLACK);
+  }
+
+  // Dark line for the filled portion.
+  vga_front.bar(leftX, topY + 2, emptyX, topY + 2, darkColour);
+  // Grey line for the unfilled portion.
+  if (filledWidth < width) {
+    vga_front.bar(emptyX + 1, topY + 2, rightX, topY + 2, GREY_COLOUR);
+  }
+  // And a black pixel at the very end.
+  vga_front.bar(rightX + 1, topY + 2, rightX + 1, topY + 2, V_BLACK);
+
+  // Black underline all the way.
+  vga_front.bar(leftX + 1, topY + 3, rightX + 1, topY + 3, V_BLACK);
+
+  return true;
 }
 
 void drawFirmBuilderIcon(

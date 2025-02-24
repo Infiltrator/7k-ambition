@@ -21,6 +21,9 @@
 //Filename    : OFIRMIF.CPP
 //Description : Firm interface routines
 
+#include "ambition/Ambition_config.hh"
+#include "ambition/Ambition_vga.hh"
+
 #include <OSTR.h>
 #include <KEY.h>
 #include <OVGA.h>
@@ -51,7 +54,6 @@ static Firm*    cur_firm_ptr;
 
 //---------- Declare static function ------------//
 
-static void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints);
 static int sort_worker_id_function(const void *a, const void *b);
 
 //--------- Begin of function Firm::disp_info_both ---------//
@@ -440,6 +442,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 	{
 		workerPtr = &worker_array[worker_id_array[i]-1];
 		x = INFO_X1+4+i%4*50;
+		x = Ambition::calculateWorkerPortraitX(x, i);
 		y = dispY1+i/4*29;
 
 		if( i<worker_count )
@@ -460,7 +463,9 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 
 			//------ display hit points bar --------//
 
-			disp_worker_hit_points( x+2, y+24, x+25, workerPtr->hit_points, workerPtr->max_hit_points() );
+			const auto end
+				= x + (Ambition::config.enhancementsAvailable() ? 48 : 25);
+			disp_worker_hit_points( x+2, y+24, end, workerPtr->hit_points, workerPtr->max_hit_points() );
 
 			//----- display combat or skill level ------//
 
@@ -503,7 +508,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 			{
 				vga_front.put_bitmap( x+30, y+6, image_icon.get_ptr(spyIconName) );
 				vga_util.blt_buf( x+40, y+6, x+49, y+15, 0 );
-				vga_util.blt_buf( x+30, y+16, x+49, y+26, 0 );
+				vga_util.blt_buf( x+30, y+16, x+49, y+23, 0 );
 			}
 			else
 			{
@@ -580,8 +585,12 @@ int Firm::detect_worker_list()
 
 //--------- Begin of function disp_worker_hit_points ---------//
 //
-static void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints)
+void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints)
 {
+	if (Ambition::drawBuildingOccupantHitbar(x1, y1, x2 - x1, hitPoints, maxHitPoints)) {
+		return;
+	}
+
 	//------- determine the hit bar type -------//
 
 	#define HIT_BAR_TYPE_COUNT  3

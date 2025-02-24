@@ -442,5 +442,7 @@ protected:
 
 //------------------------------------------//
 
+void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints);
+
 #endif
 
