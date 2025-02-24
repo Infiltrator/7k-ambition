@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Added game speed display to top-right of the map and "PAUSED" in the middle.
+- Show the guest count in an inn, to make it easy to know whether scrolling is
+  even required.
 
 ### Fixed
 
@@ -20,6 +22,8 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Display inn guest list from newest at the top to oldest at the bottom, so that
+  it's quicker to check inns for new mercenaries.
 - Use a four-slot screen for the mode selection.  This gives more space to
   expand the description text.
 - Use roman numerals for numbering modes on the mode selection screen.  This

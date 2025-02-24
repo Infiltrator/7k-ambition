@@ -21,6 +21,9 @@
 //Filename    : OF_INN.CPP
 //Description : Firm Military Inn
 
+#include "ambition/Ambition_inn.hh"
+#include "ambition/Ambition_vga.hh"
+
 #include <OINFO.h>
 #include <vga_util.h>
 #include <OSTR.h>
@@ -44,17 +47,13 @@
 
 #define HIRE_BROWSE_X1 INFO_X1
 #define HIRE_BROWSE_X2 INFO_X2
-enum {
-		 HIRE_BROWSE_Y1 = INFO_Y1+52,
-		 HIRE_BROWSE_Y2 = HIRE_BROWSE_Y1+144
-	  };
+#define HIRE_BROWSE_Y1 (INFO_Y1+52 + (Ambition::config.enhancementsAvailable() ? 22 : 0))
+#define HIRE_BROWSE_Y2 (HIRE_BROWSE_Y1+144 - (Ambition::config.enhancementsAvailable() ? 8 : 0))
 
 #define HIRE_DET_X1 INFO_X1
 #define HIRE_DET_X2 INFO_X2
-enum {
-		 HIRE_DET_Y1 = HIRE_BROWSE_Y2+5,
-		 HIRE_DET_Y2 = HIRE_DET_Y1+54
-	  };
+#define HIRE_DET_Y1 (HIRE_BROWSE_Y2+5)
+#define HIRE_DET_Y2 (HIRE_DET_Y1+54 + (Ambition::config.enhancementsAvailable() ? 8 : 0))
 
 //----------- Define static variables ----------//
 
@@ -156,6 +155,8 @@ void FirmInn::put_info(int refreshFlag)
 
 	if( refreshFlag == INFO_REPAINT )
 	{
+		Ambition::drawInnGuestCount(inn_unit_count, refreshFlag);
+
 		browse_hire.init( HIRE_BROWSE_X1, HIRE_BROWSE_Y1, HIRE_BROWSE_X2, HIRE_BROWSE_Y2,
 								0, 25, inn_unit_count, put_hire_rec );
 
@@ -173,6 +174,8 @@ void FirmInn::put_info(int refreshFlag)
 			}
 
 			last_hire_count = inn_unit_count;
+
+			Ambition::drawInnGuestCount(inn_unit_count, refreshFlag);
 
 			browse_hire.refresh(-1, inn_unit_count);
 
@@ -222,13 +225,13 @@ int FirmInn::detect_info()
 	if( button_hire.detect(GETKEY(KEYEVENT_FIRM_PATROL)) && inn_unit_count > 0 )
 	{
 		// ###### begin Gilbert 31/7 #######//
-		se_res.far_sound(center_x, center_y, 1, 'S', 
-			unit_res[inn_unit_array[browse_hire.recno()-1].unit_id]->sprite_id,
+		se_res.far_sound(center_x, center_y, 1, 'S',
+			 unit_res[inn_unit_array[Ambition::getInnSelectedRecordNumber(this, browse_hire.recno())-1].unit_id]->sprite_id,
 			"RDY" );
 		// ###### end Gilbert 31/7 #######//
 		if(remote.is_enable())
 		{
-			InnUnit *innUnit = &inn_unit_array[browse_hire.recno()-1];
+         InnUnit* innUnit = &inn_unit_array[Ambition::getInnSelectedRecordNumber(this, browse_hire.recno())-1];
 			// packet structure : <firm recno> <unit id> <combat level> <skill id> <skill_level> <hire cost> <spy recno> <nation no>
 			short *shortPtr=(short *)remote.new_send_queue_msg(MSG_F_INN_HIRE, 8*sizeof(short));
 			shortPtr[0] = firm_recno;
@@ -242,7 +245,7 @@ int FirmInn::detect_info()
 		}
 		else
 		{
-			hire(browse_hire.recno());
+         hire(Ambition::getInnSelectedRecordNumber(this, browse_hire.recno()));
 		}
 		return 1;
 	}
@@ -374,7 +377,7 @@ void FirmInn::put_det(int refreshFlag)
 
 	//--------- display details ----------//
 
-	InnUnit* innUnit = inn_unit_array+browse_hire.recno()-1;
+	InnUnit* innUnit = inn_unit_array+Ambition::getInnSelectedRecordNumber(this, browse_hire.recno())-1;
 
 	disp_unit_info(HIRE_DET_Y1, innUnit, refreshFlag );
 
@@ -451,7 +454,7 @@ void FirmInn::disp_unit_info(int dispY1, InnUnit* hireInfoPtr, int refreshFlag)
 //
 static void put_hire_rec(int recNo, int x, int y, int refreshFlag)
 {
-	InnUnit* innUnit = firm_inn_ptr->inn_unit_array+recNo-1;
+	InnUnit* innUnit = firm_inn_ptr->inn_unit_array+Ambition::getInnSelectedRecordNumber(firm_inn_ptr, recNo)-1;
 
 	//-------- display unit icon -------//
 
@@ -524,6 +527,8 @@ void FirmInn::update_add_hire_list()
 
 			if( unitId )
 				add_inn_unit(unitId);
+
+			Ambition::refreshInnBrowser(firm_recno, this, browse_hire, inn_unit_count + 1, button_hire);
 		}
 	}
 }
@@ -547,6 +552,9 @@ void FirmInn::update_del_hire_list()
 			{
 				if( browse_hire.recno() > i && browse_hire.recno() > 1 )
 					browse_hire.refresh( browse_hire.recno()-1, inn_unit_count );
+				else {
+					Ambition::refreshInnBrowser(firm_recno, this, browse_hire, i, button_hire);
+				}
 			}
 		}
 	}

@@ -41,6 +41,7 @@
 #include "OSYS.h"
 #include "OTERRAIN.h"
 #include "OUNIT.h"
+#include "vga_util.h"
 
 #include "ambition/Ambition_config.hh"
 
@@ -315,6 +316,38 @@ void drawFirmHitBar(
     barY,
     barWidth,
     BAR_HEIGHT
+  );
+}
+
+void drawInnGuestCount(
+  const short count,
+  const int refreshFlag
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto panelLeft = INFO_X1;
+  constexpr auto PANEL_TOP = INFO_Y1 + 50;
+  const auto panelRight = INFO_X2;
+  constexpr auto PANEL_BOTTOM = PANEL_TOP + 24;
+  const auto fieldLeft = panelLeft + 4;
+  const auto fieldValueLeft = fieldLeft + 100;
+  const auto fieldRight = panelRight - 4;
+  constexpr auto FIELD_TOP = PANEL_TOP + 3;
+
+  if (refreshFlag == INFO_REPAINT) {
+    vga_util.d3_panel_up(panelLeft, PANEL_TOP, panelRight, PANEL_BOTTOM);
+  }
+  font_san.field(
+    fieldLeft,
+    FIELD_TOP,
+    _("Guests"),
+    fieldValueLeft,
+    count,
+    1,
+    fieldRight,
+    refreshFlag
   );
 }
 

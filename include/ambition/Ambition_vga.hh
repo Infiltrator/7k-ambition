@@ -130,6 +130,11 @@ void drawHitbarOutline(
   const int height
 );
 
+void drawInnGuestCount(
+  const short count,
+  const int refreshFlag
+);
+
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
  *
