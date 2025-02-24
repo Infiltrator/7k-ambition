@@ -624,7 +624,7 @@ void Game::single_player_menu()
 
 						if( game_file_array.load_game() == 1)
 						{
-							sys.set_speed(9, COMMAND_AUTO);
+							sys.set_speed(DEFAULT_SPEED, COMMAND_AUTO);
 							battle.run_loaded();
 							deinit();
 						}

@@ -1025,7 +1025,7 @@ void Game::load_mp_game(char *fileName, int lobbied, char *game_host)
 
 	sys.signal_exit_flag = 0; // Richard 24-12-2013: If player tried to exit just as the game loaded, cancel the exit request
 
-	sys.set_speed(9, COMMAND_AUTO);	// set load game speed
+	sys.set_speed(DEFAULT_SPEED, COMMAND_AUTO);	// set load game speed
 
 	battle.run_loaded();		// 1-multiplayer game
 
