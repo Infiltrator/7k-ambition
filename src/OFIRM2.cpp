@@ -22,6 +22,9 @@
 //Description : Class Firm - part 2
 
 #include <OFIRM.h>
+
+#include "ambition/Ambition_unit.hh"
+
 #include <OTOWN.h>
 #include <OSPY.h>
 #include <ORACERES.h>
@@ -239,6 +242,10 @@ int Firm::find_idle_builder(int nearest)
 
 void Firm::send_idle_builder_here(char remoteAction)
 {
+	if (!remoteAction && Ambition::sendAvailableBuilderToFirm(this)) {
+		return;
+	}
+
 	if( builder_recno )
 		return;
 

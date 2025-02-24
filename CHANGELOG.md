@@ -24,6 +24,8 @@ speaking, considered to be the player's experience.
 
 - Display inn guest list from newest at the top to oldest at the bottom, so that
   it's quicker to check inns for new mercenaries.
+- Preferentially use builders from undamaged buildings further away instead of
+  from closer buildings that are still not fully repaired.
 - Use a four-slot screen for the mode selection.  This gives more space to
   expand the description text.
 - Use roman numerals for numbering modes on the mode selection screen.  This
