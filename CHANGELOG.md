@@ -14,6 +14,8 @@ speaking, considered to be the player's experience.
 - Added game speed display to top-right of the map and "PAUSED" in the middle.
 - Show the guest count in an inn, to make it easy to know whether scrolling is
   even required.
+- Show the amount that non-spy units have been rewarded, so that it's easier to
+  tell the effects of the contribution on loyalty.
 
 ### Fixed
 

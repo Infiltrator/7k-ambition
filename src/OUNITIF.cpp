@@ -21,6 +21,8 @@
 //Filename    : OUNITIF.CPP
 //Description : Unit Interface Routines
 
+#include "ambition/Ambition_vga.hh"
+
 #include <KEY.h>
 #include <OVGA.h>
 #include <vga_util.h>
@@ -1189,6 +1191,8 @@ void Unit::disp_unit_info(int dispY1, int refreshFlag)
 
 	if( !is_civilian() && rank_id != RANK_KING )
 		font_san.field( x, y, _("Contribution"), x+92, nation_contribution, 1, INFO_X2-2, refreshFlag);
+
+   Ambition::displayUnitContribution(this, x, y);
 }
 //----------- End of function Unit::disp_unit_info -----------//
 
