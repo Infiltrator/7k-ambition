@@ -7,7 +7,11 @@ and this project softly adheres to [Semantic
 Versioning](https://semver.org/spec/v2.0.0.html) where the API is, roughly
 speaking, considered to be the player's experience.
 
+
 ## [Unreleased]
+
+
+## [3.0.1] — 2025-02-25
 
 ### Added
 
@@ -19,7 +23,9 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
-- Fixed high CPU usage when moving the mouse cursor in-game.
+- Fixed high CPU usage when moving the mouse cursor in-game.  This should also
+  fix the unit path line looking like it's moving when the mouse cursor is
+  moved.
 - Fixed minimap bounding box colours.
 
 ### Changed
