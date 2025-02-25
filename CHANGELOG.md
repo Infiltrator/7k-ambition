@@ -10,6 +10,13 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added access to speeds 9 and 10 using the `9` and `0` keys.  Unlimited speed
+  has been moved to `\`, and pause toggle is already done with Space.  These can
+  be rebound using the `KEYEVENT_SPEED_SET_TO_UNLIMITED` and
+  `KEYEVENT_SPEED_TOGGLE_PAUSE` bindings in the config.txt file.
+
 ### Changed
 
 - Select sortied units only if the Fort is still selected, instead of overriding

@@ -19,6 +19,12 @@ std::vector<VersionUpdates> getVersionDetails(
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
       {
+        .heading = HEADING_ADDED,
+        .items = {
+          _("Added access to speeds 9 and 10 using the `9` and `0` keys.  Unlimited speed has been moved to `\\`, and pause toggle is already done with Space.  These can be rebound using the `KEYEVENT_ _SPEED_ _SET_ _TO_ _UNLIMITED` and `KEYEVENT_ _SPEED_ _TOGGLE_ _PAUSE` bindings in the config.txt file."),
+        },
+      },
+      {
         .heading = HEADING_CHANGED,
         .items = {
           _("Select sortied units only if the Fort is still selected, instead of overriding the selection, preventing accidentally giving orders to the wrong units in multiplayer."),

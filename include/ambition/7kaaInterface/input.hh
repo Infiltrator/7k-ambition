@@ -41,6 +41,9 @@ enum class Action {
   Common_Confirm,
   Common_Reward,
 
+  Speed_SetToUnlimited,
+  Speed_TogglePause,
+
   Spy_Assassinate,
   Spy_Bribe,
   Spy_Capture,
@@ -157,6 +160,10 @@ void detectScenarioScroll(
   SlideVBar& scrollBar,
   SlideVBar& descriptionScrollBar,
   int& refreshFlag
+);
+
+bool detectSpeedChangeKeys(
+  const unsigned int keyCode
 );
 
 bool detectSpyScroll(

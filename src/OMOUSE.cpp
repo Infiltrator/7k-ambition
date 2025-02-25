@@ -3,6 +3,7 @@
  *
  * Copyright 1997,1998 Enlight Software Ltd.
  * Copyright 2010,2015 Jesse Allen
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -232,6 +233,8 @@ void Mouse::init_key()
 
 	bind_key(KEYEVENT_CANCEL, "Escape");
 	bind_key(KEYEVENT_CONFIRM, "Return");
+
+	bind_key(KEYEVENT_SPEED_SET_TO_UNLIMITED, "\\");
 
 	bind_key(KEYEVENT_UNIT_REWARD, "W");
 
