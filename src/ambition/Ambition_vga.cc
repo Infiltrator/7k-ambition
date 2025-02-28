@@ -223,6 +223,18 @@ void delayFrame(
   }
 }
 
+int centreHitbar(
+  const int left,
+  const int maximumWidth,
+  const int currentWidth
+) {
+  if (!config.enhancementsAvailable()) {
+    return left;
+  }
+
+  return left + (maximumWidth - currentWidth) / 2;
+}
+
 void displayGameSpeed(
   int speed
 ) {

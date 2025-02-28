@@ -77,6 +77,12 @@ int calculateWorkerPortraitX(
   const int workerIndex
 );
 
+int centreHitbar(
+  const int left,
+  const int maximumWidth,
+  const int currentWidth
+);
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
