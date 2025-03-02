@@ -66,6 +66,28 @@ void drawHitbar(
 );
 
 
+short calculateAnimatedLinePhase(
+  const short _7kaaCalculation,
+  const int animatedFlag,
+  const int lineProgress
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto PHASE_COUNT = 8;
+  constexpr auto PHASES_PER_SECOND = 60;
+  constexpr auto MILLISECONDS_PER_PHASE = 1000 / PHASES_PER_SECOND;
+
+  const auto timeProgress
+    = animatedFlag
+    ? SDL_GetTicks64() / PHASES_PER_SECOND
+    : 0;
+
+  return (unsigned short)(lineProgress - timeProgress) % PHASE_COUNT;
+}
+
+
 FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm

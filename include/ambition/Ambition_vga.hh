@@ -34,6 +34,12 @@ struct FirmBitmap;
 
 namespace Ambition {
 
+short calculateAnimatedLinePhase(
+  const short _7kaaCalculation,
+  const int animatedFlag,
+  const int lineProgress
+);
+
 FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm

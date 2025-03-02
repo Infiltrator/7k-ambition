@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the unit path line (and building connection lines) animation speed
+  breaking on game speed unlimited (9).  This should also fix the issue some
+  users were having where moving the mouse would speed up the line animation.
+
 ### Changed
 
 - Scale unit hitbar widths with the (square root of) their maximum hitpoints, to
