@@ -86,6 +86,57 @@ FirmBitmap* calculateFirmBitmap(
   return _7kaaCalculation;
 }
 
+int calculateHitbarBaseColour(
+  const int _7kaaCalculation,
+  const double maximumHitpoints
+) {
+  if (!config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto HITBAR_COLOUR_COUNT = 6;
+
+  struct ColourThreshold {
+    int threshold;
+    unsigned char colour;
+  };
+
+  constexpr ColourThreshold COLOUR_THRESHOLDS[HITBAR_COLOUR_COUNT] = {
+    {
+      .threshold = -1,
+      .colour = VGA_DARK_GREEN,
+    },
+    {
+      .threshold = 60,
+      .colour = VGA_LIGHT_GREEN,
+    },
+    {
+      .threshold = 95,
+      .colour = VGA_YELLOW,
+    },
+    {
+      .threshold = 130,
+      .colour = VGA_ORANGE,
+    },
+    {
+      .threshold = 165,
+      .colour = VGA_PURPLE,
+    },
+    {
+      .threshold = 200,
+      .colour = VGA_RED,
+    },
+  };
+
+  for (auto i = 0; i < HITBAR_COLOUR_COUNT; i++) {
+    if (maximumHitpoints < COLOUR_THRESHOLDS[i].threshold) {
+      return COLOUR_THRESHOLDS[i - 1].colour;
+    }
+  }
+
+  return COLOUR_THRESHOLDS[HITBAR_COLOUR_COUNT - 1].colour;
+}
+
 int calculateHitbarWidth(
   const int availableWidth,
   const double maximumHitpoints
@@ -318,40 +369,9 @@ bool drawBuildingOccupantHitbar(
     return false;
   }
 
-  constexpr auto HITBAR_COLOUR_COUNT = 3;
   constexpr auto GREY_COLOUR = VGA_GRAY + 8;
 
-  struct ColourThreshold {
-    int threshold;
-    unsigned char colour;
-  };
-
-  constexpr ColourThreshold BASE_COLOUR_THRESHOLDS[HITBAR_COLOUR_COUNT] = {
-    {
-      .threshold = 0,
-      .colour = VGA_LIGHT_GREEN + 1,
-    },
-    {
-      .threshold = 50,
-      .colour = VGA_YELLOW + 1,
-    },
-    {
-      .threshold = 100,
-      .colour = VGA_PURPLE + 1,
-    },
-  };
-
-  unsigned char _baseColour;
-
-  for (auto i = 0; i < HITBAR_COLOUR_COUNT; i++) {
-    if (maximumHitpoints >= BASE_COLOUR_THRESHOLDS[i].threshold) {
-      _baseColour = BASE_COLOUR_THRESHOLDS[i].colour;
-    } else {
-      break;
-    }
-  }
-
-  const auto baseColour = _baseColour;
+  const auto baseColour = calculateHitbarBaseColour(-1, maximumHitpoints) + 1;
   const auto darkColour = baseColour + 2;
   const auto filledWidth = width * currentHitpoints / maximumHitpoints;
   /** The separating point between the filled and empty areas. */
