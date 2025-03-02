@@ -26,6 +26,7 @@
 #include "Ambition_vga.hh"
 
 #include <algorithm>
+#include <cmath>
 #include <gettext.h>
 #include <SDL_events.h>
 #include <SDL_timer.h>
