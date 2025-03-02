@@ -39,6 +39,11 @@ FirmBitmap* calculateFirmBitmap(
   Firm* firm
 );
 
+int calculateHitbarWidth(
+  const int availableWidth,
+  const double maximumHitpoints
+);
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 );
@@ -70,6 +75,12 @@ int calculateUnitIconY(
 int calculateWorkerPortraitX(
   const int _7kaaCalculation,
   const int workerIndex
+);
+
+int centreHitbar(
+  const int left,
+  const int maximumWidth,
+  const int currentWidth
 );
 
 void delayFrame(

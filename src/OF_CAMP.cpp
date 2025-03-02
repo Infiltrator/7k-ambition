@@ -620,7 +620,7 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 	Ambition::drawBuildingOccupantHitbar(
 		INFO_X1,
 		y,
-		INFO_X2 - INFO_X1 - 2,
+		Ambition::calculateHitbarWidth(INFO_X2 - INFO_X1 - 2, overseerUnit->max_hit_points),
 		overseerUnit->hit_points,
 		overseerUnit->max_hit_points
 	);

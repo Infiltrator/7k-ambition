@@ -232,7 +232,8 @@ void Unit::draw_selected()
 	//----------- set other vars -----------//
 
 	char* dataPtr = sys.common_data_buf;
-	int   curBarWidth = maxHitBarWidth * max_hit_points / hitBarMax;
+	int   curBarWidth = Ambition::calculateHitbarWidth(maxHitBarWidth, max_hit_points);
+	dispX1 = Ambition::centreHitbar(dispX1, maxHitBarWidth, curBarWidth);
 	int   pointX = (curBarWidth-1) * (int) hit_points / max_hit_points;	// the separating point between the area with hit point and the area without
 
 	err_when( max_hit_points > hitBarMax );
