@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # This script uses mingw and the GNU tool chain for cross-compiling under
 # linux. You can change the variables to not cross-compile for running
 # with MSYS on windows. Whichever you choose, you need to provide the
