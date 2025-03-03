@@ -895,8 +895,8 @@ void drawHitbarOutline(
 
   IMGbar(dataPtr, pitch, 1, 1, width, height, 0xFF);
   IMGbar(dataPtr, pitch, 0, 0, width + 1, 0, outlineColour);
-  IMGbar(dataPtr, pitch, 0, 0, 0, height + 1, outlineColour);
-  IMGbar(dataPtr, pitch, 1, height + 1, width + 1, height + 1, shadowColour);
+  IMGbar(dataPtr, pitch, 0, 0, 0, height, outlineColour);
+  IMGbar(dataPtr, pitch, 0, height + 1, width + 1, height + 1, shadowColour);
   IMGbar(dataPtr, pitch, width + 1, 1, width + 1, height + 1, shadowColour);
 
   world.zoom_matrix->put_bitmap_clip(x - 1, y - 1, sys.common_data_buf);
