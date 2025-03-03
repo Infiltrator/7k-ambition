@@ -149,6 +149,10 @@ bool drawBuildingOccupantHitbar(
   const int maximumHitpoints
 );
 
+void drawBuildingProgressBar(
+  Firm* firm
+);
+
 /**
  * Draw a builder icon for the firm if it has a builder.
  *
