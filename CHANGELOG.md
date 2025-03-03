@@ -27,6 +27,9 @@ speaking, considered to be the player's experience.
   give a better idea of units' toughness at a glance.
 - Add more hitbar colours (dark green, orange, red) to make judging unit
   tougness easier.
+- Draw town/building link lines consistently in the same direction, regardless
+  of which side is selected.  Since some links make sense only as bi-directional
+  flow, these links are drawn alternating in both direction.
 
 
 ## [3.0.1] — 2025-02-25

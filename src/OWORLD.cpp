@@ -22,6 +22,7 @@
 //Description : Object World
 
 #include "ambition/Ambition_input.hh"
+#include "ambition/Ambition_vga.hh"
 
 #include "OCONFIG.h"
 #include <OSYS.h>
@@ -1361,7 +1362,7 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 			townY = ( ZOOM_Y1 + (townPtr->loc_y1-zoom_matrix->top_y_loc) * ZOOM_LOC_HEIGHT
 					  + ZOOM_Y1 + (townPtr->loc_y2-zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
-			anim_line.draw_line(&vga_back, srcX, srcY, townX, townY);
+			Ambition::drawBuildingLinkLine(srcFirmId, Ambition::FIRM_ID_TOWN, srcX, srcY, townX, townY);
 		}
 	}
 
@@ -1421,7 +1422,7 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 		firmY = ( ZOOM_Y1 + (firmPtr->loc_y1-zoom_matrix->top_y_loc) * ZOOM_LOC_HEIGHT
 				  + ZOOM_Y1 + (firmPtr->loc_y2-zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
-		anim_line.draw_line(&vga_back, srcX, srcY, firmX, firmY);
+		Ambition::drawBuildingLinkLine(srcFirmId, firmPtr->firm_id, srcX, srcY, firmX, firmY);
 	}
 }
 //----------- End of function World::draw_link_line ------------//
