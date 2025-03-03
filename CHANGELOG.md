@@ -20,6 +20,7 @@ speaking, considered to be the player's experience.
 - Fixed the unit path line (and building connection lines) animation speed
   breaking on game speed unlimited (9).  This should also fix the issue some
   users were having where moving the mouse would speed up the line animation.
+- Fixed the building hitbars looking kind of off and tilted.
 
 ### Changed
 
@@ -30,6 +31,8 @@ speaking, considered to be the player's experience.
 - Draw town/building link lines consistently in the same direction, regardless
   of which side is selected.  Since some links make sense only as bi-directional
   flow, these links are drawn alternating in both direction.
+- Darkened the bottom-left pixel of the hitbar outline to make it look more in
+  place.
 
 
 ## [3.0.1] — 2025-02-25
