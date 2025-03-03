@@ -82,7 +82,7 @@ public:
 
 	char			is_attack_camp;
 
-	int 			total_combat_level();
+	int total_combat_level() const;
 	int 			average_combat_level();
 	int 			ai_combat_level_needed();
 

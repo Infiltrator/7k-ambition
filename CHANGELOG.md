@@ -14,6 +14,9 @@ speaking, considered to be the player's experience.
 
 - Show an information panel for Towns, with the number of peasants, total
   population, number of races, and loyalty or resistance.
+- Show an information panel for Forts, with the general or king leadership
+  level, number of soldiers, and the approximate total strength, including the
+  effects of the leader.
 - Show an information panel for Fryhtan Lairs with their species name and level.
   The level is an approximate relative reflection of the species' strength and
   the gold reward for killing Ordos.  Note that this reflects only the species,

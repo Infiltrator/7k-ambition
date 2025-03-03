@@ -38,6 +38,7 @@
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
 #include "OCONFIG.h"
+#include "OF_CAMP.h"
 #include "OF_HARB.h"
 #include "OF_INN.h"
 #include "OF_MARK.h"
@@ -633,6 +634,10 @@ namespace Vga {
 bool drawBuildingInformationPanel(
   const Firm* _7kaaFirm
 ) {
+  if (_7kaaFirm->under_construction) {
+    return false;
+  }
+
   if (::config.help_mode == NO_HELP) {
     return false;
   }
@@ -651,11 +656,13 @@ bool drawBuildingInformationPanel(
     return false;
   }
 
+  constexpr auto BUILDER_ICON_CLEARANCE = 12;
   constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
 
   const auto height = 54;
   const auto panelArea
     = firmArea
+    .inner(0, BUILDER_ICON_CLEARANCE, 0, 0)
     .internal(
       { .width = firmArea.width() - PANEL_SIDE_MARGINS, .height = height },
       UserInterface::HorizontalAlignment::Centre,
@@ -680,12 +687,40 @@ bool drawBuildingInformationPanel(
 
   if (_7kaaFirm->should_show_info()) {
     switch (_7kaaFirm->firm_id) {
+    case FIRM_CAMP:
+      if (_7kaaFirm->overseer_recno) {
+        lines.push_back(
+          format(
+            _("Ldr: %d"),
+            unit_array[_7kaaFirm->overseer_recno]->skill.skill_level
+          )
+        );
+      } else {
+        lines.push_back(_("No general"));
+      }
+      break;
+
     case FIRM_MONSTER: {
       const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
       assert(_7kaaFryhtanLair);
 
       lines.push_back(
         format(_("Ordos: %d"), _7kaaFryhtanLair->monster_general_count)
+      );
+      break;
+    }
+    }
+
+    switch (_7kaaFirm->firm_id) {
+    case FIRM_CAMP: {
+      const auto _7kaaCamp = dynamic_cast<const FirmCamp*>(_7kaaFirm);
+      assert(_7kaaCamp);
+      lines.push_back(
+        format(
+          ngettext("%d sld (%.0f)", "%d sld (%.0f)", _7kaaCamp->worker_count),
+          _7kaaCamp->worker_count,
+          _7kaaCamp->total_combat_level() / 10.0
+        )
       );
       break;
     }
