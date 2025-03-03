@@ -34,6 +34,8 @@
 #include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OF_MARK.h"
+#include "OF_RESE.h"
+#include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OFONT.h"
 #include "OIMGRES.h"
@@ -42,6 +44,7 @@
 #include "OSNOW.h"
 #include "OSTR.h"
 #include "OSYS.h"
+#include "OTECHRES.h"
 #include "OTERRAIN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
@@ -604,6 +607,59 @@ bool drawBuildingOccupantHitbar(
   vga_front.bar(leftX + 1, topY + 3, rightX + 1, topY + 3, V_BLACK);
 
   return true;
+}
+
+void drawBuildingProgressBar(
+  Firm* firm
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (firm->nation_recno != nation_array.player_recno) {
+    return;
+  }
+
+  if (firm->firm_id != FIRM_RESEARCH && firm->firm_id != FIRM_WAR_FACTORY) {
+    return;
+  }
+
+  auto progress = 0.0;
+
+  if (firm->firm_id == FIRM_RESEARCH) {
+    if (!((FirmResearch*) firm)->tech_id) {
+      return;
+    }
+
+    progress
+      = (tech_res[((FirmResearch*) firm)->tech_id]
+         ->get_progress(nation_array.player_recno))
+      / 100.0;
+  } else if (firm->firm_id == FIRM_WAR_FACTORY) {
+    if (!((FirmWar*) firm)->build_unit_id) {
+      return;
+    }
+
+    progress
+      = ((FirmWar*) firm)->build_progress_days
+      / unit_res[((FirmWar*) firm)->build_unit_id]->build_days;
+  }
+
+  const auto barWidth = ZOOM_LOC_WIDTH * (firm->loc_x2 - firm->loc_x1 + 1);
+  constexpr auto BAR_HEIGHT = 3;
+
+  const auto barLeft = firm->loc_x1 * ZOOM_LOC_WIDTH - world.view_top_x + ZOOM_X1;
+  const auto barTop = firm->loc_y1 * ZOOM_LOC_HEIGHT - world.view_top_y + ZOOM_Y1 + 9;
+
+  drawHitbar(
+    firm->own_firm(),
+    VGA_YELLOW,
+    progress,
+    barLeft,
+    barTop,
+    barWidth,
+    BAR_HEIGHT
+  );
 }
 
 void drawFirmBuilderIcon(

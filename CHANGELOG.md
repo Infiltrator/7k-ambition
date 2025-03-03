@@ -14,6 +14,7 @@ speaking, considered to be the player's experience.
 
 - Show town goods demand satisfaction (quality of life) to know how much goods
   are demanded and how much are being supplied—and thus the level of the bonus.
+- Show a progress bar for Towers of Science and War Factories.
 
 ### Fixed
 
