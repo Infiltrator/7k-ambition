@@ -149,13 +149,6 @@ bool drawBuildingOccupantHitbar(
   const int maximumHitpoints
 );
 
-bool initialiseSnowLayer(
-  SnowLayer& layer,
-  const int level,
-  const char animationSpeed,
-  double slideSpeed
-);
-
 /**
  * Draw a builder icon for the firm if it has a builder.
  *
@@ -201,6 +194,13 @@ void drawHitbarOutline(
 void drawInnGuestCount(
   const short count,
   const int refreshFlag
+);
+
+bool initialiseSnowLayer(
+  SnowLayer& layer,
+  const int level,
+  const char animationSpeed,
+  double slideSpeed
 );
 
 /**
