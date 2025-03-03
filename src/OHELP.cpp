@@ -21,6 +21,8 @@
 //Filename    : OHELP.CPP
 //Description : Object Help
 
+#include "ambition/Ambition_vga.hh"
+
 #include <ALL.h>
 #include "OCONFIG.h"
 #include <OSYS.h>
@@ -455,6 +457,8 @@ void Help::disp_help(int centerX, int centerY, const char* helpTitle, const char
 		music.yield();
 
 		mouse.get_event();
+
+      Ambition::delayFrame();
 	}
 
 	help.rest_scr();

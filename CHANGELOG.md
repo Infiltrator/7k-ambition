@@ -21,6 +21,7 @@ speaking, considered to be the player's experience.
   breaking on game speed unlimited (9).  This should also fix the issue some
   users were having where moving the mouse would speed up the line animation.
 - Fixed the building hitbars looking kind of off and tilted.
+- Fix high CPU usage on showing help on hover.
 
 ### Changed
 
