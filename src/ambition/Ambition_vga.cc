@@ -829,7 +829,7 @@ void drawHitbar(
   dataPtr += sizeof(short) * 2;
 
   const auto bottomY = height - 1;
-  const auto darkY = bottomY - 2;
+  const auto darkY = bottomY - (height >= 5 ? 1 : 0);
 
 #define drawBar(x1, y1, x2, y2, colour) \
   IMGbar(dataPtr, pitch, (x1), (y1), (x2), (y2), (colour))
@@ -846,13 +846,13 @@ void drawHitbar(
 
   // Dark right line.
   if (emptyX == width - 1) { // Filled.
-    drawBar(width - 1, 1, width - 1, 1, HITBAR_DARK_BORDER_COLOUR);
+    drawBar(width - 1, 1, width - 1, darkY, HITBAR_DARK_BORDER_COLOUR);
   } else { // Empty.
-    drawBar(width - 1, 1, width - 1, 1, EMPTY_DARK_BORDER_COLOUR);
+    drawBar(width - 1, 1, width - 1, darkY, EMPTY_DARK_BORDER_COLOUR);
   }
 
   // Bar body filled.
-  drawBar(1, 1, std::min(emptyX, width - 2), 1, HITBAR_BODY_COLOUR);
+  drawBar(1, 1, std::min(emptyX, width - 2), darkY, HITBAR_BODY_COLOUR);
   // Bar body empty.
   if (emptyX < width - 2) {
     drawBar(emptyX + 1, 1, width - 2, darkY, EMPTY_BODY_COLOUR);
