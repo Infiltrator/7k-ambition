@@ -32,6 +32,7 @@
 #include <SDL_timer.h>
 
 #include "OAUDIO.h"
+#include "OF_MARK.h"
 #include "OFIRM.h"
 #include "OFONT.h"
 #include "OIMGRES.h"
@@ -347,6 +348,44 @@ void displayGameSpeed(
   if (savedUseBackBuffer) {
     vga.use_back();
   }
+}
+
+void displayTownQualityOfLife(
+  Town* town,
+  const int refreshFlag,
+  const int displayTop
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  // Only show for the town's owner.
+  if (town->nation_recno != nation_array.player_recno) {
+    return;
+  }
+
+  if (refreshFlag == INFO_REPAINT) {
+    vga_util.d3_panel_up(INFO_X1, displayTop, INFO_X2, displayTop + 21);
+  }
+
+  const auto goodsDemand
+    = town->jobless_population * PEASANT_GOODS_MONTH_DEMAND
+    + town->worker_population() * WORKER_GOODS_MONTH_DEMAND;
+
+  String str;
+  str = misc.format(town->quality_of_life, 3);
+  str += "/";
+  str += misc.format(goodsDemand, 1);
+
+  font_san.field(
+    INFO_X1 + 2,
+    displayTop + 2,
+    _("Goods supplied"),
+    INFO_X1 + 112,
+    str,
+    INFO_X2 - 2,
+    refreshFlag
+  );
 }
 
 void displayUnitContribution(

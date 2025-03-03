@@ -27,6 +27,7 @@
 
 class Firm;
 class SnowLayer;
+class Town;
 class Unit;
 class VgaBuf;
 struct FirmBitmap;
@@ -106,6 +107,12 @@ void delayFrame(
  */
 void displayGameSpeed(
   int speed
+);
+
+void displayTownQualityOfLife(
+  Town* town,
+  const int refreshFlag,
+  const int displayTop
 );
 
 void displayUnitContribution(

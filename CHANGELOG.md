@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show town goods demand satisfaction (quality of life) to know how much goods
+  are demanded and how much are being supplied—and thus the level of the bonus.
+
 ### Fixed
 
 - Fixed the unit path line (and building connection lines) animation speed
