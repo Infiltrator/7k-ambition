@@ -204,7 +204,7 @@ int Town::draw_detect_link_line(int actionDetect)
 		firmY = ( ZOOM_Y1 + (firmPtr->loc_y1-world.zoom_matrix->top_y_loc) * ZOOM_LOC_HEIGHT
 				  + ZOOM_Y1 + (firmPtr->loc_y2-world.zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
-		anim_line.draw_line(&vga_back, srcX, srcY, firmX, firmY, linked_firm_enable_array[i]==LINK_EE );
+		Ambition::drawBuildingLinkLine(Ambition::FIRM_ID_TOWN, firmPtr->firm_id, srcX, srcY, firmX, firmY, linked_firm_enable_array[i]==LINK_EE);
 
 		if( !can_toggle_firm_link(linked_firm_array[i]) )
 			continue;
@@ -294,7 +294,7 @@ int Town::draw_detect_link_line(int actionDetect)
 				  + ZOOM_Y1 + (townPtr->loc_y2-world.zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
 		if ( !awesome_lines_flag || (townPtr->nation_recno != nation_array.player_recno) )
-			anim_line.draw_line(&vga_back, srcX, srcY, townX, townY, linked_town_enable_array[i]==LINK_EE );
+			Ambition::drawBuildingLinkLine(Ambition::FIRM_ID_TOWN, Ambition::FIRM_ID_TOWN, srcX, srcY, townX, townY, linked_town_enable_array[i]==LINK_EE);
 	}
 
 	//------------ detect on the migration icon ------------//
@@ -321,7 +321,7 @@ int Town::draw_detect_link_line(int actionDetect)
 			// If awesome_lines_flag is true then draw the aminated lines on all towns in the town-network
 			if (awesome_lines_flag)
 			{
-				anim_line.draw_line(&vga_back, srcX, srcY, townX, townY, 1 /*-animated*/);
+				Ambition::drawBuildingLinkLine(Ambition::FIRM_ID_TOWN, Ambition::FIRM_ID_TOWN, srcX, srcY, townX, townY);
 			}
 
 			// Only perform checks on migration (draw/detect) when the 'active' part of the town is within

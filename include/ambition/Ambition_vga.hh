@@ -35,6 +35,9 @@ struct FirmBitmap;
 
 namespace Ambition {
 
+constexpr auto FIRM_ID_TOWN = 0;
+
+
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,
   const int animatedFlag,
@@ -119,6 +122,17 @@ void displayUnitContribution(
   Unit* unit,
   const int x,
   const int y
+);
+
+void drawBuildingLinkLine(
+  const int sourceFirmId,
+  const int destinationFirmId,
+  int sourceLeft,
+  int sourceTop,
+  int destinationLeft,
+  int destinationTop,
+  const bool animated = true,
+  const bool thick = false
 );
 
 /**

@@ -31,6 +31,7 @@
 #include <SDL_events.h>
 #include <SDL_timer.h>
 
+#include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OF_MARK.h"
 #include "OFIRM.h"
@@ -417,6 +418,150 @@ void displayUnitContribution(
      INFO_X2 - 2,
      INFO_SPECIAL
    );
+}
+
+void drawBuildingLinkLine(
+  const int sourceFirmId,
+  const int destinationFirmId,
+  int sourceLeft,
+  int sourceTop,
+  int destinationLeft,
+  int destinationTop,
+  const bool animated,
+  const bool thick
+) {
+  constexpr auto BI_DIRECTIONAL_CHANGE_TIME_MILLISECONDS = 1000;
+
+  enum class Direction {
+    INWARD,
+    OUTWARD,
+    BI_DIRECTIONAL,
+  };
+
+  Direction direction = Direction::OUTWARD;
+
+  if (config.enhancementsAvailable()) {
+    switch (sourceFirmId) {
+    case FIRM_ID_TOWN:
+      switch (destinationFirmId) {
+      case FIRM_CAMP:
+      case FIRM_MARKET:
+        direction = Direction::INWARD;
+        break;
+      case FIRM_BASE:
+      case FIRM_FACTORY:
+      case FIRM_MINE:
+      case FIRM_RESEARCH:
+      case FIRM_WAR_FACTORY:
+        direction = Direction::OUTWARD;
+        break;
+      case FIRM_ID_TOWN:
+        direction = Direction::BI_DIRECTIONAL;
+        break;
+      }
+      break;
+
+    case FIRM_BASE:
+    case FIRM_RESEARCH:
+    case FIRM_WAR_FACTORY:
+      switch (destinationFirmId) {
+      case FIRM_ID_TOWN:
+        direction = Direction::INWARD;
+        break;
+      }
+      break;
+
+    case FIRM_FACTORY:
+      switch (destinationFirmId) {
+      case FIRM_ID_TOWN:
+      case FIRM_MINE:
+        direction = Direction::INWARD;
+        break;
+      case FIRM_HARBOR:
+      case FIRM_MARKET:
+        direction = Direction::BI_DIRECTIONAL;
+        break;
+      }
+      break;
+
+    case FIRM_CAMP:
+      switch (destinationFirmId) {
+      case FIRM_ID_TOWN:
+        direction = Direction::OUTWARD;
+        break;
+      }
+      break;
+
+    case FIRM_MINE:
+      switch (destinationFirmId) {
+      case FIRM_ID_TOWN:
+        direction = Direction::INWARD;
+        break;
+      case FIRM_FACTORY:
+      case FIRM_MARKET:
+      case FIRM_HARBOR:
+        direction = Direction::OUTWARD;
+        break;
+      }
+      break;
+
+    case FIRM_MARKET:
+      switch (destinationFirmId) {
+      case FIRM_MINE:
+        direction = Direction::INWARD;
+        break;
+      case FIRM_ID_TOWN:
+        direction = Direction::OUTWARD;
+        break;
+      case FIRM_FACTORY:
+      case FIRM_HARBOR:
+        direction = Direction::BI_DIRECTIONAL;
+        break;
+      }
+      break;
+
+    case FIRM_HARBOR:
+      switch (destinationFirmId) {
+      case FIRM_MINE:
+        direction = Direction::INWARD;
+        break;
+      case FIRM_FACTORY:
+      case FIRM_MARKET:
+        direction = Direction::BI_DIRECTIONAL;
+        break;
+      }
+      break;
+    }
+  }
+
+  if (direction == Direction::INWARD
+      || (direction == Direction::BI_DIRECTIONAL
+          && (SDL_GetTicks64() / BI_DIRECTIONAL_CHANGE_TIME_MILLISECONDS) % 2 == 0)
+  ) {
+    std::swap(sourceLeft, destinationLeft);
+    std::swap(sourceTop, destinationTop);
+  }
+
+  if (thick) {
+    anim_line.thick_line(
+      &vga_back,
+      sourceLeft,
+      sourceTop,
+      destinationLeft,
+      destinationTop,
+      animated,
+      -1
+    );
+  } else {
+    anim_line.draw_line(
+      &vga_back,
+      sourceLeft,
+      sourceTop,
+      destinationLeft,
+      destinationTop,
+      animated
+    );
+  }
 }
 
 bool drawBuildingOccupantHitbar(
