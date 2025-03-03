@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.0.2] — 2025-03-04
+
 ### Added
 
 - Show town goods demand satisfaction (quality of life) to know how much goods
