@@ -33,6 +33,7 @@
 
 #include "OANLINE.h"
 #include "OAUDIO.h"
+#include "OF_HARB.h"
 #include "OF_MARK.h"
 #include "OF_RESE.h"
 #include "OF_WAR.h"
@@ -620,7 +621,10 @@ void drawBuildingProgressBar(
     return;
   }
 
-  if (firm->firm_id != FIRM_RESEARCH && firm->firm_id != FIRM_WAR_FACTORY) {
+  if (firm->firm_id != FIRM_RESEARCH
+      && firm->firm_id != FIRM_HARBOR
+      && firm->firm_id != FIRM_WAR_FACTORY
+  ) {
     return;
   }
 
@@ -635,6 +639,15 @@ void drawBuildingProgressBar(
       = (tech_res[((FirmResearch*) firm)->tech_id]
          ->get_progress(nation_array.player_recno))
       / 100.0;
+  } else if (firm->firm_id == FIRM_HARBOR) {
+    const auto harbour = (FirmHarbor*) firm;
+    if (!harbour->build_unit_id) {
+      return;
+    }
+
+    progress
+      = static_cast<double>(sys.frame_count - harbour->start_build_frame_no)
+      / (unit_res[harbour->build_unit_id]->build_days * FRAMES_PER_DAY);
   } else if (firm->firm_id == FIRM_WAR_FACTORY) {
     if (!((FirmWar*) firm)->build_unit_id) {
       return;

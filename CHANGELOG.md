@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show a progress bar for Harbours.  (They were missed when Towers of Science
+  and War Factories were done.)
+
 
 ## [3.0.2] — 2025-03-04
 
