@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.0.3] — 2025-03-07
+
 ### Added
 
 - Show a progress bar for Harbours.  (They were missed when Towers of Science
