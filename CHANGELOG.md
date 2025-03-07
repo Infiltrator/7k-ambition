@@ -15,6 +15,11 @@ speaking, considered to be the player's experience.
 - Show a progress bar for Harbours.  (They were missed when Towers of Science
   and War Factories were done.)
 
+### Fixed
+
+- Fixed the town recruitment progress bar overlapping the buttons when a spy is
+  present and the spy button is showing.
+
 
 ## [3.0.2] — 2025-03-04
 

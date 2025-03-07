@@ -55,8 +55,8 @@
 #define RACE_BROWSE_X2 INFO_X2
 enum {
 		 RACE_BROWSE_Y1 = INFO_Y1+48,
-		 RACE_BROWSE_Y2 = RACE_BROWSE_Y1+130,
 	  };
+#define RACE_BROWSE_Y2 (RACE_BROWSE_Y1+130 - (Ambition::config.enhancementsAvailable() ? 24 : 0))
 
 #define BUTTON_X1 INFO_X1
 #define BUTTON_X2 INFO_X2
