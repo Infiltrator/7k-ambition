@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Changed
+
+- Continue loading config.txt even when there are invalid lines, so that the
+  valid ones still apply.  Then, once finished loading, display all the line
+  numbers which contained errors, allowing fixing them.
+
 
 ## [3.0.3] — 2025-03-07
 

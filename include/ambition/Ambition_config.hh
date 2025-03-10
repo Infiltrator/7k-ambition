@@ -93,4 +93,14 @@ bool detectModeSelectClick();
  */
 void drawModeInformation();
 
+void report7kaaConfigLoadingErrors(
+  const char* filename
+);
+
+void set7kaaConfigOption(
+  char* key,
+  char* value,
+  const int lineNumber
+);
+
 } // namespace Ambition
