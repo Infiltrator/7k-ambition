@@ -25,6 +25,7 @@
 
 #pragma once
 
+class Button3D;
 class Firm;
 class SnowLayer;
 class Town;
@@ -198,6 +199,12 @@ void drawHitbarOutline(
 void drawInnGuestCount(
   const short count,
   const int refreshFlag
+);
+
+void drawLoadMenuDeleteButton(
+  Button3D& button,
+  const int left,
+  const int top
 );
 
 bool initialiseSnowLayer(
