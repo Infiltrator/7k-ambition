@@ -13,6 +13,7 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Added delete button to load game menu.
+- Show a progress bar on the map for town training.
 
 ### Changed
 

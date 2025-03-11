@@ -98,6 +98,8 @@ void Town::draw(int displayLayer)
 				break;
 		}
 	}
+
+   Ambition::drawTownTrainingProgressBar(this);
 }
 //-------- End of function Town::draw -----------//
 

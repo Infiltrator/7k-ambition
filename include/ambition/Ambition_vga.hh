@@ -207,6 +207,10 @@ void drawLoadMenuDeleteButton(
   const int top
 );
 
+void drawTownTrainingProgressBar(
+  const Town* town
+);
+
 bool initialiseSnowLayer(
   SnowLayer& layer,
   const int level,
