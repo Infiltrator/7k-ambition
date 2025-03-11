@@ -20,6 +20,10 @@ speaking, considered to be the player's experience.
   valid ones still apply.  Then, once finished loading, display all the line
   numbers which contained errors, allowing fixing them.
 
+### Fixed
+
+- Fixed Inn hire button being enabled/disabled incorrectly.
+
 
 ## [3.0.3] — 2025-03-07
 

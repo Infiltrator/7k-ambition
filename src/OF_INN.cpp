@@ -392,7 +392,7 @@ void FirmInn::put_det(int refreshFlag)
 		else
 		{
 			if( inn_unit_count > 0 &&
-				 (~nation_array)->cash >= inn_unit_array[browse_hire.recno()-1].hire_cost )
+				 (~nation_array)->cash >= inn_unit_array[Ambition::getInnSelectedRecordNumber(this, browse_hire.recno())-1].hire_cost )
 			{
 				button_hire.enable();
 			}
