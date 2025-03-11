@@ -201,15 +201,14 @@ int ConfigAdv::load(char *filename)
 		}
 		fileTxt.match_chars(" \t");
 
-		if( *fileTxt.data_ptr != '=' )
-			goto err_out;
-		*fileTxt.data_ptr = 0;
-		fileTxt.data_ptr++;
+		if (*fileTxt.data_ptr == '=') {
+			*fileTxt.data_ptr = 0;
+			fileTxt.data_ptr++;
+		}
 
 		fileTxt.match_chars(" \t");
 		value = fileTxt.data_ptr;
-		if( !fileTxt.match_chars_ex("\r\n\x1a") )
-			goto err_out;
+		fileTxt.match_chars_ex("\r\n\x1a");
 
 		// Preserve any newline/return so next_line() can know how to correctly position.
 		save = *fileTxt.data_ptr;
@@ -217,20 +216,15 @@ int ConfigAdv::load(char *filename)
 
 		misc.rtrim(name);
 		misc.rtrim(value);
-		if( !set(name, value) )
-			goto err_out;
+		Ambition::set7kaaConfigOption(name, value, line);
 
 		*fileTxt.data_ptr = save;
 		fileTxt.next_line();
 	}
 
-	return 1;
+	Ambition::report7kaaConfigLoadingErrors(filename);
 
-err_out:
-	String error_msg;
-	error_msg.catf(_("Error in %s at line %d"), filename, line);
-	sys.show_error_dialog(error_msg);
-	return 0;
+	return 1;
 }
 //--------- End of function ConfigAdv::load -------------//
 

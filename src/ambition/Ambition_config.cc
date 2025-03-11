@@ -26,6 +26,7 @@
 #include "Ambition_config.hh"
 
 #include <stdexcept>
+#include <vector>
 
 #include "ConfigAdv.h"
 #include "gettext.h"
@@ -42,7 +43,10 @@
 
 namespace Ambition {
 
+std::vector<int> _7kaaConfigErrorLineNumbers;
+
 void runModeSelectionScreen();
+
 
 /** The global Ambition Config. */
 Config config;
@@ -149,6 +153,41 @@ void drawModeInformation(
     buttonBitmap
   );
   mouse.show_area();
+}
+
+void report7kaaConfigLoadingErrors(
+  const char* filename
+) {
+  if (_7kaaConfigErrorLineNumbers.empty()) {
+    return;
+  }
+
+  FilePath fullPath(sys.dir_config);
+  fullPath += filename;
+
+  String report;
+  report.catf(_("Error in %s at lines:\n"), fullPath.str_buf);
+  for (const auto lineNumber : _7kaaConfigErrorLineNumbers) {
+    report.catf(_("%d, "), lineNumber);
+  }
+  report += "\n";
+  report += _(
+    "Seven Kingdoms: Ambition will continue loading using the valid lines only."
+  );
+
+  sys.show_error_dialog(report);
+}
+
+void set7kaaConfigOption(
+  char* key,
+  char* value,
+  const int lineNumber
+) {
+  const auto success = config_adv.set(key, value);
+
+  if (!success) {
+    _7kaaConfigErrorLineNumbers.push_back(lineNumber);
+  }
 }
 
 
