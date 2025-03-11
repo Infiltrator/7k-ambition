@@ -20,38 +20,23 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Control.
+ * Header file for Ambition::Entity.
  */
 
 #pragma once
 
-class VgaBuf;
 
+namespace Ambition {
 
-namespace _7kaaAmbitionInterface::Control {
+class Entity {
+public:
+  const unsigned long long int recordNumber;
 
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
-);
+  Entity(
+    unsigned long long int recordNumber
+  );
 
-void resetGameState(
-);
+  virtual ~Entity() = default;
+};
 
-/**
- * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
- *
- * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
- * and we want to control when the flips occur.
- *
- * @param buffer The VgaBuf to unlock.
- */
-void unlockBuffer(
-  VgaBuf& buffer
-);
-
-} // namespace _7kaaAmbitionInterface::Control
-
-#ifndef _AMBITION_IMPLEMENTATION
-/** Allow 7kaa to call using Ambition::*. */
-namespace Ambition = _7kaaAmbitionInterface;
-#endif
+} // namespace Ambition

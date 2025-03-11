@@ -3,10 +3,13 @@ SUBDIRS = 7kaaInterface
 noinst_LIBRARIES = libambition.a
 libambition_a_SOURCES = \
 	Ambition_config.cc \
+	Ambition_control.cc \
+	Ambition_entity.cc \
 	Ambition_inn.cc \
 	Ambition_input.cc \
 	Ambition_minimap.cc \
 	Ambition_remote.cc \
+	Ambition_repository.cc \
 	Ambition_unit.cc \
 	Ambition_version.cc \
 	Ambition_vga.cc \
