@@ -145,7 +145,7 @@ void drawBuildingLinkLine(
 bool drawBuildingOccupantHitbar(
   const int leftX,
   const int topY,
-  const int width,
+  const int maximumWidth,
   const int currentHitpoints,
   const int maximumHitpoints
 );

@@ -573,7 +573,7 @@ void drawBuildingLinkLine(
 bool drawBuildingOccupantHitbar(
   const int leftX,
   const int topY,
-  const int width,
+  const int maximumWidth,
   const int currentHitpoints,
   const int maximumHitpoints
 ) {
@@ -585,6 +585,11 @@ bool drawBuildingOccupantHitbar(
 
   const auto baseColour = calculateHitbarBaseColour(-1, maximumHitpoints) + 1;
   const auto darkColour = baseColour + 2;
+
+  const auto width = Ambition::calculateHitbarWidth(
+    maximumWidth,
+    maximumHitpoints
+  );
   const auto filledWidth = width * currentHitpoints / maximumHitpoints;
   /** The separating point between the filled and empty areas. */
   const auto emptyX = leftX + filledWidth;
@@ -608,6 +613,10 @@ bool drawBuildingOccupantHitbar(
 
   // Black underline all the way.
   vga_front.bar(leftX + 1, topY + 3, rightX + 1, topY + 3, V_BLACK);
+
+  if (rightX + 2 < leftX + maximumWidth) {
+    vga_util.blt_buf(rightX + 2, topY, leftX + maximumWidth, topY + 3, 0);
+  }
 
   return true;
 }
