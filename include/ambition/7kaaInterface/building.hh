@@ -20,45 +20,34 @@
 /**
  * @file
  *
- * Header file for Ambition::Unit.
+ * Header file for _7kaaAmbitionInterface::Building.
  */
 
 #pragma once
 
-#include <stdint.h>
 #include <vector>
 
 class Firm;
-class Unit;
 
 
-namespace Ambition {
+namespace _7kaaAmbitionInterface::Building {
 
-/**
- * Send an available builder to a Firm.
- *
- * A builder is considered to be available if he is idle or repairing a building
- * that is above a certain hitpoint percentage.
- *
- * @param firm The Firm to send a builder to.
- * @return Whether the Ambition code took effect and so the rest of the 7kaa
- * code should be skipped.
- */
-bool sendAvailableBuilderToFirm(
-  const Firm* firm
-);
-
-namespace Unit {
-
-uint8_t _7kaaRegionId(
-  ::Unit* _7kaaUnit
-);
-
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
+void clearRallyPoint(
   const Firm* _7kaaFirm
 );
 
-} // namespace Ambition::Unit
+void destroy(
+  const Firm* _7kaaFirm
+);
 
-} // namespace Ambition
+void sendUnitsToRallyPoint(
+  const Firm* _7kaaFirm,
+  const std::vector<short> _7kaaUnitRecordNumbers
+);
+
+} // namespace _7kaaAmbitionInterface::Building
+
+#ifndef _AMBITION_IMPLEMENTATION
+/** Allow 7kaa to call using Ambition::*. */
+namespace Ambition = _7kaaAmbitionInterface;
+#endif

@@ -29,6 +29,7 @@
 #include <boost/archive/xml_oarchive.hpp>
 #include <fstream>
 
+#include "Ambition_building.hh"
 #include "Ambition_entity.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_version.hh"
@@ -100,6 +101,7 @@ void read(
   boost::archive::xml_iarchive archive(saveFile);
   archive.register_type<SavefileInformation>();
   archive.register_type<Entity>();
+  archive.register_type<Building>();
 
   SavefileInformation savefileInformation;
   archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
@@ -133,6 +135,7 @@ void write(
   boost::archive::xml_oarchive archive(saveFile);
   archive.register_type<SavefileInformation>();
   archive.register_type<Entity>();
+  archive.register_type<Building>();
 
   SavefileInformation savefileInformation;
   archive << BOOST_SERIALIZATION_NVP(savefileInformation);

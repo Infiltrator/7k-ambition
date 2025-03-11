@@ -20,45 +20,27 @@
 /**
  * @file
  *
- * Header file for Ambition::Unit.
+ * Implementation file for Ambition::UserInterface.
  */
 
-#pragma once
+#include "Ambition_user_interface.hh"
 
-#include <stdint.h>
-#include <vector>
-
-class Firm;
-class Unit;
+#define _AMBITION_IMPLEMENTATION
+#include "OWORLD.h"
 
 
-namespace Ambition {
+namespace Ambition::UserInterface {
 
-/**
- * Send an available builder to a Firm.
- *
- * A builder is considered to be available if he is idle or repairing a building
- * that is above a certain hitpoint percentage.
- *
- * @param firm The Firm to send a builder to.
- * @return Whether the Ambition code took effect and so the rest of the 7kaa
- * code should be skipped.
- */
-bool sendAvailableBuilderToFirm(
-  const Firm* firm
-);
+Point fromWorldPoint(
+  Ambition::Coordinates::Point worldPoint,
+  Ambition::Coordinates::Rectangle viewport
+) {
+  const auto relative = (worldPoint - viewport.topLeft()).asCoordinates();
 
-namespace Unit {
+  return {
+    .left = static_cast<int>(ZOOM_X1 + ZOOM_LOC_WIDTH / 2 + (relative.x * 2)),
+    .top = static_cast<int>(ZOOM_Y1 + ZOOM_LOC_HEIGHT / 2 - (relative.y * 2)),
+  };
+}
 
-uint8_t _7kaaRegionId(
-  ::Unit* _7kaaUnit
-);
-
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Firm* _7kaaFirm
-);
-
-} // namespace Ambition::Unit
-
-} // namespace Ambition
+} // namespace Ambition::UserInterface

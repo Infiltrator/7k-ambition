@@ -97,6 +97,10 @@ void buildingProgressBar(
   const Town* town
 );
 
+void buildingRallyPoint(
+  Firm* _7kaaFirm
+);
+
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,
   const int animatedFlag,

@@ -20,44 +20,49 @@
 /**
  * @file
  *
- * Implementation file for _7kaaAmbitionInterface::Input.
+ * Implementation file for _7kaaAmbitionInterface::Building.
  */
 
 #define _AMBITION_IMPLEMENTATION
-#include "input.hh"
+#include "7kaaInterface/building.hh"
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
-#include "Ambition_input.hh"
+#include "Ambition_coordinates.hh"
+#include "Ambition_unit.hh"
 
 
-namespace _7kaaAmbitionInterface::Input {
+namespace _7kaaAmbitionInterface::Building {
 
-void calculateScroll(
-  int& x,
-  int& y
+void clearRallyPoint(
+  const Firm* _7kaaFirm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
   }
 
-  Ambition::calculateScroll(x, y);
+  Ambition::clearRallyPoint(_7kaaFirm);
 }
 
-bool detectModeSelectClick(
-) {
-  return Ambition::detectModeSelectClick();
-}
-
-void setOrClearRallyPoint(
-  const short _7kaaX,
-  const short _7kaaY
+void destroy(
+  const Firm* _7kaaFirm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
   }
 
-  Ambition::setOrClearRallyPoint({ .x =_7kaaX, .y = _7kaaY });
+  Ambition::destroy(_7kaaFirm);
 }
 
-} // namespace _7kaaAmbitionInterface::Input
+void sendUnitsToRallyPoint(
+  const Firm* _7kaaFirm,
+  std::vector<short> _7kaaUnitRecordNumbers
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Unit::sendToBuildingRallyPoint(_7kaaUnitRecordNumbers, _7kaaFirm);
+}
+
+} // namespace _7kaaAmbitionInterface::Building

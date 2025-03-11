@@ -21,6 +21,8 @@
 //Filename	  : OPOWER.CPP
 //Description : Object Power
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OMOUSE.h>
 #include <OMOUSECR.h>
 #include <OUNIT.h>
@@ -544,6 +546,8 @@ int Power::detect_action()
 	//### begin alex 16/10 ###//
 	if((mouse.event_skey_state & ALT_KEY_MASK))
 	{
+		Ambition::Input::setOrClearRallyPoint(curXLoc, curYLoc);
+
 		unit_array.add_way_point(curXLoc, curYLoc, selectedArray, selectedCount, COMMAND_PLAYER);
 		mem_del(selectedArray);
 		return 1;

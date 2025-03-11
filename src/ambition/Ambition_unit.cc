@@ -34,6 +34,7 @@
 #include "OREMOTE.h"
 #include "OUNIT.h"
 
+#include "Ambition_building.hh"
 #include "format.hh"
 
 
@@ -159,6 +160,17 @@ uint8_t Unit::_7kaaRegionId(
       _7kaaUnit->unit_mode_para
     )
   );
+}
+
+void Unit::sendToBuildingRallyPoint(
+  std::vector<short> _7kaaUnitRecordNumbers,
+  const Firm* _7kaaFirm
+) {
+  const auto building
+    = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+  if (building) {
+    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
+  }
 }
 
 

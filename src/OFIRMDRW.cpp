@@ -574,6 +574,8 @@ void Firm::draw_selected()
 	//------- draw lines connected to town ---------//
 
 	draw_detect_link_line(0);
+
+	Ambition::Draw::buildingRallyPoint(this);
 }
 //--------- End of function Firm::draw_selected -----------//
 

@@ -21,6 +21,8 @@
 //Filename    : OFIRMA.CPP
 //Description : Object Firm Array
 
+#include "ambition/7kaaInterface/draw.hh"
+
 #include <OWORLD.h>
 #include <OPOWER.h>
 #include <ONATION.h>
@@ -585,6 +587,8 @@ void FirmArray::draw_dot()
 				*writePtr = shadowColor;
 		}
 		// ###### end Gilbert 17/10 #######//
+
+		Ambition::Draw::buildingRallyPoint(firmPtr);
 	}
 }
 //----------- End of function FirmArray::draw_dot -----------//

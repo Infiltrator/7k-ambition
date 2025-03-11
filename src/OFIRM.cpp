@@ -21,6 +21,8 @@
 //Filename    : OFIRM.CPP
 //Description : Object Firm
 
+#include "ambition/7kaaInterface/building.hh"
+
 #include <string.h>
 #include <OWORLD.h>
 #include <OPOWER.h>
@@ -280,6 +282,8 @@ void Firm::deinit()
 {
 	if( !firm_recno )    // already deleted
       return;
+
+	Ambition::Building::destroy(this);
 
 	deinit_derived();
 
@@ -3455,6 +3459,8 @@ void Firm::change_nation(int newNationRecno)
 
 	if( firm_array.selected_recno == firm_recno )
 		info.disp();
+
+	Ambition::Building::clearRallyPoint(this);
 }
 //-------- End of function Firm::change_nation ---------//
 

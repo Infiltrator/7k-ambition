@@ -25,16 +25,19 @@
 
 #pragma once
 
+#include "Ambition_coordinates.hh"
+
+
 namespace Ambition::UserInterface {
 
-struct Coordinates {
+struct Point {
   int left;
   int top;
 };
 
 struct Rectangle {
-  Coordinates start;
-  Coordinates end;
+  Point start;
+  Point end;
 };
 
 constexpr Rectangle INFO_PANE_CONTENTS = {
@@ -47,5 +50,10 @@ constexpr Rectangle INFO_PANE_CONTENTS = {
     .top = 589,
   },
 };
+
+Point fromWorldPoint(
+  Ambition::Coordinates::Point worldPoint,
+  Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
+);
 
 } // namespace Ambition::UserInterface

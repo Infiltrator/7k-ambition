@@ -148,6 +148,10 @@ void drawBuildingProgressBar(
   Firm* firm
 );
 
+void drawBuildingRallyPoint(
+  Firm* _7kaaFirm
+);
+
 /**
  * Draw a builder icon for the firm if it has a builder.
  *

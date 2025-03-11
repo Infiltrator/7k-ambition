@@ -1,4 +1,5 @@
 noinst_HEADERS = \
+  building.hh \
   config.hh \
   control.hh \
   draw.hh \

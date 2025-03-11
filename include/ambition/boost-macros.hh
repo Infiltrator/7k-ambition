@@ -20,45 +20,16 @@
 /**
  * @file
  *
- * Header file for Ambition::Unit.
+ * Macros to supplement what Boost offers.
  */
 
 #pragma once
 
-#include <stdint.h>
-#include <vector>
-
-class Firm;
-class Unit;
+#include <type_traits>
 
 
-namespace Ambition {
-
-/**
- * Send an available builder to a Firm.
- *
- * A builder is considered to be available if he is idle or repairing a building
- * that is above a certain hitpoint percentage.
- *
- * @param firm The Firm to send a builder to.
- * @return Whether the Ambition code took effect and so the rest of the 7kaa
- * code should be skipped.
- */
-bool sendAvailableBuilderToFirm(
-  const Firm* firm
-);
-
-namespace Unit {
-
-uint8_t _7kaaRegionId(
-  ::Unit* _7kaaUnit
-);
-
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Firm* _7kaaFirm
-);
-
-} // namespace Ambition::Unit
-
-} // namespace Ambition
+#define BOOST_SERIALIZATION_NVP_CONST(name)                 \
+  boost::serialization::make_nvp(                           \
+    BOOST_PP_STRINGIZE(name),                               \
+    const_cast<std::remove_const_t<decltype(name)>&>(name)  \
+  )

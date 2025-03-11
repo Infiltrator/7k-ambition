@@ -127,6 +127,16 @@ void buildingProgressBar(
   Ambition::drawTownTrainingProgressBar(town);
 }
 
+void buildingRallyPoint(
+  Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::drawBuildingRallyPoint(_7kaaFirm);
+}
+
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,
   const int animatedFlag,
