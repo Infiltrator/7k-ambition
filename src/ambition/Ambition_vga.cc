@@ -804,6 +804,42 @@ void drawLoadMenuDeleteButton(
   button.paint(left, top, "DELETE", "CANCEL1D");
 }
 
+void drawTownTrainingProgressBar(
+  const Town* town
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (town->nation_recno != nation_array.player_recno) {
+    return;
+  }
+
+  if (!town->train_unit_recno) {
+    return;
+  }
+
+  const auto progress
+    = (sys.frame_count - town->start_train_frame_no)
+    / static_cast<double>(TOTAL_TRAIN_DAYS * FRAMES_PER_DAY);
+
+  const auto barWidth = ZOOM_LOC_WIDTH * (town->loc_x2 - town->loc_x1 + 1);
+  constexpr auto BAR_HEIGHT = 3;
+
+  const auto barLeft = town->loc_x1 * ZOOM_LOC_WIDTH - world.view_top_x + ZOOM_X1;
+  const auto barTop = town->loc_y1 * ZOOM_LOC_HEIGHT - world.view_top_y + ZOOM_Y1;
+
+  drawHitbar(
+    town->nation_recno == nation_array.player_recno,
+    VGA_YELLOW,
+    progress,
+    barLeft,
+    barTop,
+    barWidth,
+    BAR_HEIGHT
+  );
+}
+
 bool initialiseSnowLayer(
   SnowLayer& layer,
   const int level,
