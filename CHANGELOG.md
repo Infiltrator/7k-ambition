@@ -24,6 +24,8 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed Inn hire button being enabled/disabled incorrectly.
+- Fixed hitbars having extra pixels on the right when a worker enters or
+  leaves the building.
 
 
 ## [3.0.3] — 2025-03-07
