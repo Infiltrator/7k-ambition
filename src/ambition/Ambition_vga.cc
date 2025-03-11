@@ -33,6 +33,7 @@
 
 #include "OANLINE.h"
 #include "OAUDIO.h"
+#include "OBUTT3D.h"
 #include "OF_HARB.h"
 #include "OF_MARK.h"
 #include "OF_RESE.h"
@@ -788,6 +789,18 @@ void drawInnGuestCount(
     fieldRight,
     refreshFlag
   );
+}
+
+void drawLoadMenuDeleteButton(
+  Button3D& button,
+  const int left,
+  const int top
+) {
+  if (!config.enhancementsAvailable()) {
+    return;
+  }
+
+  button.paint(left, top, "DELETE", "CANCEL1D");
 }
 
 bool initialiseSnowLayer(

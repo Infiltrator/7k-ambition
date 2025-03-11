@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added delete button to load game menu.
+
 ### Changed
 
 - Continue loading config.txt even when there are invalid lines, so that the

@@ -329,6 +329,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
 				else if( action_mode == 2)
 				{
 					saveButton.paint(menu_x1+34, menu_y1+354, "LOAD", "CANCEL1D");
+               Ambition::drawLoadMenuDeleteButton(delButton, menu_x1+260, menu_y1+354);
 				}
 				cancelButton.paint(menu_x1+473, menu_y1+354, "CANCEL1", "CANCEL1D");
 
@@ -518,8 +519,11 @@ int SaveGameArray::menu(int actionMode, int *recno)
 //				box.msg("Error");
 			break;
 		}
-		else if( action_mode == 1 && browse_recno && delButton.detect() )
-		{
+		else if(
+        (action_mode == 1
+         || (Ambition::config.enhancementsAvailable() && action_mode == 2))
+        && browse_recno && delButton.detect()
+      ) {
 			// delete save game button
 			if( browse_recno != 0 )			// cannot del save game slot
 			{
