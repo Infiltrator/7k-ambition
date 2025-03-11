@@ -39,7 +39,8 @@
 #include "OSYS.h"
 #include "vga_util.h"
 
-#include "ambition/Ambition_vga.hh"
+#include "Ambition_vga.hh"
+
 
 namespace Ambition {
 

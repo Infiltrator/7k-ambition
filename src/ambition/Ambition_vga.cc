@@ -51,7 +51,8 @@
 #include "OUNIT.h"
 #include "vga_util.h"
 
-#include "ambition/Ambition_config.hh"
+#include "Ambition_config.hh"
+
 
 namespace Ambition {
 
