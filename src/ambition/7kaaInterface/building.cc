@@ -43,6 +43,15 @@ void clearRallyPoint(
 
   Ambition::clearRallyPoint(_7kaaFirm);
 }
+void clearRallyPoint(
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::clearRallyPoint(_7kaaTown);
+}
 
 void destroy(
   const Firm* _7kaaFirm
@@ -52,6 +61,15 @@ void destroy(
   }
 
   Ambition::destroy(_7kaaFirm);
+}
+void destroy(
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::destroy(_7kaaTown);
 }
 
 void sendUnitsToRallyPoint(
@@ -63,6 +81,16 @@ void sendUnitsToRallyPoint(
   }
 
   Ambition::Unit::sendToBuildingRallyPoint(_7kaaUnitRecordNumbers, _7kaaFirm);
+}
+void sendUnitsToRallyPoint(
+  const Town* _7kaaTown,
+  std::vector<short> _7kaaUnitRecordNumbers
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Unit::sendToBuildingRallyPoint(_7kaaUnitRecordNumbers, _7kaaTown);
 }
 
 } // namespace _7kaaAmbitionInterface::Building

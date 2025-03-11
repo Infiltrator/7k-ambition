@@ -34,6 +34,7 @@
 #include "boost-macros.hh"
 
 class Firm;
+class Town;
 
 
 namespace Ambition {
@@ -42,6 +43,7 @@ class Building : public Entity {
 public:
   enum class _7kaaType {
     Firm,
+    Town,
   };
 
   Building(
@@ -63,6 +65,9 @@ public:
 
   static std::shared_ptr<Building> findBy7kaaFirmRecordNumber(
     const short _7kaaFirmRecordNumber
+  );
+  static std::shared_ptr<Building> findBy7kaaTownRecordNumber(
+    const short _7kaaTownRecordNumber
   );
 
   void clearRallyPoint(
@@ -130,9 +135,15 @@ protected:
 void clearRallyPoint(
   const Firm* _7kaaFirm
 );
+void clearRallyPoint(
+  const Town* _7kaaTown
+);
 
 void destroy(
   const Firm* _7kaaFirm
+);
+void destroy(
+  const Town* _7kaaTown
 );
 
 void setOrClearRallyPoint(

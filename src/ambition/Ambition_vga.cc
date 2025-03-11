@@ -631,6 +631,19 @@ void drawBuildingRallyPoint(
     }
   }
 }
+void drawBuildingRallyPoint(
+  Town* _7kaaTown
+) {
+  if (town_array.selected_recno == _7kaaTown->town_recno
+    && _7kaaTown->nation_recno == nation_array.player_recno
+  ) {
+    const auto building
+      = Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+    if (building) {
+      building->drawRallyPoint();
+    }
+  }
+}
 
 void drawFirmBuilderIcon(
   Firm* firm

@@ -168,6 +168,8 @@ int Town::is_in_zoom_win()
 void Town::draw_selected()
 {
 	draw_detect_link_line(0);		// 0-the action is draw only, not detecting
+
+	Ambition::Draw::buildingRallyPoint(this);
 }
 //--------- End of function Town::draw_selected -----------//
 

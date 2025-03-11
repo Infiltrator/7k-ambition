@@ -28,6 +28,7 @@
 #include <vector>
 
 class Firm;
+class Town;
 
 
 namespace _7kaaAmbitionInterface::Building {
@@ -35,13 +36,23 @@ namespace _7kaaAmbitionInterface::Building {
 void clearRallyPoint(
   const Firm* _7kaaFirm
 );
+void clearRallyPoint(
+  const Town* _7kaaTown
+);
 
 void destroy(
   const Firm* _7kaaFirm
 );
+void destroy(
+  const Town* _7kaaTown
+);
 
 void sendUnitsToRallyPoint(
   const Firm* _7kaaFirm,
+  const std::vector<short> _7kaaUnitRecordNumbers
+);
+void sendUnitsToRallyPoint(
+  const Town* _7kaaTown,
   const std::vector<short> _7kaaUnitRecordNumbers
 );
 

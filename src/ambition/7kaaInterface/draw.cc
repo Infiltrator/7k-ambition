@@ -136,6 +136,15 @@ void buildingRallyPoint(
 
   Ambition::drawBuildingRallyPoint(_7kaaFirm);
 }
+void buildingRallyPoint(
+  Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::drawBuildingRallyPoint(_7kaaTown);
+}
 
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,

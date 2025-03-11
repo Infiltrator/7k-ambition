@@ -29,6 +29,7 @@
 #include <vector>
 
 class Firm;
+class Town;
 class Unit;
 
 
@@ -57,6 +58,10 @@ uint8_t _7kaaRegionId(
 void sendToBuildingRallyPoint(
   std::vector<short> _7kaaUnitRecordNumbers,
   const Firm* _7kaaFirm
+);
+void sendToBuildingRallyPoint(
+  std::vector<short> _7kaaUnitRecordNumbers,
+  const Town* _7kaaTown
 );
 
 } // namespace Ambition::Unit

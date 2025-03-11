@@ -100,6 +100,9 @@ void buildingProgressBar(
 void buildingRallyPoint(
   Firm* _7kaaFirm
 );
+void buildingRallyPoint(
+  Town* _7kaaTown
+);
 
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,

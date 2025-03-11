@@ -151,6 +151,9 @@ void drawBuildingProgressBar(
 void drawBuildingRallyPoint(
   Firm* _7kaaFirm
 );
+void drawBuildingRallyPoint(
+  Town* _7kaaTown
+);
 
 /**
  * Draw a builder icon for the firm if it has a builder.

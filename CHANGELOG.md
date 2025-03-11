@@ -13,6 +13,7 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Added rally points for War Factory war machines.
+- Added rally points for Town peasants and trained units.
 
 
 ## [3.0.4] — 2025-03-16

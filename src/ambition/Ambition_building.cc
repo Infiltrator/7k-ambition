@@ -29,6 +29,7 @@
 #include "OANLINE.h"
 #include "OFIRM.h"
 #include "OIMGRES.h"
+#include "OTOWN.h"
 #include "OUNIT.h"
 #include "OVGABUF.h"
 
@@ -42,31 +43,36 @@ namespace Ambition {
 
 struct Building::Underlying7kaaObject {
   Underlying7kaaObject(Firm* firm);
+  Underlying7kaaObject(Town* town);
 
   union Object {
     Firm* firm;
+    Town* town;
   } object;
   _7kaaType type;
 
   inline auto loc_x1() const {
-    return object.firm->loc_x1;
+    return type == _7kaaType::Firm ? object.firm->loc_x1 : object.town->loc_x1;
   }
   inline auto loc_x2() const {
-    return object.firm->loc_x2;
+    return type == _7kaaType::Firm ? object.firm->loc_x2 : object.town->loc_x2;
   }
   inline auto loc_y1() const {
-    return object.firm->loc_y1;
+    return type == _7kaaType::Firm ? object.firm->loc_y1 : object.town->loc_y1;
   }
   inline auto loc_y2() const {
-    return object.firm->loc_y2;
+    return type == _7kaaType::Firm ? object.firm->loc_y2 : object.town->loc_y2;
   }
   inline auto setup_date() const {
-    return object.firm->setup_date;
+    return type == _7kaaType::Firm ? object.firm->setup_date : object.town->setup_date;
   }
 };
 
 std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
   int _7kaaFirmRecordNumber
+);
+std::shared_ptr<Building> getBuildingBy7kaaTownRecordNumber(
+  int _7kaaTownRecordNumber
 );
 
 
@@ -93,6 +99,17 @@ std::shared_ptr<Building> Building::findBy7kaaFirmRecordNumber(
       return !building->destroyed()
         && building->type == _7kaaType::Firm
         && building->_7kaaRecordNumber == _7kaaFirmRecordNumber;
+    }
+  );
+}
+std::shared_ptr<Building> Building::findBy7kaaTownRecordNumber(
+  const short _7kaaTownRecordNumber
+) {
+  return entityRepository.findEntityBy<Building>(
+    [&_7kaaTownRecordNumber](std::shared_ptr<Building> building) {
+      return !building->destroyed()
+        && building->type == _7kaaType::Town
+        && building->_7kaaRecordNumber == _7kaaTownRecordNumber;
     }
   );
 }
@@ -232,12 +249,30 @@ void clearRallyPoint(
     building->clearRallyPoint();
   }
 }
+void clearRallyPoint(
+  const Town* _7kaaTown
+) {
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building = Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  if (building) {
+    building->clearRallyPoint();
+  }
+}
 
 void destroy(
   const Firm* _7kaaFirm
 ) {
   const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
   auto building = Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
+  if (building) {
+    building->destroy(Time::now());
+  }
+}
+void destroy(
+  const Town* _7kaaTown
+) {
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building = Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
   if (building) {
     building->destroy(Time::now());
   }
@@ -255,6 +290,22 @@ void setOrClearRallyPoint(
       && _7kaaCoordinates.x <= _7kaaFirm->loc_x2
       && _7kaaCoordinates.y >= _7kaaFirm->loc_y1
       && _7kaaCoordinates.y <= _7kaaFirm->loc_y2
+    ) {
+      building->clearRallyPoint();
+    } else {
+      building->setRallyPoint(Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates));
+    }
+  }
+
+  if (town_array.selected_recno) {
+    const auto _7kaaTownRecordNumber = town_array.selected_recno;
+    auto building = getBuildingBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+
+    const auto _7kaaTown = town_array[_7kaaTownRecordNumber];
+    if (_7kaaCoordinates.x >= _7kaaTown->loc_x1
+      && _7kaaCoordinates.x <= _7kaaTown->loc_x2
+      && _7kaaCoordinates.y >= _7kaaTown->loc_y1
+      && _7kaaCoordinates.y <= _7kaaTown->loc_y2
     ) {
       building->clearRallyPoint();
     } else {
@@ -292,8 +343,22 @@ Building::Underlying7kaaObject Building::underlying7kaaObject(
     return Underlying7kaaObject(firm_array[_7kaaRecordNumber]);
   }
 
+  if (type == _7kaaType::Town) {
+    if (town_array.is_deleted(_7kaaRecordNumber)) {
+      throw std::domain_error(
+        format(
+          "[%llu] 7kaa Town record number %d is deleted.",
+          recordNumber,
+          _7kaaRecordNumber
+        )
+      );
+    }
+
+    return Underlying7kaaObject(town_array[_7kaaRecordNumber]);
+  }
+
   throw std::logic_error(
-    format("[%llu] Must be a 7kaa Firm.", recordNumber)
+    format("[%llu] Must be either a 7kaa Firm or Town.", recordNumber)
   );
 }
 
@@ -321,6 +386,13 @@ Building::Underlying7kaaObject::Underlying7kaaObject(
 {
   object.firm = firm;
 }
+Building::Underlying7kaaObject::Underlying7kaaObject(
+  Town *town
+) :
+  type(_7kaaType::Town)
+{
+  object.town = town;
+}
 
 std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
   int _7kaaFirmRecordNumber
@@ -332,6 +404,22 @@ std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
       _7kaaFirmRecordNumber,
       Time::Stamp::from7kaaTimestamp(
         { .gameDate = firm_array[_7kaaFirmRecordNumber]->setup_date }
+      )
+    );
+  }
+
+  return building;
+}
+std::shared_ptr<Building> getBuildingBy7kaaTownRecordNumber(
+  int _7kaaTownRecordNumber
+) {
+  auto building = Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  if (!building) {
+    building = Building::create(
+      Building::_7kaaType::Town,
+      _7kaaTownRecordNumber,
+      Time::Stamp::from7kaaTimestamp(
+        { .gameDate = town_array[_7kaaTownRecordNumber]->setup_date }
       )
     );
   }
