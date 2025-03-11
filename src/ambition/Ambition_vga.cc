@@ -594,7 +594,7 @@ bool drawBuildingOccupantHitbar(
   vga_front.bar(leftX, topY, emptyX, topY + 1, baseColour);
   // Clear out the empty portion.
   if (filledWidth < width) {
-    vga_util.blt_buf(emptyX + 1, topY, rightX, topY + 1, V_BLACK);
+    vga_util.blt_buf(emptyX + 1, topY, rightX, topY + 1, 0);
   }
 
   // Dark line for the filled portion.
