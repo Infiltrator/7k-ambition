@@ -793,6 +793,8 @@ int Firm::mobilize_overseer()
 	if( overseerRecno && !unit_array.is_deleted(overseerRecno) )
 		unit_array[overseerRecno]->update_loyalty();
 
+	Ambition::Building::sendUnitsToRallyPoint(this, { static_cast<short>(overseerRecno) });
+
 	return overseerRecno;
 }
 //----------- End of function Firm::mobilize_overseer --------//
@@ -2435,6 +2437,10 @@ int Firm::mobilize_worker(int workerId, char remoteAction)
 
 	sort_worker();
 
+	if (remoteAction != COMMAND_AUTO) {
+		Ambition::Building::sendUnitsToRallyPoint(this, { static_cast<short>(unitRecno ?: unitRecno2) });
+	}
+
 	if( unitRecno )
 		return unitRecno;
 	else
@@ -2589,6 +2595,8 @@ void Firm::mobilize_all_workers(char remoteAction)
 
 	err_when( worker_count > MAX_WORKER );
 
+	std::vector<short> unitRecordNumbers;
+
 	while( worker_count > 0 && mobileWorkerId <= worker_count )
 	{
 		err_when(++loopCount > 100);
@@ -2607,6 +2615,8 @@ void Firm::mobilize_all_workers(char remoteAction)
 		if(!unitRecno)
 			break; // keep the rest workers as there is no space for creating the unit
 
+		unitRecordNumbers.push_back(unitRecno);
+
 		Unit* unitPtr = unit_array[unitRecno];
 		unitPtr->team_id = unit_array.cur_team_id;
 
@@ -2620,6 +2630,8 @@ void Firm::mobilize_all_workers(char remoteAction)
 	}
 
 	unit_array.cur_team_id++;
+
+	Ambition::Building::sendUnitsToRallyPoint(this, unitRecordNumbers);
 
 	if( nation_recno == nation_array.player_recno )		// for player, mobilize_all_workers can only be called when the player presses the button.
 		info.disp();

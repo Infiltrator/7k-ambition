@@ -15,6 +15,8 @@ speaking, considered to be the player's experience.
 - Added rally points for War Factory war machines.
 - Added rally points for Town peasants and trained units.
 - Added rally points for Inn hired units.
+- Added rally points for Camp units when sortieing.
+- Added rally points for all firms when mobilising workers.
 
 
 ## [3.0.4] — 2025-03-16
