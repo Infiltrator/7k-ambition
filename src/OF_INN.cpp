@@ -21,6 +21,7 @@
 //Filename    : OF_INN.CPP
 //Description : Firm Military Inn
 
+#include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/inn.hh"
@@ -328,6 +329,8 @@ int FirmInn::hire(short recNo)
 	{
 		put_info(INFO_UPDATE);
 	}
+
+	Ambition::Building::sendUnitsToRallyPoint(this, { static_cast<short>(unitRecno) });
 
 	return unitRecno;
 }
