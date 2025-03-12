@@ -21,6 +21,8 @@
 //Filename    : OF_HARB.CPP
 //Description : Firm Harbor
 
+#include "ambition/7kaaInterface/building.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -1112,6 +1114,8 @@ void FirmHarbor::sail_ship(int unitRecno, char remoteAction)
 
 		info.disp();
 	}
+
+	Ambition::Building::sendUnitsToRallyPoint(this, { static_cast<short>(unitRecno) });
 }
 //----------- End of function FirmHarbor::sail_ship -----------//
 
