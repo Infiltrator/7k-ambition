@@ -16,6 +16,8 @@ AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(AMBITION_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
 
+Ambition_version.cc: git_string.h
+
 git_string.h:
 	git describe --always --dirty --long --tags \
     | awk --field-separator="-" \
