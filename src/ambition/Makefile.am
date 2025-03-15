@@ -7,10 +7,12 @@ libambition_a_SOURCES = \
 	Ambition_remote.cc \
 	Ambition_unit.cc \
 	Ambition_version.cc \
-	Ambition_vga.cc
+	Ambition_vga.cc \
+	# end
 
 AM_CPPFLAGS = \
-	-I$(top_srcdir)/include/ambition
+	-I$(top_srcdir)/include/ambition \
+	# end
 
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(AMBITION_CFLAGS)

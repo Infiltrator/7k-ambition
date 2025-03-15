@@ -6,4 +6,5 @@ noinst_HEADERS = \
 	Ambition_remote.hh \
 	Ambition_unit.hh \
 	Ambition_version.hh \
-	Ambition_vga.hh
+	Ambition_vga.hh \
+	# end
