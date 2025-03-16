@@ -9,4 +9,5 @@ noinst_HEADERS = \
 	Ambition_unit.hh \
 	Ambition_version.hh \
 	Ambition_vga.hh \
+	format.hh \
 	# end

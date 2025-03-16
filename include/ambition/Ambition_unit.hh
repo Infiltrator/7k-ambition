@@ -25,7 +25,10 @@
 
 #pragma once
 
+#include <stdint.h>
+
 class Firm;
+class Unit;
 
 
 namespace Ambition {
@@ -43,5 +46,13 @@ namespace Ambition {
 bool sendAvailableBuilderToFirm(
   const Firm* firm
 );
+
+namespace Unit {
+
+uint8_t _7kaaRegionId(
+  ::Unit* _7kaaUnit
+);
+
+} // namespace Ambition::Unit
 
 } // namespace Ambition

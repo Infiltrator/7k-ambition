@@ -23,6 +23,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed requested builder not being able to reach the destination building if
+  there is no walkable path.
 - Fixed Inn hire button being enabled/disabled incorrectly.
 - Fixed hitbars having extra pixels on the right when a worker enters or
   leaves the building.

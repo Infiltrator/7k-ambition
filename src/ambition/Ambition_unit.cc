@@ -26,12 +26,15 @@
 #include "Ambition_unit.hh"
 
 #include <algorithm>
+#include <stdexcept>
 #include <vector>
 
 #define _AMBITION_IMPLEMENTATION
 #include "OFIRM.h"
 #include "OREMOTE.h"
 #include "OUNIT.h"
+
+#include "format.hh"
 
 
 namespace Ambition {
@@ -135,6 +138,30 @@ bool sendAvailableBuilderToFirm(
 }
 
 
+uint8_t Unit::_7kaaRegionId(
+  ::Unit* _7kaaUnit
+) {
+  const auto _7kaaCalculation = _7kaaUnit->region_id();
+  if (_7kaaCalculation != 0) {
+    return _7kaaCalculation;
+  }
+
+  if (_7kaaUnit->unit_mode == UNIT_MODE_CONSTRUCT) {
+    return firm_array[_7kaaUnit->unit_mode_para]->region_id;
+  }
+
+  throw std::domain_error(
+    format(
+      "Unable to determine 7kaa Unit [%d]'s 7kaa region ID with unit mode %d"
+      " and parameter %d.",
+      _7kaaUnit->sprite_recno,
+      _7kaaUnit->unit_mode,
+      _7kaaUnit->unit_mode_para
+    )
+  );
+}
+
+
 /* Private functions. */
 
 std::vector<short> getAvailableBuildersRecordNumbers(
@@ -155,7 +182,7 @@ std::vector<short> getAvailableBuildersRecordNumbers(
     if (unit->nation_recno != nationRecordNumber
         || unit->race_id == 0
         || unit->skill.skill_id != SKILL_CONSTRUCTION
-        || (unit->is_visible() && unit->region_id() != regionId)
+      || Unit::_7kaaRegionId(unit) != regionId
         || unit->unit_mode == UNIT_MODE_UNDER_TRAINING
         || (unit->action_mode != ACTION_ASSIGN_TO_FIRM
             && unit->action_mode != ACTION_STOP)
