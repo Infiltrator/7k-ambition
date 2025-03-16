@@ -2401,7 +2401,7 @@ uint8_t Unit::region_id()
 	}
 	else
 	{
-		if( unit_mode == UNIT_MODE_OVERSEE )
+		if( unit_mode == UNIT_MODE_OVERSEE || unit_mode == UNIT_MODE_CONSTRUCT )
 			return firm_array[unit_mode_para]->region_id;
 	}
 
