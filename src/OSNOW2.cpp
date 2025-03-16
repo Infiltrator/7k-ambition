@@ -24,7 +24,7 @@
 
 #include <OSNOW.h>
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 
 //------------ Begin of function Snow::set_bound ---------//
@@ -42,7 +42,7 @@ void Snow::init(double s, char animSpeed)
 {
 	for(int i = 0; i < SNOW_LAYERS; ++i)
 	{
-		if (Ambition::initialiseSnowLayer(layer[i], i, animSpeed, s)) {
+		if (Ambition::Draw::initialiseSnowLayer(layer[i], i, animSpeed, s)) {
 			continue;
 		}
 		// slower the snow, denser

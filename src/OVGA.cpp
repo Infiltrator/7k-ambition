@@ -24,8 +24,7 @@
 
 #include "OVGA.h"
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_version.hh"
+#include "ambition/7kaaInterface/config.hh"
 
 #include <OMOUSE.h>
 #include <OCOLTBL.h>
@@ -827,8 +826,8 @@ void Vga::save_status_report()
 	fprintf(
 	  file,
 	  "= Seven Kingdoms: Ambition v%s running in %s mode =\n",
-     Ambition::versionString().c_str(),
-     Ambition::config.modeString().c_str()
+	  Ambition::Config::versionString().c_str(),
+	  Ambition::Config::modeString().c_str()
 	);
    fprintf(file, "=== Seven Kingdoms " SKVERSION " ===\n");
    s = SDL_GetPlatform();

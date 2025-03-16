@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <KEY.h>
 #include <OSYS.h>
@@ -240,7 +240,7 @@ int Box::ask_button(const char* buttonDes1, const char* buttonDes2, int rightCli
 			return 0;
 		}
 
-		Ambition::delayFrame();
+		Ambition::Control::delayFrame();
 	}
 }
 //--------- End of function Box::ask_button --------//

@@ -21,7 +21,7 @@
 //Filename    : OBUTTON.CPP
 //Description : Button Object
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <KEY.h>
 #include <ALL.h>
@@ -499,7 +499,7 @@ void Button::wait_press(int timeOut)
 		if (firstCycle) {
 			firstCycle = false;
 		} else {
-			Ambition::delayFrame(idleTimeout);
+			Ambition::Control::delayFrame(idleTimeout);
 		}
 
 		sys.yield();

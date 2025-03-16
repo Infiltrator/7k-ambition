@@ -23,7 +23,7 @@
 
 #include <OFIRM.h>
 
-#include "ambition/Ambition_unit.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <OTOWN.h>
 #include <OSPY.h>
@@ -242,7 +242,7 @@ int Firm::find_idle_builder(int nearest)
 
 void Firm::send_idle_builder_here(char remoteAction)
 {
-	if (!remoteAction && Ambition::sendAvailableBuilderToFirm(this)) {
+	if (!remoteAction && Ambition::Unit::sendAvailableBuilderToFirm(this)) {
 		return;
 	}
 

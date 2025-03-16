@@ -28,11 +28,11 @@
 #include <algorithm>
 #include <vector>
 
+#define _AMBITION_IMPLEMENTATION
 #include "OFIRM.h"
 #include "OREMOTE.h"
 #include "OUNIT.h"
 
-#include "Ambition_config.hh"
 
 namespace Ambition {
 
@@ -45,10 +45,6 @@ std::vector<short> getAvailableBuildersRecordNumbers(
 bool sendAvailableBuilderToFirm(
   const Firm* firm
 ) {
-  if (!config.enhancementsAvailable()) {
-    return false;
-  }
-
   err_when(firm->builder_recno);
 
   const auto availableBuildersRecordNumbers = getAvailableBuildersRecordNumbers(

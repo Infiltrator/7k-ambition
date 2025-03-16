@@ -21,8 +21,8 @@
 //Filename    : OFIRMDRW.CPP
 //Description : Firm drawing routines
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <COLCODE.h>
 #include "OFIRM.h"
@@ -98,8 +98,8 @@ void Firm::draw(int displayLayer)
 				draw_frame(1, displayLayer);
 				draw_frame(2, displayLayer);
 			}
-		} else if (Ambition::config.enhancementsAvailable()) {
-		   Ambition::drawFirmFrame(this, displayLayer);
+		} else if (Ambition::Config::enhancementsAvailable()) {
+			Ambition::Draw::buildingAnimationFrame(this, displayLayer);
 		}
 		else
 		{
@@ -108,9 +108,9 @@ void Firm::draw(int displayLayer)
 		}
 	}
 
-   Ambition::drawFirmHitBar(this);
-	Ambition::drawBuildingProgressBar(this);
-   Ambition::drawFirmBuilderIcon(this);
+	Ambition::Draw::buildingHitBar(this);
+	Ambition::Draw::buildingProgressBar(this);
+	Ambition::Draw::buildingBuilderIcon(this);
 }
 //--------- End of function Firm::draw -----------//
 
@@ -172,7 +172,7 @@ void Firm::draw_full_size(int displayLayer)
 	else
 		firmBitmap = firm_res.get_bitmap(firmBuild->first_bitmap(cur_frame));
 
-	firmBitmap = Ambition::calculateFirmBitmap(firmBitmap, this);
+	firmBitmap = Ambition::Draw::calculateFirmBitmap(firmBitmap, this);
 
 	// ------ check if the display layer is correct ---------//
 	if( !firmBitmap || !(firmBitmap->display_layer & displayLayer) )
@@ -348,7 +348,7 @@ int Firm::draw_detect_link_line(int actionDetect)
 		firmY = ( ZOOM_Y1 + (firmPtr->loc_y1-world.zoom_matrix->top_y_loc) * ZOOM_LOC_HEIGHT
 				  + ZOOM_Y1 + (firmPtr->loc_y2-world.zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
-		Ambition::drawBuildingLinkLine(firm_id, firmPtr->firm_id, srcX, srcY, firmX, firmY, linked_firm_enable_array[i]==LINK_EE);
+		Ambition::Draw::buildingLinkLine(firm_id, firmPtr->firm_id, srcX, srcY, firmX, firmY, linked_firm_enable_array[i]==LINK_EE);
 
 		//----- check if this firm can toggle link or not -----//
 
@@ -399,12 +399,12 @@ int Firm::draw_detect_link_line(int actionDetect)
 			 worker_array[selected_worker_id-1].town_recno == townPtr->town_recno )
 		{
 			lineType = -1;
-			Ambition::drawBuildingLinkLine(firm_id, Ambition::FIRM_ID_TOWN, srcX, srcY, townX, townY, linked_town_enable_array[i]==LINK_EE, true);
+			Ambition::Draw::buildingLinkLine(firm_id, Ambition::Draw::FIRM_ID_TOWN, srcX, srcY, townX, townY, linked_town_enable_array[i]==LINK_EE, true);
 		}
 		else
 		{
 			lineType = 0;
-			Ambition::drawBuildingLinkLine(firm_id, Ambition::FIRM_ID_TOWN, srcX, srcY, townX, townY, linked_town_enable_array[i]==LINK_EE);
+			Ambition::Draw::buildingLinkLine(firm_id, Ambition::Draw::FIRM_ID_TOWN, srcX, srcY, townX, townY, linked_town_enable_array[i]==LINK_EE);
 		}
 
 		//----- check if this firm can toggle link or not -----//

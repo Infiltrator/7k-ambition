@@ -20,32 +20,32 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Implementation file for _7kaaAmbitionInterface::Control.
  */
 
-#include "Ambition_input.hh"
-
 #define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+#include "7kaaInterface/control.hh"
 
-namespace Ambition {
+#include "Ambition_config.hh"
+#include "Ambition_vga.hh"
 
-void calculateScroll(
-  int& x,
-  int& y
+
+namespace _7kaaAmbitionInterface::Control {
+
+void delayFrame(
+  const unsigned long long int deadlineSdlTicks64
 ) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
   }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
+
+  Ambition::delayFrame(deadlineSdlTicks64);
 }
 
-} // namespace Ambition
+void unlockBuffer(
+  VgaBuf& buffer
+) {
+  Ambition::unlockBuffer(buffer);
+}
+
+} // namespace _7kaaAmbitionInterface::Control

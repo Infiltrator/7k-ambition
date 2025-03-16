@@ -20,32 +20,35 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Header file for _7kaaAmbitionInterface::Control.
  */
 
-#include "Ambition_input.hh"
+#pragma once
 
-#define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+class VgaBuf;
 
-namespace Ambition {
 
-void calculateScroll(
-  int& x,
-  int& y
-) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
-  }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
-}
+namespace _7kaaAmbitionInterface::Control {
 
-} // namespace Ambition
+void delayFrame(
+  const unsigned long long int deadlineSdlTicks64 = 0
+);
+
+/**
+ * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
+ *
+ * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
+ * and we want to control when the flips occur.
+ *
+ * @param buffer The VgaBuf to unlock.
+ */
+void unlockBuffer(
+  VgaBuf& buffer
+);
+
+} // namespace _7kaaAmbitionInterface::Control
+
+#ifndef _AMBITION_IMPLEMENTATION
+/** Allow 7kaa to call using Ambition::*. */
+namespace Ambition = _7kaaAmbitionInterface;
+#endif

@@ -31,6 +31,7 @@
 #include <SDL_events.h>
 #include <SDL_timer.h>
 
+#define _AMBITION_IMPLEMENTATION
 #include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
@@ -52,6 +53,7 @@
 #include "vga_util.h"
 
 #include "Ambition_config.hh"
+#include "Ambition_user_interface.hh"
 
 
 namespace Ambition {
@@ -75,14 +77,9 @@ void drawHitbar(
 
 
 short calculateAnimatedLinePhase(
-  const short _7kaaCalculation,
   const int animatedFlag,
   const int lineProgress
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   constexpr auto PHASE_COUNT = 8;
   constexpr auto PHASES_PER_SECOND = 60;
   constexpr auto MILLISECONDS_PER_PHASE = 1000 / PHASES_PER_SECOND;
@@ -100,10 +97,6 @@ FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   if (!firm->under_construction
     && firm->is_operating()
   ) {
@@ -117,13 +110,8 @@ FirmBitmap* calculateFirmBitmap(
 }
 
 int calculateHitbarBaseColour(
-  const int _7kaaCalculation,
   const double maximumHitpoints
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   constexpr auto HITBAR_COLOUR_COUNT = 6;
 
   struct ColourThreshold {
@@ -171,10 +159,6 @@ int calculateHitbarWidth(
   const int availableWidth,
   const double maximumHitpoints
 ) {
-  if (!config.enhancementsAvailable()) {
-    return availableWidth;
-  }
-
   constexpr auto FULL_WIDTH_HITPOINTS = 200.0;
 
   return availableWidth * std::sqrt(maximumHitpoints / FULL_WIDTH_HITPOINTS);
@@ -183,33 +167,20 @@ int calculateHitbarWidth(
 short calculateRainSpeed(
   const short _7kaaCalculation
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   return _7kaaCalculation / 4;
 }
 
 char calculateRockRemainingDelay(
   const char _7kaaCalculation
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   return _7kaaCalculation * 3;
 }
 
 char* calculateTerrainBitmap(
-  char* _7kaaCalculation,
   const short terrainId,
   const int x,
   const int y
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   return terrain_res[terrainId]->get_bitmap(
     misc.get_time() / MILLISECONDS_PER_STEP
     + x - y
@@ -217,13 +188,8 @@ char* calculateTerrainBitmap(
 }
 
 char calculateTownFlagNumber(
-  const char _7kaaCalculation,
   const int townRecordNumber
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   constexpr auto STEP_COUNT = 4;
 
   return
@@ -235,22 +201,13 @@ char calculateTownFlagNumber(
 }
 
 int calculateUnitHitbarWidth(
-  const int _7kaaCalculation
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   return ZOOM_LOC_WIDTH - 2;
 }
 
 int calculateUnitIconY(
   const int _7kaaCalculation
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   constexpr auto UNIT_HITBAR_HEIGHT = 4;
   constexpr auto ICON_OFFSET = UNIT_HITBAR_HEIGHT + 4;
 
@@ -258,26 +215,19 @@ int calculateUnitIconY(
 }
 
 int calculateWorkerPortraitX(
-  const int _7kaaCalculation,
   const int workerIndex
 ) {
-  if (!config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
   constexpr auto COLUMN_COUNT = 4;
   constexpr auto COLUMN_SIZE = 50;
 
-  return INFO_X1 + 2 + (workerIndex % COLUMN_COUNT) * COLUMN_SIZE;
+  return
+    (UserInterface::INFO_PANE_CONTENTS.start.left + 2)
+    + ((workerIndex % COLUMN_COUNT) * COLUMN_SIZE);
 }
 
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   constexpr unsigned long long int STANDARD_DELAY = 250;
 
   while (true) {
@@ -310,20 +260,12 @@ int centreHitbar(
   const int maximumWidth,
   const int currentWidth
 ) {
-  if (!config.enhancementsAvailable()) {
-    return left;
-  }
-
   return left + (maximumWidth - currentWidth) / 2;
 }
 
 void displayGameSpeed(
   int speed
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   const auto savedUseBackBuffer = vga.use_back_buf;
 
   vga.use_front();
@@ -362,17 +304,18 @@ void displayTownQualityOfLife(
   const int refreshFlag,
   const int displayTop
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   // Only show for the town's owner.
   if (town->nation_recno != nation_array.player_recno) {
     return;
   }
 
   if (refreshFlag == INFO_REPAINT) {
-    vga_util.d3_panel_up(INFO_X1, displayTop, INFO_X2, displayTop + 21);
+    vga_util.d3_panel_up(
+      UserInterface::INFO_PANE_CONTENTS.start.left,
+      displayTop,
+      UserInterface::INFO_PANE_CONTENTS.end.left,
+      displayTop + 21
+    );
   }
 
   const auto goodsDemand
@@ -385,12 +328,12 @@ void displayTownQualityOfLife(
   str += misc.format(goodsDemand, 1);
 
   font_san.field(
-    INFO_X1 + 2,
+    UserInterface::INFO_PANE_CONTENTS.start.left + 2,
     displayTop + 2,
     _("Goods supplied"),
-    INFO_X1 + 112,
+    UserInterface::INFO_PANE_CONTENTS.start.left + 112,
     str,
-    INFO_X2 - 2,
+    UserInterface::INFO_PANE_CONTENTS.end.left - 2,
     refreshFlag
   );
 }
@@ -400,10 +343,6 @@ void displayUnitContribution(
   const int x,
   const int y
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
    if (unit->rank_id == RANK_KING
        || unit->is_civilian()
        || unit->is_own_spy()
@@ -421,7 +360,7 @@ void displayUnitContribution(
      "_UNUSED",
      x + 92,
      str,
-     INFO_X2 - 2,
+     UserInterface::INFO_PANE_CONTENTS.end.left - 2,
      INFO_SPECIAL
    );
 }
@@ -577,13 +516,9 @@ bool drawBuildingOccupantHitbar(
   const int currentHitpoints,
   const int maximumHitpoints
 ) {
-  if (!config.enhancementsAvailable()) {
-    return false;
-  }
-
   constexpr auto GREY_COLOUR = VGA_GRAY + 8;
 
-  const auto baseColour = calculateHitbarBaseColour(-1, maximumHitpoints) + 1;
+  const auto baseColour = calculateHitbarBaseColour(maximumHitpoints) + 1;
   const auto darkColour = baseColour + 2;
 
   const auto width = Ambition::calculateHitbarWidth(
@@ -624,10 +559,6 @@ bool drawBuildingOccupantHitbar(
 void drawBuildingProgressBar(
   Firm* firm
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   if (firm->nation_recno != nation_array.player_recno) {
     return;
   }
@@ -689,10 +620,6 @@ void drawBuildingProgressBar(
 void drawFirmBuilderIcon(
   Firm* firm
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   constexpr auto FRAME_COUNT = 2;
   constexpr auto FRAME_RATE = 2;
   constexpr auto MILLISECONDS_PER_FRAME = 1000 / FRAME_RATE;
@@ -726,10 +653,6 @@ void drawFirmFrame(
   Firm* firm,
   const int displayLayer
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   const auto firmBuild = firm_res.get_build(firm->firm_build_id);
 
   if (!firmBuild->animate_full_size) {
@@ -741,10 +664,6 @@ void drawFirmFrame(
 void drawFirmHitBar(
   Firm* firm
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   if(firm->hit_points >= firm->max_hit_points) {
     return;
   }
@@ -773,21 +692,20 @@ void drawInnGuestCount(
   const short count,
   const int refreshFlag
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
-  const auto panelLeft = INFO_X1;
   constexpr auto PANEL_TOP = INFO_Y1 + 50;
-  const auto panelRight = INFO_X2;
   constexpr auto PANEL_BOTTOM = PANEL_TOP + 24;
-  const auto fieldLeft = panelLeft + 4;
+  const auto fieldLeft = UserInterface::INFO_PANE_CONTENTS.start.left + 4;
   const auto fieldValueLeft = fieldLeft + 100;
-  const auto fieldRight = panelRight - 4;
+  const auto fieldRight = UserInterface::INFO_PANE_CONTENTS.end.left - 4;
   constexpr auto FIELD_TOP = PANEL_TOP + 3;
 
   if (refreshFlag == INFO_REPAINT) {
-    vga_util.d3_panel_up(panelLeft, PANEL_TOP, panelRight, PANEL_BOTTOM);
+    vga_util.d3_panel_up(
+      UserInterface::INFO_PANE_CONTENTS.start.left,
+      PANEL_TOP,
+      UserInterface::INFO_PANE_CONTENTS.end.left,
+      PANEL_BOTTOM
+    );
   }
   font_san.field(
     fieldLeft,
@@ -806,20 +724,12 @@ void drawLoadMenuDeleteButton(
   const int left,
   const int top
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   button.paint(left, top, "DELETE", "CANCEL1D");
 }
 
 void drawTownTrainingProgressBar(
   const Town* town
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   if (town->nation_recno != nation_array.player_recno) {
     return;
   }
@@ -855,10 +765,6 @@ bool initialiseSnowLayer(
   const char animationSpeed,
   double slideSpeed
 ) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return false;
-  }
-
   layer.init(
     15 + 10 * level + animationSpeed,
     20 + 10 * level + animationSpeed,
@@ -1005,10 +911,6 @@ void drawHitbarOutline(
   const int width,
   const int height
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   const auto pitch = width + 2;
 
   auto dataPtr = sys.common_data_buf;

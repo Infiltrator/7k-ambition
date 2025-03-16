@@ -30,8 +30,9 @@
 # include <mach-o/dyld.h>
 #endif
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <ALL.h>
 #include <OAUDIO.h>
@@ -877,13 +878,13 @@ void Sys::main_loop(int isLoadedGame)
 				// ####### patch end Gilbert 17/11 ######//
 
 				const auto nextDispFrameTime = lastDispFrameTime
-					+ (Ambition::config.enhancementsAvailable()
+					+ (Ambition::Config::enhancementsAvailable()
 						? 16
 						: 1000 / (config.frame_speed ?: 1));
 
             // although it's not time for new frame, check
             // if we still need to redraw the screen
-				if((!Ambition::config.enhancementsAvailable()
+				if((!Ambition::Config::enhancementsAvailable()
 					 && config.frame_speed == 0)
 					|| SDL_TICKS_PASSED(markTime, nextDispFrameTime)
 					|| zoom_need_redraw || map_need_redraw
@@ -984,10 +985,10 @@ void Sys::main_loop(int isLoadedGame)
             }
          }
 
-      Ambition::unlockBuffer(vga_front);
+		Ambition::Control::unlockBuffer(vga_front);
 
       if (config.frame_speed < 99) {
-        Ambition::delayFrame(startTime + 16);
+			Ambition::Control::delayFrame(startTime + 16);
       }
    }
 
@@ -1792,7 +1793,7 @@ void Sys::detect_function_key(unsigned scanCode, unsigned skeyState)
 
       case KEY_F10:
 			update_view();
-         Ambition::displayGameSpeed(0);
+			Ambition::Draw::printGameSpeed(0);
          // ##### begin Gilbert 5/11 ######//
          //game.in_game_menu();
          in_game_menu.enter(!remote.is_enable());

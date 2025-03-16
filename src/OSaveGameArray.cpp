@@ -23,7 +23,9 @@
 
 #include <OSaveGameArray.h>
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <KEY.h>
 #include <OSYS.h>
@@ -329,7 +331,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
 				else if( action_mode == 2)
 				{
 					saveButton.paint(menu_x1+34, menu_y1+354, "LOAD", "CANCEL1D");
-               Ambition::drawLoadMenuDeleteButton(delButton, menu_x1+260, menu_y1+354);
+					Ambition::Draw::loadMenuDeleteButton(delButton, menu_x1+260, menu_y1+354);
 				}
 				cancelButton.paint(menu_x1+473, menu_y1+354, "CANCEL1", "CANCEL1D");
 
@@ -521,7 +523,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
 		}
 		else if(
         (action_mode == 1
-         || (Ambition::config.enhancementsAvailable() && action_mode == 2))
+			|| (Ambition::Config::enhancementsAvailable() && action_mode == 2))
         && browse_recno && delButton.detect()
       ) {
 			// delete save game button
@@ -549,7 +551,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
       if (firstCycle) {
 			firstCycle = false;
 		} else if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 

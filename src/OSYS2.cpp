@@ -21,9 +21,8 @@
 //Filename	  : OSYS2.CPP
 //Description : System resource management object
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_remote.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -166,7 +165,7 @@ void Sys::process()
 	LOG_MSG("end snow_ground_array.process()");
 	LOG_MSG(misc.get_random_seed());
 
-	if (!Ambition::config.enhancementsAvailable()) {
+	if (!Ambition::Config::enhancementsAvailable()) {
 	  LOG_MSG("begin rock_array.process()");
 	  rock_array.process();
 	  LOG_MSG("end rock_array.process()");
@@ -397,7 +396,7 @@ void Sys::detect_button()
 	if( button_menu.detect() )
 	{
 		update_view();
-		Ambition::displayGameSpeed(0);
+		Ambition::Draw::printGameSpeed(0);
 		// ##### begin Gilbert 5/11 #######//
 		// game.in_game_menu();
 		in_game_menu.enter(!remote.is_enable());
@@ -539,7 +538,7 @@ void Sys::disp_frame()
 	}
 	else
 	{
-		if (Ambition::config.enhancementsAvailable()) {
+		if (Ambition::Config::enhancementsAvailable()) {
 			dirt_array.process();
 			rock_array.process();
 		}
@@ -578,7 +577,7 @@ void Sys::disp_frame()
 
 		disp_map();
 
-		Ambition::displayGameSpeed(config.frame_speed);
+		Ambition::Draw::printGameSpeed(config.frame_speed);
 
 		blt_virtual_buf();
 
@@ -1038,7 +1037,7 @@ void Sys::disp_zoom()
 			else if( !(remote.sync_test_level & 2) )
 				font_news.disp( ZOOM_X1+10, ZOOM_Y1+30, _("Multiplayer Object Sync Error"), MAP_X2 );
 
-         Ambition::printSyncError();
+         Ambition::Draw::printSyncError();
 
 			vga.use_front();
 		}

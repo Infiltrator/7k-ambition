@@ -29,16 +29,11 @@
 #include "OFONT.h"
 #include "OWORLD.h"
 
-#include "Ambition_config.hh"
 
 namespace Ambition {
 
 void printSyncError(
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   String errorMessage;
   errorMessage = "Sync error: ";
   errorMessage += crc_store.crc_error_string;

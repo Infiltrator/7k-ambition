@@ -1,3 +1,5 @@
+SUBDIRS = 7kaaInterface
+
 noinst_LIBRARIES = libambition.a
 libambition_a_SOURCES = \
 	Ambition_config.cc \

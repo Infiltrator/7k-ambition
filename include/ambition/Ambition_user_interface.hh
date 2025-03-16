@@ -20,32 +20,32 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Header file for Ambition::UserInterface.
  */
 
-#include "Ambition_input.hh"
+#pragma once
 
-#define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+namespace Ambition::UserInterface {
 
-namespace Ambition {
+struct Coordinates {
+  int left;
+  int top;
+};
 
-void calculateScroll(
-  int& x,
-  int& y
-) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
-  }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
-}
+struct Rectangle {
+  Coordinates start;
+  Coordinates end;
+};
 
-} // namespace Ambition
+constexpr Rectangle INFO_PANE_CONTENTS = {
+  .start = {
+    .left = 589,
+    .top = 265,
+  },
+  .end = {
+    .left = 790,
+    .top = 589,
+  },
+};
+
+} // namespace Ambition::UserInterface

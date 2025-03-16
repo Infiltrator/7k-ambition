@@ -24,7 +24,7 @@
 
 #include <OMOUSE.h>
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <OMOUSECR.h>
 #include <OMOUSE2.h>
@@ -1029,7 +1029,7 @@ int Mouse::wait_press(int timeOutSecond)
 		sys.yield();
 		vga.flip();
 		mouse.get_event();
-      Ambition::delayFrame();
+		Ambition::Control::delayFrame();
 	}
 
 	int rc=0;
@@ -1066,9 +1066,9 @@ int Mouse::wait_press(int timeOutSecond)
 			break;
 
 		if (timeOutSecond) {
-			Ambition::delayFrame(timeout);
+			Ambition::Control::delayFrame(timeout);
 		} else {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 

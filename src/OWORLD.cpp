@@ -21,8 +21,8 @@
 //Filename    : OWORLD.CPP
 //Description : Object World
 
-#include "ambition/Ambition_input.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include "OCONFIG.h"
 #include <OSYS.h>
@@ -324,7 +324,7 @@ int World::detect_scroll()
 
    int rc=0;
 
-   Ambition::calculateScroll(scroll_x, scroll_y);
+	Ambition::Input::calculateScroll(scroll_x, scroll_y);
 
    if ( scroll_x || scroll_y )
    {
@@ -1362,7 +1362,7 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 			townY = ( ZOOM_Y1 + (townPtr->loc_y1-zoom_matrix->top_y_loc) * ZOOM_LOC_HEIGHT
 					  + ZOOM_Y1 + (townPtr->loc_y2-zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
-			Ambition::drawBuildingLinkLine(srcFirmId, Ambition::FIRM_ID_TOWN, srcX, srcY, townX, townY);
+			Ambition::Draw::buildingLinkLine(srcFirmId, Ambition::Draw::FIRM_ID_TOWN, srcX, srcY, townX, townY);
 		}
 	}
 
@@ -1422,7 +1422,7 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 		firmY = ( ZOOM_Y1 + (firmPtr->loc_y1-zoom_matrix->top_y_loc) * ZOOM_LOC_HEIGHT
 				  + ZOOM_Y1 + (firmPtr->loc_y2-zoom_matrix->top_y_loc+1) * ZOOM_LOC_HEIGHT ) / 2;
 
-		Ambition::drawBuildingLinkLine(srcFirmId, firmPtr->firm_id, srcX, srcY, firmX, firmY);
+		Ambition::Draw::buildingLinkLine(srcFirmId, firmPtr->firm_id, srcX, srcY, firmX, firmY);
 	}
 }
 //----------- End of function World::draw_link_line ------------//

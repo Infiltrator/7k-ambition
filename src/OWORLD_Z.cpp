@@ -23,8 +23,8 @@
 
 #include <math.h>
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OVGA.h>
 #include <OSYS.h>
@@ -201,7 +201,7 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 			lineToX = unitPtr->cur_x - world.zoom_matrix->top_x_loc*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
 			lineToY = unitPtr->cur_y - world.zoom_matrix->top_y_loc*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
 
-			if (Ambition::config.enhancementsAvailable()) {
+			if (Ambition::Config::enhancementsAvailable()) {
 				lineFromX = baseX + unitPtr->cur_x;
 				lineFromY = baseY + unitPtr->cur_y;
 				lineToX = baseX + unitPtr->go_x;
@@ -218,14 +218,14 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 		lineToX = (resultNode1->node_x - world.zoom_matrix->top_x_loc)*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
 		lineToY = (resultNode1->node_y - world.zoom_matrix->top_y_loc)*ZOOM_LOC_HEIGHT	+ ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
 
-		if (Ambition::config.enhancementsAvailable()) {
+		if (Ambition::Config::enhancementsAvailable()) {
 			lineFromX = baseX + resultNode1->node_x * ZOOM_LOC_WIDTH;
 			lineFromY = baseY + resultNode1->node_y * ZOOM_LOC_HEIGHT;
 		}
 
 		for(j=resultNodeRecno+1; j<=resultNodeCount; j++, resultNode1++, resultNode2++)
 		{
-			if (Ambition::config.enhancementsAvailable()) {
+			if (Ambition::Config::enhancementsAvailable()) {
 				lineToX = baseX + resultNode2->node_x * ZOOM_LOC_WIDTH;
 				lineToY = baseY + resultNode2->node_y * ZOOM_LOC_HEIGHT;
 			} else {
@@ -235,7 +235,7 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 
 			anim_line.draw_line(&vga_back, lineFromX, lineFromY, lineToX, lineToY);
 
-			if (Ambition::config.enhancementsAvailable()) {
+			if (Ambition::Config::enhancementsAvailable()) {
 				lineFromX = lineToX;
 				lineFromY = lineToY;
 			} else {
@@ -382,7 +382,7 @@ void ZoomMatrix::draw()
 
 				vga_back.put_bitmap_32x32( x, y, terrain_res[locPtr->terrain_id]->bitmap_ptr );
 				char *overlayBitmap = terrain_res[locPtr->terrain_id]->get_bitmap(sys.frame_count /4);
-				overlayBitmap = Ambition::calculateTerrainBitmap(
+				overlayBitmap = Ambition::Draw::calculateTerrainBitmap(
 					overlayBitmap,
 					locPtr->terrain_id,
 					xLoc,
@@ -666,7 +666,7 @@ void ZoomMatrix::draw_weather_effects()
 
 	// ##### begin Gilbert 6/9 #######//
 	if (config.frame_speed > 0
-		 || Ambition::config.enhancementsAvailable()
+		 || Ambition::Config::enhancementsAvailable()
 	) {
 		rain.new_drops();
 		if( config.rain_visual)
@@ -735,7 +735,7 @@ void ZoomMatrix::draw_weather_effects()
 	if (snowScale > 0
 		&& config.snow_visual
 		&& (config.frame_speed > 0
-			 || Ambition::config.enhancementsAvailable())
+			 || Ambition::Config::enhancementsAvailable())
 	) {
 		snow.draw_step(&vga_back);
 	}

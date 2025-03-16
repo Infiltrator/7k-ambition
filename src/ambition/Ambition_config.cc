@@ -28,6 +28,7 @@
 #include <stdexcept>
 #include <vector>
 
+#define _AMBITION_IMPLEMENTATION
 #include "ConfigAdv.h"
 #include "gettext.h"
 #include "KEY.h"

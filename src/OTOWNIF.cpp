@@ -21,7 +21,8 @@
 //Filename    : OTOWNIF.CPP
 //Description : Town interface routines
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OINFO.h>
 #include "OVGABUF.h"
@@ -56,11 +57,11 @@
 enum {
 		 RACE_BROWSE_Y1 = INFO_Y1+48,
 	  };
-#define RACE_BROWSE_Y2 (RACE_BROWSE_Y1+130 - (Ambition::config.enhancementsAvailable() ? 24 : 0))
+#define RACE_BROWSE_Y2 (RACE_BROWSE_Y1+130 - (Ambition::Config::enhancementsAvailable() ? 24 : 0))
 
 #define BUTTON_X1 INFO_X1
 #define BUTTON_X2 INFO_X2
-#define BUTTON_Y1 (RACE_BROWSE_Y2+28 + (Ambition::config.enhancementsAvailable() ? 24 : 0))
+#define BUTTON_Y1 (RACE_BROWSE_Y2+28 + (Ambition::Config::enhancementsAvailable() ? 24 : 0))
 #define BUTTON_Y2 (BUTTON_Y1+50)
 
 //---------- Define constant ------------//
@@ -348,9 +349,10 @@ void Town::disp_main_menu(int refreshFlag)
 	else
 		font_mid.put( RACE_BROWSE_X1+165, RACE_BROWSE_Y2+6, average_resistance(nation_array.player_recno), 1 );
 
-	//------ if this town is controlled by a rebel group -----//
 
-	Ambition::displayTownQualityOfLife(this, refreshFlag, RACE_BROWSE_Y2+23+3);
+	Ambition::Draw::printTownQualityOfLife(this, refreshFlag, RACE_BROWSE_Y2+23+3);
+
+	//------ if this town is controlled by a rebel group -----//
 
 	int x=BUTTON_X1, y=BUTTON_Y1;
 

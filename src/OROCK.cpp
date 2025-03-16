@@ -25,7 +25,7 @@
 
 #include <OROCK.h>
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OROCKRES.h>
 
@@ -71,7 +71,7 @@ void Rock::process()
 	{
 		cur_frame = rock_res.choose_next(rock_recno, cur_frame, random(ROCK_ALT_PATH) );
 		delay_remain = rock_res.get_anim_info(rock_res.get_anim_recno(rock_recno, cur_frame))->delay;
-      delay_remain = Ambition::calculateRockRemainingDelay(delay_remain);
+		delay_remain = Ambition::Draw::calculateRockRemainingDelay(delay_remain);
 	}
 }
 

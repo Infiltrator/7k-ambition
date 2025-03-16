@@ -21,7 +21,7 @@
 //Filename    : OWORLD_M.CPP
 //Description : Object MapMatrix
 
-#include "ambition/Ambition_minimap.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OMOUSE.h>
 #include <OIMGRES.h>
@@ -317,7 +317,7 @@ void MapMatrix::disp()
 //
 void MapMatrix::draw_square()
 {
-	if (Ambition::Minimap::drawViewBoundsBox(this)) {
+	if (Ambition::Draw::minimapViewBoundsBox(this)) {
 		return;
 	}
 

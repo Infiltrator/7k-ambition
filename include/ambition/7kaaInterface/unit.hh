@@ -20,32 +20,33 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Header file for _7kaaAmbitionInterface::Unit.
  */
 
-#include "Ambition_input.hh"
+#pragma once
 
-#define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+class Firm;
 
-namespace Ambition {
 
-void calculateScroll(
-  int& x,
-  int& y
-) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
-  }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
-}
+namespace _7kaaAmbitionInterface::Unit {
 
-} // namespace Ambition
+/**
+ * Send an available builder to a Firm.
+ *
+ * A builder is considered to be available if he is idle or repairing a building
+ * that is above a certain hitpoint percentage.
+ *
+ * @param firm The Firm to send a builder to.
+ * @return Whether the Ambition code took effect and so the rest of the 7kaa
+ * code should be skipped.
+ */
+bool sendAvailableBuilderToFirm(
+  const Firm* firm
+);
+
+} // namespace _7kaaAmbitionInterface::Unit
+
+#ifndef _AMBITION_IMPLEMENTATION
+/** Allow 7kaa to call using Ambition::*. */
+namespace Ambition = _7kaaAmbitionInterface;
+#endif

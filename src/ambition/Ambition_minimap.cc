@@ -29,17 +29,12 @@
 #include "OVGABUF.h"
 #include "OWORLDMT.h"
 
-#include "Ambition_config.hh"
 
 namespace Ambition {
 
 bool Minimap::drawViewBoundsBox(
   const MapMatrix* _7kaaMapMatrix
 ) {
-  if (!config.enhancementsAvailable()) {
-    return false;
-  }
-
   constexpr auto COLOUR_COUNT = 7;
   constexpr auto FRAMES_PER_COLOUR = 5;
   constexpr auto FULL_CYCLE_COUNT = COLOUR_COUNT * FRAMES_PER_COLOUR * 2;

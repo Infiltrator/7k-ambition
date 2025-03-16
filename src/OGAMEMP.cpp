@@ -21,7 +21,7 @@
 //Filename    : OGAMEMP.CPP
 //Description : Main Game Object - Multiplayer Game (using Imagic multiplayer SDK)
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <version.h>
 #include <OSYS.h>
@@ -1186,7 +1186,7 @@ int Game::mp_select_service()
 
 		vga_front.unlock_buf();
 
-		Ambition::delayFrame();
+		Ambition::Control::delayFrame();
 	}
 
 	if( !vga_front.buf_locked )
@@ -1419,7 +1419,7 @@ int Game::mp_select_mode(char *defSaveFileName, int service_mode)
 
 		vga_front.unlock_buf();
 
-		Ambition::delayFrame();
+		Ambition::Control::delayFrame();
 	}
 	if( !vga_front.buf_locked )
 		vga_front.lock_buf();
@@ -1728,7 +1728,7 @@ int Game::input_name_pass(const char *txt[], char *name, int name_len, char *pas
 
 		vga_front.unlock_buf();
 
-		Ambition::delayFrame();
+		Ambition::Control::delayFrame();
 	}
 	if (!vga_front.buf_locked)
 		vga_front.lock_buf();
@@ -2032,7 +2032,7 @@ int Game::mp_select_session()
 		vga_front.unlock_buf();
 
 		if (!refreshFlag) {
-			Ambition::delayFrame(refreshTime + pollTime);
+			Ambition::Control::delayFrame(refreshTime + pollTime);
 		}
 	}
 exit_poll:
@@ -2126,7 +2126,7 @@ int Game::mp_join_session(int session_id)
 
 		vga_front.unlock_buf();
 
-		Ambition::delayFrame(SDL_GetTicks64() + 100);
+		Ambition::Control::delayFrame(SDL_GetTicks64() + 100);
 	}
 
 END:
@@ -2220,7 +2220,7 @@ void Game::mp_close_session()
 
 		vga_front.unlock_buf();
 
-		Ambition::delayFrame(SDL_GetTicks64() + 100);
+		Ambition::Control::delayFrame(SDL_GetTicks64() + 100);
 	}
 
 	if (!vga_front.buf_locked)
@@ -2282,7 +2282,7 @@ int Game::mp_get_leader_board()
 
 		vga_front.unlock_buf();
 
-		Ambition::delayFrame(SDL_GetTicks64() + 100);
+		Ambition::Control::delayFrame(SDL_GetTicks64() + 100);
 	}
 	if (!vga_front.buf_locked)
 		vga_front.lock_buf();
@@ -3970,7 +3970,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 		// ####### end Gilbert 24/10 #######//
 
 		if (!refreshFlag && !mRefreshFlag) {
-			Ambition::delayFrame(SDL_GetTicks64() + 100);
+			Ambition::Control::delayFrame(SDL_GetTicks64() + 100);
 		}
 	}
 
@@ -5382,7 +5382,7 @@ int Game::mp_select_load_option(char *fileName)
 		// ####### end Gilbert 24/10 #######//
 
 		if (!refreshFlag) {
-			Ambition::delayFrame(SDL_GetTicks64() + 100);
+			Ambition::Control::delayFrame(SDL_GetTicks64() + 100);
 		}
 	}
 

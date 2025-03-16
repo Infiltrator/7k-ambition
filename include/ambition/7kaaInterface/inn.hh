@@ -20,32 +20,34 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Header file for _7kaaAmbitionInterface::Inn.
  */
 
-#include "Ambition_input.hh"
+#pragma once
 
-#define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+class Button3D;
+class FirmInn;
+class VBrowseIF;
 
-namespace Ambition {
 
-void calculateScroll(
-  int& x,
-  int& y
-) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
-  }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
-}
+namespace _7kaaAmbitionInterface::Inn {
 
-} // namespace Ambition
+int getSelectedRecordNumber(
+  const FirmInn* inn,
+  const int browserRecordNumber
+);
+
+void refreshBrowser(
+  const short firmRecordNumber,
+  FirmInn* inn,
+  VBrowseIF& browser,
+  const int removedUnitIndex,
+  Button3D& hireButton
+);
+
+} // namespace _7kaaAmbitionInterface::Inn
+
+#ifndef _AMBITION_IMPLEMENTATION
+/** Allow 7kaa to call using Ambition::*. */
+namespace Ambition = _7kaaAmbitionInterface;
+#endif

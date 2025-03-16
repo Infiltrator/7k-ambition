@@ -21,8 +21,8 @@
 //Filename    : OF_CAMP.CPP
 //Description : Firm Military Camp
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OINFO.h>
 #include "OVGABUF.h"
@@ -353,7 +353,7 @@ void FirmCamp::put_info(int refreshFlag)
 	if( !should_show_info() )
 		return;
 
-	const auto yOffset = Ambition::config.enhancementsAvailable() ? 6 : 0;
+	const auto yOffset = Ambition::Config::enhancementsAvailable() ? 6 : 0;
 
 	disp_camp_info(INFO_Y1+54, refreshFlag);
 	disp_worker_list(INFO_Y1+104+yOffset, refreshFlag);
@@ -418,7 +418,7 @@ int FirmCamp::detect_info()
 	int rc = mouse.any_click(INFO_X1+6, INFO_Y1+58, INFO_X1+5+UNIT_LARGE_ICON_WIDTH, INFO_Y1+57+UNIT_LARGE_ICON_HEIGHT, LEFT_BUTTON) ? 1 
 		: mouse.any_click(INFO_X1+6, INFO_Y1+58, INFO_X1+5+UNIT_LARGE_ICON_WIDTH, INFO_Y1+57+UNIT_LARGE_ICON_HEIGHT, RIGHT_BUTTON) ? 2 : 0;
 
-	const auto yOffset = Ambition::config.enhancementsAvailable() ? 6 : 0;
+	const auto yOffset = Ambition::Config::enhancementsAvailable() ? 6 : 0;
 
 	if( rc==1 )		// display this overseer's info
 	{
@@ -617,7 +617,7 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 	}
 
 	y += 3;
-	Ambition::drawBuildingOccupantHitbar(
+	Ambition::Draw::buildingOccupantHitbar(
 		INFO_X1,
 		y,
 		INFO_X2 - INFO_X1 - 2,

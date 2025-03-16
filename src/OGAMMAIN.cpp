@@ -21,9 +21,9 @@
 //Filename    : OGAMMAIN.CPP
 //Description : Main Game Object - Main menu
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_version.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -219,7 +219,7 @@ void Game::main_menu()
 		}
 		// ######### end Gilbert 23/7 ##########//
 
-      Ambition::drawModeInformation();
+		Ambition::Draw::modeInformation();
 
 		sys.blt_virtual_buf();		// blt the virtual front buffer to the screen
 
@@ -229,7 +229,7 @@ void Game::main_menu()
 		vga.flip();
 		mouse.get_event();
 
-      refreshFlag = Ambition::detectModeSelectClick();
+		refreshFlag = Ambition::Input::detectModeSelectClick();
 
 		optionInfo = main_option_array;
 
@@ -277,7 +277,7 @@ void Game::main_menu()
 			break;
 
 		if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 
@@ -377,7 +377,7 @@ void Game::disp_version()
 
 	str = _("Version");
 	str += " ";
-	str += Ambition::versionString().c_str();
+	str += Ambition::Config::versionString().c_str();
 
 	str += " ";
 	str += _("compatible with 7kfans' 7kaa");
@@ -663,7 +663,7 @@ void Game::single_player_menu()
 		}
 
 		if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 
@@ -910,7 +910,7 @@ void Game::multi_player_menu(int lobbied, char *game_host)
 		}
 
 		if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 

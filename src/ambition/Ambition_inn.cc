@@ -27,11 +27,10 @@
 
 #include <stdint.h>
 
+#define _AMBITION_IMPLEMENTATION
 #include "OBUTT3D.h"
 #include "OF_INN.h"
 #include "OVBROWIF.h"
-
-#include "Ambition_config.hh"
 
 
 namespace Ambition {
@@ -40,10 +39,6 @@ int getInnSelectedRecordNumber(
   const FirmInn* inn,
   const int browserRecordNumber
 ) {
-  if (!config.enhancementsAvailable()) {
-    return browserRecordNumber;
-  }
-
   return inn->inn_unit_count - browserRecordNumber + 1;
 }
 
@@ -54,10 +49,6 @@ void refreshInnBrowser(
   const int removedUnitIndex,
   Button3D& hireButton
 ) {
-  if (!config.enhancementsAvailable()) {
-    return;
-  }
-
   if (
     firmRecordNumber != firm_array.selected_recno
     || !inn->should_show_info()

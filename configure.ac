@@ -414,8 +414,10 @@ AC_CONFIG_FILES([
   data/Makefile
   include/Makefile
   include/ambition/Makefile
+  include/ambition/7kaaInterface/Makefile
   src/Makefile
   src/ambition/Makefile
+  src/ambition/7kaaInterface/Makefile
   src/curl/Makefile
   src/enet/Makefile
   src/imgfun/Makefile

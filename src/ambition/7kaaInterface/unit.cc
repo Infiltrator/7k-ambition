@@ -20,32 +20,26 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Implementation file for _7kaaAmbitionInterface::Unit.
  */
 
-#include "Ambition_input.hh"
-
 #define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+#include "7kaaInterface/unit.hh"
 
-namespace Ambition {
+#include "Ambition_config.hh"
+#include "Ambition_unit.hh"
 
-void calculateScroll(
-  int& x,
-  int& y
+
+namespace _7kaaAmbitionInterface::Unit {
+
+bool sendAvailableBuilderToFirm(
+  const Firm* firm
 ) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
   }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
+
+  return Ambition::sendAvailableBuilderToFirm(firm);
 }
 
-} // namespace Ambition
+} // namespace _7kaaAmbitionInterface::Unit

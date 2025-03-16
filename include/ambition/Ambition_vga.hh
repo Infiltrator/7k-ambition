@@ -40,7 +40,6 @@ constexpr auto FIRM_ID_TOWN = 0;
 
 
 short calculateAnimatedLinePhase(
-  const short _7kaaCalculation,
   const int animatedFlag,
   const int lineProgress
 );
@@ -51,7 +50,6 @@ FirmBitmap* calculateFirmBitmap(
 );
 
 int calculateHitbarBaseColour(
-  const int _7kaaCalculation,
   const double maximumHitpoints
 );
 
@@ -69,19 +67,16 @@ char calculateRockRemainingDelay(
 );
 
 char* calculateTerrainBitmap(
-  char* _7kaaCalculation,
   const short terrainId,
   const int x,
   const int y
 );
 
 char calculateTownFlagNumber(
-  const char _7kaaCalculation,
   const int townRecordNumber
 );
 
 int calculateUnitHitbarWidth(
-  const int _7kaaCalculation
 );
 
 int calculateUnitIconY(
@@ -89,7 +84,6 @@ int calculateUnitIconY(
 );
 
 int calculateWorkerPortraitX(
-  const int _7kaaCalculation,
   const int workerIndex
 );
 

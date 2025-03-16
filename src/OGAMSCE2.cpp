@@ -21,7 +21,7 @@
 // Filename    : OGAMSCE2.CPP
 // Description : select scenario menu
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <OSYS.h>
 #include <OGAME.h>
@@ -614,7 +614,7 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 		}
 
 		if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 

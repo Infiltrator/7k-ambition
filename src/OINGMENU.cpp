@@ -21,7 +21,7 @@
 // Filename    : OINGMENU.H
 // Description : in-game menu (async version)
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <OVGA.h>
 #include <OVGABUF.h>
@@ -108,7 +108,7 @@ void InGameMenu::enter(char untilExitFlag)
          if (cycle < 2) {
             cycle++;
          } else {
-            Ambition::delayFrame();
+            Ambition::Control::delayFrame();
          }
 
          sys.yield();

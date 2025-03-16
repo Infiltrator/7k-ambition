@@ -21,8 +21,8 @@
 //Filename    : OUNITDRW.CPP
 //Description : Object Unit Drawing routines
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OFIRMRES.h>
 #include <OIMGRES.h>
@@ -83,7 +83,7 @@ void Unit::draw(const int outlined)
 
 	const auto showOutline
 		= outlined
-		?: Ambition::config.enhancementsAvailable() && selected_flag;
+		?: Ambition::Config::enhancementsAvailable() && selected_flag;
 	auto colorRemapTable = game.get_color_remap_table(nation_recno, showOutline);
 
 	//---- only portion of the sprite is inside the view area ------//
@@ -150,7 +150,7 @@ void Unit::draw(const int outlined)
 		int dispY1 = ZOOM_Y1 + cur_y - World::view_top_y - 20;
 		int maxHitBarWidth = ZOOM_LOC_WIDTH * sprite_info->loc_width - 11;
 
-		dispY1 = Ambition::calculateUnitIconY(dispY1);
+		dispY1 = Ambition::Draw::calculateUnitIconY(dispY1);
 
 		world.zoom_matrix->put_bitmap_clip(dispX1+maxHitBarWidth+1,
 			dispY1-3, image_icon.get_ptr("U_SPY") );
@@ -190,7 +190,7 @@ void Unit::draw_selected()
 		}
 	}
 
-   hitBarColor = Ambition::calculateHitbarBaseColour(hitBarColor, max_hit_points);
+	hitBarColor = Ambition::Draw::calculateHitbarBaseColour(hitBarColor, max_hit_points);
 
 	//----- draw the hit point bar in a buffer -----//
 
@@ -215,7 +215,7 @@ void Unit::draw_selected()
 		else
 			maxHitBarWidth = ZOOM_LOC_WIDTH;
 
-		maxHitBarWidth = Ambition::calculateUnitHitbarWidth(maxHitBarWidth);
+		maxHitBarWidth = Ambition::Draw::calculateUnitHitbarWidth(maxHitBarWidth);
 
 		dispX1 = ZOOM_X1 + cur_x - World::view_top_x;
 		dispY1 = ZOOM_Y1 + cur_y - World::view_top_y - 20;
@@ -234,8 +234,8 @@ void Unit::draw_selected()
 	//----------- set other vars -----------//
 
 	char* dataPtr = sys.common_data_buf;
-	int   curBarWidth = Ambition::calculateHitbarWidth(maxHitBarWidth, max_hit_points);
-	dispX1 = Ambition::centreHitbar(dispX1, maxHitBarWidth, curBarWidth);
+	int   curBarWidth = Ambition::Draw::calculateHitbarWidth(maxHitBarWidth, max_hit_points);
+	dispX1 = Ambition::Draw::centreHitbar(dispX1, maxHitBarWidth, curBarWidth);
 	int   pointX = (curBarWidth-1) * (int) hit_points / max_hit_points;	// the separating point between the area with hit point and the area without
 
 	err_when( max_hit_points > hitBarMax );
@@ -278,7 +278,7 @@ void Unit::draw_selected()
 
 	world.zoom_matrix->put_bitmap_clip(dispX1, dispY1, sys.common_data_buf);
 
-	Ambition::drawHitbarOutline(
+	Ambition::Draw::hitbarOutline(
 		is_own(),
 		dispX1,
 		dispY1,
@@ -348,7 +348,7 @@ void Unit::draw_skill_icon()
 			break;
 	}
 
-	dispY1 = Ambition::calculateUnitIconY(dispY1);
+	dispY1 = Ambition::Draw::calculateUnitIconY(dispY1);
 
 	int y=dispY1-3;
 

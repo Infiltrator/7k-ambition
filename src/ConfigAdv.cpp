@@ -25,7 +25,7 @@
 
 #include <ConfigAdv.h>
 
-#include "ambition/Ambition_config.hh"
+#include "ambition/7kaaInterface/config.hh"
 
 #include <FilePath.h>
 #include <ONATIONB.h>
@@ -129,7 +129,7 @@ ConfigAdv::ConfigAdv()
 		flags |= FLAG_UNKNOWN_BUILD;
 	#endif
 
-	if (!Ambition::config.compatibleWith7kaa()) {
+	if (!Ambition::Config::compatibleWith7kaa()) {
 	  flags |= FLAG_NOT_7KAA_COMPATIBLE;
 	}
 
@@ -216,13 +216,13 @@ int ConfigAdv::load(char *filename)
 
 		misc.rtrim(name);
 		misc.rtrim(value);
-		Ambition::set7kaaConfigOption(name, value, line);
+		Ambition::Config::set7kaaConfigOption(name, value, line);
 
 		*fileTxt.data_ptr = save;
 		fileTxt.next_line();
 	}
 
-	Ambition::report7kaaConfigLoadingErrors(filename);
+	Ambition::Config::report7kaaConfigLoadingErrors(filename);
 
 	return 1;
 }

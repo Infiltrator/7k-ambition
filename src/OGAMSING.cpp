@@ -21,7 +21,7 @@
 //Filename    : OGAMSING.CPP
 //Description : Single player game interface
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -1031,7 +1031,7 @@ static int select_option()
 		vga_front.unlock_buf();
 
 		if(!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 

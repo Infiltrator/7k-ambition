@@ -21,7 +21,7 @@
 //Filename    : OTUTOR2.CPP
 //Description : Class Tutor
 
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/control.hh"
 
 #include <OSYS.h>
 #include <OMOUSE.h>
@@ -412,7 +412,7 @@ int Tutor::select_tutor(int actionMode)
 		if (firstCycle) {
 			firstCycle = false;
 		} else if (!refreshFlag) {
-			Ambition::delayFrame();
+			Ambition::Control::delayFrame();
 		}
 	}
 

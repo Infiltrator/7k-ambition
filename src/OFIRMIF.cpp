@@ -21,8 +21,8 @@
 //Filename    : OFIRMIF.CPP
 //Description : Firm interface routines
 
-#include "ambition/Ambition_config.hh"
-#include "ambition/Ambition_vga.hh"
+#include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OSTR.h>
 #include <KEY.h>
@@ -442,7 +442,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 	{
 		workerPtr = &worker_array[worker_id_array[i]-1];
 		x = INFO_X1+4+i%4*50;
-		x = Ambition::calculateWorkerPortraitX(x, i);
+		x = Ambition::Draw::calculateWorkerPortraitLeft(x, i);
 		y = dispY1+i/4*29;
 
 		if( i<worker_count )
@@ -464,7 +464,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 			//------ display hit points bar --------//
 
 			const auto end
-				= x + (Ambition::config.enhancementsAvailable() ? 48 : 25);
+				= x + (Ambition::Config::enhancementsAvailable() ? 48 : 25);
 			disp_worker_hit_points( x+2, y+24, end, workerPtr->hit_points, workerPtr->max_hit_points() );
 
 			//----- display combat or skill level ------//
@@ -587,7 +587,7 @@ int Firm::detect_worker_list()
 //
 void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int maxHitPoints)
 {
-	if (Ambition::drawBuildingOccupantHitbar(x1, y1, x2 - x1, hitPoints, maxHitPoints)) {
+	if (Ambition::Draw::buildingOccupantHitbar(x1, y1, x2 - x1, hitPoints, maxHitPoints)) {
 		return;
 	}
 

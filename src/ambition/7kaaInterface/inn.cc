@@ -20,32 +20,47 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Input.
+ * Implementation file for _7kaaAmbitionInterface::Inn.
  */
 
-#include "Ambition_input.hh"
-
 #define _AMBITION_IMPLEMENTATION
-#include "OMOUSE.h"
+#include "inn.hh"
 
-namespace Ambition {
+#include "Ambition_config.hh"
+#include "Ambition_inn.hh"
 
-void calculateScroll(
-  int& x,
-  int& y
+
+namespace _7kaaAmbitionInterface::Inn {
+
+int getSelectedRecordNumber(
+  const FirmInn* inn,
+  const int browserRecordNumber
 ) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
+  if (!Ambition::config.enhancementsAvailable()) {
+    return browserRecordNumber;
   }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
+
+  return Ambition::getInnSelectedRecordNumber(inn, browserRecordNumber);
 }
 
-} // namespace Ambition
+void refreshBrowser(
+  const short firmRecordNumber,
+  FirmInn* inn,
+  VBrowseIF& browser,
+  const int removedUnitIndex,
+  Button3D& hireButton
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::refreshInnBrowser(
+    firmRecordNumber,
+    inn,
+    browser,
+    removedUnitIndex,
+    hireButton
+  );
+}
+
+} // namespace _7kaaAmbitionInterface::Inn

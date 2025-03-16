@@ -301,6 +301,7 @@ AM_LDFLAGS = $(GLOBAL_LDFLAGS)
 
 7k_ambition_LDADD =
 
+7k_ambition_LDADD += ./ambition/7kaaInterface/lib7kaa-ambition-interface.a
 7k_ambition_LDADD += ./ambition/libambition.a
 
 if AUDIO_OPENAL
