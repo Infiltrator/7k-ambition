@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.0.4] — 2025-03-16
+
 ### Added
 
 - Added delete button to load game menu.
