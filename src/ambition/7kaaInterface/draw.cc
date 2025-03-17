@@ -65,6 +65,28 @@ void buildingHitBar(
   Ambition::drawFirmHitBar(firm);
 }
 
+void buildingLinkLine(
+  const int sourceFirmId,
+  const int destinationFirmId,
+  int sourceLeft,
+  int sourceTop,
+  int destinationLeft,
+  int destinationTop,
+  const bool animated,
+  const bool thick
+) {
+  Ambition::drawBuildingLinkLine(
+    sourceFirmId,
+    destinationFirmId,
+    sourceLeft,
+    sourceTop,
+    destinationLeft,
+    destinationTop,
+    animated,
+    thick
+  );
+}
+
 bool buildingOccupantHitbar(
   const int left,
   const int top,
@@ -103,28 +125,6 @@ void buildingProgressBar(
   }
 
   Ambition::drawTownTrainingProgressBar(town);
-}
-
-void buildingLinkLine(
-  const int sourceFirmId,
-  const int destinationFirmId,
-  int sourceLeft,
-  int sourceTop,
-  int destinationLeft,
-  int destinationTop,
-  const bool animated,
-  const bool thick
-) {
-  Ambition::drawBuildingLinkLine(
-    sourceFirmId,
-    destinationFirmId,
-    sourceLeft,
-    sourceTop,
-    destinationLeft,
-    destinationTop,
-    animated,
-    thick
-  );
 }
 
 short calculateAnimatedLinePhase(
