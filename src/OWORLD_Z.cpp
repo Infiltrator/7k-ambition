@@ -278,6 +278,8 @@ static void draw_unit_way_point_on_zoom_map()
 		if( !config.show_ai_info && nationRecno && !unitPtr->is_nation(nationRecno) )
 			continue;
 
+		Ambition::Draw::unitWaypointsOnWorld(unit_array[i]);
+
 		if(unitPtr->way_point_count)
 		{
 			resultNodeCount = unitPtr->way_point_count;

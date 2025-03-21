@@ -25,10 +25,78 @@
 
 #pragma once
 
+#include <vector>
+
 class Firm;
+class Spy;
+class Town;
+class Unit;
+struct Worker;
 
 
 namespace _7kaaAmbitionInterface::Unit {
+
+void clearWaypoints(
+  const std::vector<short> _7kaaUnitRecordNumbers
+);
+
+void died(
+  const ::Unit* _7kaaUnit
+);
+void died(
+  const Spy* _7kaaSpy
+);
+
+void dropSpyIdentity(
+  const ::Unit* _7kaaUnit
+);
+void dropSpyIdentity(
+  const Firm* _7kaaFirm,
+  const Worker* _7kaaWorker
+);
+
+void enteredBuilding(
+  const ::Unit* _7kaaUnit,
+  const Firm* _7kaaFirm,
+  const Worker* _7kaaWorker
+);
+void enteredBuilding(
+  const ::Unit* _7kaaUnit,
+  const Town* _7kaaTown
+);
+
+void exitedBuilding(
+  const Worker* _7kaaWorker,
+  const Firm* _7kaaFirm,
+  const ::Unit* _7kaaUnit
+);
+void exitedBuilding(
+  const Spy* _7kaaSpy,
+  const Town* _7kaaTown,
+  const ::Unit* _7kaaUnit
+);
+
+bool goToNextWaypoint(
+  const ::Unit* _7kaaUnit
+);
+
+void migrated(
+  const Firm* _7kaaFirm,
+  const Worker* _7kaaWorker,
+  const Town* destination
+);
+void migrated(
+  const Spy* _7kaaSpy,
+  const Town* destination
+);
+
+void retired(
+  const ::Unit* _7kaaUnit
+);
+void retired(
+  const Firm* _7kaaFirm,
+  const Worker* _7kaaWorker
+);
 
 /**
  * Send an available builder to a Firm.
@@ -42,6 +110,13 @@ namespace _7kaaAmbitionInterface::Unit {
  */
 bool sendAvailableBuilderToFirm(
   const Firm* firm
+);
+
+bool toggleWaypoint(
+  const std::vector<short> _7kaaUnitRecordNumbers,
+  const short _7kaaX,
+  const short _7kaaY,
+  const bool allowAction
 );
 
 } // namespace _7kaaAmbitionInterface::Unit

@@ -21,6 +21,9 @@
 //Filename    : OUNITA.CPP
 //Description : Object UnitArray
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/unit.hh"
+
 #include <OSYS.h>
 #include <OREMOTE.h>
 #include <ONATION.h>
@@ -210,6 +213,8 @@ void UnitArray::disappear_in_town(int unitRecno, int townRecno)
 {
 	Unit* unitPtr = unit_array[unitRecno];
 
+	Ambition::Unit::enteredBuilding(unitPtr, town_array[townRecno]);
+
 	if( unitPtr->unit_mode == UNIT_MODE_REBEL )
 		rebel_array.settle_town(unitRecno, townRecno);
 
@@ -352,6 +357,8 @@ void UnitArray::draw_dot()
 						vga_back.line(lineFromX, lineFromY, lineToX, lineToY, lineColor);
 					}
 				}
+
+				Ambition::Draw::unitWaypointsOnMinimap(unitPtr);
 
 				//### begin alex 27/10 ###//
 				//-------------- draw way_point on mini map ------------//

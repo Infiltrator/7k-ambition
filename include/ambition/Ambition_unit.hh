@@ -25,12 +25,20 @@
 
 #pragma once
 
+#include <boost/serialization/deque.hpp>
+#include <deque>
+#include <memory>
 #include <stdint.h>
 #include <vector>
+
+#include "Ambition_coordinates.hh"
+#include "Ambition_entity.hh"
+#include "Ambition_time.hh"
 
 class Firm;
 class Town;
 class Unit;
+struct Worker;
 
 
 namespace Ambition {
@@ -49,21 +57,190 @@ bool sendAvailableBuilderToFirm(
   const Firm* firm
 );
 
-namespace Unit {
 
-uint8_t _7kaaRegionId(
-  ::Unit* _7kaaUnit
-);
+class Unit : public Entity {
+public:
+  struct Waypoint {
+    enum class Action {
+      MoveOnly,
+      InteractWithBuilding,
+    };
 
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Firm* _7kaaFirm
-);
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Town* _7kaaTown
-);
+    Action action;
+    Coordinates::Point point;
 
-} // namespace Ambition::Unit
+    template<class Archive>
+    void serialize(
+      Archive& archive,
+      const unsigned int version
+    ) {
+      archive & BOOST_SERIALIZATION_NVP(action);
+      archive & BOOST_SERIALIZATION_NVP(point);
+    }
+  };
+
+  Unit(
+    const unsigned long long recordNumber,
+    const short _7kaaSpriteRecordNumber
+  );
+
+  static std::shared_ptr<Unit> create(
+    const short _7kaaSpriteRecordNumber
+  );
+
+  static std::shared_ptr<Unit> findBy7kaaSpriteRecordNumber(
+    const short _7kaaSpriteRecordNumber
+  );
+  static std::shared_ptr<Unit> findBy7kaaSpyRecordNumber(
+    const short _7kaaSpyRecordNumber
+  );
+  static std::shared_ptr<Unit> findBy7kaaWorker(
+    const Firm* _7kaaFirm,
+    const Worker* _7kaaworker
+  );
+
+  static std::shared_ptr<Unit> getBy7kaaSpriteRecordNumber(
+    const short _7kaaSpriteRecordNumber
+  );
+
+
+  static uint8_t _7kaaRegionId(
+    ::Unit* _7kaaUnit
+  );
+
+  static void sendToDestination(
+    std::vector<short> _7kaaUnitRecordNumbers,
+    const Waypoint& destination
+  );
+
+  bool active (
+  );
+
+  void addWaypoint(
+    const Waypoint& waypoint
+  );
+
+  void clearWaypoints(
+  );
+
+  void died(
+    const Time::Stamp stamp
+  );
+
+  void drawWaypointsOnWorld(
+  ) const;
+
+  void drawWaypointsOnMinimap(
+  ) const;
+
+  void dropSpyIdentity(
+  );
+
+  void enteredBuilding(
+    const Firm* _7kaaFirm,
+    const Worker* _7kaaWorker
+  );
+  void enteredBuilding(
+    const Town* _7kaaTown,
+    const Time::Stamp stamp
+  );
+
+  void exitedBuilding(
+    const ::Unit* _7kaaUnit
+  );
+
+  bool goToNextWaypoint(
+  );
+
+  void migrated(
+    const Town* destination
+  );
+
+  void retired(
+    const Time::Stamp stamp
+  );
+
+  void toggleWaypoint(
+    const Waypoint& waypoint
+  );
+
+protected:
+  enum class Status {
+    Active,
+    InsideBuilding,
+    Retired,
+    Dead,
+  };
+
+  struct WorkerIdentifier {
+    short extra_para;
+    uint16_t name_id;
+    char race_id;
+    char rank_id;
+    char skill_id;
+    char skill_potential;
+    short town_recno;
+    char unit_id;
+
+    void clear(
+    );
+
+    template<class Archive>
+    void serialize(
+      Archive& archive,
+      const unsigned int version
+    ) {
+      archive & BOOST_SERIALIZATION_NVP(extra_para);
+      archive & BOOST_SERIALIZATION_NVP(name_id);
+      archive & BOOST_SERIALIZATION_NVP(race_id);
+      archive & BOOST_SERIALIZATION_NVP(rank_id);
+      archive & BOOST_SERIALIZATION_NVP(skill_id);
+      archive & BOOST_SERIALIZATION_NVP(skill_potential);
+      archive & BOOST_SERIALIZATION_NVP(town_recno);
+      archive & BOOST_SERIALIZATION_NVP(unit_id);
+    }
+  };
+
+  short _7kaaSpriteRecordNumber;
+  short _7kaaSpyRecordNumber;
+  Time::Stamp diedAt;
+  unsigned long long insideBuildingRecordNumber;
+  Time::Stamp retiredAt;
+  Status status;
+  std::deque<Waypoint> waypoints;
+  WorkerIdentifier workerIdentifier;
+
+  Coordinates::Point currentDestination(
+  ) const;
+
+protected:
+  friend class boost::serialization::access;
+
+  /** To be used only by Boost serialisation. */
+  Unit() :
+    Entity()
+  { }
+
+  template<class Archive>
+  void serialize(
+    Archive& archive,
+    const unsigned int version
+  ) {
+    archive & boost::serialization::make_nvp(
+      "entity",
+      boost::serialization::base_object<Entity>(*this)
+    );
+    archive & BOOST_SERIALIZATION_NVP(_7kaaSpriteRecordNumber);
+    archive & BOOST_SERIALIZATION_NVP(_7kaaSpyRecordNumber);
+    archive & BOOST_SERIALIZATION_NVP(diedAt);
+    archive & BOOST_SERIALIZATION_NVP(insideBuildingRecordNumber);
+    archive & BOOST_SERIALIZATION_NVP(retiredAt);
+    archive & BOOST_SERIALIZATION_NVP(status);
+    archive & BOOST_SERIALIZATION_NVP(waypoints);
+    archive & BOOST_SERIALIZATION_NVP(workerIdentifier);
+  }
+};
 
 } // namespace Ambition
+
+BOOST_CLASS_VERSION(Ambition::Unit, 0)

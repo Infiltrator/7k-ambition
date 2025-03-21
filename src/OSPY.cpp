@@ -21,6 +21,8 @@
 //Filename    : OSPY.CPP
 //Description : Object Spy
 
+#include "ambition/7kaaInterface/unit.hh"
+
 #include <ONEWS.h>
 #include <OUNIT.h>
 #include <OWORLD.h>
@@ -797,6 +799,8 @@ void Spy::drop_spy_identity()
 			{
 				unitPtr->spy_recno = 0;
 				rc = 1;
+
+				Ambition::Unit::dropSpyIdentity(unitPtr);
 			}
 		}
 
@@ -808,6 +812,9 @@ void Spy::drop_spy_identity()
 				{
 					firmPtr->worker_array[i].spy_recno = 0;
 					rc = 1;
+
+					Ambition::Unit::dropSpyIdentity(firmPtr, &firmPtr->worker_array[i]);
+
 					break;
 				}
 			}
@@ -820,6 +827,8 @@ void Spy::drop_spy_identity()
 		Unit* unitPtr = unit_array[spy_place_para];
 
 		unitPtr->spy_recno = 0;
+
+		Ambition::Unit::dropSpyIdentity(unitPtr);
 	}
 
 	//------ delete this Spy record from spy_array ----//
@@ -1115,6 +1124,8 @@ int Spy::mobilize_town_spy(int decPop)
 		return 0;
 
 	Unit* unitPtr = unit_array[unitRecno];  // set the spy vars of the mobilized unit
+
+	Ambition::Unit::exitedBuilding(spy_array[spy_recno], townPtr, unitPtr);
 
 	err_when( !unitPtr->is_visible() );
 

@@ -21,6 +21,8 @@
 //Filename    : OUNIT.CPP
 //Description : Object Unit
 
+#include "ambition/7kaaInterface/unit.hh"
+
 #include <ALL.h>
 #include <OWORLD.h>
 #include <OSTR.h>
@@ -1530,6 +1532,8 @@ void Unit::change_nation(int newNationRecno)
 	if(way_point_count)
 		reset_way_point_array();
 
+	Ambition::Unit::clearWaypoints({ sprite_recno });
+
 	//-- if the player is giving a command to this unit, cancel the command --//
 
    if( nation_recno == nation_array.player_recno &&
@@ -2337,6 +2341,8 @@ void Unit::resign(int remoteAction)
 
       return;
    }
+
+	Ambition::Unit::retired(this);
 
    //---- increase the wandering count when a unit is disbanded ----//
 

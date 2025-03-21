@@ -24,6 +24,10 @@ speaking, considered to be the player's experience.
 - Make Town training queue unlimited, up from 10.
 - Use global research target for all new and newly idle Towers of Science, not
   just the ones that were present when first clicking.
+- Waypoints can now be set to attack and enter buildings instead of just moving
+  to a destination.
+- Waypoints now no longer get cleared if the unit cannot reach one destination,
+  allowing for exploration without interruption.
 
 
 ## [3.0.4] — 2025-03-16

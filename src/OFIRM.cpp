@@ -22,6 +22,7 @@
 //Description : Object Firm
 
 #include "ambition/7kaaInterface/building.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <string.h>
 #include <OWORLD.h>
@@ -1056,6 +1057,8 @@ void Firm::assign_worker(int workerUnitRecno)
 	if( !firm_res[firm_id]->live_in_town )		// if the unit does not live in town, increase the unit count now
 		unit_res[unitPtr->unit_id]->inc_nation_unit_count(nation_recno);
 
+	Ambition::Unit::enteredBuilding(unitPtr, this, workerPtr);
+
 	unit_array.disappear_in_firm(workerUnitRecno);
 }
 //----------- End of function Firm::assign_worker --------//
@@ -1472,7 +1475,11 @@ void Firm::process_construction()
 				int xLoc=loc_x1, yLoc=loc_y1;     // xLoc & yLoc are used for returning results
 				SpriteInfo *spriteInfo = unitPtr->sprite_info;
 				if(!locate_space(remove_firm, xLoc, yLoc, loc_x2, loc_y2, spriteInfo->loc_width, spriteInfo->loc_height))
+				{
+					Ambition::Unit::retired(unitPtr);
+
 					unit_array.disappear_in_firm(builder_recno); // kill the unit
+				}
 				else
 					unitPtr->init_sprite(xLoc, yLoc); // restore the unit
 			}
@@ -2437,6 +2444,9 @@ int Firm::mobilize_worker(int workerId, char remoteAction)
 
 	sort_worker();
 
+	if (unitRecno) {
+		Ambition::Unit::exitedBuilding(workerPtr, this, unit_array[unitRecno ?: unitRecno2]);
+	}
 	if (remoteAction != COMMAND_AUTO) {
 		Ambition::Building::sendUnitsToRallyPoint(this, { static_cast<short>(unitRecno ?: unitRecno2) });
 	}
@@ -2558,6 +2568,8 @@ int Firm::create_worker_unit(Worker& thisWorker)
 	//--- set non-military units to non-aggressive, except ai ---//
 	if( !config_adv.firm_mobilize_civilian_aggressive && unitPtr->race_id>0 && unitPtr->skill.skill_id != SKILL_LEADING && !unitPtr->ai_unit )
 		unitPtr->aggressive_mode = 0;
+
+	Ambition::Unit::exitedBuilding(&thisWorker, this, unit_array[unitRecno]);
 
 	return unitRecno;
 }
@@ -2699,6 +2711,8 @@ int Firm::resign_worker(int workerId)
 
 	if( workerPtr->town_recno )      // town_recno is 0 if the workers in the firm do not live in towns
 	{
+		Ambition::Unit::retired(this, workerPtr);
+
 		Town* townPtr = town_array[workerPtr->town_recno];
 
 		err_when(workerPtr->race_id < 1);
@@ -2718,6 +2732,8 @@ int Firm::resign_worker(int workerId)
 
 		if(!unitRecno)
 			return 0; // return 0 eg there is no space to create the unit
+
+		Ambition::Unit::exitedBuilding(workerPtr, this, unit_array[unitRecno]);
 	}
 
 	//------- delete the record from the worker_array ------//
@@ -2897,6 +2913,8 @@ void Firm::worker_migrate(int workerId, int destTownRecno, int newLoyalty)
 
 	//--------- migrate now ----------//
 
+	Ambition::Unit::migrated(this, workerPtr, town_array[destTownRecno]);
+
 	int keepJob = 1;
 
 	workerPtr->town_recno = destTownRecno;
@@ -2968,6 +2986,8 @@ void Firm::set_worker_home_town(int townRecno, char remoteAction, int workerId)
 	else if( workerPtr->is_nation(firm_recno, nation_recno) &&
 		townPtr->nation_recno == nation_recno )		// only allow when the worker lives in a town belonging to the same nation and moving domestically
 	{
+		Ambition::Unit::migrated(this, workerPtr, town_array[townRecno]);
+
 		int workerLoyalty = workerPtr->loyalty();
 
 		town_array[workerPtr->town_recno]->dec_pop(workerPtr->race_id, 1);

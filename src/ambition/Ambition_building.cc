@@ -69,10 +69,6 @@ struct Building::Underlying7kaaObject {
   }
 };
 
-std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
-  int _7kaaFirmRecordNumber
-);
-
 
 std::shared_ptr<Building> Building::create(
   const _7kaaType type,
@@ -343,7 +339,7 @@ void setOrClearRallyPoint(
 ) {
   if (firm_array.selected_recno) {
     const auto _7kaaFirmRecordNumber = firm_array.selected_recno;
-    auto building = getBuildingBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
+    auto building = Building::getBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
 
     const auto _7kaaFirm = firm_array[_7kaaFirmRecordNumber];
     if (_7kaaCoordinates.x >= _7kaaFirm->loc_x1
@@ -458,7 +454,7 @@ Building::Underlying7kaaObject::Underlying7kaaObject(
   object.town = town;
 }
 
-std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
+std::shared_ptr<Building> Building::getBy7kaaFirmRecordNumber(
   int _7kaaFirmRecordNumber
 ) {
   auto building = Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);

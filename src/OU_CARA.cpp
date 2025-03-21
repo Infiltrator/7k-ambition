@@ -22,6 +22,8 @@
 //Filename    : OU_CARA.CPP
 //Description : Unit Caravan
 
+#include "ambition/7kaaInterface/unit.hh"
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OSTR.h>
@@ -1128,6 +1130,8 @@ void UnitCaravan::caravan_in_firm()
 	//-----------------------------------------------------------------------------//
 	if(firm_array.is_deleted(action_para))
 	{
+		Ambition::Unit::died(this);
+
 		hit_points = (float) 0;	// caravan also die if the market is deleted
 		unit_array.disappear_in_firm(sprite_recno); // caravan also die if the market is deleted
 		return;

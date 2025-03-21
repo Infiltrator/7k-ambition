@@ -84,6 +84,9 @@ public:
     const short _7kaaTownRecordNumber
   );
 
+  static std::shared_ptr<Building> getBy7kaaFirmRecordNumber(
+    int _7kaaFirmRecordNumber
+  );
   static std::shared_ptr<Building> getBy7kaaTownRecordNumber(
     const int _7kaaTownRecordNumber
   );
