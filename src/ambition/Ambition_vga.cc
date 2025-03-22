@@ -52,6 +52,7 @@
 #include "OUNIT.h"
 #include "vga_util.h"
 
+#include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_user_interface.hh"
 
@@ -615,6 +616,33 @@ void drawBuildingProgressBar(
     barWidth,
     BAR_HEIGHT
   );
+}
+
+void drawBuildingRallyPoint(
+  Firm* _7kaaFirm
+) {
+  if (firm_array.selected_recno == _7kaaFirm->firm_recno
+    && _7kaaFirm->own_firm()
+  ) {
+    const auto building
+      = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+    if (building) {
+      building->drawRallyPoint();
+    }
+  }
+}
+void drawBuildingRallyPoint(
+  Town* _7kaaTown
+) {
+  if (town_array.selected_recno == _7kaaTown->town_recno
+    && _7kaaTown->nation_recno == nation_array.player_recno
+  ) {
+    const auto building
+      = Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+    if (building) {
+      building->drawRallyPoint();
+    }
+  }
 }
 
 void drawFirmBuilderIcon(

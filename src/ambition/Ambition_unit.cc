@@ -32,8 +32,10 @@
 #define _AMBITION_IMPLEMENTATION
 #include "OFIRM.h"
 #include "OREMOTE.h"
+#include "OTOWN.h"
 #include "OUNIT.h"
 
+#include "Ambition_building.hh"
 #include "format.hh"
 
 
@@ -159,6 +161,28 @@ uint8_t Unit::_7kaaRegionId(
       _7kaaUnit->unit_mode_para
     )
   );
+}
+
+void Unit::sendToBuildingRallyPoint(
+  std::vector<short> _7kaaUnitRecordNumbers,
+  const Firm* _7kaaFirm
+) {
+  const auto building
+    = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+  if (building) {
+    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
+  }
+}
+
+void Unit::sendToBuildingRallyPoint(
+  std::vector<short> _7kaaUnitRecordNumbers,
+  const Town* _7kaaTown
+) {
+  const auto building
+    = Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+  if (building) {
+    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
+  }
 }
 
 

@@ -21,6 +21,9 @@
 //Filename    : OF_CAMP.CPP
 //Description : Firm Military Camp
 
+#include <vector>
+
+#include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 
@@ -941,6 +944,8 @@ int FirmCamp::patrol_all_soldier()
 
 	patrol_unit_count = 0;		// reset it, it will be increased later
 
+	std::vector<short> unitRecordNumbers;
+
 	while(worker_count>0 && mobileWorkerId<=worker_count)
 	{
 		err_when(++loopCount > 100);
@@ -960,6 +965,8 @@ int FirmCamp::patrol_all_soldier()
 
 		if(!unitRecno)
 			return 0; // keep the rest workers as there is no space for creating the unit
+
+		unitRecordNumbers.push_back(unitRecno);
 
 		Unit* unitPtr = unit_array[unitRecno];
 
@@ -982,6 +989,8 @@ int FirmCamp::patrol_all_soldier()
 				unit_array.selected_recno = unitRecno;       // set the first soldier as selected; this is also the soldier with the highest leadership (because of sorting)
 		}
 	}
+
+	Ambition::Building::sendUnitsToRallyPoint(this, unitRecordNumbers);
 
 	unit_array.cur_team_id++;
 	return 1;

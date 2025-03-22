@@ -20,38 +20,39 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Control.
+ * Implementation file for _7kaaAmbitionInterface::Serialisation.
  */
 
-#pragma once
+#define _AMBITION_IMPLEMENTATION
+#include "7kaaInterface/serialisation.hh"
 
-class VgaBuf;
+#include "Ambition_config.hh"
+#include "Ambition_repository.hh"
+#include "Ambition_serialisation.hh"
 
 
-namespace _7kaaAmbitionInterface::Control {
+namespace _7kaaAmbitionInterface::Serialisation {
 
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
-);
+void loadGame(
+  const std::string filename,
+  const long int startingPosition
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
 
-void resetGameState(
-);
+  Ambition::entityRepository.reset();
+  Ambition::read(filename, startingPosition);
+}
 
-/**
- * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
- *
- * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
- * and we want to control when the flips occur.
- *
- * @param buffer The VgaBuf to unlock.
- */
-void unlockBuffer(
-  VgaBuf& buffer
-);
+void saveGame(
+  const std::string filename
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
 
-} // namespace _7kaaAmbitionInterface::Control
+  Ambition::write(filename);
+}
 
-#ifndef _AMBITION_IMPLEMENTATION
-/** Allow 7kaa to call using Ambition::*. */
-namespace Ambition = _7kaaAmbitionInterface;
-#endif
+} // namespace _7kaaAmbitionInterface::Serialisation

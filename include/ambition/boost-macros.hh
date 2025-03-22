@@ -20,38 +20,16 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Control.
+ * Macros to supplement what Boost offers.
  */
 
 #pragma once
 
-class VgaBuf;
+#include <type_traits>
 
 
-namespace _7kaaAmbitionInterface::Control {
-
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
-);
-
-void resetGameState(
-);
-
-/**
- * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
- *
- * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
- * and we want to control when the flips occur.
- *
- * @param buffer The VgaBuf to unlock.
- */
-void unlockBuffer(
-  VgaBuf& buffer
-);
-
-} // namespace _7kaaAmbitionInterface::Control
-
-#ifndef _AMBITION_IMPLEMENTATION
-/** Allow 7kaa to call using Ambition::*. */
-namespace Ambition = _7kaaAmbitionInterface;
-#endif
+#define BOOST_SERIALIZATION_NVP_CONST(name)                 \
+  boost::serialization::make_nvp(                           \
+    BOOST_PP_STRINGIZE(name),                               \
+    const_cast<std::remove_const_t<decltype(name)>&>(name)  \
+  )

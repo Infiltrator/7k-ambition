@@ -21,6 +21,8 @@
 //Filename    : OTOWNA.CPP
 //Description : Object Town Array
 
+#include "ambition/7kaaInterface/draw.hh"
+
 #include <OWORLD.h>
 #include <OINFO.h>
 #include <OCONFIG.h>
@@ -587,6 +589,8 @@ void TownArray::draw_dot()
 			if( *(++writePtr) != UNEXPLORED_COLOR )
 				*writePtr = shadowColor;
 		}
+
+		Ambition::Draw::buildingRallyPoint(townPtr);
 	}
 }
 //----------- End of function TownArray::draw_dot -----------//

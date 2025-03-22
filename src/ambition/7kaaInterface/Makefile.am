@@ -1,10 +1,12 @@
 noinst_LIBRARIES = lib7kaa-ambition-interface.a
 lib7kaa_ambition_interface_a_SOURCES = \
+  building.cc \
   config.cc \
   control.cc \
   draw.cc \
   inn.cc \
   input.cc \
+  serialisation.cc \
   unit.cc \
   # end
 

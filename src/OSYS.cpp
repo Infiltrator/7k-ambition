@@ -590,6 +590,8 @@ void Sys::run(int isLoadedGame)
 
    //-----------------------------------------//
 
+	Ambition::Control::resetGameState();
+
    //------ reset mouse ---------//
 
    mouse.reset_click();

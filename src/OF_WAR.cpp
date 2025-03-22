@@ -21,6 +21,8 @@
 //Filename    : OF_WAR.CPP
 //Description : Firm War Factory
 
+#include "ambition/7kaaInterface/building.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -922,7 +924,7 @@ void FirmWar::process_build()
 			return;
 		}
 
-		unit_array.add_unit( build_unit_id, nation_recno, 0, 0, xLoc, yLoc );
+		const short unitRecordNumber = unit_array.add_unit( build_unit_id, nation_recno, 0, 0, xLoc, yLoc );
 
 		if( firm_array.selected_recno == firm_recno )
 		{
@@ -933,6 +935,8 @@ void FirmWar::process_build()
 
 		if( own_firm() )
 			se_res.far_sound(center_x, center_y, 1, 'F', firm_id, "FINS", 'S', unit_res[build_unit_id]->sprite_id);
+
+		Ambition::Building::sendUnitsToRallyPoint(this, { unitRecordNumber });
 
 		build_unit_id = 0;
 	}

@@ -27,6 +27,7 @@
 #include "7kaaInterface/control.hh"
 
 #include "Ambition_config.hh"
+#include "Ambition_control.hh"
 #include "Ambition_vga.hh"
 
 
@@ -40,6 +41,11 @@ void delayFrame(
   }
 
   Ambition::delayFrame(deadlineSdlTicks64);
+}
+
+void resetGameState(
+) {
+  Ambition::resetGameState();
 }
 
 void unlockBuffer(

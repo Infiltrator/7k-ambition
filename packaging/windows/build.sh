@@ -23,7 +23,12 @@ HOST=x86_64-w64-mingw32
 HOST_OPT=--host=$HOST
 STRIP=${HOST}-strip
 
-./configure --disable-silent-rules $HOST_OPT
+# A hack because configure doesn't automatically find Boost configuration for
+# x86_64-w64-mingw32.
+BOOST_PATH="/usr/${HOST}"
+BOOST_OPTION="--with-boost=${BOOST_PATH}"
+
+./configure --disable-silent-rules $HOST_OPT ${BOOST_OPTION}
 make -j6 pkgdatadir="" localedir=locale
 make install DESTDIR="${DESTINATION_DIRECTORY}" bindir=/ docdir=/ pkgdatadir=/ localedir=/locale
 $STRIP "${DESTINATION_DIRECTORY}/7k-ambition.exe"

@@ -26,6 +26,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "input.hh"
 
+#include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_input.hh"
 
@@ -46,6 +47,17 @@ void calculateScroll(
 bool detectModeSelectClick(
 ) {
   return Ambition::detectModeSelectClick();
+}
+
+void setOrClearRallyPoint(
+  const short _7kaaX,
+  const short _7kaaY
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::setOrClearRallyPoint({ .x =_7kaaX, .y = _7kaaY });
 }
 
 } // namespace _7kaaAmbitionInterface::Input

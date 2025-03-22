@@ -20,50 +20,45 @@
 /**
  * @file
  *
- * Header file for Ambition::Unit.
+ * Header file for Ambition::Entity.
  */
 
 #pragma once
 
-#include <stdint.h>
-#include <vector>
-
-class Firm;
-class Town;
-class Unit;
+#include <boost/serialization/access.hpp>
+#include <boost/serialization/nvp.hpp>
+#include <boost/serialization/version.hpp>
 
 
 namespace Ambition {
 
-/**
- * Send an available builder to a Firm.
- *
- * A builder is considered to be available if he is idle or repairing a building
- * that is above a certain hitpoint percentage.
- *
- * @param firm The Firm to send a builder to.
- * @return Whether the Ambition code took effect and so the rest of the 7kaa
- * code should be skipped.
- */
-bool sendAvailableBuilderToFirm(
-  const Firm* firm
-);
+class Entity {
+public:
+  const unsigned long long int recordNumber;
 
-namespace Unit {
+  Entity(
+    unsigned long long int recordNumber
+  );
 
-uint8_t _7kaaRegionId(
-  ::Unit* _7kaaUnit
-);
+  virtual ~Entity() = default;
 
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Firm* _7kaaFirm
-);
-void sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Town* _7kaaTown
-);
+protected:
+  friend class boost::serialization::access;
 
-} // namespace Ambition::Unit
+  /** To be used only by Boost serialisation. */
+  Entity() :
+    recordNumber()
+  { }
+
+  template<class Archive>
+  void serialize(
+    Archive& archive,
+    const unsigned int version
+  ) {
+    archive & boost::serialization::make_nvp("recordNumber", const_cast<unsigned long long int&>(recordNumber));
+  }
+};
 
 } // namespace Ambition
+
+BOOST_CLASS_VERSION(Ambition::Entity, 0)

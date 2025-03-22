@@ -20,38 +20,36 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Control.
+ * Header file for Ambition::Serialisation.
  */
 
 #pragma once
 
-class VgaBuf;
+#include <boost/serialization/version.hpp>
+#include <string>
 
 
-namespace _7kaaAmbitionInterface::Control {
+namespace Ambition {
 
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
+struct SavefileInformation {
+  template<class Archive>
+  void serialize(
+    Archive& archive,
+    const unsigned int version
+  ) {
+  }
+};
+
+
+void read(
+  const std::string filename,
+  const long startingPosition
 );
 
-void resetGameState(
+void write(
+  const std::string filename
 );
 
-/**
- * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
- *
- * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
- * and we want to control when the flips occur.
- *
- * @param buffer The VgaBuf to unlock.
- */
-void unlockBuffer(
-  VgaBuf& buffer
-);
+} // namespace Ambition
 
-} // namespace _7kaaAmbitionInterface::Control
-
-#ifndef _AMBITION_IMPLEMENTATION
-/** Allow 7kaa to call using Ambition::*. */
-namespace Ambition = _7kaaAmbitionInterface;
-#endif
+BOOST_CLASS_VERSION(Ambition::SavefileInformation, 0)

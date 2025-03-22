@@ -20,36 +20,43 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Control.
+ * Header file for _7kaaAmbitionInterface::Building.
  */
 
 #pragma once
 
-class VgaBuf;
+#include <vector>
+
+class Firm;
+class Town;
 
 
-namespace _7kaaAmbitionInterface::Control {
+namespace _7kaaAmbitionInterface::Building {
 
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
+void clearRallyPoint(
+  const Firm* _7kaaFirm
+);
+void clearRallyPoint(
+  const Town* _7kaaTown
 );
 
-void resetGameState(
+void destroy(
+  const Firm* _7kaaFirm
+);
+void destroy(
+  const Town* _7kaaTown
 );
 
-/**
- * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
- *
- * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
- * and we want to control when the flips occur.
- *
- * @param buffer The VgaBuf to unlock.
- */
-void unlockBuffer(
-  VgaBuf& buffer
+void sendUnitsToRallyPoint(
+  const Firm* _7kaaFirm,
+  const std::vector<short> _7kaaUnitRecordNumbers
+);
+void sendUnitsToRallyPoint(
+  const Town* _7kaaTown,
+  const std::vector<short> _7kaaUnitRecordNumbers
 );
 
-} // namespace _7kaaAmbitionInterface::Control
+} // namespace _7kaaAmbitionInterface::Building
 
 #ifndef _AMBITION_IMPLEMENTATION
 /** Allow 7kaa to call using Ambition::*. */

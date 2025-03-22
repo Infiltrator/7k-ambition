@@ -21,6 +21,7 @@
 //Filename    : OTOWNIF.CPP
 //Description : Town interface routines
 
+#include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 
@@ -2049,6 +2050,9 @@ void Town::finish_train(Unit* unitPtr)
 		se_res.far_sound( xLoc, yLoc, 1, 'S', unitPtr->sprite_id, "RDY");
 
 	unitPtr->unit_mode = 0;		// reset it to 0 from UNIT_MODE_UNDER_TRAINING
+
+	Ambition::Building::sendUnitsToRallyPoint(this, { train_unit_recno });
+
 	train_unit_recno   = 0;
 
 	int townRecno = town_recno;		// save the recno as it can be deleted in dec_pop()

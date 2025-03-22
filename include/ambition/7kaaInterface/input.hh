@@ -41,6 +41,11 @@ void calculateScroll(
 bool detectModeSelectClick(
 );
 
+void setOrClearRallyPoint(
+  const short _7kaaX,
+  const short _7kaaY
+);
+
 } // namespace _7kaaAmbitionInterface::Input
 
 #ifndef _AMBITION_IMPLEMENTATION

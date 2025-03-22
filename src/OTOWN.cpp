@@ -22,6 +22,9 @@
 //Description : Object Town
 
 #include <string.h>
+
+#include "ambition/7kaaInterface/building.hh"
+
 #include <ALL.h>
 #include <OWORLD.h>
 #include <OSYS.h>
@@ -173,6 +176,8 @@ void Town::deinit()
 {
 	if( !town_recno )
 		return;
+
+	Ambition::Building::destroy(this);
 
 	//--------- remove from town network ---------//
 
@@ -852,6 +857,8 @@ void Town::set_nation(int newNationRecno)
 
 	if( town_array.selected_recno == town_recno )
 		info.disp();
+
+	Ambition::Building::clearRallyPoint(this);
 }
 //----------- End of function Town::set_nation ---------//
 
@@ -2652,6 +2659,10 @@ int Town::mobilize_town_people(int raceId, int decPop, int mobileSpyFlag)
 	unitPtr->set_combat_level(CITIZEN_COMBAT_LEVEL);
 
 	//-------- decrease the town's population ------//
+
+	if (decPop) {
+		Ambition::Building::sendUnitsToRallyPoint(this, { static_cast<short>(unitRecno) });
+	}
 
 	if( decPop )
 		dec_pop(raceId, 0);
