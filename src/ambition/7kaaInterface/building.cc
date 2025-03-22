@@ -26,12 +26,14 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/building.hh"
 
+#include "OF_RESE.h"
 #include "OFIRM.h"
 #include "OTOWN.h"
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_coordinates.hh"
+#include "Ambition_polity.hh"
 #include "Ambition_unit.hh"
 
 
@@ -92,6 +94,28 @@ void destroy(
     = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
   if (building) {
     building->destroy(Ambition::Time::now());
+  }
+}
+
+void processIdleTowerOfScience(
+  FirmResearch* _7kaaFirmResearch
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (_7kaaFirmResearch->tech_id) {
+    return;
+  }
+
+  const auto _7kaaNationRecordNumber = _7kaaFirmResearch->nation_recno;
+  const auto polity
+    = Ambition::Polity::findBy7kaaRecordNumber(_7kaaNationRecordNumber);
+  if (polity) {
+    const auto researchTarget = polity->researchTarget();
+    if (researchTarget) {
+      _7kaaFirmResearch->start_research(researchTarget, COMMAND_PLAYER);
+    }
   }
 }
 

@@ -9,6 +9,7 @@ noinst_HEADERS = \
 	Ambition_inn.hh \
 	Ambition_input.hh \
 	Ambition_minimap.hh \
+	Ambition_polity.hh \
 	Ambition_remote.hh \
 	Ambition_repository.hh \
 	Ambition_serialisation.hh \

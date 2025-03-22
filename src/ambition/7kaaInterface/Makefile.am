@@ -6,6 +6,7 @@ lib7kaa_ambition_interface_a_SOURCES = \
   draw.cc \
   inn.cc \
   input.cc \
+  polity.cc \
   serialisation.cc \
   unit.cc \
   # end
@@ -17,3 +18,4 @@ AM_CPPFLAGS = \
 
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(AMBITION_CFLAGS)
+AM_CXXFLAGS += $(SDL_CFLAGS)

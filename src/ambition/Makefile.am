@@ -10,6 +10,7 @@ libambition_a_SOURCES = \
 	Ambition_inn.cc \
 	Ambition_input.cc \
 	Ambition_minimap.cc \
+	Ambition_polity.cc \
 	Ambition_remote.cc \
 	Ambition_repository.cc \
 	Ambition_serialisation.cc \
