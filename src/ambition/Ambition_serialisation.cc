@@ -29,10 +29,14 @@
 #include <boost/archive/xml_oarchive.hpp>
 #include <fstream>
 
+#include "gettext.h"
+#include "OBOX.h"
+
 #include "Ambition_building.hh"
 #include "Ambition_entity.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_version.hh"
+#include "format.hh"
 
 
 namespace Ambition {
@@ -97,6 +101,22 @@ void read(
 
   saveFile >> rollingBuffer;
   const auto lastSavingVersion = rollingBuffer;
+
+  if (savefileVersion > SAVEFILE_VERSION) {
+    box.msg(
+      format(
+        _("Save game version is too new."
+          "\nThe game will load, but all Ambition features will be reset."
+          "\nSaved by: v%s."
+          "\nCurrent: v%s."
+        ),
+        lastSavingVersion.c_str(),
+        versionString().c_str()
+      ).c_str(),
+      0
+    );
+    return;
+  }
 
   boost::archive::xml_iarchive archive(saveFile);
   archive.register_type<SavefileInformation>();
