@@ -21,6 +21,7 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Make Town training queue unlimited, up from 10.
 - Use global research target for all new and newly idle Towers of Science, not
   just the ones that were present when first clicking.
 

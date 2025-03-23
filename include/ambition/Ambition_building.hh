@@ -25,6 +25,7 @@
 
 #pragma once
 
+#include <boost/serialization/vector.hpp>
 #include <memory>
 #include <vector>
 
@@ -41,6 +42,22 @@ public:
   enum class _7kaaType {
     Firm,
     Town,
+  };
+
+  struct TrainingRequest {
+    char _7kaaRaceId;
+    char _7kaaSkillId;
+    unsigned int amount;
+
+    template<class Archive>
+    void serialize(
+      Archive& archive,
+      const unsigned int version
+    ) {
+      archive & BOOST_SERIALIZATION_NVP(_7kaaRaceId);
+      archive & BOOST_SERIALIZATION_NVP(_7kaaSkillId);
+      archive & BOOST_SERIALIZATION_NVP(amount);
+    }
   };
 
   Building(
@@ -67,7 +84,18 @@ public:
     const short _7kaaTownRecordNumber
   );
 
+  static std::shared_ptr<Building> getBy7kaaTownRecordNumber(
+    const int _7kaaTownRecordNumber
+  );
+
   void clearRallyPoint(
+  );
+
+  void clearTrainingQueue(
+  );
+
+  void dequeueTraining(
+    const TrainingRequest& request
   );
 
   void destroy(
@@ -79,6 +107,17 @@ public:
 
   void drawRallyPoint(
   ) const;
+
+  unsigned int enqueuedTrainingCount(
+    const short _7kaaSkillId
+  ) const;
+
+  void enqueueTraining(
+    const TrainingRequest& request
+  );
+
+  void popViableTrainingRequest(
+  );
 
   void sendUnitsToRallyPoint(
     std::vector<short> _7kaaUnitRecordNumbers
@@ -93,6 +132,7 @@ protected:
 
   Time::Stamp destroyedAt;
   Coordinates::Point rallyPoint;
+  std::vector<TrainingRequest> trainingQueue;
 
   Underlying7kaaObject underlying7kaaObject(
   ) const;
@@ -124,6 +164,7 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(destroyedAt);
     archive & BOOST_SERIALIZATION_NVP_CONST(erected);
     archive & BOOST_SERIALIZATION_NVP(rallyPoint);
+    archive & BOOST_SERIALIZATION_NVP(trainingQueue);
     archive & BOOST_SERIALIZATION_NVP_CONST(type);
   }
 };

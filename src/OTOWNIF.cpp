@@ -1027,6 +1027,9 @@ static void i_disp_queue_skill_button(ButtonCustom *button, int repaintBody)
 		if( townPtr->train_queue_skill_array[i] == skillId )
 			queuedCount++;
 	}
+
+	queuedCount = Ambition::Building::enqueuedTrainingCount(townPtr, queuedCount, skillId);
+
 	if(townPtr->train_unit_recno)
 	{
 		Unit *unitPtr = unit_array[townPtr->train_unit_recno];
@@ -1082,6 +1085,16 @@ int Town::detect_train_menu()
 
 			if( rc==1 )		// left button
 			{
+				if (Ambition::Building::enqueueTraining(this, race_filter(browse_race.recno()), b, trainCancelAmount)) {
+					se_ctrl.immediate_sound("TURN_ON");
+					if (quitFlag) {
+						info.disp();
+					} else {
+						info.update();
+					}
+					return 1;
+				}
+
 				if( remote.is_enable() )
 				{
 					// packet structure : <town recno> <skill id> <race id> <amount>
@@ -1099,6 +1112,16 @@ int Town::detect_train_menu()
 			}
 			else 				// right button - remove queue
 			{
+				if (Ambition::Building::dequeueTraining(this, b, trainCancelAmount)) {
+					se_ctrl.immediate_sound("TURN_OFF");
+					if (quitFlag) {
+						info.disp();
+					} else {
+						info.update();
+					}
+					return 1;
+				}
+
 				if( remote.is_enable() )
 				{
 					// packet structure : <town recno> <skill id> <race id> <amount>
@@ -1161,6 +1184,11 @@ int Town::detect_train_menu()
 
 	if( queue_train_selected && ISKEY(KEYEVENT_MANUF_QUEUE_ADD) )
 	{
+		if (Ambition::Building::enqueueTraining(this, race_filter(browse_race.recno()), queue_train_selected, 1)) {
+			se_ctrl.immediate_sound("TURN_ON");
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <town recno> <skill id> <race id> <amount>
@@ -1178,6 +1206,11 @@ int Town::detect_train_menu()
 
 	if( queue_train_selected && ISKEY(KEYEVENT_MANUF_QUEUE_ADD_BATCH) )
 	{
+		if (Ambition::Building::enqueueTraining(this, race_filter(browse_race.recno()), queue_train_selected, TOWN_TRAIN_BATCH_COUNT)) {
+			se_ctrl.immediate_sound("TURN_ON");
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <town recno> <skill id> <race id> <amount>
@@ -1195,6 +1228,11 @@ int Town::detect_train_menu()
 
 	if( queue_train_selected && ISKEY(KEYEVENT_MANUF_QUEUE_REMOVE) )
 	{
+		if (Ambition::Building::dequeueTraining(this, queue_train_selected, 1)) {
+			se_ctrl.immediate_sound("TURN_OFF");
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <town recno> <skill id> <race id> <amount>
@@ -1212,6 +1250,11 @@ int Town::detect_train_menu()
 
 	if( queue_train_selected && ISKEY(KEYEVENT_MANUF_QUEUE_REMOVE_BATCH) )
 	{
+		if (Ambition::Building::dequeueTraining(this, queue_train_selected, TOWN_TRAIN_BATCH_COUNT)) {
+			se_ctrl.immediate_sound("TURN_OFF");
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <town recno> <skill id> <race id> <amount>

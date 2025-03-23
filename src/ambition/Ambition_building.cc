@@ -72,9 +72,6 @@ struct Building::Underlying7kaaObject {
 std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
   int _7kaaFirmRecordNumber
 );
-std::shared_ptr<Building> getBuildingBy7kaaTownRecordNumber(
-  int _7kaaTownRecordNumber
-);
 
 
 std::shared_ptr<Building> Building::create(
@@ -121,6 +118,46 @@ void Building::clearRallyPoint(
   rallyPoint = underlying7kaaObjectRectangle().centre();
 }
 
+void Building::clearTrainingQueue(
+) {
+  trainingQueue.clear();
+}
+
+void Building::dequeueTraining(
+  const TrainingRequest& request
+) {
+  int removedCount = 0;
+  for (auto iterator = trainingQueue.rbegin();
+    removedCount < request.amount && iterator != trainingQueue.rend();
+  ) {
+    if (iterator->_7kaaSkillId == request._7kaaSkillId) {
+      const auto amountToRemove = request.amount - removedCount;
+      if (iterator->amount <= amountToRemove) {
+        removedCount += iterator->amount;
+        iterator = static_cast<decltype(iterator)>(
+          trainingQueue.erase(std::next(iterator).base())
+        );
+      } else {
+        removedCount += amountToRemove;
+        iterator->amount -= amountToRemove;
+        iterator++;
+      }
+    } else {
+      iterator++;
+    }
+  }
+
+  if (request.amount > removedCount) {
+    auto _7kaaTown = town_array[_7kaaRecordNumber];
+    if (_7kaaTown->train_unit_recno) {
+      const auto _7kaaUnit = unit_array[_7kaaTown->train_unit_recno];
+      if (_7kaaUnit->skill.skill_id == request._7kaaSkillId) {
+        _7kaaTown->cancel_train_unit();
+      }
+    }
+  }
+}
+
 void Building::destroy(
   Time::Stamp stamp
 ) {
@@ -139,6 +176,20 @@ void Building::destroy(
 bool Building::destroyed(
 ) const {
   return destroyedAt > Time::START;
+}
+
+unsigned int Building::enqueuedTrainingCount(
+  const short _7kaaSkillId
+) const {
+  int count = 0;
+
+  for (const auto& request : trainingQueue) {
+    if (request._7kaaSkillId == _7kaaSkillId) {
+      count += request.amount;
+    }
+  }
+
+  return count;
 }
 
 void Building::drawRallyPoint(
@@ -200,6 +251,52 @@ void Building::drawRallyPoint(
   anim_line.bound_y1 = animLineBoundY1;
   anim_line.bound_x2 = animLineBoundX2;
   anim_line.bound_y2 = animLineBoundY2;
+}
+
+void Building::enqueueTraining(
+  const TrainingRequest& request
+) {
+  if (!trainingQueue.empty()
+    && trainingQueue.back()._7kaaRaceId == request._7kaaRaceId
+    && trainingQueue.back()._7kaaSkillId == request._7kaaSkillId
+  ) {
+    trainingQueue.back().amount += request.amount;
+  } else {
+    trainingQueue.push_back(request);
+  }
+}
+
+void Building::popViableTrainingRequest(
+) {
+  if (type != _7kaaType::Town) {
+    return;
+  }
+  if (destroyed()) {
+    return;
+  }
+
+  const auto _7kaaTown = town_array[_7kaaRecordNumber];
+  if (_7kaaTown->train_unit_recno) {
+    return;
+  }
+
+  for (auto iterator = trainingQueue.begin();
+    iterator != trainingQueue.end();
+    iterator++
+  ) {
+    if (_7kaaTown->can_train(iterator->_7kaaRaceId)) {
+      _7kaaTown->recruit(
+        iterator->_7kaaSkillId,
+        iterator->_7kaaRaceId,
+        COMMAND_PLAYER
+      );
+      iterator->amount--;
+      if (iterator->amount == 0) {
+        trainingQueue.erase(iterator);
+      }
+      break;
+    }
+  }
 }
 
 void Building::sendUnitsToRallyPoint(
@@ -264,7 +361,7 @@ void setOrClearRallyPoint(
 
   if (town_array.selected_recno) {
     const auto _7kaaTownRecordNumber = town_array.selected_recno;
-    auto building = getBuildingBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+    auto building = Building::getBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
 
     const auto _7kaaTown = town_array[_7kaaTownRecordNumber];
     if (_7kaaCoordinates.x >= _7kaaTown->loc_x1
@@ -377,7 +474,7 @@ std::shared_ptr<Building> getBuildingBy7kaaFirmRecordNumber(
 
   return building;
 }
-std::shared_ptr<Building> getBuildingBy7kaaTownRecordNumber(
+std::shared_ptr<Building> Building::getBy7kaaTownRecordNumber(
   int _7kaaTownRecordNumber
 ) {
   auto building = Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
