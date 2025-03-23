@@ -47,10 +47,10 @@ public:
   };
 
   Building(
-    const Time::Stamp erected,
     const unsigned long long recordNumber,
     const _7kaaType type,
-    const short _7kaaRecordNumber
+    const short _7kaaRecordNumber,
+    const Time::Stamp erected
   );
 
   const short _7kaaRecordNumber;
@@ -92,10 +92,10 @@ public:
   );
 
 protected:
-  Coordinates::Point rallyPoint;
-  Time::Stamp destroyedAt;
-
   struct Underlying7kaaObject;
+
+  Time::Stamp destroyedAt;
+  Coordinates::Point rallyPoint;
 
   Underlying7kaaObject underlying7kaaObject(
   ) const;

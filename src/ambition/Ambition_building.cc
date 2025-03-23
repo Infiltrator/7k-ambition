@@ -83,10 +83,10 @@ std::shared_ptr<Building> Building::create(
 ) {
   return entityRepository.insert(
     std::make_shared<Building>(
-      erected,
       entityRepository.takeRecordNumber(),
       type,
-      _7kaaRecordNumber
+      _7kaaRecordNumber,
+      erected
     )
   );
 }
@@ -225,16 +225,16 @@ void Building::setRallyPoint(
 }
 
 Building::Building(
-  const Time::Stamp erected,
   const unsigned long long recordNumber,
   const _7kaaType type,
-  const short _7kaaRecordNumber
+  const short _7kaaRecordNumber,
+  const Time::Stamp erected
 ) :
+  Entity(recordNumber),
+  _7kaaRecordNumber(_7kaaRecordNumber),
   destroyedAt(Time::START),
   erected(erected),
-  Entity(recordNumber),
-  type(type),
-  _7kaaRecordNumber(_7kaaRecordNumber)
+  type(type)
 {
   rallyPoint = underlying7kaaObjectRectangle().centre();
 }
@@ -293,7 +293,9 @@ void setOrClearRallyPoint(
     ) {
       building->clearRallyPoint();
     } else {
-      building->setRallyPoint(Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates));
+      building->setRallyPoint(
+        Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates)
+      );
     }
   }
 
@@ -309,7 +311,9 @@ void setOrClearRallyPoint(
     ) {
       building->clearRallyPoint();
     } else {
-      building->setRallyPoint(Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates));
+      building->setRallyPoint(
+        Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates)
+      );
     }
   }
 }
