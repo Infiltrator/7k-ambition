@@ -429,7 +429,7 @@ void VgaBuf::put_large_bitmap(int x1, int y1, File* filePtr)
 
 	err_when( x1>x2 || y1>y2 || x1<0 || y1<0 || x2>=VGA_WIDTH || y2>=VGA_HEIGHT );
 
-	//---- if pict size less than 64K, read in the picture in one step ----//
+	//---- if pict size less than the buffer, read in the picture in one step ----//
 
 	if( pictSize <= COMMON_DATA_BUF_SIZE )
 	{
@@ -443,7 +443,7 @@ void VgaBuf::put_large_bitmap(int x1, int y1, File* filePtr)
 		if( is_front )
 			mouse.show_area();
 	}
-	else //----- if the picture size > 64K, read in line by line -----//
+	else //----- if the picture size is greater than the buffer, read in line by line -----//
 	{
 		int bufferLine = COMMON_DATA_BUF_SIZE / pictWidth;   // MAX. no. of lines can be in the buffer
 		int ty=y1+bufferLine-1;

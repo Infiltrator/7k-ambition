@@ -29,7 +29,7 @@
 
 //------ Define common data buffer size  ------//
 
-enum { COMMON_DATA_BUF_SIZE = 64*1024 };			// keep a 64K common buffer for all temporary memory storage like reading files temporarily into memory
+enum { COMMON_DATA_BUF_SIZE = 1*1024*1024 };			// keep a 1MiB common buffer for all temporary memory storage like reading files temporarily into memory
 
 //-------------- define constant ------------//
 

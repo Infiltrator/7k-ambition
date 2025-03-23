@@ -28,6 +28,9 @@
 
 namespace Ambition {
 
+void requestFeedback(
+);
+
 void resetGameState(
 );
 

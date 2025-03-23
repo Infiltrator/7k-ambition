@@ -25,10 +25,48 @@
 
 #include "Ambition_control.hh"
 
+#ifdef USE_WINDOWS
+#include <windows.h>
+#include <shellapi.h>
+#endif
+
+#include "gettext.h"
+#include "OBOX.h"
+
 #include "Ambition_repository.hh"
 
 
 namespace Ambition {
+
+void requestFeedback(
+) {
+  if (box.ask(
+      _("We hope that you have enjoyed playing Seven Kingdoms: Ambition!"
+        "\nWe would appreciate your feedback on the game and to hear what else"
+        " you would like to see in the game."
+        "\nWould you be willing to share your feedback now?  (Will open in a"
+        " web browser.)"
+      ),
+      _("Yes"),
+      _("Not now")
+    )
+  ) {
+#ifdef USE_WINDOWS
+    ShellExecute(
+      0,
+      0,
+      "https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/",
+      0,
+      0,
+      SW_SHOW
+    );
+#else
+    system(
+      "open https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/"
+    );
+#endif
+  }
+}
 
 void resetGameState(
 ) {

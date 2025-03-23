@@ -34,6 +34,9 @@ void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
 
+void requestFeedback(
+);
+
 void resetGameState(
 );
 

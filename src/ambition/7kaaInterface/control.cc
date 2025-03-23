@@ -43,6 +43,11 @@ void delayFrame(
   Ambition::delayFrame(deadlineSdlTicks64);
 }
 
+void requestFeedback(
+) {
+  Ambition::requestFeedback();
+}
+
 void resetGameState(
 ) {
   Ambition::resetGameState();
