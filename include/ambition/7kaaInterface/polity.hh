@@ -20,48 +20,27 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Building.
+ * Header file for _7kaaAmbitionInterface::Polity.
  */
 
 #pragma once
 
-#include <vector>
-
-class Firm;
-class FirmResearch;
-class Town;
+class Nation;
+class NationBase;
 
 
-namespace _7kaaAmbitionInterface::Building {
+namespace _7kaaAmbitionInterface::Polity {
 
-void clearRallyPoint(
-  const Firm* _7kaaFirm
-);
-void clearRallyPoint(
-  const Town* _7kaaTown
+void dissolve(
+  const NationBase* _7kaaNation
 );
 
-void destroy(
-  const Firm* _7kaaFirm
-);
-void destroy(
-  const Town* _7kaaTown
+void setResearchTarget(
+  const Nation* _7kaaNation,
+  const int technologyId
 );
 
-void processIdleTowerOfScience(
-  FirmResearch* _7kaaFirmResearch
-);
-
-void sendUnitsToRallyPoint(
-  const Firm* _7kaaFirm,
-  const std::vector<short> _7kaaUnitRecordNumbers
-);
-void sendUnitsToRallyPoint(
-  const Town* _7kaaTown,
-  const std::vector<short> _7kaaUnitRecordNumbers
-);
-
-} // namespace _7kaaAmbitionInterface::Building
+} // namespace _7kaaAmbitionInterface::Polity
 
 #ifndef _AMBITION_IMPLEMENTATION
 /** Allow 7kaa to call using Ambition::*. */

@@ -34,6 +34,7 @@
 
 #include "Ambition_building.hh"
 #include "Ambition_entity.hh"
+#include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_version.hh"
 #include "format.hh"
@@ -122,6 +123,7 @@ void read(
   archive.register_type<SavefileInformation>();
   archive.register_type<Entity>();
   archive.register_type<Building>();
+  archive.register_type<Polity>();
 
   SavefileInformation savefileInformation;
   archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
@@ -156,6 +158,7 @@ void write(
   archive.register_type<SavefileInformation>();
   archive.register_type<Entity>();
   archive.register_type<Building>();
+  archive.register_type<Polity>();
 
   SavefileInformation savefileInformation;
   archive << BOOST_SERIALIZATION_NVP(savefileInformation);

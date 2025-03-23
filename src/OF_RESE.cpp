@@ -21,6 +21,9 @@
 //Filename    : OF_RESE.CPP
 //Description : Firm Magic Tower
 
+#include "ambition/7kaaInterface/building.hh"
+#include "ambition/7kaaInterface/polity.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -246,6 +249,8 @@ void set_all_research(int techId)
 			(dynamic_cast<FirmResearch*>(firmPtr))->start_research(techId, COMMAND_PLAYER);
 		}
 	}
+
+	Ambition::Polity::setResearchTarget(nation_array[nation_array.player_recno], techId);
 }
 
 
@@ -471,6 +476,8 @@ void FirmResearch::next_day()
 	//--------- process research ----------//
 
 	process_research();
+
+	Ambition::Building::processIdleTowerOfScience(this);
 }
 //----------- End of function FirmResearch::next_day -----------//
 

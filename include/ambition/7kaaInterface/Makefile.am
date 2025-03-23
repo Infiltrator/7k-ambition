@@ -5,6 +5,7 @@ noinst_HEADERS = \
   draw.hh \
   inn.hh \
   input.hh \
+  polity.hh \
   serialisation.hh \
   unit.hh \
   # end

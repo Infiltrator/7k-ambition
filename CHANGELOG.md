@@ -19,6 +19,11 @@ speaking, considered to be the player's experience.
 - Added rally points for all firms when mobilising workers.
 - Added rally points for Harbours when sailing ships.
 
+### Changed
+
+- Use global research target for all new and newly idle Towers of Science, not
+  just the ones that were present when first clicking.
+
 
 ## [3.0.4] — 2025-03-16
 

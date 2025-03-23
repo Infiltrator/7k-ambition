@@ -33,6 +33,7 @@
 #include "OUNIT.h"
 #include "OVGABUF.h"
 
+#include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"

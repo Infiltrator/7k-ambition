@@ -21,6 +21,8 @@
 //Filename    : ONATION.CPP
 //Description : Object Nation - part 1
 
+#include "ambition/7kaaInterface/polity.hh"
+
 #include <OSTR.h>
 #include <OSYS.h>
 #include <OVGA.h>
@@ -1817,6 +1819,8 @@ void NationBase::defeated()
 	{
 		news_array.nation_destroyed(nation_recno);
 	}
+
+	Ambition::Polity::dissolve(this);
 
 	//---- delete this nation from nation_array ----//
 
