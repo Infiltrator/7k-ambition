@@ -33,9 +33,6 @@
 #include "Ambition_time.hh"
 #include "boost-macros.hh"
 
-class Firm;
-class Town;
-
 
 namespace Ambition {
 
@@ -131,20 +128,6 @@ protected:
   }
 };
 
-
-void clearRallyPoint(
-  const Firm* _7kaaFirm
-);
-void clearRallyPoint(
-  const Town* _7kaaTown
-);
-
-void destroy(
-  const Firm* _7kaaFirm
-);
-void destroy(
-  const Town* _7kaaTown
-);
 
 void setOrClearRallyPoint(
   const Coordinates::_7kaaCoordinates _7kaaCoordinates

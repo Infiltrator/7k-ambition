@@ -26,6 +26,9 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/building.hh"
 
+#include "OFIRM.h"
+#include "OTOWN.h"
+
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_coordinates.hh"
@@ -41,7 +44,12 @@ void clearRallyPoint(
     return;
   }
 
-  Ambition::clearRallyPoint(_7kaaFirm);
+  const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
+  auto building
+    = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
+  if (building) {
+    building->clearRallyPoint();
+  }
 }
 void clearRallyPoint(
   const Town* _7kaaTown
@@ -50,7 +58,12 @@ void clearRallyPoint(
     return;
   }
 
-  Ambition::clearRallyPoint(_7kaaTown);
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  if (building) {
+    building->clearRallyPoint();
+  }
 }
 
 void destroy(
@@ -60,7 +73,12 @@ void destroy(
     return;
   }
 
-  Ambition::destroy(_7kaaFirm);
+  const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
+  auto building
+    = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
+  if (building) {
+    building->destroy(Ambition::Time::now());
+  }
 }
 void destroy(
   const Town* _7kaaTown
@@ -69,7 +87,12 @@ void destroy(
     return;
   }
 
-  Ambition::destroy(_7kaaTown);
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  if (building) {
+    building->destroy(Ambition::Time::now());
+  }
 }
 
 void sendUnitsToRallyPoint(
@@ -80,7 +103,11 @@ void sendUnitsToRallyPoint(
     return;
   }
 
-  Ambition::Unit::sendToBuildingRallyPoint(_7kaaUnitRecordNumbers, _7kaaFirm);
+  const auto building
+    = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+  if (building) {
+    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
+  }
 }
 void sendUnitsToRallyPoint(
   const Town* _7kaaTown,
@@ -90,7 +117,11 @@ void sendUnitsToRallyPoint(
     return;
   }
 
-  Ambition::Unit::sendToBuildingRallyPoint(_7kaaUnitRecordNumbers, _7kaaTown);
+  const auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+  if (building) {
+    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
+  }
 }
 
 } // namespace _7kaaAmbitionInterface::Building

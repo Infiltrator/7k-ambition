@@ -174,17 +174,6 @@ void Unit::sendToBuildingRallyPoint(
   }
 }
 
-void Unit::sendToBuildingRallyPoint(
-  std::vector<short> _7kaaUnitRecordNumbers,
-  const Town* _7kaaTown
-) {
-  const auto building
-    = Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
-  if (building) {
-    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
-  }
-}
-
 
 /* Private functions. */
 

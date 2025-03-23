@@ -240,44 +240,6 @@ Building::Building(
 }
 
 
-void clearRallyPoint(
-  const Firm* _7kaaFirm
-) {
-  const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
-  auto building = Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
-  if (building) {
-    building->clearRallyPoint();
-  }
-}
-void clearRallyPoint(
-  const Town* _7kaaTown
-) {
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building = Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
-  if (building) {
-    building->clearRallyPoint();
-  }
-}
-
-void destroy(
-  const Firm* _7kaaFirm
-) {
-  const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
-  auto building = Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
-  if (building) {
-    building->destroy(Time::now());
-  }
-}
-void destroy(
-  const Town* _7kaaTown
-) {
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building = Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
-  if (building) {
-    building->destroy(Time::now());
-  }
-}
-
 void setOrClearRallyPoint(
   const Coordinates::_7kaaCoordinates _7kaaCoordinates
 ) {
