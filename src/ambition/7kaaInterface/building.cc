@@ -68,6 +68,45 @@ void clearRallyPoint(
   }
 }
 
+void clearTrainingQueue(
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  if (building) {
+    building->clearTrainingQueue();
+  }
+}
+
+bool dequeueTraining(
+  Town* _7kaaTown,
+  const char _7kaaSkillId,
+  const unsigned int amount
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  if (building) {
+    building->dequeueTraining(
+      {
+        ._7kaaRaceId = 0,
+        ._7kaaSkillId = _7kaaSkillId,
+        .amount = amount,
+      }
+    );
+  }
+  return true;
+}
+
 void destroy(
   const Firm* _7kaaFirm
 ) {
@@ -97,6 +136,50 @@ void destroy(
   }
 }
 
+unsigned int enqueuedTrainingCount(
+  const Town* _7kaaTown,
+  const int _7kaaCalculation,
+  const short _7kaaSkillId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  const auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+
+  if (!building) {
+    return 0;
+  }
+
+  return building->enqueuedTrainingCount(_7kaaSkillId);
+}
+
+bool enqueueTraining(
+  Town* _7kaaTown,
+  const char _7kaaRaceId,
+  const char _7kaaSkillId,
+  const unsigned int amount
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  auto building = Ambition::Building::getBy7kaaTownRecordNumber(
+    _7kaaTownRecordNumber
+  );
+  building->enqueueTraining(
+    {
+      ._7kaaRaceId = _7kaaRaceId,
+      ._7kaaSkillId = _7kaaSkillId,
+      .amount = amount,
+    }
+  );
+  return true;
+}
+
 void processIdleTowerOfScience(
   FirmResearch* _7kaaFirmResearch
 ) {
@@ -117,6 +200,24 @@ void processIdleTowerOfScience(
       _7kaaFirmResearch->start_research(researchTarget, COMMAND_PLAYER);
     }
   }
+}
+
+void processTrainingQueue(
+  Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
+  const auto building
+    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+
+  if (!building) {
+    return;
+  }
+
+  building->popViableTrainingRequest();
 }
 
 void sendUnitsToRallyPoint(

@@ -489,6 +489,8 @@ void Town::next_day()
 			LOG_MSG(misc.get_random_seed() );
 		}
 
+		Ambition::Building::processTrainingQueue(this);
+
 		if( town_array.is_deleted(townRecno) )	// when the last peasant in the town is trained, the town disappear
 			return;
 	}
@@ -859,6 +861,7 @@ void Town::set_nation(int newNationRecno)
 		info.disp();
 
 	Ambition::Building::clearRallyPoint(this);
+	Ambition::Building::clearTrainingQueue(this);
 }
 //----------- End of function Town::set_nation ---------//
 

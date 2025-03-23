@@ -41,6 +41,16 @@ void clearRallyPoint(
   const Town* _7kaaTown
 );
 
+void clearTrainingQueue(
+  const Town* _7kaaTown
+);
+
+bool dequeueTraining(
+  Town* _7kaaTown,
+  const char _7kaaSkillId,
+  const unsigned int amount
+);
+
 void destroy(
   const Firm* _7kaaFirm
 );
@@ -48,8 +58,25 @@ void destroy(
   const Town* _7kaaTown
 );
 
+unsigned int enqueuedTrainingCount(
+  const Town* _7kaaTown,
+  const int _7kaaCalculation,
+  const short _7kaaSkillId
+);
+
+bool enqueueTraining(
+  Town* _7kaaTown,
+  const char _7kaaRaceId,
+  const char _7kaaSkillId,
+  const unsigned int amount
+);
+
 void processIdleTowerOfScience(
   FirmResearch* _7kaaFirmResearch
+);
+
+void processTrainingQueue(
+  Town* _7kaaTown
 );
 
 void sendUnitsToRallyPoint(
