@@ -26,8 +26,6 @@
 #include <ONEWS.h>
 #include <ODATE.h>
 #include <OGFILE.h>
-#include <OSaveGameArray.h>
-#include <OSaveGameProvider.h>
 #include <OF_MONS.h>
 #include <OMONSRES.h>
 #include <OFILETXT.h>
@@ -163,7 +161,7 @@ int Game::run_scenario(ScenInfo* scenInfo)
 		strcpy(playerName, config.player_name);
 		// ###### end Gilbert 1/11 #########//
 
-		if( SaveGameProvider::load_scenario(str) > 0 )
+		if( game_file.load_game("", str) > 0 )
 		{
 			ConfigAdv backup;
 			if( config_adv.scenario_config )

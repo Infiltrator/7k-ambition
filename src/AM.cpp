@@ -42,7 +42,6 @@
 #include <OGAME.h>
 #include <OGAMESET.h>
 #include <OGFILE.h>
-#include <OSaveGameArray.h>
 #include <OGAMHALL.h>
 #include <OGODRES.h>
 #include <OHELP.h>
@@ -233,7 +232,7 @@ Battle            battle;
 Power             power;
 World             world;
 char              scenario_file_name[FilePath::MAX_FILE_PATH+1];
-SaveGameArray     save_game_array;
+GameFileArray     game_file_array;
 GameFile          game_file;
 nsPlayerStats::PlayerStats playerStats;
 HallOfFame        hall_of_fame;
@@ -408,7 +407,7 @@ static void extra_error_handler()
 	if( game.game_mode != GAME_SINGLE_PLAYER )
 		return;
 
-	save_game_array.save_new_game("ERROR.SAV");  // save a new game immediately without prompting menu
+	game_file_array.save_new_game("ERROR.SAV");  // save a new game immediately without prompting menu
 
 	box.msg( "Error encountered. The game has been saved to ERROR.SAV" );
 }

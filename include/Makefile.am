@@ -126,9 +126,6 @@ noinst_HEADERS = \
 	OSPY.h \
 	OSTR.h \
 	OSYS.h \
-	OSaveGameArray.h \
-	OSaveGameInfo.h \
-	OSaveGameProvider.h \
 	OTALKMSG.h \
 	OTALKRES.h \
 	OTARRAY.h \

@@ -42,8 +42,7 @@
 #include <OGAME.h>
 #include <ONEWS.h>
 #include <OGAMESET.h>
-#include <OSaveGameArray.h>
-#include <OSaveGameProvider.h>
+#include <OGFILE.h>
 #include <OGAMHALL.h>
 #include <OINFO.h>
 #include <OVBROWSE.h>
@@ -452,9 +451,9 @@ int Sys::init_objects()
    help.init("HELP.RES");
 
    tutor.init();
-   // Need to init hall_of_fame *before* save_game_array to persist the last savegame filename
+   // Need to init hall_of_fame *before* game_file_array to persist the last savegame filename
    hall_of_fame.init();
-   save_game_array.init("*.SAV");
+   game_file_array.init("*.SAV");
 
    //---------- init game_set -----------//
 
@@ -507,8 +506,8 @@ void Sys::deinit_objects()
 
    tutor.deinit();
    config.deinit();
-   // Need to deinit hall_of_fame *after* save_game_array to persist the last savegame filename
-   save_game_array.deinit();
+   // Need to deinit hall_of_fame *after* game_file_array to persist the last savegame filename
+   game_file_array.deinit();
    hall_of_fame.deinit();
 }
 //------- End of function Sys::deinit_objects -----------//
@@ -968,7 +967,7 @@ void Sys::main_loop(int isLoadedGame)
 
             if( nation_array.player_recno )     // only save when the player is still in the game
             {
-               SaveGameProvider::save_game(remote.save_file_name);
+               game_file.save_game(remote.save_file_name);
 
                // ####### begin Gilbert 24/10 ######//
                //static String str;
@@ -1029,11 +1028,11 @@ void Sys::auto_save()
          static int saveCount = 0;
          switch(saveCount)
          {
-            case 0:  SaveGameProvider::save_game("DEBUG1.SAV");
+            case 0:  game_file.save_game("DEBUG1.SAV");
                      break;
-			case 1:  SaveGameProvider::save_game("DEBUG2.SAV");
+			case 1:  game_file.save_game("DEBUG2.SAV");
                      break;
-			case 2:  SaveGameProvider::save_game("DEBUG3.SAV");
+			case 2:  game_file.save_game("DEBUG3.SAV");
                      break;
          }
          if( ++saveCount>=3 )
@@ -1061,7 +1060,7 @@ void Sys::auto_save()
             rename( auto1_path, auto2_path );
          }
 
-         SaveGameProvider::save_game("AUTO.SAV");
+         game_file.save_game("AUTO.SAV");
       }
 
       //-*********** syn game test ***********-//
@@ -1110,7 +1109,7 @@ void Sys::auto_save()
          rename( auto1_path, auto2_path );
       }
 
-      SaveGameProvider::save_game("AUTO.SVM");
+      game_file.save_game("AUTO.SVM");
    }
 }
 //-------- End of function Sys::auto_save --------//
@@ -2122,7 +2121,7 @@ int Sys::detect_debug_cheat_key(unsigned scanCode, unsigned skeyState)
 /*    //-*********** syn game test ***********-//
       case '\'':
          //if(debug2_enable_flag && debug_sim_game_type)
-         //save_game_array[0]->load_game("syn.sav");
+         //game_file_array[0]->load_game("syn.sav");
          game_file.load_game("syn.sav");
          sp_load_seed_file();
          debug_seed_status_flag = DEBUG_SYN_AUTO_LOAD;
@@ -2720,9 +2719,9 @@ void Sys::load_game()
 
    int rc=0;
 
-   save_game_array.init("*.SAV");                  // reload any save game file
-   save_game_array.menu(-2);               // save screen area to back buffer
-   switch( save_game_array.load_game() )
+   game_file_array.init("*.SAV");          // reload any save game file
+   game_file_array.menu(-2);               // save screen area to back buffer
+   switch( game_file_array.load_game() )
    {
       case 1:
          rc = 1;                 // fall through to case 0
@@ -2736,7 +2735,7 @@ void Sys::load_game()
 		 sys.signal_exit_flag = 1;
    }
 
-   save_game_array.menu(-1);               // restore screen area from back buffer
+   game_file_array.menu(-1);               // restore screen area from back buffer
 
    //-----------------------------------//
    if( rc == -1)
@@ -2779,15 +2778,15 @@ void Sys::save_game()
       return;
    }
 
-   save_game_array.init("*.SAV");                  // reload any save game file
-   save_game_array.menu(-2);               // save screen area to back buffer
+   game_file_array.init("*.SAV");          // reload any save game file
+   game_file_array.menu(-2);               // save screen area to back buffer
 
-   if( save_game_array.menu(1) == 1 )
+   if( game_file_array.menu(1) == 1 )
    {
       box.msg( _("Game Saved Successfully") );
    }
 
-   save_game_array.menu(-1);               // restore screen area from back buffer
+   game_file_array.menu(-1);               // restore screen area from back buffer
 
 	// ##### patch begin Gilbert 16/3 #######//
 	info.disp();

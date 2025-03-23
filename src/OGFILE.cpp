@@ -32,32 +32,23 @@
 #include <OGFILE.h>
 #include <OFILE.h>
 #include <OSTR.h>
+#include <OMOUSECR.h>
 #include <OTALKRES.h>
 #include <ONATION.h>
 #include <OWORLD.h>
+#include <OPOWER.h>
 #include <OGAME.h>
 #include <OTownNetwork.h>
 #include <OINFO.h>
 #include <OSYS.h>
 #include <OAUDIO.h>
 #include <OMUSIC.h>
-#include <OSaveGameInfo.h>
 #include <dbglog.h>
 #include "gettext.h"
 #include <OGF_REC.h>
+#include "posix_string_compat.h"
 
 DBGLOG_DEFAULT_CHANNEL(GameFile);
-
-#pragma pack(1)
-struct SaveGameHeader
-{
-	uint32_t class_size;    // for version compare
-	SaveGameInfo info;
-};
-#pragma pack()
-
-enum {CLASS_SIZE = 302};
-static_assert(sizeof(SaveGameHeader) == CLASS_SIZE, "Savegame header size mismatch"); // (no packing)
 
 enum { ERROR_NONE = 0,
 	ERROR_CREATE,
@@ -77,14 +68,25 @@ static int last_status = ERROR_NONE;
 // Saves the current game under the given filePath.
 // On error, returns false.
 //
-int GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
+int GameFile::save_game(const char* fileName)
 {
+	FilePath fullPath(sys.dir_config);
 	File file;
 	bool fileOpened = false;
 
 	last_status = ERROR_NONE;
 
-	int rc = file.file_create(filePath, 0, 1); // 0=tell File don't handle error itself
+	if( fileName )
+		strcpy(file_name, fileName);
+
+	fullPath += file_name;
+	if( fullPath.error_flag )
+	{
+		last_status = ERROR_CREATE;
+		return 0;
+	}
+
+	int rc = file.file_create(fullPath, 0, 1); // 0=tell File don't handle error itself
 												// 1=allow the writing size and the read size to be different
 	if( !rc )
 		last_status = ERROR_CREATE;
@@ -95,7 +97,7 @@ int GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
 	{
 		save_process();      // process game data before saving the game
 
-		rc = write_game_header(saveGameInfo, &file);    // write saved game header information
+		rc = write_game_header(&file);    // write saved game header information
 
 		if( !rc )
 			last_status = ERROR_WRITE_HEADER;
@@ -115,7 +117,7 @@ int GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
 
 	if( !rc )
 	{
-		if (fileOpened) remove( filePath );         // delete the file as it is not complete
+		if (fileOpened) remove( fullPath );         // delete the file as it is not complete
 	}
 
 	return rc != 0;
@@ -129,14 +131,32 @@ int GameFile::save_game(const char* filePath, const SaveGameInfo& saveGameInfo)
 //                0 - not loaded.
 //               -1 - error and partially loaded
 //
-int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo)
+int GameFile::load_game(const char* base_path, const char* fileName)
 {
+	FilePath fullPath(base_path);
 	File file;
 	int  rc=1;
 
+	power.win_opened=1;				// to disable power.mouse_handler()
+
+	int oldCursor = mouse_cursor.get_icon();
+	mouse_cursor.set_icon( CURSOR_WAITING );
+
+	int powerEnableFlag = power.enable_flag;
+
 	last_status = ERROR_NONE;
 
-	if(rc && !file.file_open(filePath, 0, 1)) // 0=tell File don't handle error itself
+	if( fileName )
+		strcpy(file_name, fileName);
+
+	fullPath += file_name;
+	if( fullPath.error_flag )
+	{
+		last_status = ERROR_OPEN;
+		return 0;
+	}
+
+	if( rc && !file.file_open(fullPath, 0, 1) ) // 0=tell File don't handle error itself
 	{
 		rc = 0;
 		last_status = ERROR_OPEN;
@@ -198,18 +218,16 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 
 	file.file_close();
 
+	power.enable_flag = powerEnableFlag;
+
+	mouse_cursor.restore_icon( oldCursor );
+
+	power.win_opened=0;
+
 	//---------------------------------------//
 
 	if (rc > 0)
 	{
-		strcpy(saveGameInfo->file_name, file_name);
-		strcpy(saveGameInfo->player_name, player_name);
-		saveGameInfo->race_id = race_id;
-		saveGameInfo->nation_color = nation_color;
-		saveGameInfo->game_date = game_date;
-		saveGameInfo->file_date.dwLowDateTime = file_date.dwLowDateTime;
-		saveGameInfo->file_date.dwHighDateTime = file_date.dwHighDateTime;
-		saveGameInfo->terrain_set = terrain_set;
 		strncpy(scenario_file_name, file_name, FilePath::MAX_FILE_PATH);
 		scenario_file_name[FilePath::MAX_FILE_PATH] = 0;
 	}
@@ -219,36 +237,125 @@ int GameFile::load_game(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo
 //--------- End of function GameFile::load_game --------//
 
 
-//-------- Begin of function GameFile::read_header --------//
+//------- Begin of function GameFile::set_file_name -------//
 //
-// Reads the given file and fills the save game info from the header. Returns true if successful.
+// Set the game file name of current save game, called by
+// GameFile::save_game().
 //
-int GameFile::read_header(const char* filePath, SaveGameInfo* /*out*/ saveGameInfo)
+// e.g. ENLI_001.SAV - the first saved game of the group "Enlight Enterprise"
+//
+void GameFile::set_file_name()
 {
-	int rc = 1;
+	enum { NAME_PREFIX_LEN = 4,    // Maximum 4 characters in name prefix, e.g. "ENLIG" for "Enlight Enterprise"
+			 NAME_NUMBER_LEN = 3  };
+
+	String str, str2;
+	int    i;
+	char   nameChar;
+	const char* baseName;        // the long name which the file name is based on
+	char   addStr[] = "0";       // as a small string for adding to the large string
+
+	baseName = (~nation_array)->king_name();
+
+	//--------- add the group name prfix ----------//
+
+	for( i=0 ; i<(int) strlen(baseName) && (int) str.len() < NAME_PREFIX_LEN ; i++ )
+	{
+		nameChar = misc.upper(baseName[i]);
+
+		if( ( nameChar >= 'A' && nameChar <= 'Z' ) ||
+			 ( nameChar >= '0' && nameChar <= '9' ) )
+		{
+			addStr[0] = nameChar;
+
+			str += addStr;
+		}
+	}
+
+	//----- add tailing characters if prefix len < NAME_PREFIX_LEN+1 ---//
+
+	while( str.len() < NAME_PREFIX_LEN+1 )       // +1 is the "_" between the name and the number
+		str += "_";
+
+	//---- find the saved game number for this saved game ----//
+
+	int       curNumber, lastNumber=0;
+	GameFile* gameFile;
+
+	for( i=1 ; i<=game_file_array.size() ; i++ )
+	{
+		gameFile = game_file_array[i];
+
+		// ##### begin Gilbert 3/10 ########//
+		// if( memcmp(gameFile->file_name, str, NAME_PREFIX_LEN)==0 )
+		if( strnicmp(gameFile->file_name, str, NAME_PREFIX_LEN)==0 )
+		// ##### end Gilbert 3/10 ########//
+		{
+			//------------------------------------------------//
+			//
+			// if there is a free number in the middle of the list
+			// (left by being deleted game), use this number.
+			//
+			//------------------------------------------------//
+
+			curNumber = atoi( gameFile->file_name+NAME_PREFIX_LEN+1 );      // +1 is to pass the "_" between the name and the number
+
+			if( curNumber > lastNumber+1 )   // normally, curNumber should be lastNumber+1
+				break;
+
+			lastNumber = curNumber;
+		}
+	}
+
+	//------- add saved game number after the prefix --------//
+
+	str2 = lastNumber+1;    // use the next number after the last number
+
+	for( i=NAME_NUMBER_LEN-str2.len() ; i>0 ; i-- )   // add "0" before the number if the len of the number < NAME_NUMBER_LEN
+		str += "0";
+
+	str += str2;
+	str += ".SAV";
+
+	//----- copy the string to file_name ------//
+
+	strncpy( file_name, str, FilePath::MAX_FILE_PATH );
+
+	file_name[FilePath::MAX_FILE_PATH] = 0;
+}
+//--------- End of function GameFile::set_file_name -------//
+
+
+//-------- Begin of function GameFile::read_game_header --------//
+//
+// Reads the header of the given file and returns 1 if successful.
+//
+int GameFile::read_game_header(const char* filePath)
+{
 	File file;
-	SaveGameHeader saveGameHeader;
 
 	if( !file.file_open(filePath, 0, 1) )
 		return 0;
-	if( !file.file_read(&saveGameHeader, sizeof(SaveGameHeader)) )
-	{
-		rc = 0;
-	}
-	else if( !(saveGameHeader.class_size == CLASS_SIZE &&
-		saveGameHeader.info.terrain_set > 0) )
-	{
-		rc = 0;
-	}
-	else
-	{
-		*saveGameInfo = saveGameHeader.info;
-	}
-	file.file_close();
 
-	return rc;
+	if( !file.file_read(&gf_rec, sizeof(GameFileHeader)) )
+	{
+		file.file_close();
+		return 0;
+	}
+
+	read_record(&gf_rec.game_file);
+
+	if( !validate_header() )
+	{
+		file.file_close();
+		return 0;
+	}
+
+	file.file_close();
+	return 1;
 }
-//--------- End of function GameFile::read_header --------//
+//--------- End of function GameFile::read_game_header --------//
+
 
 //-------- Begin of function GameFile::save_process -------//
 //
@@ -283,6 +390,8 @@ void GameFile::load_process()
 	if( sys.view_mode==MODE_NATION && info.nation_report_mode==NATION_REPORT_TALK )
 		talk_res.set_talk_choices();
 
+	mouse_cursor.set_frame(0);		// to fix a frame bug with loading game
+
 	// reflect the effect of config.music_flag, config.wav_music_volume
 	audio.set_wav_volume(config.sound_effect_volume);
 	if( config.music_flag )
@@ -310,7 +419,7 @@ void GameFile::load_process()
 // Return : <int> 1 - file written successfully
 //                0 - not successful
 //
-int GameFile::write_game_header(const SaveGameInfo& saveGameInfo, File* filePtr)
+int GameFile::write_game_header(File* filePtr)
 {
 	class_size = sizeof(GameFileHeader);
 
