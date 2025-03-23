@@ -1714,10 +1714,11 @@ int Town::recruit(int trainSkillId, int raceId, char remoteAction)
 	if( !remoteAction && remote.is_enable() )
 	{
 		// packet structure : <town recno> <skill id> <race id>
-		short *shortPtr = (short *)remote.new_send_queue_msg(MSG_TOWN_RECRUIT, 3*sizeof(short));
+		short *shortPtr = (short *)remote.new_send_queue_msg(MSG_TOWN_RECRUIT, 4*sizeof(short));
 		shortPtr[0] = town_recno;
 		shortPtr[1] = trainSkillId;
 		shortPtr[2] = raceId;
+		shortPtr[3] = 1;
 		return 0;
 	}
 
