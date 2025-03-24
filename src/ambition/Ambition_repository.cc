@@ -41,7 +41,7 @@ Repository entityRepository;
 void Repository::reset(
 ) {
   records.clear();
-  nextRecordNumber = 0;
+  nextRecordNumber = STARTING_RECORD_NUMBER;
 }
 
 unsigned long long int Repository::takeRecordNumber(

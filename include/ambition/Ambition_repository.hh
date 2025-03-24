@@ -83,6 +83,8 @@ public:
   );
 
 private:
+  static const auto STARTING_RECORD_NUMBER = 1;
+
   friend void write(
     const std::string filename
   );
@@ -90,7 +92,7 @@ private:
   struct Record;
 
   std::map<unsigned long long int, Record> records;
-  unsigned long long int nextRecordNumber {0};
+  unsigned long long int nextRecordNumber {STARTING_RECORD_NUMBER};
 
   std::shared_ptr<Entity> _get(
     unsigned long long int recordNumber
