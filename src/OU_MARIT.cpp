@@ -253,7 +253,7 @@ void UnitMarine::update_stop_list()
 
 			if(dist<minDist)
 			{
-				dist = minDist;
+				minDist = dist;
 				dest_stop_id = i+1;
 			}
 		}
