@@ -939,7 +939,7 @@ void UnitMarine::harbor_unload_raw()
 		// distribute the stock into each market
 		//----------------------------------------------------------------------//
 		marketNodePtr = linked_market_array;
-		for(j=0; j<linked_market_num; j++, marketNodePtr, firmSelectedPtr++)
+		for(j=0; j<linked_market_num; j++, marketNodePtr++, firmSelectedPtr++)
 		{
 			if(!(*firmSelectedPtr))
 				continue;
