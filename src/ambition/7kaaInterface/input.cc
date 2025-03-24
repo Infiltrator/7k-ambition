@@ -26,6 +26,8 @@
 #define _AMBITION_IMPLEMENTATION
 #include "input.hh"
 
+#include "OWORLD.h"
+
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_input.hh"
@@ -51,13 +53,18 @@ bool detectModeSelectClick(
 
 void setOrClearRallyPoint(
   const short _7kaaX,
-  const short _7kaaY
+  const short _7kaaY,
+  const bool allowAction
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
   }
 
-  Ambition::setOrClearRallyPoint({ .x =_7kaaX, .y = _7kaaY });
+  const auto location = world.get_loc(_7kaaX, _7kaaY);
+  Ambition::setOrClearRallyPoint(
+    { .x =_7kaaX, .y = _7kaaY },
+    allowAction && location->explored()
+  );
 }
 
 } // namespace _7kaaAmbitionInterface::Input

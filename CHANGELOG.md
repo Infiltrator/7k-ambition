@@ -28,6 +28,8 @@ speaking, considered to be the player's experience.
   to a destination.
 - Waypoints now no longer get cleared if the unit cannot reach one destination,
   allowing for exploration without interruption.
+- Rally points can also be set to attack and enter buildings instead of just moving
+  to a destination, the same as waypoints.
 
 
 ## [3.0.4] — 2025-03-16

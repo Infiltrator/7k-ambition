@@ -111,7 +111,7 @@ std::shared_ptr<Building> Building::findBy7kaaTownRecordNumber(
 
 void Building::clearRallyPoint(
 ) {
-  rallyPoint = underlying7kaaObjectRectangle().centre();
+  rally.point = underlying7kaaObjectRectangle().centre();
 }
 
 void Building::clearTrainingQueue(
@@ -190,11 +190,11 @@ unsigned int Building::enqueuedTrainingCount(
 
 void Building::drawRallyPoint(
 ) const {
-  const auto locationRectangle = underlying7kaaObjectRectangle();
-
-  if (rallyPoint.within(locationRectangle)) {
+  if (!rallyPointEnabled()) {
     return;
   }
+
+  const auto locationRectangle = underlying7kaaObjectRectangle();
 
   auto *chPtr = image_icon.get_ptr("WAYPOINT");
   const auto chOffsetX = -(*(short*)chPtr / 2);
@@ -204,7 +204,7 @@ void Building::drawRallyPoint(
     locationRectangle.centre()
   );
   const auto rallyPointScreenCoordinates = UserInterface::fromWorldPoint(
-    rallyPoint
+    rally.point
   );
 
   anim_line.draw_line(
@@ -222,6 +222,14 @@ void Building::drawRallyPoint(
     chPtr
   );
 
+  if (rally.action == Unit::Waypoint::Action::MoveOnly) {
+    world.zoom_matrix->put_bitmap_clip(
+      rallyPointScreenCoordinates.left + 2,
+      rallyPointScreenCoordinates.top,
+      image_icon.get_ptr("NOPICK")
+    );
+  }
+
   const auto animLineBoundX1 = anim_line.bound_x1;
   const auto animLineBoundY1 = anim_line.bound_y1;
   const auto animLineBoundX2 = anim_line.bound_x2;
@@ -237,8 +245,8 @@ void Building::drawRallyPoint(
     &vga_back,
     MAP_X1 + _7kaaBuildingLocation.x,
     MAP_Y1 + _7kaaBuildingLocation.y,
-    MAP_X1 + rallyPoint.to7kaaCoordinates().x,
-    MAP_Y1 + rallyPoint.to7kaaCoordinates().y,
+    MAP_X1 + rally.point.to7kaaCoordinates().x,
+    MAP_Y1 + rally.point.to7kaaCoordinates().y,
     0,
     2
   );
@@ -295,27 +303,25 @@ void Building::popViableTrainingRequest(
   }
 }
 
+bool Building::rallyPointEnabled(
+) const {
+  return !rally.point.within(underlying7kaaObjectRectangle());
+}
+
 void Building::sendUnitsToRallyPoint(
   std::vector<short> _7kaaUnitRecordNumbers
 ) const {
-  if (rallyPoint.within(underlying7kaaObjectRectangle())) {
+  if (!rallyPointEnabled()) {
     return;
   }
 
-  unit_array.move_to(
-    rallyPoint.to7kaaCoordinates().x,
-    rallyPoint.to7kaaCoordinates().y,
-    0,
-    &_7kaaUnitRecordNumbers[0],
-    _7kaaUnitRecordNumbers.size(),
-    0
-  );
+  Unit::sendToDestination(_7kaaUnitRecordNumbers, rally);
 }
 
 void Building::setRallyPoint(
-  const Coordinates::Point coordinates
+  const Unit::Waypoint& waypoint
 ) {
-  rallyPoint = coordinates;
+  rally = waypoint;
 }
 
 Building::Building(
@@ -330,12 +336,13 @@ Building::Building(
   erected(erected),
   type(type)
 {
-  rallyPoint = underlying7kaaObjectRectangle().centre();
+  rally.point = underlying7kaaObjectRectangle().centre();
 }
 
 
 void setOrClearRallyPoint(
-  const Coordinates::_7kaaCoordinates _7kaaCoordinates
+  const Coordinates::_7kaaCoordinates _7kaaCoordinates,
+  const bool allowAction
 ) {
   if (firm_array.selected_recno) {
     const auto _7kaaFirmRecordNumber = firm_array.selected_recno;
@@ -350,7 +357,12 @@ void setOrClearRallyPoint(
       building->clearRallyPoint();
     } else {
       building->setRallyPoint(
-        Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates)
+        {
+          .action = allowAction
+            ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
+            : Ambition::Unit::Waypoint::Action::MoveOnly,
+          .point = Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates),
+        }
       );
     }
   }
@@ -368,7 +380,12 @@ void setOrClearRallyPoint(
       building->clearRallyPoint();
     } else {
       building->setRallyPoint(
-        Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates)
+        {
+          .action = allowAction
+            ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
+            : Ambition::Unit::Waypoint::Action::MoveOnly,
+          .point = Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates),
+        }
       );
     }
   }

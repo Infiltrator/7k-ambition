@@ -43,7 +43,8 @@ bool detectModeSelectClick(
 
 void setOrClearRallyPoint(
   const short _7kaaX,
-  const short _7kaaY
+  const short _7kaaY,
+  const bool allowAction
 );
 
 } // namespace _7kaaAmbitionInterface::Input
