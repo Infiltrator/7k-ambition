@@ -30,6 +30,8 @@ speaking, considered to be the player's experience.
   allowing for exploration without interruption.
 - Rally points can also be set to attack and enter buildings instead of just moving
   to a destination, the same as waypoints.
+- Rally points are now visible over unexplored blackness.
+
 
 
 ## [3.0.4] — 2025-03-16

@@ -541,6 +541,10 @@ void ZoomMatrix::draw_frame()
 	else if( !config.explore_whole_map )
 		blacken_unexplored();
 
+	if (Ambition::Config::enhancementsAvailable()) {
+		draw_unit_way_point_on_zoom_map();
+	}
+
 	disp_text();
 }
 //----------- End of function ZoomMatrix::draw_frame ------------//
@@ -1719,7 +1723,9 @@ void ZoomMatrix::draw_objects()
 	draw_objects_now(&land_top_disp_sort_array,LAND_TOP_DISP_LAYER_MASK);
 
 	draw_unit_path_on_zoom_map(AIR_DISP_LAYER_MASK);
-	draw_unit_way_point_on_zoom_map();
+	if (!Ambition::Config::enhancementsAvailable()) {
+		draw_unit_way_point_on_zoom_map();
+	}
 	draw_objects_now(&air_disp_sort_array);
 	// ##### end Gilbert 9/10 ######//
 
