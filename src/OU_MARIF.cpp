@@ -1158,7 +1158,7 @@ void UnitMarine::set_stop(int stopId, int stopXLoc, int stopYLoc, char remoteAct
 		case FIRM_MARKET:
 			goodsPtr = ((FirmMarket*) firmPtr)->market_goods_array;
 
-			for(int j=0; j<MAX_MARKET_GOODS; ++j && goodsNum<2, goodsPtr++)
+			for(int j=0; j<MAX_MARKET_GOODS && goodsNum<2; ++j, goodsPtr++)
 			{
 				if(goodsPtr->raw_id)
 				{
