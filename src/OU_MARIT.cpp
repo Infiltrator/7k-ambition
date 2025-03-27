@@ -21,6 +21,8 @@
 //Filename   : OU_MARI3.CPP
 //Description: UnitMarine - functions for loading/unloading goods, trading
 
+#include "ambition/7kaaInterface/unit.hh"
+
 #include <ALL.h>
 #include <OREMOTE.h>
 #include <OU_CARA.h>
@@ -446,6 +448,8 @@ void UnitMarine::ship_in_firm(int autoMode)
 	//-----------------------------------------------------------------------------//
 	if(cur_firm_recno && firm_array.is_deleted(cur_firm_recno))
 	{
+		Ambition::Unit::died(this);
+
 		hit_points = (float) 0;	// ship also die if the harbor is deleted
 		unit_array.disappear_in_firm(sprite_recno); // ship also die if the harnor is deleted
 		return;

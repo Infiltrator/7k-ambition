@@ -340,7 +340,7 @@ void displayTownQualityOfLife(
 }
 
 void displayUnitContribution(
-  Unit* unit,
+  ::Unit* unit,
   const int x,
   const int y
 ) {
@@ -757,6 +757,38 @@ void drawLoadMenuDeleteButton(
   button.paint(left, top, "DELETE", "CANCEL1D");
 }
 
+void drawMinimapLine(
+  Coordinates::Point from,
+  Coordinates::Point to,
+  int effectFlag
+) {
+  const auto saveBoundLeft = anim_line.bound_x1;
+  const auto saveBoundTop = anim_line.bound_y1;
+  const auto saveBoundRight = anim_line.bound_x2;
+  const auto saveBoundBottom = anim_line.bound_y2;
+  anim_line.bound_x1 = MAP_X1;
+  anim_line.bound_y1 = MAP_Y1;
+  anim_line.bound_x2 = MAP_X2;
+  anim_line.bound_y2 = MAP_Y2;
+
+  const auto _7kaaFrom = from.to7kaaCoordinates();
+  const auto _7kaaTo = to.to7kaaCoordinates();
+  anim_line.draw_line(
+    &vga_back,
+    MAP_X1 + _7kaaFrom.x,
+    MAP_Y1 + _7kaaFrom.y,
+    MAP_X1 + _7kaaTo.x,
+    MAP_Y1 + _7kaaTo.y,
+    0,
+    effectFlag
+  );
+
+  anim_line.bound_x1 = saveBoundLeft;
+  anim_line.bound_y1 = saveBoundTop;
+  anim_line.bound_x2 = saveBoundRight;
+  anim_line.bound_y2 = saveBoundBottom;
+}
+
 void drawTownTrainingProgressBar(
   const Town* town
 ) {
@@ -786,6 +818,25 @@ void drawTownTrainingProgressBar(
     barTop,
     barWidth,
     BAR_HEIGHT
+  );
+}
+
+void drawWorldLine(
+  Coordinates::Point from,
+  Coordinates::Point to,
+  int animatedFlag,
+  int effectFlag
+) {
+  const auto screenFrom = UserInterface::fromWorldPoint(from);
+  const auto screenTo = UserInterface::fromWorldPoint(to);
+  anim_line.draw_line(
+    &vga_back,
+    screenFrom.left,
+    screenFrom.top,
+    screenTo.left,
+    screenTo.top,
+    animatedFlag,
+    effectFlag
   );
 }
 

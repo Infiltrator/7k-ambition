@@ -22,6 +22,7 @@
 //Description : Object Power
 
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <OMOUSE.h>
 #include <OMOUSECR.h>
@@ -488,6 +489,8 @@ int Power::detect_action()
 	int mouseX = mouse.click_x(RIGHT_BUTTON);
 	int mouseY = mouse.click_y(RIGHT_BUTTON);
 
+	bool allowAction = true;
+
 	//--------- if click on the zoom window --------//
 
 	if( mouseX >= ZOOM_X1 && mouseX <= ZOOM_X2 &&		// if the mouse is inside the zoom area
@@ -504,6 +507,8 @@ int Power::detect_action()
 	{
 		curXLoc = world.map_matrix->top_x_loc + (mouseX-MAP_X1);
 		curYLoc = world.map_matrix->top_y_loc + (mouseY-MAP_Y1);
+
+		allowAction = false;
 	}
 
 	else
@@ -546,7 +551,11 @@ int Power::detect_action()
 	//### begin alex 16/10 ###//
 	if((mouse.event_skey_state & ALT_KEY_MASK))
 	{
-		Ambition::Input::setOrClearRallyPoint(curXLoc, curYLoc);
+		Ambition::Input::setOrClearRallyPoint(curXLoc, curYLoc, allowAction);
+		if (Ambition::Unit::toggleWaypoint({ selectedArray, selectedArray + selectedCount }, curXLoc, curYLoc, allowAction)) {
+			mem_del(selectedArray);
+			return 1;
+		}
 
 		unit_array.add_way_point(curXLoc, curYLoc, selectedArray, selectedCount, COMMAND_PLAYER);
 		mem_del(selectedArray);
@@ -871,6 +880,8 @@ int Power::detect_action()
 
 		err_when(preNatCount > selectedCount);
 	}
+
+	Ambition::Unit::clearWaypoints({ selectedArray, selectedArray + selectedCount });
 
 	mem_del(selectedArray);
 	return retFlag;

@@ -30,12 +30,19 @@
 #include <vector>
 
 #define _AMBITION_IMPLEMENTATION
+#include "OANLINE.h"
 #include "OFIRM.h"
+#include "OIMGRES.h"
+#include "ONATIONA.h"
 #include "OREMOTE.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
 
+#include "Ambition_coordinates.hh"
 #include "Ambition_building.hh"
+#include "Ambition_repository.hh"
+#include "Ambition_user_interface.hh"
+#include "Ambition_vga.hh"
 #include "format.hh"
 
 
@@ -140,6 +147,105 @@ bool sendAvailableBuilderToFirm(
 }
 
 
+Unit::Unit(
+  const unsigned long long recordNumber,
+  const short _7kaaSpriteRecordNumber
+) :
+  Entity(recordNumber),
+  _7kaaSpriteRecordNumber(_7kaaSpriteRecordNumber),
+  _7kaaSpyRecordNumber(-1),
+  diedAt(Time::START),
+  insideBuildingRecordNumber(0),
+  retiredAt(Time::START),
+  status(Status::Active),
+  waypoints()
+{
+  workerIdentifier.clear();
+}
+
+std::shared_ptr<Unit> Unit::create(
+  const short _7kaaSpriteRecordNumber
+) {
+  return entityRepository.insert(
+    std::make_shared<Unit>(
+      entityRepository.takeRecordNumber(),
+      _7kaaSpriteRecordNumber
+    )
+  );
+}
+
+std::shared_ptr<Unit> Unit::findBy7kaaSpriteRecordNumber(
+  const short _7kaaSpriteRecordNumber
+) {
+  return entityRepository.findEntityBy<Unit>(
+    [&_7kaaSpriteRecordNumber](std::shared_ptr<Unit> unit) {
+      return unit->status == Status::Active
+        && unit->_7kaaSpriteRecordNumber == _7kaaSpriteRecordNumber;
+    }
+  );
+}
+std::shared_ptr<Unit> Unit::findBy7kaaSpyRecordNumber(
+  const short _7kaaSpyRecordNumber
+) {
+  return entityRepository.findEntityBy<Unit>(
+    [&_7kaaSpyRecordNumber](std::shared_ptr<Unit> unit) {
+      return unit->active()
+        && unit->_7kaaSpyRecordNumber == _7kaaSpyRecordNumber;
+    }
+  );
+}
+std::shared_ptr<Unit> Unit::findBy7kaaWorker(
+  const Firm* _7kaaFirm,
+  const Worker* _7kaaWorker
+) {
+  const auto building
+    = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+  if (!building) {
+    return nullptr;
+  }
+
+  const WorkerIdentifier workerIdentifier = {
+    .extra_para = _7kaaWorker->extra_para,
+    .name_id = _7kaaWorker->name_id,
+    .race_id = _7kaaWorker->race_id,
+    .rank_id = _7kaaWorker->rank_id,
+    .skill_id = _7kaaWorker->skill_id,
+    .skill_potential = _7kaaWorker->skill_potential,
+    .town_recno = _7kaaWorker->town_recno,
+    .unit_id = _7kaaWorker->unit_id,
+  };
+  const auto _7kaaSpyRecordNumber = _7kaaWorker->spy_recno;
+
+  return entityRepository.findEntityBy<Unit>(
+    [&_7kaaSpyRecordNumber, &building, &workerIdentifier]
+    (std::shared_ptr<Unit> unit) {
+      return unit->status == Status::InsideBuilding
+        && unit->insideBuildingRecordNumber == building->recordNumber
+        && unit->workerIdentifier.extra_para == workerIdentifier.extra_para
+        && unit->workerIdentifier.name_id == workerIdentifier.name_id
+        && unit->workerIdentifier.race_id == workerIdentifier.race_id
+        && unit->workerIdentifier.rank_id == workerIdentifier.rank_id
+        && unit->workerIdentifier.skill_id == workerIdentifier.skill_id
+        && unit->workerIdentifier.skill_potential == workerIdentifier.skill_potential
+        && unit->workerIdentifier.town_recno == workerIdentifier.town_recno
+        && unit->workerIdentifier.unit_id == workerIdentifier.unit_id
+        && unit->_7kaaSpyRecordNumber == _7kaaSpyRecordNumber;
+    }
+  );
+}
+
+std::shared_ptr<Unit> Unit::getBy7kaaSpriteRecordNumber(
+  const short _7kaaSpriteRecordNumber
+) {
+  auto unit = Unit::findBy7kaaSpriteRecordNumber(_7kaaSpriteRecordNumber);
+  if (!unit) {
+    unit = Unit::create(_7kaaSpriteRecordNumber);
+  }
+
+  return unit;
+}
+
+
 uint8_t Unit::_7kaaRegionId(
   ::Unit* _7kaaUnit
 ) {
@@ -163,15 +269,264 @@ uint8_t Unit::_7kaaRegionId(
   );
 }
 
-void Unit::sendToBuildingRallyPoint(
+void Unit::sendToDestination(
   std::vector<short> _7kaaUnitRecordNumbers,
-  const Firm* _7kaaFirm
+  const Waypoint& destination
 ) {
-  const auto building
-    = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
-  if (building) {
-    building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
+  const auto location = world.get_loc(
+    destination.point.to7kaaCoordinates().x,
+    destination.point.to7kaaCoordinates().y
+  );
+
+  if (destination.action > Unit::Waypoint::Action::MoveOnly
+    && location->is_firm()
+  ) {
+    const auto target = firm_array[location->firm_recno()];
+    if (target->hit_points > 0) {
+      const auto nation = nation_array[
+        unit_array[_7kaaUnitRecordNumbers[0]]->nation_recno
+      ];
+      if (nation
+        && nation->get_relation_should_attack(target->nation_recno)
+      ) {
+        unit_array.attack(
+          destination.point.to7kaaCoordinates().x,
+          destination.point.to7kaaCoordinates().y,
+          0,
+          &_7kaaUnitRecordNumbers[0],
+          _7kaaUnitRecordNumbers.size(),
+          COMMAND_PLAYER,
+          0
+        );
+        return;
+      }
+
+      const auto unit = unit_array[_7kaaUnitRecordNumbers[0]];
+      if (unit->nation_recno == target->nation_recno) {
+        if (target->firm_id==FIRM_CAMP) {
+          unit_array.assign_to_camp(
+            destination.point.to7kaaCoordinates().x,
+            destination.point.to7kaaCoordinates().y,
+            COMMAND_PLAYER,
+            &_7kaaUnitRecordNumbers[0],
+            _7kaaUnitRecordNumbers.size()
+          );
+          return;
+        } else if (unit_res[unit->unit_id]->race_id > 0) {
+          unit_array.assign(
+            destination.point.to7kaaCoordinates().x,
+            destination.point.to7kaaCoordinates().y,
+            0,
+            COMMAND_PLAYER,
+            &_7kaaUnitRecordNumbers[0],
+            _7kaaUnitRecordNumbers.size()
+          );
+          return;
+        }
+      }
+    }
   }
+
+  unit_array.move_to(
+    destination.point.to7kaaCoordinates().x,
+    destination.point.to7kaaCoordinates().y,
+    0,
+    &_7kaaUnitRecordNumbers[0],
+    _7kaaUnitRecordNumbers.size(),
+    COMMAND_PLAYER
+  );
+}
+
+
+bool Unit::active (
+) {
+  return status < Status::Retired;
+}
+
+void Unit::clearWaypoints(
+) {
+  waypoints.clear();
+}
+
+void Unit::died(
+  const Time::Stamp stamp
+) {
+  status = Status::Dead;
+  diedAt = stamp;
+
+  clearWaypoints();
+}
+
+void Unit::drawWaypointsOnWorld(
+) const {
+  const auto waypointIcon = image_icon.get_ptr("WAYPOINT");
+  const auto iconOffsetLeft = -(*(short*)waypointIcon / 2);
+  const auto iconOffsetTop = -(*(1 + (short*)waypointIcon) / 2);
+  const auto noActionIcon = image_icon.get_ptr("NOPICK");
+
+  auto from = currentDestination();
+  Coordinates::Point to;
+
+  for (const auto& waypoint : waypoints) {
+    to = waypoint.point;
+
+    drawWorldLine(from, to, 0, 1);
+
+    const auto screenTo = UserInterface::fromWorldPoint(to);
+    world.zoom_matrix->put_bitmap_clip(
+      screenTo.left + iconOffsetLeft,
+      screenTo.top + iconOffsetTop,
+      waypointIcon
+    );
+    if (waypoint.action == Waypoint::Action::MoveOnly) {
+      world.zoom_matrix->put_bitmap_clip(
+        screenTo.left + 2,
+        screenTo.top,
+        noActionIcon
+      );
+    }
+
+    from = to;
+  }
+}
+
+void Unit::drawWaypointsOnMinimap(
+) const {
+  auto from = currentDestination();
+  Coordinates::Point to;
+
+  for (const auto& waypoint : waypoints) {
+    to = waypoint.point;
+    drawMinimapLine(from, to, 2);
+    from = to;
+  }
+}
+
+void Unit::dropSpyIdentity(
+) {
+  _7kaaSpyRecordNumber = -1;
+}
+
+void Unit::enteredBuilding(
+  const Firm* _7kaaFirm,
+  const Worker* _7kaaWorker
+) {
+  status = Status::InsideBuilding;
+  _7kaaSpriteRecordNumber = 0;
+  _7kaaSpyRecordNumber = _7kaaWorker->spy_recno;
+  insideBuildingRecordNumber
+    = Building::getBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno)->recordNumber;
+  workerIdentifier = {
+    .extra_para = _7kaaWorker->extra_para,
+    .name_id = _7kaaWorker->name_id,
+    .race_id = _7kaaWorker->race_id,
+    .rank_id = _7kaaWorker->rank_id,
+    .skill_id = _7kaaWorker->skill_id,
+    .skill_potential = _7kaaWorker->skill_potential,
+    .town_recno = _7kaaWorker->town_recno,
+    .unit_id = _7kaaWorker->unit_id,
+  };
+}
+void Unit::enteredBuilding(
+  const Town* _7kaaTown,
+  const Time::Stamp stamp
+) {
+  if (!_7kaaSpyRecordNumber) {
+    retired(stamp);
+  }
+
+  status = Status::InsideBuilding;
+  _7kaaSpriteRecordNumber = 0;
+  insideBuildingRecordNumber
+    = Building::getBy7kaaTownRecordNumber(_7kaaTown->town_recno)->recordNumber;
+  workerIdentifier.clear();
+}
+
+void Unit::exitedBuilding(
+  const ::Unit* _7kaaUnit
+) {
+  status = Status::Active;
+  _7kaaSpriteRecordNumber = _7kaaUnit->sprite_recno;
+  insideBuildingRecordNumber = 0;
+  workerIdentifier.clear();
+}
+
+bool Unit::goToNextWaypoint(
+) {
+  if (waypoints.empty()) {
+    return false;
+  }
+
+  const auto waypoint = waypoints.front();
+  waypoints.pop_front();
+  sendToDestination({ _7kaaSpriteRecordNumber }, waypoint);
+  return true;
+}
+
+void Unit::migrated(
+  const Town *destination
+) {
+  if (workerIdentifier.town_recno > -1) {
+    workerIdentifier.town_recno = destination->town_recno;
+  } else {
+    insideBuildingRecordNumber = destination->town_recno;
+  }
+}
+
+void Unit::retired(
+  const Time::Stamp stamp
+) {
+  status = Status::Retired;
+  retiredAt = stamp;
+
+  clearWaypoints();
+}
+
+void Unit::toggleWaypoint(
+  const Waypoint& waypoint
+) {
+  for (auto iterator = waypoints.begin();
+     iterator != waypoints.end();
+     iterator++
+  ) {
+    if (iterator->point == waypoint.point) {
+      waypoints.erase(iterator);
+      return;
+    }
+  }
+
+  waypoints.push_back(waypoint);
+}
+
+
+/* Protected functions. */
+
+Coordinates::Point Unit::currentDestination(
+) const {
+  const auto _7kaaUnit = unit_array[_7kaaSpriteRecordNumber];
+  return Coordinates::Point::from7kaaCoordinates(
+    {
+      .x = _7kaaUnit->result_node_array
+        ? _7kaaUnit->result_node_array[_7kaaUnit->result_node_count - 1].node_x
+        : _7kaaUnit->go_x_loc(),
+      .y = _7kaaUnit->result_node_array
+        ? _7kaaUnit->result_node_array[_7kaaUnit->result_node_count - 1].node_y
+        : _7kaaUnit->go_y_loc(),
+    }
+  );
+}
+
+
+void Unit::WorkerIdentifier::clear(
+) {
+  extra_para = -1;
+  name_id = 0;
+  race_id = -1;
+  rank_id = -1;
+  skill_id = -1;
+  skill_potential = -1;
+  town_recno = -1;
+  unit_id = -1;
 }
 
 

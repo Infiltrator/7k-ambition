@@ -21,6 +21,8 @@
 //Filename    : OF_MONS.CPP
 //Description : Fryhtan Lair
 
+#include "ambition/7kaaInterface/unit.hh"
+
 #include "OCONFIG.h"
 #include <OINFO.h>
 #include <vga_util.h>
@@ -408,6 +410,8 @@ void FirmMonster::assign_unit(int unitRecno)
 	}
 
 	//--------- the unit disappear in firm -----//
+
+	Ambition::Unit::retired(unitPtr);
 
 	unit_array.disappear_in_firm(unitRecno);
 }

@@ -38,6 +38,10 @@ namespace Ambition {
 
 constexpr auto FIRM_ID_TOWN = 0;
 
+namespace Coordinates {
+struct Point;
+}
+
 
 short calculateAnimatedLinePhase(
   const int animatedFlag,
@@ -114,7 +118,7 @@ void displayTownQualityOfLife(
 );
 
 void displayUnitContribution(
-  Unit* unit,
+  ::Unit* unit,
   const int x,
   const int y
 );
@@ -208,8 +212,21 @@ void drawLoadMenuDeleteButton(
   const int top
 );
 
+void drawMinimapLine(
+  Coordinates::Point from,
+  Coordinates::Point to,
+  int effectFlag
+);
+
 void drawTownTrainingProgressBar(
   const Town* town
+);
+
+void drawWorldLine(
+  Coordinates::Point from,
+  Coordinates::Point to,
+  int animatedFlag,
+  int effectFlag
 );
 
 bool initialiseSnowLayer(

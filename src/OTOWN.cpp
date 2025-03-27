@@ -24,6 +24,7 @@
 #include <string.h>
 
 #include "ambition/7kaaInterface/building.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <ALL.h>
 #include <OWORLD.h>
@@ -2594,6 +2595,8 @@ void Town::move_pop(Town* destTown, int raceId, int hasJob)
 
 			err_when( !spyRecno );
 
+			Ambition::Unit::migrated(spy_array[spyRecno], destTown);
+
 			spy_array[spyRecno]->spy_place_para = destTown->town_recno;		// set the place_para of the spy
 
 			race_spy_count_array[raceId-1]--;
@@ -3044,6 +3047,8 @@ void Town::kill_town_people(int raceId, int attackerNationRecno)
 	if( misc.random(recruitable_race_pop(raceId,1)) < race_spy_count_array[raceId-1] )
 	{
 		int spyRecno = spy_array.find_town_spy(town_recno, raceId, misc.random(race_spy_count_array[raceId-1])+1 );
+
+		Ambition::Unit::died(spy_array[spyRecno]);
 
 		spy_array.del_spy(spyRecno);
 	}

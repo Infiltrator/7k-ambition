@@ -22,6 +22,8 @@
 //Description : Object Unit idle processing
 //Owner       : Alex
 
+#include "ambition/7kaaInterface/unit.hh"
+
 #include <ALL.h>
 #include <OWORLD.h>
 #include <OU_MARI.h>
@@ -136,6 +138,10 @@ void Unit::process_idle()
 	}
 	else
 		return;
+
+	if (Ambition::Unit::goToNextWaypoint(this)) {
+		return;
+	}
 
 	err_when(turn_delay);
 	//------- call Sprite::process_idle() -------//

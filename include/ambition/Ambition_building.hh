@@ -32,6 +32,7 @@
 #include "Ambition_coordinates.hh"
 #include "Ambition_entity.hh"
 #include "Ambition_time.hh"
+#include "Ambition_unit.hh"
 #include "boost-macros.hh"
 
 
@@ -84,6 +85,9 @@ public:
     const short _7kaaTownRecordNumber
   );
 
+  static std::shared_ptr<Building> getBy7kaaFirmRecordNumber(
+    int _7kaaFirmRecordNumber
+  );
   static std::shared_ptr<Building> getBy7kaaTownRecordNumber(
     const int _7kaaTownRecordNumber
   );
@@ -119,19 +123,22 @@ public:
   void popViableTrainingRequest(
   );
 
+  bool rallyPointEnabled(
+  ) const;
+
   void sendUnitsToRallyPoint(
     std::vector<short> _7kaaUnitRecordNumbers
   ) const;
 
   void setRallyPoint(
-    const Coordinates::Point coordinates
+    const Unit::Waypoint& waypoint
   );
 
 protected:
   struct Underlying7kaaObject;
 
   Time::Stamp destroyedAt;
-  Coordinates::Point rallyPoint;
+  Unit::Waypoint rally;
   std::vector<TrainingRequest> trainingQueue;
 
   Underlying7kaaObject underlying7kaaObject(
@@ -163,7 +170,7 @@ protected:
     archive & BOOST_SERIALIZATION_NVP_CONST(_7kaaRecordNumber);
     archive & BOOST_SERIALIZATION_NVP(destroyedAt);
     archive & BOOST_SERIALIZATION_NVP_CONST(erected);
-    archive & BOOST_SERIALIZATION_NVP(rallyPoint);
+    archive & BOOST_SERIALIZATION_NVP(rally);
     archive & BOOST_SERIALIZATION_NVP(trainingQueue);
     archive & BOOST_SERIALIZATION_NVP_CONST(type);
   }
@@ -171,7 +178,8 @@ protected:
 
 
 void setOrClearRallyPoint(
-  const Coordinates::_7kaaCoordinates _7kaaCoordinates
+  const Coordinates::_7kaaCoordinates _7kaaCoordinates,
+  const bool allowAction
 );
 
 } // namespace Ambition

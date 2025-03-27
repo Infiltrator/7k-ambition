@@ -26,9 +26,12 @@
 #define _AMBITION_IMPLEMENTATION
 #include "draw.hh"
 
+#include "OUNIT.h"
+
 #include "Ambition_config.hh"
 #include "Ambition_minimap.hh"
 #include "Ambition_remote.hh"
+#include "Ambition_unit.hh"
 #include "Ambition_vga.hh"
 
 
@@ -378,7 +381,7 @@ void printTownQualityOfLife(
 }
 
 void printUnitContribution(
-  Unit* unit,
+  ::Unit* unit,
   const int left,
   const int top
 ) {
@@ -387,6 +390,34 @@ void printUnitContribution(
   }
 
   Ambition::displayUnitContribution(unit, left, top);
+}
+
+void unitWaypointsOnWorld(
+  const ::Unit* _7kaaUnit
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto unit
+    = Ambition::Unit::findBy7kaaSpriteRecordNumber(_7kaaUnit->sprite_recno);
+  if (unit) {
+    unit->drawWaypointsOnWorld();
+  }
+}
+
+void unitWaypointsOnMinimap(
+  const ::Unit* _7kaaUnit
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto unit
+    = Ambition::Unit::findBy7kaaSpriteRecordNumber(_7kaaUnit->sprite_recno);
+  if (unit) {
+    unit->drawWaypointsOnMinimap();
+  }
 }
 
 } // namespace _7kaaAmbitionInterface::Draw

@@ -234,6 +234,14 @@ void printUnitContribution(
   const int top
 );
 
+void unitWaypointsOnWorld(
+  const Unit* _7kaaUnit
+);
+
+void unitWaypointsOnMinimap(
+  const Unit* _7kaaUnit
+);
+
 } // namespace _7kaaAmbitionInterface::Draw
 
 #ifndef _AMBITION_IMPLEMENTATION
