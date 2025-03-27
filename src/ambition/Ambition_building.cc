@@ -37,6 +37,7 @@
 #include "Ambition_repository.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
+#include "Ambition_vga.hh"
 #include "format.hh"
 
 
@@ -230,31 +231,7 @@ void Building::drawRallyPoint(
     );
   }
 
-  const auto animLineBoundX1 = anim_line.bound_x1;
-  const auto animLineBoundY1 = anim_line.bound_y1;
-  const auto animLineBoundX2 = anim_line.bound_x2;
-  const auto animLineBoundY2 = anim_line.bound_y2;
-  anim_line.bound_x1 = MAP_X1;
-  anim_line.bound_y1 = MAP_Y1;
-  anim_line.bound_x2 = MAP_X2;
-  anim_line.bound_y2 = MAP_Y2;
-
-  const auto _7kaaBuildingLocation = locationRectangle.centre().to7kaaCoordinates();
-
-  anim_line.draw_line(
-    &vga_back,
-    MAP_X1 + _7kaaBuildingLocation.x,
-    MAP_Y1 + _7kaaBuildingLocation.y,
-    MAP_X1 + rally.point.to7kaaCoordinates().x,
-    MAP_Y1 + rally.point.to7kaaCoordinates().y,
-    0,
-    2
-  );
-
-  anim_line.bound_x1 = animLineBoundX1;
-  anim_line.bound_y1 = animLineBoundY1;
-  anim_line.bound_x2 = animLineBoundX2;
-  anim_line.bound_y2 = animLineBoundY2;
+  drawMinimapLine(locationRectangle.centre(), rally.point, 2);
 }
 
 void Building::enqueueTraining(
