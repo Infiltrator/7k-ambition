@@ -32,6 +32,7 @@
 
 #include "gettext.h"
 #include "OBOX.h"
+#include "OSYS.h"
 
 #include "Ambition_repository.hh"
 
@@ -40,6 +41,9 @@ namespace Ambition {
 
 void requestFeedback(
 ) {
+  const auto saveSignalExitFlag = sys.signal_exit_flag;
+  sys.signal_exit_flag = 0;
+
   if (box.ask(
       _("We hope that you have enjoyed playing Seven Kingdoms: Ambition!"
         "\nWe would appreciate your feedback on the game and to hear what else"
@@ -66,6 +70,8 @@ void requestFeedback(
     );
 #endif
   }
+
+  sys.signal_exit_flag = saveSignalExitFlag;
 }
 
 void resetGameState(
