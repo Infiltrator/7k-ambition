@@ -549,7 +549,10 @@ int Power::detect_action()
 	}
 
 	//### begin alex 16/10 ###//
-	if((mouse.event_skey_state & ALT_KEY_MASK))
+	if((mouse.event_skey_state & ALT_KEY_MASK)
+		|| (Ambition::Config::enhancementsAvailable()
+			&& mouse.event_skey_state & SHIFT_KEY_MASK)
+	)
 	{
 		Ambition::Input::setOrClearRallyPoint(curXLoc, curYLoc, allowAction);
 		if (Ambition::Unit::toggleWaypoint({ selectedArray, selectedArray + selectedCount }, curXLoc, curYLoc, allowAction)) {
