@@ -21,6 +21,8 @@
 //Filename    : AM.CPP
 //Description : Ambition Entry Program
 
+#include "ambition/7kaaInterface/control.hh"
+
 #include <ALL.h>
 #include <version.h>
 
@@ -388,6 +390,8 @@ int main(int argc, char **argv)
 		game.main_menu();
 		break;
 	}
+
+	Ambition::Control::requestFeedback();
 
 	sys.deinit();
 
