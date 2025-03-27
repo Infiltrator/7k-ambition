@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1-rc1] — 2025-03-27
+
 ### Added
 
 - Added rally points for War Factory war machines.
