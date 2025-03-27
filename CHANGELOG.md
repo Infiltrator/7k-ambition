@@ -31,6 +31,7 @@ speaking, considered to be the player's experience.
 - Rally points can also be set to attack and enter buildings instead of just moving
   to a destination, the same as waypoints.
 - Rally points are now visible over unexplored blackness.
+- Setting a rally point on a building will not pull peasants to it.
 
 
 
