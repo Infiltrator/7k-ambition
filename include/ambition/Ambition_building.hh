@@ -130,7 +130,7 @@ public:
     std::vector<short> _7kaaUnitRecordNumbers
   ) const;
 
-  void setRallyPoint(
+  void toggleRallyPoint(
     const Unit::Waypoint& waypoint
   );
 

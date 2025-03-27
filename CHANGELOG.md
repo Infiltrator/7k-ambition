@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Rally points can be toggled by setting the rally point to the same place
+  again, in addition to alt-right-clicking on the building again.
+
 
 ## [3.1.0] — 2025-04-06
 
