@@ -797,10 +797,10 @@ void Spy::drop_spy_identity()
 
 			if( unitPtr->spy_recno == spy_recno )
 			{
+				Ambition::Unit::dropSpyIdentity(unitPtr);
+
 				unitPtr->spy_recno = 0;
 				rc = 1;
-
-				Ambition::Unit::dropSpyIdentity(unitPtr);
 			}
 		}
 
@@ -810,10 +810,10 @@ void Spy::drop_spy_identity()
 			{
 				if( firmPtr->worker_array[i].spy_recno==spy_recno )
 				{
+					Ambition::Unit::dropSpyIdentity(firmPtr, &firmPtr->worker_array[i]);
+
 					firmPtr->worker_array[i].spy_recno = 0;
 					rc = 1;
-
-					Ambition::Unit::dropSpyIdentity(firmPtr, &firmPtr->worker_array[i]);
 
 					break;
 				}
@@ -826,9 +826,9 @@ void Spy::drop_spy_identity()
 	{
 		Unit* unitPtr = unit_array[spy_place_para];
 
-		unitPtr->spy_recno = 0;
-
 		Ambition::Unit::dropSpyIdentity(unitPtr);
+
+		unitPtr->spy_recno = 0;
 	}
 
 	//------ delete this Spy record from spy_array ----//
