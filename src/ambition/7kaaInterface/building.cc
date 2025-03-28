@@ -28,6 +28,7 @@
 
 #include "OF_RESE.h"
 #include "OFIRM.h"
+#include "OTECHRES.h"
 #include "OTOWN.h"
 
 #include "Ambition_building.hh"
@@ -196,7 +197,10 @@ void processIdleTowerOfScience(
     = Ambition::Polity::findBy7kaaRecordNumber(_7kaaNationRecordNumber);
   if (polity) {
     const auto researchTarget = polity->researchTarget();
-    if (researchTarget) {
+    const auto technologyInfo = tech_res[researchTarget];
+    if (researchTarget
+      && technologyInfo->can_research(_7kaaNationRecordNumber)
+    ) {
       _7kaaFirmResearch->start_research(researchTarget, COMMAND_PLAYER);
     }
   }
