@@ -412,7 +412,7 @@ void Unit::enteredBuilding(
   const Worker* _7kaaWorker
 ) {
   status = Status::InsideBuilding;
-  _7kaaSpriteRecordNumber = 0;
+  _7kaaSpriteRecordNumber = -1;
   _7kaaSpyRecordNumber = _7kaaWorker->spy_recno;
   insideBuildingRecordNumber
     = Building::getBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno)->recordNumber;
@@ -436,7 +436,7 @@ void Unit::enteredBuilding(
   }
 
   status = Status::InsideBuilding;
-  _7kaaSpriteRecordNumber = 0;
+  _7kaaSpriteRecordNumber = -1;
   insideBuildingRecordNumber
     = Building::getBy7kaaTownRecordNumber(_7kaaTown->town_recno)->recordNumber;
   workerIdentifier.clear();
