@@ -27,6 +27,8 @@
 
 class Button3D;
 class Firm;
+class FirmHarbor;
+class FirmWar;
 class MapMatrix;
 class SnowLayer;
 class Town;
@@ -249,6 +251,16 @@ void printUnitContribution(
   Unit* unit,
   const int left,
   const int top
+);
+
+void queueCount(
+  const FirmHarbor* _7kaaHarbour
+);
+void queueCount(
+  const FirmWar* _7kaaWarFactory
+);
+void queueCount(
+  const Town* _7kaaTown
 );
 
 void unitWaypointsOnWorld(

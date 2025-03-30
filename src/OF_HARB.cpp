@@ -22,6 +22,7 @@
 //Description : Firm Harbor
 
 #include "ambition/7kaaInterface/building.hh"
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OINFO.h>
 #include "OVGABUF.h"
@@ -341,6 +342,8 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 		button_build.paint( SHIP_DET_X1, SHIP_DET_Y2+4, 'A', "MAKESHIP" );
 		button_sail.paint ( SHIP_DET_X1+BUTTON_ACTION_WIDTH, SHIP_DET_Y2+4, 'A', "SAILOUT" );
 	}
+
+	Ambition::Draw::queueCount(this);
 
 	if( ship_count > 0 )
 		button_sail.enable();

@@ -35,6 +35,11 @@ struct Point {
   int top;
 };
 
+struct Size {
+  int width;
+  int height;
+};
+
 struct Rectangle {
   Point start;
   Point end;
@@ -44,11 +49,17 @@ struct Rectangle {
     const int width,
     const int height
   ) {
+    return fromPoint(start, { .width = width, .height = height });
+  }
+  constexpr static Rectangle fromPoint(
+    const Point start,
+    Size size
+  ) {
     return {
       .start = start,
       .end = {
-        .left = start.left + width,
-        .top = start.top + height,
+        .left = start.left + size.width,
+        .top = start.top + size.height,
       },
     };
   }
@@ -71,6 +82,11 @@ struct Rectangle {
   ) const;
 };
 
+
+constexpr Size BUTTON_SIZE = {
+  .width = 46,
+  .height = 40,
+};
 
 constexpr Rectangle BOUNDS = {
   .start = {
@@ -99,8 +115,10 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
     .left = INFO_PANE_CONTENTS.start.left + 29,
     .top = INFO_PANE_CONTENTS.start.top,
   },
-  24,
-  20
+  {
+    .width = 24,
+    .height = 20,
+  }
 );
 
 
