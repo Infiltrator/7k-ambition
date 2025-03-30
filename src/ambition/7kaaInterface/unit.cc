@@ -153,20 +153,18 @@ void exitedBuilding(
   }
 }
 
-bool goToNextWaypoint(
+void goToNextWaypoint(
   const ::Unit* _7kaaUnit
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
-    return false;
+    return;
   }
 
   auto unit
     = Ambition::Unit::findBy7kaaSpriteRecordNumber(_7kaaUnit->sprite_recno);
-  if (!unit) {
-    return false;
+  if (unit) {
+    unit->goToNextWaypoint();
   }
-
-  return unit->goToNextWaypoint();
 }
 
 void migrated(

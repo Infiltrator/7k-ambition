@@ -139,10 +139,6 @@ void Unit::process_idle()
 	else
 		return;
 
-	if (Ambition::Unit::goToNextWaypoint(this)) {
-		return;
-	}
-
 	err_when(turn_delay);
 	//------- call Sprite::process_idle() -------//
 
@@ -293,6 +289,8 @@ void Unit::process_idle()
 			move_to(destX, destY);
 		}
 	}
+
+	Ambition::Unit::goToNextWaypoint(this);
 }
 //----------- End of function Unit::process_idle -----------//
 

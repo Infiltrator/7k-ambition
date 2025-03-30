@@ -451,16 +451,15 @@ void Unit::exitedBuilding(
   workerIdentifier.clear();
 }
 
-bool Unit::goToNextWaypoint(
+void Unit::goToNextWaypoint(
 ) {
   if (waypoints.empty()) {
-    return false;
+    return;
   }
 
   const auto waypoint = waypoints.front();
   waypoints.pop_front();
   sendToDestination({ _7kaaSpriteRecordNumber }, waypoint);
-  return true;
 }
 
 void Unit::migrated(

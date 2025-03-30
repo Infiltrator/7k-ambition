@@ -76,7 +76,7 @@ void exitedBuilding(
   const ::Unit* _7kaaUnit
 );
 
-bool goToNextWaypoint(
+void goToNextWaypoint(
   const ::Unit* _7kaaUnit
 );
 
