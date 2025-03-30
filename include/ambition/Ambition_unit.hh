@@ -149,7 +149,7 @@ public:
     const ::Unit* _7kaaUnit
   );
 
-  bool goToNextWaypoint(
+  void goToNextWaypoint(
   );
 
   void migrated(
