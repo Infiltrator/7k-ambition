@@ -412,6 +412,15 @@ void GameFile::load_process()
 //--------- End of function GameFile::load_process -------//
 
 
+static void posix_to_filetime(time_t t, GameFileDate* gameFileDate)
+{
+	t *= 10000000;
+	t += 11644473600000 * 10000;
+	gameFileDate->dwLowDateTime = (uint32_t)t;
+	gameFileDate->dwHighDateTime = (uint32_t)(t >> 32);
+}
+
+
 //------- Begin of function GameFile::write_game_header -------//
 //
 // Write saved game header info to the saved game file.
@@ -440,6 +449,8 @@ int GameFile::write_game_header(File* filePtr)
 	SYSTEMTIME sysTime;
 	GetSystemTime(&sysTime);
 	SystemTimeToFileTime(&sysTime, (FILETIME*)&file_date);
+#elif defined USE_POSIX
+	posix_to_filetime(time(NULL), &file_date);
 #else
 	file_date.dwLowDateTime = 0;
 	file_date.dwHighDateTime = 0;
