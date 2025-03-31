@@ -16,6 +16,8 @@ speaking, considered to be the player's experience.
 - Fixed waypoints disappearing in multiplayer.
 - Fixed technologies researching beyond level 3.
 - Fix crash when spy drops identity.
+- Fixed a crash when a kingdom is destroyed or surrenders while still having
+  spies.  This crash also happened on exit, which is also fixed.
 
 
 ## [3.1-rc1] — 2025-03-27
