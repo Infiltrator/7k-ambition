@@ -1814,7 +1814,7 @@ void Unit::inc_minor_combat_level(int incLevel)
 
    skill.combat_level_minor += incLevel;
 
-   if( skill.combat_level_minor > 100 )
+   if( skill.combat_level_minor >= 100 )
    {
       if( skill.combat_level < 100 )
          set_combat_level(skill.combat_level+1);
@@ -1833,7 +1833,7 @@ void Unit::inc_minor_skill_level(int incLevel)
 
    skill.skill_level_minor += incLevel;
 
-   if( skill.skill_level_minor > 100 )
+   if( skill.skill_level_minor >= 100 )
    {
       if( skill.skill_level < 100 )
          skill.skill_level++;
