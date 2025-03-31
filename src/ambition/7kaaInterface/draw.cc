@@ -26,6 +26,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "draw.hh"
 
+#include "OCONFIG.h"
 #include "OFIRM.h"
 #include "ONATIONA.h"
 #include "OTOWN.h"
@@ -36,6 +37,7 @@
 #include "Ambition_minimap.hh"
 #include "Ambition_remote.hh"
 #include "Ambition_unit.hh"
+#include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
 
 
@@ -382,6 +384,24 @@ bool minimapViewBoundsBox(
 void modeInformation(
 ) {
   Ambition::drawModeInformation();
+}
+
+void outsideLeadershipIcon(
+  Unit* _7kaaUnit
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (!_7kaaUnit->is_own() && !config.show_ai_info) {
+    return;
+  }
+
+  if (Ambition::Unit::canReceiveLeadershipBonus(_7kaaUnit)
+      && !Ambition::Unit::isReceivingLeadershipBonus(_7kaaUnit)
+  ) {
+    Ambition::drawOutsideLeadershipIcon(_7kaaUnit);
+  }
 }
 
 void printGameSpeed(

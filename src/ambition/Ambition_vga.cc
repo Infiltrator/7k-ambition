@@ -790,6 +790,23 @@ void drawMinimapLine(
   anim_line.bound_y2 = saveBoundBottom;
 }
 
+void drawOutsideLeadershipIcon(
+  const ::Unit* _7kaaUnit
+) {
+  const UserInterface::Point displayLocation = {
+    .left = ZOOM_X1 + _7kaaUnit->cur_x - World::view_top_x + 10,
+    .top = calculateUnitIconY(
+      ZOOM_Y1 + _7kaaUnit->cur_y - World::view_top_y - 23
+    ),
+  };
+
+  world.zoom_matrix->put_bitmap_clip(
+    displayLocation.left,
+    displayLocation.top,
+    image_icon.get_ptr("U_NOLEAD")
+  );
+}
+
 void drawTownTrainingProgressBar(
   const Town* town
 ) {

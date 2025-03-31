@@ -218,6 +218,10 @@ void drawMinimapLine(
   int effectFlag
 );
 
+void drawOutsideLeadershipIcon(
+  const ::Unit* _7kaaUnit
+);
+
 void drawTownTrainingProgressBar(
   const Town* town
 );

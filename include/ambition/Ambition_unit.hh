@@ -108,6 +108,18 @@ public:
     ::Unit* _7kaaUnit
   );
 
+  static bool canReceiveLeadershipBonus(
+    ::Unit* _7kaaUnit
+  );
+
+  static bool isReceivingLeadershipBonus(
+    ::Unit* _7kaaUnit
+  );
+
+  static bool isWarMachine(
+    ::Unit* _7kaaUnit
+  );
+
   static void sendToDestination(
     std::vector<short> _7kaaUnitRecordNumbers,
     const Waypoint& destination
