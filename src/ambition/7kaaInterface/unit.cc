@@ -82,6 +82,10 @@ void died(
 void dropSpyIdentity(
   const ::Unit* _7kaaUnit
 ) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
   auto unit
     = Ambition::Unit::findBy7kaaSpriteRecordNumber(_7kaaUnit->sprite_recno);
   if (unit) {
@@ -92,6 +96,10 @@ void dropSpyIdentity(
   const Firm* _7kaaFirm,
   const Worker* _7kaaWorker
 ) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
   auto unit = Ambition::Unit::findBy7kaaWorker(_7kaaFirm, _7kaaWorker);
   if (unit) {
     unit->dropSpyIdentity();
