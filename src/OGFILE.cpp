@@ -437,7 +437,9 @@ int GameFile::write_game_header(File* filePtr)
 	//----- set the file date ------//
 
 #ifdef USE_WINDOWS
-	CoFileTimeNow((FILETIME*)&file_date);
+	SYSTEMTIME sysTime;
+	GetSystemTime(&sysTime);
+	SystemTimeToFileTime(&sysTime, (FILETIME*)&file_date);
 #else
 	file_date.dwLowDateTime = 0;
 	file_date.dwHighDateTime = 0;
