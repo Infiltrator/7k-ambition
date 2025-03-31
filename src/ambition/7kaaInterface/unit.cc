@@ -84,14 +84,18 @@ void dropSpyIdentity(
 ) {
   auto unit
     = Ambition::Unit::findBy7kaaSpriteRecordNumber(_7kaaUnit->sprite_recno);
-  unit->dropSpyIdentity();
+  if (unit) {
+    unit->dropSpyIdentity();
+  }
 }
 void dropSpyIdentity(
   const Firm* _7kaaFirm,
   const Worker* _7kaaWorker
 ) {
   auto unit = Ambition::Unit::findBy7kaaWorker(_7kaaFirm, _7kaaWorker);
-  unit->dropSpyIdentity();
+  if (unit) {
+    unit->dropSpyIdentity();
+  }
 }
 
 void enteredBuilding(
