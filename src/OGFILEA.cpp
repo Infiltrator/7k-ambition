@@ -118,7 +118,7 @@ GameFileArray::GameFileArray() : DynArray( sizeof(GameFile), 10 )
 		demo_format = 1;
 	#endif
 
-	has_read_hall_of_fame = 1;
+	has_read_hall_of_fame = 0;
 	last_file_name[0] = '\0';
 }
 //-------- End of function GameFileArray constuctor ------//
