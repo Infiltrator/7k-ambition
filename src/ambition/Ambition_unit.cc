@@ -259,6 +259,10 @@ uint8_t Unit::_7kaaRegionId(
     return firm_array[_7kaaUnit->unit_mode_para]->region_id;
   }
 
+  if (_7kaaUnit->unit_mode == UNIT_MODE_ON_SHIP) {
+    return _7kaaRegionId(unit_array[_7kaaUnit->unit_mode_para]);
+  }
+
   throw std::domain_error(
     format(
       "Unable to determine 7kaa Unit [%d]'s 7kaa region ID with unit mode %d"
