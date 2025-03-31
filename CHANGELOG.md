@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a crash on requesting a builder when one is on a ship.
+
 
 ## [3.1-rc2] — 2025-03-31
 
