@@ -205,6 +205,7 @@ protected:
   short _7kaaSpyRecordNumber;
   Time::Stamp diedAt;
   unsigned long long insideBuildingRecordNumber;
+  Time::Stamp lastWaypointOrderIssuedAt;
   Time::Stamp retiredAt;
   Status status;
   std::deque<Waypoint> waypoints;
@@ -238,9 +239,14 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(status);
     archive & BOOST_SERIALIZATION_NVP(waypoints);
     archive & BOOST_SERIALIZATION_NVP(workerIdentifier);
+    if (version < 1) {
+      lastWaypointOrderIssuedAt = Time::now();
+    } else {
+      archive & BOOST_SERIALIZATION_NVP(lastWaypointOrderIssuedAt);
+    }
   }
 };
 
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Unit, 0)
+BOOST_CLASS_VERSION(Ambition::Unit, 1)

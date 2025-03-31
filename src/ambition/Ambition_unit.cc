@@ -161,6 +161,7 @@ Unit::Unit(
   waypoints()
 {
   workerIdentifier.clear();
+  lastWaypointOrderIssuedAt = Time::START;
 }
 
 std::shared_ptr<Unit> Unit::create(
@@ -457,9 +458,14 @@ void Unit::goToNextWaypoint(
     return;
   }
 
+  if (Time::now() - lastWaypointOrderIssuedAt <= Time::Interval::ofDays(1)) {
+    return;
+  }
+
   const auto waypoint = waypoints.front();
   waypoints.pop_front();
   sendToDestination({ _7kaaSpriteRecordNumber }, waypoint);
+  lastWaypointOrderIssuedAt = Time::now();
 }
 
 void Unit::migrated(

@@ -13,6 +13,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed momentary multiplayer desync when a unit goes to next waypoint.
+- Fixed waypoints disappearing in multiplayer.
 - Fixed technologies researching beyond level 3.
 - Fix crash when spy drops identity.
 
