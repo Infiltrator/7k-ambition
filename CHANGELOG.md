@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1-rc2] — 2025-03-31
+
 ### Fixed
 
 - Fixed momentary multiplayer desync when a unit goes to next waypoint.
