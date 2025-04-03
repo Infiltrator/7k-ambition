@@ -26,8 +26,12 @@
 #define _AMBITION_IMPLEMENTATION
 #include "draw.hh"
 
+#include "OFIRM.h"
+#include "ONATIONA.h"
+#include "OTOWN.h"
 #include "OUNIT.h"
 
+#include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_minimap.hh"
 #include "Ambition_remote.hh"
@@ -128,6 +132,37 @@ void buildingProgressBar(
   }
 
   Ambition::drawTownTrainingProgressBar(town);
+}
+
+void buildingRallyButton(
+  Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (_7kaaFirm->own_firm()) {
+    const auto building
+      = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+    if (building) {
+      building->drawRallyButton();
+    }
+  }
+}
+void buildingRallyButton(
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (_7kaaTown->nation_recno == nation_array.player_recno) {
+    const auto building
+      = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+    if (building) {
+      building->drawRallyButton();
+    }
+  }
 }
 
 void buildingRallyPoint(

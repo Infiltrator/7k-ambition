@@ -26,11 +26,15 @@
 #define _AMBITION_IMPLEMENTATION
 #include "input.hh"
 
+#include "OFIRMA.h"
+#include "OMOUSE.h"
+#include "OTOWN.h"
 #include "OWORLD.h"
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_input.hh"
+#include "Ambition_user_interface.hh"
 
 
 namespace _7kaaAmbitionInterface::Input {
@@ -49,6 +53,61 @@ void calculateScroll(
 bool detectModeSelectClick(
 ) {
   return Ambition::detectModeSelectClick();
+}
+
+bool detectRallyButtonClick(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  std::shared_ptr<Ambition::Building> building;
+  if (firm_array.selected_recno) {
+    building = Ambition::Building::findBy7kaaFirmRecordNumber(
+      firm_array.selected_recno
+    );
+  }
+  if (town_array.selected_recno) {
+    building = Ambition::Building::findBy7kaaTownRecordNumber(
+      town_array.selected_recno
+    );
+  }
+
+  if (!building) {
+    return false;
+  }
+
+  const auto buttonClickArea
+    = Ambition::UserInterface::RALLY_POINT_BUTTON.outer(2);
+
+  if (mouse.single_click(
+      buttonClickArea.start.left,
+      buttonClickArea.start.top,
+      buttonClickArea.end.left,
+      buttonClickArea.end.top,
+      0
+    )
+  ) {
+    world.go_loc(
+      building->getRallyLocation().to7kaaCoordinates().x,
+      building->getRallyLocation().to7kaaCoordinates().y
+    );
+    return true;
+  }
+
+  if (mouse.single_click(
+      buttonClickArea.start.left,
+      buttonClickArea.start.top,
+      buttonClickArea.end.left,
+      buttonClickArea.end.top,
+      1
+    )
+  ) {
+    building->clearRallyPoint();
+    return true;
+  }
+
+  return false;
 }
 
 void setOrClearRallyPoint(

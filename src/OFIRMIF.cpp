@@ -23,6 +23,7 @@
 
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OSTR.h>
 #include <KEY.h>
@@ -305,6 +306,8 @@ void Firm::disp_basic_info(int dispY1, int refreshFlag)
 	}
 	else	//--------- INFO_UPDATE --------//
 	{
+		Ambition::Draw::buildingRallyButton(this);
+
 		if( showRepairIcon )
 		{
 			button_request_builder.hide();
@@ -346,6 +349,10 @@ void Firm::disp_basic_info(int dispY1, int refreshFlag)
 //
 int Firm::detect_basic_info()
 {
+	if (Ambition::Input::detectRallyButtonClick()) {
+		return 1;
+	}
+
 	//--- click on the name area to center the map on it ---//
 
 	if( mouse.single_click(INFO_X1, INFO_Y1, INFO_X2, INFO_Y1+21) )

@@ -41,6 +41,9 @@ void calculateScroll(
 bool detectModeSelectClick(
 );
 
+bool detectRallyButtonClick(
+);
+
 void setOrClearRallyPoint(
   const short _7kaaX,
   const short _7kaaY,
