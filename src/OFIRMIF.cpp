@@ -238,7 +238,8 @@ void Firm::disp_basic_info(int dispY1, int refreshFlag)
 
 			char *nationPict = image_button.get_ptr("V_COLCOD");
 
-			vga_front.put_bitmap_remap(INFO_X1+3, dispY1+2, nationPict, game.get_color_remap_table(nation_recno, 0) );
+			const auto offset = Ambition::Config::enhancementsAvailable() ? -1 : 0;
+			vga_front.put_bitmap_remap(INFO_X1+3+offset, dispY1+2+offset, nationPict, game.get_color_remap_table(nation_recno, 0) );
 		}
 		else
 		{

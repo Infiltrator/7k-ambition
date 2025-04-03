@@ -695,7 +695,8 @@ void Town::disp_basic_info(int refreshFlag)
 
 			char *nationPict = image_button.get_ptr("V_COLCOD");
 
-			vga_front.put_bitmap_trans_remap_decompress(INFO_X1+3, INFO_Y1+2, nationPict, game.get_color_remap_table(nation_recno, 0) );
+			const auto offset = Ambition::Config::enhancementsAvailable() ? -1 : 0;
+			vga_front.put_bitmap_trans_remap_decompress(INFO_X1+3+offset, INFO_Y1+2+offset, nationPict, game.get_color_remap_table(nation_recno, 0) );
 		}
 		else
 		{

@@ -22,6 +22,10 @@ speaking, considered to be the player's experience.
 - Added T (actually the same as the unit settle key) as a key to clear the rally
   point of a building.
 
+### Fixed
+
+- Fixed positioning of the colour box on the info pane for buildings and units.
+
 
 ## [3.1.0] — 2025-04-06
 
