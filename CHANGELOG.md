@@ -11,7 +11,7 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
-## [3.1.0] — 2025-03-06
+## [3.1.0] — 2025-04-06
 
 First big release.  See [the v3.1-rc1](#3-1-rc1) section for more details.
 
