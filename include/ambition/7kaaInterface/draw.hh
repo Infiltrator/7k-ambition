@@ -97,6 +97,13 @@ void buildingProgressBar(
   const Town* town
 );
 
+void buildingRallyButton(
+  Firm* _7kaaFirm
+);
+void buildingRallyButton(
+  const Town* _7kaaTown
+);
+
 void buildingRallyPoint(
   Firm* _7kaaFirm
 );

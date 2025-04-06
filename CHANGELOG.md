@@ -16,6 +16,11 @@ speaking, considered to be the player's experience.
   again, in addition to alt-right-clicking on the building again.
 - Waypoints (and rally points) can now be set (and unset) with shift-right-click
   in addition to alt-right-click, to be more intuitive to people.
+- Added a rally point button on the info pane for buildings, which shows when a
+  rally point is active.  Clicking on it goes to the rally location and
+  right-clicking on it clears the rally point.
+- Added T (actually the same as the unit settle key) as a key to clear the rally
+  point of a building.
 
 
 ## [3.1.0] — 2025-04-06

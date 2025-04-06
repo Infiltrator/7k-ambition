@@ -24,6 +24,7 @@
 #include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OINFO.h>
 #include "OVGABUF.h"
@@ -197,6 +198,10 @@ void Town::disp_info(int refreshFlag)
 //
 void Town::detect_info()
 {
+	if (Ambition::Input::detectRallyButtonClick()) {
+		return;
+	}
+
 	if_town_recno = town_recno;
 
 	switch( town_menu_mode )
@@ -697,6 +702,8 @@ void Town::disp_basic_info(int refreshFlag)
 			font_san.center_put( INFO_X1, INFO_Y1, INFO_X2-2, INFO_Y1+21, town_name() );
 		}
 	}
+
+	Ambition::Draw::buildingRallyButton(this);
 }
 //----------- End of function Town::disp_basic_info -----------//
 

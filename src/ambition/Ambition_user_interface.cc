@@ -31,6 +31,35 @@
 
 namespace Ambition::UserInterface {
 
+Rectangle Rectangle::outer(
+  const int marginLeft,
+  int marginTop,
+  int marginRight,
+  int marginBottom
+) const {
+  if (marginTop < 0) {
+    marginTop = marginLeft;
+  }
+  if (marginRight < 0) {
+    marginRight = marginLeft;
+  }
+  if (marginBottom < 0) {
+    marginBottom = marginTop;
+  }
+
+  return {
+    .start = {
+      .left = std::max(start.left - marginLeft, BOUNDS.start.left),
+      .top = std::max(start.top - marginTop, BOUNDS.start.top),
+    },
+    .end = {
+      .left = std::min(end.left + marginRight, BOUNDS.end.left),
+      .top = std::min(end.top + marginBottom, BOUNDS.end.top),
+    },
+  };
+}
+
+
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport

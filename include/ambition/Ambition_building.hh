@@ -109,6 +109,9 @@ public:
   bool destroyed(
   ) const;
 
+  void drawRallyButton(
+  ) const;
+
   void drawRallyPoint(
   ) const;
 
@@ -119,6 +122,9 @@ public:
   void enqueueTraining(
     const TrainingRequest& request
   );
+
+  Coordinates::Point getRallyLocation(
+  ) const;
 
   void popViableTrainingRequest(
   );

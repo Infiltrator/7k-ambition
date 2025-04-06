@@ -38,6 +38,39 @@ struct Point {
 struct Rectangle {
   Point start;
   Point end;
+
+  constexpr static Rectangle fromPoint(
+    const Point start,
+    const int width,
+    const int height
+  ) {
+    return {
+      .start = start,
+      .end = {
+        .left = start.left + width,
+        .top = start.top + height,
+      },
+    };
+  }
+
+  Rectangle outer(
+    const int marginLeft,
+    int marginTop = -1,
+    int marginRight = -1,
+    int marginBottom = -1
+  ) const;
+};
+
+
+constexpr Rectangle BOUNDS = {
+  .start = {
+    .left = 0,
+    .top = 0,
+  },
+  .end = {
+    .left = 800,
+    .top = 600,
+  },
 };
 
 constexpr Rectangle INFO_PANE_CONTENTS = {
@@ -50,6 +83,16 @@ constexpr Rectangle INFO_PANE_CONTENTS = {
     .top = 589,
   },
 };
+
+constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
+  {
+    .left = INFO_PANE_CONTENTS.start.left + 25,
+    .top = INFO_PANE_CONTENTS.start.top,
+  },
+  24,
+  20
+);
+
 
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,

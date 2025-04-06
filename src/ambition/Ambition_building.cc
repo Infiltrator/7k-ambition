@@ -31,7 +31,7 @@
 #include "OIMGRES.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
-#include "OVGABUF.h"
+#include "vga_util.h"
 
 #include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
@@ -189,6 +189,27 @@ unsigned int Building::enqueuedTrainingCount(
   return count;
 }
 
+void Building::drawRallyButton(
+) const {
+  if (!rallyPointEnabled()) {
+    vga_util.blt_buf(
+      UserInterface::RALLY_POINT_BUTTON.start.left,
+      UserInterface::RALLY_POINT_BUTTON.start.top,
+      UserInterface::RALLY_POINT_BUTTON.end.left,
+      UserInterface::RALLY_POINT_BUTTON.end.top,
+      0
+    );
+    return;
+  }
+
+  const auto waypointIcon = image_icon.get_ptr("WAYPOINT");
+  vga_front.put_bitmap_trans(
+    UserInterface::RALLY_POINT_BUTTON.start.left,
+    UserInterface::RALLY_POINT_BUTTON.start.top,
+    waypointIcon
+  );
+}
+
 void Building::drawRallyPoint(
 ) const {
   if (!rallyPointEnabled()) {
@@ -245,6 +266,11 @@ void Building::enqueueTraining(
   } else {
     trainingQueue.push_back(request);
   }
+}
+
+Coordinates::Point Building::getRallyLocation(
+) const {
+  return rally.point;
 }
 
 void Building::popViableTrainingRequest(
