@@ -102,6 +102,9 @@ bool detectRallyButtonClick(
       buttonClickArea.end.top,
       1
     )
+    // TODO: make clearing the rally point its own event, defaulting to the T
+    // key.
+    || ISKEY(KEYEVENT_UNIT_SETTLE)
   ) {
     building->clearRallyPoint();
     return true;
