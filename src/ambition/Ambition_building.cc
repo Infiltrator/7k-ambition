@@ -27,6 +27,7 @@
 
 #define _AMBITION_IMPLEMENTATION
 #include "OANLINE.h"
+#include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OIMGRES.h"
 #include "OREMOTE.h"
@@ -121,6 +122,23 @@ std::shared_ptr<Building> Building::findBy7kaaTownRecordNumber(
 }
 
 
+bool Building::canProduce(
+  const char _7kaaRaceId,
+  const int _7kaaSkillId
+) const {
+  const auto _7kaaObject = underlying7kaaObject();
+
+  if (type == _7kaaType::Town) {
+    return _7kaaObject.object.town->can_train(_7kaaRaceId);
+  }
+
+  if (dynamic_cast<FirmWar*>(_7kaaObject.object.firm)) {
+    return true;
+  }
+
+  return false;
+}
+
 void Building::clearRallyPoint(
 ) {
   rally.point = underlying7kaaObjectRectangle().centre();
@@ -128,22 +146,39 @@ void Building::clearRallyPoint(
 
 void Building::clearTrainingQueue(
 ) {
-  trainingQueue.clear();
+  productionQueue.clear();
+}
+
+bool Building::currentlyProducing(
+) const {
+  const auto _7kaaObject = underlying7kaaObject();
+
+  if (type == _7kaaType::Town) {
+    return _7kaaObject.object.town->train_unit_recno;
+  }
+
+  if (const auto _7kaaWarFactory
+      = dynamic_cast<FirmWar*>(_7kaaObject.object.firm)
+  ) {
+    return _7kaaWarFactory->build_unit_id;
+  }
+
+  return false;
 }
 
 void Building::dequeueTraining(
-  const TrainingRequest& request
+  const ProductionRequest& request
 ) {
   int removedCount = 0;
-  for (auto iterator = trainingQueue.rbegin();
-    removedCount < request.amount && iterator != trainingQueue.rend();
+  for (auto iterator = productionQueue.rbegin();
+    removedCount < request.amount && iterator != productionQueue.rend();
   ) {
     if (iterator->_7kaaSkillId == request._7kaaSkillId) {
       const auto amountToRemove = request.amount - removedCount;
       if (iterator->amount <= amountToRemove) {
         removedCount += iterator->amount;
         iterator = static_cast<decltype(iterator)>(
-          trainingQueue.erase(std::next(iterator).base())
+          productionQueue.erase(std::next(iterator).base())
         );
       } else {
         removedCount += amountToRemove;
@@ -156,18 +191,38 @@ void Building::dequeueTraining(
   }
 
   if (request.amount > removedCount) {
-    auto _7kaaTown = town_array[_7kaaRecordNumber];
-    if (_7kaaTown->train_unit_recno) {
-      const auto _7kaaUnit = unit_array[_7kaaTown->train_unit_recno];
-      if (_7kaaUnit->skill.skill_id == request._7kaaSkillId) {
+    const auto _7kaaObject = underlying7kaaObject();
+
+    if (type == _7kaaType::Town) {
+      if (_7kaaObject.object.town->train_unit_recno) {
+        const auto _7kaaUnit = unit_array[_7kaaObject.object.town->train_unit_recno];
+        if (_7kaaUnit->skill.skill_id == request._7kaaSkillId) {
+          if (remote.is_enable()) {
+            auto message = (short*)remote.new_send_queue_msg(
+              MSG_TOWN_SKIP_RECRUIT,
+              1 * sizeof(short)
+            );
+            message[0] = _7kaaRecordNumber;
+          } else {
+            _7kaaObject.object.town->cancel_train_unit();
+          }
+        }
+      }
+      return;
+    }
+
+    if (const auto _7kaaWarFactory
+        = dynamic_cast<FirmWar*>(_7kaaObject.object.firm)
+    ) {
+      if (_7kaaWarFactory->build_unit_id == request._7kaaSkillId) {
         if (remote.is_enable()) {
           auto message = (short*)remote.new_send_queue_msg(
-            MSG_TOWN_SKIP_RECRUIT,
+            MSG_F_WAR_SKIP_WEAPON,
             1 * sizeof(short)
           );
-          message[0] = _7kaaTown->town_recno;
+          message[0] = _7kaaRecordNumber;
         } else {
-          _7kaaTown->cancel_train_unit();
+          _7kaaWarFactory->cancel_build_unit();
         }
       }
     }
@@ -194,12 +249,12 @@ bool Building::destroyed(
   return destroyedAt > Time::START;
 }
 
-unsigned int Building::enqueuedTrainingCount(
+unsigned int Building::enqueuedProductionCount(
   const short _7kaaSkillId
 ) const {
   int count = 0;
 
-  for (const auto& request : trainingQueue) {
+  for (const auto& request : productionQueue) {
     if (request._7kaaSkillId == _7kaaSkillId) {
       count += request.amount;
     }
@@ -274,16 +329,16 @@ void Building::drawRallyPoint(
   drawMinimapLine(locationRectangle.centre(), rally.point, 2);
 }
 
-void Building::enqueueTraining(
-  const TrainingRequest& request
+void Building::enqueueProduction(
+  const ProductionRequest& request
 ) {
-  if (!trainingQueue.empty()
-    && trainingQueue.back()._7kaaRaceId == request._7kaaRaceId
-    && trainingQueue.back()._7kaaSkillId == request._7kaaSkillId
+  if (!productionQueue.empty()
+    && productionQueue.back()._7kaaRaceId == request._7kaaRaceId
+    && productionQueue.back()._7kaaSkillId == request._7kaaSkillId
   ) {
-    trainingQueue.back().amount += request.amount;
+    productionQueue.back().amount += request.amount;
   } else {
-    trainingQueue.push_back(request);
+    productionQueue.push_back(request);
   }
 }
 
@@ -292,35 +347,56 @@ Coordinates::Point Building::getRallyLocation(
   return rally.point;
 }
 
-void Building::popViableTrainingRequest(
+void Building::popViableProductionRequest(
 ) {
-  if (type != _7kaaType::Town) {
-    return;
-  }
   if (destroyed()) {
     return;
   }
 
-  const auto _7kaaTown = town_array[_7kaaRecordNumber];
-  if (_7kaaTown->train_unit_recno) {
+  if (currentlyProducing()) {
     return;
   }
 
-  for (auto iterator = trainingQueue.begin();
-    iterator != trainingQueue.end();
+  for (auto iterator = productionQueue.begin();
+    iterator != productionQueue.end();
     iterator++
   ) {
-    if (_7kaaTown->can_train(iterator->_7kaaRaceId)) {
-      _7kaaTown->recruit(
-        iterator->_7kaaSkillId,
-        iterator->_7kaaRaceId,
-        COMMAND_PLAYER
-      );
+    if (canProduce(iterator->_7kaaRaceId, iterator->_7kaaSkillId)) {
+      produce(iterator->_7kaaRaceId, iterator->_7kaaSkillId);
+
       iterator->amount--;
       if (iterator->amount == 0) {
-        trainingQueue.erase(iterator);
+        productionQueue.erase(iterator);
       }
       break;
+    }
+  }
+}
+
+void Building::produce(
+  const char _7kaaRaceId,
+  const int _7kaaSkillId
+) {
+  const auto _7kaaObject = underlying7kaaObject();
+
+  if (type == _7kaaType::Town) {
+    _7kaaObject.object.town->recruit(_7kaaSkillId, _7kaaRaceId, COMMAND_PLAYER);
+    return;
+  }
+
+  if (const auto _7kaaWarFactory
+      = dynamic_cast<FirmWar*>(_7kaaObject.object.firm)
+  ) {
+    if (remote.is_enable()) {
+      auto message = (short*)remote.new_send_queue_msg(
+        MSG_F_WAR_BUILD_WEAPON,
+        3 * sizeof(short)
+      );
+      message[0] = _7kaaRecordNumber;
+      message[1] = _7kaaSkillId;
+      message[2] = 1;
+    } else {
+      _7kaaWarFactory->add_queue(_7kaaSkillId, 1);
     }
   }
 }

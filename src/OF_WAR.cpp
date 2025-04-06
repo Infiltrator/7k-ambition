@@ -345,6 +345,16 @@ int FirmWar::detect_build_menu()
 
 			if( rc==1 )		// left button
 			{
+				if (Ambition::Building::enqueueProduction(this, unitId, createRemoveAmount)) {
+					se_ctrl.immediate_sound("TURN_ON");
+					if (quitFlag) {
+						info.disp();
+					} else {
+						info.update();
+					}
+					return 1;
+				}
+
 				if( remote.is_enable() )
 				{
 					// packet structure : <firm recno> <unit Id>
@@ -361,6 +371,16 @@ int FirmWar::detect_build_menu()
 			}
 			else 				// right button - remove queue
 			{
+				if (Ambition::Building::dequeueProduction(this, unitId, createRemoveAmount)) {
+					se_ctrl.immediate_sound("TURN_OFF");
+					if (quitFlag) {
+						info.disp();
+					} else {
+						info.update();
+					}
+					return 1;
+				}
+
 				if( remote.is_enable() )
 				{
 					// packet structure : <firm recno> <unit Id>
@@ -423,6 +443,12 @@ int FirmWar::detect_build_menu()
 
 	if( queue_weapon_selected>=0 && ISKEY(KEYEVENT_MANUF_QUEUE_ADD) )
 	{
+		if (Ambition::Building::enqueueProduction(this, button_unit_id[queue_weapon_selected], 1)) {
+			se_ctrl.immediate_sound("TURN_ON");
+			info.update();
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <firm recno> <unit Id>
@@ -441,6 +467,12 @@ int FirmWar::detect_build_menu()
 
 	if( queue_weapon_selected>=0 && ISKEY(KEYEVENT_MANUF_QUEUE_ADD_BATCH) )
 	{
+		if (Ambition::Building::enqueueProduction(this, button_unit_id[queue_weapon_selected], FIRMWAR_BUILD_BATCH_COUNT)) {
+			se_ctrl.immediate_sound("TURN_ON");
+			info.update();
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <firm recno> <unit Id>
@@ -459,6 +491,12 @@ int FirmWar::detect_build_menu()
 
 	if( queue_weapon_selected>=0 && ISKEY(KEYEVENT_MANUF_QUEUE_REMOVE) )
 	{
+		if (Ambition::Building::dequeueProduction(this, button_unit_id[queue_weapon_selected], 1)) {
+			se_ctrl.immediate_sound("TURN_OFF");
+			info.update();
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <firm recno> <unit Id>
@@ -477,6 +515,12 @@ int FirmWar::detect_build_menu()
 
 	if( queue_weapon_selected>=0 && ISKEY(KEYEVENT_MANUF_QUEUE_REMOVE_BATCH) )
 	{
+		if (Ambition::Building::dequeueProduction(this, button_unit_id[queue_weapon_selected], FIRMWAR_BUILD_BATCH_COUNT)) {
+			se_ctrl.immediate_sound("TURN_OFF");
+			info.update();
+			return 1;
+		}
+
 		if( remote.is_enable() )
 		{
 			// packet structure : <firm recno> <unit Id>
@@ -699,6 +743,8 @@ static void i_disp_queue_button(ButtonCustom *button, int repaintBody)
 	if( warFactory->build_unit_id == unitId)
 		queuedCount++;
 
+	queuedCount = Ambition::Building::enqueuedProductionCount(warFactory, queuedCount, unitId);
+
 	font_mid.center_put( x1+3, y1+3, x2-3, y2-3, misc.format(queuedCount), 1);
 }
 //--------- End of static function i_disp_queue_button ---------//
@@ -850,6 +896,8 @@ void FirmWar::next_day()
 		process_build();
 	else
 		process_queue();
+
+	Ambition::Building::processProductionQueue(this);
 }
 //----------- End of function FirmWar::next_day -----------//
 

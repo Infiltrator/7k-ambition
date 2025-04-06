@@ -45,9 +45,9 @@ public:
     Town,
   };
 
-  struct TrainingRequest {
+  struct ProductionRequest {
     char _7kaaRaceId;
-    char _7kaaSkillId;
+    int _7kaaSkillId;
     unsigned int amount;
 
     template<class Archive>
@@ -104,14 +104,22 @@ public:
     const int _7kaaTownRecordNumber
   );
 
+  bool canProduce(
+    const char _7kaaRaceId,
+    const int _7kaaSkillId
+  ) const;
+
   void clearRallyPoint(
   );
 
   void clearTrainingQueue(
   );
 
+  bool currentlyProducing(
+  ) const;
+
   void dequeueTraining(
-    const TrainingRequest& request
+    const ProductionRequest& request
   );
 
   void destroy(
@@ -127,18 +135,23 @@ public:
   void drawRallyPoint(
   ) const;
 
-  unsigned int enqueuedTrainingCount(
+  unsigned int enqueuedProductionCount(
     const short _7kaaSkillId
   ) const;
 
-  void enqueueTraining(
-    const TrainingRequest& request
+  void enqueueProduction(
+    const ProductionRequest& request
   );
 
   Coordinates::Point getRallyLocation(
   ) const;
 
-  void popViableTrainingRequest(
+  void popViableProductionRequest(
+  );
+
+  void produce(
+    const char _7kaaRaceId,
+    const int _7kaaSkillId
   );
 
   bool rallyPointEnabled(
@@ -156,8 +169,8 @@ protected:
   struct Underlying7kaaObject;
 
   Time::Stamp destroyedAt;
+  std::vector<ProductionRequest> productionQueue;
   Unit::Waypoint rally;
-  std::vector<TrainingRequest> trainingQueue;
 
   Underlying7kaaObject underlying7kaaObject(
   ) const;
@@ -189,7 +202,11 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(destroyedAt);
     archive & BOOST_SERIALIZATION_NVP_CONST(erected);
     archive & BOOST_SERIALIZATION_NVP(rally);
-    archive & BOOST_SERIALIZATION_NVP(trainingQueue);
+    if (version < 1) {
+      archive & boost::serialization::make_nvp("trainingQueue", productionQueue);
+    } else {
+      archive & BOOST_SERIALIZATION_NVP(productionQueue);
+    }
     archive & BOOST_SERIALIZATION_NVP_CONST(type);
   }
 };
@@ -202,4 +219,4 @@ void setOrClearRallyPoint(
 
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Building, 0)
+BOOST_CLASS_VERSION(Ambition::Building, 1)
