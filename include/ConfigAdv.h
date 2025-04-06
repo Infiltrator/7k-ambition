@@ -55,6 +55,7 @@ public:
 	char			fix_recruit_dec_loyalty;
 	char			fix_sea_travel_final_move;
 	char			fix_town_unjob_worker;
+	int			fix_world_warp_slop;
 
 	// game file settings
 	char			game_file_patching;

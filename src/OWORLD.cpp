@@ -331,28 +331,28 @@ int World::detect_scroll()
 
        //----- scroll left -----//
 
-       if (mouse.cur_x <= mouse.bound_x1) {
+       if (mouse.cur_x <= mouse.bound_x1 + config_adv.fix_world_warp_slop) {
            zoom_matrix->scroll(-1, 0);
            rc = 1;
        }
 
        //---- scroll right -----//
 
-       if (mouse.cur_x >= mouse.bound_x2) {
+       if (mouse.cur_x >= mouse.bound_x2 - config_adv.fix_world_warp_slop) {
            zoom_matrix->scroll(1, 0);
            rc = 1;
        }
 
        //---- scroll top -------//
 
-       if (mouse.cur_y <= mouse.bound_y1) {
+       if (mouse.cur_y <= mouse.bound_y1 + config_adv.fix_world_warp_slop) {
            zoom_matrix->scroll(0, -1);
            rc = 1;
        }
 
        //---- scroll bottom ----//
 
-       if (mouse.cur_y >= mouse.bound_y2) {
+       if (mouse.cur_y >= mouse.bound_y2 - config_adv.fix_world_warp_slop) {
            zoom_matrix->scroll(0, 1);
            rc = 1;
        }

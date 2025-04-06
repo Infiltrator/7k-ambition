@@ -263,6 +263,7 @@ void ConfigAdv::reset()
 	fix_recruit_dec_loyalty = 1;
 	fix_sea_travel_final_move = 1;
 	fix_town_unjob_worker = 1;
+	fix_world_warp_slop = 2;
 
 	game_file_patching = 1;
 
@@ -378,6 +379,12 @@ int ConfigAdv::set(char *name, char *value)
 	else if( !strcmp(name, "fix_town_unjob_worker") )
 	{
 		if( !read_bool(value, &fix_town_unjob_worker) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "fix_world_warp_slop") )
+	{
+		if( !read_int(value, &fix_world_warp_slop) )
 			return 0;
 		update_check_sum(name, value);
 	}
