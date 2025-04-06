@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.0] — 2025-03-06
+
+First big release.  See [the v3.1-rc1](#3-1-rc1) section for more details.
+
 ### Fixed
 
 - Fixed a crash on requesting a builder when one is on a ship.
@@ -27,6 +32,7 @@ speaking, considered to be the player's experience.
   spies.  This crash also happened on exit, which is also fixed.
 
 
+<a id="3-1-rc1"></a>
 ## [3.1-rc1] — 2025-03-27
 
 ### Added
