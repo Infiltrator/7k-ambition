@@ -304,7 +304,7 @@ void ConfigAdv::reset()
 
 	vga_allow_highdpi = 0;
 	vga_full_screen = 1;
-	vga_full_screen_desktop = 0;
+	vga_full_screen_desktop = 1;
 	vga_keep_aspect_ratio = 1;
 	vga_pause_on_focus_loss = 0;
 
