@@ -10,6 +10,13 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Rally points can be toggled by setting the rally point to the same place
+  again, in addition to alt-right-clicking on the building again.
+- Waypoints (and rally points) can now be set (and unset) with shift-right-click
+  in addition to alt-right-click, to be more intuitive to people.
+
 
 ## [3.1.0] — 2025-04-06
 

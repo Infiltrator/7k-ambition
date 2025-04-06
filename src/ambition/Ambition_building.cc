@@ -295,9 +295,14 @@ void Building::sendUnitsToRallyPoint(
   Unit::sendToDestination(_7kaaUnitRecordNumbers, rally);
 }
 
-void Building::setRallyPoint(
+void Building::toggleRallyPoint(
   const Unit::Waypoint& waypoint
 ) {
+  if (waypoint.point == rally.point) {
+    clearRallyPoint();
+    return;
+  }
+
   rally = waypoint;
 }
 
@@ -333,7 +338,7 @@ void setOrClearRallyPoint(
     ) {
       building->clearRallyPoint();
     } else {
-      building->setRallyPoint(
+      building->toggleRallyPoint(
         {
           .action = allowAction
             ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
@@ -356,7 +361,7 @@ void setOrClearRallyPoint(
     ) {
       building->clearRallyPoint();
     } else {
-      building->setRallyPoint(
+      building->toggleRallyPoint(
         {
           .action = allowAction
             ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
