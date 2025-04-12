@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.1] — 2025-04-12
+
 ### Added
 
 - Rally points can be toggled by setting the rally point to the same place
