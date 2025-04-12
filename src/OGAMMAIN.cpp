@@ -38,6 +38,7 @@
 #include <OGAME.h>
 #include <OVGALOCK.h>
 #include "gettext.h"
+#include <ConfigAdv.h>
 
 #ifdef DEMO
 #define DISABLE_MULTI_PLAYER
@@ -624,7 +625,7 @@ void Game::single_player_menu()
 
 						if( game_file_array.load_game() == 1)
 						{
-							sys.set_speed(DEFAULT_SPEED, COMMAND_AUTO);
+							sys.set_speed(config_adv.game_load_default_frame_speed, COMMAND_AUTO);
 							battle.run_loaded();
 							deinit();
 						}

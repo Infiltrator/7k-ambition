@@ -426,7 +426,7 @@ void Tutor::run(int tutorId, int inGameCall)
 
 		//----- set the gaming speed to normal -----//
 
-		sys.set_speed(DEFAULT_SPEED, COMMAND_AUTO);
+		sys.set_speed(config_adv.game_load_default_frame_speed, COMMAND_AUTO);
 	}
 
 	//--------- load the tutorial text ------------//

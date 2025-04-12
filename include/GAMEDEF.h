@@ -90,8 +90,6 @@ enum { COMMAND_PLAYER=0, COMMAND_REMOTE=1, COMMAND_AI, COMMAND_AUTO };
 
 //-------- Define maximum game constant ---------//
 
-#define DEFAULT_SPEED 12
-
 #define MAX_RACE                  10
 
 #define MAX_COLOR_SCHEME             7    // Maximum no. of color schemes

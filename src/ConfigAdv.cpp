@@ -265,6 +265,9 @@ void ConfigAdv::reset()
 	fix_town_unjob_worker = 1;
 	fix_world_warp_slop = 2;
 
+	game_load_default_frame_speed = 9;
+	game_new_default_frame_speed = 12;
+
 	game_file_patching = 1;
 
 	locale[0] = 0;
@@ -385,6 +388,18 @@ int ConfigAdv::set(char *name, char *value)
 	else if( !strcmp(name, "fix_world_warp_slop") )
 	{
 		if( !read_int(value, &fix_world_warp_slop) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "game_load_default_frame_speed") )
+	{
+		if( !read_int(value, &game_load_default_frame_speed) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "game_new_default_frame_speed") )
+	{
+		if( !read_int(value, &game_new_default_frame_speed) )
 			return 0;
 		update_check_sum(name, value);
 	}

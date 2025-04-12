@@ -2755,7 +2755,7 @@ void Sys::load_game()
       signal_exit_flag=0;
       user_pause_flag = !config.frame_speed;
       if( user_pause_flag )
-         last_frame_speed = DEFAULT_SPEED;
+         last_frame_speed = config_adv.game_load_default_frame_speed;
       else
          last_frame_speed = 0;
       info.disp();

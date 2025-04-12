@@ -219,7 +219,7 @@ static void init_scenario_var(ScenInfo* scenInfo)
 	config.show_all_unit_icon = 0;
 	config.show_unit_path	  = 0;
 
-	sys.set_speed(DEFAULT_SPEED, COMMAND_AUTO);
+	sys.set_speed(config_adv.game_load_default_frame_speed, COMMAND_AUTO);
 
 	//------ reset the goal deadline -------//
 

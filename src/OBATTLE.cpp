@@ -174,7 +174,7 @@ void Battle::run(NewNationPara *mpGame, int mpPlayerCount)
 	if( !remote.is_enable() && cmd_line.game_speed >= 0 )
 		sys.set_speed(cmd_line.game_speed, COMMAND_AUTO);
 	else
-		sys.set_speed(DEFAULT_SPEED, COMMAND_AUTO);
+		sys.set_speed(config_adv.game_new_default_frame_speed, COMMAND_AUTO);
 
 	//---- reset cheats ----//
 

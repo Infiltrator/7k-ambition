@@ -57,6 +57,10 @@ public:
 	char			fix_town_unjob_worker;
 	int			fix_world_warp_slop;
 
+	// game settings
+	int			game_load_default_frame_speed;
+	int			game_new_default_frame_speed;
+
 	// game file settings
 	char			game_file_patching;
 
