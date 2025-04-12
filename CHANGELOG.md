@@ -25,6 +25,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed positioning of the colour box on the info pane for buildings and units.
+- Fixed porcupines and other not-attacking units not following waypoints.
 
 
 ## [3.1.0] — 2025-04-06

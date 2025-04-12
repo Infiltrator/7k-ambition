@@ -245,7 +245,10 @@ void Unit::process_idle()
 		return;
 
 	if( !can_attack() )
+	{
+		Ambition::Unit::goToNextWaypoint(this);
 		return; // cannot attack
+	}
 
 	err_when(!can_attack());
 	err_when(action_mode==ACTION_STOP && cur_action==SPRITE_ATTACK);
