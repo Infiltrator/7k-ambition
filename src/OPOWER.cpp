@@ -548,18 +548,19 @@ int Power::detect_action()
 		selectedArray[selectedCount++] = i;
 	}
 
-	//### begin alex 16/10 ###//
-	if((mouse.event_skey_state & ALT_KEY_MASK)
-		|| (Ambition::Config::enhancementsAvailable()
-			&& mouse.event_skey_state & SHIFT_KEY_MASK)
-	)
-	{
+	if (mouse.event_skey_state & ALT_KEY_MASK
+		|| mouse.event_skey_state & SHIFT_KEY_MASK
+	) {
 		Ambition::Input::setOrClearRallyPoint(curXLoc, curYLoc, allowAction);
 		if (Ambition::Unit::toggleWaypoint({ selectedArray, selectedArray + selectedCount }, curXLoc, curYLoc, allowAction)) {
 			mem_del(selectedArray);
 			return 1;
 		}
+	}
 
+	//### begin alex 16/10 ###//
+	if((mouse.event_skey_state & ALT_KEY_MASK))
+	{
 		unit_array.add_way_point(curXLoc, curYLoc, selectedArray, selectedCount, COMMAND_PLAYER);
 		mem_del(selectedArray);
 		return 1;

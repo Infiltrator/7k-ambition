@@ -255,6 +255,16 @@ bool toggleWaypoint(
   }
 
   const auto location = world.get_loc(_7kaaX, _7kaaY);
+
+  if (location->has_any_unit()) {
+    const auto targetUnit = unit_array[
+      location->unit_recno(location->has_any_unit())
+    ];
+    if (targetUnit->is_own() && targetUnit->unit_id == UNIT_EXPLOSIVE_CART) {
+      return false;
+    }
+  }
+
   for (const auto _7kaaUnitRecordNumber : _7kaaUnitRecordNumbers) {
     auto unit
       = Ambition::Unit::getBy7kaaSpriteRecordNumber(_7kaaUnitRecordNumber);
