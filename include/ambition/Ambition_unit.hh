@@ -239,9 +239,7 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(status);
     archive & BOOST_SERIALIZATION_NVP(waypoints);
     archive & BOOST_SERIALIZATION_NVP(workerIdentifier);
-    if (version < 1) {
-      lastWaypointOrderIssuedAt = Time::now();
-    } else {
+    if (version == 1) {
       archive & BOOST_SERIALIZATION_NVP(lastWaypointOrderIssuedAt);
     }
   }
@@ -249,4 +247,4 @@ protected:
 
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Unit, 1)
+BOOST_CLASS_VERSION(Ambition::Unit, 2)
