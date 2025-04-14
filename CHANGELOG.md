@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed alignment of town goods satisfaction, inn guest count, and worker list.
+
 
 ## [3.1.1] — 2025-04-12
 

@@ -75,18 +75,18 @@ constexpr Rectangle BOUNDS = {
 
 constexpr Rectangle INFO_PANE_CONTENTS = {
   .start = {
-    .left = 589,
+    .left = 585,
     .top = 265,
   },
   .end = {
-    .left = 790,
+    .left = 789,
     .top = 589,
   },
 };
 
 constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
   {
-    .left = INFO_PANE_CONTENTS.start.left + 25,
+    .left = INFO_PANE_CONTENTS.start.left + 29,
     .top = INFO_PANE_CONTENTS.start.top,
   },
   24,
