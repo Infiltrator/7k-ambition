@@ -28,6 +28,7 @@
 
 #include "OF_RESE.h"
 #include "OFIRM.h"
+#include "OFONT.h"
 #include "OTECHRES.h"
 #include "OTOWN.h"
 
@@ -36,6 +37,9 @@
 #include "Ambition_coordinates.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_unit.hh"
+#include "Ambition_user_interface.hh"
+#include "Ambition_vga.hh"
+#include "format.hh"
 
 
 namespace _7kaaAmbitionInterface::Building {
@@ -178,6 +182,51 @@ bool enqueueTraining(
       .amount = amount,
     }
   );
+  return true;
+}
+
+bool printWarMachineIdentifier(
+  const Worker* _7kaaWorker,
+  const int left,
+  const int top,
+  const int right
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  std::string text;
+
+  if (_7kaaWorker->unit_id != UNIT_F_BALLISTA
+      && (_7kaaWorker->unit_id < UNIT_CATAPULT
+          || _7kaaWorker->unit_id > UNIT_EXPLOSIVE_CART)
+  ) {
+    return false;
+  }
+
+  const std::string LETTERS[] = { "C", "B", "S", "N", "P", "U" };
+  if (_7kaaWorker->unit_id == UNIT_F_BALLISTA) {
+    text = "U";
+  } else {
+    text = LETTERS[_7kaaWorker->unit_id - UNIT_CATAPULT];
+  }
+  text += format("%d", _7kaaWorker->extra_para);
+
+  Ambition::printText(
+    font_san,
+    text,
+    {
+      .start = {
+        .left = left,
+        .top = top,
+      },
+      .end = {
+        .left = right,
+        .top = top,
+      },
+    }
+  );
+
   return true;
 }
 

@@ -16,6 +16,11 @@ speaking, considered to be the player's experience.
   so do not receive combat bonuses and are losing loyalty.
 - Display unit leadership effect status in the info pane.
 
+### Changed
+
+- Display the type and level of war machines inside forts, for easier
+  identification.
+
 ### Fixed
 
 - Fixed desync when cancelling training in a Town.

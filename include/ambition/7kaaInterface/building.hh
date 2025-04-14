@@ -30,6 +30,7 @@
 class Firm;
 class FirmResearch;
 class Town;
+struct Worker;
 
 
 namespace _7kaaAmbitionInterface::Building {
@@ -69,6 +70,13 @@ bool enqueueTraining(
   const char _7kaaRaceId,
   const char _7kaaSkillId,
   const unsigned int amount
+);
+
+bool printWarMachineIdentifier(
+  const Worker* _7kaaWorker,
+  const int left,
+  const int top,
+  const int right
 );
 
 void processIdleTowerOfScience(
