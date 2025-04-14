@@ -210,7 +210,8 @@ int calculateUnitIconY(
   const int _7kaaCalculation
 ) {
   constexpr auto UNIT_HITBAR_HEIGHT = 4;
-  constexpr auto ICON_OFFSET = UNIT_HITBAR_HEIGHT + 4;
+  constexpr auto GAP = 4;
+  constexpr auto ICON_OFFSET = UNIT_HITBAR_HEIGHT + GAP;
 
   return _7kaaCalculation + ICON_OFFSET;
 }
