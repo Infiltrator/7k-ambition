@@ -27,6 +27,7 @@
 
 #define _AMBITION_IMPLEMENTATION
 #include "OANLINE.h"
+#include "OF_HARB.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OIMGRES.h"
@@ -136,6 +137,12 @@ bool Building::canProduce(
     return true;
   }
 
+  if (const auto _7kaaHarbour
+      = dynamic_cast<FirmHarbor*>(_7kaaObject.object.firm)
+  ) {
+    return _7kaaHarbour->ship_count < MAX_SHIP_IN_HARBOR;
+  }
+
   return false;
 }
 
@@ -161,6 +168,12 @@ bool Building::currentlyProducing(
       = dynamic_cast<FirmWar*>(_7kaaObject.object.firm)
   ) {
     return _7kaaWarFactory->build_unit_id;
+  }
+
+  if (const auto _7kaaHarbour
+      = dynamic_cast<FirmHarbor*>(_7kaaObject.object.firm)
+  ) {
+    return _7kaaHarbour->build_unit_id;
   }
 
   return false;
@@ -223,6 +236,21 @@ void Building::dequeueTraining(
           message[0] = _7kaaRecordNumber;
         } else {
           _7kaaWarFactory->cancel_build_unit();
+        }
+      }
+    }
+
+    if (const auto _7kaaHarbour
+        = dynamic_cast<FirmHarbor*>(_7kaaObject.object.firm)) {
+      if (_7kaaHarbour->build_unit_id == request._7kaaSkillId) {
+        if (remote.is_enable()) {
+          auto message = (short*)remote.new_send_queue_msg(
+            MSG_F_HARBOR_SKIP_SHIP,
+            1 * sizeof(short)
+          );
+          message[0] = _7kaaRecordNumber;
+        } else {
+          _7kaaHarbour->cancel_build_unit();
         }
       }
     }
@@ -397,6 +425,21 @@ void Building::produce(
       message[2] = 1;
     } else {
       _7kaaWarFactory->add_queue(_7kaaSkillId, 1);
+    }
+  }
+
+  if (const auto _7kaaHarbour
+      = dynamic_cast<FirmHarbor*>(_7kaaObject.object.firm)) {
+    if (remote.is_enable()) {
+      auto message = (short*)remote.new_send_queue_msg(
+        MSG_F_HARBOR_BUILD_SHIP,
+        3 * sizeof(short)
+      );
+      message[0] = _7kaaRecordNumber;
+      message[1] = _7kaaSkillId;
+      message[2] = 1;
+    } else {
+      _7kaaHarbour->add_queue(_7kaaSkillId, 1);
     }
   }
 }
