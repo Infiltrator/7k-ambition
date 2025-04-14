@@ -626,8 +626,7 @@ void drawBuildingRallyPoint(
   if (firm_array.selected_recno == _7kaaFirm->firm_recno
     && _7kaaFirm->own_firm()
   ) {
-    const auto building
-      = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+    const auto building = Building::findBy7kaaFirm(_7kaaFirm);
     if (building) {
       building->drawRallyPoint();
     }
@@ -639,8 +638,7 @@ void drawBuildingRallyPoint(
   if (town_array.selected_recno == _7kaaTown->town_recno
     && _7kaaTown->nation_recno == nation_array.player_recno
   ) {
-    const auto building
-      = Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+    const auto building = Building::findBy7kaaTown(_7kaaTown);
     if (building) {
       building->drawRallyPoint();
     }

@@ -199,8 +199,7 @@ std::shared_ptr<Unit> Unit::findBy7kaaWorker(
   const Firm* _7kaaFirm,
   const Worker* _7kaaWorker
 ) {
-  const auto building
-    = Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+  const auto building = Building::findBy7kaaFirm(_7kaaFirm);
   if (!building) {
     return nullptr;
   }
@@ -445,8 +444,7 @@ void Unit::enteredBuilding(
   status = Status::InsideBuilding;
   _7kaaSpriteRecordNumber = -1;
   _7kaaSpyRecordNumber = _7kaaWorker->spy_recno;
-  insideBuildingRecordNumber
-    = Building::getBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno)->recordNumber;
+  insideBuildingRecordNumber = Building::getBy7kaaFirm(_7kaaFirm)->recordNumber;
   workerIdentifier = {
     .extra_para = _7kaaWorker->extra_para,
     .name_id = _7kaaWorker->name_id,
@@ -468,8 +466,7 @@ void Unit::enteredBuilding(
 
   status = Status::InsideBuilding;
   _7kaaSpriteRecordNumber = -1;
-  insideBuildingRecordNumber
-    = Building::getBy7kaaTownRecordNumber(_7kaaTown->town_recno)->recordNumber;
+  insideBuildingRecordNumber = Building::getBy7kaaTown(_7kaaTown)->recordNumber;
   workerIdentifier.clear();
 }
 

@@ -144,8 +144,7 @@ void buildingRallyButton(
   }
 
   if (_7kaaFirm->own_firm()) {
-    const auto building
-      = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+    const auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
     if (building) {
       building->drawRallyButton();
     }
@@ -159,8 +158,7 @@ void buildingRallyButton(
   }
 
   if (_7kaaTown->nation_recno == nation_array.player_recno) {
-    const auto building
-      = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+    const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
     if (building) {
       building->drawRallyButton();
     }

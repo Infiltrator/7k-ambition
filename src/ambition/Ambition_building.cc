@@ -87,6 +87,11 @@ std::shared_ptr<Building> Building::create(
   );
 }
 
+std::shared_ptr<Building> Building::findBy7kaaFirm(
+  const Firm* _7kaaFirm
+) {
+  return findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+}
 std::shared_ptr<Building> Building::findBy7kaaFirmRecordNumber(
   const short _7kaaFirmRecordNumber
 ) {
@@ -97,6 +102,11 @@ std::shared_ptr<Building> Building::findBy7kaaFirmRecordNumber(
         && building->_7kaaRecordNumber == _7kaaFirmRecordNumber;
     }
   );
+}
+std::shared_ptr<Building> Building::findBy7kaaTown(
+  const Town* _7kaaTown
+) {
+  return findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
 }
 std::shared_ptr<Building> Building::findBy7kaaTownRecordNumber(
   const short _7kaaTownRecordNumber
@@ -488,6 +498,11 @@ Building::Underlying7kaaObject::Underlying7kaaObject(
   object.town = town;
 }
 
+std::shared_ptr<Building> Building::getBy7kaaFirm(
+  const Firm* _7kaaFirm
+) {
+  return getBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+}
 std::shared_ptr<Building> Building::getBy7kaaFirmRecordNumber(
   int _7kaaFirmRecordNumber
 ) {
@@ -503,6 +518,11 @@ std::shared_ptr<Building> Building::getBy7kaaFirmRecordNumber(
   }
 
   return building;
+}
+std::shared_ptr<Building> Building::getBy7kaaTown(
+  const Town* _7kaaTown
+) {
+  return getBy7kaaTownRecordNumber(_7kaaTown->town_recno);
 }
 std::shared_ptr<Building> Building::getBy7kaaTownRecordNumber(
   int _7kaaTownRecordNumber

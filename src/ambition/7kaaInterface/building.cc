@@ -51,9 +51,7 @@ void clearRallyPoint(
     return;
   }
 
-  const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
-  auto building
-    = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
+  auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
   if (building) {
     building->clearRallyPoint();
   }
@@ -65,9 +63,7 @@ void clearRallyPoint(
     return;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
   if (building) {
     building->clearRallyPoint();
   }
@@ -80,9 +76,7 @@ void clearTrainingQueue(
     return;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
   if (building) {
     building->clearTrainingQueue();
   }
@@ -97,9 +91,7 @@ bool dequeueTraining(
     return false;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
   if (building) {
     building->dequeueTraining(
       {
@@ -119,9 +111,7 @@ void destroy(
     return;
   }
 
-  const auto _7kaaFirmRecordNumber = _7kaaFirm->firm_recno;
-  auto building
-    = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirmRecordNumber);
+  auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
   if (building) {
     building->destroy(Ambition::Time::now());
   }
@@ -133,9 +123,7 @@ void destroy(
     return;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
   if (building) {
     building->destroy(Ambition::Time::now());
   }
@@ -150,9 +138,7 @@ unsigned int enqueuedTrainingCount(
     return _7kaaCalculation;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  const auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
 
   if (!building) {
     return 0;
@@ -171,10 +157,7 @@ bool enqueueTraining(
     return false;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  auto building = Ambition::Building::getBy7kaaTownRecordNumber(
-    _7kaaTownRecordNumber
-  );
+  auto building = Ambition::Building::getBy7kaaTown(_7kaaTown);
   building->enqueueTraining(
     {
       ._7kaaRaceId = _7kaaRaceId,
@@ -262,9 +245,7 @@ void processTrainingQueue(
     return;
   }
 
-  const auto _7kaaTownRecordNumber = _7kaaTown->town_recno;
-  const auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTownRecordNumber);
+  const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
 
   if (!building) {
     return;
@@ -281,8 +262,7 @@ void sendUnitsToRallyPoint(
     return;
   }
 
-  const auto building
-    = Ambition::Building::findBy7kaaFirmRecordNumber(_7kaaFirm->firm_recno);
+  const auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
   if (building) {
     building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
   }
@@ -295,8 +275,7 @@ void sendUnitsToRallyPoint(
     return;
   }
 
-  const auto building
-    = Ambition::Building::findBy7kaaTownRecordNumber(_7kaaTown->town_recno);
+  const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
   if (building) {
     building->sendUnitsToRallyPoint(_7kaaUnitRecordNumbers);
   }

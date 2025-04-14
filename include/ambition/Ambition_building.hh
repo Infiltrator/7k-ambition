@@ -78,15 +78,27 @@ public:
     const Time::Stamp erected
   );
 
+  static std::shared_ptr<Building> findBy7kaaFirm(
+    const Firm* _7kaaFirm
+  );
   static std::shared_ptr<Building> findBy7kaaFirmRecordNumber(
     const short _7kaaFirmRecordNumber
+  );
+  static std::shared_ptr<Building> findBy7kaaTown(
+    const Town* _7kaaTown
   );
   static std::shared_ptr<Building> findBy7kaaTownRecordNumber(
     const short _7kaaTownRecordNumber
   );
 
+  static std::shared_ptr<Building> getBy7kaaFirm(
+    const Firm* _7kaaFirm
+  );
   static std::shared_ptr<Building> getBy7kaaFirmRecordNumber(
     int _7kaaFirmRecordNumber
+  );
+  static std::shared_ptr<Building> getBy7kaaTown(
+    const Town* _7kaaTown
   );
   static std::shared_ptr<Building> getBy7kaaTownRecordNumber(
     const int _7kaaTownRecordNumber
