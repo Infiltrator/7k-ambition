@@ -414,6 +414,27 @@ void printGameSpeed(
   Ambition::displayGameSpeed(speed);
 }
 
+bool printLeadershipStatus(
+  Unit* _7kaaUnit,
+  const int top,
+  const int refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (!_7kaaUnit->is_own() && !config.show_ai_info) {
+    return false;
+  }
+
+  if (!Ambition::Unit::canReceiveLeadershipBonus(_7kaaUnit)) {
+    return false;
+  }
+
+  Ambition::printLeadershipStatus(_7kaaUnit, top, refreshFlag);
+  return true;
+}
+
 void printSyncError(
 ) {
   if (!Ambition::config.enhancementsAvailable()) {

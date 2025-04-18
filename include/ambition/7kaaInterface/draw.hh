@@ -230,6 +230,12 @@ void printGameSpeed(
   const int speed
 );
 
+bool printLeadershipStatus(
+  Unit* _7kaaUnit,
+  const int top,
+  const int refreshFlag
+);
+
 void printSyncError(
 );
 
