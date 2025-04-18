@@ -23,6 +23,8 @@
 
 #include <string.h>
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <ALL.h>
 #include <IMGFUN.h>
 #include <OVGA.h>
@@ -278,10 +280,10 @@ int Font::put(int x,int y,const char* textPtr, char clearBack, int x2 )
 
 	x2 = MIN( x2, VGA_WIDTH-1 );
 
-	if( !Vga::use_back_buf )
-		mouse.hide_area( x, y, x2, y+font_height );
+	int y2 = y+(Ambition::Config::enhancementsAvailable() ? max_font_height : font_height)-1;
 
-	int y2 = y+font_height-1;
+	if( !Vga::use_back_buf )
+		mouse.hide_area( x, y, x2, y2 );
 
 	//-------------------------------------//
 
@@ -303,7 +305,7 @@ int Font::put(int x,int y,const char* textPtr, char clearBack, int x2 )
 				break;
 
 			if( clearBack && !Vga::use_back_buf )	// copy texture from the back buffer as the background color
-				vga_util.blt_buf( x, y, x+space_width-1, y+font_height-1, 0 );
+				vga_util.blt_buf( x, y, x+space_width-1, y2, 0 );
 
 			x += space_width;
 		}
@@ -378,7 +380,7 @@ int Font::put(int x,int y,const char* textPtr, char clearBack, int x2 )
 		//--------- inter-character space ---------//
 
 		if( clearBack && !Vga::use_back_buf )	// copy texture from the back buffer as the background color
-			vga_util.blt_buf( x, y, x+inter_char_space-1, y+font_height-1, 0 );
+			vga_util.blt_buf( x, y, x+inter_char_space-1, y2, 0 );
 	
 		x+=inter_char_space;
 	}
@@ -386,7 +388,7 @@ int Font::put(int x,int y,const char* textPtr, char clearBack, int x2 )
 	//------ clear remaining area -------//
 
 	if( clearBack && !Vga::use_back_buf )	// copy texture from the back buffer as the background color
-		vga_util.blt_buf( x, y, x2, y+font_height-1, 0 );
+		vga_util.blt_buf( x, y, x2, y2, 0 );
 
 	if( !Vga::use_back_buf )
 		mouse.show_area();
