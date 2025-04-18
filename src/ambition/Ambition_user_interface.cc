@@ -31,6 +31,8 @@
 #include "OWORLD.h"
 #include "vga_util.h"
 
+#include "Ambition_coordinates.hh"
+
 
 namespace Ambition::UserInterface {
 
@@ -199,11 +201,13 @@ Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport
 ) {
-  const auto relative = (worldPoint - viewport.topLeft()).asCoordinates();
+  constexpr auto PIXELS_PER_DISTANCE = 32.0 / Coordinates::SCALING_FACTOR;
+
+  const auto relative = (worldPoint - viewport.topLeft()) * PIXELS_PER_DISTANCE;
 
   return {
-    .left = static_cast<int>(ZOOM_X1 + ZOOM_LOC_WIDTH / 2 + (relative.x * 2)),
-    .top = static_cast<int>(ZOOM_Y1 + ZOOM_LOC_HEIGHT / 2 - (relative.y * 2)),
+    .left = static_cast<int>(VIEWPORT.start.left + relative.x),
+    .top = static_cast<int>(VIEWPORT.start.top - relative.y),
   };
 }
 
