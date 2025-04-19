@@ -21,6 +21,7 @@
 //Filename    : OFIRMIF.CPP
 //Description : Firm interface routines
 
+#include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
@@ -521,7 +522,11 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 			else
 			{
 				if( firm_id == FIRM_CAMP )
+				{
+					if (!Ambition::Building::printWarMachineIdentifier(workerPtr, x+30, y+6, x+49)) {
 					font_san.disp(x+30, y+6, workerPtr->combat_level, 1, x+49);
+					}
+				}
 				else
 					font_san.disp(x+30, y+6, workerPtr->skill_level, 1, x+49);
 			}
