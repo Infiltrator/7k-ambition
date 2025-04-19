@@ -31,6 +31,8 @@ speaking, considered to be the player's experience.
 - Fixed alignment of town goods satisfaction, inn guest count, and worker list.
 - Fixed Town training queue counts not showing correctly after loading a game
   with a 7kaa training queue.
+- Fixed not being able to cancel production after loading a 7kaa save game with
+  a unit already in production.
 
 
 ## [3.1.1] — 2025-04-12
