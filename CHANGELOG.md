@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed desync when cancelling training in a Town.
 - Fixed alignment of town goods satisfaction, inn guest count, and worker list.
 
 
