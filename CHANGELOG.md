@@ -14,6 +14,8 @@ speaking, considered to be the player's experience.
 
 - Fixed desync when cancelling training in a Town.
 - Fixed alignment of town goods satisfaction, inn guest count, and worker list.
+- Fixed Town training queue counts not showing correctly after loading a game
+  with a 7kaa training queue.
 
 
 ## [3.1.1] — 2025-04-12
