@@ -154,7 +154,7 @@ unsigned int enqueuedTrainingCount(
     return 0;
   }
 
-  return building->enqueuedTrainingCount(_7kaaSkillId);
+  return _7kaaCalculation + building->enqueuedTrainingCount(_7kaaSkillId);
 }
 
 bool enqueueTraining(
