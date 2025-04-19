@@ -1063,6 +1063,8 @@ int Town::detect_train_menu()
 {
 	int	x=INFO_X1+2, y=INFO_Y1+24, rc, quitFlag, waitFlag;
 
+	const auto queueOrder = (mouse.event_skey_state & CONTROL_KEY_MASK) ? 0 : -1;
+
 	waitFlag = 0;
 	for(int b=1; b<=MAX_TRAINABLE_SKILL; ++b)
 	{
@@ -1094,7 +1096,7 @@ int Town::detect_train_menu()
 
 			if( rc==1 )		// left button
 			{
-				if (Ambition::Building::enqueueTraining(this, race_filter(browse_race.recno()), b, trainCancelAmount)) {
+				if (Ambition::Building::enqueueTraining(this, queueOrder, race_filter(browse_race.recno()), b, trainCancelAmount)) {
 					se_ctrl.immediate_sound("TURN_ON");
 					if (quitFlag) {
 						info.disp();
@@ -1193,7 +1195,7 @@ int Town::detect_train_menu()
 
 	if( queue_train_selected && ISKEY(KEYEVENT_MANUF_QUEUE_ADD) )
 	{
-		if (Ambition::Building::enqueueTraining(this, race_filter(browse_race.recno()), queue_train_selected, 1)) {
+		if (Ambition::Building::enqueueTraining(this, queueOrder, race_filter(browse_race.recno()), queue_train_selected, 1)) {
 			se_ctrl.immediate_sound("TURN_ON");
 			return 1;
 		}
@@ -1215,7 +1217,7 @@ int Town::detect_train_menu()
 
 	if( queue_train_selected && ISKEY(KEYEVENT_MANUF_QUEUE_ADD_BATCH) )
 	{
-		if (Ambition::Building::enqueueTraining(this, race_filter(browse_race.recno()), queue_train_selected, TOWN_TRAIN_BATCH_COUNT)) {
+		if (Ambition::Building::enqueueTraining(this, queueOrder, race_filter(browse_race.recno()), queue_train_selected, TOWN_TRAIN_BATCH_COUNT)) {
 			se_ctrl.immediate_sound("TURN_ON");
 			return 1;
 		}

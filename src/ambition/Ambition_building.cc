@@ -360,15 +360,27 @@ void Building::drawRallyPoint(
 }
 
 void Building::enqueueProduction(
-  const ProductionRequest& request
+  const ProductionRequest& request,
+  const unsigned long long int order
 ) {
-  if (!productionQueue.empty()
-    && productionQueue.back()._7kaaRaceId == request._7kaaRaceId
-    && productionQueue.back()._7kaaSkillId == request._7kaaSkillId
+  auto trainingCount = 0;
+
+  auto iterator = productionQueue.begin();
+  for (;iterator != productionQueue.end(); iterator++) {
+    trainingCount += iterator->amount;
+
+    if (order < trainingCount) {
+      break;
+    }
+  }
+
+  if (iterator != productionQueue.end()
+    && iterator->_7kaaRaceId == request._7kaaRaceId
+    && iterator->_7kaaSkillId == request._7kaaSkillId
   ) {
-    productionQueue.back().amount += request.amount;
+    iterator->amount += request.amount;
   } else {
-    productionQueue.push_back(request);
+    productionQueue.insert(iterator, request);
   }
 }
 
@@ -392,7 +404,8 @@ void Building::migrate7kaaQueue(
           ._7kaaRaceId = _7kaaObject.object.town->train_queue_race_array[i],
           ._7kaaSkillId = _7kaaObject.object.town->train_queue_skill_array[i],
           .amount = 1,
-        }
+        },
+        -1
       );
     }
   } else if (const auto _7kaaWarFactory
@@ -408,7 +421,8 @@ void Building::migrate7kaaQueue(
           ._7kaaRaceId = -1,
           ._7kaaSkillId = _7kaaWarFactory->build_queue_array[i],
           .amount = 1,
-        }
+        },
+        -1
       );
     }
   } else if (const auto _7kaaHarbour
@@ -424,7 +438,8 @@ void Building::migrate7kaaQueue(
           ._7kaaRaceId = -1,
           ._7kaaSkillId = _7kaaHarbour->build_queue_array[i],
           .amount = 1,
-        }
+        },
+        -1
       );
     }
   }
