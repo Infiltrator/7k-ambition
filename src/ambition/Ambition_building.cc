@@ -29,6 +29,7 @@
 #include "OANLINE.h"
 #include "OFIRM.h"
 #include "OIMGRES.h"
+#include "OREMOTE.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
@@ -149,7 +150,15 @@ void Building::dequeueTraining(
     if (_7kaaTown->train_unit_recno) {
       const auto _7kaaUnit = unit_array[_7kaaTown->train_unit_recno];
       if (_7kaaUnit->skill.skill_id == request._7kaaSkillId) {
-        _7kaaTown->cancel_train_unit();
+        if (remote.is_enable()) {
+          auto message = (short*)remote.new_send_queue_msg(
+            MSG_TOWN_SKIP_RECRUIT,
+            1 * sizeof(short)
+          );
+          message[0] = _7kaaTown->town_recno;
+        } else {
+          _7kaaTown->cancel_train_unit();
+        }
       }
     }
   }
