@@ -274,6 +274,32 @@ uint8_t Unit::_7kaaRegionId(
   );
 }
 
+bool Unit::canReceiveLeadershipBonus(
+  ::Unit* _7kaaUnit
+) {
+  return (
+    (_7kaaUnit->skill.skill_id == SKILL_LEADING
+     && _7kaaUnit->rank_id == RANK_SOLDIER)
+    || isWarMachine(_7kaaUnit)
+  );
+}
+
+bool Unit::isReceivingLeadershipBonus(
+  ::Unit* _7kaaUnit
+) {
+  return _7kaaUnit->is_leader_in_range();
+}
+
+bool Unit::isWarMachine(
+  ::Unit* _7kaaUnit
+) {
+  return (
+    _7kaaUnit->unit_id == UNIT_F_BALLISTA
+    || (_7kaaUnit->unit_id >= UNIT_CATAPULT
+        && _7kaaUnit->unit_id <= UNIT_EXPLOSIVE_CART)
+  );
+}
+
 void Unit::sendToDestination(
   std::vector<short> _7kaaUnitRecordNumbers,
   const Waypoint& destination

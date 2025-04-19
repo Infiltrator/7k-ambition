@@ -216,6 +216,10 @@ bool minimapViewBoundsBox(
 void modeInformation(
 );
 
+void outsideLeadershipIcon(
+  Unit* _7kaaUnit
+);
+
 /**
  * Print the given game speed to the screen.
  *
@@ -224,6 +228,12 @@ void modeInformation(
  */
 void printGameSpeed(
   const int speed
+);
+
+bool printLeadershipStatus(
+  Unit* _7kaaUnit,
+  const int top,
+  const int refreshFlag
 );
 
 void printSyncError(

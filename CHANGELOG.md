@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show an icon for units which are outside of their general's command range and
+  so do not receive combat bonuses and are losing loyaly.
+- Display unit leadership effect status in the info pane.
+
 ### Fixed
 
 - Fixed desync when cancelling training in a Town.

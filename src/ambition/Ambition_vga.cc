@@ -54,6 +54,7 @@
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
 
 
@@ -790,6 +791,34 @@ void drawMinimapLine(
   anim_line.bound_y2 = saveBoundBottom;
 }
 
+void drawOutsideLeadershipIcon(
+  const ::Unit* _7kaaUnit
+) {
+  const UserInterface::Point displayLocation = {
+    .left = ZOOM_X1 + _7kaaUnit->cur_x - World::view_top_x + 10,
+    .top = calculateUnitIconY(
+      ZOOM_Y1 + _7kaaUnit->cur_y - World::view_top_y - 23
+    ),
+  };
+
+  world.zoom_matrix->put_bitmap_clip(
+    displayLocation.left,
+    displayLocation.top,
+    image_icon.get_ptr("U_NOLEAD")
+  );
+}
+
+void drawPanel(
+  UserInterface::Rectangle rectangle
+) {
+  vga_util.d3_panel_up(
+    rectangle.start.left,
+    rectangle.start.top,
+    rectangle.end.left,
+    rectangle.end.top
+  );
+}
+
 void drawTownTrainingProgressBar(
   const Town* town
 ) {
@@ -858,6 +887,51 @@ bool initialiseSnowLayer(
   );
 
   return true;
+}
+
+void printLeadershipStatus(
+  ::Unit *_7kaaUnit,
+  const int top,
+  const int refreshFlag
+) {
+  constexpr auto PANEL_HEIGHT = 17;
+  const auto PANEL = UserInterface::Rectangle {
+    .start = {
+      .left = UserInterface::INFO_PANE_CONTENTS.start.left,
+      .top = top,
+    },
+    .end = {
+      .left = UserInterface::INFO_PANE_CONTENTS.end.left,
+      .top = top + PANEL_HEIGHT,
+    },
+  };
+  const auto TEXT_BOX = PANEL.inner(4, 1);
+
+  if (refreshFlag == INFO_REPAINT) {
+    drawPanel(PANEL);
+  }
+
+  if (!_7kaaUnit->leader_unit_recno) {
+    printText(font_san, _("No leader"), TEXT_BOX);
+  } else if (!Unit::isReceivingLeadershipBonus(_7kaaUnit)) {
+    printText(font_san, _("Leader out of range"), TEXT_BOX);
+  } else {
+    printText(font_san, _("Leader is providing bonuses"), TEXT_BOX);
+  }
+}
+
+void printText(
+  Font& font,
+  std::string text,
+  UserInterface::Rectangle location
+) {
+  font.put(
+    location.start.left,
+    location.start.top,
+    text.c_str(),
+    1,
+    location.end.left
+  );
 }
 
 void unlockBuffer(

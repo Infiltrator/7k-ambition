@@ -31,6 +31,39 @@
 
 namespace Ambition::UserInterface {
 
+Rectangle Rectangle::inner(
+  int paddingLeft,
+  int paddingTop,
+  int paddingRight,
+  int paddingBottom
+) const {
+  if (paddingTop < 0) {
+    paddingTop = paddingLeft;
+  }
+  if (paddingRight < 0) {
+    paddingRight = paddingLeft;
+  }
+  if (paddingBottom < 0) {
+    paddingBottom = paddingTop;
+  }
+
+  paddingLeft = std::min(paddingLeft, (width() - 1) / 2);
+  paddingTop = std::min(paddingTop, (height() - 1) / 2);
+  paddingRight = std::min(paddingRight, (width() - 1) / 2);
+  paddingBottom = std::min(paddingBottom, (height() - 1) / 2);
+
+  return {
+    .start = {
+      .left = start.left + paddingLeft,
+      .top = start.top + paddingTop,
+    },
+    .end = {
+      .left = end.left - paddingRight,
+      .top = end.top - paddingBottom,
+    },
+  };
+}
+
 Rectangle Rectangle::outer(
   const int marginLeft,
   int marginTop,

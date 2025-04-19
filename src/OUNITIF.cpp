@@ -234,6 +234,10 @@ void Unit::disp_main_menu(int refreshFlag)
 		y += 89;
 	}
 
+	if (Ambition::Draw::printLeadershipStatus(this, y, refreshFlag)) {
+		y += 20;
+	}
+
 	//---------------------------------//
 
 	if( is_own_spy() )

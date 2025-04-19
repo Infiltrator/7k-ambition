@@ -53,6 +53,16 @@ struct Rectangle {
     };
   }
 
+  inline int width() const { return end.left - start.left; }
+  inline int height() const { return end.top - start.top; }
+
+  Rectangle inner(
+    int paddingLeft,
+    int paddingTop = -1,
+    int paddingRight = -1,
+    int paddingBottom = -1
+  ) const;
+
   Rectangle outer(
     const int marginLeft,
     int marginTop = -1,

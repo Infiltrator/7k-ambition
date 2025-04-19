@@ -25,8 +25,11 @@
 
 #pragma once
 
+#include <string>
+
 class Button3D;
 class Firm;
+class Font;
 class SnowLayer;
 class Town;
 class Unit;
@@ -40,6 +43,10 @@ constexpr auto FIRM_ID_TOWN = 0;
 
 namespace Coordinates {
 struct Point;
+}
+
+namespace UserInterface {
+struct Rectangle;
 }
 
 
@@ -218,6 +225,14 @@ void drawMinimapLine(
   int effectFlag
 );
 
+void drawOutsideLeadershipIcon(
+  const ::Unit* _7kaaUnit
+);
+
+void drawPanel(
+  UserInterface::Rectangle rectangle
+);
+
 void drawTownTrainingProgressBar(
   const Town* town
 );
@@ -234,6 +249,18 @@ bool initialiseSnowLayer(
   const int level,
   const char animationSpeed,
   double slideSpeed
+);
+
+void printLeadershipStatus(
+  ::Unit *_7kaaUnit,
+  const int top,
+  const int refreshFlag
+);
+
+void printText(
+  Font& font,
+  std::string text,
+  UserInterface::Rectangle location
 );
 
 /**
