@@ -15,11 +15,15 @@ speaking, considered to be the player's experience.
 - Show an icon for units which are outside of their general's command range and
   so do not receive combat bonuses and are losing loyalty.
 - Display unit leadership effect status in the info pane.
+- Make War Factory production queue unlimited, up from 20.
+- Make Harbour production queue unlimited, up from 10.
 
 ### Changed
 
 - Display the type and level of war machines inside forts, for easier
   identification.
+- Harbour production queue persists even when the harbour is full (4 ships)
+  instead of clearing the queue.
 
 ### Fixed
 

@@ -46,6 +46,12 @@ void clearTrainingQueue(
   const Town* _7kaaTown
 );
 
+bool dequeueProduction(
+  Firm* _7kaaFirm,
+  const int _7kaaUnitId,
+  const unsigned int amount
+);
+
 bool dequeueTraining(
   Town* _7kaaTown,
   const char _7kaaSkillId,
@@ -59,10 +65,22 @@ void destroy(
   const Town* _7kaaTown
 );
 
+unsigned int enqueuedProductionCount(
+  Firm* _7kaaFirm,
+  const int _7kaaCalculation,
+  const int _7kaaUnitId
+);
+
 unsigned int enqueuedTrainingCount(
   const Town* _7kaaTown,
   const int _7kaaCalculation,
   const short _7kaaSkillId
+);
+
+bool enqueueProduction(
+  const Firm* _7kaaFirm,
+  const int _7kaaUnitId,
+  const unsigned int amount
 );
 
 bool enqueueTraining(
@@ -81,6 +99,10 @@ bool printWarMachineIdentifier(
 
 void processIdleTowerOfScience(
   FirmResearch* _7kaaFirmResearch
+);
+
+void processProductionQueue(
+  Firm* _7kaaFirm
 );
 
 void processTrainingQueue(

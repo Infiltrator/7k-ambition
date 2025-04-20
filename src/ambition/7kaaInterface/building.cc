@@ -82,6 +82,26 @@ void clearTrainingQueue(
   }
 }
 
+bool dequeueProduction(
+  Firm* _7kaaFirm,
+  const int _7kaaUnitId,
+  const unsigned int amount
+) {
+    if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  auto building = Ambition::Building::getBy7kaaFirm(_7kaaFirm);
+  building->dequeueTraining(
+    {
+      ._7kaaRaceId = -1,
+      ._7kaaSkillId = _7kaaUnitId,
+      .amount = amount,
+    }
+  );
+  return true;
+}
+
 bool dequeueTraining(
   Town* _7kaaTown,
   const char _7kaaSkillId,
@@ -129,6 +149,24 @@ void destroy(
   }
 }
 
+unsigned int enqueuedProductionCount(
+  Firm* _7kaaFirm,
+  const int _7kaaCalculation,
+  const int _7kaaUnitId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
+
+  if (!building) {
+    return _7kaaCalculation;
+  }
+
+  return _7kaaCalculation + building->enqueuedProductionCount(_7kaaUnitId);
+}
+
 unsigned int enqueuedTrainingCount(
   const Town* _7kaaTown,
   const int _7kaaCalculation,
@@ -144,7 +182,28 @@ unsigned int enqueuedTrainingCount(
     return _7kaaCalculation;
   }
 
-  return _7kaaCalculation + building->enqueuedTrainingCount(_7kaaSkillId);
+  return _7kaaCalculation + building->enqueuedProductionCount(_7kaaSkillId);
+}
+
+bool enqueueProduction(
+  const Firm* _7kaaFirm,
+  const int _7kaaUnitId,
+  const unsigned int amount
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  auto building = Ambition::Building::getBy7kaaFirm(_7kaaFirm);
+
+  building->enqueueProduction(
+    {
+      ._7kaaRaceId = -1,
+      ._7kaaSkillId = _7kaaUnitId,
+      .amount = amount,
+    }
+  );
+  return true;
 }
 
 bool enqueueTraining(
@@ -158,7 +217,7 @@ bool enqueueTraining(
   }
 
   auto building = Ambition::Building::getBy7kaaTown(_7kaaTown);
-  building->enqueueTraining(
+  building->enqueueProduction(
     {
       ._7kaaRaceId = _7kaaRaceId,
       ._7kaaSkillId = _7kaaSkillId,
@@ -238,6 +297,22 @@ void processIdleTowerOfScience(
   }
 }
 
+void processProductionQueue(
+  Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
+
+  if (!building) {
+    return;
+  }
+
+  building->popViableProductionRequest();
+}
+
 void processTrainingQueue(
   Town* _7kaaTown
 ) {
@@ -251,7 +326,7 @@ void processTrainingQueue(
     return;
   }
 
-  building->popViableTrainingRequest();
+  building->popViableProductionRequest();
 }
 
 void sendUnitsToRallyPoint(
