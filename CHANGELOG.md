@@ -33,6 +33,8 @@ speaking, considered to be the player's experience.
   with a 7kaa training queue.
 - Fixed not being able to cancel production after loading a 7kaa save game with
   a unit already in production.
+- Fixed not being able to cancel units in the queue after loading a 7kaa save
+  game with an existing production queue.
 
 
 ## [3.1.1] — 2025-04-12

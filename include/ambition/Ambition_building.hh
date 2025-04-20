@@ -146,6 +146,9 @@ public:
   Coordinates::Point getRallyLocation(
   ) const;
 
+  void migrate7kaaQueue(
+  );
+
   void popViableProductionRequest(
   );
 
