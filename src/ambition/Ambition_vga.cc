@@ -645,6 +645,36 @@ void drawBuildingRallyPoint(
   }
 }
 
+void drawButtonOverlay(
+  UserInterface::Rectangle buttonCoordinates,
+  std::string text
+) {
+  const auto box = buttonCoordinates.inner(8, 10);
+
+  vga_front.bar(
+    box.start.left,
+    box.start.top,
+    box.end.left,
+    box.end.top,
+    V_WHITE
+  );
+  vga_front.rect(
+    box.start.left,
+    box.start.top,
+    box.end.left,
+    box.end.top,
+    1,
+    V_BLACK
+  );
+  font_mid.center_put(
+    box.start.left,
+    box.start.top,
+    box.end.left,
+    box.end.top,
+    text.c_str()
+  );
+}
+
 void drawFirmBuilderIcon(
   Firm* firm
 ) {

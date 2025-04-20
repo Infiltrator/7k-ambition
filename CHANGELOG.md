@@ -17,6 +17,8 @@ speaking, considered to be the player's experience.
 - Display unit leadership effect status in the info pane.
 - Make War Factory production queue unlimited, up from 20.
 - Make Harbour production queue unlimited, up from 10.
+- Show the production queue size for Towns, Horbours, and War Factories over the
+  production button, in a manner similar to the auto-tax.
 
 ### Changed
 

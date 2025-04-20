@@ -285,7 +285,7 @@ unsigned int Building::enqueuedProductionCount(
   int count = 0;
 
   for (const auto& request : productionQueue) {
-    if (request._7kaaSkillId == _7kaaSkillId) {
+    if (request._7kaaSkillId == _7kaaSkillId || _7kaaSkillId == -1) {
       count += request.amount;
     }
   }

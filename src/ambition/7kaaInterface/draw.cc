@@ -27,6 +27,8 @@
 #include "draw.hh"
 
 #include "OCONFIG.h"
+#include "OF_HARB.h"
+#include "OF_WAR.h"
 #include "OFIRM.h"
 #include "ONATIONA.h"
 #include "OTOWN.h"
@@ -464,6 +466,94 @@ void printUnitContribution(
   }
 
   Ambition::displayUnitContribution(unit, left, top);
+}
+
+void queueCount(
+  const FirmHarbor* _7kaaHarbour
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaFirm(_7kaaHarbour);
+
+  const auto productionCount
+    = (building ? building->enqueuedProductionCount(-1) : 0)
+    + (_7kaaHarbour->build_unit_id ? 1 : 0)
+    + _7kaaHarbour->build_queue_count;
+
+  if (!productionCount) {
+    return;
+  }
+
+  Ambition::drawButtonOverlay(
+    Ambition::UserInterface::Rectangle::fromPoint(
+      {
+        .left = 585,
+        .top = 520,
+      },
+      Ambition::UserInterface::BUTTON_SIZE
+    ),
+    misc.format(static_cast<long>(productionCount))
+  );
+}
+void queueCount(
+  const FirmWar* _7kaaWarFactory
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaFirm(_7kaaWarFactory);
+
+  const auto productionCount
+    = (building ? building->enqueuedProductionCount(-1) : 0)
+    + (_7kaaWarFactory->build_unit_id ? 1 : 0)
+    + _7kaaWarFactory->build_queue_count;
+
+  if (!productionCount) {
+    return;
+  }
+
+  Ambition::drawButtonOverlay(
+    Ambition::UserInterface::Rectangle::fromPoint(
+      {
+        .left = 585,
+        .top = 500,
+      },
+      Ambition::UserInterface::BUTTON_SIZE
+    ),
+    misc.format(static_cast<long>(productionCount))
+  );
+}
+void queueCount(
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
+
+  const auto productionCount
+    = (building ? building->enqueuedProductionCount(-1) : 0)
+    + (_7kaaTown->train_unit_recno ? 1 : 0)
+    + _7kaaTown->train_queue_count;
+
+  if (!productionCount) {
+    return;
+  }
+
+  Ambition::drawButtonOverlay(
+    Ambition::UserInterface::Rectangle::fromPoint(
+      {
+        .left = 637,
+        .top = 471,
+      },
+      Ambition::UserInterface::BUTTON_SIZE
+    ),
+    misc.format(static_cast<long>(productionCount))
+  );
 }
 
 void unitWaypointsOnWorld(

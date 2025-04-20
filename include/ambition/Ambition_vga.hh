@@ -166,6 +166,11 @@ void drawBuildingRallyPoint(
   Town* _7kaaTown
 );
 
+void drawButtonOverlay(
+  UserInterface::Rectangle buttonCoordinates,
+  std::string text
+);
+
 /**
  * Draw a builder icon for the firm if it has a builder.
  *

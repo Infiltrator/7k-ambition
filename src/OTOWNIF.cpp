@@ -385,6 +385,7 @@ void Town::disp_main_menu(int refreshFlag)
 				button_grant.paint( BUTTON_X1+BUTTON_ACTION_WIDTH*3, y, 'A', "GRANT" );
 
 				disp_auto_loyalty();
+				Ambition::Draw::queueCount(this);
 			}
 			else
 			{
