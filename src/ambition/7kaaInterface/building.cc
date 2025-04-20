@@ -141,7 +141,7 @@ unsigned int enqueuedTrainingCount(
   const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
 
   if (!building) {
-    return 0;
+    return _7kaaCalculation;
   }
 
   return _7kaaCalculation + building->enqueuedTrainingCount(_7kaaSkillId);
