@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.2] — 2025-04-20
+
 ### Added
 
 - Show an icon for units which are outside of their general's command range and
