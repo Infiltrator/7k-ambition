@@ -111,16 +111,14 @@ bool dequeueTraining(
     return false;
   }
 
-  auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
-  if (building) {
-    building->dequeueTraining(
-      {
-        ._7kaaRaceId = 0,
-        ._7kaaSkillId = _7kaaSkillId,
-        .amount = amount,
-      }
-    );
-  }
+  auto building = Ambition::Building::getBy7kaaTown(_7kaaTown);
+  building->dequeueTraining(
+    {
+      ._7kaaRaceId = -1,
+      ._7kaaSkillId = _7kaaSkillId,
+      .amount = amount,
+    }
+  );
   return true;
 }
 

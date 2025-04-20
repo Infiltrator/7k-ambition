@@ -182,6 +182,8 @@ bool Building::currentlyProducing(
 void Building::dequeueTraining(
   const ProductionRequest& request
 ) {
+  migrate7kaaQueue();
+
   int removedCount = 0;
   for (auto iterator = productionQueue.rbegin();
     removedCount < request.amount && iterator != productionQueue.rend();
@@ -373,6 +375,110 @@ void Building::enqueueProduction(
 Coordinates::Point Building::getRallyLocation(
 ) const {
   return rally.point;
+}
+
+void Building::migrate7kaaQueue(
+) {
+  auto _7kaaObject = underlying7kaaObject();
+
+  if (type == _7kaaType::Town) {
+    if (!_7kaaObject.object.town->train_queue_count) {
+      return;
+    }
+
+    for (auto i = 0; i < _7kaaObject.object.town->train_queue_count; i++) {
+      enqueueProduction(
+        {
+          ._7kaaRaceId = _7kaaObject.object.town->train_queue_race_array[i],
+          ._7kaaSkillId = _7kaaObject.object.town->train_queue_skill_array[i],
+          .amount = 1,
+        }
+      );
+    }
+  } else if (const auto _7kaaWarFactory
+    = dynamic_cast<FirmWar*>(_7kaaObject.object.firm)
+  ) {
+    if (!_7kaaWarFactory->build_queue_count) {
+      return;
+    }
+
+    for (auto i = 0; i < _7kaaWarFactory->build_queue_count; i++) {
+      enqueueProduction(
+        {
+          ._7kaaRaceId = -1,
+          ._7kaaSkillId = _7kaaWarFactory->build_queue_array[i],
+          .amount = 1,
+        }
+      );
+    }
+  } else if (const auto _7kaaHarbour
+    = dynamic_cast<FirmHarbor*>(_7kaaObject.object.firm)
+  ) {
+    if (!_7kaaHarbour->build_queue_count) {
+      return;
+    }
+
+    for (auto i = 0; i < _7kaaHarbour->build_queue_count; i++) {
+      enqueueProduction(
+        {
+          ._7kaaRaceId = -1,
+          ._7kaaSkillId = _7kaaHarbour->build_queue_array[i],
+          .amount = 1,
+        }
+      );
+    }
+  }
+
+  for (auto iterator = productionQueue.begin();
+    iterator != productionQueue.end();
+    iterator++
+  ) {
+    if (type == _7kaaType::Town) {
+      if (remote.is_enable()) {
+        auto message = (short*)remote.new_send_queue_msg(
+          MSG_TOWN_RECRUIT,
+          4 * sizeof(short)
+        );
+        message[0] = _7kaaRecordNumber;
+        message[1] = iterator->_7kaaSkillId;
+        message[2] = -1;
+        message[3] = (short)iterator->amount;
+      } else {
+        _7kaaObject.object.town->remove_queue(
+          iterator->_7kaaSkillId,
+          iterator->amount
+        );
+      }
+    } else if (const auto _7kaaWarFactory
+      = dynamic_cast<FirmWar*>(_7kaaObject.object.firm)
+    ) {
+      if (remote.is_enable()) {
+        auto message = (short*)remote.new_send_queue_msg(
+          MSG_F_WAR_CANCEL_WEAPON,
+          3 * sizeof(short)
+        );
+        message[0] = _7kaaRecordNumber;
+        message[1] = iterator->_7kaaSkillId;
+        message[2] = iterator->amount;
+      } else {
+        _7kaaWarFactory->remove_queue(iterator->_7kaaSkillId, iterator->amount);
+      }
+    } else if (const auto _7kaaHarbour
+      = dynamic_cast<FirmHarbor*>(_7kaaObject.object.firm)
+    ) {
+      if (remote.is_enable()) {
+        auto message = (short*)remote.new_send_queue_msg(
+          MSG_F_HARBOR_BUILD_SHIP,
+          3 * sizeof(short)
+        );
+        message[0] = _7kaaRecordNumber;
+        message[1] = -iterator->_7kaaSkillId;
+        message[2] = iterator->amount;
+      } else {
+        _7kaaHarbour->remove_queue(iterator->_7kaaSkillId, iterator->amount);
+      }
+    }
+  }
 }
 
 void Building::popViableProductionRequest(
