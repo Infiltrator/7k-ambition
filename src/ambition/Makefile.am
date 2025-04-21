@@ -10,6 +10,7 @@ libambition_a_SOURCES = \
 	Ambition_inn.cc \
 	Ambition_input.cc \
 	Ambition_minimap.cc \
+	Ambition_news.cc \
 	Ambition_polity.cc \
 	Ambition_remote.cc \
 	Ambition_repository.cc \
@@ -19,6 +20,7 @@ libambition_a_SOURCES = \
 	Ambition_user_interface.cc \
 	Ambition_version.cc \
 	Ambition_vga.cc \
+	version_details.cc \
 	# end
 
 AM_CPPFLAGS = \

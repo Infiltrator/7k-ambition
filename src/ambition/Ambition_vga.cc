@@ -961,6 +961,20 @@ void printText(
     location.end.left
   );
 }
+void printTextCentred(
+  Font& font,
+  std::string text,
+  UserInterface::Rectangle location
+) {
+  font.center_put(
+    location.start.left,
+    location.start.top,
+    location.end.left,
+    location.end.top,
+    text.c_str(),
+    1
+  );
+}
 
 void unlockBuffer(
   VgaBuf& buffer

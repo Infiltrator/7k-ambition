@@ -28,6 +28,8 @@
 
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
+#include "Ambition_news.hh"
+#include "Ambition_version.hh"
 #include "Ambition_vga.hh"
 
 
@@ -41,6 +43,14 @@ void delayFrame(
   }
 
   Ambition::delayFrame(deadlineSdlTicks64);
+}
+
+void displayNews(
+) {
+  if (Ambition::versionString() != Ambition::News::lastDisplayedNewsVersion()) {
+    Ambition::News::display();
+    Ambition::News::saveDisplayedNewsVersion();
+  }
 }
 
 void requestFeedback(

@@ -20,44 +20,51 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Control.
+ * Header file for Ambition::News.
  */
 
 #pragma once
 
-class VgaBuf;
+#include <numeric>
+#include <string>
+#include <vector>
 
 
-namespace _7kaaAmbitionInterface::Control {
+namespace Ambition::News {
 
-void delayFrame(
-  const unsigned long long int deadlineSdlTicks64 = 0
+struct VersionUpdates {
+  std::string identifier;
+
+  struct Section {
+    std::string heading;
+    std::vector<std::string> items;
+  };
+  std::vector<Section> sections;
+
+  auto totalItemCount(
+  ) const {
+    return std::accumulate(
+      sections.begin(),
+      sections.end(),
+      0,
+      [](const int accumulator, const Section& section) {
+        return accumulator + section.items.size();
+      }
+    );
+  }
+};
+
+
+void display(
 );
 
-void displayNews(
+std::string lastDisplayedNewsVersion(
 );
 
-void requestFeedback(
+void saveDisplayedNewsVersion(
 );
 
-void resetGameState(
-);
 
-/**
- * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
- *
- * This is needed because sometimes unlocking a VgaBuf also causes a Vga flip
- * and we want to control when the flips occur.
- *
- * @param buffer The VgaBuf to unlock.
- */
-void unlockBuffer(
-  VgaBuf& buffer
-);
+extern std::vector<VersionUpdates> versionDetails;
 
-} // namespace _7kaaAmbitionInterface::Control
-
-#ifndef _AMBITION_IMPLEMENTATION
-/** Allow 7kaa to call using Ambition::*. */
-namespace Ambition = _7kaaAmbitionInterface;
-#endif
+} // namespace Ambition::News
