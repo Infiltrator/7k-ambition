@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed pixel artefact on text update.
+
 
 ## [3.1.2] — 2025-04-20
 
