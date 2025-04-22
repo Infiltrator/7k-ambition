@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed pixel artefacts on the bottom of credits and results screens.
 - Fixed pixel artefact on text update.
 
 
