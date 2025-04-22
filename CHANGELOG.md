@@ -27,13 +27,6 @@ speaking, considered to be the player's experience.
 - Show the production queue size for Towns, Horbours, and War Factories over the
   production button, in a manner similar to the auto-tax.
 
-### Changed
-
-- Display the type and level of war machines inside forts, for easier
-  identification.
-- Harbour production queue persists even when the harbour is full (4 ships)
-  instead of clearing the queue.
-
 ### Fixed
 
 - Fixed desync when cancelling training in a Town.
@@ -44,6 +37,13 @@ speaking, considered to be the player's experience.
   a unit already in production.
 - Fixed not being able to cancel units in the queue after loading a 7kaa save
   game with an existing production queue.
+
+### Changed
+
+- Display the type and level of war machines inside forts, for easier
+  identification.
+- Harbour production queue persists even when the harbour is full (4 ships)
+  instead of clearing the queue.
 
 
 ## [3.1.1] — 2025-04-12
@@ -122,12 +122,6 @@ First big release.  See [the v3.1-rc1](#3-1-rc1) section for more details.
 - Added delete button to load game menu.
 - Show a progress bar on the map for town training.
 
-### Changed
-
-- Continue loading config.txt even when there are invalid lines, so that the
-  valid ones still apply.  Then, once finished loading, display all the line
-  numbers which contained errors, allowing fixing them.
-
 ### Fixed
 
 - Fixed requested builder not being able to reach the destination building if
@@ -135,6 +129,12 @@ First big release.  See [the v3.1-rc1](#3-1-rc1) section for more details.
 - Fixed Inn hire button being enabled/disabled incorrectly.
 - Fixed hitbars having extra pixels on the right when a worker enters or
   leaves the building.
+
+### Changed
+
+- Continue loading config.txt even when there are invalid lines, so that the
+  valid ones still apply.  Then, once finished loading, display all the line
+  numbers which contained errors, allowing fixing them.
 
 
 ## [3.0.3] — 2025-03-07
