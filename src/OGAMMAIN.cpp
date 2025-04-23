@@ -220,6 +220,7 @@ void Game::main_menu()
 		// ######### end Gilbert 23/7 ##########//
 
 		Ambition::Draw::modeInformation();
+		Ambition::Draw::whatsNewButton();
 
 		sys.blt_virtual_buf();		// blt the virtual front buffer to the screen
 
@@ -230,6 +231,7 @@ void Game::main_menu()
 		mouse.get_event();
 
 		refreshFlag = Ambition::Input::detectModeSelectClick();
+		refreshFlag = Ambition::Input::detectWhatsNewClick();
 
 		optionInfo = main_option_array;
 

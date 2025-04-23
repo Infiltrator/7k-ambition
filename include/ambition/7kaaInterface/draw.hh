@@ -271,6 +271,9 @@ void unitWaypointsOnMinimap(
   const Unit* _7kaaUnit
 );
 
+void whatsNewButton(
+);
+
 } // namespace _7kaaAmbitionInterface::Draw
 
 #ifndef _AMBITION_IMPLEMENTATION
