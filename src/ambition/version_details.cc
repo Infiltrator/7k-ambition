@@ -12,6 +12,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _("Added"),
         .items = {
+          _("Automatically copy the map ID to the clipboard when opening the in-game menu, allowing for easy copy-pasting of the map ID."),
           _("Added a What's New screen, shown on the first startup of each new version."),
         },
       },

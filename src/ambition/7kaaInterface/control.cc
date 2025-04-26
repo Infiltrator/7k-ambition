@@ -26,14 +26,37 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/control.hh"
 
+#include <SDL.h>
+
+#include "OCONFIG.h"
+#include "OINFO.h"
+
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
 #include "Ambition_news.hh"
 #include "Ambition_version.hh"
 #include "Ambition_vga.hh"
+#include "format.hh"
 
 
 namespace _7kaaAmbitionInterface::Control {
+
+void copyMapIdToClipboard(
+) {
+  constexpr const char* LAND_MASS_STRINGS[] = {
+    "Small",
+    "Medium",
+    "Large",
+  };
+
+  SDL_SetClipboardText(
+    format(
+      "%llu %s",
+      info.random_seed,
+      LAND_MASS_STRINGS[config.land_mass - 1]
+    ).c_str()
+  );
+}
 
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64
