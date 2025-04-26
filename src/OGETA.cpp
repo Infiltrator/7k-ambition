@@ -21,6 +21,8 @@
 // Filename     : OGETA.CPP
 // Description  : simple get field
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OGETA.h>
 #include <OVGA.h>
 #include <vga_util.h>
@@ -133,6 +135,11 @@ unsigned GetA::detect_key()
 	{
 		unsigned keyCode = mouse.key_code;
 		unsigned	shiftPressed = mouse.event_skey_state & SHIFT_KEY_MASK;
+
+		if (Ambition::Input::detectClipboardKeys(this)) {
+			return 1;
+		}
+
 		// printable character
 		if( keyCode >= ' ' && keyCode <= 0xff )
 		{

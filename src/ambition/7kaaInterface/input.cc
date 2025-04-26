@@ -26,8 +26,13 @@
 #define _AMBITION_IMPLEMENTATION
 #include "input.hh"
 
+#include <algorithm>
+#include <SDL.h>
+
 #include "OFIRMA.h"
+#include "OGETA.h"
 #include "OMOUSE.h"
+#include "OMOUSE2.h"
 #include "OTOWN.h"
 #include "OWORLD.h"
 
@@ -49,6 +54,85 @@ void calculateScroll(
   }
 
   Ambition::calculateScroll(x, y);
+}
+
+bool detectClipboardKeys(
+  GetA* textField
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  constexpr auto OBFUSCATION_CHARACTER = '*';
+
+  const auto key = mouse.is_key(
+    mouse.scan_code,
+    mouse.event_skey_state,
+    static_cast<unsigned short>(0),
+    K_CHAR_KEY | K_IS_CTRL
+  );
+
+  if (key == 'c' || key == 'x') {
+    const auto selectedText = std::string(
+      textField->input_field,
+      textField->mark_begin(),
+      textField->mark_end() - textField->mark_begin()
+    );
+    SDL_SetClipboardText(selectedText.c_str());
+  }
+
+  if (key == 'x' || key == 'v') {
+    const auto remainingLength
+      = textField->field_len - textField->mark_end();
+    memmove(
+      textField->input_field + textField->mark_begin(),
+      textField->input_field + textField->mark_end(),
+      remainingLength
+    );
+    textField->cursor_pos = textField->mark_begin();
+    textField->clear_select();
+
+    if (textField->hide_flag) {
+      textField->hide_field[strlen(textField->input_field)] = '\0';
+    }
+  }
+
+  if (key == 'v') {
+    const auto buffer = SDL_GetClipboardText();
+    const auto fieldLength = strlen(textField->input_field);
+    const auto remainingLength = textField->field_len - fieldLength;
+    const auto charactersToInsert = std::min(remainingLength, strlen(buffer));
+
+    memmove(
+      textField->input_field + textField->mark_begin() + charactersToInsert,
+      textField->input_field + textField->mark_begin(),
+      fieldLength - textField->mark_begin() + 1
+    );
+
+    strncpy(
+      &textField->input_field[textField->mark_begin()],
+      buffer,
+      charactersToInsert
+    );
+    SDL_free(buffer);
+
+    if (textField->hide_flag) {
+      const auto oldLength = strlen(textField->hide_field);
+      for (auto i = oldLength; i < oldLength + charactersToInsert; i++) {
+        textField->hide_field[i] = OBFUSCATION_CHARACTER;
+      }
+      textField->hide_field[strlen(textField->input_field)] = '\0';
+    }
+
+    textField->cursor_pos = textField->mark_begin() + charactersToInsert;
+    textField->clear_select();
+  }
+
+  if (key == 'c' || key == 'v' || key == 'x') {
+    return true;
+  }
+
+  return false;
 }
 
 bool detectModeSelectClick(
