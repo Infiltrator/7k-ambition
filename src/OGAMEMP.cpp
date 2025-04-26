@@ -658,6 +658,9 @@ void Game::multi_player_game(int lobbied, char *game_host)
 			{
 				// Join by direct IP address
 				strcpy(join_address, "localhost");
+
+				Ambition::Control::pasteFromClipboard(join_address, 100);
+
 				if (!lobbied &&
 				    input_box(_("Enter the game's address:"), join_address, 100) &&
 				    mp_obj.init_lobbied(MAX_NATION, join_address))

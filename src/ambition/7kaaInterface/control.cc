@@ -43,6 +43,10 @@ namespace _7kaaAmbitionInterface::Control {
 
 void copyMapIdToClipboard(
 ) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
   constexpr const char* LAND_MASS_STRINGS[] = {
     "Small",
     "Medium",
@@ -74,6 +78,19 @@ void displayNews(
     Ambition::News::display();
     Ambition::News::saveDisplayedNewsVersion();
   }
+}
+
+void pasteFromClipboard(
+  char* destination,
+  const unsigned int maximumSize
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto buffer = SDL_GetClipboardText();
+  strncpy(destination, buffer, maximumSize);
+  SDL_free(buffer);
 }
 
 void requestFeedback(

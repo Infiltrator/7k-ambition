@@ -40,6 +40,11 @@ void delayFrame(
 void displayNews(
 );
 
+void pasteFromClipboard(
+  char* destination,
+  const unsigned int maximumSize
+);
+
 void requestFeedback(
 );
 
