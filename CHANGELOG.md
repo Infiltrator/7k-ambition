@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added a What's New screen, shown on the first startup of each new version.
+
 ### Fixed
 
 - Fixed pixel artefacts on the bottom of credits and results screens.

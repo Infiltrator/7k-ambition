@@ -361,6 +361,8 @@ int main(int argc, char **argv)
 
 	err.set_extra_handler( extra_error_handler );   // set extra error handler, save the game when a error happens
 
+	Ambition::Control::displayNews();
+
 	switch( cmd_line.startup_mode )
 	{
 	case STARTUP_NORMAL:

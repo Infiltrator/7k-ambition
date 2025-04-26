@@ -34,6 +34,7 @@
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_input.hh"
+#include "Ambition_news.hh"
 #include "Ambition_user_interface.hh"
 
 
@@ -107,6 +108,35 @@ bool detectRallyButtonClick(
     || ISKEY(KEYEVENT_UNIT_SETTLE)
   ) {
     building->clearRallyPoint();
+    return true;
+  }
+
+  return false;
+}
+
+bool detectWhatsNewClick(
+) {
+  constexpr Ambition::UserInterface::Rectangle WhatsNewButton = {
+    .start = {
+      .left = 770,
+      .top = 550,
+    },
+    .end = {
+      .left = 789,
+      .top = 570,
+    },
+  };
+  const auto clickArea = WhatsNewButton.outer(8);
+
+  if (
+    mouse.single_click(
+      clickArea.start.left,
+      clickArea.start.top,
+      clickArea.end.left,
+      clickArea.end.top
+    )
+  ) {
+    Ambition::News::display();
     return true;
   }
 

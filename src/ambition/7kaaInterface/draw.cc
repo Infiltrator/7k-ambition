@@ -26,6 +26,9 @@
 #define _AMBITION_IMPLEMENTATION
 #include "draw.hh"
 
+#include <cstdint>
+
+#include "OBUTT3D.h"
 #include "OCONFIG.h"
 #include "OF_HARB.h"
 #include "OF_WAR.h"
@@ -582,6 +585,12 @@ void unitWaypointsOnMinimap(
   if (unit) {
     unit->drawWaypointsOnMinimap();
   }
+}
+
+void whatsNewButton(
+) {
+  Button3D button;
+  button.paint(770, 550, "REPAIRU", "REPAIRD");
 }
 
 } // namespace _7kaaAmbitionInterface::Draw

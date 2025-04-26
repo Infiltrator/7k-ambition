@@ -267,6 +267,11 @@ void printText(
   std::string text,
   UserInterface::Rectangle location
 );
+void printTextCentred(
+  Font& font,
+  std::string text,
+  UserInterface::Rectangle location
+);
 
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.

@@ -44,6 +44,15 @@ bool detectModeSelectClick(
 bool detectRallyButtonClick(
 );
 
+/**
+ * Detect whether the What's New button was clicked and then run the news
+ * screen.
+ *
+ * @return Whether anything was drawn to the screen and it needs to be redrawn.
+ */
+bool detectWhatsNewClick(
+);
+
 void setOrClearRallyPoint(
   const short _7kaaX,
   const short _7kaaY,
