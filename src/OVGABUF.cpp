@@ -425,7 +425,7 @@ void VgaBuf::put_large_bitmap(int x1, int y1, File* filePtr)
 	int x2 = x1 + pictWidth  - 1;
 	int y2 = y1 + pictHeight - 1;
 
-	const long pictSize = (long) (x2+1) * (y2+1);
+	const long pictSize = (long) pictWidth * pictHeight;
 
 	err_when( x1>x2 || y1>y2 || x1<0 || y1<0 || x2>=VGA_WIDTH || y2>=VGA_HEIGHT );
 
