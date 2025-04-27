@@ -24,6 +24,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed pixel artefacts on the bottom of credits and results screens."),
           _("Fixed pixel artefact on text update."),
+          _("Fixed Alt+right-click not pulling peasants from a Town in Classic mode."),
         },
       },
     },
