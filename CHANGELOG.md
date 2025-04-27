@@ -14,6 +14,9 @@ speaking, considered to be the player's experience.
 
 - Added clipboard keys (Ctrl+C, Ctrl+X, Ctrl+V) to input fields, such as the
   address of the "Enter Address" multiplayer option, map ID, and name fields.
+- Allow prepending to (adding to to the start of) production queues with
+  Ctrl+click, allowing quickly producing a unit without clearing the entire
+  queue.
 - Automatically copy the map ID to the clipboard when opening the in-game menu,
   allowing for easy copy-pasting of the map ID.
 - Automatically paste into the join address field, allowing for easy joining of

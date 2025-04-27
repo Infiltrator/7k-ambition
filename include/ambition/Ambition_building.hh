@@ -140,7 +140,8 @@ public:
   ) const;
 
   void enqueueProduction(
-    const ProductionRequest& request
+    const ProductionRequest& request,
+    const unsigned long long int order
   );
 
   Coordinates::Point getRallyLocation(

@@ -79,12 +79,14 @@ unsigned int enqueuedTrainingCount(
 
 bool enqueueProduction(
   const Firm* _7kaaFirm,
+  const unsigned long long int order,
   const int _7kaaUnitId,
   const unsigned int amount
 );
 
 bool enqueueTraining(
   Town* _7kaaTown,
+  const unsigned long long int order,
   const char _7kaaRaceId,
   const char _7kaaSkillId,
   const unsigned int amount

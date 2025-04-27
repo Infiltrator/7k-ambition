@@ -185,6 +185,7 @@ unsigned int enqueuedTrainingCount(
 
 bool enqueueProduction(
   const Firm* _7kaaFirm,
+  const unsigned long long int order,
   const int _7kaaUnitId,
   const unsigned int amount
 ) {
@@ -199,13 +200,15 @@ bool enqueueProduction(
       ._7kaaRaceId = -1,
       ._7kaaSkillId = _7kaaUnitId,
       .amount = amount,
-    }
+    },
+    order
   );
   return true;
 }
 
 bool enqueueTraining(
   Town* _7kaaTown,
+  const unsigned long long int order,
   const char _7kaaRaceId,
   const char _7kaaSkillId,
   const unsigned int amount
@@ -220,7 +223,8 @@ bool enqueueTraining(
       ._7kaaRaceId = _7kaaRaceId,
       ._7kaaSkillId = _7kaaSkillId,
       .amount = amount,
-    }
+    },
+    order
   );
   return true;
 }

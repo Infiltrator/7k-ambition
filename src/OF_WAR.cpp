@@ -307,6 +307,8 @@ int FirmWar::detect_build_menu()
 	int 	 	 unitId, x=INFO_X1+2, y=INFO_Y1, rc, quitFlag, waitFlag;
 	UnitInfo* unitInfo;
 
+	const auto queueOrder = (mouse.event_skey_state & CONTROL_KEY_MASK) ? 0 : -1;
+
 	waitFlag = 0;
 	for( int b = 0; b < added_count; ++b)
 	{
@@ -348,7 +350,7 @@ int FirmWar::detect_build_menu()
 
 			if( rc==1 )		// left button
 			{
-				if (Ambition::Building::enqueueProduction(this, unitId, createRemoveAmount)) {
+				if (Ambition::Building::enqueueProduction(this, queueOrder, unitId, createRemoveAmount)) {
 					se_ctrl.immediate_sound("TURN_ON");
 					if (quitFlag) {
 						info.disp();
@@ -446,7 +448,7 @@ int FirmWar::detect_build_menu()
 
 	if( queue_weapon_selected>=0 && ISKEY(KEYEVENT_MANUF_QUEUE_ADD) )
 	{
-		if (Ambition::Building::enqueueProduction(this, button_unit_id[queue_weapon_selected], 1)) {
+		if (Ambition::Building::enqueueProduction(this, queueOrder, button_unit_id[queue_weapon_selected], 1)) {
 			se_ctrl.immediate_sound("TURN_ON");
 			info.update();
 			return 1;
@@ -470,7 +472,7 @@ int FirmWar::detect_build_menu()
 
 	if( queue_weapon_selected>=0 && ISKEY(KEYEVENT_MANUF_QUEUE_ADD_BATCH) )
 	{
-		if (Ambition::Building::enqueueProduction(this, button_unit_id[queue_weapon_selected], FIRMWAR_BUILD_BATCH_COUNT)) {
+		if (Ambition::Building::enqueueProduction(this, queueOrder, button_unit_id[queue_weapon_selected], FIRMWAR_BUILD_BATCH_COUNT)) {
 			se_ctrl.immediate_sound("TURN_ON");
 			info.update();
 			return 1;
