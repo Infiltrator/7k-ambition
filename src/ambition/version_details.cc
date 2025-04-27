@@ -7,7 +7,7 @@ namespace Ambition::News {
 
 std::vector<VersionUpdates> versionDetails = {
   {
-    .identifier = _("Preview Version — not yet released"),
+    .identifier = _("Preview Version -- not yet released"),
     .sections = {
       {
         .heading = _("Added"),
@@ -31,7 +31,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.1.2 — 2025-04-20"),
+    .identifier = _("v3.1.2 -- 2025-04-20"),
     .sections = {
       {
         .heading = _("Added"),
@@ -63,7 +63,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.1.1 — 2025-04-12"),
+    .identifier = _("v3.1.1 -- 2025-04-12"),
     .sections = {
       {
         .heading = _("Added"),
@@ -84,7 +84,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.1.0 — 2025-04-06"),
+    .identifier = _("v3.1.0 -- 2025-04-06"),
     .sections = {
       {
         .heading = _("Added"),
@@ -118,7 +118,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.0.4 — 2025-03-16"),
+    .identifier = _("v3.0.4 -- 2025-03-16"),
     .sections = {
       {
         .heading = _("Added"),
@@ -144,7 +144,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.0.3 — 2025-03-07"),
+    .identifier = _("v3.0.3 -- 2025-03-07"),
     .sections = {
       {
         .heading = _("Added"),
@@ -161,12 +161,12 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.0.2 — 2025-03-04"),
+    .identifier = _("v3.0.2 -- 2025-03-04"),
     .sections = {
       {
         .heading = _("Added"),
         .items = {
-          _("Show town goods demand satisfaction (quality of life) to know how much goods are demanded and how much are being supplied—and thus the level of the bonus."),
+          _("Show town goods demand satisfaction (quality of life) to know how much goods are demanded and how much are being supplied--and thus the level of the bonus."),
           _("Show a progress bar for Towers of Science and War Factories."),
         },
       },
@@ -190,7 +190,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.0.1 — 2025-02-25"),
+    .identifier = _("v3.0.1 -- 2025-02-25"),
     .sections = {
       {
         .heading = _("Added"),
@@ -224,7 +224,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.0.0 — 2025-02-21"),
+    .identifier = _("v3.0.0 -- 2025-02-21"),
     .sections = {
       {
         .heading = _("Added"),
