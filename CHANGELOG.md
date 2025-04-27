@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.3] — 2025-04-27
+
 ### Added
 
 - Added clipboard keys (Ctrl+C, Ctrl+X, Ctrl+V) to input fields, such as the
