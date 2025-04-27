@@ -231,7 +231,7 @@ void Game::main_menu()
 		mouse.get_event();
 
 		refreshFlag = Ambition::Input::detectModeSelectClick();
-		refreshFlag = Ambition::Input::detectWhatsNewClick();
+		refreshFlag = Ambition::Input::detectWhatsNewClick() || refreshFlag;
 
 		optionInfo = main_option_array;
 
