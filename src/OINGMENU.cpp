@@ -99,6 +99,8 @@ void InGameMenu::enter(char untilExitFlag)
 
    power.win_opened = 1;
 
+	Ambition::Control::copyMapIdToClipboard();
+
    if( untilExitFlag )
    {
       auto cycle = 0;

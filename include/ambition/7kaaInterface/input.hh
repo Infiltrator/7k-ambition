@@ -25,11 +25,18 @@
 
 #pragma once
 
+class GetA;
+
+
 namespace _7kaaAmbitionInterface::Input {
 
 void calculateScroll(
   int& x,
   int& y
+);
+
+bool detectClipboardKeys(
+  GetA* textField
 );
 
 /**

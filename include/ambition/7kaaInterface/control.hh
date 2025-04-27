@@ -30,11 +30,19 @@ class VgaBuf;
 
 namespace _7kaaAmbitionInterface::Control {
 
+void copyMapIdToClipboard(
+);
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
 
 void displayNews(
+);
+
+void pasteFromClipboard(
+  char* destination,
+  const unsigned int maximumSize
 );
 
 void requestFeedback(
