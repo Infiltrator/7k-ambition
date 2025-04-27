@@ -22,6 +22,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _("Fixed"),
         .items = {
+          _("Fixed setting rally point from a Town using shift also pulling peasants."),
           _("Fixed pixel artefacts on the bottom of credits and results screens."),
           _("Fixed pixel artefact on text update."),
           _("Fixed Alt+right-click not pulling peasants from a Town in Classic mode."),
