@@ -261,7 +261,10 @@ int Town::draw_detect_link_line(int actionDetect)
 
 			//------ right clicking to recruit soldiers ------//
 
-			else if( rc==2 && !(mouse.event_skey_state & ALT_KEY_MASK) )
+			else if( rc==2
+				&& (!Ambition::Config::enhancementsAvailable()
+					|| (!(mouse.event_skey_state & ALT_KEY_MASK)
+						&& !(mouse.event_skey_state & SHIFT_KEY_MASK))))
 			{
 				if( firmPtr->nation_recno == nation_recno && !firmPtr->under_construction &&
 					 firmPtr->worker_array && firmPtr->worker_count < MAX_WORKER )

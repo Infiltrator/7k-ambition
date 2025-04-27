@@ -25,8 +25,10 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed setting rally point from a Town using shift also pulling peasants.
 - Fixed pixel artefacts on the bottom of credits and results screens.
 - Fixed pixel artefact on text update.
+- Fixed Alt+right-click not pulling peasants from a Town in Classic mode.
 
 
 ## [3.1.2] — 2025-04-20
