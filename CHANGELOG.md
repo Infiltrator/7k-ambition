@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.4] — 2025-04-28
+
 ### Fixed
 
 - Fixed spy change nation colours not working properly and corruption with

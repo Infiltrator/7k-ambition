@@ -7,7 +7,7 @@ namespace Ambition::News {
 
 std::vector<VersionUpdates> versionDetails = {
   {
-    .identifier = _("Preview Version -- not yet released"),
+    .identifier = _("3.1.4 -- 2025-04-28"),
     .sections = {
       {
         .heading = _("Fixed"),
