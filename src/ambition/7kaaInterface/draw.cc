@@ -434,6 +434,10 @@ bool printLeadershipStatus(
     return false;
   }
 
+  if (_7kaaUnit->is_own_spy()) {
+    return false;
+  }
+
   Ambition::printLeadershipStatus(_7kaaUnit, top, refreshFlag);
   return true;
 }
