@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed spy change nation colours not working properly and corruption with
+  buttons on info pane.  (Temporarly removed the leadership panel until a better
+  solution is implemented.)
+
 
 ## [3.1.3] — 2025-04-27
 

@@ -7,6 +7,17 @@ namespace Ambition::News {
 
 std::vector<VersionUpdates> versionDetails = {
   {
+    .identifier = _("Preview Version -- not yet released"),
+    .sections = {
+      {
+        .heading = _("Fixed"),
+        .items = {
+          _("Fixed spy change nation colours not working properly and corruption with buttons on info pane.  (Temporarly removed the leadership panel until a better solution is implemented.)"),
+        },
+      },
+    },
+  },
+  {
     .identifier = _("3.1.3 -- 2025-04-27"),
     .sections = {
       {
