@@ -51,7 +51,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Display unit leadership effect status in the info pane."),
           _("Make War Factory production queue unlimited, up from 20."),
           _("Make Harbour production queue unlimited, up from 10."),
-          _("Show the production queue size for Towns, Horbours, and War Factories over the production button, in a manner similar to the auto-tax."),
+          _("Show the production queue size for Towns, Harbours, and War Factories over the production button, in a manner similar to the auto-tax."),
         },
       },
       {
