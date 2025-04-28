@@ -747,6 +747,8 @@ static void i_disp_build_button(ButtonCustom *button, int repaintBody)
 			str += "<";
 
 		font_bible.put( x1+60, y1+13, str );
+
+		Ambition::Draw::buttonCost(font_bible, unitInfo->build_cost, x1, y1 + 13, x2 - 48, y2, -1);
 	}
 
 	// display small button

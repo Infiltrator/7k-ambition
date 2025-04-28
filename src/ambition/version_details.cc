@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_ADDED),
         .items = {
           _("Show building construction costs on buttons."),
+          _("Show war machine and ship construction costs on War Factory and Harbour build menus."),
         },
       },
       {

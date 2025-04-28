@@ -13,6 +13,8 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Show building construction costs on buttons.
+- Show war machine and ship construction costs on War Factory and Harbour build
+  menus.
 
 ### Changed
 
