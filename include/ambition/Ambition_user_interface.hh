@@ -147,6 +147,10 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
 );
 
 
+Size bitmapSize(
+  const char* bitmap
+);
+
 void drawPanel(
   const Rectangle rectangle
 );

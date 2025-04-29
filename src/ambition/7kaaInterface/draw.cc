@@ -33,6 +33,7 @@
 #include "OF_HARB.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
+#include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
@@ -595,6 +596,38 @@ void whatsNewButton(
 ) {
   Button3D button;
   button.paint(770, 550, "REPAIRU", "REPAIRD");
+}
+
+void workerSpyIcon(
+  const char** spyIconName,
+  const int left,
+  const int top,
+  const char* portraitBitmap
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (!*spyIconName) {
+    return;
+  }
+
+  const auto iconBitmap = image_icon.get_ptr(*spyIconName);
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+    {
+      .left = left,
+      .top = top,
+    },
+    Ambition::UserInterface::bitmapSize(portraitBitmap)
+  );
+  const auto iconArea = portraitArea.inner(2).internal(
+    Ambition::UserInterface::bitmapSize(iconBitmap),
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    Ambition::UserInterface::VerticalAlignment::Top
+  );
+
+  vga_front.put_bitmap(iconArea.start.left, iconArea.start.top, iconBitmap);
+  *spyIconName = nullptr;
 }
 
 } // namespace _7kaaAmbitionInterface::Draw

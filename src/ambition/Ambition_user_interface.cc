@@ -137,6 +137,16 @@ Rectangle Rectangle::internal(
 }
 
 
+Size bitmapSize(
+  const char* bitmap
+) {
+  const auto bitmapHeader = reinterpret_cast<const unsigned char*>(bitmap);
+  return {
+    .width = bitmapHeader[0] + (bitmapHeader[1] << 8),
+    .height = bitmapHeader[2] + (bitmapHeader[3] << 8),
+  };
+}
+
 void drawPanel(
   const Rectangle rectangle
 ) {

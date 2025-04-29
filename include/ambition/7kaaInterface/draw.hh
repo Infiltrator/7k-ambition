@@ -274,6 +274,13 @@ void unitWaypointsOnMinimap(
 void whatsNewButton(
 );
 
+void workerSpyIcon(
+  const char** spyIconName,
+  const int left,
+  const int top,
+  const char* portraitBitmap
+);
+
 } // namespace _7kaaAmbitionInterface::Draw
 
 #ifndef _AMBITION_IMPLEMENTATION

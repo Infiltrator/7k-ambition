@@ -19,6 +19,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_CHANGED),
         .items = {
+          _("Show Spy combat (in Forts) or primary skill (in other Firms) level in the worker list by moving the spy icon to the portrait."),
           _("Added thousands seperators to treasury and food store amounts, to make reading them easier.  (Currently, this uses groups of three with a comma as the seperator for everyone.  Proper localisation will be added later.)"),
         },
       },
