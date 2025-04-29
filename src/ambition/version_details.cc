@@ -5,12 +5,29 @@
 
 namespace Ambition::News {
 
+constexpr auto HEADING_ADDED = "Added";
+constexpr auto HEADING_FIXED = "Fixed";
+constexpr auto HEADING_CHANGED = "Changed";
+constexpr auto HEADING_REMOVED = "Removed";
+constexpr auto IDENTIFIER_PREVIEW = "Preview Version -- not yet released";
+
+
 std::vector<VersionUpdates> versionDetails = {
+  {
+    .identifier = _(IDENTIFIER_PREVIEW),
+    .sections = {
+      {
+        .heading = _(HEADING_ADDED),
+        .items = {
+        },
+      },
+    },
+  },
   {
     .identifier = _("3.1.4 -- 2025-04-28"),
     .sections = {
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed spy change nation colours not working properly and corruption with buttons on info pane.  (Temporarly removed the leadership panel until a better solution is implemented.)"),
         },
@@ -21,7 +38,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("3.1.3 -- 2025-04-27"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Added clipboard keys (Ctrl+C, Ctrl+X, Ctrl+V) to input fields, such as the address of the \"Enter Address\" multiplayer option, map ID, and name fields."),
           _("Allow prepending to (adding to to the start of) production queues with Ctrl+click, allowing quickly producing a unit without clearing the entire queue."),
@@ -31,7 +48,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed setting rally point from a Town using shift also pulling peasants."),
           _("Fixed pixel artefacts on the bottom of credits and results screens."),
@@ -45,7 +62,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.2 -- 2025-04-20"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Show an icon for units which are outside of their general's command range and so do not receive combat bonuses and are losing loyalty."),
           _("Display unit leadership effect status in the info pane."),
@@ -55,7 +72,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed desync when cancelling training in a Town."),
           _("Fixed alignment of town goods satisfaction, inn guest count, and worker list."),
@@ -65,7 +82,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Changed"),
+        .heading = _(HEADING_CHANGED),
         .items = {
           _("Display the type and level of war machines inside forts, for easier identification."),
           _("Harbour production queue persists even when the harbour is full (4 ships) instead of clearing the queue."),
@@ -77,7 +94,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.1 -- 2025-04-12"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Rally points can be toggled by setting the rally point to the same place again, in addition to alt-right-clicking on the building again."),
           _("Waypoints (and rally points) can now be set (and unset) with shift-right-click in addition to alt-right-click, to be more intuitive to people."),
@@ -86,7 +103,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed positioning of the colour box on the info pane for buildings and units."),
           _("Fixed porcupines and other not-attacking units not following waypoints."),
@@ -98,7 +115,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.0 -- 2025-04-06"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Added rally points for War Factory war machines."),
           _("Added rally points for Town peasants and trained units."),
@@ -109,13 +126,13 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed a crash on requesting a builder when one is on a ship."),
         },
       },
       {
-        .heading = _("Changed"),
+        .heading = _(HEADING_CHANGED),
         .items = {
           _("Make Town training queue unlimited, up from 10."),
           _("Use global research target for all new and newly idle Towers of Science, not just the ones that were present when first clicking."),
@@ -132,14 +149,14 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.4 -- 2025-03-16"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Added delete button to load game menu."),
           _("Show a progress bar on the map for town training."),
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed requested builder not being able to reach the destination building if there is no walkable path."),
           _("Fixed Inn hire button being enabled/disabled incorrectly."),
@@ -147,7 +164,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Changed"),
+        .heading = _(HEADING_CHANGED),
         .items = {
           _("Continue loading config.txt even when there are invalid lines, so that the valid ones still apply.  Then, once finished loading, display all the line numbers which contained errors, allowing fixing them."),
         },
@@ -158,13 +175,13 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.3 -- 2025-03-07"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Show a progress bar for Harbours.  (They were missed when Towers of Science and War Factories were done.)"),
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the town recruitment progress bar overlapping the buttons when a spy is present and the spy button is showing."),
         },
@@ -175,14 +192,14 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.2 -- 2025-03-04"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Show town goods demand satisfaction (quality of life) to know how much goods are demanded and how much are being supplied--and thus the level of the bonus."),
           _("Show a progress bar for Towers of Science and War Factories."),
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the unit path line (and building connection lines) animation speed breaking on game speed unlimited (9).  This should also fix the issue some users were having where moving the mouse would speed up the line animation."),
           _("Fixed the building hitbars looking kind of off and tilted."),
@@ -190,7 +207,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Changed"),
+        .heading = _(HEADING_CHANGED),
         .items = {
           _("Scale unit hitbar widths with the (square root of) their maximum hitpoints, to give a better idea of units' toughness at a glance."),
           _("Add more hitbar colours (dark green, orange, red) to make judging unit tougness easier."),
@@ -204,7 +221,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.1 -- 2025-02-25"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Added game speed display to top-right of the map and \"PAUSED\" in the middle."),
           _("Show the guest count in an inn, to make it easy to know whether scrolling is even required."),
@@ -212,14 +229,14 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed high CPU usage when moving the mouse cursor in-game.  This should also fix the unit path line looking like it's moving when the mouse cursor is moved."),
           _("Fixed minimap bounding box colours."),
         },
       },
       {
-        .heading = _("Changed"),
+        .heading = _(HEADING_CHANGED),
         .items = {
           _("Display inn guest list from newest at the top to oldest at the bottom, so that it's quicker to check inns for new mercenaries."),
           _("Preferentially use builders from undamaged buildings further away instead of from closer buildings that are still not fully repaired."),
@@ -238,7 +255,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.0 -- 2025-02-21"),
     .sections = {
       {
-        .heading = _("Added"),
+        .heading = _(HEADING_ADDED),
         .items = {
           _("Display the current running mode in top-right of the main menu."),
           _("Added a rudimentary running mode switcher accessible from a button at the top-right of the main menu."),
@@ -255,7 +272,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Fixed"),
+        .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the 100% CPU usage all the time problem."),
           _("Fixed scrolling to the right and down not working properly."),
@@ -266,7 +283,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _("Changed"),
+        .heading = _(HEADING_CHANGED),
         .items = {
           _("Use yellow colour for highlighting units on hover instead of cyan."),
           _("Made it easier to see when units are low on hitpoints by making the unit hitbars wider."),
