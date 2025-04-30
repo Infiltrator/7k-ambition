@@ -650,6 +650,8 @@ static void i_disp_build_button(ButtonCustom *button, int repaintBody)
 			FirmWar *warFactory = (FirmWar *)queueButton->custom_para.ptr;
 			int techLevel = unitInfo->get_nation_tech_level(warFactory->nation_recno);
 
+			Ambition::Draw::warMachineTechnologyLevel(&techLevel, x1 + BUILD_UNIT_ICON_OFFSET_X, y1 + BUILD_UNIT_ICON_OFFSET_Y, unitInfo->get_large_icon_ptr(0));
+
 			if( techLevel > 1 )
 			{
 				str += " ";

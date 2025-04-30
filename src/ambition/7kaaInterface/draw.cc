@@ -634,6 +634,38 @@ void unitWaypointsOnMinimap(
   }
 }
 
+void warMachineTechnologyLevel(
+  int* techLevel,
+  const int left,
+  const int top,
+  const char* portraitBitmap
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+    {
+      .left = left,
+      .top = top,
+    },
+    Ambition::UserInterface::bitmapSize(portraitBitmap)
+    // The bible font seems to have probelms with its sizing, with its height
+    // being 4 too much, and its width being at least 2 too little.
+  ).outer(0, 4).inner(2, 0);
+
+  Ambition::UserInterface::printText(
+    font_bible,
+    misc.roman_number(*techLevel),
+    portraitArea.inner(2),
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    Ambition::UserInterface::VerticalAlignment::Top
+  );
+
+  *techLevel = -1;
+}
+
 void whatsNewButton(
 ) {
   Button3D button;

@@ -282,6 +282,13 @@ void unitWaypointsOnMinimap(
   const Unit* _7kaaUnit
 );
 
+void warMachineTechnologyLevel(
+  int* techLevel,
+  const int left,
+  const int top,
+  const char* portraitBitmap
+);
+
 void whatsNewButton(
 );
 
