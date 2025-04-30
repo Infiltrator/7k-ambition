@@ -823,6 +823,16 @@ void printUnitContribution(
   Ambition::displayUnitContribution(unit, left, top);
 }
 
+void printWarMachineInBuildingInformation(
+  const Worker* _7kaaWorker
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::printWarMachineInBuildingInformation(_7kaaWorker);
+}
+
 void queueCount(
   const FirmHarbor* _7kaaHarbour
 ) {

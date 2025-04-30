@@ -1513,6 +1513,92 @@ void printMilitaryReportTotalCost(
   );
 }
 
+void printWarMachineInBuildingInformation(
+  const Worker* _7kaaWorker
+) {
+  constexpr UserInterface::Size FIELD_NAME_SIZE = {
+    .width = 98,
+    .height = 16,
+  };
+  constexpr UserInterface::Size FIELD_VALUE_SIZE = {
+    .width = 88,
+    .height = 16,
+  };
+  constexpr UserInterface::Size TOTAL_SIZE = {
+    .width = FIELD_NAME_SIZE.width + FIELD_VALUE_SIZE.width + 4,
+    .height = FIELD_NAME_SIZE.height * 2,
+  };
+
+  const auto FIELD_AREAS
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(4)
+    .inner(0, 174, 0, 0)
+    .inner(2)
+    .internal(TOTAL_SIZE);
+
+  const auto FIELD_1_NAME_AREA = FIELD_AREAS.internal(FIELD_NAME_SIZE);
+  const auto FIELD_1_VALUE_AREA = FIELD_AREAS.internal(
+    FIELD_VALUE_SIZE,
+    UserInterface::HorizontalAlignment::Right
+  );
+  const auto FIELD_2_NAME_AREA
+    = FIELD_AREAS
+    .inner(0, FIELD_NAME_SIZE.height, 0, 0)
+    .internal(FIELD_NAME_SIZE);
+  const auto FIELD_2_VALUE_AREA
+    = FIELD_AREAS
+    .inner(0, FIELD_NAME_SIZE.height, 0, 0)
+    .internal(
+      FIELD_VALUE_SIZE,
+      UserInterface::HorizontalAlignment::Right
+    );
+
+  if (!Unit::isWarMachine(_7kaaWorker)) {
+    UserInterface::printText(
+      font_san,
+      _("Loyalty"),
+      FIELD_1_NAME_AREA,
+      UserInterface::Clear::EntireArea
+    );
+    UserInterface::printText(
+      font_san,
+      _("Leadership"),
+      FIELD_2_NAME_AREA,
+      UserInterface::Clear::EntireArea
+    );
+    return;
+  }
+
+  const auto _7kaaUnitInformation = unit_res[_7kaaWorker->unit_id];
+
+  UserInterface::printText(
+    font_san,
+    _("Yearly Upkeep"),
+    FIELD_1_NAME_AREA,
+    UserInterface::Clear::EntireArea
+  );
+  UserInterface::printText(
+    font_san,
+    /* Adjust for the day accounting bug. */
+    format("$%'.0f", _7kaaUnitInformation->year_cost * 1.1),
+    FIELD_1_VALUE_AREA,
+    UserInterface::Clear::EntireArea
+  );
+
+  UserInterface::printText(
+    font_san,
+    _("Attack Range"),
+    FIELD_2_NAME_AREA,
+    UserInterface::Clear::EntireArea
+  );
+  UserInterface::printText(
+    font_san,
+    format("%'d", Unit::attackRange(_7kaaWorker)),
+    FIELD_2_VALUE_AREA,
+    UserInterface::Clear::EntireArea
+  );
+}
+
 void unlockBuffer(
   VgaBuf& buffer
 ) {

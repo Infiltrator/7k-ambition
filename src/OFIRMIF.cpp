@@ -760,6 +760,8 @@ void Firm::disp_worker_info(int dispY1, int refreshFlag)
 
 			font_san.field( x, y, _("Hit Points"), x+100, str, INFO_X2-2, refreshFlag);
 		}
+
+		Ambition::Draw::printWarMachineInBuildingInformation(workerPtr);
 	}
 }
 //----------- End of function Firm::disp_worker_info -----------//

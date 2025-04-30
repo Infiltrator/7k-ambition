@@ -38,6 +38,7 @@ class SnowLayer;
 class Town;
 class Unit;
 class VBrowseIF;
+class Worker;
 struct FirmBitmap;
 
 
@@ -340,6 +341,10 @@ void printUnitContribution(
   Unit* unit,
   const int left,
   const int top
+);
+
+void printWarMachineInBuildingInformation(
+  const Worker* _7kaaWorker
 );
 
 void queueCount(
