@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Changed
+
+- Added thousands seperators to treasury and food store amounts, to make reading
+  them easier.  (Currently, this uses groups of three with a comma as the
+  seperator for everyone.  Proper localisation will be added later.)
+
 
 ## [3.1.4] — 2025-04-28
 

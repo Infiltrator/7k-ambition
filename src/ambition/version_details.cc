@@ -17,8 +17,9 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = _(HEADING_CHANGED),
         .items = {
+          _("Added thousands seperators to treasury and food store amounts, to make reading them easier.  (Currently, this uses groups of three with a comma as the seperator for everyone.  Proper localisation will be added later.)"),
         },
       },
     },

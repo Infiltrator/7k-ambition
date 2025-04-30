@@ -608,16 +608,18 @@ const char* NationBase::king_name(int firstWordOnly)
 //
 char* NationBase::cash_str()
 {
+	const auto formatType = Ambition::Config::enhancementsAvailable() ? 1 : 4;
+
 	static String str;
 
 	if( cash >= 0 )
 	{
-		str = misc.format( (int)cash, 4 );			// format type 4 - no thousand separators
+		str = misc.format( (int)cash, formatType );			// format type 4 - no thousand separators
 	}
 	else
 	{
 		str  = "-";
-		str += misc.format( (int)-cash, 4 );		// format type 4 - no thousand separators
+		str += misc.format( (int)-cash, formatType );		// format type 4 - no thousand separators
 	}
 
 	//--------------------------------------//
@@ -633,7 +635,7 @@ char* NationBase::cash_str()
 		else
 			str += "-";
 
-		str += misc.format( abs(curProfit), 4 ); 	// format type 4 - no thousand separators
+		str += misc.format( abs(curProfit), formatType ); 	// format type 4 - no thousand separators
 		str += ")";
 	}
 
@@ -649,16 +651,18 @@ char* NationBase::cash_str()
 //
 char* NationBase::food_str()
 {
+	const auto formatType = Ambition::Config::enhancementsAvailable() ? 1 : 4;
+
 	static String str;
 
 	if( food >= 0 )
 	{
-		str = misc.format( (int)food, 4 );			// format type 4 - no thousand separators
+		str = misc.format( (int)food, formatType );			// format type 4 - no thousand separators
 	}
 	else
 	{
 		str  = "-";
-		str += misc.format( (int)-food, 4 );		// format type 4 - no thousand separators
+		str += misc.format( (int)-food, formatType );		// format type 4 - no thousand separators
 	}
 
 	//--------------------------------------//
@@ -674,7 +678,7 @@ char* NationBase::food_str()
 		else
 			str += "-";
 
-		str += misc.format( abs(foodChange), 4 ); 	// format type 4 - no thousand separators
+		str += misc.format( abs(foodChange), formatType ); 	// format type 4 - no thousand separators
 		str += ")";
 	}
 
