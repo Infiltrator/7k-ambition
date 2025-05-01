@@ -147,6 +147,10 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
 );
 
 
+void drawPanel(
+  const Rectangle rectangle
+);
+
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()

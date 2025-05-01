@@ -137,6 +137,17 @@ Rectangle Rectangle::internal(
 }
 
 
+void drawPanel(
+  const Rectangle rectangle
+) {
+  vga_util.d3_panel_up(
+    rectangle.start.left,
+    rectangle.start.top,
+    rectangle.end.left,
+    rectangle.end.top
+  );
+}
+
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport

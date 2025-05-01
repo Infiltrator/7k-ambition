@@ -836,17 +836,6 @@ void drawOutsideLeadershipIcon(
   );
 }
 
-void drawPanel(
-  UserInterface::Rectangle rectangle
-) {
-  vga_util.d3_panel_up(
-    rectangle.start.left,
-    rectangle.start.top,
-    rectangle.end.left,
-    rectangle.end.top
-  );
-}
-
 void drawTownTrainingProgressBar(
   const Town* town
 ) {

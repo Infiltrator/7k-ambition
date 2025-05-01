@@ -234,10 +234,6 @@ void drawOutsideLeadershipIcon(
   const ::Unit* _7kaaUnit
 );
 
-void drawPanel(
-  UserInterface::Rectangle rectangle
-);
-
 void drawTownTrainingProgressBar(
   const Town* town
 );
