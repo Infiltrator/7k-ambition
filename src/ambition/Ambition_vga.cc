@@ -752,29 +752,25 @@ void drawInnGuestCount(
   const short count,
   const int refreshFlag
 ) {
-  constexpr auto PANEL_TOP = INFO_Y1 + 50;
-  constexpr auto PANEL_BOTTOM = PANEL_TOP + 24;
-  const auto fieldLeft = UserInterface::INFO_PANE_CONTENTS.start.left + 4;
-  const auto fieldValueLeft = fieldLeft + 100;
-  const auto fieldRight = UserInterface::INFO_PANE_CONTENTS.end.left - 4;
-  constexpr auto FIELD_TOP = PANEL_TOP + 3;
+  const auto panel = UserInterface::INFO_PANE_CONTENTS.inner(0, 50).internal(
+    {
+      .width = UserInterface::INFO_PANE_CONTENTS.width(),
+      .height = 24,
+    }
+  );
+  const auto field = panel.inner(4, 3);
 
   if (refreshFlag == INFO_REPAINT) {
-    vga_util.d3_panel_up(
-      UserInterface::INFO_PANE_CONTENTS.start.left,
-      PANEL_TOP,
-      UserInterface::INFO_PANE_CONTENTS.end.left,
-      PANEL_BOTTOM
-    );
+    UserInterface::drawPanel(panel);
   }
   font_san.field(
-    fieldLeft,
-    FIELD_TOP,
+    field.start.left,
+    field.start.top,
     _("Guests"),
-    fieldValueLeft,
+    field.start.left + 100,
     count,
     1,
-    fieldRight,
+    field.end.left,
     refreshFlag
   );
 }
