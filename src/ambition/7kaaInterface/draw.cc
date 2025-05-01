@@ -247,6 +247,22 @@ short calculateAnimatedLinePhase(
   );
 }
 
+int calculateDoneButtonWidth(
+  const int _7kaaCalculation,
+  const Firm* firm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  // The harbour UI is a different size to the War Factory (for now).
+  if (dynamic_cast<const FirmHarbor*>(firm)) {
+    return 84;
+  }
+
+  return 80;
+}
+
 FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm

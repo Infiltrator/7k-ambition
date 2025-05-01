@@ -21,6 +21,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Show building construction costs on buttons."),
           _("Show war machine and ship construction costs on War Factory and Harbour build menus."),
+          _("Show total production queue count and cost for War Factories and Harbours."),
         },
       },
       {

@@ -30,6 +30,7 @@
 #include "OF_HARB.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
+#include "OFONT.h"
 #include "OIMGRES.h"
 #include "OREMOTE.h"
 #include "OTOWN.h"
@@ -291,6 +292,99 @@ unsigned int Building::enqueuedProductionCount(
   }
 
   return count;
+}
+
+void Building::drawProductionQueueTotals(
+  const int refreshFlag,
+  const int doneButtonRight,
+  const int top,
+  const int bottom
+) const {
+  auto _7kaaObject = underlying7kaaObject();
+  const auto _7kaaWarFactory = dynamic_cast<const FirmWar*>(_7kaaObject.object.firm);
+  const auto _7kaaHarbour = dynamic_cast<const FirmHarbor*>(_7kaaObject.object.firm);
+
+  const auto buildQueueCount
+    = _7kaaWarFactory
+    ? _7kaaWarFactory->build_queue_count
+    : _7kaaHarbour->build_queue_count;
+  const auto buildQueueArray
+    = _7kaaWarFactory
+    ? _7kaaWarFactory->build_queue_array
+    : _7kaaHarbour->build_queue_array;
+  const auto buildUnitId
+    = _7kaaWarFactory
+    ? _7kaaWarFactory->build_unit_id
+    : _7kaaHarbour->build_unit_id;
+
+  auto totalCost = 0;
+  auto totalQueuedCount = 0;
+  for (auto unitId = 1; unitId <= MAX_UNIT_TYPE; unitId++) {
+    const auto unitInfo = unit_res[unitId];
+
+    auto queuedCount = 0;
+    for (auto i = 0 ; i < buildQueueCount; i++) {
+      if (buildQueueArray[i] == unitId) {
+        queuedCount++;
+      }
+    }
+    if (buildUnitId == unitId) {
+      queuedCount++;
+    }
+    queuedCount += enqueuedProductionCount(unitId);
+
+    totalQueuedCount += queuedCount;
+    totalCost += unitInfo->build_cost * queuedCount;
+  }
+
+  const auto costString = format("$%'d", totalCost);
+  const auto textWidth = font_mid.text_width(costString.c_str());
+
+  constexpr auto BOTTOM_PADDING = 8;
+  constexpr auto COUNT_PANEL_WIDTH = 30;
+  constexpr auto PANEL_WIDTH = 108;
+  constexpr auto BUTTON_PANEL_GAP = 12;
+
+  const auto panel = Ambition::UserInterface::Rectangle::fromPoint(
+    {
+      .left = doneButtonRight,
+      .top = top,
+    },
+    {
+      .width = PANEL_WIDTH,
+      .height = bottom - top + 1,
+    }
+  ).inner(BUTTON_PANEL_GAP, 2, 0);
+
+  const auto countPanel = panel.internal(
+    {
+      .width = COUNT_PANEL_WIDTH,
+      .height = panel.height(),
+    },
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+
+  if (refreshFlag == INFO_REPAINT) {
+    Ambition::UserInterface::drawPanel(panel);
+    Ambition::UserInterface::drawPanel(countPanel);
+  }
+
+  Ambition::UserInterface::printText(
+    font_bible,
+    costString,
+    panel.inner(0, 0, countPanel.width() + 4, BOTTOM_PADDING - 4),
+    Ambition::UserInterface::Clear::EntireArea,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    Ambition::UserInterface::VerticalAlignment::Bottom
+  );
+  Ambition::UserInterface::printText(
+    font_mid,
+    format("%d", totalQueuedCount),
+    countPanel.inner(0, 0, 0, BOTTOM_PADDING),
+    Ambition::UserInterface::Clear::EntireArea,
+    Ambition::UserInterface::HorizontalAlignment::Centre,
+    Ambition::UserInterface::VerticalAlignment::Bottom
+  );
 }
 
 void Building::drawRallyButton(

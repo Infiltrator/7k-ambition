@@ -130,6 +130,11 @@ short calculateAnimatedLinePhase(
   const int lineProgress
 );
 
+int calculateDoneButtonWidth(
+  const int _7kaaCalculation,
+  const Firm* firm
+);
+
 FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm

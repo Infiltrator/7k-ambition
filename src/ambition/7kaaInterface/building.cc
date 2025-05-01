@@ -229,6 +229,26 @@ bool enqueueTraining(
   return true;
 }
 
+void printProductionQueueTotals(
+  const Firm* _7kaaFirm,
+  const int refreshFlag,
+  const int doneButtonRight,
+  const int top,
+  const int bottom
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  auto building = Ambition::Building::getBy7kaaFirm(_7kaaFirm);
+  building->drawProductionQueueTotals(
+    refreshFlag,
+    doneButtonRight,
+    top,
+    bottom
+  );
+}
+
 bool printWarMachineIdentifier(
   const Worker* _7kaaWorker,
   const int left,

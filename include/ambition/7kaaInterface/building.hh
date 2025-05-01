@@ -92,6 +92,14 @@ bool enqueueTraining(
   const unsigned int amount
 );
 
+void printProductionQueueTotals(
+  const Firm* _7kaaFirm,
+  const int refreshFlag,
+  const int doneButtonRight,
+  const int top,
+  const int bottom
+);
+
 bool printWarMachineIdentifier(
   const Worker* _7kaaWorker,
   const int left,

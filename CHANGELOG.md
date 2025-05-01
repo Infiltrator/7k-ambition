@@ -15,6 +15,7 @@ speaking, considered to be the player's experience.
 - Show building construction costs on buttons.
 - Show war machine and ship construction costs on War Factory and Harbour build
   menus.
+- Show total production queue count and cost for War Factories and Harbours.
 
 ### Changed
 

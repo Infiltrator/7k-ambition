@@ -129,6 +129,13 @@ public:
   bool destroyed(
   ) const;
 
+  void drawProductionQueueTotals(
+    const int refreshFlag,
+    const int doneButtonRight,
+    const int top,
+    const int bottom
+  ) const;
+
   void drawRallyButton(
   ) const;
 
