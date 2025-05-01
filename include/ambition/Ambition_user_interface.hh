@@ -27,8 +27,27 @@
 
 #include "Ambition_coordinates.hh"
 
+class Font;
+
 
 namespace Ambition::UserInterface {
+
+enum class Clear {
+  None,
+  TextArea,
+  EntireArea,
+};
+
+enum class HorizontalAlignment {
+  Left,
+  Centre,
+  Right,
+};
+enum class VerticalAlignment {
+  Top,
+  Centre,
+  Bottom,
+};
 
 struct Point {
   int left;
@@ -80,6 +99,12 @@ struct Rectangle {
     int marginRight = -1,
     int marginBottom = -1
   ) const;
+
+  Rectangle internal(
+    const Size size,
+    const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
+    const VerticalAlignment verticalAlignment = VerticalAlignment::Top
+  ) const;
 };
 
 
@@ -125,6 +150,15 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
+);
+
+void printText(
+  Font& font,
+  const std::string text,
+  const Rectangle area,
+  const Clear clear = Clear::None,
+  const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
+  const VerticalAlignment verticalAlignment = VerticalAlignment::Top
 );
 
 } // namespace Ambition::UserInterface

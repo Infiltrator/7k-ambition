@@ -165,7 +165,14 @@ void display(
 
   vga_util.disp_image_file("RESULTS");
 
-  Ambition::printTextCentred(font_bard, _("WHAT'S NEW"), HEADING);
+  printText(
+    font_bard,
+    _("WHAT'S NEW"),
+    HEADING,
+    UserInterface::Clear::EntireArea,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
 
   vga_util.d3_panel_up(
     TEXT_BOX.start.left,
