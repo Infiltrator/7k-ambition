@@ -77,14 +77,14 @@ struct Rectangle {
     return {
       .start = start,
       .end = {
-        .left = start.left + size.width,
-        .top = start.top + size.height,
+        .left = start.left + size.width - 1,
+        .top = start.top + size.height - 1,
       },
     };
   }
 
-  inline int width() const { return end.left - start.left; }
-  inline int height() const { return end.top - start.top; }
+  inline int width() const { return end.left - start.left + 1; }
+  inline int height() const { return end.top - start.top + 1; }
 
   Rectangle inner(
     int paddingLeft,
