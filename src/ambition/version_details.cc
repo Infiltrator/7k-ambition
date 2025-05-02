@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Show building construction costs on buttons."),
+        },
+      },
+      {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Show Spy combat (in Forts) or primary skill (in other Firms) level in the worker list by moving the spy icon to the portrait."),

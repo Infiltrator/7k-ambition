@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show building construction costs on buttons.
+
 ### Changed
 
 - Show Spy combat (in Forts) or primary skill (in other Firms) level in the

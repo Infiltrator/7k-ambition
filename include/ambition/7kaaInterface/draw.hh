@@ -29,6 +29,7 @@ class Button3D;
 class Firm;
 class FirmHarbor;
 class FirmWar;
+class Font;
 class MapMatrix;
 class SnowLayer;
 class Town;
@@ -111,6 +112,16 @@ void buildingRallyPoint(
 );
 void buildingRallyPoint(
   Town* _7kaaTown
+);
+
+void buttonCost(
+  Font& font,
+  const int cost,
+  const int left,
+  const int top,
+  const int right,
+  const int bottom,
+  const int verticalAlignment = 1
 );
 
 short calculateAnimatedLinePhase(

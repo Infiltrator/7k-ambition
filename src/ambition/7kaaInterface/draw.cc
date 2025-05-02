@@ -33,6 +33,7 @@
 #include "OF_HARB.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
+#include "OFONT.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OTOWN.h"
@@ -188,6 +189,47 @@ void buildingRallyPoint(
   }
 
   Ambition::drawBuildingRallyPoint(_7kaaTown);
+}
+
+void buttonCost(
+  Font& font,
+  const int cost,
+  const int left,
+  const int top,
+  const int right,
+  const int bottom,
+  const int verticalAlignment
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::UserInterface::VerticalAlignment alignment;
+  if (verticalAlignment < 0) {
+    alignment = Ambition::UserInterface::VerticalAlignment::Top;
+  } else if (verticalAlignment == 0) {
+    alignment = Ambition::UserInterface::VerticalAlignment::Centre;
+  } else {
+    alignment = Ambition::UserInterface::VerticalAlignment::Bottom;
+  }
+
+  printText(
+    font,
+    misc.format(cost, 2),
+    {
+      .start = {
+        .left = left,
+        .top = top,
+      },
+      .end = {
+        .left = right,
+        .top = bottom,
+      },
+    },
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    alignment
+  );
 }
 
 short calculateAnimatedLinePhase(
