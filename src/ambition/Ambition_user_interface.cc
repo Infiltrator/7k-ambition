@@ -47,10 +47,14 @@ Rectangle Rectangle::inner(
     paddingBottom = paddingTop;
   }
 
-  paddingLeft = std::min(paddingLeft, (width() - 1) / 2);
-  paddingTop = std::min(paddingTop, (height() - 1) / 2);
-  paddingRight = std::min(paddingRight, (width() - 1) / 2);
-  paddingBottom = std::min(paddingBottom, (height() - 1) / 2);
+  if (paddingLeft + paddingRight >= width()) {
+    paddingLeft = std::min(paddingLeft, (width() - 1) / 2);
+    paddingRight = std::min(paddingRight, (width() - 1) / 2);
+  }
+  if (paddingTop + paddingBottom >= height()) {
+    paddingTop = std::min(paddingTop, (height() - 1) / 2);
+    paddingBottom = std::min(paddingBottom, (height() - 1) / 2);
+  }
 
   return {
     .start = {
