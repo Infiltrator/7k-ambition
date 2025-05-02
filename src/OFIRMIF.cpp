@@ -513,6 +513,8 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 
 			//--------------------------------------//
 
+			Ambition::Draw::workerSpyIcon(&spyIconName, x + 2, y + 2, workerPtr->small_icon_ptr());
+
 			if( spyIconName )
 			{
 				vga_front.put_bitmap( x+30, y+6, image_icon.get_ptr(spyIconName) );
