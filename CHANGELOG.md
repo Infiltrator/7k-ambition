@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.5] — 2025-05-03
+
 ### Added
 
 - Show building construction costs on buttons.
