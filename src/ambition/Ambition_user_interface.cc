@@ -26,7 +26,9 @@
 #include "Ambition_user_interface.hh"
 
 #define _AMBITION_IMPLEMENTATION
+#include "OFONT.h"
 #include "OWORLD.h"
+#include "vga_util.h"
 
 
 namespace Ambition::UserInterface {
@@ -47,10 +49,14 @@ Rectangle Rectangle::inner(
     paddingBottom = paddingTop;
   }
 
-  paddingLeft = std::min(paddingLeft, (width() - 1) / 2);
-  paddingTop = std::min(paddingTop, (height() - 1) / 2);
-  paddingRight = std::min(paddingRight, (width() - 1) / 2);
-  paddingBottom = std::min(paddingBottom, (height() - 1) / 2);
+  if (paddingLeft + paddingRight >= width()) {
+    paddingLeft = std::min(paddingLeft, (width() - 1) / 2);
+    paddingRight = std::min(paddingRight, (width() - 1) / 2);
+  }
+  if (paddingTop + paddingBottom >= height()) {
+    paddingTop = std::min(paddingTop, (height() - 1) / 2);
+    paddingBottom = std::min(paddingBottom, (height() - 1) / 2);
+  }
 
   return {
     .start = {
@@ -92,6 +98,55 @@ Rectangle Rectangle::outer(
   };
 }
 
+Rectangle Rectangle::internal(
+  const Size size,
+  const HorizontalAlignment horizontalAlignment,
+  const VerticalAlignment verticalAlignment
+) const {
+  const auto horizontalSpace = width() - size.width;
+  const auto verticalSpace = height() - size.height;
+
+  int paddingLeft;
+  int paddingTop;
+  int paddingRight;
+  int paddingBottom;
+
+  if (horizontalAlignment == HorizontalAlignment::Left) {
+    paddingLeft = 0;
+    paddingRight = horizontalSpace;
+  } else if (horizontalAlignment == HorizontalAlignment::Centre) {
+    paddingLeft = horizontalSpace / 2;
+    paddingRight = horizontalSpace / 2;
+  } else if (horizontalAlignment == HorizontalAlignment::Right) {
+    paddingLeft = horizontalSpace;
+    paddingRight = 0;
+  }
+
+  if (verticalAlignment == VerticalAlignment::Top) {
+    paddingTop = 0;
+    paddingBottom = verticalSpace;
+  } else if (verticalAlignment == VerticalAlignment::Centre) {
+    paddingTop = verticalSpace / 2;
+    paddingBottom = verticalSpace / 2;
+  } else if (verticalAlignment == VerticalAlignment::Bottom) {
+    paddingTop = verticalSpace;
+    paddingBottom = 0;
+  }
+
+  return inner(paddingLeft, paddingTop, paddingRight, paddingBottom);
+}
+
+
+void drawPanel(
+  const Rectangle rectangle
+) {
+  vga_util.d3_panel_up(
+    rectangle.start.left,
+    rectangle.start.top,
+    rectangle.end.left,
+    rectangle.end.top
+  );
+}
 
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
@@ -103,6 +158,46 @@ Point fromWorldPoint(
     .left = static_cast<int>(ZOOM_X1 + ZOOM_LOC_WIDTH / 2 + (relative.x * 2)),
     .top = static_cast<int>(ZOOM_Y1 + ZOOM_LOC_HEIGHT / 2 - (relative.y * 2)),
   };
+}
+
+void printText(
+  Font& font,
+  const std::string text,
+  const UserInterface::Rectangle area,
+  const Clear clear,
+  const HorizontalAlignment horizontalAlignment,
+  const VerticalAlignment verticalAlignment
+) {
+  const auto textWidth = font.text_width(text.c_str());
+  const auto textHeight = font.text_height();
+
+  const auto textArea = area.internal(
+    {
+      .width = textWidth + 1,
+      .height = textHeight + 1,
+    },
+    horizontalAlignment,
+    verticalAlignment
+  );
+
+  if (clear != Clear::None) {
+    const auto clearArea = clear == Clear::EntireArea ? area : textArea;
+    vga_util.blt_buf(
+      clearArea.start.left,
+      clearArea.start.top,
+      clearArea.end.left,
+      clearArea.end.top,
+      0
+    );
+  }
+
+  font.put(
+    textArea.start.left,
+    textArea.start.top,
+    text.c_str(),
+    0,
+    textArea.end.left
+  );
 }
 
 } // namespace Ambition::UserInterface

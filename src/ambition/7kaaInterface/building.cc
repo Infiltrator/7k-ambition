@@ -256,7 +256,7 @@ bool printWarMachineIdentifier(
   }
   text += format("%d", _7kaaWorker->extra_para);
 
-  Ambition::printText(
+  Ambition::UserInterface::printText(
     font_san,
     text,
     {

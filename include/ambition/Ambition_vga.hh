@@ -234,10 +234,6 @@ void drawOutsideLeadershipIcon(
   const ::Unit* _7kaaUnit
 );
 
-void drawPanel(
-  UserInterface::Rectangle rectangle
-);
-
 void drawTownTrainingProgressBar(
   const Town* town
 );
@@ -260,17 +256,6 @@ void printLeadershipStatus(
   ::Unit *_7kaaUnit,
   const int top,
   const int refreshFlag
-);
-
-void printText(
-  Font& font,
-  std::string text,
-  UserInterface::Rectangle location
-);
-void printTextCentred(
-  Font& font,
-  std::string text,
-  UserInterface::Rectangle location
 );
 
 /**
