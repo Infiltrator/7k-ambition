@@ -378,9 +378,14 @@ void Town::disp_main_menu(int refreshFlag)
 		{
 			button_recruit.paint( BUTTON_X1, y, 'A', "RECRUIT" );
 
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_TOWN_RECRUIT), button_recruit);
+
 			if( has_linked_own_camp )
 			{
 				button_train.paint( BUTTON_X1+BUTTON_ACTION_WIDTH, y, 'A', "TRAIN" );
+
+				Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_TOWN_TRAIN), button_train);
+
 				button_tax.paint( BUTTON_X1+BUTTON_ACTION_WIDTH*2, y, 'A', "COLLTAX" );
 				button_grant.paint( BUTTON_X1+BUTTON_ACTION_WIDTH*3, y, 'A', "GRANT" );
 

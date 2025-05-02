@@ -341,6 +341,9 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 	{
 		button_build.paint( SHIP_DET_X1, SHIP_DET_Y2+4, 'A', "MAKESHIP" );
 		button_sail.paint ( SHIP_DET_X1+BUTTON_ACTION_WIDTH, SHIP_DET_Y2+4, 'A', "SAILOUT" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_PATROL), button_sail);
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_BUILD), button_build);
 	}
 
 	Ambition::Draw::queueCount(this);

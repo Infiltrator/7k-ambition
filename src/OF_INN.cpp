@@ -392,6 +392,8 @@ void FirmInn::put_det(int refreshFlag)
 		if( refreshFlag == INFO_REPAINT )
 		{
 			button_hire.paint( HIRE_DET_X1, HIRE_DET_Y2+4, 'A', "HIREUNIT" );
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_PATROL), button_hire);
 		}
 		else
 		{

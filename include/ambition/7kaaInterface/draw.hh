@@ -25,6 +25,7 @@
 
 #pragma once
 
+class Button;
 class Button3D;
 class Firm;
 class FirmHarbor;
@@ -122,6 +123,22 @@ void buttonCost(
   const int right,
   const int bottom,
   const int verticalAlignment = 1
+);
+
+void buttonKeybind(
+  const unsigned int keyCode,
+  const int left,
+  const int top,
+  const int right,
+  const int bottom
+);
+void buttonKeybind(
+  const unsigned int keyCode,
+  const Button& button
+);
+void buttonKeybind(
+  const unsigned int keyCode,
+  const Button3D& button
 );
 
 short calculateAnimatedLinePhase(

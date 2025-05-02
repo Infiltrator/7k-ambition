@@ -166,6 +166,9 @@ void FirmWar::disp_main_menu(int refreshFlag)
 		if (refreshFlag == INFO_REPAINT)
 		{	
 			button_select_build.paint(INFO_X1, INFO_Y1 + 235, 'A', "MAKEWEAP");
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_BUILD), button_select_build);
+
 			button_vacate_firm.paint(INFO_X1 + BUTTON_ACTION_WIDTH, INFO_Y1 + 235, 'A', "RECRUIT");
 			button_vacate_firm.set_help_code("MOBILIZE");
 		}

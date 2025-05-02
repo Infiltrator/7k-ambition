@@ -438,6 +438,9 @@ void Unit::disp_button(int dispY1)
 			 nation_recno == nation_array.player_recno ) 	// a spy cannot build structure for another nation
 		{
 			button_build.paint( x, dispY1, 'A', "BUILD" );
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_UNIT_BUILD), button_build);
+
 			x += BUTTON_ACTION_WIDTH;
 		}
 
@@ -446,6 +449,9 @@ void Unit::disp_button(int dispY1)
 		if( mobile_type==UNIT_LAND && rank_id != RANK_KING )
 		{
 			button_settle.paint( x, dispY1, 'A', "SETTLE" );
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_UNIT_SETTLE), button_settle);
+
 			x += BUTTON_ACTION_WIDTH;
 		}
 
@@ -519,6 +525,9 @@ void Unit::disp_button(int dispY1)
 		 firm_array[home_camp_firm_recno]->region_id == region_id() )
 	{
 		button_return_camp.paint( x, dispY1, 'A', "RETCAMP" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_UNIT_RETURN), button_return_camp);
+
 		x += BUTTON_ACTION_WIDTH;
 
 		if( x+BUTTON_ACTION_WIDTH-5 > INFO_X2 )
@@ -1715,6 +1724,15 @@ static void disp_firm_button(ButtonCustom *button, int)
 
 	vga_front.put_bitmap_trans_remap_decompress(button->x1, button->y1,	bitmap, (char*) button->custom_para.ptr);
 
+	auto firmIndex = 0;
+	for(auto i = 0; i < MAX_FIRM_TYPE; i++) {
+		if (build_firm_button_order[i] == firmId) {
+			firmIndex = i;
+			break;
+		}
+	}
+
+	Ambition::Draw::buttonKeybind(GETKEY(button_build_hotkey[firmIndex]), button->x1, button->y1, button->x2, button->y2);
 	Ambition::Draw::buttonCost(font_small, firm_res[firmId]->setup_cost, button->x1, button->y1, button->x2 - 4, button->y2 - 3);
 
 	if( button->pushed_flag )

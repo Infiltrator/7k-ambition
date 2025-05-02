@@ -21,6 +21,8 @@
 //Filename    : OF_MARK.CPP
 //Description : Firm Market Place
 
+#include "ambition/7kaaInterface/draw.hh"
+
 #include "OCONFIG.h"
 #include <OINFO.h>
 #include "OVGABUF.h"
@@ -252,7 +254,11 @@ void FirmMarket::put_info(int refreshFlag)
 	disp_income(INFO_Y1+209, refreshFlag );	  // 1-display income figure
 
 	if( refreshFlag == INFO_REPAINT )
+	{
 		button_hire_caravan.paint( INFO_X1, INFO_Y1+251, 'A', "HIRECARA" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_PATROL), button_hire_caravan);
+	}
 
 	if( can_hire_caravan() )
 		button_hire_caravan.enable();

@@ -22,6 +22,7 @@
 //Description : Firm Magic Tower
 
 #include "ambition/7kaaInterface/building.hh"
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/polity.hh"
 
 #include <OINFO.h>
@@ -159,6 +160,9 @@ void FirmResearch::disp_main_menu(int refreshFlag)
 		if (refreshFlag == INFO_REPAINT)
 		{
 			button_select_research.paint(INFO_X1, INFO_Y1 + 235, 'A', "RESEARCH");
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_BUILD), button_select_research);
+
 			button_vacate_firm.paint(INFO_X1 + BUTTON_ACTION_WIDTH, INFO_Y1 + 235, 'A', "RECRUIT");
 			button_vacate_firm.set_help_code("MOBILIZE");
 		}

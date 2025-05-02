@@ -155,6 +155,10 @@ void drawPanel(
   const Rectangle rectangle
 );
 
+std::string keyString(
+  const unsigned int keyCode
+);
+
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()

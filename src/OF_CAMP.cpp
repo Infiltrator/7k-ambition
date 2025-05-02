@@ -371,6 +371,9 @@ void FirmCamp::put_info(int refreshFlag)
 		if( refreshFlag==INFO_REPAINT )
 		{
 			button_patrol.paint( INFO_X1, INFO_Y1+242+yOffset, 'A', "PATROL" );
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_PATROL), button_patrol);
+
 			button_reward.paint( INFO_X1+BUTTON_ACTION_WIDTH, INFO_Y1+242+yOffset, 'A', "REWARDCB" );
 			button_defense.paint( INFO_X2-BUTTON_ACTION_WIDTH, INFO_Y1+242+yOffset, 'A', defense_flag ? (char*)"DEFENSE1" : (char*)"DEFENSE0" );
 		}
