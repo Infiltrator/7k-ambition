@@ -10,6 +10,13 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show building construction costs on buttons.
+- Show war machine and ship construction costs on War Factory and Harbour build
+  menus.
+- Show total production queue count and cost for War Factories and Harbours.
+
 ### Changed
 
 - Show Spy combat (in Forts) or primary skill (in other Firms) level in the
@@ -17,6 +24,9 @@ speaking, considered to be the player's experience.
 - Added thousands seperators to treasury and food store amounts, to make reading
   them easier.  (Currently, this uses groups of three with a comma as the
   seperator for everyone.  Proper localisation will be added later.)
+- Show the war machine technology level on the portrait, instead of as part of
+  the name, on the War Factory build list.  This frees up some room for more
+  information.
 
 
 ## [3.1.4] — 2025-04-28

@@ -639,10 +639,12 @@ void FirmHarbor::disp_build_menu(int refreshFlag)
 		if( !added_count || queue_ship_selected >= added_count)
 			queue_ship_selected = -1;
 
-		button_cancel.paint(x, y, x+BUILD_BUTTON_WIDTH-1, y+BUILD_BUTTON_HEIGHT*3/4,
+		button_cancel.paint(x, y, x+Ambition::Draw::calculateDoneButtonWidth(BUILD_BUTTON_WIDTH, this)-1, y+BUILD_BUTTON_HEIGHT*3/4,
 			ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Done"),0) );
 	}
 	// ###### end Gilbert 20/9 ######//
+
+	Ambition::Building::printProductionQueueTotals(this, refreshFlag, button_cancel.x2, button_cancel.y1, button_cancel.y2);
 }
 //----------- End of function FirmHarbor::disp_build_menu -----------//
 
@@ -747,6 +749,8 @@ static void i_disp_build_button(ButtonCustom *button, int repaintBody)
 			str += "<";
 
 		font_bible.put( x1+60, y1+13, str );
+
+		Ambition::Draw::buttonCost(font_bible, unitInfo->build_cost, x1, y1 + 13, x2 - 48, y2, -1);
 	}
 
 	// display small button

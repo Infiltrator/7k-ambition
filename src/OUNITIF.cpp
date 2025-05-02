@@ -1715,6 +1715,8 @@ static void disp_firm_button(ButtonCustom *button, int)
 
 	vga_front.put_bitmap_trans_remap_decompress(button->x1, button->y1,	bitmap, (char*) button->custom_para.ptr);
 
+	Ambition::Draw::buttonCost(font_small, firm_res[firmId]->setup_cost, button->x1, button->y1, button->x2 - 4, button->y2 - 3);
+
 	if( button->pushed_flag )
 	{
 		image_button.put_front(button->x1, button->y1, "F-DOWN", 1);

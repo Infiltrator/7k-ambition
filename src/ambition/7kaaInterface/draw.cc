@@ -33,6 +33,7 @@
 #include "OF_HARB.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
+#include "OFONT.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OTOWN.h"
@@ -190,6 +191,47 @@ void buildingRallyPoint(
   Ambition::drawBuildingRallyPoint(_7kaaTown);
 }
 
+void buttonCost(
+  Font& font,
+  const int cost,
+  const int left,
+  const int top,
+  const int right,
+  const int bottom,
+  const int verticalAlignment
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::UserInterface::VerticalAlignment alignment;
+  if (verticalAlignment < 0) {
+    alignment = Ambition::UserInterface::VerticalAlignment::Top;
+  } else if (verticalAlignment == 0) {
+    alignment = Ambition::UserInterface::VerticalAlignment::Centre;
+  } else {
+    alignment = Ambition::UserInterface::VerticalAlignment::Bottom;
+  }
+
+  printText(
+    font,
+    misc.format(cost, 2),
+    {
+      .start = {
+        .left = left,
+        .top = top,
+      },
+      .end = {
+        .left = right,
+        .top = bottom,
+      },
+    },
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    alignment
+  );
+}
+
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,
   const int animatedFlag,
@@ -203,6 +245,22 @@ short calculateAnimatedLinePhase(
     animatedFlag,
     lineProgress
   );
+}
+
+int calculateDoneButtonWidth(
+  const int _7kaaCalculation,
+  const Firm* firm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  // The harbour UI is a different size to the War Factory (for now).
+  if (dynamic_cast<const FirmHarbor*>(firm)) {
+    return 84;
+  }
+
+  return 80;
 }
 
 FirmBitmap* calculateFirmBitmap(
@@ -590,6 +648,38 @@ void unitWaypointsOnMinimap(
   if (unit) {
     unit->drawWaypointsOnMinimap();
   }
+}
+
+void warMachineTechnologyLevel(
+  int* techLevel,
+  const int left,
+  const int top,
+  const char* portraitBitmap
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+    {
+      .left = left,
+      .top = top,
+    },
+    Ambition::UserInterface::bitmapSize(portraitBitmap)
+    // The bible font seems to have probelms with its sizing, with its height
+    // being 4 too much, and its width being at least 2 too little.
+  ).outer(0, 4).inner(2, 0);
+
+  Ambition::UserInterface::printText(
+    font_bible,
+    misc.roman_number(*techLevel),
+    portraitArea.inner(2),
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    Ambition::UserInterface::VerticalAlignment::Top
+  );
+
+  *techLevel = -1;
 }
 
 void whatsNewButton(

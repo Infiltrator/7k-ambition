@@ -29,6 +29,7 @@ class Button3D;
 class Firm;
 class FirmHarbor;
 class FirmWar;
+class Font;
 class MapMatrix;
 class SnowLayer;
 class Town;
@@ -113,10 +114,25 @@ void buildingRallyPoint(
   Town* _7kaaTown
 );
 
+void buttonCost(
+  Font& font,
+  const int cost,
+  const int left,
+  const int top,
+  const int right,
+  const int bottom,
+  const int verticalAlignment = 1
+);
+
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,
   const int animatedFlag,
   const int lineProgress
+);
+
+int calculateDoneButtonWidth(
+  const int _7kaaCalculation,
+  const Firm* firm
 );
 
 FirmBitmap* calculateFirmBitmap(
@@ -269,6 +285,13 @@ void unitWaypointsOnWorld(
 
 void unitWaypointsOnMinimap(
   const Unit* _7kaaUnit
+);
+
+void warMachineTechnologyLevel(
+  int* techLevel,
+  const int left,
+  const int top,
+  const char* portraitBitmap
 );
 
 void whatsNewButton(

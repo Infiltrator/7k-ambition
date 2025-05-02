@@ -17,10 +17,19 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Show building construction costs on buttons."),
+          _("Show war machine and ship construction costs on War Factory and Harbour build menus."),
+          _("Show total production queue count and cost for War Factories and Harbours."),
+        },
+      },
+      {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Show Spy combat (in Forts) or primary skill (in other Firms) level in the worker list by moving the spy icon to the portrait."),
           _("Added thousands seperators to treasury and food store amounts, to make reading them easier.  (Currently, this uses groups of three with a comma as the seperator for everyone.  Proper localisation will be added later.)"),
+          _("Show the war machine technology level on the portrait, instead of as part of the name, on the War Factory build list.  This frees up some room for more information."),
         },
       },
     },
