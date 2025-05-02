@@ -23,7 +23,9 @@
 
 #include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
+#include "KEY.h"
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -295,6 +297,8 @@ void FirmWar::disp_build_menu(int refreshFlag)
 
 		button_cancel.paint(x, y, x+Ambition::Draw::calculateDoneButtonWidth(BUILD_BUTTON_WIDTH, this)-1, y+BUILD_BUTTON_HEIGHT*3/4,
 		ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Done"),0) );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 	}
 	// ###### end Gilbert 10/9 ########//
 
@@ -420,7 +424,7 @@ int FirmWar::detect_build_menu()
 	}
 	//------ detect the cancel button --------//
 
-	if( button_cancel.detect() || (!waitFlag && mouse.any_click(1)) )
+	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) || (!waitFlag && mouse.any_click(1)) )
 	{
 		// ##### begin Gilbert 25/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");

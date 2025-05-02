@@ -111,6 +111,8 @@ enum KeyEventType : int
 	KEYEVENT_MANUF_QUEUE_REMOVE,
 	KEYEVENT_MANUF_QUEUE_REMOVE_BATCH,
 
+   KEYEVENT_CANCEL,
+
 	KEYEVENT_MAX
 };
 #define GETKEY(n) mouse.get_key_code(n)

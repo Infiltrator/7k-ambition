@@ -23,8 +23,10 @@
 
 #include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 #include "ambition/7kaaInterface/polity.hh"
 
+#include "KEY.h"
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -287,6 +289,8 @@ void FirmResearch::disp_research_menu(int refreshFlag)
 	button_cancel.paint(INFO_X1, y, INFO_X2, y+RESEARCH_OPTION_HEIGHT*3/4,
 		ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Cancel"),0) );
 	// ###### end Gilbert 16/8 ######//
+
+	Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 }
 //----------- End of function FirmResearch::disp_research_menu -----------//
 
@@ -333,7 +337,7 @@ int FirmResearch::detect_research_menu()
 
 	if( i >= added_count )		// no research button has been pressed
 	{
-		if( button_cancel.detect() )
+		if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) )
 		{
 			// ##### begin Gilbert 25/9 ######//
 			se_ctrl.immediate_sound("TURN_OFF");

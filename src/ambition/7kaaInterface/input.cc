@@ -56,6 +56,15 @@ void calculateScroll(
   Ambition::calculateScroll(x, y);
 }
 
+unsigned int cancelKeyEvent(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return SDLK_UNKNOWN;
+  }
+
+  return GETKEY(KEYEVENT_CANCEL);
+}
+
 bool detectClipboardKeys(
   GetA* textField
 ) {

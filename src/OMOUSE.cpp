@@ -189,6 +189,8 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_MANUF_QUEUE_ADD_BATCH, "shift+=");
 	bind_key(KEYEVENT_MANUF_QUEUE_REMOVE, "-");
 	bind_key(KEYEVENT_MANUF_QUEUE_REMOVE_BATCH, "shift+-");
+
+	bind_key(KEYEVENT_CANCEL, "Escape");
 }
 //------------- End of Mouse::init_key -------------//
 

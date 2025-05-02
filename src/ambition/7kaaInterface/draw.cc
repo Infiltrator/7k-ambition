@@ -29,6 +29,7 @@
 #include <cstdint>
 
 #include "OBUTT3D.h"
+#include "OBUTTCUS.h"
 #include "OCONFIG.h"
 #include "OF_HARB.h"
 #include "OF_WAR.h"
@@ -322,6 +323,21 @@ void buttonKeybind(
     button.y1,
     button.x2,
     button.y2 - BOTTOM_MARGIN - BOTTOM_PADDING
+  );
+}
+void buttonKeybind(
+  const unsigned int keyCode,
+  const ButtonCustom& button
+) {
+  constexpr auto LEFT_PADDING = 2;
+  constexpr auto BOTTOM_PADDING = 2;
+
+  buttonKeybind(
+    keyCode,
+    button.x1 + LEFT_PADDING,
+    button.y1,
+    button.x2,
+    button.y2 - BOTTOM_PADDING
   );
 }
 

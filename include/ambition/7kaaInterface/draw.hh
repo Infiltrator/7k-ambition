@@ -27,6 +27,7 @@
 
 class Button;
 class Button3D;
+class ButtonCustom;
 class Firm;
 class FirmHarbor;
 class FirmWar;
@@ -139,6 +140,10 @@ void buttonKeybind(
 void buttonKeybind(
   const unsigned int keyCode,
   const Button3D& button
+);
+void buttonKeybind(
+  const unsigned int keyCode,
+  const ButtonCustom& button
 );
 
 short calculateAnimatedLinePhase(

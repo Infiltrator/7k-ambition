@@ -26,6 +26,7 @@
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 
+#include "KEY.h"
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -930,6 +931,8 @@ void Town::disp_train_menu(int refreshFlag)
 
 		button_cancel3.paint( INFO_X1, y, INFO_X2, y+BUTTON_ACTION_HEIGHT*3/4-1,
 		ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Done"),0) );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel3);
 	}
 	// ####### end Gilbert 13/9 ########//
 }
@@ -1168,7 +1171,7 @@ int Town::detect_train_menu()
 	}
 	//------ detect the cancel button --------//
 
-	if( button_cancel3.detect() || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
+	if( button_cancel3.detect(Ambition::Input::cancelKeyEvent()) || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
 	{
 		// ##### begin Gilbert 26/9 ########//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1328,7 +1331,9 @@ void Town::disp_auto_menu(int modeCollectTax)
 	button_loyalty_disabled.paint_text( INFO_X1, y, INFO_X2, y+18, _("Disabled"), 0, curAutoLoyalty==0 );
 	y+=20;
 
-	button_cancel2.paint_text( INFO_X1, y, INFO_X2, y+18, _("Cancel") );
+	button_cancel2.paint_text( INFO_X1, y, INFO_X2, y+(Ambition::Config::enhancementsAvailable() ? 24 : 18), _("Cancel") );
+
+	Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel2);
 }
 //----------- End of function Town::disp_auto_menu -----------//
 
@@ -1441,7 +1446,7 @@ int Town::detect_auto_menu(int modeCollectTax)
 
 	//--------------------------------------//
 
-	if( button_cancel2.detect() || rc )
+	if( button_cancel2.detect(Ambition::Input::cancelKeyEvent()) || rc )
 	{
 		// ##### begin Gilbert 26/9 ########//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1542,6 +1547,8 @@ void Town::disp_spy_menu(int refreshFlag)
 		}
 
 		button_cancel.paint( x, y, 'A', "PREVMENU" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 	}
 }
 //----------- End of function Town::disp_spy_menu -----------//
@@ -1622,7 +1629,7 @@ int Town::detect_spy_menu()
 
 	//--------- cancel -----------//
 
-	if( button_cancel.detect() || mouse.any_click(1) )		// right click to cancel
+	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) || mouse.any_click(1) )		// right click to cancel
 	{
 		info.disp();
 		return 1;

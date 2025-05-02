@@ -22,6 +22,7 @@
 //Description : Unit Interface Routines
 
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <KEY.h>
 #include <OVGA.h>
@@ -963,6 +964,8 @@ void Unit::disp_build_menu(int refreshFlag)
 		// ####### end Gilbert 3/10 ########//
 
 		button_cancel.paint( x, y, 'A', "CANCEL" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 	}
 }
 //----------- End of function Unit::disp_build_menu -----------//
@@ -999,7 +1002,7 @@ void Unit::detect_build_menu()
 
 	//---------- detect cancel button ----------//
 
-	if( button_cancel.detect() )
+	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1053,6 +1056,8 @@ void Unit::disp_build(int refreshFlag)
 		font_san.put_paragraph( INFO_X1+7, INFO_Y1+5, INFO_X2-7, INFO_Y2-5, str );
 
 		button_cancel2.paint_text( INFO_X1, INFO_Y1+textHeight+3, INFO_X2, INFO_Y1+textHeight+28, _("Cancel") );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel2);
 	}
 }
 //----------- End of function Unit::disp_build -----------//
@@ -1062,7 +1067,7 @@ void Unit::disp_build(int refreshFlag)
 //
 void Unit::detect_build()
 {
-	if( button_cancel2.detect() )
+	if( button_cancel2.detect(Ambition::Input::cancelKeyEvent()) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1089,6 +1094,8 @@ void Unit::disp_settle(int refreshFlag)
 										_("Please select a location to settle.") );
 
 		button_cancel2.paint_text( INFO_X1, INFO_Y1+45, INFO_X2, INFO_Y1+70, _("Cancel") );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel2);
 	}
 }
 //----------- End of function Unit::disp_settle -----------//
@@ -1098,7 +1105,7 @@ void Unit::disp_settle(int refreshFlag)
 //
 void Unit::detect_settle()
 {
-	if( button_cancel2.detect() )
+	if( button_cancel2.detect(Ambition::Input::cancelKeyEvent()) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
