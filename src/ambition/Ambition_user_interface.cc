@@ -26,6 +26,7 @@
 #include "Ambition_user_interface.hh"
 
 #define _AMBITION_IMPLEMENTATION
+#include "KEY.h"
 #include "OFONT.h"
 #include "OWORLD.h"
 #include "vga_util.h"
@@ -156,6 +157,27 @@ void drawPanel(
     rectangle.end.left,
     rectangle.end.top
   );
+}
+
+std::string keyString(
+  const unsigned int keyCode
+) {
+  if (keyCode >= 'a' && keyCode <= 'z') {
+    // Use upper-case versions of letters.
+    return { static_cast<char>(keyCode - 'a' + 'A') };
+  }
+  if (keyCode >= '!' && keyCode <= '~') { // Standard printable range.
+    return { static_cast<char>(keyCode) };
+  }
+
+  if (keyCode == ' ') {
+    return "Space";
+  }
+  if (keyCode == KEY_ESC) {
+    return "Esc";
+  }
+
+  return "UNKNOWN";
 }
 
 Point fromWorldPoint(

@@ -29,6 +29,7 @@
 #include <cstdint>
 
 #include "OBUTT3D.h"
+#include "OBUTTCUS.h"
 #include "OCONFIG.h"
 #include "OF_HARB.h"
 #include "OF_WAR.h"
@@ -38,6 +39,7 @@
 #include "ONATIONA.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
+#include "vga_util.h"
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
@@ -229,6 +231,113 @@ void buttonCost(
     Ambition::UserInterface::Clear::None,
     Ambition::UserInterface::HorizontalAlignment::Right,
     alignment
+  );
+}
+
+void buttonKeybind(
+  const unsigned int keyCode,
+  const int left,
+  const int top,
+  const int right,
+  const int bottom
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (!keyCode) {
+    return;
+  }
+
+  const Ambition::UserInterface::Rectangle area = {
+    .start = {
+      .left = left,
+      .top = top,
+    },
+    .end = {
+      .left = right,
+      .top = bottom,
+    },
+  };
+
+  const auto keyString = Ambition::UserInterface::keyString(keyCode);
+  const auto textWidth = std::max(
+    font_san.text_width("M"),
+    font_san.text_width(keyString.c_str())
+  ) + 1;
+  const auto textHeight = font_san.text_height();
+
+  constexpr auto PADDING = 3;
+  const auto panel = area.inner(2).internal(
+    {
+      .width = textWidth + PADDING * 2,
+      .height = textHeight + PADDING * 2,
+    },
+    Ambition::UserInterface::HorizontalAlignment::Left,
+    Ambition::UserInterface::VerticalAlignment::Bottom
+  );
+  const auto textArea = panel.inner(PADDING);
+
+  vga_util.d3_panel_up(
+    panel.start.left,
+    panel.start.top,
+    panel.end.left,
+    panel.end.top
+  );
+  Ambition::UserInterface::printText(
+    font_san,
+    keyString,
+    textArea,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Centre
+  );
+}
+void buttonKeybind(
+  const unsigned int keyCode,
+  const Button& button
+) {
+  constexpr auto BOTTOM_PADDING = 1;
+
+  buttonKeybind(
+    keyCode,
+    button.x1,
+    button.y1,
+    button.x2,
+    button.y2 - BOTTOM_PADDING
+  );
+}
+void buttonKeybind(
+  const unsigned int keyCode,
+  const Button3D& button
+) {
+  /* 7kaa buttons have extra pixels around. */
+  constexpr auto LEFT_MARGIN = 0;
+  constexpr auto BOTTOM_MARGIN = 8;
+
+  constexpr auto LEFT_PADDING = 1;
+  constexpr auto BOTTOM_PADDING = 0;
+
+  buttonKeybind(
+    keyCode,
+    button.x1 + LEFT_MARGIN + LEFT_PADDING,
+    button.y1,
+    button.x2,
+    button.y2 - BOTTOM_MARGIN - BOTTOM_PADDING
+  );
+}
+void buttonKeybind(
+  const unsigned int keyCode,
+  const ButtonCustom& button
+) {
+  constexpr auto LEFT_PADDING = 2;
+  constexpr auto BOTTOM_PADDING = 2;
+
+  buttonKeybind(
+    keyCode,
+    button.x1 + LEFT_PADDING,
+    button.y1,
+    button.x2,
+    button.y2 - BOTTOM_PADDING
   );
 }
 

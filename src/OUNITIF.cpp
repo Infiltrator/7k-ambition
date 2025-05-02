@@ -22,6 +22,7 @@
 //Description : Unit Interface Routines
 
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <KEY.h>
 #include <OVGA.h>
@@ -438,6 +439,9 @@ void Unit::disp_button(int dispY1)
 			 nation_recno == nation_array.player_recno ) 	// a spy cannot build structure for another nation
 		{
 			button_build.paint( x, dispY1, 'A', "BUILD" );
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_UNIT_BUILD), button_build);
+
 			x += BUTTON_ACTION_WIDTH;
 		}
 
@@ -446,6 +450,9 @@ void Unit::disp_button(int dispY1)
 		if( mobile_type==UNIT_LAND && rank_id != RANK_KING )
 		{
 			button_settle.paint( x, dispY1, 'A', "SETTLE" );
+
+			Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_UNIT_SETTLE), button_settle);
+
 			x += BUTTON_ACTION_WIDTH;
 		}
 
@@ -519,6 +526,9 @@ void Unit::disp_button(int dispY1)
 		 firm_array[home_camp_firm_recno]->region_id == region_id() )
 	{
 		button_return_camp.paint( x, dispY1, 'A', "RETCAMP" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_UNIT_RETURN), button_return_camp);
+
 		x += BUTTON_ACTION_WIDTH;
 
 		if( x+BUTTON_ACTION_WIDTH-5 > INFO_X2 )
@@ -954,6 +964,8 @@ void Unit::disp_build_menu(int refreshFlag)
 		// ####### end Gilbert 3/10 ########//
 
 		button_cancel.paint( x, y, 'A', "CANCEL" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 	}
 }
 //----------- End of function Unit::disp_build_menu -----------//
@@ -990,7 +1002,7 @@ void Unit::detect_build_menu()
 
 	//---------- detect cancel button ----------//
 
-	if( button_cancel.detect() )
+	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1044,6 +1056,8 @@ void Unit::disp_build(int refreshFlag)
 		font_san.put_paragraph( INFO_X1+7, INFO_Y1+5, INFO_X2-7, INFO_Y2-5, str );
 
 		button_cancel2.paint_text( INFO_X1, INFO_Y1+textHeight+3, INFO_X2, INFO_Y1+textHeight+28, _("Cancel") );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel2);
 	}
 }
 //----------- End of function Unit::disp_build -----------//
@@ -1053,7 +1067,7 @@ void Unit::disp_build(int refreshFlag)
 //
 void Unit::detect_build()
 {
-	if( button_cancel2.detect() )
+	if( button_cancel2.detect(Ambition::Input::cancelKeyEvent()) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1080,6 +1094,8 @@ void Unit::disp_settle(int refreshFlag)
 										_("Please select a location to settle.") );
 
 		button_cancel2.paint_text( INFO_X1, INFO_Y1+45, INFO_X2, INFO_Y1+70, _("Cancel") );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel2);
 	}
 }
 //----------- End of function Unit::disp_settle -----------//
@@ -1089,7 +1105,7 @@ void Unit::disp_settle(int refreshFlag)
 //
 void Unit::detect_settle()
 {
-	if( button_cancel2.detect() )
+	if( button_cancel2.detect(Ambition::Input::cancelKeyEvent()) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1715,6 +1731,15 @@ static void disp_firm_button(ButtonCustom *button, int)
 
 	vga_front.put_bitmap_trans_remap_decompress(button->x1, button->y1,	bitmap, (char*) button->custom_para.ptr);
 
+	auto firmIndex = 0;
+	for(auto i = 0; i < MAX_FIRM_TYPE; i++) {
+		if (build_firm_button_order[i] == firmId) {
+			firmIndex = i;
+			break;
+		}
+	}
+
+	Ambition::Draw::buttonKeybind(GETKEY(button_build_hotkey[firmIndex]), button->x1, button->y1, button->x2, button->y2);
 	Ambition::Draw::buttonCost(font_small, firm_res[firmId]->setup_cost, button->x1, button->y1, button->x2 - 4, button->y2 - 3);
 
 	if( button->pushed_flag )

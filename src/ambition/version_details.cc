@@ -22,6 +22,8 @@ std::vector<VersionUpdates> versionDetails = {
           _("Show building construction costs on buttons."),
           _("Show war machine and ship construction costs on War Factory and Harbour build menus."),
           _("Show total production queue count and cost for War Factories and Harbours."),
+          _("Show keybinds at the bottom-left of buttons that have them."),
+          _("Add a keybind for cancelling menus (defaults to Esc), settable in config.txt with `bindkey = KEYEVENT_ _CANCEL,Escape`."),
         },
       },
       {

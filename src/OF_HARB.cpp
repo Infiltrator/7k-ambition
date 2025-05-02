@@ -23,7 +23,9 @@
 
 #include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
+#include "KEY.h"
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -341,6 +343,9 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 	{
 		button_build.paint( SHIP_DET_X1, SHIP_DET_Y2+4, 'A', "MAKESHIP" );
 		button_sail.paint ( SHIP_DET_X1+BUTTON_ACTION_WIDTH, SHIP_DET_Y2+4, 'A', "SAILOUT" );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_PATROL), button_sail);
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_BUILD), button_build);
 	}
 
 	Ambition::Draw::queueCount(this);
@@ -641,6 +646,8 @@ void FirmHarbor::disp_build_menu(int refreshFlag)
 
 		button_cancel.paint(x, y, x+Ambition::Draw::calculateDoneButtonWidth(BUILD_BUTTON_WIDTH, this)-1, y+BUILD_BUTTON_HEIGHT*3/4,
 			ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Done"),0) );
+
+		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 	}
 	// ###### end Gilbert 20/9 ######//
 
@@ -957,7 +964,7 @@ int FirmHarbor::detect_build_menu()
 
 	//------ detect the cancel button --------//
 
-	if( button_cancel.detect() || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
+	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
 	{
 		harbor_menu_mode = HARBOR_MENU_MAIN;
 		info.disp();
