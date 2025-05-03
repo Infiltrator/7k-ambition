@@ -457,6 +457,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 		if( i<worker_count )
 		{
 			if( refreshFlag==INFO_REPAINT ||
+				Ambition::Config::enhancementsAvailable() ||
 				 last_race_id_array[i] != workerPtr->race_id ||
 				 last_unit_id_array[i] != workerPtr->unit_id )
 			{
