@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed spy icon getting duplicated when workers are re-arranged inside
+  buildings.
+
 
 ## [3.1.5] — 2025-05-03
 
