@@ -45,6 +45,7 @@
 #include "ONATIONA.h"
 #include "OREMOTE.h"
 #include "OSNOW.h"
+#include "OSPY.h"
 #include "OSTR.h"
 #include "OSYS.h"
 #include "OTECHRES.h"
@@ -54,8 +55,10 @@
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_polity.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
+#include "format.hh"
 
 
 namespace Ambition {
@@ -931,6 +934,110 @@ void printLeadershipStatus(
   } else {
     printText(font_san, _("Leader is providing bonuses"), TEXT_BOX);
   }
+}
+
+void printMilitaryReportCostHeadings(
+) {
+  UserInterface::printText(
+    font_san,
+    _("Unit Cost"),
+    UserInterface::MilitaryReport::UnitList::UnitCost::COLUMN,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre
+  );
+  UserInterface::printText(
+    font_san,
+    _("Yearly Expense"),
+    UserInterface::MilitaryReport::UnitList::TotalCost::COLUMN,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre
+  );
+}
+
+void printMilitaryReportCostLine(
+  const UserInterface::Rectangle rowArea,
+  const int unitID,
+  const int unitCount
+) {
+  const auto viewedNation7kaaRecordNumber = info.viewing_nation_recno;
+
+  auto yearlyUnitCost
+    = unitID == -1
+      ? GENERAL_YEAR_SALARY
+      : unit_res[unitID]->year_cost;
+  /* Adjust for the day accounting bug. */
+  yearlyUnitCost = yearlyUnitCost * 11 / 10;
+
+  /* Generals who are spies only get paid their spy salary, and do not show up
+     under general expenses. */
+  const auto paidUnitCount = unitID == -1
+    ? Polity::getBy7kaaRecordNumber(viewedNation7kaaRecordNumber)
+      ->nonSpyGeneralCount()
+    : unitCount;
+  const auto totalYearyCost = paidUnitCount * yearlyUnitCost;
+
+  const auto unitCostCell = rowArea.intersection(
+    Ambition::UserInterface::MilitaryReport::UnitList::UnitCost::COLUMN_CONTENTS
+  );
+
+  Ambition::UserInterface::printText(
+    font_san,
+    _("$"),
+    unitCostCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Left
+  );
+  Ambition::UserInterface::printText(
+    font_san,
+    format("%'d", yearlyUnitCost),
+    unitCostCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+
+  const auto totalCostValueCell = rowArea.intersection(
+    Ambition::UserInterface::MilitaryReport::UnitList::TotalCost::VALUE
+  );
+
+  Ambition::UserInterface::printText(
+    font_san,
+    _("$"),
+    totalCostValueCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Left
+  );
+  Ambition::UserInterface::printText(
+    font_san,
+    format("%'d", totalYearyCost),
+    totalCostValueCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+
+  const auto totalCostPercentageCell = rowArea.intersection(
+    Ambition::UserInterface::MilitaryReport::UnitList::TotalCost::PERCENTAGE
+  );
+
+  Ambition::UserInterface::printText(
+    font_san,
+    "(",
+    totalCostPercentageCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Left
+  );
+  const auto percentage = totalYearyCost
+    / nation_array[viewedNation7kaaRecordNumber]->fixed_expense_365days()
+    * 100;
+  Ambition::UserInterface::printText(
+    font_san,
+    format(
+      percentage < 1 ? "%#.2g%%)" : "%#.3g%%)",
+      percentage
+    ),
+    totalCostPercentageCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
 }
 
 void unlockBuffer(

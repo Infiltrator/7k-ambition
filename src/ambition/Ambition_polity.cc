@@ -25,6 +25,10 @@
 
 #include "Ambition_polity.hh"
 
+#define _AMBITION_IMPLEMENTATION
+#include "OSPY.h"
+#include "OUNIT.h"
+
 #include "Ambition_repository.hh"
 
 
@@ -83,6 +87,27 @@ bool Polity::active(
 void Polity::dissolve(
   Time::Stamp stamp
 ) {
+}
+
+unsigned long int Polity::nonSpyGeneralCount(
+) const {
+  auto nonSpyGeneralCount = 0;
+  for (auto i = 1; i < unit_array.size(); i++) {
+    if (unit_array.is_deleted(i)) {
+      continue;
+    }
+
+    const auto unit = unit_array[i];
+    if (unit->nation_recno == _7kaaRecordNumber
+      && (!unit->spy_recno
+        || spy_array[unit->spy_recno]->true_nation_recno != _7kaaRecordNumber)
+      && unit->rank_id == RANK_GENERAL
+    ) {
+      nonSpyGeneralCount++;
+    }
+  }
+
+  return nonSpyGeneralCount;
 }
 
 int Polity::researchTarget(

@@ -65,6 +65,9 @@ public:
     Time::Stamp stamp
   );
 
+  unsigned long int nonSpyGeneralCount(
+  ) const;
+
   int researchTarget(
   ) const;
 

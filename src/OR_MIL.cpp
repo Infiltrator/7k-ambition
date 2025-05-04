@@ -21,6 +21,8 @@
 //Filename    : OINFOMIL.CPP
 //Description : Economy information screen
 
+#include "ambition/7kaaInterface/draw.hh"
+
 #include "OFIRM.h"
 #include "OFIRMA.h"
 #include <OFONT.h>
@@ -124,6 +126,8 @@ void Info::disp_military(int refreshFlag)
 
 	font_san.put( x	 , y, _("Unit Type") );
 	font_san.put( x+300, y, _("No. of Units") );
+
+	Ambition::Draw::militaryReportCostHeadings();
 
 	if( refreshFlag == INFO_REPAINT )
 	{
@@ -480,6 +484,8 @@ static void put_unit_rec(int recNo, int x, int y, int refreshFlag)
 
 	font_san.put( x   , y, str );
 	font_san.put( x+320, y, misc.format(unitCount,1) );
+
+	Ambition::Draw::militaryReportCostLine(y, 16, rc, unitCount);
 }
 //----------- End of static function put_unit_rec -----------//
 
