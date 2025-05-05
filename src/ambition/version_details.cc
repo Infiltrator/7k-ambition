@@ -27,6 +27,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_FIXED),
         .items = {
+          _("Fixed the building expense amounts on the Villages report being lower than the real expense."),
           _("Fixed spy icon getting duplicated when workers are re-arranged inside buildings."),
           _("Fixed raw material (and other) icons showing with a white background."),
         },
