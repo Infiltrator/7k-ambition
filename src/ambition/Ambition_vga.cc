@@ -1040,6 +1040,74 @@ void printMilitaryReportCostLine(
   );
 }
 
+void printMilitaryReportTotalCost(
+  const UserInterface::Rectangle rowArea
+) {
+  const auto viewedNation7kaaRecordNumber = info.viewing_nation_recno;
+
+  auto totalUnitCost
+    = GENERAL_YEAR_SALARY
+    * Polity::getBy7kaaRecordNumber(viewedNation7kaaRecordNumber)
+      ->nonSpyGeneralCount();
+  for (auto unitId = 1; unitId <= MAX_UNIT_TYPE; unitId++) {
+    const auto unitInfo = unit_res[unitId];
+
+    if (!unitInfo->race_id) {
+      totalUnitCost
+        += unitInfo->year_cost
+        * unitInfo->nation_unit_count_array[
+          viewedNation7kaaRecordNumber - 1
+        ];
+    }
+  }
+  /* Adjust for the day accounting bug. */
+  totalUnitCost = totalUnitCost * 11 / 10;
+
+  const auto totalCostCell = rowArea.intersection(
+    Ambition::UserInterface::MilitaryReport::UnitList::TotalCost::VALUE
+  );
+
+  Ambition::UserInterface::printText(
+    font_san,
+    _("$"),
+    totalCostCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Left
+  );
+  Ambition::UserInterface::printText(
+    font_san,
+    format("%'d", totalUnitCost),
+    totalCostCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+
+  const auto typeCostPercentageCell = rowArea.intersection(
+    Ambition::UserInterface::MilitaryReport::UnitList::TotalCost::PERCENTAGE
+  );
+
+  Ambition::UserInterface::printText(
+    font_san,
+    "(",
+    typeCostPercentageCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Left
+  );
+  const auto percentage = totalUnitCost
+    / nation_array[viewedNation7kaaRecordNumber]->fixed_expense_365days()
+    * 100;
+  Ambition::UserInterface::printText(
+    font_san,
+    format(
+      percentage < 1 ? "%#.2g%%)" : "%#.3g%%)",
+      percentage
+    ),
+    typeCostPercentageCell,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+}
+
 void unlockBuffer(
   VgaBuf& buffer
 ) {

@@ -267,6 +267,10 @@ void printMilitaryReportCostLine(
   const int unitCount
 );
 
+void printMilitaryReportTotalCost(
+  const UserInterface::Rectangle rowArea
+);
+
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
  *

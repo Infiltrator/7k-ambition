@@ -151,7 +151,7 @@ const auto COLUMN
   = AREA.inner(180, 0, 0, 0)
   .internal({ .width = 100, .height = AREA.height() });
 const auto COLUMN_CONTENTS = COLUMN.internal(
-  { .width = 60, .height = AREA.height() },
+  { .width = 40, .height = AREA.height() },
   HorizontalAlignment::Centre
 );
 

@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_ADDED),
         .items = {
           _("Show the per-unit and total costs, along with the percentages of the fixed expense, for units on the Military Report."),
+          _("Show a total for the unit costs, along with the percentage of fixed expense, on the Military Report."),
           _("Added a keybind for confirming in saving and loading menus (defaults to Enter), settable in config.txt with `bindkey = KEYEVENT_ _CONFIRM,Return`."),
         },
       },

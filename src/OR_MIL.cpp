@@ -285,6 +285,10 @@ static void disp_unit_total()
 	snprintf( str, MAX_STR_LEN+1, _("Total Units: %s"), misc.format(totalUnitCount) );
 
 	font_san.put( x, y, str );
+
+	/* The `totalUnitCost` calculated above is incorrect for a number of reasons,
+		so we do not pass it and will recalculate it. */
+	Ambition::Draw::militaryReportTotalCost(y, 16);
 }
 //----------- End of static function disp_unit_total -----------//
 

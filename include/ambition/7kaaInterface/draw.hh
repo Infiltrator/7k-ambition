@@ -256,6 +256,11 @@ void militaryReportCostLine(
   const int unitCount
 );
 
+void militaryReportTotalCost(
+  const int top,
+  const int rowHeight
+);
+
 bool minimapViewBoundsBox(
   const MapMatrix* _7kaaMapMatrix
 );
