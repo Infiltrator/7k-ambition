@@ -43,6 +43,7 @@
 #include "OFONT.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
+#include "OPOWER.h"
 #include "OREMOTE.h"
 #include "OSNOW.h"
 #include "OSPY.h"
@@ -715,6 +716,126 @@ void drawBuildMarkerGridLines(
     Ambition::UserInterface::VIEWPORT.end.top,
     V_WHITE
   );
+}
+
+void drawBuildModeHighlighting(
+  const Coordinates::Point locationCoordinates,
+  const UserInterface::Point screenCoordinates,
+  const Coordinates::Rectangle worldBounds
+) {
+  const auto firmId = power.command_para;
+  const auto firmInfo = firm_res[firmId];
+
+  const auto width
+    = power.command_id == COMMAND_BUILD_FIRM
+    ? firmInfo->loc_width
+    : STD_TOWN_LOC_WIDTH;
+  const auto height
+    = power.command_id == COMMAND_BUILD_FIRM
+    ? firmInfo->loc_height
+    : STD_TOWN_LOC_HEIGHT;
+
+  auto canBuild = false;
+  auto ideal = false;
+  if (firmId == FIRM_HARBOR) {
+    const auto rectangle = Coordinates::Rectangle::fromPoint(
+      locationCoordinates,
+      {
+        -(width - 1) * Coordinates::SCALING_FACTOR,
+        (height - 1) * Coordinates::SCALING_FACTOR,
+      }
+    );
+
+    for (const auto point
+           : rectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
+    ) {
+      if (!point.within(worldBounds)) {
+        continue;
+      }
+
+      if (world.can_build_firm(
+          point.to7kaaCoordinates().x,
+          point.to7kaaCoordinates().y,
+          FIRM_HARBOR,
+          unit_array.selected_recno
+        )
+      ) {
+        canBuild = true;
+        ideal = true;
+        break;
+      }
+    }
+  } else {
+    const auto rectangle = Coordinates::Rectangle::fromPoint(
+      locationCoordinates,
+      {
+        -(width - 1) * Coordinates::SCALING_FACTOR,
+        (height - 1) * Coordinates::SCALING_FACTOR,
+      }
+    );
+
+    for (const auto point
+           : rectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
+    ) {
+      if (!point.within(worldBounds)) {
+        continue;
+      }
+
+      const auto buildRectangle = Coordinates::Rectangle::fromPoint(
+        point,
+        {
+          (width - 1) * Coordinates::SCALING_FACTOR,
+          -(height - 1) * Coordinates::SCALING_FACTOR,
+        }
+      );
+      auto space = true;
+      auto rawMaterial = false;
+      for (const auto buildPoint
+             : buildRectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
+      ) {
+        const auto location = world.get_loc(
+          buildPoint.to7kaaCoordinates().x,
+          buildPoint.to7kaaCoordinates().y
+        );
+        if (location->has_site()) {
+          rawMaterial = true;
+        }
+        if (!(location->loc_flag & LOCATE_WALK_LAND)
+          || (location->has_site() && firmId != FIRM_MINE)
+          || location->is_power_off()
+        ) {
+          space = false;
+          break;
+        }
+      }
+      if (space) {
+        canBuild = true;
+        if (firmId == FIRM_MINE) {
+          if (rawMaterial) {
+            ideal = true;
+            break;
+          }
+        } else {
+          ideal = true;
+          break;
+        }
+      }
+    }
+  }
+
+  const auto _7kaaCoordinates = locationCoordinates.to7kaaCoordinates();
+  int colour;
+  if (ideal) {
+    colour = V_WHITE;
+  } else if (canBuild) {
+    colour = VGA_GRAY + 8;
+  } else if (!world.get_loc(_7kaaCoordinates.x, _7kaaCoordinates.y)->walkable()
+  ) {
+    colour = V_RED;
+  } else {
+    colour = V_BLACK;
+  }
+  vga_back.pixelize_32x32(screenCoordinates.left, screenCoordinates.top, colour);
 }
 
 void drawButtonOverlay(

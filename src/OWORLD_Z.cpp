@@ -482,6 +482,8 @@ void ZoomMatrix::draw()
 						}
 					}
 				#endif
+
+				Ambition::Draw::buildModeHighlighting(xLoc, yLoc, x, y, max_x_loc, max_y_loc);
 			}
 		}
 	}

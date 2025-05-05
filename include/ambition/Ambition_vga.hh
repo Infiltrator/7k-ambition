@@ -43,9 +43,11 @@ constexpr auto FIRM_ID_TOWN = 0;
 
 namespace Coordinates {
 struct Point;
+struct Rectangle;
 }
 
 namespace UserInterface {
+struct Point;
 struct Rectangle;
 }
 
@@ -168,6 +170,12 @@ void drawBuildingRallyPoint(
 
 void drawBuildMarkerGridLines(
   const UserInterface::Rectangle buildMarker
+);
+
+void drawBuildModeHighlighting(
+  const Coordinates::Point locationCoordinates,
+  const UserInterface::Point screenCoordinates,
+  const Coordinates::Rectangle worldBounds
 );
 
 void drawButtonOverlay(

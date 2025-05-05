@@ -88,6 +88,8 @@ struct Interval {
   Point asCoordinates(
   ) const;
 
+  bool operator==(const Interval& rhs) const noexcept;
+
   Interval operator+(const Interval& rhs) const;
   Interval& operator+=(const Interval& rhs);
   Interval operator-(const Interval& rhs) const;
@@ -111,11 +113,97 @@ struct Rectangle {
   Point start;
   Point end;
 
+  constexpr static Rectangle fromPoint(
+    const Point start,
+    const Interval size
+  ) {
+    return {
+      .start = start,
+      .end = {
+        .x = start.x + size.x,
+        .y = start.y + size.y,
+      },
+    };
+  }
+
+  bool operator==(const Rectangle& rhs) const noexcept {
+    return start == rhs.start && end == rhs.end;
+  }
+
+  Point point(
+    const long int index,
+    const Interval step
+  ) const;
+  long int pointCount(
+    const Interval step
+  ) const;
+
+private:
+  struct PointRange;
+public:
+  PointRange points(
+    const Interval step = { 1, 1 }
+  ) const {
+      return PointRange(*this, step);
+  }
+
   Point centre() const;
   Point topLeft() const;
+  Point bottomRight() const;
+
+  long int height() const;
+  long int width() const;
+
+  Rectangle intersection(
+    const Rectangle with
+  ) const;
+
+private:
+  struct PointRange {
+    auto begin() { return Iterator(rectangle, step, 0); }
+    auto end() { return Iterator(rectangle, step, rectangle.pointCount(step)); }
+    PointRange(
+      const Rectangle& rectangle,
+      const Interval step
+    ): rectangle(rectangle),
+       step(step)
+    { }
+
+  private:
+    struct Iterator {
+      inline auto operator*() const { return rectangle.point(index, step); }
+      inline auto& operator++() { index++; return *this; }
+      inline bool operator!=(const Iterator& rhs) {
+        return rectangle != rhs.rectangle
+          || step != rhs.step
+          || index != rhs.index;
+      }
+
+      Iterator(
+        const Rectangle& rectangle,
+        const Interval step,
+        const unsigned int index
+      ): rectangle(rectangle),
+         step(step),
+         index(index)
+      { }
+
+    private:
+      const Rectangle& rectangle;
+      const Interval step;
+      unsigned long int index;
+    };
+
+    const Rectangle& rectangle;
+    const Interval step;
+  };
 };
 
 
+constexpr auto _7KAA_COORDINATE_STEP = Interval {
+  SCALING_FACTOR,
+  SCALING_FACTOR,
+};
 constexpr auto _7KAA_OFFSET = Interval {
   -SCALING_FACTOR / 2,
   SCALING_FACTOR / 2

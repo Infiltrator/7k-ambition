@@ -15,6 +15,9 @@ speaking, considered to be the player's experience.
 - When selecting where to place a building, show grid rules of the building, and
   grid rules one tile out, for a walkable perimeter, to allow for easier
   placement and planning of buildings.
+- When selecting where to place a building, highlight valid locations, darken
+  invalid locations, and shade un-walkable locations red, to create a guide for
+  placing and planning buildings.  This is especially helpful with Harbours.
 - Show the per-unit and total costs, along with the percentages of the fixed
   expense, for units on the Military Report.
 - Show a total for the unit costs, along with the percentage of fixed expense,

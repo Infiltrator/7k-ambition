@@ -123,6 +123,15 @@ void buildMarkerGridLines(
   const int bottom
 );
 
+void buildModeHighlighting(
+  const short _7kaaX,
+  const short _7kaaY,
+  const int left,
+  const int top,
+  const short maximum7kaaX,
+  const short maximum7kaaY
+);
+
 void buttonCost(
   Font& font,
   const int cost,
