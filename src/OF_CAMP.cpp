@@ -723,15 +723,17 @@ void FirmCamp::train_unit()
 						  * workerPtr->hit_points / workerPtr->max_hit_points()
 						  * workerPtr->skill_potential*2 / 100;
 
-			workerPtr->skill_level_minor += incValue;
+			levelMinor = workerPtr->skill_level_minor + incValue;
 
 			err_when( workerPtr->skill_level >= 100 );
 
-			if( workerPtr->skill_level_minor >= 100 )
+			while( levelMinor >= 100 )
 			{
+				levelMinor -= 100;
 				workerPtr->skill_level++;
-				workerPtr->skill_level_minor -= 100;
 			}
+
+			workerPtr->skill_level_minor = levelMinor;
 		}
 	}
 
