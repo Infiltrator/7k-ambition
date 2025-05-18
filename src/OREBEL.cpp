@@ -1068,6 +1068,16 @@ void Unit::process_rebel()
 			}
 			break;
 
+		case REBEL_ATTACK_FIRM:
+			if( firm_array.is_deleted(rebelPtr->action_para) )
+				rebelPtr->set_action(REBEL_IDLE);
+			else
+			{
+				Firm* firmPtr = firm_array[rebelPtr->action_para];
+				attack_firm( firmPtr->loc_x1, firmPtr->loc_y1 );
+			}
+			break;
+
 		case REBEL_SETTLE_NEW:
 			if( !world.can_build_town(rebelPtr->action_para, rebelPtr->action_para2, sprite_recno) )
 			{
