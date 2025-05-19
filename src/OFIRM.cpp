@@ -1042,7 +1042,7 @@ void Firm::assign_worker(int workerUnitRecno)
 		workerPtr->extra_para = 0;
 	}
 
-	workerPtr->init_potential();
+	workerPtr->skill_potential = unitPtr->skill.skill_potential;
 
 	//------ if the recruited worker is a spy -----//
 
@@ -2476,6 +2476,7 @@ int Firm::create_worker_unit(Worker& thisWorker)
 	unitPtr->skill.skill_id           = thisWorker.skill_id;
 	unitPtr->skill.skill_level        = thisWorker.skill_level;
 	unitPtr->skill.skill_level_minor  = thisWorker.skill_level_minor;
+	unitPtr->skill.skill_potential = thisWorker.skill_potential;
 
 	err_when( unitPtr->skill.skill_level<0 || unitPtr->skill.skill_level>100 );
 
