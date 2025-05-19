@@ -48,6 +48,7 @@ AC_PROG_RANLIB
 AC_PROG_LN_S
 PKG_PROG_PKG_CONFIG
 AX_CXX_COMPILE_STDCXX_11(,[mandatory])
+AX_CXX_COMPILE_STDCXX(20,,[mandatory])
 save_CXXFLAGS="$CXXFLAGS"
 
 GLOBAL_CFLAGS="-include \"\$(top_builddir)/include/config.h\""
