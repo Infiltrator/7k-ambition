@@ -396,6 +396,8 @@ int Firm::detect_basic_info()
 
 	if( button_destruct.detect(KEY_DEL) )
 	{
+		Ambition::Building::deconstruct(this);
+
 		if( under_construction )
 			cancel_construction(COMMAND_PLAYER);
 		else
@@ -408,6 +410,8 @@ int Firm::detect_basic_info()
 
 	if( button_sell.detect(KEY_DEL) )
 	{
+		Ambition::Building::deconstruct(this);
+
 		sell_firm(COMMAND_PLAYER);
 		return 1;
 	}

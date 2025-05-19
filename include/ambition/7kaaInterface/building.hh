@@ -65,6 +65,10 @@ void destroy(
   const Town* _7kaaTown
 );
 
+void deconstruct(
+  Firm* _7kaaFirm
+);
+
 unsigned int enqueuedProductionCount(
   Firm* _7kaaFirm,
   const int _7kaaCalculation,

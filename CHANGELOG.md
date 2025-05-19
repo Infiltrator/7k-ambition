@@ -15,6 +15,11 @@ speaking, considered to be the player's experience.
 - Fixed spy icon getting duplicated when workers are re-arranged inside
   buildings.
 
+### Changed
+
+- Sortie troops from Forts before selling or destroying them, so that the troops
+  still count as being under the general's leadership.
+
 
 ## [3.1.5] — 2025-05-03
 

@@ -27,6 +27,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed spy icon getting duplicated when workers are re-arranged inside buildings."),
         },
       },
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Sortie troops from Forts before selling or destroying them, so that the troops still count as being under the general's leadership."),
+        },
+      },
     },
   },
   {
