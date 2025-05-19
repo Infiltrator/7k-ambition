@@ -26,6 +26,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/building.hh"
 
+#include "OF_CAMP.h"
 #include "OF_RESE.h"
 #include "OFIRM.h"
 #include "OFONT.h"
@@ -145,6 +146,21 @@ void destroy(
   if (building) {
     building->destroy(Ambition::Time::now());
   }
+}
+
+void deconstruct(
+  Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  auto _7kaaCamp = dynamic_cast<FirmCamp*>(_7kaaFirm);
+  if (!_7kaaCamp) {
+    return;
+  }
+
+  _7kaaCamp->patrol();
 }
 
 unsigned int enqueuedProductionCount(
