@@ -356,6 +356,8 @@ void display(
       delayFrame();
     }
   }
+
+  vga_util.finish_disp_image_file();
 }
 
 std::string lastDisplayedNewsVersion(
