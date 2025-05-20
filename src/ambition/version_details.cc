@@ -25,6 +25,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed spy icon getting duplicated when workers are re-arranged inside buildings."),
+          _("Fixed raw material (and other) icons showing with a white background."),
         },
       },
       {
