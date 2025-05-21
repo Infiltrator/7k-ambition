@@ -1542,7 +1542,11 @@ int Firm::set_builder(short newBuilderRecno)
 	}
 
 	if(oldBuilderRecno)
+	{
 		mobilize_builder(oldBuilderRecno);
+
+		Ambition::Building::sendUnitsToRallyPoint(this, { oldBuilderRecno });
+	}
 
 	return 1;
 }

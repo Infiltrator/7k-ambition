@@ -32,6 +32,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Sortie troops from Forts before selling or destroying them, so that the troops still count as being under the general's leadership."),
+          _("When a new builder enters a building under construction, the knocked-out builder will get sent to the building's rally point.  The same applies to builders ejected by pressing the hammer button."),
         },
       },
     },
