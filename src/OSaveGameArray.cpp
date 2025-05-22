@@ -26,6 +26,7 @@
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <KEY.h>
 #include <OSYS.h>
@@ -496,7 +497,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
 			break;		// break while(1)
 		}
 		else if( (action_mode == 1 || (action_mode == 2 && browse_recno))
-			&& saveButton.detect() )
+			&& saveButton.detect(Ambition::Input::confirmKeyEvent()) )
 		{
 			// save / load button
 			refreshFlag = LSOPTION_ALL;
@@ -512,7 +513,7 @@ int SaveGameArray::menu(int actionMode, int *recno)
 			}
 			// ##### end Gilbert 15/10 #####//
 		}
-		else if( action_mode == 1 && saveNewButton.detect() )
+		else if( action_mode == 1 && saveNewButton.detect(Ambition::Input::confirmKeyEvent()) )
 		{
 			// save new button
 			refreshFlag = LSOPTION_ALL;

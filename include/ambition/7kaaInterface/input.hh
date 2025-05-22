@@ -38,6 +38,9 @@ void calculateScroll(
 unsigned int cancelKeyEvent(
 );
 
+unsigned int confirmKeyEvent(
+);
+
 bool detectClipboardKeys(
   GetA* textField
 );
