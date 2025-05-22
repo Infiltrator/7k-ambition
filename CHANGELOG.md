@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Added save/load game list scrolling with the mouse wheel or touchpad, up/down
+  keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added scroll up and scroll down prompts to the What's New screen.
 - Added scroll hints to the What's New screen.
 

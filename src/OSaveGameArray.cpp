@@ -415,6 +415,8 @@ int SaveGameArray::menu(int actionMode, int *recno)
 
 		sys.blt_virtual_buf();
 
+		Ambition::Input::detectSaveGameScroll(minRecno, size(), browse_recno, browse_top_recno, refreshFlag, scrollBar);
+
 		if( scrollBar.detect() == 1 )
 		{
 			browse_top_recno = scrollBar.view_recno;
