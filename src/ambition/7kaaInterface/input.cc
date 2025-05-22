@@ -65,6 +65,15 @@ unsigned int cancelKeyEvent(
   return GETKEY(KEYEVENT_CANCEL);
 }
 
+unsigned int confirmKeyEvent(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return SDLK_UNKNOWN;
+  }
+
+  return GETKEY(KEYEVENT_CONFIRM);
+}
+
 bool detectClipboardKeys(
   GetA* textField
 ) {

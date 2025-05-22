@@ -19,6 +19,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_ADDED),
         .items = {
+          _("Added a keybind for confirming in saving and loading menus (defaults to Enter), settable in config.txt with `bindkey = KEYEVENT_ _CONFIRM,Return`."),
         },
       },
       {

@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added a keybind for confirming in saving and loading menus (defaults to
+  Enter), settable in config.txt with `bindkey = KEYEVENT_CONFIRM,Return`.
+
 ### Fixed
 
 - Fixed spy icon getting duplicated when workers are re-arranged inside
