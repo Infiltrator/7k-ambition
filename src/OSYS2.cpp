@@ -191,7 +191,7 @@ void Sys::process()
 
 	//------ check if it's time for the next day ------//
 
-	if( ++day_frame_count > FRAMES_PER_DAY )
+	if( ++day_frame_count >= FRAMES_PER_DAY )
 	{
 		LOG_MSG("begin info.next_day()");
 		info.next_day();
