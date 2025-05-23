@@ -30,6 +30,7 @@
 #include <OREBEL.h>
 #include <ORACERES.h>
 #include <ONATION.h>
+#include <ConfigAdv.h>
 
 
 //--------- Begin of function RebelArray::RebelArray ----------//
@@ -562,7 +563,17 @@ void Rebel::next_day()
 
 		err_when( town_recno && town_array[town_recno]->rebel_recno != rebel_recno );
 
-		return;		// don't think new action as this rebel defender need to go back to its town.
+		if( mobile_rebel_count==0 )
+		{
+			// think town action when all rebels are settled
+
+			if( info.game_date%30 == rebel_recno%30 )
+				think_town_action();
+
+			return;
+		}
+
+		// else don't think town action until rebels settle to town
 	}
 
 	//------- no rebels left in the group --------//
@@ -583,14 +594,6 @@ void Rebel::next_day()
 			think_new_action();				// think about a new action
 		else
 			think_cur_action();				// think if there should be any changes to the current action
-	}
-	else			// if there are no mobile rebel units
-	{
-		if( town_recno > 0 )
-		{
-			if( info.game_date%30 == rebel_recno%30 )		// if the rebel has a town
-				think_town_action();
-		}
 	}
 }
 //----------- End of function Rebel::next_day ---------//
@@ -922,6 +925,9 @@ void Rebel::execute_new_action()
 //
 void Rebel::think_town_action()
 {
+	if( !config_adv.rebel_think_town_action )
+		return;
+
 	if( town_recno==0 || mobile_rebel_count>0 )	// only when all rebel units has settled in the town
 		return;
 

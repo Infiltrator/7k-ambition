@@ -289,6 +289,8 @@ void ConfigAdv::reset()
 	for (int i = 0; i < race_random_list_max; i++)
 		race_random_list[i] = i+1;
 
+	rebel_think_town_action = 0;
+
 	remote_compare_object_crc = 1;
 	remote_compare_random_seed = 1;
 
@@ -499,6 +501,12 @@ int ConfigAdv::set(char *name, char *value)
 		{
 			return 0;
 		}
+	}
+	else if( !strcmp(name, "rebel_think_town_action") )
+	{
+		if( !read_bool(value, &rebel_think_town_action) )
+			return 0;
+		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "remote_compare_object_crc") )
 	{

@@ -88,6 +88,9 @@ public:
 	char			race_random_list[MAX_RACE];
 	int			race_random_list_max;
 
+	// rebel settings
+	char			rebel_think_town_action;
+
 	// remote settings
 	char		        remote_compare_object_crc;
 	char			remote_compare_random_seed;
