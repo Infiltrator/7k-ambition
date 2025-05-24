@@ -54,6 +54,7 @@
 #include "gettext.h"
 #include <FilePath.h>
 #include <ConfigAdv.h>
+#include <OGF_REC.h>
 
 
 DBGLOG_DEFAULT_CHANNEL(GameMP);
@@ -212,9 +213,12 @@ struct MpStructNation : public MpStructBase
 
 struct MpStructConfig : public MpStructBase
 {
-	Config game_config;
+	ConfigGF game_config;
 
-	MpStructConfig(Config &c) : MpStructBase(MPMSG_SEND_CONFIG), game_config(c) {}
+	MpStructConfig(Config &c) : MpStructBase(MPMSG_SEND_CONFIG)
+	{
+		c.write_record(&game_config);
+	}
 };
 
 

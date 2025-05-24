@@ -221,8 +221,11 @@ void Config::default_preference()
 
 //--------- Begin of function Config::change_game_setting --------//
 // for synchronize the game setting with the host before a multiplayer game
-void Config::change_game_setting( Config &c )
+void Config::change_game_setting( ConfigGF &in )
 {
+	Config c;
+	c.read_record(&in);
+
 	//-------- game settings  ---------//
 	ai_nation_count        = c.ai_nation_count;
 	start_up_cash          = c.start_up_cash;

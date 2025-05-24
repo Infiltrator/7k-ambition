@@ -62,7 +62,7 @@ public:
 	void			default_cheat_setting();
 	void			default_local_game_setting();
 	void			default_preference();
-	void			change_game_setting( Config & );
+	void			change_game_setting( ConfigGF &in );
 	void			change_preference( Config & );
 	void			change_difficulty(int);
 
