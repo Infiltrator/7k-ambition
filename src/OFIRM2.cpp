@@ -121,6 +121,8 @@ void Firm::kill_worker(int workerId)
 		selected_worker_id = 0;
 
 	err_when( selected_worker_id > worker_count );
+
+	sort_worker();
 }
 //----------- End of function Firm::kill_worker -----------//
 
