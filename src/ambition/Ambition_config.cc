@@ -324,7 +324,7 @@ void runModeSelectionScreen(
       || sys.signal_exit_flag == 1
     ) { // Clicking on the back button, pressing Esc, or otherwise exiting.
       break;
-    } else if (startButton.detect()) {
+    } else if (startButton.detect(GETKEY(KEYEVENT_CONFIRM))) {
       config.setMode(Config::Mode(selectedMode));
       break;
     }
