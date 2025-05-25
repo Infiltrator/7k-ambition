@@ -137,6 +137,21 @@ Rectangle Rectangle::internal(
   return inner(paddingLeft, paddingTop, paddingRight, paddingBottom);
 }
 
+Rectangle Rectangle::intersection(
+  const Rectangle with
+) const {
+  return {
+    .start = {
+      .left = std::max(start.left, with.start.left),
+      .top = std::max(start.top, with.start.top),
+    },
+    .end = {
+      .left = std::min(end.left, with.end.left),
+      .top = std::min(end.top, with.end.top),
+    },
+  };
+}
+
 
 Size bitmapSize(
   const char* bitmap

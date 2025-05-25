@@ -258,6 +258,19 @@ void printLeadershipStatus(
   const int refreshFlag
 );
 
+void printMilitaryReportCostHeadings(
+);
+
+void printMilitaryReportCostLine(
+  const UserInterface::Rectangle rowArea,
+  const int unitID,
+  const int unitCount
+);
+
+void printMilitaryReportTotalCost(
+  const UserInterface::Rectangle rowArea
+);
+
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
  *

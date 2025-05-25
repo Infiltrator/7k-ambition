@@ -105,6 +105,10 @@ struct Rectangle {
     const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
     const VerticalAlignment verticalAlignment = VerticalAlignment::Top
   ) const;
+
+  Rectangle intersection(
+    const Rectangle with
+  ) const;
 };
 
 
@@ -123,6 +127,56 @@ constexpr Rectangle BOUNDS = {
     .top = 600,
   },
 };
+
+const auto VIEWPORT = BOUNDS.internal(
+  {
+    .width = 575,
+    .height = 543,
+  },
+  HorizontalAlignment::Left,
+  VerticalAlignment::Bottom
+);
+
+const auto REPORT_AREA = VIEWPORT.inner(6);
+
+namespace MilitaryReport {
+
+namespace UnitList {
+
+const auto AREA = REPORT_AREA.inner(0, 246, 0, 0);
+
+namespace UnitCost {
+
+const auto COLUMN
+  = AREA.inner(180, 0, 0, 0)
+  .internal({ .width = 100, .height = AREA.height() });
+const auto COLUMN_CONTENTS = COLUMN.internal(
+  { .width = 40, .height = AREA.height() },
+  HorizontalAlignment::Centre
+);
+
+} // namespace MilitaryReport::UnitList::UnitCost
+
+namespace TotalCost {
+
+const auto COLUMN
+  = AREA.inner(390, 0, 0, 0)
+  .internal({ .width = 150, .height = AREA.height() });
+const auto COLUMN_CONTENTS = COLUMN.inner(12, 0);
+const auto VALUE = COLUMN_CONTENTS.internal(
+  { .width = 70, .height = AREA.height() },
+  HorizontalAlignment::Left
+);
+const auto PERCENTAGE = COLUMN_CONTENTS.internal(
+  { .width = 50, .height = AREA.height() },
+  HorizontalAlignment::Right
+);
+
+} // namespace MilitaryReport::UnitList::TotalCost
+
+} // namespace MilitaryReport::UnitList
+
+} // namespace MilitaryReport
 
 constexpr Rectangle INFO_PANE_CONTENTS = {
   .start = {

@@ -542,6 +542,61 @@ void loadMenuDeleteButton(
   Ambition::drawLoadMenuDeleteButton(button, left, top);
 }
 
+void militaryReportCostHeadings(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::printMilitaryReportCostHeadings();
+}
+
+void militaryReportCostLine(
+  const int top,
+  const int rowHeight,
+  const int unitID,
+  const int unitCount
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto rowArea = Ambition::UserInterface::Rectangle {
+    .start = {
+      .left = Ambition::UserInterface::REPORT_AREA.start.left,
+      .top = top,
+    },
+    .end = {
+      .left = Ambition::UserInterface::REPORT_AREA.end.left,
+      .top = top + rowHeight,
+    },
+  };
+
+  Ambition::printMilitaryReportCostLine(rowArea, unitID, unitCount);
+}
+
+void militaryReportTotalCost(
+  const int top,
+  const int rowHeight
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto rowArea = Ambition::UserInterface::Rectangle {
+    .start = {
+      .left = Ambition::UserInterface::REPORT_AREA.start.left,
+      .top = top,
+    },
+    .end = {
+      .left = Ambition::UserInterface::REPORT_AREA.end.left,
+      .top = top + rowHeight,
+    },
+  };
+
+  Ambition::printMilitaryReportTotalCost(rowArea);
+}
+
 bool minimapViewBoundsBox(
   const MapMatrix* _7kaaMapMatrix
 ) {

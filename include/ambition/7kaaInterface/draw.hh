@@ -246,6 +246,21 @@ void loadMenuDeleteButton(
   const int top
 );
 
+void militaryReportCostHeadings(
+);
+
+void militaryReportCostLine(
+  const int top,
+  const int rowHeight,
+  const int unitID,
+  const int unitCount
+);
+
+void militaryReportTotalCost(
+  const int top,
+  const int rowHeight
+);
+
 bool minimapViewBoundsBox(
   const MapMatrix* _7kaaMapMatrix
 );

@@ -12,6 +12,10 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Show the per-unit and total costs, along with the percentages of the fixed
+  expense, for units on the Military Report.
+- Show a total for the unit costs, along with the percentage of fixed expense,
+  on the Military Report.
 - Added a keybind for confirming in saving and loading menus (defaults to
   Enter), settable in config.txt with `bindkey = KEYEVENT_CONFIRM,Return`.
 
