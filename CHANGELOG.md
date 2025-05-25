@@ -26,6 +26,7 @@ speaking, considered to be the player's experience.
 - Fixed spy icon getting duplicated when workers are re-arranged inside
   buildings.
 - Fixed raw material (and other) icons showing with a white background.
+- Fixed potential incorrect placement and crash with user interface bounds.
 
 ### Changed
 

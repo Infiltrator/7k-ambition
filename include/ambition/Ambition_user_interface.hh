@@ -117,16 +117,16 @@ constexpr Size BUTTON_SIZE = {
   .height = 40,
 };
 
-constexpr Rectangle BOUNDS = {
-  .start = {
+constexpr auto BOUNDS = Rectangle::fromPoint(
+  {
     .left = 0,
     .top = 0,
   },
-  .end = {
-    .left = 800,
-    .top = 600,
-  },
-};
+  {
+    .width = 800,
+    .height = 600,
+  }
+);
 
 const auto VIEWPORT = BOUNDS.internal(
   {
