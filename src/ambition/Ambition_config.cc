@@ -319,12 +319,12 @@ void runModeSelectionScreen(
           selectedMode = clickedSlot;
         }
       }
-    } else if (backButton.detect(KEY_ESC)
+    } else if (backButton.detect(GETKEY(KEYEVENT_CANCEL))
       || mouse.any_click(RIGHT_BUTTON)
       || sys.signal_exit_flag == 1
     ) { // Clicking on the back button, pressing Esc, or otherwise exiting.
       break;
-    } else if (startButton.detect()) {
+    } else if (startButton.detect(GETKEY(KEYEVENT_CONFIRM))) {
       config.setMode(Config::Mode(selectedMode));
       break;
     }

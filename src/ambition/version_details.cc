@@ -22,6 +22,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Show the per-unit and total costs, along with the percentages of the fixed expense, for units on the Military Report."),
           _("Show a total for the unit costs, along with the percentage of fixed expense, on the Military Report."),
           _("Added a keybind for confirming in saving and loading menus (defaults to Enter), settable in config.txt with `bindkey = KEYEVENT_ _CONFIRM,Return`."),
+          _("Added the KEYEVENT_ _CONFIRM keybind to mode selection screen for confirming the selection using the Enter key (by default)."),
         },
       },
       {
