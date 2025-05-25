@@ -21,6 +21,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed the building expense amounts on the Villages report being lower than the
+  real expense.
 - Fixed spy icon getting duplicated when workers are re-arranged inside
   buildings.
 - Fixed raw material (and other) icons showing with a white background.
