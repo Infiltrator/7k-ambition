@@ -941,14 +941,14 @@ void printMilitaryReportCostHeadings(
   UserInterface::printText(
     font_san,
     _("Unit Cost"),
-    UserInterface::MilitaryReport::UnitList::UnitCost::COLUMN,
+    UserInterface::MilitaryReport::UnitList::UnitCost::COLUMN.inner(0, 3),
     UserInterface::Clear::None,
     UserInterface::HorizontalAlignment::Centre
   );
   UserInterface::printText(
     font_san,
     _("Yearly Expense"),
-    UserInterface::MilitaryReport::UnitList::TotalCost::COLUMN,
+    UserInterface::MilitaryReport::UnitList::TotalCost::COLUMN.inner(0, 3),
     UserInterface::Clear::None,
     UserInterface::HorizontalAlignment::Centre
   );
