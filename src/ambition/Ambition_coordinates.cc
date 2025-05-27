@@ -40,8 +40,6 @@ constexpr _7kaaCoordinates ORIGIN_7KAA_COORDINATES = {
   .y = 100,
 };
 
-constexpr auto SCALING_FACTOR = 16;
-
 
 Interval Point::asInterval(
 ) const {
@@ -51,17 +49,20 @@ Interval Point::asInterval(
 Point Point::from7kaaCoordinates(
   const _7kaaCoordinates& _7kaaCoordinates
 ) {
-  return {
-    .x = (_7kaaCoordinates.x - ORIGIN_7KAA_COORDINATES.x) * SCALING_FACTOR,
-    .y = (ORIGIN_7KAA_COORDINATES.y - _7kaaCoordinates.y) * SCALING_FACTOR,
-  };
+  return (
+    Interval {
+      .x = (_7kaaCoordinates.x - ORIGIN_7KAA_COORDINATES.x),
+      .y = (ORIGIN_7KAA_COORDINATES.y - _7kaaCoordinates.y),
+    } * SCALING_FACTOR + _7KAA_OFFSET
+  ).asCoordinates();
 }
 
 _7kaaCoordinates Point::to7kaaCoordinates(
 ) const {
+  const auto point = (*this - _7KAA_OFFSET).asInterval() / SCALING_FACTOR;
   const Point temp = {
-    .x = ORIGIN_7KAA_COORDINATES.x + x / SCALING_FACTOR,
-    .y = ORIGIN_7KAA_COORDINATES.y - y / SCALING_FACTOR,
+    .x = ORIGIN_7KAA_COORDINATES.x + point.x,
+    .y = ORIGIN_7KAA_COORDINATES.y - point.y,
   };
 
   if (temp.x > std::numeric_limits<short>::max()
