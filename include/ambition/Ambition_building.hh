@@ -104,6 +104,12 @@ public:
     const int _7kaaTownRecordNumber
   );
 
+  static std::vector<int> countLinks(
+    const short targetNation7kaaRecordNumber,
+    const int targetFirmId,
+    const Coordinates::Rectangle target
+  );
+
   bool canProduce(
     const char _7kaaRaceId,
     const int _7kaaSkillId

@@ -753,16 +753,35 @@ void drawBuildModeHighlighting(
         continue;
       }
 
+      const auto _7kaaPoint = point.to7kaaCoordinates();
       if (world.can_build_firm(
-          point.to7kaaCoordinates().x,
-          point.to7kaaCoordinates().y,
+          _7kaaPoint.x,
+          _7kaaPoint.y,
           FIRM_HARBOR,
           unit_array.selected_recno
         )
       ) {
         canBuild = true;
-        ideal = true;
-        break;
+
+        const auto linkCounts = Building::countLinks(
+          nation_array.player_recno,
+          firmId,
+          Coordinates::Rectangle::fromPoint(
+            point,
+            {
+              (width - 1) * Coordinates::SCALING_FACTOR,
+              -(height - 1) * Coordinates::SCALING_FACTOR,
+            }
+          )
+        );
+
+        if (linkCounts[FIRM_FACTORY] > 0
+          || linkCounts[FIRM_MARKET] > 0
+          || linkCounts[FIRM_MINE] > 0
+        ) {
+          ideal = true;
+          break;
+        }
       }
     }
   } else {

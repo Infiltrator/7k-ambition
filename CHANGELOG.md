@@ -18,6 +18,8 @@ speaking, considered to be the player's experience.
 - When selecting where to place a building, highlight valid locations, darken
   invalid locations, and shade un-walkable locations red, to create a guide for
   placing and planning buildings.  This is especially helpful with Harbours.
+- Highlight possible Harbour locations brighter when they can link to other
+  buildings, to allow for easier placement of buildings.
 - Show the per-unit and total costs, along with the percentages of the fixed
   expense, for units on the Military Report.
 - Show a total for the unit costs, along with the percentage of fixed expense,

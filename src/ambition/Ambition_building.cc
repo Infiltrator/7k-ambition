@@ -123,6 +123,76 @@ std::shared_ptr<Building> Building::findBy7kaaTownRecordNumber(
   );
 }
 
+std::vector<int> Building::countLinks(
+  const short targetNation7kaaRecordNumber,
+  const int targetFirmId,
+  const Coordinates::Rectangle target
+) {
+  constexpr auto FIRM_ID_TOWN = 0;
+
+  constexpr auto TOWN_ID_COUNT = 1;
+  constexpr auto FIRM_ID_COUNT = FIRM_MONSTER + TOWN_ID_COUNT;
+
+  std::vector<int> linkCounts(FIRM_ID_COUNT, 0);
+
+  const auto effectiveDistanceLimit
+    = targetFirmId == FIRM_ID_TOWN
+    ? EFFECTIVE_FIRM_TOWN_DISTANCE
+    : EFFECTIVE_FIRM_FIRM_DISTANCE;
+
+  for (auto i = firm_array.size(); i > 0; i--) {
+    if (firm_array.is_deleted(i)) {
+      continue;
+    }
+
+    const auto firm = firm_array[i];
+
+    if (targetFirmId == FIRM_ID_TOWN
+      ? !firm_res[firm->firm_id]->is_linkable_to_town
+      : !firm_res[firm->firm_id]->is_linkable_to_firm(targetFirmId)
+    ) {
+      continue;
+    }
+
+    if ((targetFirmId == FIRM_ID_TOWN
+        || targetFirmId == FIRM_FACTORY
+        || targetFirmId == FIRM_MARKET
+        || targetFirmId == FIRM_MINE
+        || targetFirmId == FIRM_HARBOR
+      ) && firm->nation_recno != targetNation7kaaRecordNumber
+    ) {
+      continue;
+    }
+
+    if (misc.rects_distance(
+        firm->loc_x1,
+        firm->loc_y1,
+        firm->loc_x2,
+        firm->loc_y2,
+        target.topLeft().to7kaaCoordinates().x,
+        target.topLeft().to7kaaCoordinates().y,
+        target.bottomRight().to7kaaCoordinates().x,
+        target.bottomRight().to7kaaCoordinates().y
+      ) > effectiveDistanceLimit
+    ) {
+      continue;
+    }
+
+    if (world.get_loc(firm->center_x, firm->center_y)->is_plateau()
+      != world.get_loc(
+        target.centre().to7kaaCoordinates().x,
+        target.centre().to7kaaCoordinates().y
+      )->is_plateau()
+    ) {
+      continue;
+    }
+
+    linkCounts[firm->firm_id]++;
+  }
+
+  return linkCounts;
+}
+
 
 bool Building::canProduce(
   const char _7kaaRaceId,
