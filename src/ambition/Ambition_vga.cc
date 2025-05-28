@@ -785,6 +785,10 @@ void drawBuildModeHighlighting(
       }
     }
   } else {
+    if (firmId == FIRM_BASE || firmId == FIRM_INN) {
+      ideal = true;
+    }
+
     const auto rectangle = Coordinates::Rectangle::fromPoint(
       locationCoordinates,
       {
@@ -835,11 +839,90 @@ void drawBuildModeHighlighting(
             break;
           }
         } else {
-          ideal = true;
-          break;
+          const auto linkCounts = Building::countLinks(
+            nation_array.player_recno,
+            firmId,
+            Coordinates::Rectangle::fromPoint(
+              point,
+              {
+                (width - 1) * Coordinates::SCALING_FACTOR,
+                -(height - 1) * Coordinates::SCALING_FACTOR,
+              }
+            )
+          );
+
+          switch (firmId) {
+          case FIRM_ID_TOWN:
+            if (linkCounts[FIRM_BASE] == 0
+              && linkCounts[FIRM_INN] == 0
+              && (linkCounts[FIRM_ID_TOWN] > 0
+                || linkCounts[FIRM_FACTORY] > 0
+                || linkCounts[FIRM_MARKET] > 0
+                || linkCounts[FIRM_CAMP] > 0
+                || linkCounts[FIRM_MINE] > 0
+                || linkCounts[FIRM_RESEARCH] > 0
+                || linkCounts[FIRM_WAR_FACTORY] > 0
+              )
+            ) {
+              ideal = true;
+            }
+            break;
+          case FIRM_BASE:
+            if (linkCounts[FIRM_ID_TOWN] > 0) {
+              ideal = false;
+            }
+            break;
+          case FIRM_FACTORY:
+            if (linkCounts[FIRM_ID_TOWN] > 0
+              || linkCounts[FIRM_MINE] > 0
+              || linkCounts[FIRM_MARKET] > 0
+              || linkCounts[FIRM_HARBOR] > 0
+            ) {
+              ideal = true;
+            }
+            break;
+          case FIRM_INN:
+            if (linkCounts[FIRM_ID_TOWN] > 0
+              || linkCounts[FIRM_INN] > 0
+            ) {
+              ideal = false;
+            }
+            break;
+          case FIRM_MARKET:
+            if (linkCounts[FIRM_ID_TOWN] > 0
+              || linkCounts[FIRM_MINE] > 0
+              || linkCounts[FIRM_FACTORY] > 0
+              || linkCounts[FIRM_HARBOR] > 0
+            ) {
+              ideal = true;
+            }
+            break;
+          case FIRM_CAMP:
+          case FIRM_RESEARCH:
+          case FIRM_WAR_FACTORY:
+            if (linkCounts[FIRM_ID_TOWN] > 0) {
+              ideal = true;
+            }
+            break;
+          default:
+            assert(false);
+          }
+          if (firmId == FIRM_BASE || firmId == FIRM_INN) {
+            if (!ideal) {
+              break;
+            }
+          } else {
+            if (ideal) {
+              break;
+            }
+          }
         }
       }
     }
+  }
+
+  if (!canBuild) {
+    ideal = false;
   }
 
   const auto _7kaaCoordinates = locationCoordinates.to7kaaCoordinates();

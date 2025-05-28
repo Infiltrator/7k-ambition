@@ -20,6 +20,15 @@ speaking, considered to be the player's experience.
   placing and planning buildings.  This is especially helpful with Harbours.
 - Highlight possible Harbour locations brighter when they can link to other
   buildings, to allow for easier placement of buildings.
+- Highlight possible Seat of Power locations brighter when they are away from
+  Towns, to allow for planning so that they do not take up space that can be
+  used by buildings that do link to Towns.
+- Highlight possible Inn locations brighter when they are away from Towns and
+  other Inns, to allow for planning so that they do not take up space that can
+  be used by buildings that do link to Towns and so that Inns do not get the
+  proximity penalty.
+- Highlight possible locations for other buildings brighter when they can link
+  to other buildings, to allow for easier placement and planning of buildings.
 - Show the per-unit and total costs, along with the percentages of the fixed
   expense, for units on the Military Report.
 - Show a total for the unit costs, along with the percentage of fixed expense,
