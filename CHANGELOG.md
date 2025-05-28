@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.6] — 2025-05-28
+
 ### Added
 
 - When selecting where to place a building, show grid rules of the building, and

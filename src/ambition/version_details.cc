@@ -16,6 +16,11 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+    },
+  },
+  {
+    .identifier = _("3.1.6 -- 2025-05-28"),
+    .sections = {
       {
         .heading = _(HEADING_ADDED),
         .items = {
