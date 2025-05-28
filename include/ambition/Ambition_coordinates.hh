@@ -30,6 +30,9 @@
 
 namespace Ambition::Coordinates {
 
+constexpr auto SCALING_FACTOR = 16;
+
+
 struct _7kaaCoordinates {
   short x;
   short y;
@@ -111,6 +114,13 @@ struct Rectangle {
   Point centre() const;
   Point topLeft() const;
 };
+
+
+constexpr auto _7KAA_OFFSET = Interval {
+  -SCALING_FACTOR / 2,
+  SCALING_FACTOR / 2
+};
+
 
 /** The coordinates of the current viewport. */
 Rectangle viewport(
