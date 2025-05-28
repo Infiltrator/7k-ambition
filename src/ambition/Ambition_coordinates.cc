@@ -140,6 +140,10 @@ Point Interval::asCoordinates(
   return { .x = x, .y = y };
 }
 
+bool Interval::operator==(const Interval &rhs) const noexcept {
+  return x == rhs.x && y == rhs.y;
+}
+
 Interval Interval::operator+(const Interval& rhs) const {
   return {
     .x = x + rhs.x,
@@ -186,6 +190,33 @@ Interval& Interval::operator/=(const long long int rhs) {
 }
 
 
+Point Rectangle::point(
+  const long int index,
+  const Interval step
+) const {
+  const auto low = Point {
+    std::min(start.x, end.x),
+    std::min(start.y, end.y),
+  };
+  const auto high = Point {
+    std::max(start.x, end.x),
+    std::max(start.y, end.y),
+  };
+
+  const auto stepCountX = (high.x - low.x) / step.x + 1;
+
+  return {
+    low.x + (index % stepCountX) * step.x,
+    low.y + (index / stepCountX) * step.y,
+  };
+}
+long int Rectangle::pointCount(
+  const Interval step
+) const {
+  return ((std::max(start.x, end.x) - std::min(start.x, end.x)) / step.x + 1)
+    * ((std::max(start.y, end.y) - std::min(start.y, end.y)) / step.y + 1);
+}
+
 Point Rectangle::centre(
 ) const {
   return ((start.asInterval() + end.asInterval()) / 2).asCoordinates();
@@ -196,6 +227,39 @@ Point Rectangle::topLeft(
   return {
     .x = std::min(start.x, end.x),
     .y = std::max(start.y, end.y),
+  };
+}
+
+Point Rectangle::bottomRight(
+) const {
+  return {
+    .x = std::max(start.x, end.x),
+    .y = std::min(start.y, end.y),
+  };
+}
+
+long int Rectangle::height(
+) const {
+  return std::abs(start.y - end.y);
+}
+
+long int Rectangle::width(
+) const {
+  return std::abs(start.y - end.y);
+}
+
+Rectangle Rectangle::intersection(
+  const Rectangle with
+) const {
+    return {
+    .start = {
+      .x = std::max(start.x, with.start.x),
+      .y = std::max(start.y, with.start.y),
+    },
+    .end = {
+      .x = std::min(end.x, with.end.x),
+      .y = std::min(end.y, with.end.y),
+    },
   };
 }
 

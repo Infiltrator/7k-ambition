@@ -482,6 +482,8 @@ void ZoomMatrix::draw()
 						}
 					}
 				#endif
+
+				Ambition::Draw::buildModeHighlighting(xLoc, yLoc, x, y, max_x_loc, max_y_loc);
 			}
 		}
 	}
@@ -932,6 +934,8 @@ void ZoomMatrix::draw_build_marker()
 		pixelColor = V_BLACK;
 
 	vga_back.pixelize( x1, y1, MIN(x2,ZOOM_X2), MIN(y2,ZOOM_Y2), pixelColor );
+
+	Ambition::Draw::buildMarkerGridLines(x1, y1, x2, y2);
 
 	//------- draw lines connected to towns and firms ---------//
 

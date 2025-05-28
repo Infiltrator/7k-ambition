@@ -37,6 +37,7 @@
 #include "OFONT.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
+#include "OPOWER.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
@@ -191,6 +192,61 @@ void buildingRallyPoint(
   }
 
   Ambition::drawBuildingRallyPoint(_7kaaTown);
+}
+
+void buildMarkerGridLines(
+  const int left,
+  const int top,
+  const int right,
+  const int bottom
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto buildMarker = Ambition::UserInterface::Rectangle {
+    .start = {
+      .left = left,
+      .top = top,
+    },
+    .end = {
+      .left = right,
+      .top = bottom,
+    },
+  };
+
+  Ambition::drawBuildMarkerGridLines(buildMarker);
+}
+
+void buildModeHighlighting(
+  const short _7kaaX,
+  const short _7kaaY,
+  const int left,
+  const int top,
+  const short maximum7kaaX,
+  const short maximum7kaaY
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (power.command_id != COMMAND_BUILD_FIRM
+    && power.command_id != COMMAND_SETTLE
+  ) {
+    return;
+  }
+
+  using Ambition::Coordinates::Point;
+
+  Ambition::drawBuildModeHighlighting(
+    Point::from7kaaCoordinates({ _7kaaX, _7kaaY }),
+    { left, top },
+    Ambition::Coordinates::Rectangle::fromPoint(
+      Point::from7kaaCoordinates({ 0, 0 }),
+      Point::from7kaaCoordinates({ maximum7kaaX, maximum7kaaY })
+        - Point::from7kaaCoordinates({ 0, 0 })
+    )
+  );
 }
 
 void buttonCost(

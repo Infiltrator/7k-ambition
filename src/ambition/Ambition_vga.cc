@@ -43,6 +43,7 @@
 #include "OFONT.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
+#include "OPOWER.h"
 #include "OREMOTE.h"
 #include "OSNOW.h"
 #include "OSPY.h"
@@ -646,6 +647,297 @@ void drawBuildingRallyPoint(
       building->drawRallyPoint();
     }
   }
+}
+
+void drawBuildMarkerGridLines(
+  const UserInterface::Rectangle marker
+) {
+  constexpr auto PIXELS_PER_TILE = 32;
+
+  const auto buildMarker = marker.intersection(UserInterface::VIEWPORT);
+  const auto perimeterMarker
+    = buildMarker.outer(PIXELS_PER_TILE)
+    .intersection(UserInterface::VIEWPORT);
+
+  vga_back.bar(
+    Ambition::UserInterface::VIEWPORT.start.left,
+    perimeterMarker.start.top,
+    Ambition::UserInterface::VIEWPORT.end.left,
+    perimeterMarker.start.top,
+    V_WHITE
+  );
+  vga_back.bar(
+    Ambition::UserInterface::VIEWPORT.start.left,
+    buildMarker.start.top,
+    Ambition::UserInterface::VIEWPORT.end.left,
+    buildMarker.start.top,
+    V_WHITE
+  );
+  vga_back.bar(
+    Ambition::UserInterface::VIEWPORT.start.left,
+    buildMarker.end.top,
+    Ambition::UserInterface::VIEWPORT.end.left,
+    buildMarker.end.top,
+    V_WHITE
+  );
+  vga_back.bar(
+    Ambition::UserInterface::VIEWPORT.start.left,
+    perimeterMarker.end.top,
+    Ambition::UserInterface::VIEWPORT.end.left,
+    perimeterMarker.end.top,
+    V_WHITE
+  );
+
+  vga_back.bar(
+    perimeterMarker.start.left,
+    Ambition::UserInterface::VIEWPORT.start.top,
+    perimeterMarker.start.left,
+    Ambition::UserInterface::VIEWPORT.end.top,
+    V_WHITE
+  );
+  vga_back.bar(
+    buildMarker.start.left,
+    Ambition::UserInterface::VIEWPORT.start.top,
+    buildMarker.start.left,
+    Ambition::UserInterface::VIEWPORT.end.top,
+    V_WHITE
+  );
+  vga_back.bar(
+    buildMarker.end.left,
+    Ambition::UserInterface::VIEWPORT.start.top,
+    buildMarker.end.left,
+    Ambition::UserInterface::VIEWPORT.end.top,
+    V_WHITE
+  );
+  vga_back.bar(
+    perimeterMarker.end.left,
+    Ambition::UserInterface::VIEWPORT.start.top,
+    perimeterMarker.end.left,
+    Ambition::UserInterface::VIEWPORT.end.top,
+    V_WHITE
+  );
+}
+
+void drawBuildModeHighlighting(
+  const Coordinates::Point locationCoordinates,
+  const UserInterface::Point screenCoordinates,
+  const Coordinates::Rectangle worldBounds
+) {
+  const auto firmId = power.command_para;
+  const auto firmInfo = firm_res[firmId];
+
+  const auto width
+    = power.command_id == COMMAND_BUILD_FIRM
+    ? firmInfo->loc_width
+    : STD_TOWN_LOC_WIDTH;
+  const auto height
+    = power.command_id == COMMAND_BUILD_FIRM
+    ? firmInfo->loc_height
+    : STD_TOWN_LOC_HEIGHT;
+
+  auto canBuild = false;
+  auto ideal = false;
+  if (firmId == FIRM_HARBOR) {
+    const auto rectangle = Coordinates::Rectangle::fromPoint(
+      locationCoordinates,
+      {
+        -(width - 1) * Coordinates::SCALING_FACTOR,
+        (height - 1) * Coordinates::SCALING_FACTOR,
+      }
+    );
+
+    for (const auto point
+           : rectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
+    ) {
+      if (!point.within(worldBounds)) {
+        continue;
+      }
+
+      const auto _7kaaPoint = point.to7kaaCoordinates();
+      if (world.can_build_firm(
+          _7kaaPoint.x,
+          _7kaaPoint.y,
+          FIRM_HARBOR,
+          unit_array.selected_recno
+        )
+      ) {
+        canBuild = true;
+
+        const auto linkCounts = Building::countLinks(
+          nation_array.player_recno,
+          firmId,
+          Coordinates::Rectangle::fromPoint(
+            point,
+            {
+              (width - 1) * Coordinates::SCALING_FACTOR,
+              -(height - 1) * Coordinates::SCALING_FACTOR,
+            }
+          )
+        );
+
+        if (linkCounts[FIRM_FACTORY] > 0
+          || linkCounts[FIRM_MARKET] > 0
+          || linkCounts[FIRM_MINE] > 0
+        ) {
+          ideal = true;
+          break;
+        }
+      }
+    }
+  } else {
+    if (firmId == FIRM_BASE || firmId == FIRM_INN) {
+      ideal = true;
+    }
+
+    const auto rectangle = Coordinates::Rectangle::fromPoint(
+      locationCoordinates,
+      {
+        -(width - 1) * Coordinates::SCALING_FACTOR,
+        (height - 1) * Coordinates::SCALING_FACTOR,
+      }
+    );
+
+    for (const auto point
+           : rectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
+    ) {
+      if (!point.within(worldBounds)) {
+        continue;
+      }
+
+      const auto buildRectangle = Coordinates::Rectangle::fromPoint(
+        point,
+        {
+          (width - 1) * Coordinates::SCALING_FACTOR,
+          -(height - 1) * Coordinates::SCALING_FACTOR,
+        }
+      );
+      auto space = true;
+      auto rawMaterial = false;
+      for (const auto buildPoint
+             : buildRectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
+      ) {
+        const auto location = world.get_loc(
+          buildPoint.to7kaaCoordinates().x,
+          buildPoint.to7kaaCoordinates().y
+        );
+        if (location->has_site()) {
+          rawMaterial = true;
+        }
+        if (!(location->loc_flag & LOCATE_WALK_LAND)
+          || (location->has_site() && firmId != FIRM_MINE)
+          || location->is_power_off()
+        ) {
+          space = false;
+          break;
+        }
+      }
+      if (space) {
+        canBuild = true;
+        if (firmId == FIRM_MINE) {
+          if (rawMaterial) {
+            ideal = true;
+            break;
+          }
+        } else {
+          const auto linkCounts = Building::countLinks(
+            nation_array.player_recno,
+            firmId,
+            Coordinates::Rectangle::fromPoint(
+              point,
+              {
+                (width - 1) * Coordinates::SCALING_FACTOR,
+                -(height - 1) * Coordinates::SCALING_FACTOR,
+              }
+            )
+          );
+
+          switch (firmId) {
+          case FIRM_ID_TOWN:
+            if (linkCounts[FIRM_BASE] == 0
+              && linkCounts[FIRM_INN] == 0
+              && (linkCounts[FIRM_ID_TOWN] > 0
+                || linkCounts[FIRM_FACTORY] > 0
+                || linkCounts[FIRM_MARKET] > 0
+                || linkCounts[FIRM_CAMP] > 0
+                || linkCounts[FIRM_MINE] > 0
+                || linkCounts[FIRM_RESEARCH] > 0
+                || linkCounts[FIRM_WAR_FACTORY] > 0
+              )
+            ) {
+              ideal = true;
+            }
+            break;
+          case FIRM_BASE:
+            if (linkCounts[FIRM_ID_TOWN] > 0) {
+              ideal = false;
+            }
+            break;
+          case FIRM_FACTORY:
+            if (linkCounts[FIRM_ID_TOWN] > 0
+              || linkCounts[FIRM_MINE] > 0
+              || linkCounts[FIRM_MARKET] > 0
+              || linkCounts[FIRM_HARBOR] > 0
+            ) {
+              ideal = true;
+            }
+            break;
+          case FIRM_INN:
+            if (linkCounts[FIRM_ID_TOWN] > 0
+              || linkCounts[FIRM_INN] > 0
+            ) {
+              ideal = false;
+            }
+            break;
+          case FIRM_MARKET:
+            if (linkCounts[FIRM_ID_TOWN] > 0
+              || linkCounts[FIRM_MINE] > 0
+              || linkCounts[FIRM_FACTORY] > 0
+              || linkCounts[FIRM_HARBOR] > 0
+            ) {
+              ideal = true;
+            }
+            break;
+          case FIRM_CAMP:
+          case FIRM_RESEARCH:
+          case FIRM_WAR_FACTORY:
+            if (linkCounts[FIRM_ID_TOWN] > 0) {
+              ideal = true;
+            }
+            break;
+          default:
+            assert(false);
+          }
+          if (firmId == FIRM_BASE || firmId == FIRM_INN) {
+            if (!ideal) {
+              break;
+            }
+          } else {
+            if (ideal) {
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (!canBuild) {
+    ideal = false;
+  }
+
+  const auto _7kaaCoordinates = locationCoordinates.to7kaaCoordinates();
+  int colour;
+  if (ideal) {
+    colour = V_WHITE;
+  } else if (canBuild) {
+    colour = VGA_GRAY + 8;
+  } else if (!world.get_loc(_7kaaCoordinates.x, _7kaaCoordinates.y)->walkable()
+  ) {
+    colour = V_RED;
+  } else {
+    colour = V_BLACK;
+  }
+  vga_back.pixelize_32x32(screenCoordinates.left, screenCoordinates.top, colour);
 }
 
 void drawButtonOverlay(
