@@ -49,6 +49,7 @@
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
+#include "format.hh"
 
 
 namespace _7kaaAmbitionInterface::Draw {
@@ -273,7 +274,7 @@ void buttonCost(
 
   printText(
     font,
-    misc.format(cost, 2),
+    format("$%'d", cost),
     {
       .start = {
         .left = left,
@@ -780,7 +781,7 @@ void queueCount(
       },
       Ambition::UserInterface::BUTTON_SIZE
     ),
-    misc.format(static_cast<long>(productionCount))
+    format("%'d", productionCount)
   );
 }
 void queueCount(
@@ -809,7 +810,7 @@ void queueCount(
       },
       Ambition::UserInterface::BUTTON_SIZE
     ),
-    misc.format(static_cast<long>(productionCount))
+    format("%'d", productionCount)
   );
 }
 void queueCount(
@@ -838,7 +839,7 @@ void queueCount(
       },
       Ambition::UserInterface::BUTTON_SIZE
     ),
-    misc.format(static_cast<long>(productionCount))
+    format("%'d", productionCount)
   );
 }
 
