@@ -329,17 +329,18 @@ void displayTownQualityOfLife(
     = town->jobless_population * PEASANT_GOODS_MONTH_DEMAND
     + town->worker_population() * WORKER_GOODS_MONTH_DEMAND;
 
-  String str;
-  str = misc.format(town->quality_of_life, 3);
-  str += "/";
-  str += misc.format(goodsDemand, 1);
+  const auto value = format(
+    "%d%%/%.1f",
+    town->quality_of_life,
+    goodsDemand
+  );
 
   font_san.field(
     UserInterface::INFO_PANE_CONTENTS.start.left + 2,
     displayTop + 2,
     _("Goods supplied"),
     UserInterface::INFO_PANE_CONTENTS.start.left + 112,
-    str,
+    value.c_str(),
     UserInterface::INFO_PANE_CONTENTS.end.left - 2,
     refreshFlag
   );
@@ -357,9 +358,11 @@ void displayUnitContribution(
      return;
    }
 
-   String str = misc.format(unit->nation_contribution, 1);
-   str += "/";
-   str += misc.format(unit->total_reward, 2);
+   String str = format(
+     "%'d/$%'d",
+     unit->nation_contribution,
+     unit->total_reward
+   ).c_str();
 
    font_san.field(
      x,
