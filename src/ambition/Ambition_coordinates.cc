@@ -276,8 +276,12 @@ Rectangle viewport(
     ),
     .end = Point::from7kaaCoordinates(
       {
-        .x = short(zoomMatrix->top_x_loc + zoomMatrix->cur_cargo_width),
-        .y = short(zoomMatrix->top_y_loc + zoomMatrix->cur_cargo_height),
+        .x = static_cast<short>(
+          zoomMatrix->top_x_loc + zoomMatrix->image_width / ZOOM_LOC_WIDTH
+        ),
+        .y = static_cast<short>(
+          zoomMatrix->top_y_loc + zoomMatrix->image_height / ZOOM_LOC_HEIGHT
+        ),
       }
     ),
   };
