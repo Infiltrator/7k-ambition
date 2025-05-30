@@ -930,8 +930,8 @@ const Coordinates::Rectangle Building::underlying7kaaObjectRectangle(
   const auto object = underlying7kaaObject();
 
   return {
-    .start = Coordinates::Point::from7kaaCoordinates({
-        .x = object.loc_x1(), .y = object.loc_y1() }
+    .start = Coordinates::Point::from7kaaCoordinates(
+      { .x = object.loc_x1(), .y = object.loc_y1() }
     ),
     .end = Coordinates::Point::from7kaaCoordinates(
       { .x = object.loc_x2(), .y = object.loc_y2() }
