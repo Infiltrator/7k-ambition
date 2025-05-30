@@ -126,6 +126,10 @@ struct Rectangle {
     };
   }
 
+  static Rectangle from7kaaCoordinates(
+    const _7kaaCoordinates& _7kaaCoordinates
+  );
+
   bool operator==(const Rectangle& rhs) const noexcept {
     return start == rhs.start && end == rhs.end;
   }

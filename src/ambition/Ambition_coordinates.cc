@@ -190,6 +190,23 @@ Interval& Interval::operator/=(const long long int rhs) {
 }
 
 
+Rectangle Rectangle::from7kaaCoordinates(
+  const _7kaaCoordinates& _7kaaCoordinates
+) {
+  return fromPoint(
+    (
+      Interval {
+        .x = (_7kaaCoordinates.x - ORIGIN_7KAA_COORDINATES.x),
+        .y = (ORIGIN_7KAA_COORDINATES.y - _7kaaCoordinates.y),
+      } * SCALING_FACTOR + _7KAA_OFFSET * 2
+    ).asCoordinates(),
+    {
+      .x = ZOOM_LOC_WIDTH,
+      .y = -ZOOM_LOC_HEIGHT,
+    }
+  );
+}
+
 Point Rectangle::point(
   const long int index,
   const Interval step
@@ -268,18 +285,22 @@ Rectangle viewport(
   const auto zoomMatrix = world.zoom_matrix;
 
   return {
-    .start = Point::from7kaaCoordinates(
+    .start = Rectangle::from7kaaCoordinates(
       {
-        .x = short(zoomMatrix->top_x_loc),
-        .y = short(zoomMatrix->top_y_loc),
+        .x = static_cast<short>(zoomMatrix->top_x_loc),
+        .y = static_cast<short>(zoomMatrix->top_y_loc),
       }
-    ),
-    .end = Point::from7kaaCoordinates(
+    ).topLeft(),
+    .end = Rectangle::from7kaaCoordinates(
       {
-        .x = short(zoomMatrix->top_x_loc + zoomMatrix->cur_cargo_width),
-        .y = short(zoomMatrix->top_y_loc + zoomMatrix->cur_cargo_height),
+        .x = static_cast<short>(
+          zoomMatrix->top_x_loc + zoomMatrix->image_width / ZOOM_LOC_WIDTH
+        ),
+        .y = static_cast<short>(
+          zoomMatrix->top_y_loc + zoomMatrix->image_height / ZOOM_LOC_HEIGHT
+        ),
       }
-    ),
+    ).bottomRight(),
   };
 }
 
