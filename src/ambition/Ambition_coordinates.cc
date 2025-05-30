@@ -287,8 +287,8 @@ Rectangle viewport(
   return {
     .start = Rectangle::from7kaaCoordinates(
       {
-        .x = short(zoomMatrix->top_x_loc),
-        .y = short(zoomMatrix->top_y_loc),
+        .x = static_cast<short>(zoomMatrix->top_x_loc),
+        .y = static_cast<short>(zoomMatrix->top_y_loc),
       }
     ).topLeft(),
     .end = Rectangle::from7kaaCoordinates(
