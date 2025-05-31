@@ -19,7 +19,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("3.1.6 -- 2025-05-28"),
+    .identifier = _("v3.1.6 -- 2025-05-28"),
     .sections = {
       {
         .heading = _(HEADING_ADDED),
@@ -55,7 +55,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("3.1.5 -- 2025-05-03"),
+    .identifier = _("v3.1.5 -- 2025-05-03"),
     .sections = {
       {
         .heading = _(HEADING_ADDED),
@@ -78,7 +78,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("3.1.4 -- 2025-04-28"),
+    .identifier = _("v3.1.4 -- 2025-04-28"),
     .sections = {
       {
         .heading = _(HEADING_FIXED),
@@ -89,7 +89,7 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("3.1.3 -- 2025-04-27"),
+    .identifier = _("v3.1.3 -- 2025-04-27"),
     .sections = {
       {
         .heading = _(HEADING_ADDED),
