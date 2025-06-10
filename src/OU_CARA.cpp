@@ -22,6 +22,9 @@
 //Filename    : OU_CARA.CPP
 //Description : Unit Caravan
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/polity.hh"
 #include "ambition/7kaaInterface/unit.hh"
 
 #include <OVGA.h>
@@ -83,6 +86,8 @@ void UnitCaravan::disp_info(int refreshFlag)
 	disp_stop(INFO_Y1+54, refreshFlag);
 
 	disp_goods(INFO_Y1+234, refreshFlag);
+
+	Ambition::Draw::caravanCloneButton(refreshFlag);
 }
 //---------- End of function UnitCaravan::disp_info ----------//
 
@@ -104,6 +109,8 @@ void UnitCaravan::detect_info()
 		return;
 
 	detect_stop();
+
+	Ambition::Input::detectCaravanCloneButton(this);
 }
 //---------- End of function UnitCaravan::detect_info ----------//
 
@@ -1033,6 +1040,9 @@ void UnitCaravan::pre_process()
 			stop();	// stop if no valid stop is defined
 
 		journey_status = NO_STOP_DEFINED;
+
+		Ambition::Polity::processIdleCaravan(this);
+
 		return;
 	}
 
@@ -1047,6 +1057,9 @@ void UnitCaravan::pre_process()
 		if(firm_array.is_deleted(stopPtr->firm_recno))
 		{
 			update_stop_list();
+
+			Ambition::Polity::processIdleCaravan(this);
+
 			return;
 		}
 
@@ -1060,6 +1073,9 @@ void UnitCaravan::pre_process()
 			(firmId!=FIRM_MINE && firmId!=FIRM_FACTORY && firmId!=FIRM_MARKET))
 		{
 			update_stop_list();
+
+			Ambition::Polity::processIdleCaravan(this);
+
 			return;
 		}
 
@@ -1105,6 +1121,9 @@ void UnitCaravan::pre_process()
 					wait_count--;
 			}
 		}
+
+		Ambition::Polity::processIdleCaravan(this);
+
 		return;
 	}
 
@@ -1114,6 +1133,8 @@ void UnitCaravan::pre_process()
 	err_when(stop_defined_num<=1);
 
 	caravan_on_way();
+
+	Ambition::Polity::processIdleCaravan(this);
 }
 //----------- End of function UnitCaravan::pre_process -----------//
 

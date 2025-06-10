@@ -31,6 +31,7 @@
 
 #include "Ambition_config.hh"
 #include "Ambition_polity.hh"
+#include "Ambition_trade.hh"
 
 
 namespace _7kaaAmbitionInterface::Polity {
@@ -47,6 +48,22 @@ void dissolve(
   if (polity) {
     polity->dissolve(Ambition::Time::now());
   }
+}
+
+void processIdleCaravan(
+  UnitCaravan* _7kaaCaravan
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (!Ambition::Trade::isCaravanIdle(_7kaaCaravan)) {
+    return;
+  }
+
+  auto polity
+    = Ambition::Polity::getBy7kaaRecordNumber(nation_array.player_recno);
+  polity->processIdleCaravan(_7kaaCaravan);
 }
 
 void setResearchTarget(

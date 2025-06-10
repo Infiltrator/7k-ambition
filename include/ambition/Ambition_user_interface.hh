@@ -117,6 +117,11 @@ constexpr Size BUTTON_SIZE = {
   .height = 38,
 };
 
+constexpr Size BUTTON_SIZE_WITH_SHADOW = {
+  .width = BUTTON_SIZE.width + 4,
+  .height = BUTTON_SIZE.height + 6,
+};
+
 constexpr auto BOUNDS = Rectangle::fromPoint(
   {
     .left = 0,
@@ -188,6 +193,18 @@ constexpr Rectangle INFO_PANE_CONTENTS = {
     .top = 589,
   },
 };
+
+const auto BUTTON_ROW_LOWER
+  = INFO_PANE_CONTENTS
+  .outer(0, 1)
+  .internal(
+    {
+      .width = INFO_PANE_CONTENTS.width(),
+      .height = BUTTON_SIZE_WITH_SHADOW.height,
+    },
+    HorizontalAlignment::Left,
+    VerticalAlignment::Bottom
+  );
 
 constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
   {

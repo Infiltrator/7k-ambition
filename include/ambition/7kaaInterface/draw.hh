@@ -221,6 +221,10 @@ int calculateWorkerPortraitLeft(
   const int workerIndex
 );
 
+void caravanCloneButton(
+  const int refreshFlag
+);
+
 int centreHitbar(
   const int left,
   const int maximumWidth,

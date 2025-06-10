@@ -34,12 +34,14 @@
 #include "OMOUSE.h"
 #include "OMOUSE2.h"
 #include "OTOWN.h"
+#include "OU_CARA.h"
 #include "OWORLD.h"
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_input.hh"
 #include "Ambition_news.hh"
+#include "Ambition_trade.hh"
 #include "Ambition_user_interface.hh"
 
 
@@ -72,6 +74,16 @@ unsigned int confirmKeyEvent(
   }
 
   return GETKEY(KEYEVENT_CONFIRM);
+}
+
+void detectCaravanCloneButton(
+  const UnitCaravan* _7kaaCaravan
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Trade::detectCaravanCloneButton(_7kaaCaravan);
 }
 
 bool detectClipboardKeys(

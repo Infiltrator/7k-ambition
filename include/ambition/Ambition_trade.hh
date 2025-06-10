@@ -20,34 +20,25 @@
 /**
  * @file
  *
- * Header file for _7kaaAmbitionInterface::Polity.
+ * Header file for Ambition::Trade.
  */
 
 #pragma once
 
-class Nation;
-class NationBase;
 class UnitCaravan;
 
 
-namespace _7kaaAmbitionInterface::Polity {
+namespace Ambition::Trade {
 
-void dissolve(
-  const NationBase* _7kaaNation
+void detectCaravanCloneButton(
+  const UnitCaravan* _7kaaCaravan
 );
 
-void processIdleCaravan(
+void drawCaravanCloneButton(
+);
+
+bool isCaravanIdle(
   UnitCaravan* _7kaaCaravan
 );
 
-void setResearchTarget(
-  const Nation* _7kaaNation,
-  const int technologyId
-);
-
-} // namespace _7kaaAmbitionInterface::Polity
-
-#ifndef _AMBITION_IMPLEMENTATION
-/** Allow 7kaa to call using Ambition::*. */
-namespace Ambition = _7kaaAmbitionInterface;
-#endif
+} // namespace Ambition::Trade

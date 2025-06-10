@@ -26,6 +26,7 @@
 #pragma once
 
 class GetA;
+class UnitCaravan;
 
 
 namespace _7kaaAmbitionInterface::Input {
@@ -39,6 +40,10 @@ unsigned int cancelKeyEvent(
 );
 
 unsigned int confirmKeyEvent(
+);
+
+void detectCaravanCloneButton(
+  const UnitCaravan* _7kaaCaravan
 );
 
 bool detectClipboardKeys(

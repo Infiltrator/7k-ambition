@@ -19,6 +19,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_ADDED),
         .items = {
+          _("Added a clone button to Caravans.  If there is an idle Caravan, it is used as the clone.  Otherwise, a new Caravan spawns at the Market closest to the Caravan's first stop."),
           _("Show the skill icon of the unit being trained in Towns under the progress bar on the world map and in the info pane."),
         },
       },
