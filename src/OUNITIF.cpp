@@ -1739,7 +1739,7 @@ static void disp_firm_button(ButtonCustom *button, int)
 		}
 	}
 
-	Ambition::Draw::buttonKeybind(GETKEY(button_build_hotkey[firmIndex]), button->x1, button->y1, button->x2, button->y2);
+	Ambition::Draw::buttonKeybind(GETKEY(button_build_hotkey[firmIndex]), *button);
 	Ambition::Draw::buttonCost(font_small, firm_res[firmId]->setup_cost, button->x1, button->y1, button->x2 - 4, button->y2 - 3);
 
 	if( button->pushed_flag )
