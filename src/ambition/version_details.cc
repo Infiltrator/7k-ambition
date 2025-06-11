@@ -26,6 +26,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the Town training icon in the info pane not appearing until clicking on the Town again and disappearing after one unit finishes training."),
+          _("Fixed graphics corruption with disabled buttons."),
         },
       },
     },
