@@ -87,6 +87,7 @@ bool Polity::active(
 void Polity::dissolve(
   Time::Stamp stamp
 ) {
+  dissolvedAt = stamp;
 }
 
 unsigned long int Polity::nonSpyGeneralCount(
