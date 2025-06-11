@@ -947,7 +947,17 @@ void drawButtonOverlay(
   UserInterface::Rectangle buttonCoordinates,
   std::string text
 ) {
-  const auto box = buttonCoordinates.inner(8, 10);
+  const auto box
+    = buttonCoordinates
+    .inner(0, 3, 0, 0)
+    .internal(
+      {
+        .width = 30,
+        .height = 21,
+      },
+      UserInterface::HorizontalAlignment::Centre,
+      UserInterface::VerticalAlignment::Centre
+    );
 
   vga_front.bar(
     box.start.left,
