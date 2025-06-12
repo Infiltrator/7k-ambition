@@ -36,6 +36,12 @@
 
 namespace Ambition::UserInterface {
 
+bool Rectangle::contains(
+  const Rectangle& rectangle
+) const {
+  return intersection(rectangle) == rectangle;
+}
+
 Rectangle Rectangle::inner(
   int paddingLeft,
   int paddingTop,

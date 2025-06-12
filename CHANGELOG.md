@@ -23,6 +23,7 @@ speaking, considered to be the player's experience.
   replaced if they fall to 80% or below.
 - Show the skill icon of the unit being trained in Towns under the progress bar
   on the world map and in the info pane.
+- Show the skill level of builders inside buildings on the hammer icon.
 
 ### Fixed
 
