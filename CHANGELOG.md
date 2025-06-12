@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added scroll up and scroll down prompts to the What's New screen.
+
 
 ## [3.1.9] — 2025-06-25
 
