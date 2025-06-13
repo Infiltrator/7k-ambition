@@ -32,6 +32,10 @@ class UnitCaravan;
 
 namespace _7kaaAmbitionInterface::Polity {
 
+void checkCaravanForReplacement(
+  UnitCaravan* _7kaaCaravan
+);
+
 void dissolve(
   const NationBase* _7kaaNation
 );

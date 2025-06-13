@@ -48,6 +48,50 @@ Button3D caravanCloneButton;
 Button reportCloneButton;
 
 
+void checkCaravanForReplacement(
+  UnitCaravan* _7kaaCaravan
+) {
+  if (_7kaaCaravan->hit_points == _7kaaCaravan->max_hit_points) {
+    return;
+  }
+
+  /**
+   * The hit point threshold for a caravan to be replaced if it has no Market
+   * stops.
+   *
+   * Since the new caravan would need to travel some distance from the nearest
+   * Market to the first stop, we do not want to do this if the caravan has
+   * taken only a small amount of damage.
+   */
+  constexpr auto NO_MARKET_STOPS_HIT_POINT_REPLACEMENT_THRESHOLD = 0.8;
+
+  auto hasMarketStops = false;
+  for (auto i = 0; i < MAX_STOP_FOR_CARAVAN; i++) {
+    const auto& tradeStop = _7kaaCaravan->stop_array[i];
+    if (tradeStop.firm_id == FIRM_MARKET) {
+      hasMarketStops = true;
+      break;
+    }
+  }
+
+  if (hasMarketStops) {
+    const auto& currentDestination
+      = _7kaaCaravan->stop_array[_7kaaCaravan->dest_stop_id];
+    if (currentDestination.firm_id != FIRM_MARKET) {
+      return;
+    }
+  } else {
+    if ((_7kaaCaravan->hit_points / _7kaaCaravan->max_hit_points)
+        > NO_MARKET_STOPS_HIT_POINT_REPLACEMENT_THRESHOLD
+    ) {
+      return;
+    }
+  }
+
+  const auto polity = Polity::getBy7kaaRecordNumber(_7kaaCaravan->nation_recno);
+  polity->replaceCaravan(_7kaaCaravan);
+}
+
 void detectCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
 ) {

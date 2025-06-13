@@ -36,6 +36,16 @@
 
 namespace _7kaaAmbitionInterface::Polity {
 
+void checkCaravanForReplacement(
+  UnitCaravan* _7kaaCaravan
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Trade::checkCaravanForReplacement(_7kaaCaravan);
+}
+
 void dissolve(
   const NationBase* _7kaaNation
 ) {
