@@ -77,7 +77,7 @@ public:
 
 protected:
   Time::Stamp dissolvedAt;
-  int _researchTarget;
+  int _researchTarget {0};
 
 protected:
   friend class boost::serialization::access;

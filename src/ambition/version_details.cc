@@ -16,6 +16,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed a bug where opening the military report before setting a global research target could cause a crash when a Tower of Science was built afterwards."),
+        },
+      },
     },
   },
   {
