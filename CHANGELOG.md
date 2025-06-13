@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a bug where opening the military report before setting a global research
+  target could cause a crash when a Tower of Science was built afterwards.
+
 
 ## [3.1.6] — 2025-05-28
 

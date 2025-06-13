@@ -326,6 +326,10 @@ void processIdleTowerOfScience(
     = Ambition::Polity::findBy7kaaRecordNumber(_7kaaNationRecordNumber);
   if (polity) {
     const auto researchTarget = polity->researchTarget();
+    if (!researchTarget) {
+      return;
+    }
+
     const auto technologyInfo = tech_res[researchTarget];
     if (researchTarget
       && technologyInfo->can_research(_7kaaNationRecordNumber)
