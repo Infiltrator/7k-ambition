@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.7] — 2025-06-13
+
 ### Fixed
 
 - Fixed a bug where opening the military report before setting a global research
