@@ -41,6 +41,7 @@
 #include "OVGA.h"
 #include "vga_util.h"
 
+#include "Ambition_input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_version.hh"
 #include "Ambition_vga.hh"
@@ -328,35 +329,75 @@ void display(
     sys.yield();
     vga.flip();
 
-    int _discard;
-    int scroll;
-
     mouse.get_event();
 
-    if (mouse.get_scroll(&_discard, &scroll)) {
-    } else if (mouse.unique_key_code == KEY_HOME) {
-      scroll = -itemsToSkip;
-    } else if (mouse.unique_key_code == KEY_END) {
-      scroll = totalItemCount - 1 - itemsToSkip;
-    } else if (mouse.unique_key_code == KEY_DOWN) {
-      scroll = 1;
-    } else if (mouse.unique_key_code == KEY_UP) {
-      scroll = -1;
-    } else if (mouse.unique_key_code == KEY_BACK_SPACE
-      || mouse.unique_key_code == KEY_PGUP
-      || mouse.unique_key_code == KEY_LEFT
-    ) {
-      scroll = -8;
-    } else if (mouse.unique_key_code == SDLK_SPACE
-      || mouse.unique_key_code == KEY_PGDN
-      || mouse.unique_key_code == KEY_RIGHT
-    ) {
-      scroll = currentItem - 1 - itemsToSkip;
-    } else if (scrollDown.detect()) {
-      scroll = 1;
-    } else if (scrollUp.detect()) {
-      scroll = -1;
-    }
+    Input::detectScroll(
+      true,
+      UserInterface::BOUNDS,
+      {
+        {
+          .orientation = Ambition::Input::ScrollOrientation::Vertical,
+          .direction = Ambition::Input::ScrollDirection::Forward,
+          .distance = Ambition::Input::ScrollStep::Single,
+          .keyCodes = { KEY_DOWN },
+          ._7kaaButtonDetects = {
+            [&scrollDown]() { return scrollDown.detect(); },
+          },
+        },
+        {
+          .orientation = Ambition::Input::ScrollOrientation::Vertical,
+          .direction = Ambition::Input::ScrollDirection::Backward,
+          .distance = Ambition::Input::ScrollStep::Single,
+          .keyCodes = { KEY_UP },
+          ._7kaaButtonDetects = {
+            [&scrollUp]() { return scrollUp.detect(); },
+          },
+        },
+        {
+          .orientation = Ambition::Input::ScrollOrientation::Vertical,
+          .direction = Ambition::Input::ScrollDirection::Forward,
+          .distance = Ambition::Input::ScrollStep::Page,
+          .keyCodes = { KEY_PGDN, KEY_RIGHT, SDLK_SPACE },
+        },
+        {
+          .orientation = Ambition::Input::ScrollOrientation::Vertical,
+          .direction = Ambition::Input::ScrollDirection::Backward,
+          .distance = Ambition::Input::ScrollStep::Page,
+          .keyCodes = { KEY_PGUP, KEY_LEFT, KEY_BACK_SPACE },
+        },
+        {
+          .orientation = Ambition::Input::ScrollOrientation::Vertical,
+          .direction = Ambition::Input::ScrollDirection::Forward,
+          .distance = Ambition::Input::ScrollStep::End,
+          .keyCodes = { KEY_END },
+        },
+        {
+          .orientation = Ambition::Input::ScrollOrientation::Vertical,
+          .direction = Ambition::Input::ScrollDirection::Backward,
+          .distance = Ambition::Input::ScrollStep::End,
+          .keyCodes = { KEY_HOME },
+        },
+      },
+      {
+        {
+          Input::ScrollOrientation::Vertical,
+            [&itemsToSkip, &refreshFlag, totalItemCount](
+            int amount
+          ) {
+            itemsToSkip += amount;
+            refreshFlag = 1;
+            itemsToSkip = std::max(0, std::min(totalItemCount - 1, itemsToSkip));
+          },
+        },
+      },
+      [currentItem, itemsToSkip, totalItemCount]() {
+        if (totalItemCount - currentItem < 6) {
+          return 6;
+        }
+        return currentItem - 1 - itemsToSkip;
+      },
+      [totalItemCount]() { return totalItemCount; }
+    );
 
     if (startButton.detect(KEY_ESC, KEY_RETURN)
       || sys.signal_exit_flag == 1
@@ -365,14 +406,6 @@ void display(
       break;
     } else if (slideBar.detect()) {
       itemsToSkip = slideBar.view_recno;
-      refreshFlag = 1;
-    } else if (scroll > 0) {
-      itemsToSkip += scroll;
-      itemsToSkip = std::min(totalItemCount - 1, itemsToSkip);
-      refreshFlag = 1;
-    } else if (scroll < 0) {
-      itemsToSkip += scroll;
-      itemsToSkip = std::max(0, itemsToSkip);
       refreshFlag = 1;
     } else if (
       mouse.any_click(
