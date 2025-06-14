@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show the skill icon of the unit being trained in Towns under the progress bar
+  on the world map and in the info pane.
+
 ### Fixed
 
 - Fixed the Town training icon in the info pane not appearing until clicking on

@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Show the skill icon of the unit being trained in Towns under the progress bar on the world map and in the info pane."),
+        },
+      },
+      {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the Town training icon in the info pane not appearing until clicking on the Town again and disappearing after one unit finishes training."),

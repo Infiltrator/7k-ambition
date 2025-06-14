@@ -843,6 +843,49 @@ void queueCount(
   );
 }
 
+void trainingSkillIcon(
+  const char _7kaaSkillId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr Ambition::UserInterface::Size TRAINING_ICON_SIZE = {
+    .width = 24,
+    .height = 20,
+  };
+
+  const auto TRAINING_PANEL_AREA = Ambition::UserInterface::INFO_PANE_CONTENTS.internal(
+    {
+      .width = Ambition::UserInterface::INFO_PANE_CONTENTS.width(),
+      .height = 30,
+    },
+    Ambition::UserInterface::HorizontalAlignment::Centre,
+    Ambition::UserInterface::VerticalAlignment::Bottom
+  );
+  const auto TRAINING_ICON_PANEL_AREA = TRAINING_PANEL_AREA.inner(4, 4, 4, 2);
+  const auto TRAINING_ICON_AREA
+    = TRAINING_ICON_PANEL_AREA
+    .inner(2, 2, 2, 1)
+    .internal(TRAINING_ICON_SIZE);
+
+  std::string iconKey = "U_";
+  iconKey += _7kaaSkillId ? Skill::skill_code_array[_7kaaSkillId - 1] : "SPY";
+  const auto bitmap = image_icon.get_ptr(iconKey.c_str());
+
+  const auto iconSize = Ambition::UserInterface::bitmapSize(bitmap);
+  const auto iconArea
+    = TRAINING_ICON_AREA
+    .inner(2)
+    .internal(
+      iconSize,
+      Ambition::UserInterface::HorizontalAlignment::Right,
+      Ambition::UserInterface::VerticalAlignment::Top
+    );
+
+  vga_front.put_bitmap(iconArea.start.left, iconArea.start.top, bitmap);
+}
+
 void unitWaypointsOnWorld(
   const ::Unit* _7kaaUnit
 ) {

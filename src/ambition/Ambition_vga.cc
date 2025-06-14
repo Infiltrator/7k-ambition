@@ -1160,6 +1160,17 @@ void drawTownTrainingProgressBar(
     barWidth,
     BAR_HEIGHT
   );
+
+  const auto _7kaaUnit = unit_array[town->train_unit_recno];
+  std::string iconKey = "U_";
+  iconKey += _7kaaUnit->skill.skill_id
+    ? Skill::skill_code_array[_7kaaUnit->skill.skill_id - 1]
+    : "SPY";
+  world.zoom_matrix->put_bitmap_clip(
+    barLeft,
+    barTop + 6,
+    image_icon.get_ptr(iconKey.c_str())
+  );
 }
 
 void drawWorldLine(
