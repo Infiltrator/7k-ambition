@@ -749,6 +749,7 @@ void Building::produce(
 
   if (type == _7kaaType::Town) {
     _7kaaObject.object.town->recruit(_7kaaSkillId, _7kaaRaceId, COMMAND_PLAYER);
+    info.disp();
     return;
   }
 

@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the Town training icon in the info pane not appearing until clicking on
+  the Town again and disappearing after one unit finishes training.
+
 
 ## [3.1.7] — 2025-06-13
 
