@@ -332,6 +332,10 @@ void queueCount(
   const Town* _7kaaTown
 );
 
+void trainingSkillIcon(
+  const char _7kaaSkillId
+);
+
 void unitWaypointsOnWorld(
   const Unit* _7kaaUnit
 );

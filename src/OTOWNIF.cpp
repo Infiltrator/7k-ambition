@@ -736,6 +736,8 @@ void Town::disp_train_info(int refreshFlag)
 		vga_front.put_bitmap(x+2, y+2, race_res[unitPtr->race_id]->icon_bitmap_ptr );
 
 		// vga_util.d3_panel_down(x+RACE_ICON_WIDTH+6, y, MSG_X2-4, MSG_Y2-4 );
+
+		Ambition::Draw::trainingSkillIcon(unitPtr->skill.skill_id);
 	}
 
 	int totalDays;
