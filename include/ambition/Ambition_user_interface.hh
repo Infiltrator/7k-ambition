@@ -114,7 +114,7 @@ struct Rectangle {
 
 constexpr Size BUTTON_SIZE = {
   .width = 46,
-  .height = 40,
+  .height = 38,
 };
 
 constexpr auto BOUNDS = Rectangle::fromPoint(
