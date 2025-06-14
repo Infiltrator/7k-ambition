@@ -5,6 +5,8 @@
                 "executable": "/usr/bin/g++",
 					 "flags_to_remove": [
 						  "-fsigned-char",
+                    "-fvar-tracking",
+                    "-fvar-tracking-assignments",
 						  "-mfpmath=387"
 					 ]
             }
