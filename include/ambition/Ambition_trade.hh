@@ -26,6 +26,7 @@
 #pragma once
 
 class UnitCaravan;
+class VBrowseIF;
 
 
 namespace Ambition::Trade {
@@ -34,7 +35,15 @@ void detectCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
 );
 
+bool detectReportCaravanCloneButton(
+  const UnitCaravan* _7kaaCaravan
+);
+
 void drawCaravanCloneButton(
+);
+
+void drawReportCaravanCloneButton(
+  VBrowseIF& caravanBrowser
 );
 
 bool isCaravanIdle(

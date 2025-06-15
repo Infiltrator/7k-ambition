@@ -31,10 +31,12 @@
 
 #include "OFIRMA.h"
 #include "OGETA.h"
+#include "OINFO.h"
 #include "OMOUSE.h"
 #include "OMOUSE2.h"
 #include "OTOWN.h"
 #include "OU_CARA.h"
+#include "OVBROWIF.h"
 #include "OWORLD.h"
 
 #include "Ambition_building.hh"
@@ -84,6 +86,24 @@ void detectCaravanCloneButton(
   }
 
   Ambition::Trade::detectCaravanCloneButton(_7kaaCaravan);
+}
+
+bool detectTradeReportCaravanCloneButton(
+  VBrowseIF& caravanBrowser
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  const auto caravanBrowserRecordNumber = caravanBrowser.mouse_over();
+  if (caravanBrowserRecordNumber < 1) {
+    return false;
+  }
+
+  const auto _7kaaCaravan = dynamic_cast<UnitCaravan*>(
+    unit_array[info.get_report_data(caravanBrowserRecordNumber)]
+  );
+  return Ambition::Trade::detectReportCaravanCloneButton(_7kaaCaravan);
 }
 
 bool detectClipboardKeys(

@@ -34,6 +34,7 @@
 #include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OU_CARA.h"
+#include "OVBROWIF.h"
 #include "vga_util.h"
 
 #include "7kaaInterface/draw.hh"
@@ -44,6 +45,7 @@
 namespace Ambition::Trade {
 
 Button3D caravanCloneButton;
+Button reportCloneButton;
 
 
 void detectCaravanCloneButton(
@@ -55,6 +57,18 @@ void detectCaravanCloneButton(
 
   const auto polity = Polity::getBy7kaaRecordNumber(_7kaaCaravan->nation_recno);
   polity->cloneCaravan(_7kaaCaravan);
+}
+
+bool detectReportCaravanCloneButton(
+  const UnitCaravan* _7kaaCaravan
+) {
+  if (!reportCloneButton.detect()) {
+    return false;
+  }
+
+  const auto polity = Polity::getBy7kaaRecordNumber(_7kaaCaravan->nation_recno);
+  polity->cloneCaravan(_7kaaCaravan);
+  return true;
 }
 
 void drawCaravanCloneButton(
@@ -85,6 +99,24 @@ void drawCaravanCloneButton(
     Ambition::UserInterface::BUTTON_ROW_LOWER.end.left,
     Ambition::UserInterface::BUTTON_ROW_LOWER.end.top + 2
   );
+}
+
+void drawReportCaravanCloneButton(
+  VBrowseIF& caravanBrowser
+) {
+  int x1, y1, x2, y2;
+  if (caravanBrowser.mouse_over(&x1, &y1, &x2, &y2)) {
+    reportCloneButton.paint_text(
+      x2 - 42,
+      y1 - 4,
+      "C",
+      1,
+      reportCloneButton.button_wait > 0
+    );
+    reportCloneButton.enable_flag = 1;
+  } else {
+    reportCloneButton.enable_flag = 0;
+  }
 }
 
 bool isCaravanIdle(

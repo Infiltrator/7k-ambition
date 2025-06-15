@@ -36,6 +36,7 @@ class MapMatrix;
 class SnowLayer;
 class Town;
 class Unit;
+class VBrowseIF;
 struct FirmBitmap;
 
 
@@ -334,6 +335,10 @@ void queueCount(
 );
 void queueCount(
   const Town* _7kaaTown
+);
+
+void tradeReportcaravanCloneButton(
+  VBrowseIF& caravanBrowser
 );
 
 void trainingSkillIcon(

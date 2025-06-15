@@ -858,6 +858,16 @@ void queueCount(
   );
 }
 
+void tradeReportcaravanCloneButton(
+  VBrowseIF& caravanBrowser
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Trade::drawReportCaravanCloneButton(caravanBrowser);
+}
+
 void trainingSkillIcon(
   const char _7kaaSkillId
 ) {

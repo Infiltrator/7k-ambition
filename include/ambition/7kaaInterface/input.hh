@@ -27,6 +27,7 @@
 
 class GetA;
 class UnitCaravan;
+class VBrowseIF;
 
 
 namespace _7kaaAmbitionInterface::Input {
@@ -44,6 +45,10 @@ unsigned int confirmKeyEvent(
 
 void detectCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
+);
+
+bool detectTradeReportCaravanCloneButton(
+  VBrowseIF& caravanBrowser
 );
 
 bool detectClipboardKeys(
