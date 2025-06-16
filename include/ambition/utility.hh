@@ -20,38 +20,40 @@
 /**
  * @file
  *
- * Header file for Ambition::Trade.
+ * Header file for C++20 versions of std functions.
+ *
+ * Largely adapted from https://en.cppreference.com/w/cpp.html.
  */
 
 #pragma once
 
-class UnitCaravan;
-class VBrowseIF;
+#include <ranges>
 
 
-namespace Ambition::Trade {
+namespace Utility {
 
-void checkCaravanForReplacement(
-  UnitCaravan* _7kaaCaravan
-);
+template <
+  std::ranges::input_range Range,
+  class Projection = std::identity,
+  class Element = std::projected<Range, Projection>
+>
+requires std::indirect_binary_predicate<
+  std::ranges::equal_to,
+  std::projected<std::ranges::iterator_t<Range>, Projection>,
+  const Element*
+>
+constexpr bool
+contains(
+  Range range,
+  const Element& value,
+  Projection projection = {}
+) {
+  return std::ranges::find(
+    std::move(std::ranges::begin(range)),
+    std::ranges::end(range),
+    value,
+    projection
+  ) != std::ranges::end(range);
+}
 
-void detectCaravanCloneButton(
-  const UnitCaravan* _7kaaCaravan
-);
-
-bool detectReportCaravanCloneButton(
-  const UnitCaravan* _7kaaCaravan
-);
-
-void drawCaravanCloneButton(
-);
-
-void drawReportCaravanCloneButton(
-  VBrowseIF& caravanBrowser
-);
-
-bool isCaravanIdle(
-  UnitCaravan* _7kaaCaravan
-);
-
-} // namespace Ambition::Trade
+} // namespace Utility

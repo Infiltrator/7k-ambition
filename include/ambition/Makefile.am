@@ -21,4 +21,5 @@ noinst_HEADERS = \
 	Ambition_vga.hh \
 	boost-macros.hh \
 	format.hh \
+	utility.hh \
 	# end

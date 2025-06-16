@@ -26,8 +26,10 @@
 #pragma once
 
 #include <boost/serialization/deque.hpp>
+#include <boost/serialization/set.hpp>
 #include <deque>
 #include <memory>
+#include <set>
 #include <vector>
 
 #include "Ambition_entity.hh"
@@ -95,6 +97,10 @@ public:
     UnitCaravan* _7kaaCaravan
   );
 
+  void replaceCaravan(
+    UnitCaravan* _7kaaCaravan
+  );
+
   int researchTarget(
   ) const;
 
@@ -104,6 +110,7 @@ public:
 
 protected:
   std::deque<short> _7kaaCaravansToCloneRecordNumbers;
+  std::set<short> _7kaaCaravansToRetireRecordNumbers;
   Time::Stamp dissolvedAt;
   int _researchTarget {0};
 
@@ -130,6 +137,7 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(_researchTarget);
     if (version >= 1) {
       archive & BOOST_SERIALIZATION_NVP(_7kaaCaravansToCloneRecordNumbers);
+      archive & BOOST_SERIALIZATION_NVP(_7kaaCaravansToRetireRecordNumbers);
     }
   }
 };

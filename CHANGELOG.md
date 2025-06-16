@@ -17,6 +17,10 @@ speaking, considered to be the player's experience.
   Caravan's first stop.
 - Added a caravan clone button to the trade report, next to the paste route
   button.
+- Automatically "heal" caravans by replacing damaged ones using the above
+  caravan cloning feature.  Caravans heading to a Market will be replaced if
+  they have any damage, and caravans which do not have any Market stops will be
+  replaced if they fall to 80% or below.
 - Show the skill icon of the unit being trained in Towns under the progress bar
   on the world map and in the info pane.
 

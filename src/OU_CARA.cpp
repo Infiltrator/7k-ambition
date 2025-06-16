@@ -1042,6 +1042,7 @@ void UnitCaravan::pre_process()
 		journey_status = NO_STOP_DEFINED;
 
 		Ambition::Polity::processIdleCaravan(this);
+		Ambition::Polity::checkCaravanForReplacement(this);
 
 		return;
 	}
@@ -1059,6 +1060,7 @@ void UnitCaravan::pre_process()
 			update_stop_list();
 
 			Ambition::Polity::processIdleCaravan(this);
+			Ambition::Polity::checkCaravanForReplacement(this);
 
 			return;
 		}
@@ -1075,6 +1077,7 @@ void UnitCaravan::pre_process()
 			update_stop_list();
 
 			Ambition::Polity::processIdleCaravan(this);
+			Ambition::Polity::checkCaravanForReplacement(this);
 
 			return;
 		}
@@ -1123,6 +1126,7 @@ void UnitCaravan::pre_process()
 		}
 
 		Ambition::Polity::processIdleCaravan(this);
+		Ambition::Polity::checkCaravanForReplacement(this);
 
 		return;
 	}
@@ -1135,6 +1139,7 @@ void UnitCaravan::pre_process()
 	caravan_on_way();
 
 	Ambition::Polity::processIdleCaravan(this);
+	Ambition::Polity::checkCaravanForReplacement(this);
 }
 //----------- End of function UnitCaravan::pre_process -----------//
 

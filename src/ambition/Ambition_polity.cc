@@ -37,6 +37,7 @@
 #include "Ambition_coordinates.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_trade.hh"
+#include "utility.hh"
 
 
 namespace Ambition {
@@ -219,7 +220,11 @@ std::vector<short> Polity::idleCaravans(
 
     const auto _7kaaCaravan = dynamic_cast<UnitCaravan*>(_7kaaUnit);
     assert(_7kaaCaravan);
-    if (Trade::isCaravanIdle(_7kaaCaravan)) {
+    if (Trade::isCaravanIdle(_7kaaCaravan)
+      && !_7kaaCaravansToRetireRecordNumbers.contains(
+        _7kaaCaravan->sprite_recno
+      )
+    ) {
       _7kaaCaravanRecordNumbers.push_back(_7kaaCaravan->sprite_recno);
     }
   }
@@ -254,11 +259,67 @@ void Polity::processIdleCaravan(
     return;
   }
 
+  if (_7kaaCaravansToRetireRecordNumbers.contains(_7kaaCaravan->sprite_recno)) {
+    if (!Utility::contains(
+        _7kaaCaravansToCloneRecordNumbers,
+        _7kaaCaravan->sprite_recno
+      )
+    ) {
+      _7kaaCaravan->resign(COMMAND_PLAYER);
+      _7kaaCaravansToRetireRecordNumbers.erase(_7kaaCaravan->sprite_recno);
+    }
+    return;
+  }
+
   const auto _7kaaCaravanToCopyRecordNumber
     = _7kaaCaravansToCloneRecordNumbers.front();
   assert(!unit_array.is_deleted(_7kaaCaravanToCopyRecordNumber));
   _7kaaCaravan->copy_route(_7kaaCaravanToCopyRecordNumber, COMMAND_PLAYER);
   _7kaaCaravansToCloneRecordNumbers.pop_front();
+
+  if (_7kaaCaravansToRetireRecordNumbers.contains(_7kaaCaravanToCopyRecordNumber)
+    && !Utility::contains(
+      _7kaaCaravansToCloneRecordNumbers,
+      _7kaaCaravanToCopyRecordNumber
+    )
+  ) {
+    auto _7kaaCaravanToRetire = dynamic_cast<UnitCaravan*>(
+      unit_array[_7kaaCaravanToCopyRecordNumber]
+    );
+    assert(_7kaaCaravanToRetire);
+    replaceCaravan(_7kaaCaravanToRetire);
+  }
+}
+
+void Polity::replaceCaravan(
+  UnitCaravan* _7kaaCaravan
+) {
+  if (Utility::contains(
+      _7kaaCaravansToCloneRecordNumbers,
+      _7kaaCaravan->sprite_recno
+    )
+  ) {
+    return;
+  }
+
+  if (_7kaaCaravansToRetireRecordNumbers.contains(_7kaaCaravan->sprite_recno)) {
+    auto carriedGoodCount = 0;
+    for (int i = PICK_UP_RAW_FIRST; i < MAX_PICK_UP_GOODS; i++) {
+      carriedGoodCount += _7kaaCaravan->carrying_qty(i);
+    }
+
+    if (carriedGoodCount == 0) {
+      if (unit_array.selected_recno == _7kaaCaravan->sprite_recno) {
+        unit_array.selected_recno = 0;
+        info.disp();
+      }
+      _7kaaCaravan->resign(COMMAND_PLAYER);
+    }
+    return;
+  }
+
+  _7kaaCaravansToRetireRecordNumbers.insert(_7kaaCaravan->sprite_recno);
+  cloneCaravan(_7kaaCaravan);
 }
 
 int Polity::researchTarget(
