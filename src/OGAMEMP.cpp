@@ -1596,6 +1596,8 @@ int Game::input_box(const char *tell_string, char *buf, int len, char hide_input
 			music.stop();
 
 		vga_front.unlock_buf();
+
+		Ambition::Control::delayFrame();
 	}
 	if (!vga_front.buf_locked)
 		vga_front.lock_buf();
