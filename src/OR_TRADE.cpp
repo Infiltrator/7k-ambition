@@ -22,6 +22,9 @@
 //Filename    : OR_TRADE.CPP
 //Description : Trade Report
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OSTR.h>
 #include <OFONT.h>
 #include <OIMGRES.h>
@@ -226,6 +229,8 @@ void Info::disp_trade(int refreshFlag)
 
 	disp_button();
 
+	Ambition::Draw::tradeReportcaravanCloneButton(browse_caravan);
+
 	if( can_copy_caravan() )
 	{
 		int x1, y1, x2, y2;
@@ -264,6 +269,10 @@ void Info::disp_trade(int refreshFlag)
 //
 void Info::detect_trade()
 {
+	if (_7kaaAmbitionInterface::Input::detectTradeReportCaravanCloneButton(browse_caravan)) {
+		return;
+	}
+
 	if( button_copy.detect() )
 	{
 		if( can_copy_caravan() )

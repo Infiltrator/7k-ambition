@@ -21,6 +21,8 @@
 //Filename    : OBUTT3D.CPP
 //Description : 3D Button Object
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OHELP.h>
@@ -30,7 +32,7 @@
 
 //---------- define static vars ----------//
 
-static char save_back_buf[BUTTON_ACTION_WIDTH * BUTTON_ACTION_HEIGHT + 4];
+static char save_back_buf[BUTTON_ACTION_WIDTH * (BUTTON_ACTION_HEIGHT+3) + 4];
 
 
 //-------- Begin of function Button3D::Button3D -------//
@@ -213,7 +215,7 @@ void Button3D::paint(int defIsPushed)
 			//--- put it on the back buffer, darken it and blt it back to the front buffer ---//
 
 			if( !vga.use_back_buf )
-				vga_back.read_bitmap( x1, y1, x1+BUTTON_ACTION_WIDTH-1, y1+BUTTON_ACTION_HEIGHT-1, save_back_buf );
+				vga_back.read_bitmap( x1, y1, x1+BUTTON_ACTION_WIDTH-1, y1+BUTTON_ACTION_HEIGHT-1 + (Ambition::Config::enhancementsAvailable() ? 3 : 0), save_back_buf );
 
 			//------ display and darken ----//
 

@@ -36,6 +36,7 @@ class MapMatrix;
 class SnowLayer;
 class Town;
 class Unit;
+class VBrowseIF;
 struct FirmBitmap;
 
 
@@ -221,6 +222,10 @@ int calculateWorkerPortraitLeft(
   const int workerIndex
 );
 
+void caravanCloneButton(
+  const int refreshFlag
+);
+
 int centreHitbar(
   const int left,
   const int maximumWidth,
@@ -330,6 +335,10 @@ void queueCount(
 );
 void queueCount(
   const Town* _7kaaTown
+);
+
+void tradeReportcaravanCloneButton(
+  VBrowseIF& caravanBrowser
 );
 
 void trainingSkillIcon(

@@ -45,7 +45,7 @@ namespace Ambition {
 
 constexpr auto BOOKMARK = "0xFAB0";
 constexpr auto HEADER_START = "[Ambition_header]";
-constexpr auto SAVEFILE_VERSION = 0;
+constexpr auto SAVEFILE_VERSION = 1;
 
 enum HeaderFlags : uint64_t {
   Compressed = 1 << 0,

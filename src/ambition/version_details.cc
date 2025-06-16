@@ -19,6 +19,8 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_ADDED),
         .items = {
+          _("Added a clone button to Caravans.  If there is an idle Caravan, it is used as the clone.  Otherwise, a new Caravan spawns at the Market closest to the Caravan's first stop."),
+          _("Added a caravan clone button to the trade report, next to the paste route button."),
           _("Show the skill icon of the unit being trained in Towns under the progress bar on the world map and in the info pane."),
         },
       },
@@ -26,6 +28,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the Town training icon in the info pane not appearing until clicking on the Town again and disappearing after one unit finishes training."),
+          _("Fixed graphics corruption with disabled buttons."),
         },
       },
     },

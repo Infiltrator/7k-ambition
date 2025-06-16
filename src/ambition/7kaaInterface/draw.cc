@@ -46,6 +46,7 @@
 #include "Ambition_config.hh"
 #include "Ambition_minimap.hh"
 #include "Ambition_remote.hh"
+#include "Ambition_trade.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
@@ -537,6 +538,20 @@ int calculateWorkerPortraitLeft(
   return Ambition::calculateWorkerPortraitX(workerIndex);
 }
 
+void caravanCloneButton(
+  const int refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (refreshFlag != INFO_REPAINT) {
+    return;
+  }
+
+  Ambition::Trade::drawCaravanCloneButton();
+}
+
 int centreHitbar(
   const int left,
   const int maximumWidth,
@@ -841,6 +856,16 @@ void queueCount(
     ),
     format("%'d", productionCount)
   );
+}
+
+void tradeReportcaravanCloneButton(
+  VBrowseIF& caravanBrowser
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Trade::drawReportCaravanCloneButton(caravanBrowser);
 }
 
 void trainingSkillIcon(

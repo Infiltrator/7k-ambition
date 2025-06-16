@@ -25,7 +25,10 @@
 
 #pragma once
 
+#include <boost/serialization/deque.hpp>
+#include <deque>
 #include <memory>
+#include <vector>
 
 #include "Ambition_entity.hh"
 #include "Ambition_time.hh"
@@ -33,9 +36,15 @@
 
 class Nation;
 class NationBase;
+class UnitCaravan;
 
 
 namespace Ambition {
+
+namespace Coordinates {
+struct Point;
+}
+
 
 class Polity : public Entity {
 public:
@@ -61,12 +70,30 @@ public:
   bool active(
   ) const;
 
+  bool canHireCaravan(
+  ) const;
+
   void dissolve(
     Time::Stamp stamp
   );
 
+  void cloneCaravan(
+    const UnitCaravan* _7kaaCaravan
+  );
+
+  short findNearest7kaaMarket(
+    const Coordinates::Point location
+  ) const;
+
+  std::vector<short> idleCaravans(
+  ) const;
+
   unsigned long int nonSpyGeneralCount(
   ) const;
+
+  void processIdleCaravan(
+    UnitCaravan* _7kaaCaravan
+  );
 
   int researchTarget(
   ) const;
@@ -76,6 +103,7 @@ public:
   );
 
 protected:
+  std::deque<short> _7kaaCaravansToCloneRecordNumbers;
   Time::Stamp dissolvedAt;
   int _researchTarget {0};
 
@@ -100,9 +128,12 @@ protected:
     archive & BOOST_SERIALIZATION_NVP_CONST(_7kaaRecordNumber);
     archive & BOOST_SERIALIZATION_NVP(dissolvedAt);
     archive & BOOST_SERIALIZATION_NVP(_researchTarget);
+    if (version >= 1) {
+      archive & BOOST_SERIALIZATION_NVP(_7kaaCaravansToCloneRecordNumbers);
+    }
   }
 };
 
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Polity, 0)
+BOOST_CLASS_VERSION(Ambition::Polity, 1)
