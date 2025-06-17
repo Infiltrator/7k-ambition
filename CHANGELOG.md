@@ -31,6 +31,11 @@ speaking, considered to be the player's experience.
 - Fixed high CPU usage on the "Enter the game's address" dialog.
 - Fixed graphics corruption with disabled buttons.
 
+### Changed
+
+- Preferentially use idle builders outside of buildings further away instead of
+  from closer buildings.
+
 
 ## [3.1.7] — 2025-06-13
 
