@@ -52,6 +52,10 @@ enum class VerticalAlignment {
 struct Point {
   int left;
   int top;
+
+  inline bool operator==(const Point& rhs) const noexcept {
+    return left == rhs.left && top == rhs.top;
+  }
 };
 
 struct Size {
@@ -83,8 +87,16 @@ struct Rectangle {
     };
   }
 
+  inline bool operator==(const Rectangle& rhs) const noexcept {
+    return start == rhs.start && end == rhs.end;
+  }
+
   inline int width() const { return end.left - start.left + 1; }
   inline int height() const { return end.top - start.top + 1; }
+
+  bool contains(
+    const Rectangle& rectangle
+  ) const;
 
   Rectangle inner(
     int paddingLeft,

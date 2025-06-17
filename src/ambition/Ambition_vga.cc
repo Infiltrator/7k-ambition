@@ -1014,6 +1014,37 @@ void drawFirmBuilderIcon(
     }
     const auto icon = image_icon.get_ptr(iconName);
     world.zoom_matrix->put_bitmap_clip(x, y, icon, 1);
+
+    const auto iconSize = UserInterface::bitmapSize(icon);
+
+    const auto textArea = UserInterface::Rectangle::fromPoint(
+      {
+        .left = x,
+        .top = y,
+      },
+      {
+        .width = iconSize.width,
+        .height = 20,
+      }
+    );
+
+    if (UserInterface::VIEWPORT.contains(textArea)) {
+      const auto savedUseBackBuffer = vga.use_back_buf;
+      vga.use_back();
+
+      UserInterface::printText(
+        font_news,
+        format("%d", unit_array[firm->builder_recno]->skill.skill_level),
+        textArea,
+        UserInterface::Clear::None,
+        UserInterface::HorizontalAlignment::Centre,
+        UserInterface::VerticalAlignment::Top
+      );
+
+      if (!savedUseBackBuffer) {
+        vga.use_front();
+      }
+    }
   }
 }
 
