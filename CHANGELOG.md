@@ -30,6 +30,7 @@ speaking, considered to be the player's experience.
 - Fixed the Town training icon in the info pane not appearing until clicking on
   the Town again and disappearing after one unit finishes training.
 - Fixed high CPU usage on the "Enter the game's address" dialog.
+- Fixed graphics corruption when hiring units from inns in multiplayer.
 - Fixed graphics corruption with disabled buttons.
 
 ### Changed

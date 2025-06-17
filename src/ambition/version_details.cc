@@ -31,6 +31,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed the Town training icon in the info pane not appearing until clicking on the Town again and disappearing after one unit finishes training."),
           _("Fixed high CPU usage on the \"Enter the game's address\" dialog."),
+          _("Fixed graphics corruption when hiring units from inns in multiplayer."),
           _("Fixed graphics corruption with disabled buttons."),
         },
       },
