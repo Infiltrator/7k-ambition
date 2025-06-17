@@ -33,6 +33,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed graphics corruption with disabled buttons."),
         },
       },
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Preferentially use idle builders outside of buildings further away instead of from closer buildings."),
+        },
+      },
     },
   },
   {
