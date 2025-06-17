@@ -1936,7 +1936,7 @@ void RemoteMsg::inn_hire()
 			inn->hire_remote(shortPtr[1], shortPtr[2], shortPtr[3], shortPtr[4], shortPtr[5], shortPtr[6]);
 			if( shortPtr[7] == nation_array.player_recno)
 			{
-				inn->put_info(INFO_REPAINT);
+				inn->put_info(Ambition::Config::enhancementsAvailable() ? INFO_UPDATE : INFO_REPAINT);
 			}
 		}
 		else
