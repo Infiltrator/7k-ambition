@@ -273,9 +273,12 @@ void Polity::processIdleCaravan(
 
   const auto _7kaaCaravanToCopyRecordNumber
     = _7kaaCaravansToCloneRecordNumbers.front();
-  assert(!unit_array.is_deleted(_7kaaCaravanToCopyRecordNumber));
-  _7kaaCaravan->copy_route(_7kaaCaravanToCopyRecordNumber, COMMAND_PLAYER);
   _7kaaCaravansToCloneRecordNumbers.pop_front();
+  if (unit_array.is_deleted(_7kaaCaravanToCopyRecordNumber)) {
+    return;
+  }
+
+  _7kaaCaravan->copy_route(_7kaaCaravanToCopyRecordNumber, COMMAND_PLAYER);
 
   if (_7kaaCaravansToRetireRecordNumbers.contains(_7kaaCaravanToCopyRecordNumber)
     && !Utility::contains(
