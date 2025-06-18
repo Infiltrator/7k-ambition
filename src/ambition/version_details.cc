@@ -39,6 +39,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Preferentially use idle builders outside of buildings further away instead of from closer buildings."),
+          _("Moved the \"Done\" text to the right in the War Factory and Harbour build menus, so that they are not covered up by the \"Esc\" keybind display."),
         },
       },
     },

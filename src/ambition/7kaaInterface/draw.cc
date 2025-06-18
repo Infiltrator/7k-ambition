@@ -564,6 +564,33 @@ int centreHitbar(
   return Ambition::centreHitbar(left, maximumWidth, currentWidth);
 }
 
+void doneButtonText(
+  const ButtonCustom& button
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const Ambition::UserInterface::Rectangle buttonArea = {
+    .start = {
+      .left = button.x1,
+      .top = button.y1,
+    },
+    .end = {
+      .left = button.x2,
+      .top = button.y2,
+    },
+  };
+  Ambition::UserInterface::printText(
+    font_bible,
+    "Done",
+    buttonArea.inner(7, 0),
+    Ambition::UserInterface::Clear::EntireArea,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    Ambition::UserInterface::VerticalAlignment::Centre
+  );
+}
+
 void hitbarOutline(
   const bool isOwn,
   const int x,

@@ -647,6 +647,7 @@ void FirmHarbor::disp_build_menu(int refreshFlag)
 		button_cancel.paint(x, y, x+Ambition::Draw::calculateDoneButtonWidth(BUILD_BUTTON_WIDTH, this)-1, y+BUILD_BUTTON_HEIGHT*3/4,
 			ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Done"),0) );
 
+		Ambition::Draw::doneButtonText(button_cancel);
 		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel);
 	}
 	// ###### end Gilbert 20/9 ######//

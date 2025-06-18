@@ -37,6 +37,8 @@ speaking, considered to be the player's experience.
 
 - Preferentially use idle builders outside of buildings further away instead of
   from closer buildings.
+- Moved the "Done" text to the right in the War Factory and Harbour build menus,
+  so that they are not covered up by the "Esc" keybind display.
 
 
 ## [3.1.7] — 2025-06-13
