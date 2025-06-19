@@ -232,6 +232,10 @@ int centreHitbar(
   const int currentWidth
 );
 
+void doneButtonText(
+  const ButtonCustom& button
+);
+
 /**
  * Draw a hitbar outline based on the owneship.
  *
