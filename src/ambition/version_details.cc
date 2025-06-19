@@ -33,6 +33,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed high CPU usage on the \"Enter the game's address\" dialog."),
           _("Fixed graphics corruption when hiring units from inns in multiplayer."),
           _("Fixed graphics corruption with disabled buttons."),
+          _("Fixed memory violation with building guides."),
         },
       },
       {

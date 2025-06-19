@@ -245,8 +245,12 @@ void buildModeHighlighting(
     { left, top },
     Ambition::Coordinates::Rectangle::fromPoint(
       Point::from7kaaCoordinates({ 0, 0 }),
-      Point::from7kaaCoordinates({ maximum7kaaX, maximum7kaaY })
-        - Point::from7kaaCoordinates({ 0, 0 })
+      Point::from7kaaCoordinates(
+        {
+          static_cast<short>(maximum7kaaX - 1),
+          static_cast<short>(maximum7kaaY - 1),
+        }
+      ) - Point::from7kaaCoordinates({ 0, 0 })
     )
   );
 }

@@ -32,6 +32,7 @@ speaking, considered to be the player's experience.
 - Fixed high CPU usage on the "Enter the game's address" dialog.
 - Fixed graphics corruption when hiring units from inns in multiplayer.
 - Fixed graphics corruption with disabled buttons.
+- Fixed memory violation with building guides.
 
 ### Changed
 

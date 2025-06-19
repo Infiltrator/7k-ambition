@@ -819,6 +819,10 @@ void drawBuildModeHighlighting(
       for (const auto buildPoint
              : buildRectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
       ) {
+        if (!buildPoint.within(worldBounds)) {
+          continue;
+        }
+
         const auto location = world.get_loc(
           buildPoint.to7kaaCoordinates().x,
           buildPoint.to7kaaCoordinates().y
