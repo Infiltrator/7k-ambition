@@ -32,7 +32,6 @@
 #endif
 
 class File;
-struct SaveGameInfo;
 
 //-------- Define class GameFile -----------//
 
