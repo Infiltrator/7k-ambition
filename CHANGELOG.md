@@ -40,6 +40,7 @@ speaking, considered to be the player's experience.
   from closer buildings.
 - Moved the "Done" text to the right in the War Factory and Harbour build menus,
   so that they are not covered up by the "Esc" keybind display.
+- Use lower case for default save filenames, based on the king's name.
 
 
 ## [3.1.7] — 2025-06-13

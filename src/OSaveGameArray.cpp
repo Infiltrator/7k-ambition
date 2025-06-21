@@ -837,9 +837,12 @@ void SaveGameArray::set_file_name(char* /*out*/ fileName, int size)
 
 	for( i=0 ; i<(int) strlen(baseName) && (int) str.len() < NAME_PREFIX_LEN ; i++ )
 	{
-		nameChar = misc.upper(baseName[i]);
+		if (!Ambition::Config::enhancementsAvailable()) {
+			nameChar = misc.upper(baseName[i]);
+		}
 
 		if( ( nameChar >= 'A' && nameChar <= 'Z' ) ||
+			(Ambition::Config::enhancementsAvailable() && nameChar >= 'a' && nameChar <= 'z') ||
 			( nameChar >= '0' && nameChar <= '9' ) )
 		{
 			addStr[0] = nameChar;
