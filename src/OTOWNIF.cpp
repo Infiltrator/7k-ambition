@@ -123,6 +123,10 @@ static void i_disp_queue_skill_button(ButtonCustom *button, int);
 // ###### end Gilbert 12/9 ########//
 
 
+bool Town::menuModeMain() {
+	return town_menu_mode == TOWN_MENU_MAIN;
+}
+
 //--------- Begin of function Town::disp_info ---------//
 //
 void Town::disp_info(int refreshFlag)

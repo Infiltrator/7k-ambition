@@ -214,6 +214,8 @@ public:
 	static short  if_town_recno;
 
 public:
+	static bool menuModeMain();
+
 	Town();
 
 	void  init(int,int,int,int);
