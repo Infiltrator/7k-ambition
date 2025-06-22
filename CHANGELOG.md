@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.8] — 2025-06-23
+
 ### Added
 
 - Added a clone button to Caravans.  If there is an idle Caravan, it is used as
