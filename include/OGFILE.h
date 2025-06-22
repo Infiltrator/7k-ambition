@@ -139,6 +139,8 @@ private:
 
 extern GameFileArray game_file_array;
 extern GameFile game_file;
+extern const char *glob_save_file;
+extern const char *glob_save_multi_file;
 
 //-------------------------------------//
 

@@ -453,7 +453,7 @@ int Sys::init_objects()
    tutor.init();
    // Need to init hall_of_fame *before* game_file_array to persist the last savegame filename
    hall_of_fame.init();
-   game_file_array.init("*.SAV");
+   game_file_array.init(glob_save_file);
 
    //---------- init game_set -----------//
 
@@ -2719,7 +2719,7 @@ void Sys::load_game()
 
    int rc=0;
 
-   game_file_array.init("*.SAV");          // reload any save game file
+   game_file_array.init(glob_save_file);   // reload any save game file
    game_file_array.menu(-2);               // save screen area to back buffer
    switch( game_file_array.load_game() )
    {
@@ -2778,7 +2778,7 @@ void Sys::save_game()
       return;
    }
 
-   game_file_array.init("*.SAV");          // reload any save game file
+   game_file_array.init(glob_save_file);   // reload any save game file
    game_file_array.menu(-2);               // save screen area to back buffer
 
    if( game_file_array.menu(1) == 1 )

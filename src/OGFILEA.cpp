@@ -65,6 +65,16 @@
 
 //--------- Define constant ---------//
 
+#ifndef GLOB_SAVE_FILE
+#define GLOB_SAVE_FILE "*.SAV"
+#endif
+#ifndef GLOB_SAVE_MULTI_FILE
+#define GLOB_SAVE_MULTI_FILE "*.SVM"
+#endif
+
+const char* glob_save_file = GLOB_SAVE_FILE;
+const char* glob_save_multi_file = GLOB_SAVE_MULTI_FILE;
+
 enum { FILE_MENU_WIDTH = 638,
 		 FILE_MENU_HEIGHT = 398 };
 

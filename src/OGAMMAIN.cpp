@@ -621,7 +621,7 @@ void Game::single_player_menu()
 						break;
 
 					case 3:
-						game_file_array.init("*.SAV");
+						game_file_array.init(glob_save_file);
 
 						if( game_file_array.load_game() == 1)
 						{
@@ -863,7 +863,7 @@ void Game::multi_player_menu(int lobbied, char *game_host)
 						// ##### begin Gilbert 26/8 ######//
 						{
 							int loadedRecno = 0;
-							game_file_array.init("*.SVM");
+							game_file_array.init(glob_save_multi_file);
 							if( game_file_array.menu(2, &loadedRecno) == 1 )
 							{
 								err_when( !loadedRecno );
