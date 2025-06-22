@@ -347,6 +347,11 @@ void printWarMachineInBuildingInformation(
   const Worker* _7kaaWorker
 );
 
+int printWarMachineInformation(
+  const ::Unit* _7kaaUnit,
+  const int refreshFlag
+);
+
 void queueCount(
   const FirmHarbor* _7kaaHarbour
 );

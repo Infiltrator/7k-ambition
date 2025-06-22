@@ -320,13 +320,21 @@ bool Unit::isReceivingLeadershipBonus(
 }
 
 uint8_t Unit::attackRange(
+  const ::Unit* _7kaaUnit
+) {
+  return _7kaaUnitIdAttackRange(
+    _7kaaUnit->unit_id,
+    _7kaaUnit->nation_contribution
+  );
+}
+uint8_t Unit::attackRange(
   const Worker* _7kaaWorker
 ) {
   return _7kaaUnitIdAttackRange(_7kaaWorker->unit_id, _7kaaWorker->extra_para);
 }
 
 bool Unit::isWarMachine(
-  ::Unit* _7kaaUnit
+  const ::Unit* _7kaaUnit
 ) {
   return is7kaaUnitIdWarMachine(_7kaaUnit->unit_id);
 }

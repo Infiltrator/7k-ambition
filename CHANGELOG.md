@@ -22,6 +22,8 @@ speaking, considered to be the player's experience.
   visible, holding Control will make it appear if there is at least one builder
   who could walk there.
 - Show war machine yearly upkeep and attack range when they are in Forts.
+- Show the same information in the info pane when war machines are outside
+  Forts.
 - Show the Inn guests that will be leaving soon (within 20 days).
 - Added scroll up and scroll down prompts to the What's New screen.
 - Added scroll hints to the What's New screen.

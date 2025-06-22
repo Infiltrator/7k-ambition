@@ -299,6 +299,11 @@ void printWarMachineInBuildingInformation(
   const Worker* _7kaaWorker
 );
 
+int printWarMachineInformation(
+  const ::Unit* _7kaaUnit,
+  const int refreshFlag
+);
+
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
  *

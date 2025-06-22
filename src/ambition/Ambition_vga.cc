@@ -1599,6 +1599,69 @@ void printWarMachineInBuildingInformation(
   );
 }
 
+int printWarMachineInformation(
+  const ::Unit* _7kaaUnit,
+  const int refreshFlag
+) {
+  const UserInterface::Size SIZE = {
+    .width = UserInterface::INFO_PANE_CONTENTS.width(),
+    .height = 42,
+  };
+  const auto AREA
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 98, 0, 0)
+    .internal(SIZE);
+  const UserInterface::Size FIELD_SIZE = {
+    .width = AREA.width(),
+    .height = 16,
+  };
+  const UserInterface::Size NAME = {
+    .width = 100,
+    .height = FIELD_SIZE.height,
+  };
+
+  const auto FIELD_1_AREA
+    = AREA
+    .inner(4)
+    .internal(FIELD_SIZE);
+  const auto FIELD_2_AREA
+    = AREA
+    .inner(4)
+    .inner(0, FIELD_SIZE.height, 0, 0)
+    .internal(FIELD_SIZE);
+
+  const auto _7kaaUnitInformation = unit_res[_7kaaUnit->unit_id];
+
+  if (refreshFlag == INFO_REPAINT) {
+    UserInterface::drawPanel(AREA);
+  }
+
+  font_san.field(
+    FIELD_1_AREA.start.left,
+    FIELD_1_AREA.start.top,
+    _("Yearly Upkeep"),
+    FIELD_1_AREA.inner(NAME.width, 0, 0, 0).start.left,
+    /* Adjust for the day accounting bug. */
+    _7kaaUnitInformation->year_cost * 1.1,
+    2,
+    FIELD_1_AREA.end.left,
+    refreshFlag
+  );
+
+  font_san.field(
+    FIELD_2_AREA.start.left,
+    FIELD_2_AREA.start.top,
+    _("Attack Range"),
+    FIELD_2_AREA.inner(NAME.width, 0, 0, 0).start.left,
+    Unit::attackRange(_7kaaUnit),
+    1,
+    FIELD_2_AREA.end.left,
+    refreshFlag
+  );
+
+  return SIZE.height + 1;
+}
+
 void unlockBuffer(
   VgaBuf& buffer
 ) {
