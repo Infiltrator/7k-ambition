@@ -81,6 +81,15 @@ void displayNews(
   }
 }
 
+void finishReplay(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Control::finishReplay();
+}
+
 void migrateLocalDataDirectories(
 ) {
   Ambition::Control::migrateLocalDataDirectories();
