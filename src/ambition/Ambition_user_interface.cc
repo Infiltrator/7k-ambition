@@ -36,6 +36,11 @@
 
 namespace Ambition::UserInterface {
 
+char _7kaaJustification(
+  const HorizontalAlignment horizontalAlignment
+);
+
+
 bool Rectangle::contains(
   const Rectangle& rectangle
 ) const {
@@ -217,6 +222,63 @@ Point fromWorldPoint(
   };
 }
 
+void printParagraph(
+  Font& font,
+  const std::string text,
+  const Rectangle area,
+  const int lineSpacing,
+  const Clear clear,
+  const HorizontalAlignment horizontalAlignment,
+  const VerticalAlignment verticalAlignment
+) {
+  const auto justification = _7kaaJustification(horizontalAlignment);
+
+  font.put_paragraph(
+    area.start.left,
+    area.start.top,
+    area.end.left,
+    area.end.top,
+    text.c_str(),
+    lineSpacing,
+    1,
+    0,
+    justification
+  );
+  const auto textHeight = font.next_text_y - area.start.top;
+
+  const auto textArea = area.internal(
+    {
+      .width = area.width(),
+      .height = textHeight + 1,
+    },
+    horizontalAlignment,
+    verticalAlignment
+  );
+
+  if (clear != Clear::None) {
+    const auto clearArea = clear == Clear::EntireArea ? area : textArea;
+    vga_util.blt_buf(
+      clearArea.start.left,
+      clearArea.start.top,
+      clearArea.end.left,
+      clearArea.end.top,
+      0
+    );
+  }
+
+  font.put_paragraph(
+    textArea.start.left,
+    textArea.start.top,
+    textArea.end.left,
+    textArea.end.top,
+    text.c_str(),
+    lineSpacing,
+    1,
+    1,
+    justification
+  );
+}
+
 void printText(
   Font& font,
   const std::string text,
@@ -255,6 +317,25 @@ void printText(
     0,
     textArea.end.left
   );
+}
+
+
+/* Private functions. */
+
+char _7kaaJustification(
+  const HorizontalAlignment horizontalAlignment
+) {
+  if (horizontalAlignment == HorizontalAlignment::Left) {
+    return Font::LEFT_JUSTIFY;
+  }
+  if (horizontalAlignment == HorizontalAlignment::Centre) {
+    return Font::CENTER_JUSTIFY;
+  }
+  if (horizontalAlignment == HorizontalAlignment::Right) {
+    return Font::RIGHT_JUSTIFY;
+  }
+
+  return Font::AUTO_JUSTIFY;
 }
 
 } // namespace Ambition::UserInterface

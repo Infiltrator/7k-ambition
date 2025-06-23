@@ -106,6 +106,15 @@ void display(
     = TEXT_BOX
     .outer(0, 30, 0, 26)
     .inner(470, 0, 50);
+  const auto SCROLL_HELP_AREA
+    = TEXT_BOX
+    .outer(0, 60)
+    .inner(50, 0)
+    .internal(
+      { .width = 225, .height = 50 },
+      UserInterface::HorizontalAlignment::Left,
+      UserInterface::VerticalAlignment::Bottom
+    );
 
   const auto SCROLL_BUTTON_LOCATIONS = TEXT_BOX.inner(
     0,
@@ -176,6 +185,15 @@ void display(
     UserInterface::Clear::EntireArea,
     UserInterface::HorizontalAlignment::Centre,
     UserInterface::VerticalAlignment::Centre
+  );
+
+  UserInterface::printParagraph(
+    font_std,
+    _(
+      "Scroll using the mouse wheel, up/down keys, pg-up/pg-dwn keys, or"
+      " left/right keys."
+    ),
+    SCROLL_HELP_AREA
   );
 
   vga_util.d3_panel_up(

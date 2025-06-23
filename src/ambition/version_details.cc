@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_ADDED),
         .items = {
           _("Added scroll up and scroll down prompts to the What's New screen."),
+          _("Added scroll hints to the What's New screen."),
         },
       },
     },
