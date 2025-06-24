@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed save game filenames being all underscores.
+
 
 ## [3.1.8] — 2025-06-23
 
