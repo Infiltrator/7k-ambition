@@ -16,6 +16,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed save game filenames being all underscores."),
+        },
+      },
     },
   },
   {
