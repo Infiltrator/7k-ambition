@@ -23,6 +23,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added scroll hints to the What's New screen."),
         },
       },
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Display the contribution value in the info pane exactly as it relates to total reward and loyalty (the true effect on loyalty is the newly displayed contribution value minus the reward value)."),
+        },
+      },
     },
   },
   {

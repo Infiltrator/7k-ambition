@@ -353,14 +353,14 @@ void displayUnitContribution(
 ) {
    if (unit->rank_id == RANK_KING
        || unit->is_civilian()
-       || unit->is_own_spy()
    ) {
      return;
    }
 
+   const auto formatString = unit->is_own_spy() ? "%'.1f" : "%'.1f/$%'d";
    String str = format(
-     "%'d/$%'d",
-     unit->nation_contribution,
+     formatString,
+     unit->nation_contribution / 2.0,
      unit->total_reward
    ).c_str();
 
