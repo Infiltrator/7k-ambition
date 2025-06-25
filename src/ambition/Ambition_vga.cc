@@ -1333,7 +1333,7 @@ void printLeadershipStatus(
   }
 
   if (!_7kaaUnit->leader_unit_recno) {
-    printText(font_san, _("No leader"), TEXT_BOX);
+    printText(font_san, _("No leader assigned"), TEXT_BOX);
   } else if (!Unit::isReceivingLeadershipBonus(_7kaaUnit)) {
     printText(font_san, _("Leader out of range"), TEXT_BOX);
   } else {

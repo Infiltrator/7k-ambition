@@ -37,6 +37,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Display the contribution value in the info pane exactly as it relates to total reward and loyalty (the true effect on loyalty is the newly displayed contribution value minus the reward value)."),
+          _("Made the no leader assigned message more obvious by adding \"assigned\"."),
         },
       },
     },

@@ -34,6 +34,7 @@ speaking, considered to be the player's experience.
 - Display the contribution value in the info pane exactly as it relates to total
   reward and loyalty (the true effect on loyalty is the newly displayed
   contribution value minus the reward value).
+- Made the no leader assigned message more obvious by adding "assigned".
 
 
 ## [3.1.9] — 2025-06-25
