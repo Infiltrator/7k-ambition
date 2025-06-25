@@ -43,6 +43,11 @@ struct Worker;
 
 namespace Ambition {
 
+bool builderInRegion(
+  const char nationRecordNumber,
+  const uint8_t regionId
+);
+
 /**
  * Send an available builder to a Firm.
  *
@@ -50,11 +55,15 @@ namespace Ambition {
  * that is above a certain hitpoint percentage.
  *
  * @param firm The Firm to send a builder to.
+ * @param ignoreOptimisations Whether to bypass optimisations to do with what
+ * candidate builders are currently doing and located.  If true, finds and sends
+ * the closest builder regardless of what he's doing.
  * @return Whether the Ambition code took effect and so the rest of the 7kaa
  * code should be skipped.
  */
 bool sendAvailableBuilderToFirm(
-  const Firm* firm
+  const Firm* firm,
+  const bool ignoreOptimisations = false
 );
 
 

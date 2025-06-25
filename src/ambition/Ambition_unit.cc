@@ -52,17 +52,29 @@ std::vector<short> getAvailableBuildersRecordNumbers(
   char nationRecordNumber,
   uint8_t regionId
 );
+std::vector<short> getRegionBuildersRecordNumbers(
+  const char nationRecordNumber,
+  const uint8_t regionId
+);
 
+
+bool builderInRegion(
+  const char nationRecordNumber,
+  const uint8_t regionId
+) {
+  return !getRegionBuildersRecordNumbers(nationRecordNumber, regionId).empty();
+}
 
 bool sendAvailableBuilderToFirm(
-  const Firm* firm
+  const Firm* firm,
+  const bool ignoreOptimisations
 ) {
   err_when(firm->builder_recno);
 
-  const auto availableBuildersRecordNumbers = getAvailableBuildersRecordNumbers(
-    firm->nation_recno,
-    firm->region_id
-  );
+  const auto availableBuildersRecordNumbers
+    = ignoreOptimisations
+    ? getRegionBuildersRecordNumbers(firm->nation_recno, firm->region_id)
+    : getAvailableBuildersRecordNumbers(firm->nation_recno, firm->region_id);
 
   if (availableBuildersRecordNumbers.empty()) {
     return true;
@@ -73,7 +85,9 @@ bool sendAvailableBuilderToFirm(
   for (auto const builderRecordNumber : availableBuildersRecordNumbers) {
     const auto unit = unit_array[builderRecordNumber];
 
-    if (unit->action_mode == ACTION_ASSIGN_TO_FIRM) {
+    if (!ignoreOptimisations
+      && unit->action_mode == ACTION_ASSIGN_TO_FIRM
+    ) {
       if (unit->action_para2 == firm->firm_recno) {
         // There is already a builder heading here, so we do not need to do
         // anything now.
@@ -577,7 +591,40 @@ std::vector<short> getAvailableBuildersRecordNumbers(
 ) {
   constexpr auto FIRM_HITPOINTS_FRACTION_THRESHOLD = 0.9;
 
-  std::vector<short> availableBuildersRecordNumbers;
+  auto builderRecordNumbers = getRegionBuildersRecordNumbers(
+    nationRecordNumber,
+    regionId
+  );
+  std::erase_if(
+    builderRecordNumbers,
+    [](const short _7kaaUnitRecordNumber) {
+      const auto unit = unit_array[_7kaaUnitRecordNumber];
+
+      if (unit->action_mode != ACTION_ASSIGN_TO_FIRM
+        && unit->action_mode != ACTION_STOP
+      ) {
+        return true;
+      }
+
+      if (unit->unit_mode == UNIT_MODE_CONSTRUCT) {
+        const auto firm = firm_array[unit->unit_mode_para];
+        if ((firm->hit_points / firm->max_hit_points
+             <= FIRM_HITPOINTS_FRACTION_THRESHOLD)
+          || info.game_date <= firm->last_attacked_date + 8
+        ) {
+          return true;
+        }
+      }
+      return false;
+    }
+  );
+  return builderRecordNumbers;
+}
+std::vector<short> getRegionBuildersRecordNumbers(
+  const char nationRecordNumber,
+  const uint8_t regionId
+) {
+  std::vector<short> builderRecordNumbers;
 
   for (auto i = 1; i <= unit_array.size(); i++) {
     if (unit_array.is_deleted(i)) {
@@ -600,18 +647,15 @@ std::vector<short> getAvailableBuildersRecordNumbers(
     if (unit->unit_mode == UNIT_MODE_CONSTRUCT) {
          const auto firm = firm_array[unit->unit_mode_para];
          if (firm->under_construction
-             || (firm->hit_points / firm->max_hit_points
-                 <= FIRM_HITPOINTS_FRACTION_THRESHOLD)
-             || info.game_date <= firm->last_attacked_date + 8
          ) {
             continue;
          }
     }
 
-    availableBuildersRecordNumbers.push_back(i);
+    builderRecordNumbers.push_back(i);
   }
 
-  return availableBuildersRecordNumbers;
+  return builderRecordNumbers;
 }
 
 } // namespace Ambition

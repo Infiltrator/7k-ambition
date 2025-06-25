@@ -40,6 +40,11 @@ void clearWaypoints(
   const std::vector<short> _7kaaUnitRecordNumbers
 );
 
+int canSendBuilderToFirm(
+  const Firm* _7kaaFirm,
+  const int _7kaaCalculation
+);
+
 void died(
   const ::Unit* _7kaaUnit
 );

@@ -27,6 +27,7 @@
 #include "7kaaInterface/unit.hh"
 
 #include "OFIRM.h"
+#include "OMOUSE.h"
 #include "OUNIT.h"
 #include "OSPY.h"
 
@@ -50,6 +51,25 @@ void clearWaypoints(
       = Ambition::Unit::getBy7kaaSpriteRecordNumber(_7kaaUnitRecordNumber);
     unit->clearWaypoints();
   }
+}
+
+int canSendBuilderToFirm(
+  const Firm* _7kaaFirm,
+  const int _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  if (!(mouse.skey_state & CONTROL_KEY_MASK)) {
+    return _7kaaCalculation;
+  }
+
+  if (_7kaaFirm->builder_recno) {
+    return 0;
+  }
+
+  return Ambition::builderInRegion(_7kaaFirm->nation_recno, _7kaaFirm->region_id);
 }
 
 void died(
@@ -241,7 +261,10 @@ bool sendAvailableBuilderToFirm(
     return false;
   }
 
-  return Ambition::sendAvailableBuilderToFirm(firm);
+  return Ambition::sendAvailableBuilderToFirm(
+    firm,
+    mouse.skey_state & CONTROL_KEY_MASK
+  );
 }
 
 bool toggleWaypoint(
