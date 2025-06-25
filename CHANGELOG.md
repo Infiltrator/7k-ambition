@@ -15,6 +15,12 @@ speaking, considered to be the player's experience.
 - Added scroll up and scroll down prompts to the What's New screen.
 - Added scroll hints to the What's New screen.
 
+### Changed
+
+- Display the contribution value in the info pane exactly as it relates to total
+  reward and loyalty (the true effect on loyalty is the newly displayed
+  contribution value minus the reward value).
+
 
 ## [3.1.9] — 2025-06-25
 
