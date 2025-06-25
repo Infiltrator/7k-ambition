@@ -27,6 +27,12 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed crash when requesting a builder while training one in a Town."),
+        },
+      },
+      {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Display the contribution value in the info pane exactly as it relates to total reward and loyalty (the true effect on loyalty is the newly displayed contribution value minus the reward value)."),
