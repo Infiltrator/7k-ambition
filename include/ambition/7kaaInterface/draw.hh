@@ -32,6 +32,7 @@ class Firm;
 class FirmHarbor;
 class FirmWar;
 class Font;
+class InnUnit;
 class MapMatrix;
 class SnowLayer;
 class Town;
@@ -263,6 +264,16 @@ bool initialiseSnowLayer(
 void innGuestCount(
   const short count,
   const int refreshFlag
+);
+
+void innGuestDetailsLeavingInformation(
+  const InnUnit* _7kaaInnGuest,
+  const int refreshFlag
+);
+
+void innGuestLeavingSoonMark(
+  const InnUnit* _7kaaInnGuest,
+  const int top
 );
 
 void loadMenuDeleteButton(

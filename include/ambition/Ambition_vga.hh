@@ -30,6 +30,7 @@
 class Button3D;
 class Firm;
 class Font;
+class InnUnit;
 class SnowLayer;
 class Town;
 class Unit;
@@ -118,6 +119,16 @@ void delayFrame(
  */
 void displayGameSpeed(
   int speed
+);
+
+void displayInnGuestDetailsStayingInformation(
+  const InnUnit* _7kaaInnGuest,
+  const int refreshFlag
+);
+
+void displayInnGuestLeavingSoonMark(
+  const InnUnit* _7kaaInnGuest,
+  const int top
 );
 
 void displayTownQualityOfLife(
