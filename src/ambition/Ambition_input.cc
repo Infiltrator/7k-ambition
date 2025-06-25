@@ -63,14 +63,13 @@ bool detectScroll(
   const PageSize horizontalPageSize,
   const PageSize horizontalMaximum
 ) {
-  if (!area.contains({.left = mouse.cur_x, .top = mouse.cur_y,})) {
-    return false;
-  }
-
   int scrollHorizontal = 0;
   int scrollVertical = 0;
 
-  if (enableMouse && mouse.get_scroll(&scrollHorizontal, &scrollVertical)) {
+  if (enableMouse
+    && area.contains({.left = mouse.cur_x, .top = mouse.cur_y,})
+    && mouse.get_scroll(&scrollHorizontal, &scrollVertical)
+  ) {
   } else {
     for (const auto& activation : activations) {
       int& scroll
