@@ -247,6 +247,16 @@ Point fromWorldPoint(
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
 );
 
+void printParagraph(
+  Font& font,
+  const std::string text,
+  const Rectangle area,
+  const int lineSpacing = 2,
+  const Clear clear = Clear::None,
+  const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
+  const VerticalAlignment verticalAlignment = VerticalAlignment::Top
+);
+
 void printText(
   Font& font,
   const std::string text,

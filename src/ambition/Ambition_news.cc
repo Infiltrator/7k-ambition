@@ -102,6 +102,19 @@ void display(
   constexpr auto SLIDE_BALL_WIDTH = 23;
 
   const auto TEXT_AREA = TEXT_BOX.inner(8, 8, 8 + SCROLL_BUTTON_WIDTH);
+  const auto SCROLL_PROMPTS_AREA
+    = TEXT_BOX
+    .outer(0, 30, 0, 26)
+    .inner(470, 0, 50);
+  const auto SCROLL_HELP_AREA
+    = TEXT_BOX
+    .outer(0, 60)
+    .inner(50, 0)
+    .internal(
+      { .width = 225, .height = 50 },
+      UserInterface::HorizontalAlignment::Left,
+      UserInterface::VerticalAlignment::Bottom
+    );
 
   const auto SCROLL_BUTTON_LOCATIONS = TEXT_BOX.inner(
     0,
@@ -174,6 +187,15 @@ void display(
     UserInterface::VerticalAlignment::Centre
   );
 
+  UserInterface::printParagraph(
+    font_std,
+    _(
+      "Scroll using the mouse wheel, up/down keys, pg-up/pg-dwn keys, or"
+      " left/right keys."
+    ),
+    SCROLL_HELP_AREA
+  );
+
   vga_util.d3_panel_up(
     TEXT_BOX.start.left,
     TEXT_BOX.start.top,
@@ -198,6 +220,14 @@ void display(
         0
       );
 
+      vga_util.blt_buf(
+        SCROLL_PROMPTS_AREA.start.left,
+        SCROLL_PROMPTS_AREA.start.top,
+        SCROLL_PROMPTS_AREA.end.left,
+        SCROLL_PROMPTS_AREA.end.top,
+        0
+      );
+
       startButton.paint();
       scrollUp.paint();
       scrollDown.paint();
@@ -207,6 +237,18 @@ void display(
       mouse.show();
 
       auto top = TEXT_AREA.start.top;
+
+      if (itemsToSkip > 0) {
+        printText(
+          font_bible,
+          _("scroll up for more"),
+          SCROLL_PROMPTS_AREA,
+          UserInterface::Clear::None,
+          UserInterface::HorizontalAlignment::Right,
+          UserInterface::VerticalAlignment::Top
+        );
+      }
+
       currentItem = 0;
 
       for (const auto& version : versionDetails) {
@@ -268,6 +310,16 @@ void display(
         }
       }
     deep_break:
+      if (currentItem < totalItemCount) {
+        printText(
+          font_bible,
+          _("scroll down for more"),
+          SCROLL_PROMPTS_AREA,
+          UserInterface::Clear::None,
+          UserInterface::HorizontalAlignment::Right,
+          UserInterface::VerticalAlignment::Bottom
+        );
+      }
 
       refreshFlag = 0;
     }

@@ -16,6 +16,13 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Added scroll up and scroll down prompts to the What's New screen."),
+          _("Added scroll hints to the What's New screen."),
+        },
+      },
     },
   },
   {
