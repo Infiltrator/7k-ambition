@@ -633,6 +633,28 @@ void innGuestCount(
   Ambition::drawInnGuestCount(count, refreshFlag);
 }
 
+void innGuestDetailsLeavingInformation(
+  const InnUnit* _7kaaInnGuest,
+  const int refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::displayInnGuestDetailsStayingInformation(_7kaaInnGuest, refreshFlag);
+}
+
+void innGuestLeavingSoonMark(
+  const InnUnit* _7kaaInnGuest,
+  const int top
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::displayInnGuestLeavingSoonMark(_7kaaInnGuest, top);
+}
+
 void loadMenuDeleteButton(
   Button3D& button,
   const int left,

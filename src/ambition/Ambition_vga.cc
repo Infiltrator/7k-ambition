@@ -36,6 +36,7 @@
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
 #include "OF_HARB.h"
+#include "OF_INN.h"
 #include "OF_MARK.h"
 #include "OF_RESE.h"
 #include "OF_WAR.h"
@@ -303,6 +304,59 @@ void displayGameSpeed(
 
   if (savedUseBackBuffer) {
     vga.use_back();
+  }
+}
+
+void displayInnGuestDetailsStayingInformation(
+  const InnUnit* _7kaaInnGuest,
+  const int refreshFlag
+) {
+  const auto fieldArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(4)
+    .inner(0, 247, 0, 0)
+    .internal(
+      {
+        .width = 190,
+        .height = 16,
+      }
+    );
+
+  font_san.field(
+    fieldArea.start.left,
+    fieldArea.start.top,
+    _("Status"),
+    fieldArea.inner(100, 0, 0, 0).start.left,
+    _7kaaInnGuest->stay_count <= 2 ? _("Leaving soon") : _("Enjoying stay"),
+    fieldArea.end.left,
+    refreshFlag
+  );
+}
+
+void displayInnGuestLeavingSoonMark(
+  const InnUnit* _7kaaInnGuest,
+  const int top
+) {
+  constexpr auto STAY_CYCLE_LOW_THRESHOLD = 2;
+
+  if (_7kaaInnGuest->stay_count <= STAY_CYCLE_LOW_THRESHOLD) {
+    const auto textArea = Ambition::UserInterface::Rectangle::fromPoint(
+      {
+        .left = 750,
+        .top = top + 2,
+      },
+      {
+        .width = 20,
+        .height = 20,
+      }
+    );
+    Ambition::UserInterface::printText(
+      font_san,
+      _("*"),
+      textArea,
+      Ambition::UserInterface::Clear::None,
+      Ambition::UserInterface::HorizontalAlignment::Right
+    );
   }
 }
 

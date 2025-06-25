@@ -51,12 +51,12 @@
 #define HIRE_BROWSE_X1 INFO_X1
 #define HIRE_BROWSE_X2 INFO_X2
 #define HIRE_BROWSE_Y1 (INFO_Y1+52 + (Ambition::Config::enhancementsAvailable() ? 22 : 0))
-#define HIRE_BROWSE_Y2 (HIRE_BROWSE_Y1+144 - (Ambition::Config::enhancementsAvailable() ? 8 : 0))
+#define HIRE_BROWSE_Y2 (HIRE_BROWSE_Y1+144 - (Ambition::Config::enhancementsAvailable() ? 24 : 0))
 
 #define HIRE_DET_X1 INFO_X1
 #define HIRE_DET_X2 INFO_X2
 #define HIRE_DET_Y1 (HIRE_BROWSE_Y2+5)
-#define HIRE_DET_Y2 (HIRE_DET_Y1+54 + (Ambition::Config::enhancementsAvailable() ? 8 : 0))
+#define HIRE_DET_Y2 (HIRE_DET_Y1+54 + (Ambition::Config::enhancementsAvailable() ? 24 : 0))
 
 //----------- Define static variables ----------//
 
@@ -434,7 +434,7 @@ void FirmInn::disp_unit_info(int dispY1, InnUnit* hireInfoPtr, int refreshFlag)
 
 	if( refreshFlag == INFO_REPAINT )
 	{
-		vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+54 );
+		vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+54 + (Ambition::Config::enhancementsAvailable() ? 18 : 0) );
 	}
 
 	//------ display population composition of this resident town -----//
@@ -458,6 +458,8 @@ void FirmInn::disp_unit_info(int dispY1, InnUnit* hireInfoPtr, int refreshFlag)
 	}
 
 	font_san.field( x, y+32, _("Hiring Cost"), x1, hireInfoPtr->hire_cost, 2, INFO_X2-10, refreshFlag);
+
+	Ambition::Draw::innGuestDetailsLeavingInformation(hireInfoPtr, refreshFlag);
 }
 //----------- End of function FirmInn::disp_unit_info -----------//
 
@@ -500,6 +502,8 @@ static void put_hire_rec(int recNo, int x, int y, int refreshFlag)
 	font_san.use_std_height();
 
 	font_san.put( x+140, y, misc.format(innUnit->hire_cost,2), 1, x+browse_hire.rec_width-3 );
+
+	Ambition::Draw::innGuestLeavingSoonMark(innUnit, y);
 }
 //----------- End of static function put_hire_rec -----------//
 

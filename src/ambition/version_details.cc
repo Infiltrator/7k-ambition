@@ -21,6 +21,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Added save/load game list scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added inn guest list scrolling with the mouse wheel or touchpad (when the cursor is inside the info pane) and up/down and home/end keys."),
+          _("Show the Inn guests that will be leaving soon (within 20 days)."),
           _("Added scroll up and scroll down prompts to the What's New screen."),
           _("Added scroll hints to the What's New screen."),
         },
