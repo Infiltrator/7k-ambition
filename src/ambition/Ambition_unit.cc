@@ -261,6 +261,10 @@ uint8_t Unit::_7kaaRegionId(
     return firm_array[_7kaaUnit->unit_mode_para]->region_id;
   }
 
+  if (_7kaaUnit->unit_mode == UNIT_MODE_UNDER_TRAINING) {
+    return town_array[_7kaaUnit->unit_mode_para]->region_id;
+  }
+
   if (_7kaaUnit->unit_mode == UNIT_MODE_ON_SHIP) {
     return _7kaaRegionId(unit_array[_7kaaUnit->unit_mode_para]);
   }
@@ -585,8 +589,8 @@ std::vector<short> getAvailableBuildersRecordNumbers(
     if (unit->nation_recno != nationRecordNumber
         || unit->race_id == 0
         || unit->skill.skill_id != SKILL_CONSTRUCTION
+      || unit->unit_mode == UNIT_MODE_UNDER_TRAINING
       || Unit::_7kaaRegionId(unit) != regionId
-        || unit->unit_mode == UNIT_MODE_UNDER_TRAINING
         || (unit->action_mode != ACTION_ASSIGN_TO_FIRM
             && unit->action_mode != ACTION_STOP)
     ) {
