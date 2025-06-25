@@ -92,8 +92,8 @@ bool sendAvailableBuilderToFirm(
     );
 
     if (unit->unit_mode == UNIT_MODE_CONSTRUCT) {
-      constexpr auto INSIDE_BUILDING_DISTANCE_PERANTLY = 16;
-      distance += 16;
+      constexpr auto INSIDE_BUILDING_DISTANCE_PENALTY = 16;
+      distance += INSIDE_BUILDING_DISTANCE_PENALTY;
 
       const auto firm = firm_array[unit->unit_mode_para];
       if (firm->hit_points < firm->max_hit_points) {
