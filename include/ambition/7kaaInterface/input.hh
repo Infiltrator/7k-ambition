@@ -48,6 +48,10 @@ void detectCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
 );
 
+bool detectInnScroll(
+  VBrowseIF& guestBrowser
+);
+
 bool detectTradeReportCaravanCloneButton(
   VBrowseIF& caravanBrowser
 );

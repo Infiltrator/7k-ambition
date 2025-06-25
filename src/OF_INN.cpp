@@ -25,6 +25,7 @@
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/inn.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OINFO.h>
 #include <vga_util.h>
@@ -217,6 +218,11 @@ int FirmInn::detect_info()
 		return 0;
 
 	//-------------------------------------//
+
+	if (Ambition::Input::detectInnScroll(browse_hire)) {
+		put_det(INFO_UPDATE);
+		return 1;
+	}
 
 	if( browse_hire.detect() )
 	{

@@ -14,6 +14,8 @@ speaking, considered to be the player's experience.
 
 - Added save/load game list scrolling with the mouse wheel or touchpad, up/down
   keys, pg up/pg down keys, left/right keys, and home/end keys.
+- Added inn guest list scrolling with the mouse wheel or touchpad (when the
+  cursor is inside the info pane) and up/down and home/end keys.
 - Added scroll up and scroll down prompts to the What's New screen.
 - Added scroll hints to the What's New screen.
 

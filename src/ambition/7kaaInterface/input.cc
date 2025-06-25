@@ -90,6 +90,63 @@ void detectCaravanCloneButton(
   Ambition::Trade::detectCaravanCloneButton(_7kaaCaravan);
 }
 
+bool detectInnScroll(
+  VBrowseIF& guestBrowser
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  constexpr auto SLOT_COUNT = 4;
+
+  return Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::INFO_PANE_CONTENTS,
+    {
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Forward,
+        .distance = Ambition::Input::ScrollStep::Single,
+        .keyCodes = { KEY_DOWN },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Backward,
+        .distance = Ambition::Input::ScrollStep::Single,
+        .keyCodes = { KEY_UP },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Forward,
+        .distance = Ambition::Input::ScrollStep::End,
+        .keyCodes = { KEY_END },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Backward,
+        .distance = Ambition::Input::ScrollStep::End,
+        .keyCodes = { KEY_HOME },
+      },
+    },
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [&guestBrowser](
+          int amount
+        ) {
+          guestBrowser.rec_no = std::clamp(
+            guestBrowser.rec_no + amount,
+            1,
+            guestBrowser.total_rec()
+          );
+          guestBrowser.refresh();
+        }
+      },
+    },
+    []() { return SLOT_COUNT; }
+  );
+}
+
 bool detectTradeReportCaravanCloneButton(
   VBrowseIF& caravanBrowser
 ) {
