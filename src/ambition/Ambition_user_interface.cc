@@ -42,6 +42,14 @@ char _7kaaJustification(
 
 
 bool Rectangle::contains(
+  const Point& point
+) const {
+  return (
+    point.left >= start.left && point.left <= end.left
+    && point.top >= start.top && point.top <= end.top
+  );
+}
+bool Rectangle::contains(
   const Rectangle& rectangle
 ) const {
   return intersection(rectangle) == rectangle;

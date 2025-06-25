@@ -26,6 +26,7 @@
 #pragma once
 
 class GetA;
+class SlideVBar;
 class UnitCaravan;
 class VBrowseIF;
 
@@ -65,6 +66,15 @@ bool detectModeSelectClick(
 );
 
 bool detectRallyButtonClick(
+);
+
+void detectSaveGameScroll(
+  const int minimumRecordNumber,
+  const int size,
+  short& browseRecordNumber,
+  short& browseTopRecordNumber,
+  int& refreshFlag,
+  SlideVBar& scrollBar
 );
 
 /**

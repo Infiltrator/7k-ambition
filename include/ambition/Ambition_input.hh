@@ -25,11 +25,64 @@
 
 #pragma once
 
+#include <functional>
+#include <map>
+#include <vector>
+
+
 namespace Ambition {
+
+namespace UserInterface {
+struct Rectangle;
+}
+
 
 void calculateScroll(
   int& x,
   int& y
 );
+
+namespace Input {
+
+enum class ScrollOrientation {
+  Horizontal,
+  Vertical,
+};
+enum class ScrollDirection {
+  Forward,
+  Backward,
+};
+enum class ScrollStep {
+  Single,
+  Page,
+  End,
+};
+
+using _7kaaButtonDetect = std::function<int()>;
+
+struct Activation {
+  ScrollOrientation orientation;
+  ScrollDirection direction;
+  ScrollStep distance;
+  std::vector<unsigned int> keyCodes;
+  std::vector<_7kaaButtonDetect> _7kaaButtonDetects;
+};
+
+using Action = std::function<void(int distance)>;
+using PageSize = std::function<int()>;
+
+
+bool detectScroll(
+  const bool enableMouse,
+  const UserInterface::Rectangle& area,
+  const std::vector<Activation>& activations,
+  const std::map<ScrollOrientation, Action>& actions,
+  const PageSize verticalPageSize,
+  const PageSize verticalMaximum = []() { return 1000000; },
+  const PageSize horizontalPageSize = []() { return 0; },
+  const PageSize horizontalMaximum = []() { return 1000000; }
+);
+
+} // namespace Ambition::Input
 
 } // namespace Ambition

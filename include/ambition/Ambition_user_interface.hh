@@ -95,6 +95,9 @@ struct Rectangle {
   inline int height() const { return end.top - start.top + 1; }
 
   bool contains(
+    const Point& point
+  ) const;
+  bool contains(
     const Rectangle& rectangle
   ) const;
 

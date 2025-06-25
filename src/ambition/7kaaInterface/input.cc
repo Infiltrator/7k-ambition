@@ -29,11 +29,13 @@
 #include <algorithm>
 #include <SDL.h>
 
+#include "KEY.h"
 #include "OFIRMA.h"
 #include "OGETA.h"
 #include "OINFO.h"
 #include "OMOUSE.h"
 #include "OMOUSE2.h"
+#include "OSLIDCUS.h"
 #include "OTOWN.h"
 #include "OU_CARA.h"
 #include "OVBROWIF.h"
@@ -246,6 +248,131 @@ bool detectRallyButtonClick(
   }
 
   return false;
+}
+
+#define LSOPTION_SLOT(n) (1 << (n))
+
+void detectSaveGameScroll(
+  const int minimumRecordNumber,
+  const int size,
+  short& browseRecordNumber,
+  short& browseTopRecordNumber,
+  int& refreshFlag,
+  SlideVBar& scrollBar
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto LSOPTION_ALL_SLOTS = 0x0000ffff;
+  constexpr auto LSOPTION_SCROLL = 0x00020000;
+  constexpr auto SLOT_COUNT = 5;
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::BOUNDS,
+    { },
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [&browseTopRecordNumber, &refreshFlag, &scrollBar](
+          int amount
+        ) {
+          const auto oldValue = scrollBar.view_recno;
+          if (oldValue != scrollBar.set_view_recno(oldValue + amount)) {
+            refreshFlag |= LSOPTION_SCROLL | LSOPTION_ALL_SLOTS;
+          }
+          browseTopRecordNumber = scrollBar.view_recno;
+        }
+      },
+    },
+    []() { return SLOT_COUNT; }
+  );
+
+  Ambition::Input::detectScroll(
+    false,
+    Ambition::UserInterface::BOUNDS,
+    {
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Forward,
+        .distance = Ambition::Input::ScrollStep::Single,
+        .keyCodes = { KEY_DOWN },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Backward,
+        .distance = Ambition::Input::ScrollStep::Single,
+        .keyCodes = { KEY_UP },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Forward,
+        .distance = Ambition::Input::ScrollStep::Page,
+        .keyCodes = { KEY_PGDN, KEY_RIGHT },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Backward,
+        .distance = Ambition::Input::ScrollStep::Page,
+        .keyCodes = { KEY_PGUP, KEY_LEFT },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Forward,
+        .distance = Ambition::Input::ScrollStep::End,
+        .keyCodes = { KEY_END },
+      },
+      {
+        .orientation = Ambition::Input::ScrollOrientation::Vertical,
+        .direction = Ambition::Input::ScrollDirection::Backward,
+        .distance = Ambition::Input::ScrollStep::End,
+        .keyCodes = { KEY_HOME },
+      },
+    },
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+          [&browseRecordNumber,
+            &browseTopRecordNumber,
+            &minimumRecordNumber,
+            &refreshFlag,
+            &scrollBar,
+            size
+          ](
+            int amount
+          ) {
+          refreshFlag |= LSOPTION_SLOT(
+            browseRecordNumber - scrollBar.view_recno
+          );
+
+          browseRecordNumber += amount;
+          if (browseRecordNumber < minimumRecordNumber) {
+            browseRecordNumber = minimumRecordNumber;
+          }
+          if (browseRecordNumber > size) {
+            browseRecordNumber = size;
+          }
+
+          refreshFlag |= LSOPTION_SLOT(
+            browseRecordNumber - scrollBar.view_recno
+          );
+
+          if (browseRecordNumber - scrollBar.view_recno < 0) {
+            scrollBar.set_view_recno(browseRecordNumber);
+            refreshFlag |= LSOPTION_SCROLL | LSOPTION_ALL_SLOTS;
+            browseTopRecordNumber = scrollBar.view_recno;
+          }
+          if (browseRecordNumber - scrollBar.view_recno >= SLOT_COUNT) {
+            scrollBar.set_view_recno(browseRecordNumber - (SLOT_COUNT - 1));
+            refreshFlag |= LSOPTION_SCROLL | LSOPTION_ALL_SLOTS;
+            browseTopRecordNumber = scrollBar.view_recno;
+          }
+        }
+      },
+    },
+    []() { return SLOT_COUNT; }
+  );
 }
 
 bool detectWhatsNewClick(
