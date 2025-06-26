@@ -31,6 +31,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed crash when requesting a builder while training one in a Town."),
+          _("Fixed items sometimes showing up under the wrong heading on the What's New screen."),
         },
       },
       {
