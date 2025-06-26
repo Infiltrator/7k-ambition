@@ -25,6 +25,7 @@
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <OSTR.h>
 #include <KEY.h>
@@ -263,6 +264,9 @@ void Firm::disp_basic_info(int dispY1, int refreshFlag)
 
 	int showRepairIcon = builder_recno && !under_construction && should_show_info();
 	int showReqRepairIcon = !builder_recno && !under_construction && should_show_info() && own_firm() && find_idle_builder(0);
+
+	showReqRepairIcon = Ambition::Unit::canSendBuilderToFirm(this, showReqRepairIcon);
+
 	err_when( showRepairIcon && showReqRepairIcon );
 
 	if( refreshFlag == INFO_REPAINT )
