@@ -28,6 +28,8 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed crash when requesting a builder while training one in a Town.
+- Fixed items sometimes showing up under the wrong heading on the What's New
+  screen.
 
 ### Changed
 

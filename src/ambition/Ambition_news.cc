@@ -270,6 +270,9 @@ void display(
           1,
           Font::CENTER_JUSTIFY
         );
+        if (top >= font_bard.next_text_y - font_bard.font_height) {
+          goto deep_break;
+        }
         top = std::max(top, font_bard.next_text_y - font_bard.font_height);
 
         for (const auto& section : version.sections) {
@@ -286,6 +289,9 @@ void display(
             section.heading.c_str(),
             LINE_SPACING
           );
+          if (top >= font_bard.next_text_y - font_bard.font_height) {
+            goto deep_break;
+          }
           top = std::max(top, font_bard.next_text_y - font_bard.font_height);
 
           for (const auto& item : section.items) {
