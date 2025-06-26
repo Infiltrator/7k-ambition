@@ -48,6 +48,15 @@
 
 namespace Ambition {
 
+uint8_t _7kaaUnitIdAttackRange(
+  const char _7kaaUnitId,
+  const int _7kaaTechnologyLevel
+);
+
+bool is7kaaUnitIdWarMachine(
+  const short _7kaaUnitId
+);
+
 std::vector<short> getAvailableBuildersRecordNumbers(
   char nationRecordNumber,
   uint8_t regionId
@@ -310,14 +319,29 @@ bool Unit::isReceivingLeadershipBonus(
   return _7kaaUnit->is_leader_in_range();
 }
 
-bool Unit::isWarMachine(
-  ::Unit* _7kaaUnit
+uint8_t Unit::attackRange(
+  const ::Unit* _7kaaUnit
 ) {
-  return (
-    _7kaaUnit->unit_id == UNIT_F_BALLISTA
-    || (_7kaaUnit->unit_id >= UNIT_CATAPULT
-        && _7kaaUnit->unit_id <= UNIT_EXPLOSIVE_CART)
+  return _7kaaUnitIdAttackRange(
+    _7kaaUnit->unit_id,
+    _7kaaUnit->nation_contribution
   );
+}
+uint8_t Unit::attackRange(
+  const Worker* _7kaaWorker
+) {
+  return _7kaaUnitIdAttackRange(_7kaaWorker->unit_id, _7kaaWorker->extra_para);
+}
+
+bool Unit::isWarMachine(
+  const ::Unit* _7kaaUnit
+) {
+  return is7kaaUnitIdWarMachine(_7kaaUnit->unit_id);
+}
+bool Unit::isWarMachine(
+  const Worker* _7kaaWorker
+) {
+  return is7kaaUnitIdWarMachine(_7kaaWorker->unit_id);
 }
 
 void Unit::sendToDestination(
@@ -584,6 +608,40 @@ void Unit::WorkerIdentifier::clear(
 
 
 /* Private functions. */
+
+uint8_t _7kaaUnitIdAttackRange(
+  const char _7kaaUnitId,
+  const int _7kaaTechnologyLevel
+) {
+  const auto _7kaaUnitInformation = unit_res[_7kaaUnitId];
+
+  const auto attackCount
+    = _7kaaUnitInformation->unit_class == UNIT_CLASS_WEAPON
+    ? _7kaaUnitInformation->attack_count / 3
+    : _7kaaUnitInformation->attack_count;
+  const auto firstAttack
+    = _7kaaUnitInformation->first_attack
+    + (_7kaaUnitInformation->unit_class == UNIT_CLASS_WEAPON
+       ? (attackCount * (_7kaaTechnologyLevel - 1))
+       : 0);
+
+  uint8_t range = 0;
+  for (auto i = firstAttack; i < firstAttack + attackCount; i++) {
+    range = std::max(unit_res.get_attack_info(i)->attack_range, range);
+  }
+
+  return range;
+}
+
+bool is7kaaUnitIdWarMachine(
+  const short _7kaaUnitId
+) {
+  return (
+    _7kaaUnitId == UNIT_F_BALLISTA
+    || (_7kaaUnitId >= UNIT_CATAPULT
+        && _7kaaUnitId <= UNIT_EXPLOSIVE_CART)
+  );
+}
 
 std::vector<short> getAvailableBuildersRecordNumbers(
   char nationRecordNumber,

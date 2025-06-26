@@ -35,6 +35,7 @@ class SnowLayer;
 class Town;
 class Unit;
 class VgaBuf;
+class Worker;
 struct FirmBitmap;
 
 
@@ -292,6 +293,15 @@ void printMilitaryReportCostLine(
 
 void printMilitaryReportTotalCost(
   const UserInterface::Rectangle rowArea
+);
+
+void printWarMachineInBuildingInformation(
+  const Worker* _7kaaWorker
+);
+
+int printWarMachineInformation(
+  const ::Unit* _7kaaUnit,
+  const int refreshFlag
 );
 
 /**

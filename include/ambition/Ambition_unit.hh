@@ -125,8 +125,18 @@ public:
     ::Unit* _7kaaUnit
   );
 
+  static uint8_t attackRange(
+    const ::Unit* _7kaaUnit
+  );
+  static uint8_t attackRange(
+    const Worker* _7kaaWorker
+  );
+
   static bool isWarMachine(
-    ::Unit* _7kaaUnit
+    const ::Unit* _7kaaUnit
+  );
+  static bool isWarMachine(
+    const Worker* _7kaaWorker
   );
 
   static void sendToDestination(

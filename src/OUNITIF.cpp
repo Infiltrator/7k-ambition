@@ -235,6 +235,8 @@ void Unit::disp_main_menu(int refreshFlag)
 		y += 89;
 	}
 
+	y += Ambition::Draw::printWarMachineInformation(this, refreshFlag);
+
 	if (Ambition::Draw::printLeadershipStatus(this, y, refreshFlag)) {
 		y += 20;
 	}
