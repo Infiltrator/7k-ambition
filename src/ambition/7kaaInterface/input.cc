@@ -102,32 +102,7 @@ bool detectInnScroll(
   return Ambition::Input::detectScroll(
     true,
     Ambition::UserInterface::INFO_PANE_CONTENTS,
-    {
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Forward,
-        .distance = Ambition::Input::ScrollStep::Single,
-        .keyCodes = { KEY_DOWN },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Backward,
-        .distance = Ambition::Input::ScrollStep::Single,
-        .keyCodes = { KEY_UP },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Forward,
-        .distance = Ambition::Input::ScrollStep::End,
-        .keyCodes = { KEY_END },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Backward,
-        .distance = Ambition::Input::ScrollStep::End,
-        .keyCodes = { KEY_HOME },
-      },
-    },
+    Ambition::Input::BASE_ACTIVATIONS,
     {
       {
         Ambition::Input::ScrollOrientation::Vertical,
@@ -349,44 +324,7 @@ void detectSaveGameScroll(
   Ambition::Input::detectScroll(
     false,
     Ambition::UserInterface::BOUNDS,
-    {
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Forward,
-        .distance = Ambition::Input::ScrollStep::Single,
-        .keyCodes = { KEY_DOWN },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Backward,
-        .distance = Ambition::Input::ScrollStep::Single,
-        .keyCodes = { KEY_UP },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Forward,
-        .distance = Ambition::Input::ScrollStep::Page,
-        .keyCodes = { KEY_PGDN, KEY_RIGHT },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Backward,
-        .distance = Ambition::Input::ScrollStep::Page,
-        .keyCodes = { KEY_PGUP, KEY_LEFT },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Forward,
-        .distance = Ambition::Input::ScrollStep::End,
-        .keyCodes = { KEY_END },
-      },
-      {
-        .orientation = Ambition::Input::ScrollOrientation::Vertical,
-        .direction = Ambition::Input::ScrollDirection::Backward,
-        .distance = Ambition::Input::ScrollStep::End,
-        .keyCodes = { KEY_HOME },
-      },
-    },
+    Ambition::Input::EXTENDED_ACTIVATIONS,
     {
       {
         Ambition::Input::ScrollOrientation::Vertical,

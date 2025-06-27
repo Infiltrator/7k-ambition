@@ -204,6 +204,45 @@ void display(
     TEXT_BOX.end.top
   );
 
+  auto scrollActivations = Ambition::Input::EXTENDED_ACTIVATIONS;
+  scrollActivations.push_back(
+    {
+      .orientation = Ambition::Input::ScrollOrientation::Vertical,
+      .direction = Ambition::Input::ScrollDirection::Forward,
+      .distance = Ambition::Input::ScrollStep::Single,
+      ._7kaaButtonDetects = {
+        [&scrollDown]() { return scrollDown.detect(); },
+      },
+    }
+  );
+  scrollActivations.push_back(
+    {
+      .orientation = Ambition::Input::ScrollOrientation::Vertical,
+      .direction = Ambition::Input::ScrollDirection::Backward,
+      .distance = Ambition::Input::ScrollStep::Single,
+      .keyCodes = { KEY_UP },
+      ._7kaaButtonDetects = {
+        [&scrollUp]() { return scrollUp.detect(); },
+      },
+    }
+  );
+  scrollActivations.push_back(
+    {
+      .orientation = Ambition::Input::ScrollOrientation::Vertical,
+      .direction = Ambition::Input::ScrollDirection::Forward,
+      .distance = Ambition::Input::ScrollStep::Page,
+      .keyCodes = { SDLK_SPACE },
+    }
+  );
+  scrollActivations.push_back(
+    {
+      .orientation = Ambition::Input::ScrollOrientation::Vertical,
+      .direction = Ambition::Input::ScrollDirection::Backward,
+      .distance = Ambition::Input::ScrollStep::Page,
+      .keyCodes = { KEY_BACK_SPACE },
+    }
+  );
+
   auto currentItem = 0;
   auto itemsToSkip = 0;
 
@@ -340,50 +379,7 @@ void display(
     Input::detectScroll(
       true,
       UserInterface::BOUNDS,
-      {
-        {
-          .orientation = Ambition::Input::ScrollOrientation::Vertical,
-          .direction = Ambition::Input::ScrollDirection::Forward,
-          .distance = Ambition::Input::ScrollStep::Single,
-          .keyCodes = { KEY_DOWN },
-          ._7kaaButtonDetects = {
-            [&scrollDown]() { return scrollDown.detect(); },
-          },
-        },
-        {
-          .orientation = Ambition::Input::ScrollOrientation::Vertical,
-          .direction = Ambition::Input::ScrollDirection::Backward,
-          .distance = Ambition::Input::ScrollStep::Single,
-          .keyCodes = { KEY_UP },
-          ._7kaaButtonDetects = {
-            [&scrollUp]() { return scrollUp.detect(); },
-          },
-        },
-        {
-          .orientation = Ambition::Input::ScrollOrientation::Vertical,
-          .direction = Ambition::Input::ScrollDirection::Forward,
-          .distance = Ambition::Input::ScrollStep::Page,
-          .keyCodes = { KEY_PGDN, KEY_RIGHT, SDLK_SPACE },
-        },
-        {
-          .orientation = Ambition::Input::ScrollOrientation::Vertical,
-          .direction = Ambition::Input::ScrollDirection::Backward,
-          .distance = Ambition::Input::ScrollStep::Page,
-          .keyCodes = { KEY_PGUP, KEY_LEFT, KEY_BACK_SPACE },
-        },
-        {
-          .orientation = Ambition::Input::ScrollOrientation::Vertical,
-          .direction = Ambition::Input::ScrollDirection::Forward,
-          .distance = Ambition::Input::ScrollStep::End,
-          .keyCodes = { KEY_END },
-        },
-        {
-          .orientation = Ambition::Input::ScrollOrientation::Vertical,
-          .direction = Ambition::Input::ScrollDirection::Backward,
-          .distance = Ambition::Input::ScrollStep::End,
-          .keyCodes = { KEY_HOME },
-        },
-      },
+      scrollActivations,
       {
         {
           Input::ScrollOrientation::Vertical,

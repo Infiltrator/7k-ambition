@@ -29,6 +29,8 @@
 #include <map>
 #include <vector>
 
+#include "KEY.h"
+
 
 namespace Ambition {
 
@@ -68,8 +70,83 @@ struct Activation {
   std::vector<_7kaaButtonDetect> _7kaaButtonDetects;
 };
 
-using Action = std::function<void(int distance)>;
+using Action = std::function<void(const int distance)>;
 using PageSize = std::function<int()>;
+
+const Activation ACTIVATION_KEY_UP = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Backward,
+  .distance = Ambition::Input::ScrollStep::Single,
+  .keyCodes = { KEY_UP },
+};
+const Activation ACTIVATION_KEY_DOWN = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Forward,
+  .distance = Ambition::Input::ScrollStep::Single,
+  .keyCodes = {KEY_DOWN},
+};
+const Activation ACTIVATION_KEY_PAGE_UP = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Backward,
+  .distance = Ambition::Input::ScrollStep::Page,
+  .keyCodes = {KEY_PGUP},
+};
+const Activation ACTIVATION_KEY_PAGE_DOWN = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Forward,
+  .distance = Ambition::Input::ScrollStep::Page,
+  .keyCodes = { KEY_PGDN },
+};
+const Activation ACTIVATION_KEY_LEFT_PAGE_UP = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Backward,
+  .distance = Ambition::Input::ScrollStep::Page,
+  .keyCodes = { KEY_LEFT },
+};
+const Activation ACTIVATION_KEY_RIGHT_PAGE_DOWN = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Forward,
+  .distance = Ambition::Input::ScrollStep::Page,
+  .keyCodes = { KEY_RIGHT },
+};
+const Activation ACTIVATION_KEY_HOME = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Backward,
+  .distance = Ambition::Input::ScrollStep::End,
+  .keyCodes = { KEY_HOME },
+};
+const Activation ACTIVATION_KEY_END = {
+  .orientation = Ambition::Input::ScrollOrientation::Vertical,
+  .direction = Ambition::Input::ScrollDirection::Forward,
+  .distance = Ambition::Input::ScrollStep::End,
+  .keyCodes = { KEY_END },
+};
+
+const std::vector<Activation> BASE_ACTIVATIONS = {
+  ACTIVATION_KEY_UP,
+  ACTIVATION_KEY_DOWN,
+  ACTIVATION_KEY_HOME,
+  ACTIVATION_KEY_END,
+};
+const std::vector<Activation> STANDARD_ACTIVATIONS = {
+  ACTIVATION_KEY_UP,
+  ACTIVATION_KEY_DOWN,
+  ACTIVATION_KEY_PAGE_UP,
+  ACTIVATION_KEY_PAGE_DOWN,
+  ACTIVATION_KEY_HOME,
+  ACTIVATION_KEY_END,
+};
+const std::vector<Activation> EXTENDED_ACTIVATIONS = {
+  ACTIVATION_KEY_UP,
+  ACTIVATION_KEY_DOWN,
+  ACTIVATION_KEY_PAGE_UP,
+  ACTIVATION_KEY_PAGE_DOWN,
+  ACTIVATION_KEY_HOME,
+  ACTIVATION_KEY_END,
+  ACTIVATION_KEY_DOWN,
+  ACTIVATION_KEY_LEFT_PAGE_UP,
+  ACTIVATION_KEY_RIGHT_PAGE_DOWN,
+};
 
 
 bool detectScroll(
