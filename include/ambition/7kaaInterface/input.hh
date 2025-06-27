@@ -33,6 +33,11 @@ class VBrowseIF;
 
 namespace _7kaaAmbitionInterface::Input {
 
+enum class ReportType {
+  News,
+};
+
+
 void calculateScroll(
   int& x,
   int& y
@@ -70,6 +75,12 @@ bool detectModeSelectClick(
 );
 
 bool detectRallyButtonClick(
+);
+
+void detectReportScroll(
+  const ReportType reportType,
+  VBrowseIF& browser,
+  short& selectedRecordNumber
 );
 
 void detectSaveGameScroll(

@@ -51,6 +51,11 @@
 
 namespace _7kaaAmbitionInterface::Input {
 
+const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = {
+  { ReportType::News, Ambition::UserInterface::VIEWPORT },
+};
+
+
 void calculateScroll(
   int& x,
   int& y
@@ -280,6 +285,22 @@ bool detectRallyButtonClick(
   }
 
   return false;
+}
+
+void detectReportScroll(
+  const ReportType reportType,
+  VBrowseIF& browser,
+  short& selectedRecordNumber
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Input::detectReportScroll(
+    browser,
+    selectedRecordNumber,
+    detectionAreas.find(reportType)->second
+  );
 }
 
 inline int LSOPTION_SLOT(int n) { return 1 << (n); }

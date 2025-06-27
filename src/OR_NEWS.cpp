@@ -21,6 +21,8 @@
 //Filename    : OR_NEWS.CPP
 //Description : Report for displaying AI actions
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OVGA.h>
 #include <ODATE.h>
 #include <OSYS.h>
@@ -79,6 +81,8 @@ void Info::disp_news_log(int refreshFlag)
 //
 void Info::detect_news_log()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::News, browse_news, browse_news_recno);
+
 	if( browse_news.detect() )
 		browse_news_recno = browse_news.recno();
 
