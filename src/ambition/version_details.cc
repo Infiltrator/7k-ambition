@@ -23,6 +23,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added news scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added Kingdom report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added Economy report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
+          _("Added Espionage report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added Military report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added Trade report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added inn guest list scrolling with the mouse wheel or touchpad and up/down and home/end keys."),

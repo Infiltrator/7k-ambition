@@ -46,6 +46,7 @@ enum class ReportType {
   MilitaryUnits,
   TechnologyTechnologies,
   TechnologyGods,
+  Espionage,
   News,
 };
 

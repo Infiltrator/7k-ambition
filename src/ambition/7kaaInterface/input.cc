@@ -173,6 +173,7 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
       Ambition::UserInterface::VerticalAlignment::Bottom
     ),
   },
+  { ReportType::Espionage, Ambition::UserInterface::VIEWPORT },
 };
 
 
