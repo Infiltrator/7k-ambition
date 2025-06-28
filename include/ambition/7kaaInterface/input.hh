@@ -38,6 +38,8 @@ enum class ReportType {
   KingdomDiplomaticLogs,
   VillagesTowns,
   VillagesFirms,
+  EconomyIncomes,
+  EconomyExpenses,
   News,
 };
 

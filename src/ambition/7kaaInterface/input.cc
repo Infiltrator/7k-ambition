@@ -93,6 +93,26 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
       Ambition::UserInterface::VerticalAlignment::Bottom
     ),
   },
+  {
+    ReportType::EconomyIncomes,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 195,
+      }
+    ),
+  },
+  {
+    ReportType::EconomyExpenses,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 349,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
 };
 
 
