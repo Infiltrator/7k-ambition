@@ -52,6 +52,26 @@
 namespace _7kaaAmbitionInterface::Input {
 
 const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = {
+  {
+    ReportType::KingdomKingdoms,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 241,
+      }
+    ),
+  },
+  {
+    ReportType::KingdomDiplomaticLogs,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 303,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
   { ReportType::News, Ambition::UserInterface::VIEWPORT },
 };
 

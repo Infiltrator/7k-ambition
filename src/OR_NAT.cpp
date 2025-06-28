@@ -21,6 +21,8 @@
 //Filename    : OR_NAT.CPP
 //Description : Nation Report
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <KEY.h>
 #include <OCONFIG.h>
 #include <OVGA.h>
@@ -208,6 +210,8 @@ void Info::disp_nation(int refreshFlag)
 //
 void Info::detect_nation()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::KingdomKingdoms, browse_nation, browse_nation_recno);
+
 	//------- detect nation browser ------//
 
 	if( browse_nation.detect() )
@@ -471,6 +475,8 @@ static void detect_detail()
 			break;
 
 		case NATION_REPORT_TALK_LOG:
+			Ambition::Input::detectReportScroll(Ambition::Input::ReportType::KingdomDiplomaticLogs, browse_talk_msg, info.browse_talk_msg_recno);
+
 			if( browse_talk_msg.detect() )
 				info.browse_talk_msg_recno = browse_talk_msg.recno();
 			break;

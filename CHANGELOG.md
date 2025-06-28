@@ -16,6 +16,8 @@ speaking, considered to be the player's experience.
   keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added news scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg
   down keys, left/right keys, and home/end keys.
+- Added Kingdom report scrolling with the mouse wheel or touchpad, up/down
+  keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added inn guest list scrolling with the mouse wheel or touchpad and up/down
   and home/end keys.
 - Added ctrl+click priority builder request to request the nearest builder,

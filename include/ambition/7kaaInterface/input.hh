@@ -34,6 +34,8 @@ class VBrowseIF;
 namespace _7kaaAmbitionInterface::Input {
 
 enum class ReportType {
+  KingdomKingdoms,
+  KingdomDiplomaticLogs,
   News,
 };
 
