@@ -133,6 +133,26 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
       Ambition::UserInterface::VerticalAlignment::Bottom
     ),
   },
+  {
+    ReportType::MilitaryTroops,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 249,
+      }
+    ),
+  },
+  {
+    ReportType::MilitaryUnits,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 295,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
 };
 
 

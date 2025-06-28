@@ -42,6 +42,8 @@ enum class ReportType {
   EconomyExpenses,
   TradeTraders,
   TradeFirms,
+  MilitaryTroops,
+  MilitaryUnits,
   News,
 };
 
