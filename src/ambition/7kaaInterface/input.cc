@@ -153,6 +153,26 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
       Ambition::UserInterface::VerticalAlignment::Bottom
     ),
   },
+  {
+    ReportType::TechnologyTechnologies,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 230,
+      }
+    ),
+  },
+  {
+    ReportType::TechnologyGods,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 229,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
 };
 
 

@@ -44,6 +44,8 @@ enum class ReportType {
   TradeFirms,
   MilitaryTroops,
   MilitaryUnits,
+  TechnologyTechnologies,
+  TechnologyGods,
   News,
 };
 

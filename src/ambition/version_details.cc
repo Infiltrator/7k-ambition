@@ -27,6 +27,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added Trade report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added inn guest list scrolling with the mouse wheel or touchpad and up/down and home/end keys."),
           _("Added Villages report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
+          _("Added Technology report scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added ctrl+click priority builder request to request the nearest builder, ignoring all optimisations and what the nearest builder is doing (except constructing a new building).  Even if the builder request icon is not visible, holding Control will make it appear if there is at least one builder who could walk there."),
           _("Show war machine yearly upkeep and attack range in the info pane."),
           _("Show the Inn guests that will be leaving soon (within 20 days)."),

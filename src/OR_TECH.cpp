@@ -21,6 +21,8 @@
 //Filename    : OR_TECH.CPP
 //Description : Technology Report
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <vga_util.h>
 #include <OFONT.h>
 #include <OIMGRES.h>
@@ -161,8 +163,12 @@ void Info::disp_tech(int refreshFlag)
 //
 void Info::detect_tech()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::TechnologyTechnologies, browse_tech, browse_tech_recno);
+
 	if( browse_tech.detect() )
 		browse_tech_recno = browse_tech.recno();
+
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::TechnologyGods, browse_god, browse_god_recno);
 
 	if( browse_god.detect() )
 	{
