@@ -21,6 +21,8 @@
 //Filename    : OR_RANK.CPP
 //Description : Ranking report
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <ODATE.h>
 #include <OFONT.h>
 #include <OGAME.h>
@@ -349,6 +351,8 @@ static void disp_play_time(int y1)
 //
 void Info::detect_rank()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::Ranking, browse_nation, browse_nation_recno);
+
 	//------- detect nation browser ------//
 
 	if( browse_nation.detect() )

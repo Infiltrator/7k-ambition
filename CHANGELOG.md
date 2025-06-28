@@ -32,6 +32,8 @@ speaking, considered to be the player's experience.
   keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added Technology report scrolling with the mouse wheel or touchpad, up/down
   keys, pg up/pg down keys, left/right keys, and home/end keys.
+- Added Ranking report scrolling with the mouse wheel or touchpad, up/down
+  keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added ctrl+click priority builder request to request the nearest builder,
   ignoring all optimisations and what the nearest builder is doing (except
   constructing a new building).  Even if the builder request icon is not
