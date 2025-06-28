@@ -36,6 +36,8 @@ namespace _7kaaAmbitionInterface::Input {
 enum class ReportType {
   KingdomKingdoms,
   KingdomDiplomaticLogs,
+  VillagesTowns,
+  VillagesFirms,
   News,
 };
 

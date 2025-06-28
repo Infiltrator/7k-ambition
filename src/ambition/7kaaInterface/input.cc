@@ -73,6 +73,26 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
     ),
   },
   { ReportType::News, Ambition::UserInterface::VIEWPORT },
+  {
+    ReportType::VillagesTowns,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 309,
+      }
+    ),
+  },
+  {
+    ReportType::VillagesFirms,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 235,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
 };
 
 
