@@ -113,6 +113,26 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
       Ambition::UserInterface::VerticalAlignment::Bottom
     ),
   },
+  {
+    ReportType::TradeTraders,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 228,
+      }
+    ),
+  },
+  {
+    ReportType::TradeFirms,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 316,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
 };
 
 

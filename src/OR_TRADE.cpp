@@ -299,6 +299,11 @@ void Info::detect_trade()
 	if( button_copy.button_wait )
 		return;
 
+	if (mode_unit == BROWSE_CARAVAN) {
+		Ambition::Input::detectReportScroll(Ambition::Input::ReportType::TradeTraders, browse_caravan, browse_caravan_recno);
+		browse_caravan.rec_no = browse_caravan_recno;
+	}
+
 	if( mode_unit == BROWSE_CARAVAN && browse_caravan.detect() )
 	{
 		browse_caravan_recno = browse_caravan.recno();
@@ -309,6 +314,11 @@ void Info::detect_trade()
 
 			world.go_loc(unitPtr->next_x_loc(), unitPtr->next_y_loc(), 1);
 		}
+	}
+
+	if (mode_unit == BROWSE_SHIP) {
+		Ambition::Input::detectReportScroll(Ambition::Input::ReportType::TradeTraders, browse_ship, browse_ship_recno);
+		browse_ship.rec_no = browse_ship_recno;
 	}
 
 	//-------- detect the ship browser ---------//
@@ -366,6 +376,8 @@ void Info::detect_trade()
 			return;
 		}
 	}
+
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::TradeFirms, browse_firm, browse_firm_recno);
 
 	//-------- detect the firm browser ---------//
 

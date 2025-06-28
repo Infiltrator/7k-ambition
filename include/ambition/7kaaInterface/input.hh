@@ -40,6 +40,8 @@ enum class ReportType {
   VillagesFirms,
   EconomyIncomes,
   EconomyExpenses,
+  TradeTraders,
+  TradeFirms,
   News,
 };
 
