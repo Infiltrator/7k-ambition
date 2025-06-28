@@ -14,11 +14,10 @@ speaking, considered to be the player's experience.
 
 - Added save/load game list scrolling with the mouse wheel or touchpad, up/down
   keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added news scrolling with the mouse wheel or touchpad (when the cursor is
-  inside the viewport), up/down keys, pg up/pg down keys, left/right keys, and
-  home/end keys.
-- Added inn guest list scrolling with the mouse wheel or touchpad (when the
-  cursor is inside the info pane) and up/down and home/end keys.
+- Added news scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg
+  down keys, left/right keys, and home/end keys.
+- Added inn guest list scrolling with the mouse wheel or touchpad and up/down
+  and home/end keys.
 - Added ctrl+click priority builder request to request the nearest builder,
   ignoring all optimisations and what the nearest builder is doing (except
   constructing a new building).  Even if the builder request icon is not
