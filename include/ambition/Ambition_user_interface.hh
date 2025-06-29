@@ -150,8 +150,8 @@ constexpr auto BOUNDS = Rectangle::fromPoint(
 
 const auto VIEWPORT = BOUNDS.internal(
   {
-    .width = 575,
-    .height = 543,
+    .width = 576,
+    .height = 544,
   },
   HorizontalAlignment::Left,
   VerticalAlignment::Bottom

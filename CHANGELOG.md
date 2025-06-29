@@ -33,6 +33,7 @@ speaking, considered to be the player's experience.
 - Fixed crash when requesting a builder while training one in a Town.
 - Fixed items sometimes showing up under the wrong heading on the What's New
   screen.
+- Fix building guide lines not reaching the top and right edges of the viewport.
 
 ### Changed
 
