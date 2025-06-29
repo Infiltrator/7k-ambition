@@ -307,7 +307,7 @@ bool detectRallyButtonClick(
   return false;
 }
 
-#define LSOPTION_SLOT(n) (1 << (n))
+inline int LSOPTION_SLOT(int n) { return 1 << (n); }
 
 void detectSaveGameScroll(
   const int minimumRecordNumber,
