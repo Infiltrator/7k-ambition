@@ -34,6 +34,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed crash when requesting a builder while training one in a Town."),
           _("Fixed items sometimes showing up under the wrong heading on the What's New screen."),
+          _("Fix building guide lines not reaching the top and right edges of the viewport."),
         },
       },
       {
