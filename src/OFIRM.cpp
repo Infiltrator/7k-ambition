@@ -1006,7 +1006,11 @@ void Firm::assign_worker(int workerUnitRecno)
 	workerPtr->skill_level_minor = unitPtr->skill.skill_level_minor;
 
 	if( workerPtr->skill_level == 0 && workerPtr->race_id )
+	{
 		workerPtr->skill_level = CITIZEN_SKILL_LEVEL;
+		workerPtr->skill_level_minor = 0;
+		workerPtr->init_potential();
+	}
 
 	err_when( workerPtr->skill_level<0 );
 	err_when( workerPtr->skill_level>100 );
