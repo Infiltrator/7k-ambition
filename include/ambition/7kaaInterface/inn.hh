@@ -32,9 +32,29 @@ class VBrowseIF;
 
 namespace _7kaaAmbitionInterface::Inn {
 
+void detectBrowserClick(
+  FirmInn* inn,
+  const VBrowseIF& guestBrowser
+);
+
 int getSelectedRecordNumber(
   const FirmInn* inn,
   const int browserRecordNumber
+);
+
+void guestLeft(
+  FirmInn* inn,
+  const VBrowseIF& guestBrowser,
+  const int recordNumber
+);
+
+void guestSelected(
+  FirmInn* inn,
+  const int recordNumber
+);
+
+void overrideHireButtonStatus(
+  Button3D& hireButton
 );
 
 void refreshBrowser(

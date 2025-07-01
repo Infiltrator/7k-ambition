@@ -164,6 +164,8 @@ void FirmInn::put_info(int refreshFlag)
 								0, 25, inn_unit_count, put_hire_rec );
 
 		browse_hire.open(1);
+
+		Ambition::Inn::guestSelected(this, Ambition::Inn::getSelectedRecordNumber(this, 1));
 	}
 	else
 	{
@@ -220,9 +222,12 @@ int FirmInn::detect_info()
 	//-------------------------------------//
 
 	if (Ambition::Input::detectInnScroll(browse_hire)) {
+		Ambition::Inn::guestSelected(this, Ambition::Inn::getSelectedRecordNumber(this, browse_hire.recno()));
 		put_det(INFO_UPDATE);
 		return 1;
 	}
+
+	Ambition::Inn::detectBrowserClick(this, browse_hire);
 
 	if( browse_hire.detect() )
 	{
@@ -413,6 +418,8 @@ void FirmInn::put_det(int refreshFlag)
 				button_hire.disable();
 			}
 		}
+
+		Ambition::Inn::overrideHireButtonStatus(button_hire);
 	}
 }
 //----------- End of function FirmInn::put_det -----------//
@@ -562,6 +569,8 @@ void FirmInn::update_del_hire_list()
 		if( !inn_unit_array[i-1].spy_recno && --inn_unit_array[i-1].stay_count==0 )
 		{
 			del_inn_unit(i);
+
+			Ambition::Inn::guestLeft(this, browse_hire, Ambition::Inn::getSelectedRecordNumber(this, i - 1));
 
 			if( firm_recno == firm_array.selected_recno &&
 				should_show_info() )

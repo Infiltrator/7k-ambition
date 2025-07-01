@@ -38,6 +38,9 @@ speaking, considered to be the player's experience.
 - Display the contribution value in the info pane exactly as it relates to total
   reward and loyalty (the true effect on loyalty is the newly displayed
   contribution value minus the reward value).
+- Prevent accidentally hiring the wrong Inn guest if the currently selected
+  guest leaves the Inn by disabling the hire button until another selection is
+  made.
 - Made the no leader assigned message more obvious by adding "assigned".
 
 
