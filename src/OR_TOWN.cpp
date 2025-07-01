@@ -21,6 +21,8 @@
 //Filename    : OR_TOWN.CPP
 //Description : Town Report
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include "OFIRM.h"
 #include "OFIRMA.h"
 #include <OFONT.h>
@@ -139,6 +141,8 @@ void Info::disp_town(int refreshFlag)
 //
 void Info::detect_town()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::VillagesTowns, browse_town, browse_town_recno);
+
    //------- detect the town browser -------//
 
 	if( browse_town.detect() )
@@ -152,6 +156,8 @@ void Info::detect_town()
 			world.go_loc(townPtr->center_x, townPtr->center_y, 1);
 		}
 	}
+
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::VillagesFirms, browse_firm, browse_firm_recno);
 
 	//------- detect the firm browser -------//
 

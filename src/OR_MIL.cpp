@@ -22,6 +22,7 @@
 //Description : Economy information screen
 
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include "OFIRM.h"
 #include "OFIRMA.h"
@@ -151,6 +152,8 @@ void Info::disp_military(int refreshFlag)
 //
 void Info::detect_military()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::MilitaryTroops, browse_troop, browse_troop_recno);
+
 	//------- detect the troop report -------//
 
 	if( browse_troop.detect() )
@@ -168,6 +171,8 @@ void Info::detect_military()
 			}
 		}
 	}
+
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::MilitaryUnits, browse_unit, browse_unit_recno);
 
 	//------- detect the unit report -------//
 

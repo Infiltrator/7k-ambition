@@ -21,6 +21,8 @@
 //Filename    : OSCROLL.CPP
 //Description : Object scroll bar
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <KEY.h>
 #include <OSYS.h>
 #include <OMOUSE.h>
@@ -281,7 +283,7 @@ int ScrollBar::detect()
 
 	if( type==VERTICAL   && mouse.any_click( x1+2 , y1+14, x2-2 , y2-14 ) ||
 		 type==HORIZONTAL && mouse.any_click( x1+14, y1+2 , x2-14, y2-2  ) ||
-		 mouse.key_code == KEY_PGUP || mouse.key_code == KEY_PGDN )
+		(!Ambition::Config::enhancementsAvailable() && (mouse.key_code == KEY_PGUP || mouse.key_code == KEY_PGDN)) )
 	{
 		if( type==VERTICAL )
 			pos = mouse.click_y();

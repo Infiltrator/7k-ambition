@@ -51,6 +51,133 @@
 
 namespace _7kaaAmbitionInterface::Input {
 
+const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = {
+  {
+    ReportType::KingdomKingdoms,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 241,
+      }
+    ),
+  },
+  {
+    ReportType::KingdomDiplomaticLogs,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 303,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
+  { ReportType::News, Ambition::UserInterface::VIEWPORT },
+  {
+    ReportType::VillagesTowns,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 309,
+      }
+    ),
+  },
+  {
+    ReportType::VillagesFirms,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 235,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
+  {
+    ReportType::EconomyIncomes,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 195,
+      }
+    ),
+  },
+  {
+    ReportType::EconomyExpenses,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 349,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
+  {
+    ReportType::TradeTraders,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 228,
+      }
+    ),
+  },
+  {
+    ReportType::TradeFirms,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 316,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
+  {
+    ReportType::MilitaryTroops,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 249,
+      }
+    ),
+  },
+  {
+    ReportType::MilitaryUnits,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 295,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
+  {
+    ReportType::TechnologyTechnologies,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 230,
+      }
+    ),
+  },
+  {
+    ReportType::TechnologyGods,
+    Ambition::UserInterface::VIEWPORT.internal(
+      {
+        .width = Ambition::UserInterface::VIEWPORT.width(),
+        .height = 229,
+      },
+      Ambition::UserInterface::HorizontalAlignment::Left,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    ),
+  },
+  { ReportType::Espionage, Ambition::UserInterface::VIEWPORT },
+  { ReportType::Ranking, Ambition::UserInterface::VIEWPORT },
+};
+
+
 void calculateScroll(
   int& x,
   int& y
@@ -280,6 +407,22 @@ bool detectRallyButtonClick(
   }
 
   return false;
+}
+
+void detectReportScroll(
+  const ReportType reportType,
+  VBrowseIF& browser,
+  short& selectedRecordNumber
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Input::detectReportScroll(
+    browser,
+    selectedRecordNumber,
+    detectionAreas.find(reportType)->second
+  );
 }
 
 inline int LSOPTION_SLOT(int n) { return 1 << (n); }

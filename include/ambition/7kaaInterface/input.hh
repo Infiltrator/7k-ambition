@@ -33,6 +33,25 @@ class VBrowseIF;
 
 namespace _7kaaAmbitionInterface::Input {
 
+enum class ReportType {
+  KingdomKingdoms,
+  KingdomDiplomaticLogs,
+  VillagesTowns,
+  VillagesFirms,
+  EconomyIncomes,
+  EconomyExpenses,
+  TradeTraders,
+  TradeFirms,
+  MilitaryTroops,
+  MilitaryUnits,
+  TechnologyTechnologies,
+  TechnologyGods,
+  Espionage,
+  Ranking,
+  News,
+};
+
+
 void calculateScroll(
   int& x,
   int& y
@@ -70,6 +89,12 @@ bool detectModeSelectClick(
 );
 
 bool detectRallyButtonClick(
+);
+
+void detectReportScroll(
+  const ReportType reportType,
+  VBrowseIF& browser,
+  short& selectedRecordNumber
 );
 
 void detectSaveGameScroll(

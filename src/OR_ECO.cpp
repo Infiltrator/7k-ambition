@@ -21,6 +21,8 @@
 //Filename    : OINFOECO.CPP
 //Description : Economy information screen
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OSYS.h>
 #include <OFONT.h>
 #include <OVBROWIF.h>
@@ -124,8 +126,12 @@ void Info::disp_economy(int refreshFlag)
 //
 void Info::detect_economy()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::EconomyIncomes, browse_income, browse_income_recno);
+
 	if( browse_income.detect() )
 		browse_income_recno = browse_income.recno();
+
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::EconomyExpenses, browse_expense, browse_expense_recno);
 
 	if( browse_expense.detect() )
 		browse_expense_recno = browse_expense.recno();

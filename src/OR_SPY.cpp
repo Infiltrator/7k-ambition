@@ -21,6 +21,8 @@
 //Filename    : OR_SPY.CPP
 //Description : Spy Report
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OFONT.h>
 #include <OFIRMRES.h>
 #include <ONATION.h>
@@ -101,6 +103,8 @@ void Info::disp_spy(int refreshFlag)
 //
 void Info::detect_spy()
 {
+	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::Espionage, browse_spy, browse_spy_recno);
+
 	//------- detect the spy browser -------//
 
 	if( browse_spy.detect() )

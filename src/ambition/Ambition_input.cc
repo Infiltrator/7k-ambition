@@ -27,6 +27,7 @@
 
 #define _AMBITION_IMPLEMENTATION
 #include "OMOUSE.h"
+#include "OVBROWIF.h"
 
 #include "Ambition_user_interface.hh"
 
@@ -53,6 +54,39 @@ void calculateScroll(
 
 namespace Input {
 
+bool detectReportScroll(
+  VBrowseIF& browser,
+  short& selectedRecordNumber,
+  const UserInterface::Rectangle& area
+) {
+  return Ambition::Input::detectScroll(
+    true,
+    area,
+    Ambition::Input::EXTENDED_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [&browser, &selectedRecordNumber] (
+          const int amount
+        ) {
+          browser.top_rec_no = std::clamp(
+            browser.top_rec_no + amount,
+            1,
+            browser.total_rec()
+          );
+          selectedRecordNumber = std::clamp(
+            selectedRecordNumber + amount,
+            1,
+            browser.total_rec()
+          );
+        }
+      },
+    },
+    [browser]() { return browser.y_max_rec - 1; },
+    [browser]() { return browser.total_rec_num; }
+  );
+}
+
 bool detectScroll(
   const bool enableMouse,
   const UserInterface::Rectangle& area,
@@ -63,13 +97,16 @@ bool detectScroll(
   const PageSize horizontalPageSize,
   const PageSize horizontalMaximum
 ) {
+  if (enableMouse
+    && !area.contains({.left = mouse.cur_x, .top = mouse.cur_y,})
+  ) {
+    return false;
+  }
+
   int scrollHorizontal = 0;
   int scrollVertical = 0;
 
-  if (enableMouse
-    && area.contains({.left = mouse.cur_x, .top = mouse.cur_y,})
-    && mouse.get_scroll(&scrollHorizontal, &scrollVertical)
-  ) {
+  if (mouse.get_scroll(&scrollHorizontal, &scrollVertical)) {
   } else {
     for (const auto& activation : activations) {
       int& scroll

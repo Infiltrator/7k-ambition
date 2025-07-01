@@ -31,6 +31,8 @@
 
 #include "KEY.h"
 
+class VBrowseIF;
+
 
 namespace Ambition {
 
@@ -148,6 +150,12 @@ const std::vector<Activation> EXTENDED_ACTIVATIONS = {
   ACTIVATION_KEY_RIGHT_PAGE_DOWN,
 };
 
+
+bool detectReportScroll(
+  VBrowseIF& browser,
+  short& selectedRecordNumber,
+  const UserInterface::Rectangle& area
+);
 
 bool detectScroll(
   const bool enableMouse,
