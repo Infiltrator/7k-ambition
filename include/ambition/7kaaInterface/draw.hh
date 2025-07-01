@@ -171,6 +171,10 @@ short calculateAnimatedLinePhase(
   const int lineProgress
 );
 
+int calculateBuildMarkerColour(
+  const int _7kaaCalculation
+);
+
 int calculateDoneButtonWidth(
   const int _7kaaCalculation,
   const Firm* firm

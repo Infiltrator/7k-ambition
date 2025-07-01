@@ -933,6 +933,8 @@ void ZoomMatrix::draw_build_marker()
 	else
 		pixelColor = V_BLACK;
 
+	pixelColor = Ambition::Draw::calculateBuildMarkerColour(pixelColor);
+
 	vga_back.pixelize( x1, y1, MIN(x2,ZOOM_X2), MIN(y2,ZOOM_Y2), pixelColor );
 
 	Ambition::Draw::buildMarkerGridLines(x1, y1, x2, y2);

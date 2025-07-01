@@ -34,6 +34,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed crash when requesting a builder while training one in a Town.
+- Fixed the build marker flashing too fast.
 - Fixed items sometimes showing up under the wrong heading on the What's New
   screen.
 - Fix building guide lines not reaching the top and right edges of the viewport.

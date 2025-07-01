@@ -418,6 +418,32 @@ short calculateAnimatedLinePhase(
   );
 }
 
+int calculateBuildMarkerColour(
+  const int _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  if (_7kaaCalculation == V_BLACK) {
+    return _7kaaCalculation;
+  }
+
+  constexpr auto COLOUR_COUNT = 6;
+  constexpr unsigned char COLOURS[COLOUR_COUNT] = {
+    0xA4,
+    0xA5,
+    0xA6,
+    0x98,
+    0xA6,
+    0xA5,
+  };
+  constexpr auto FRAME_RATE = 8;
+  constexpr auto MILLISECONDS_PER_COLOUR = 1000 / FRAME_RATE;
+
+  return COLOURS[(SDL_GetTicks64() / MILLISECONDS_PER_COLOUR) % COLOUR_COUNT];
+}
+
 int calculateDoneButtonWidth(
   const int _7kaaCalculation,
   const Firm* firm
