@@ -16,24 +16,11 @@ speaking, considered to be the player's experience.
   keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added news scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg
   down keys, left/right keys, and home/end keys.
-- Added Kingdom report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added Economy report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added Espionage report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added Military report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added Trade report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
+- Added scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down
+  keys, left/right keys, and home/end keys to the Kingdoms, Villages, Economy,
+  Trade, Military, Technology, Espionage, and Raking reports.
 - Added inn guest list scrolling with the mouse wheel or touchpad and up/down
   and home/end keys.
-- Added Villages report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added Technology report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
-- Added Ranking report scrolling with the mouse wheel or touchpad, up/down
-  keys, pg up/pg down keys, left/right keys, and home/end keys.
 - Added ctrl+click priority builder request to request the nearest builder,
   ignoring all optimisations and what the nearest builder is doing (except
   constructing a new building).  Even if the builder request icon is not
