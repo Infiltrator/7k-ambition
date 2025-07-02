@@ -549,6 +549,12 @@ int Town::detect_main_menu()
 		return 1;
 	}
 
+	if (Ambition::Input::detectTownScroll(browse_race)) {
+		browse_race_recno = browse_race.recno();
+		browse_race.refresh();
+		return 1;
+	}
+
 	//-------- detect browsers ---------//
 
 	if( browse_race.detect() )

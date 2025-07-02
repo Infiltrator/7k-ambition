@@ -32,6 +32,8 @@ speaking, considered to be the player's experience.
 - Show the Inn guests that will be leaving soon (within 20 days).
 - Added ctrl+click to mobilise workers from a building before selling or
   demolishing it.
+- Added Town race list scrolling with the mouse wheel or touchpad, up/down keys,
+  pg up/pg down keys, left/right keys, and home/end keys.
 - Added scroll up and scroll down prompts to the What's New screen.
 - Added scroll hints to the What's New screen.
 

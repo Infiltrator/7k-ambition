@@ -28,6 +28,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Show war machine yearly upkeep and attack range in the info pane."),
           _("Show the Inn guests that will be leaving soon (within 20 days)."),
           _("Added ctrl+click to mobilise workers from a building before selling or demolishing it."),
+          _("Added Town race list scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added scroll up and scroll down prompts to the What's New screen."),
           _("Added scroll hints to the What's New screen."),
         },
