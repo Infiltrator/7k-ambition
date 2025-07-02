@@ -28,6 +28,8 @@ speaking, considered to be the player's experience.
   who could walk there.
 - Show war machine yearly upkeep and attack range in the info pane.
 - Show the Inn guests that will be leaving soon (within 20 days).
+- Added ctrl+click to mobilise workers from a building before selling or
+  demolishing it.
 - Added scroll up and scroll down prompts to the What's New screen.
 - Added scroll hints to the What's New screen.
 

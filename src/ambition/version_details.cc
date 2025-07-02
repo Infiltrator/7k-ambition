@@ -26,6 +26,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added ctrl+click priority builder request to request the nearest builder, ignoring all optimisations and what the nearest builder is doing (except constructing a new building).  Even if the builder request icon is not visible, holding Control will make it appear if there is at least one builder who could walk there."),
           _("Show war machine yearly upkeep and attack range in the info pane."),
           _("Show the Inn guests that will be leaving soon (within 20 days)."),
+          _("Added ctrl+click to mobilise workers from a building before selling or demolishing it."),
           _("Added scroll up and scroll down prompts to the What's New screen."),
           _("Added scroll hints to the What's New screen."),
         },

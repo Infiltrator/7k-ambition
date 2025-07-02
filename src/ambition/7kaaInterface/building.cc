@@ -30,6 +30,7 @@
 #include "OF_RESE.h"
 #include "OFIRM.h"
 #include "OFONT.h"
+#include "OMOUSE.h"
 #include "OREMOTE.h"
 #include "OTECHRES.h"
 #include "OTOWN.h"
@@ -158,6 +159,10 @@ void deconstruct(
 
   auto _7kaaCamp = dynamic_cast<FirmCamp*>(_7kaaFirm);
   if (!_7kaaCamp) {
+    if (mouse.skey_state & CONTROL_KEY_MASK) {
+      _7kaaFirm->mobilize_all_workers(COMMAND_PLAYER);
+    }
+
     return;
   }
 
