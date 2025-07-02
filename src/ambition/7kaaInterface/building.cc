@@ -30,6 +30,7 @@
 #include "OF_RESE.h"
 #include "OFIRM.h"
 #include "OFONT.h"
+#include "OREMOTE.h"
 #include "OTECHRES.h"
 #include "OTOWN.h"
 
@@ -160,7 +161,16 @@ void deconstruct(
     return;
   }
 
-  _7kaaCamp->patrol();
+  if (remote.is_enable()) {
+    /* Packet structure: <Firm record number> */
+    auto message = (short*)remote.new_send_queue_msg(
+      MSG_F_CAMP_PATROL,
+      sizeof(short)
+    );
+    message[0] = _7kaaCamp->firm_recno;
+  } else {
+    _7kaaCamp->patrol();
+  }
 }
 
 unsigned int enqueuedProductionCount(
