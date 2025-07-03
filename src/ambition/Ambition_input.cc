@@ -59,13 +59,13 @@ bool detectReportScroll(
   short& selectedRecordNumber,
   const UserInterface::Rectangle& area
 ) {
-  return Ambition::Input::detectScroll(
+  return detectScroll(
     true,
     area,
-    Ambition::Input::EXTENDED_ACTIVATIONS,
+    EXTENDED_ACTIVATIONS,
     {
       {
-        Ambition::Input::ScrollOrientation::Vertical,
+        ScrollOrientation::Vertical,
         [&browser, &selectedRecordNumber] (
           const int amount
         ) {
