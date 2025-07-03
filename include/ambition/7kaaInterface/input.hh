@@ -106,6 +106,10 @@ void detectSaveGameScroll(
   SlideVBar& scrollBar
 );
 
+bool detectSpyScroll(
+  VBrowseIF& spyBrowser
+);
+
 /**
  * Detect whether the What's New button was clicked and then run the news
  * screen.

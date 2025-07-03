@@ -1564,6 +1564,10 @@ void Town::disp_spy_menu(int refreshFlag)
 //
 int Town::detect_spy_menu()
 {
+	if (Ambition::Input::detectSpyScroll(browse_spy)) {
+		browse_spy.refresh();
+	}
+
 	browse_spy.detect();
 
 	Spy* spyPtr = spy_array[ spy_filter( browse_spy.recno() ) ];

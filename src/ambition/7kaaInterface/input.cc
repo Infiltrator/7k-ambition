@@ -513,6 +513,41 @@ void detectSaveGameScroll(
   );
 }
 
+bool detectSpyScroll(
+  VBrowseIF& spyBrowser
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::INFO_PANE_CONTENTS,
+    Ambition::Input::EXTENDED_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [&spyBrowser] (
+          const int amount
+        ) {
+          spyBrowser.top_rec_no = std::clamp(
+            spyBrowser.top_rec_no + amount,
+            1,
+            std::max(1, spyBrowser.total_rec() - spyBrowser.y_max_rec + 1)
+          );
+          spyBrowser.rec_no = std::clamp(
+            spyBrowser.rec_no + amount,
+            1,
+            spyBrowser.total_rec()
+          );
+        }
+      },
+    },
+    [spyBrowser]() { return spyBrowser.y_max_rec - 1; },
+    [spyBrowser]() { return spyBrowser.total_rec_num; }
+  );
+}
+
 bool detectWhatsNewClick(
 ) {
   constexpr Ambition::UserInterface::Rectangle WhatsNewButton = {
