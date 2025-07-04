@@ -38,6 +38,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed crash when requesting a builder while training one in a Town."),
           _("Fixed a desync on selling a fort with soldiers or a general in it in multiplayer."),
+          _("Fixed Inn selected guest changing when another one leaves."),
           _("Fixed the build marker flashing too fast."),
           _("Fixed items sometimes showing up under the wrong heading on the What's New screen."),
           _("Fix building guide lines not reaching the top and right edges of the viewport."),

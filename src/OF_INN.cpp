@@ -575,11 +575,8 @@ void FirmInn::update_del_hire_list()
 			if( firm_recno == firm_array.selected_recno &&
 				should_show_info() )
 			{
-				if( browse_hire.recno() > i && browse_hire.recno() > 1 )
+				if( Ambition::Inn::getSelectedRecordNumber(this, browse_hire.recno()) > i && Ambition::Inn::getSelectedRecordNumber(this, browse_hire.recno()) > 1 )
 					browse_hire.refresh( browse_hire.recno()-1, inn_unit_count );
-				else {
-					Ambition::Inn::refreshBrowser(firm_recno, this, browse_hire, i, button_hire);
-				}
 			}
 		}
 	}

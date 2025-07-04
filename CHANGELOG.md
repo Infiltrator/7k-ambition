@@ -42,6 +42,7 @@ speaking, considered to be the player's experience.
 - Fixed crash when requesting a builder while training one in a Town.
 - Fixed a desync on selling a fort with soldiers or a general in it in
   multiplayer.
+- Fixed Inn selected guest changing when another one leaves.
 - Fixed the build marker flashing too fast.
 - Fixed items sometimes showing up under the wrong heading on the What's New
   screen.
