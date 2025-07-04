@@ -548,6 +548,41 @@ bool detectSpyScroll(
   );
 }
 
+bool detectTownScroll(
+  VBrowseIF& raceBrowser
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::INFO_PANE_CONTENTS,
+    Ambition::Input::EXTENDED_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [&raceBrowser] (
+          const int amount
+        ) {
+          raceBrowser.top_rec_no = std::clamp(
+            raceBrowser.top_rec_no + amount,
+            1,
+            std::max(1, raceBrowser.total_rec() - raceBrowser.y_max_rec + 1)
+          );
+          raceBrowser.rec_no = std::clamp(
+            raceBrowser.rec_no + amount,
+            1,
+            raceBrowser.total_rec()
+          );
+        }
+      },
+    },
+    [raceBrowser]() { return raceBrowser.y_max_rec - 1; },
+    [raceBrowser]() { return raceBrowser.total_rec_num; }
+  );
+}
+
 bool detectWhatsNewClick(
 ) {
   constexpr Ambition::UserInterface::Rectangle WhatsNewButton = {

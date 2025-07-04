@@ -110,6 +110,10 @@ bool detectSpyScroll(
   VBrowseIF& spyBrowser
 );
 
+bool detectTownScroll(
+  VBrowseIF& raceBrowser
+);
+
 /**
  * Detect whether the What's New button was clicked and then run the news
  * screen.
