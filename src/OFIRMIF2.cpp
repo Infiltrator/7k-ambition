@@ -21,6 +21,8 @@
 //Filename    : OFIRMIF2.CPP
 //Description : Firm interface functions - part 2
 
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OINFO.h>
 #include <vga_util.h>
 #include <OSPY.h>
@@ -303,6 +305,10 @@ void Firm::detect_spy_menu()
 
 	if( spy_filter()==0 )
 		return;
+
+	if (Ambition::Input::detectSpyScroll(browse_spy)) {
+		browse_spy.refresh();
+	}
 
 	browse_spy.detect();
 

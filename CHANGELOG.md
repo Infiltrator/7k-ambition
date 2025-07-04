@@ -21,6 +21,8 @@ speaking, considered to be the player's experience.
   Trade, Military, Technology, Espionage, and Raking reports.
 - Added inn guest list scrolling with the mouse wheel or touchpad and up/down
   and home/end keys.
+- Added spy list scrolling with the mouse wheel or touchpad, up/down keys, pg
+  up/pg down keys, left/right keys, and home/end keys.
 - Added ctrl+click priority builder request to request the nearest builder,
   ignoring all optimisations and what the nearest builder is doing (except
   constructing a new building).  Even if the builder request icon is not
