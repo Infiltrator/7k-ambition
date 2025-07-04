@@ -114,7 +114,9 @@ bool sendAvailableBuilderToFirm(
       firm->loc_y1
     );
 
-    if (unit->unit_mode == UNIT_MODE_CONSTRUCT) {
+    if (!ignoreOptimisations
+      && unit->unit_mode == UNIT_MODE_CONSTRUCT
+    ) {
       constexpr auto INSIDE_BUILDING_DISTANCE_PENALTY = 16;
       distance += INSIDE_BUILDING_DISTANCE_PENALTY;
 
@@ -696,8 +698,6 @@ std::vector<short> getRegionBuildersRecordNumbers(
         || unit->skill.skill_id != SKILL_CONSTRUCTION
       || unit->unit_mode == UNIT_MODE_UNDER_TRAINING
       || Unit::_7kaaRegionId(unit) != regionId
-        || (unit->action_mode != ACTION_ASSIGN_TO_FIRM
-            && unit->action_mode != ACTION_STOP)
     ) {
          continue;
     }
