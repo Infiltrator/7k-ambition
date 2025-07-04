@@ -19,7 +19,7 @@ speaking, considered to be the player's experience.
 - Added scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down
   keys, left/right keys, and home/end keys to the Kingdoms, Villages, Economy,
   Trade, Military, Technology, Espionage, and Raking reports.
-- Added inn guest list scrolling with the mouse wheel or touchpad and up/down
+- Added Inn guest list scrolling with the mouse wheel or touchpad and up/down
   and home/end keys.
 - Added spy list scrolling with the mouse wheel or touchpad, up/down keys, pg
   up/pg down keys, left/right keys, and home/end keys.
@@ -46,7 +46,8 @@ speaking, considered to be the player's experience.
 - Fixed the build marker flashing too fast.
 - Fixed items sometimes showing up under the wrong heading on the What's New
   screen.
-- Fix building guide lines not reaching the top and right edges of the viewport.
+- Fixed the building guide lines not reaching the top and right edges of the
+  viewport.
 
 ### Changed
 
