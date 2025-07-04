@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.1.10] — 2025-07-05
+
 ### Added
 
 - Added save/load game list scrolling with the mouse wheel or touchpad, up/down
