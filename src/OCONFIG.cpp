@@ -30,6 +30,7 @@
 #include <dbglog.h>
 #include "gettext.h"
 #include <FilePath.h>
+#include <OGF_REC.h>
 
 DBGLOG_DEFAULT_CHANNEL(Config);
 
@@ -431,7 +432,7 @@ int Config::load(const char *filename)
 	int retFlag = 0;
 
 	// check file size is the same
-	if( configFile.file_size() == 144 )
+	if( configFile.file_size() == sizeof(ConfigGF) )
 	{
 		retFlag = read_file(&configFile);
 	}
