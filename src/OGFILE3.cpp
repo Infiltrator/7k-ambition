@@ -2334,3 +2334,26 @@ int NewsArray::read_file(File* filePtr)
 	return 1;
 }
 //--------- End of function NewsArray::read_file ---------------//
+
+
+//-------- Start of function ConfigAdv::write_file -------------//
+//
+int ConfigAdv::write_file(File* filePtr)
+{
+	write_record(&gf_rec.config_adv);
+	if( !filePtr->file_write(&gf_rec, sizeof(ConfigAdvGF)) )
+		return 0;
+	return 1;
+}
+//--------- End of function ConfigAdv::write_file ---------------//
+
+
+//-------- Start of function ConfigAdv::read_file -------------//
+//
+int ConfigAdv::read_file(File* filePtr)
+{
+	if( !filePtr->file_read(&gf_rec, sizeof(ConfigAdvGF)) )
+		return 0;
+	read_record(&gf_rec.config_adv);
+}
+//--------- End of function ConfigAdv::read_file ---------------//

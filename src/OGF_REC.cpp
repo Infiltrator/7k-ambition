@@ -507,6 +507,30 @@ void Config::read_record(ConfigGF *r)
 	ReadInt8(fog_mask_method);
 }
 
+void ConfigAdv::write_record(ConfigAdvGF *r)
+{
+	WriteInt8(monster_alternate_attack_curve);
+	WriteInt32(monster_attack_divisor);
+	WriteInt8(nation_ai_unite_min_relation_level);
+	WriteInt8Array(race_random_list, MAX_RACE);
+	WriteInt32(race_random_list_max);
+	WriteInt32(town_ai_emerge_nation_pop_limit);
+	WriteInt32(town_ai_emerge_town_pop_limit);
+	WriteInt8(town_loyalty_qol);
+}
+
+void ConfigAdv::read_record(ConfigAdvGF *r)
+{
+	ReadInt8(monster_alternate_attack_curve);
+	ReadInt32(monster_attack_divisor);
+	ReadInt8(nation_ai_unite_min_relation_level);
+	ReadInt8Array(race_random_list, MAX_RACE);
+	ReadInt32(race_random_list_max);
+	ReadInt32(town_ai_emerge_nation_pop_limit);
+	ReadInt32(town_ai_emerge_town_pop_limit);
+	ReadInt8(town_loyalty_qol);
+}
+
 void ChatInfo::write_record(ChatInfoGF *r)
 {
 	WriteInt32(received_date);

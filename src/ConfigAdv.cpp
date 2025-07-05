@@ -426,7 +426,6 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &monster_alternate_attack_curve) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "monster_attack_divisor") )
 	{
@@ -434,7 +433,6 @@ int ConfigAdv::set(char *name, char *value)
 			return 0;
 		if( CHECK_BOUND(monster_attack_divisor, 1, 6) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "nation_ai_defeat_when_no_towns") )
 	{
@@ -464,7 +462,6 @@ int ConfigAdv::set(char *name, char *value)
 			nation_ai_unite_min_relation_level = NATION_ALLIANCE+1; // disables
 		else
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "nation_start_god_level") )
 	{
@@ -472,7 +469,6 @@ int ConfigAdv::set(char *name, char *value)
 			return 0;
 		if( CHECK_BOUND(nation_start_god_level, 0, 2) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "nation_start_tech_inc_all_level") )
 	{
@@ -480,7 +476,6 @@ int ConfigAdv::set(char *name, char *value)
 			return 0;
 		if( CHECK_BOUND(nation_start_tech_inc_all_level, 0, 2) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "news_notify_complete") )
 	{
@@ -495,7 +490,6 @@ int ConfigAdv::set(char *name, char *value)
 			race_random_list_max = 7;
 			for (int i = 0; i < race_random_list_max; i++)
 				race_random_list[i] = i+1;
-			update_check_sum(name, value);
 		}
 		else
 		{
@@ -527,13 +521,11 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_int(value, &town_ai_emerge_nation_pop_limit) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "town_ai_emerge_town_pop_limit") )
 	{
 		if( !read_int(value, &town_ai_emerge_town_pop_limit) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "town_migration") )
 	{
@@ -545,7 +537,6 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &town_loyalty_qol) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "unit_ai_team_help") )
 	{

@@ -442,6 +442,13 @@ int GameFile::write_file_3(File* filePtr)
 		return 0;
 	// ##### end Gilbert 2/10 ######//
 
+	// ##### GAME_VERSION >= 213 ##### //
+
+	write_book_mark( filePtr, BOOK_MARK+216 );
+
+	if( !config_adv.write_file(filePtr) )
+		return 0;
+
 	return 1;
 }
 //---------- End of function GameFile::write_file_3 -------//
@@ -703,6 +710,15 @@ int GameFile::read_file_3(File* filePtr)
 	if( !firm_die_array.read_file(filePtr) )
 		return 0;
 	// ##### end Gilbert 2/10 ######//
+
+	if( game_file_array.load_file_game_version < 213 )
+		return 1;
+
+	if( !read_book_mark( filePtr, BOOK_MARK+216 ) )
+		return 0;
+
+	if( !config_adv.read_file(filePtr) )
+		return 0;
 
 	return 1;
 }

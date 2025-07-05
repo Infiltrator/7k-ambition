@@ -27,6 +27,9 @@
 #include <GAMEDEF.h>
 #include <stdint.h>
 
+struct ConfigAdvGF;
+class File;
+
 class ConfigAdv
 {
 public:
@@ -133,6 +136,14 @@ public:
 	int			load(char *filename);
 	void			reset();
 	int			set(char *name, char *value);
+
+	//--------- file functions -----------//
+
+	int			write_file(File* filePtr);
+	int			read_file(File* filePtr);
+
+	void			write_record(ConfigAdvGF *r);
+	void			read_record(ConfigAdvGF *r);
 
 private:
 	void			update_check_sum(char *name, char *value);

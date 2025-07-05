@@ -214,10 +214,12 @@ struct MpStructNation : public MpStructBase
 struct MpStructConfig : public MpStructBase
 {
 	ConfigGF game_config;
+	ConfigAdvGF adv_config;
 
-	MpStructConfig(Config &c) : MpStructBase(MPMSG_SEND_CONFIG)
+	MpStructConfig(Config &c, ConfigAdv &a) : MpStructBase(MPMSG_SEND_CONFIG)
 	{
 		c.write_record(&game_config);
+		a.write_record(&adv_config);
 	}
 };
 
@@ -3072,6 +3074,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					break;
 				case MPMSG_SEND_CONFIG:
 					tempConfig.change_game_setting( ((MpStructConfig *)recvPtr)->game_config );
+					config_adv.read_record( &((MpStructConfig *) recvPtr)->adv_config );
 					refreshFlag |= SGOPTION_ALL_OPTIONS;
 					break;
 				case MPMSG_RANDOM_SEED:
@@ -3178,7 +3181,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							// ###### end Gilbert 25/10 #######//
 
 							// send config
-							MpStructConfig msgConfig( tempConfig );
+							MpStructConfig msgConfig( tempConfig, config_adv );
 							mp_obj.send( from, &msgConfig, sizeof(msgConfig) );
 
 							// send ready flag
@@ -3837,7 +3840,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 			if( configChange )
 			{
-				MpStructConfig msgConfig(tempConfig);
+				MpStructConfig msgConfig(tempConfig, config_adv);
 				mp_obj.send( BROADCAST_PID, &msgConfig, sizeof(msgConfig) );
 			}
 		}
@@ -4001,7 +4004,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 			// -------- send config ------------//
 			{
-				MpStructConfig msgConfig(tempConfig);
+				MpStructConfig msgConfig(tempConfig, config_adv);
 				memcpy( setupString.reserve(sizeof(msgConfig)), &msgConfig, sizeof(msgConfig) );
 			}
 
@@ -4088,6 +4091,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 				case MPMSG_SEND_CONFIG:
 					tempConfig.change_game_setting( ((MpStructConfig *) recvPtr)->game_config );
+					config_adv.read_record( &((MpStructConfig *) recvPtr)->adv_config );
 					offset += sizeof( MpStructConfig );
 					++recvConfig;
 					config = tempConfig;		// nation_array.new_nation reads setting from config
@@ -4979,6 +4983,7 @@ int Game::mp_select_load_option(char *fileName)
 					break;
 				case MPMSG_SEND_CONFIG:
 					tempConfig.change_game_setting( ((MpStructConfig *)recvPtr)->game_config );
+					config_adv.read_record( &((MpStructConfig *) recvPtr)->adv_config );
 					refreshFlag |= SGOPTION_ALL_OPTIONS;
 					break;
 				case MPMSG_RANDOM_SEED:

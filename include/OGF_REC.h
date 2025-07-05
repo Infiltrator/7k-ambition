@@ -26,6 +26,7 @@
 
 #include <stdint.h>
 
+#include <ConfigAdv.h>
 #include <OBULLET.h>
 #include <OB_HOMIN.h>
 #include <OB_PROJ.h>
@@ -292,6 +293,21 @@ struct ConfigGF
 	int8_t               blacken_map;
 	int8_t               explore_mask_method;
 	int8_t               fog_mask_method;
+};
+
+struct ConfigAdvGF
+{
+	int8_t               monster_alternate_attack_curve;
+	int32_t              monster_attack_divisor;
+
+	int8_t               nation_ai_unite_min_relation_level;
+
+	int8_t               race_random_list[MAX_RACE];
+	int32_t              race_random_list_max;
+
+	int32_t              town_ai_emerge_nation_pop_limit;
+	int32_t              town_ai_emerge_town_pop_limit;
+	int8_t               town_loyalty_qol;
 };
 
 struct ChatInfoGF
@@ -1743,6 +1759,7 @@ union GFRec
 	BulletGF bullet;
 	BulletHomingGF bullet_homing;
 	ConfigGF config;
+	ConfigAdvGF config_adv;
 	DynArrayGF dyn_array;
 	FirmGF firm;
 	FirmBaseGF firm_base;
