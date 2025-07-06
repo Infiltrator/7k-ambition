@@ -391,7 +391,6 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_int(value, &fix_world_warp_slop) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "game_load_default_frame_speed") )
 	{
@@ -613,6 +612,7 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &wall_building_allowed) )
 			return 0;
+		update_check_sum(name, value);
 	}
 	else
 	{
