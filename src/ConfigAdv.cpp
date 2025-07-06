@@ -128,9 +128,12 @@ static const char *keyevent_map[] = {
 	"KEYEVENT_MAX"
 };
 
+static const char *default_service_addr = "battle.7kfans.com";
+
 static int read_int(char *in, int *out);
 static int read_bool(char *in, char *out);
 static int read_key(char *in, char **out, KeyEventMap *event);
+static int read_string(const char *in, char **out);
 
 //--------- Begin of function ConfigAdv::ConfigAdv -----------//
 
@@ -150,6 +153,8 @@ ConfigAdv::ConfigAdv()
 
 	// this is set on program load for LocaleRes
 	locale[0] = 0;
+
+	mp_service_addr = NULL;
 }
 //--------- End of function ConfigAdv::ConfigAdv --------//
 
@@ -158,6 +163,11 @@ ConfigAdv::ConfigAdv()
 
 ConfigAdv::~ConfigAdv()
 {
+	if( mp_service_addr )
+	{
+		mem_del(mp_service_addr);
+		mp_service_addr = NULL;
+	}
 }
 //--------- End of function ConfigAdv::ConfigAdv --------//
 
@@ -276,6 +286,8 @@ void ConfigAdv::reset()
 
 	monster_alternate_attack_curve = 0;
 	monster_attack_divisor = 4;
+
+	read_string(default_service_addr, &mp_service_addr);
 
 	nation_ai_defeat_when_no_towns = 0;
 	nation_ai_no_treaty_with_biggest = 1;
@@ -431,6 +443,11 @@ int ConfigAdv::set(char *name, char *value)
 		if( !read_int(value, &monster_attack_divisor) )
 			return 0;
 		if( CHECK_BOUND(monster_attack_divisor, 1, 6) )
+			return 0;
+	}
+	else if( !strcmp(name, "mp_service_addr") )
+	{
+		if( !read_string(value, &mp_service_addr) )
 			return 0;
 	}
 	else if( !strcmp(name, "nation_ai_defeat_when_no_towns") )
@@ -674,5 +691,14 @@ static int read_key(char *in, char **out, KeyEventMap *event)
 	if( i>=(int)KEYEVENT_MAX )
 		return 0;
 	event->index = i;
+	return 1;
+}
+
+static int read_string(const char *in, char **out)
+{
+	*out = mem_resize(*out, strlen(in)+1);
+	if( !*out )
+		return 0;
+	strcpy(*out, in);
 	return 1;
 }

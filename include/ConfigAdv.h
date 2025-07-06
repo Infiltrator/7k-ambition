@@ -77,6 +77,9 @@ public:
 	char			monster_alternate_attack_curve;
 	int			monster_attack_divisor;
 
+	// mp settings
+	char*			mp_service_addr;
+
 	// nation settings
 	char			nation_ai_defeat_when_no_towns;
 	char			nation_ai_no_treaty_with_biggest;
