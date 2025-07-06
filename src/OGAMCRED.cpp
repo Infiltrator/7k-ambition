@@ -273,6 +273,9 @@ static void disp_credits_6()
 		"toaster",
 		"Aleksey V.",
 		"Unavowed",
+		"P. J. McDermott",
+		"DieselMachine",
+		"Infiltrator",
 		NULL
 	};
 
