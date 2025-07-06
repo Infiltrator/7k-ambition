@@ -170,11 +170,8 @@ noinst_HEADERS = \
 	c99_printf.h \
 	dbglog.h \
 	file_input_stream.h \
-	file_io_visitor.h \
 	file_output_stream.h \
-	file_reader.h \
 	file_util.h \
-	file_writer.h \
 	gettext-gnu.h \
 	gettext.h \
 	input_stream.h \
