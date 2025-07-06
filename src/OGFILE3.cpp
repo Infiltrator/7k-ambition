@@ -2355,5 +2355,6 @@ int ConfigAdv::read_file(File* filePtr)
 	if( !filePtr->file_read(&gf_rec, sizeof(ConfigAdvGF)) )
 		return 0;
 	read_record(&gf_rec.config_adv);
+	return 1;
 }
 //--------- End of function ConfigAdv::read_file ---------------//
