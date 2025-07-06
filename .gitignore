@@ -87,7 +87,7 @@ doc/*.aux
 doc/src/*.aux
 doc/main.synctex.gz
 main.synctex(busy)
-doc/*.pdf
+doc/main.pdf
 doc/main.idx
 doc/main.log
 doc/main.out
