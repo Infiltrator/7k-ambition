@@ -32,6 +32,7 @@ class Firm;
 class Font;
 class InnUnit;
 class SnowLayer;
+class Spy;
 class Town;
 class Unit;
 class VgaBuf;
@@ -281,6 +282,12 @@ bool initialiseSnowLayer(
   const int level,
   const char animationSpeed,
   double slideSpeed
+);
+
+void printBribeEstimate(
+  const ::Spy* _7kaaSpy,
+  Firm* _7kaaFirm,
+  const char selectedWorkerId
 );
 
 void printLeadershipStatus(

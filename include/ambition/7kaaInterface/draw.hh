@@ -37,6 +37,7 @@ class Font;
 class InnUnit;
 class MapMatrix;
 class SnowLayer;
+class Spy;
 class Town;
 class Unit;
 class VBrowseIF;
@@ -324,6 +325,12 @@ void modeInformation(
 
 void outsideLeadershipIcon(
   Unit* _7kaaUnit
+);
+
+void printBribeEstimate(
+  const ::Spy* _7kaaSpy,
+  Firm* _7kaaFirm,
+  const char selectedWorkerId
 );
 
 /**

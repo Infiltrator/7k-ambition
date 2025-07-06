@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in
+  accuracy over time and based on the spy's skill.  But keep in mind that your
+  spies do not know about enemy spies.
+
 ### Fixed
 
 - Fixed save file names and dates running off on the right side of the load

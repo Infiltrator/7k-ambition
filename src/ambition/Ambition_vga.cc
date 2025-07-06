@@ -59,6 +59,7 @@
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_polity.hh"
+#include "Ambition_spy.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
 #include "format.hh"
@@ -1347,6 +1348,48 @@ bool initialiseSnowLayer(
   );
 
   return true;
+}
+
+void printBribeEstimate(
+  const ::Spy* _7kaaSpy,
+  Firm* _7kaaFirm,
+  const char selectedWorkerId
+) {
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(4)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width() - 8,
+        .height = 44,
+      },
+      UserInterface::HorizontalAlignment::Left,
+      UserInterface::VerticalAlignment::Bottom
+    );
+  const auto textArea = panelArea.inner(4);
+
+  const auto bribeEstimate = std::max(
+    1,
+    selectedWorkerId > 0
+      ? Ambition::Spy::bribeAmountEstimate(
+        _7kaaSpy,
+        _7kaaFirm->worker_array[selectedWorkerId - 1]
+      ) : Ambition::Spy::bribeAmountEstimate(
+        _7kaaSpy,
+        unit_array[_7kaaFirm->overseer_recno]
+      )
+  );
+
+  UserInterface::drawPanel(panelArea);
+  UserInterface::printParagraph(
+    font_std,
+    format(_("Your spy suggests a bribe of $%'d."), bribeEstimate),
+    textArea,
+    DEFAULT_LINE_SPACE,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
 }
 
 void printLeadershipStatus(

@@ -18,6 +18,12 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in accuracy over time and based on the spy's skill.  But keep in mind that your spies do not know about enemy spies."),
+        },
+      },
+      {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed save file names and dates running off on the right side of the load screen, creating artefacts.  This was especially problematic in some non-English languages where the text is wider or longer."),

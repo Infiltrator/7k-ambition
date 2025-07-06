@@ -812,6 +812,18 @@ void outsideLeadershipIcon(
   }
 }
 
+void printBribeEstimate(
+  const ::Spy* _7kaaSpy,
+  Firm* _7kaaFirm,
+  const char selectedWorkerId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::printBribeEstimate(_7kaaSpy, _7kaaFirm, selectedWorkerId);
+}
+
 void printGameSpeed(
   const int speed
 ) {

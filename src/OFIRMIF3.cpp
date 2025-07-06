@@ -104,6 +104,7 @@ void Firm::disp_bribe_menu(int refreshFlag)
 		disp_bribe_button( y, 0, 1);
 
 		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), INFO_X1, y - 2, INFO_X2, y + BRIBE_OPTION_HEIGHT - 1 + 2);
+		Ambition::Draw::printBribeEstimate(spy_array[action_spy_recno], this, selected_worker_id);
 	}
 
 	//------ display the bribe result -----//

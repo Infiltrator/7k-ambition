@@ -14,6 +14,7 @@ noinst_HEADERS = \
 	Ambition_remote.hh \
 	Ambition_repository.hh \
 	Ambition_serialisation.hh \
+	Ambition_spy.hh \
 	Ambition_time.hh \
 	Ambition_trade.hh \
 	Ambition_unit.hh \

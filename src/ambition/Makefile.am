@@ -15,6 +15,7 @@ libambition_a_SOURCES = \
 	Ambition_remote.cc \
 	Ambition_repository.cc \
 	Ambition_serialisation.cc \
+	Ambition_spy.cc \
 	Ambition_time.cc \
 	Ambition_trade.cc \
 	Ambition_unit.cc \
