@@ -16,6 +16,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed incorrect and misplaced field labels for Workers in the info pane."),
+        },
+      },
     },
   },
   {
