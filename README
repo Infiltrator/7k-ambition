@@ -4,6 +4,7 @@ Seven Kingdoms: Ancient Adversaries
 Release version 2.15.7
 Project website: www.7kfans.com
 Downloads and source repo: sourceforge.net/projects/skfans
+==> Please update your links to sourceforge <==
 
 This is a GPL release of the Seven Kingdoms: Ancient Adversaries thanks to
 Enlight Software which granted the ability to license the game under a
@@ -14,6 +15,53 @@ of the game.
 
 Summary of changes from 2.15.6 to 2.15.7
 ---------
+* Fixed unit skill potential to persist, and not continually be randomized
+* Fixed some in-game statistics
+* Tried again to fix mouse sticky/scrolling issues
+* Fixed issues with skills being reset when entering buildings
+* Improved caravan/caraval trade stop code
+* Fixed some game file bugs
+* Extended game file and synchronization code to support extensions to the game
+* Improved some graphic drawing
+* Fixed a problem with unit pathing to board ships
+* Fixed poor ai logic that cause the ai to always accept a trade treaty
+* Improved detection of the likely target nation of an attack
+* Removed a bug causing a fake earthquake
+* Removed a possible accidental disclosure of the precence of spies
+* Added support for a hotkey to center on the selected unit
+* Added support to make numeric keys configurable
+* Fixed poor ai logic concerning building weapons
+* Fixed poor ai logic concerning hiring spies
+* Fixed an error occuring sometimes when a town turns independent
+* Fixed an error when the ai attacking an unit that enters a building
+* Fixed an error occuring sometimes on recruiting the last pop of a town
+* Fixed a pathing issue
+* Improved ai management of firms
+* Improved ai in managing town capture operations
+* Corrected utilization of base towns, typically an ai concept
+* Improved ai to avoid more cases of accepting treaties of large rivals
+* Fixed an issue selecting invisible units
+* Fixed an issue that caused the ai to duplicate fort build actions
+* Fixed more sea based ai actions
+* Fixed ai to check skill of workers in managements actions
+* Fixed ai to prioritize higher skilled generals in management actions
+* Fixed ai to prioritize higher combat level soldiers in management actions
+* Corrected more instances where the ai incorrect targets itself
+* Fixed issue that allowed resigning ships with units in ships
+* Added advanced options for news notifications
+* Added support for ctrl button in hotkey mapping
+* Fixed memory issue in multiplayer
+* Improved mouse wheel scrolling
+* Allow screenshots of in-game menu, to easily record map seed
+* Added hotkey support to cancel build or settle (typically right mouse button)
+* Increased the max file limit of screenshots
+* Improved manual, added cover
+* Fixed difficulty calculation
+* Fixed crash when clicking on a player market with version 1 scenarios
+* Fixed attack detection
+* Fixed some ai capture code
+* Improved multi-language support
+* Increased the speed of the 9th speed level
 
 
 System Requirements
@@ -55,7 +103,7 @@ Optional dependencies
 * TeX Live with latexmk, fontaxes, accanthis, universalis, and yfonts for
   generating the game manual in pdf
 
-Autoconf 2.65+ and autoconf-archive is required when generating a configure
+Autoconf 2.65+ and autoconf-archive are required when generating a configure
 script. You do not need to generate a configure script when you are building
 an officially released version of the game as it is already provided in the
 source archive. Compiling and using git snapshots for general use is dis-
