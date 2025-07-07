@@ -26,8 +26,10 @@
 #include "Ambition_spy.hh"
 
 #include <cmath>
+#include <cstdint>
 
 #define _AMBITION_IMPLEMENTATION
+#include "OBUTT3D.h"
 #include "OFIRM.h"
 #include "ONATIONA.h"
 #include "OSPY.h"
@@ -36,6 +38,10 @@
 
 
 namespace Ambition::Spy {
+
+Button3D assassinationButton;
+Button3D cancelButton;
+
 
 double confidenceFactor(
   const ::Spy* _7kaaSpy
@@ -92,6 +98,61 @@ int bribeAmountEstimate(
   return bribeAmount / confidenceFactor(_7kaaSpy);
 }
 
+
+double assassinationChanceEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+) {
+  auto attackRating = 0;
+  int apparentDefenceRating = 60 + target->hit_points / 2;
+  auto possibleExtraDefenceRating = 100;
+  auto defenderCount = 0;
+  for (auto i = 0; i < _7kaaFirm->worker_count; i++) {
+    const auto _7kaaWorker = _7kaaFirm->worker_array[i];
+    if (_7kaaWorker.spy_recno == _7kaaSpy->spy_recno) {
+      attackRating += _7kaaSpy->spy_skill;
+      attackRating += _7kaaWorker.hit_points / 2;
+    } else if (_7kaaWorker.spy_recno
+      && spy_array[_7kaaWorker.spy_recno]->true_nation_recno
+        == _7kaaSpy->true_nation_recno
+    ) {
+      attackRating += spy_array[_7kaaWorker.spy_recno]->spy_skill / 4;
+    } else {
+      defenderCount++;
+      apparentDefenceRating += 4 + _7kaaWorker.hit_points / 30;
+      possibleExtraDefenceRating = 50 - (4 + _7kaaWorker.hit_points / 30);
+    }
+  }
+
+  if (target->rank_id == RANK_KING) {
+    apparentDefenceRating += 50;
+  }
+
+  /* The spy always want to not get caught. */
+  if (defenderCount > 0) {
+    apparentDefenceRating += 80;
+  }
+
+  const auto clearance = attackRating - apparentDefenceRating;
+
+  auto chance = 0.0;
+  if (clearance < -30) {
+    chance = 0;//return 0;
+  } else {
+    chance = 0.7 * std::min(1.0, (clearance + 30) / 30.0);
+  }
+
+  if (clearance > 0) {
+    const auto estimatedDefence
+      = apparentDefenceRating
+      + possibleExtraDefenceRating * 2 / (1 + confidenceFactor(_7kaaSpy));
+    chance
+      += 0.3 * std::sqrt(clearance / (estimatedDefence - apparentDefenceRating));
+  }
+
+  return chance;
+}
 
 int bribeAmountEstimate(
   const ::Spy* _7kaaSpy,

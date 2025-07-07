@@ -117,6 +117,13 @@ void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
 
+void displayAssassinationConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+);
+
 /**
  * Display the given game speed on the screen.
  *
@@ -282,6 +289,12 @@ bool initialiseSnowLayer(
   const int level,
   const char animationSpeed,
   double slideSpeed
+);
+
+void printAssasinationEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
 );
 
 void printBribeEstimate(

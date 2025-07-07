@@ -30,12 +30,14 @@
 #include <SDL.h>
 
 #include "KEY.h"
+#include "OBUTT3D.h"
 #include "OFIRMA.h"
 #include "OGETA.h"
 #include "OINFO.h"
 #include "OMOUSE.h"
 #include "OMOUSE2.h"
 #include "OSLIDCUS.h"
+#include "OSPY.h"
 #include "OTOWN.h"
 #include "OU_CARA.h"
 #include "OVBROWIF.h"
@@ -46,6 +48,7 @@
 #include "Ambition_control.hh"
 #include "Ambition_input.hh"
 #include "Ambition_news.hh"
+#include "Ambition_spy.hh"
 #include "Ambition_trade.hh"
 #include "Ambition_user_interface.hh"
 
@@ -210,6 +213,49 @@ constexpr Action TRAINING_KEY_ACTIONS[MAX_TRAINABLE_SKILL] = {
   Action::Town_Train_Spy,
 };
 
+
+bool detectBuildingMenu(
+  char& menu,
+  ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (firm_array.selected_recno
+    != Ambition::UserInterface::selected7kaaFirmRecordNumber
+  ) {
+    return false;
+  }
+
+  switch (Ambition::UserInterface::buildingMenu) {
+  case Ambition::UserInterface::BuildingMenu::_7kaa:
+    break;
+
+  case Ambition::UserInterface::BuildingMenu::AssassinationConfirmation:
+    if (Ambition::Spy::assassinationButton.detect(
+        Input::getKeyEvent(Input::Action::Common_Confirm)
+      )
+    ) {
+      Ambition::UserInterface::buildingMenu
+        = Ambition::UserInterface::BuildingMenu::_7kaa;
+      _7kaaSpy->assassinate(_7kaaFirm->overseer_recno, COMMAND_PLAYER);
+    }
+    if (Ambition::Spy::cancelButton.detect(
+        Input::getKeyEvent(Input::Action::Common_Cancel)
+      )
+    ) {
+      menu = FIRM_MENU_MAIN;
+      Ambition::UserInterface::buildingMenu
+        = Ambition::UserInterface::BuildingMenu::_7kaa;
+      info.disp();
+    }
+    break;
+  }
+
+  return false;
+}
 
 void detectCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
@@ -641,6 +687,19 @@ bool detectWhatsNewClick(
   return false;
 }
 
+bool enterAssassinationConfirmationMenu(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  Ambition::UserInterface::buildingMenu
+    = Ambition::UserInterface::BuildingMenu::AssassinationConfirmation;
+  Ambition::UserInterface::selected7kaaFirmRecordNumber
+    = firm_array.selected_recno;
+  return true;
+}
+
 unsigned int getKeyEvent(
   const Action action
 ) {
@@ -661,6 +720,18 @@ unsigned int getTrainingKeyEvent(
   assert(_7kaaSkillIndex >= 1 && _7kaaSkillIndex <= MAX_TRAINABLE_SKILL);
 
   return getKeyEvent(TRAINING_KEY_ACTIONS[_7kaaSkillIndex - 1]);
+}
+
+void resetBuildingMenu(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::UserInterface::buildingMenu
+    = Ambition::UserInterface::BuildingMenu::_7kaa;
+
+  return;
 }
 
 void setOrClearRallyPoint(

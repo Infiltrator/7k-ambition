@@ -15,6 +15,9 @@ speaking, considered to be the player's experience.
 - Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in
   accuracy over time and based on the spy's skill.  But keep in mind that your
   spies do not know about enemy spies.
+- Added an assassination confirmation screen with a Spy-estimated success
+  chance.  This estimate varies in accuracy over time and based on the spy's
+  skill.
 
 ### Fixed
 

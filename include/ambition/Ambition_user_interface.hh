@@ -32,6 +32,12 @@ class Font;
 
 namespace Ambition::UserInterface {
 
+enum class BuildingMenu {
+  _7kaa,
+
+  AssassinationConfirmation,
+};
+
 enum class Clear {
   None,
   TextArea,
@@ -48,6 +54,11 @@ enum class VerticalAlignment {
   Centre,
   Bottom,
 };
+
+
+extern BuildingMenu buildingMenu;
+extern short selected7kaaFirmRecordNumber;
+
 
 struct Point {
   int left;
@@ -229,6 +240,18 @@ const auto BUTTON_ROW_LOWER
     HorizontalAlignment::Left,
     VerticalAlignment::Bottom
   );
+
+const auto ASSASSINATION_BUTTON = BUTTON_ROW_LOWER.internal(
+  BUTTON_SIZE_WITH_SHADOW,
+  HorizontalAlignment::Left,
+  VerticalAlignment::Bottom
+);
+
+const auto CANCEL_BUTTON = BUTTON_ROW_LOWER.internal(
+  BUTTON_SIZE_WITH_SHADOW,
+  HorizontalAlignment::Right,
+  VerticalAlignment::Bottom
+);
 
 constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
   {

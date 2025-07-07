@@ -37,6 +37,10 @@
 
 namespace Ambition::UserInterface {
 
+BuildingMenu buildingMenu = BuildingMenu::_7kaa;
+short selected7kaaFirmRecordNumber = 0;
+
+
 char _7kaaJustification(
   const HorizontalAlignment horizontalAlignment
 );

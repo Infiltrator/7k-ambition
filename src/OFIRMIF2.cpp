@@ -422,7 +422,12 @@ void Firm::detect_spy_menu()
 
 		else if( button_assassinate.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_Assassinate)) )
 		{
-			spyPtr->assassinate( overseer_recno, COMMAND_PLAYER );
+			if (Ambition::Input::enterAssassinationConfirmationMenu()) {
+				action_spy_recno = spyPtr->spy_recno;;
+				info.disp();
+			} else {
+				spyPtr->assassinate( overseer_recno, COMMAND_PLAYER );
+			}
 		}
 	}
 

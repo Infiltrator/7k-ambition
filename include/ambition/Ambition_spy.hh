@@ -25,12 +25,24 @@
 
 #pragma once
 
+class Button3D;
+class Firm;
 class Spy;
 class Unit;
 class Worker;
 
 
 namespace Ambition::Spy {
+
+extern Button3D assassinationButton;
+extern Button3D cancelButton;
+
+
+double assassinationChanceEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+);
 
 int bribeAmountEstimate(
   const ::Spy* _7kaaSpy,

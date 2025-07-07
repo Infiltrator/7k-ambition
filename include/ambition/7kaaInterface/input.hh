@@ -25,8 +25,10 @@
 
 #pragma once
 
+class Firm;
 class GetA;
 class SlideVBar;
+class Spy;
 class UnitCaravan;
 class VBrowseIF;
 
@@ -80,6 +82,12 @@ unsigned int cancelKeyEvent(
 );
 
 unsigned int confirmKeyEvent(
+);
+
+bool detectBuildingMenu(
+  char& menu,
+  ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm
 );
 
 void detectCaravanCloneButton(
@@ -148,12 +156,18 @@ bool detectTownScroll(
 bool detectWhatsNewClick(
 );
 
+bool enterAssassinationConfirmationMenu(
+);
+
 unsigned int getKeyEvent(
   const Action action
 );
 
 unsigned int getTrainingKeyEvent(
   const int _7kaaSkillIndex
+);
+
+void resetBuildingMenu(
 );
 
 void setOrClearRallyPoint(

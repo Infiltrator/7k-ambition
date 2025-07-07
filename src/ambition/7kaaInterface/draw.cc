@@ -106,6 +106,40 @@ void buildingLinkLine(
   );
 }
 
+bool buildingMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (firm_array.selected_recno
+    != Ambition::UserInterface::selected7kaaFirmRecordNumber
+  ) {
+    return false;
+  }
+
+  switch (Ambition::UserInterface::buildingMenu) {
+  case Ambition::UserInterface::BuildingMenu::_7kaa:
+    return false;
+    break;
+
+  case Ambition::UserInterface::BuildingMenu::AssassinationConfirmation:
+    Ambition::displayAssassinationConfirmationMenu(
+      refreshFlag,
+      _7kaaSpy,
+      _7kaaFirm,
+      unit_array[_7kaaFirm->overseer_recno]
+    );
+    return true;
+    break;
+  }
+
+  return false;
+}
+
 bool buildingOccupantHitbar(
   const int left,
   const int top,
@@ -810,6 +844,18 @@ void outsideLeadershipIcon(
   ) {
     Ambition::drawOutsideLeadershipIcon(_7kaaUnit);
   }
+}
+
+void printAssasinationEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::printAssasinationEstimate(_7kaaSpy, _7kaaFirm, target);
 }
 
 void printBribeEstimate(

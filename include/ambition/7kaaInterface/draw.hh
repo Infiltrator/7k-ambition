@@ -86,6 +86,12 @@ void buildingLinkLine(
   const bool thick = false
 );
 
+bool buildingMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm
+);
+
 /**
  * Draw a hitbar in the info pane for an occupant of a building.
  *
@@ -325,6 +331,12 @@ void modeInformation(
 
 void outsideLeadershipIcon(
   Unit* _7kaaUnit
+);
+
+void printAssasinationEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
 );
 
 void printBribeEstimate(

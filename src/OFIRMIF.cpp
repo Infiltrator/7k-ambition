@@ -117,6 +117,10 @@ void Firm::disp_info_both(int refreshFlag)
 			bribe_result  = BRIBE_NONE;
 		}
 
+		if (Ambition::Draw::buildingMenu(refreshFlag, spy_array[action_spy_recno], this)) {
+			return;
+		}
+
 		switch( firm_menu_mode )
 		{
 			case FIRM_MENU_MAIN:
@@ -165,6 +169,9 @@ void Firm::detect_info_both()
 {
 	if( under_construction )
 		detect_basic_info();
+	else if (Ambition::Input::detectBuildingMenu(firm_menu_mode, spy_array[action_spy_recno], this)) {
+		return;
+	}
 	else
 	{
 		switch( firm_menu_mode )
