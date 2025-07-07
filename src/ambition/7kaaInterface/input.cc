@@ -617,6 +617,130 @@ void detectSaveGameScroll(
   );
 }
 
+void detectScenarioScroll(
+  const int minimumRecordNumber,
+  const int size,
+  int& browseRecordNumber,
+  SlideVBar& scrollBar,
+  SlideVBar& descriptionScrollBar,
+  int& refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto TUOPTION_ALL_BROWSE = 0x0000ffff;
+  constexpr auto TUOPTION_PIC_AREA = 0x00040000;
+  constexpr auto TUOPTION_SCROLL = 0x00080000;
+  constexpr auto TUOPTION_TEXT_AREA = 0x00020000;
+  constexpr auto TUOPTION_TEXT_BUFFER = 0x00200000;
+  constexpr auto TUOPTION_TEXT_SCROLL = 0x00100000;
+  constexpr auto SLOT_COUNT = 4;
+
+  const auto scrollScenarioSelection = [
+    &browseRecordNumber,
+    &refreshFlag,
+    &scrollBar,
+    minimumRecordNumber,
+    size
+  ] (
+    const int amount
+  ) {
+    refreshFlag |= LSOPTION_SLOT(
+      browseRecordNumber - scrollBar.view_recno
+    );
+
+    browseRecordNumber = std::clamp(
+      browseRecordNumber + amount,
+      minimumRecordNumber,
+      size
+    );
+
+    refreshFlag |= LSOPTION_SLOT(
+      browseRecordNumber - scrollBar.view_recno
+    );
+
+    if (browseRecordNumber - scrollBar.view_recno < 0) {
+      scrollBar.set_view_recno(browseRecordNumber);
+      refreshFlag |= TUOPTION_SCROLL | TUOPTION_ALL_BROWSE;
+    }
+    if (browseRecordNumber - scrollBar.view_recno >= SLOT_COUNT) {
+      scrollBar.set_view_recno(browseRecordNumber - (SLOT_COUNT - 1));
+      refreshFlag |= TUOPTION_SCROLL | TUOPTION_ALL_BROWSE;
+    }
+
+    refreshFlag
+      |= TUOPTION_TEXT_BUFFER
+      | TUOPTION_TEXT_SCROLL
+      | TUOPTION_TEXT_AREA
+      | TUOPTION_PIC_AREA;
+  };
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::ScenarioList::HEADING_AREA,
+    Ambition::Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        scrollScenarioSelection,
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::ScenarioList::DESCRIPTION_AREA,
+    Ambition::Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [ &descriptionScrollBar, &refreshFlag ] (
+          const int amount
+        ) {
+          descriptionScrollBar.set_view_recno(
+            descriptionScrollBar.view_recno + amount
+          );
+          refreshFlag |= TUOPTION_TEXT_SCROLL | TUOPTION_TEXT_AREA;
+        },
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::ScenarioList::LIST_AREA,
+    { },
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [ &scrollBar, &refreshFlag ] (
+          const int amount
+        ) {
+          scrollBar.set_view_recno(scrollBar.view_recno + amount);
+          refreshFlag |= TUOPTION_SCROLL | TUOPTION_ALL_BROWSE;
+        },
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    false,
+    Ambition::UserInterface::ScenarioList::LIST_AREA,
+    Ambition::Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        scrollScenarioSelection,
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+}
+
 bool detectSpyScroll(
   VBrowseIF& spyBrowser
 ) {

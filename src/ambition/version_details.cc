@@ -22,6 +22,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Added kingdom-to-kingdom score comparison to the Rank Report, allowing you to see the scores of two kingdoms side-by-side."),
           _("Independent towns will show that their resistance is dropping to 0 when they are working for you."),
+          _("Added scrolling with the mouse wheel, up/down, home/end, and pg up/down keys to the scenario selection list and description."),
         },
       },
       {

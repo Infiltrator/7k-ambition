@@ -175,6 +175,27 @@ const auto VIEWPORT = BOUNDS.internal(
 );
 
 
+namespace ScenarioList {
+
+const auto HEADING_AREA = BOUNDS.internal(
+  {
+    .width = BOUNDS.width(),
+    .height = 172,
+  }
+);
+
+const auto DESCRIPTION_AREA
+  = BOUNDS
+  .inner(0, HEADING_AREA.height(), 0, 0)
+  .internal({ .width = BOUNDS.width(), .height = 148 });
+
+const auto LIST_AREA
+  = BOUNDS
+  .inner(0, HEADING_AREA.height() + DESCRIPTION_AREA.height(), 0, 0)
+  .internal({ .width = BOUNDS.width(), .height = 280 });
+
+} // namespace ScenarioList
+
 namespace Report {
 
 const auto AREA = VIEWPORT.inner(6);

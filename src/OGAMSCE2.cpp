@@ -22,6 +22,7 @@
 // Description : select scenario menu
 
 #include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OSYS.h>
 #include <OGAME.h>
@@ -255,7 +256,10 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 		//---------- yield --------//
 
 		sys.yield();
-		vga.flip();
+
+		if (!Ambition::Config::enhancementsAvailable()) {
+			vga.flip();
+		}
 
 		mouse.get_event();
 
@@ -496,6 +500,11 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 
 		sys.blt_virtual_buf();
 
+		if (Ambition::Config::enhancementsAvailable()) {
+			vga.flip();
+		}
+		Ambition::Input::detectScenarioScroll(minRecno, scenCount, browseRecno, scrollBar, textScrollBar, refreshFlag);
+
 		if( scrollBar.detect() == 1)
 		{
 			refreshFlag |= TUOPTION_SCROLL | TUOPTION_ALL_BROWSE;
@@ -595,7 +604,7 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 		else if( playerNameField.detect() )
 		{
 			// load button
-			refreshFlag = TUOPTION_NAME_FIELD;
+			refreshFlag |= TUOPTION_NAME_FIELD;
 		}
 		// ######## end Gilbert 1/11 #########//
 		else if( cancelButton.detect(KEY_ESC) || mouse.any_click(RIGHT_BUTTON) > 0)		// also when ESC key is pressed or right button
