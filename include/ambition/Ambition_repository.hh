@@ -83,7 +83,7 @@ public:
   );
 
 private:
-  static const auto STARTING_RECORD_NUMBER = 1;
+  static constexpr auto STARTING_RECORD_NUMBER = 1;
 
   friend void write(
     const std::string filename
