@@ -709,6 +709,7 @@ void drawBuildingRallyPoint(
 void drawBuildMarkerGridLines(
   const UserInterface::Rectangle marker
 ) {
+  constexpr auto COLOUR = VGA_GRAY + 11;
   constexpr auto PIXELS_PER_TILE = 32;
 
   const auto buildMarker = marker.intersection(UserInterface::VIEWPORT);
@@ -721,28 +722,28 @@ void drawBuildMarkerGridLines(
     perimeterMarker.start.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     perimeterMarker.start.top,
-    V_WHITE
+    COLOUR
   );
   vga_back.bar(
     Ambition::UserInterface::VIEWPORT.start.left,
     buildMarker.start.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     buildMarker.start.top,
-    V_WHITE
+    COLOUR
   );
   vga_back.bar(
     Ambition::UserInterface::VIEWPORT.start.left,
     buildMarker.end.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     buildMarker.end.top,
-    V_WHITE
+    COLOUR
   );
   vga_back.bar(
     Ambition::UserInterface::VIEWPORT.start.left,
     perimeterMarker.end.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     perimeterMarker.end.top,
-    V_WHITE
+    COLOUR
   );
 
   vga_back.bar(
@@ -750,28 +751,28 @@ void drawBuildMarkerGridLines(
     Ambition::UserInterface::VIEWPORT.start.top,
     perimeterMarker.start.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    V_WHITE
+    COLOUR
   );
   vga_back.bar(
     buildMarker.start.left,
     Ambition::UserInterface::VIEWPORT.start.top,
     buildMarker.start.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    V_WHITE
+    COLOUR
   );
   vga_back.bar(
     buildMarker.end.left,
     Ambition::UserInterface::VIEWPORT.start.top,
     buildMarker.end.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    V_WHITE
+    COLOUR
   );
   vga_back.bar(
     perimeterMarker.end.left,
     Ambition::UserInterface::VIEWPORT.start.top,
     perimeterMarker.end.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    V_WHITE
+    COLOUR
   );
 }
 
