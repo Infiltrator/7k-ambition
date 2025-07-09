@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for duplication.  Settings in Ambition's config.txt override those is 7kaa's one."),
+        },
+      },
     },
   },
   {

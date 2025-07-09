@@ -178,6 +178,8 @@ void report7kaaConfigLoadingErrors(
   );
 
   sys.show_error_dialog(report);
+
+  _7kaaConfigErrorLineNumbers.clear();
 }
 
 void set7kaaConfigOption(

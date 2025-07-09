@@ -26,6 +26,11 @@
 #define _AMBITION_IMPLEMENTATION
 #include "config.hh"
 
+#include <SDL2/SDL_filesystem.h>
+
+#include "ConfigAdv.h"
+#include "OSYS.h"
+
 #include "Ambition_config.hh"
 #include "Ambition_version.hh"
 
@@ -40,6 +45,19 @@ bool compatibleWith7kaa(
 bool enhancementsAvailable(
 ) {
   return Ambition::config.enhancementsAvailable();
+}
+
+void load7kaaConfig(
+) {
+  constexpr auto FILE_NAME = "config.txt";
+
+  const auto _7kaaConfigDirectory = SDL_GetPrefPath("7kfans.com", "7kaa");
+  strcpy(sys.dir_config, _7kaaConfigDirectory);
+  SDL_free(_7kaaConfigDirectory);
+
+  config_adv.load(FILE_NAME);
+
+  sys.set_config_dir();
 }
 
 std::string modeString(

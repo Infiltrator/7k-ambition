@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for
+  duplication.  Settings in Ambition's config.txt override those is 7kaa's one.
+
 
 ## [3.2.0] — 2025-08-10
 
