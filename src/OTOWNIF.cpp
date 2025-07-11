@@ -1185,7 +1185,7 @@ int Town::detect_train_menu()
 	}
 	//------ detect the cancel button --------//
 
-	if( button_cancel3.detect(Ambition::Input::cancelKeyEvent()) || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
+	if( button_cancel3.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
 	{
 		// ##### begin Gilbert 26/9 ########//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1460,7 +1460,7 @@ int Town::detect_auto_menu(int modeCollectTax)
 
 	//--------------------------------------//
 
-	if( button_cancel2.detect(Ambition::Input::cancelKeyEvent()) || rc )
+	if( button_cancel2.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) || rc )
 	{
 		// ##### begin Gilbert 26/9 ########//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1647,7 +1647,7 @@ int Town::detect_spy_menu()
 
 	//--------- cancel -----------//
 
-	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) || mouse.any_click(1) )		// right click to cancel
+	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) || mouse.any_click(1) )		// right click to cancel
 	{
 		info.disp();
 		return 1;

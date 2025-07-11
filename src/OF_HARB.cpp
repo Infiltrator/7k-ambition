@@ -967,7 +967,7 @@ int FirmHarbor::detect_build_menu()
 
 	//------ detect the cancel button --------//
 
-	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
+	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) || (!waitFlag && mouse.any_click(1)) )		// press the cancel button or right click
 	{
 		harbor_menu_mode = HARBOR_MENU_MAIN;
 		info.disp();

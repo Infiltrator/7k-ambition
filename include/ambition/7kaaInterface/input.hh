@@ -33,6 +33,12 @@ class VBrowseIF;
 
 namespace _7kaaAmbitionInterface::Input {
 
+enum class KeyEvent {
+  Common_Cancel,
+  Common_Confirm,
+};
+
+
 enum class ReportType {
   KingdomKingdoms,
   KingdomDiplomaticLogs,
@@ -116,6 +122,10 @@ bool detectTownScroll(
  * @return Whether anything was drawn to the screen and it needs to be redrawn.
  */
 bool detectWhatsNewClick(
+);
+
+unsigned int getKeyEvent(
+  const KeyEvent event
 );
 
 void setOrClearRallyPoint(
