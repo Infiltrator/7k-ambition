@@ -21,6 +21,9 @@
 //Filename    : OSPY.CPP
 //Description : Object Spy
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OFONT.h>
 #include <OUNIT.h>
 #include <OBUTTON.h>
@@ -359,6 +362,8 @@ void SpyArray::disp_view_secret_menu(int spyRecno, int refreshFlag)
 	}
 
 	button_secret_report_cancel.paint_text( INFO_X1, y, INFO_X2, y+22, _("Cancel") );
+
+	Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), button_secret_report_cancel);
 }
 //----------- End of function SpyArray::disp_view_secret_menu -----------//
 
@@ -386,7 +391,7 @@ int SpyArray::detect_view_secret_menu(int spyRecno, int nationRecno)
 
 	//-------- detect cancel button --------//
 
-	if( button_secret_report_cancel.detect() )
+	if( button_secret_report_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
 		rc = 1;
 
 	return rc;

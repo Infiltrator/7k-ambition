@@ -12,6 +12,11 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Added keybinds and keybind display to Spy menu buttons.  The events for the
+  config.txt file are: `KEYEVENT_UNIT_REWARD`, `KEYEVENT_SPY_ASSASSINATE`,
+  `KEYEVENT_SPY_BRIBE`, `KEYEVENT_SPY_CAPTURE`, `KEYEVENT_SPY_CHANGE_MISSION`,
+  `KEYEVENT_SPY_MOBILISE`, `KEYEVENT_SPY_MENU`, and
+  `KEYEVENT_SPY_STEAL_REPORTS`.
 - Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for
   duplication.  Settings in Ambition's config.txt override those is 7kaa's one.
 

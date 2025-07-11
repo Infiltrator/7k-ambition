@@ -36,6 +36,15 @@ namespace _7kaaAmbitionInterface::Input {
 enum class KeyEvent {
   Common_Cancel,
   Common_Confirm,
+  Common_Reward,
+
+  Spy_Assassinate,
+  Spy_Bribe,
+  Spy_Capture,
+  Spy_ChangeMission,
+  Spy_Mobilise,
+  Spy_Menu,
+  Spy_StealReports,
 };
 
 

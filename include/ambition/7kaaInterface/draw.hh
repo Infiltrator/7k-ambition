@@ -25,6 +25,8 @@
 
 #pragma once
 
+#include "OINFO.h"
+
 class Button;
 class Button3D;
 class ButtonCustom;
@@ -150,7 +152,8 @@ void buttonKeybind(
   const int left,
   const int top,
   const int right,
-  const int bottom
+  const int bottom,
+  const int refreshFlag = INFO_REPAINT
 );
 void buttonKeybind(
   const unsigned int keyCode,
@@ -158,7 +161,8 @@ void buttonKeybind(
 );
 void buttonKeybind(
   const unsigned int keyCode,
-  const Button3D& button
+  const Button3D& button,
+  const int refreshFlag = INFO_REPAINT
 );
 void buttonKeybind(
   const unsigned int keyCode,
