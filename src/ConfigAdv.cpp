@@ -128,6 +128,9 @@ static const char *keyevent_map[] = {
 	"KEYEVENT_SET_GROUP_8",
 	"KEYEVENT_SET_GROUP_9",
 
+	"KEYEVENT_CANCEL",
+	"KEYEVENT_CONFIRM",
+
 	"KEYEVENT_MAX"
 };
 

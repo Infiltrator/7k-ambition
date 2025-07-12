@@ -13,6 +13,8 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed incorrect and misplaced field labels for Workers in the info pane.
+- Fixed config.txt settings for `KEYEVENT_CANCEL` and `KEYEVENT_CONFIRM` not
+  working.
 
 
 ## 7K:AA [2.15.7] — 2025-07-25
