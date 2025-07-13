@@ -189,6 +189,22 @@ const std::map<KeyEvent, KeyEventType> KEY_EVENT_MAP = {
   { KeyEvent::Spy_Mobilise, KEYEVENT_SPY_MOBILISE },
   { KeyEvent::Spy_Menu, KEYEVENT_SPY_MENU },
   { KeyEvent::Spy_StealReports, KEYEVENT_SPY_STEAL_REPORTS },
+
+  { KeyEvent::Town_Train_Builder, KEYEVENT_TRAIN_BUILDER },
+  { KeyEvent::Town_Train_Soldier, KEYEVENT_TRAIN_SOLDIER },
+  { KeyEvent::Town_Train_Miner, KEYEVENT_TRAIN_MINER },
+  { KeyEvent::Town_Train_Artisan, KEYEVENT_TRAIN_ARTISAN },
+  { KeyEvent::Town_Train_Researcher, KEYEVENT_TRAIN_RESEARCHER },
+  { KeyEvent::Town_Train_Spy, KEYEVENT_TRAIN_SPY },
+};
+
+constexpr KeyEvent TRAINING_KEY_EVENTS[MAX_TRAINABLE_SKILL] = {
+  KeyEvent::Town_Train_Builder,
+  KeyEvent::Town_Train_Soldier,
+  KeyEvent::Town_Train_Miner,
+  KeyEvent::Town_Train_Artisan,
+  KeyEvent::Town_Train_Researcher,
+  KeyEvent::Town_Train_Spy,
 };
 
 
@@ -610,6 +626,18 @@ unsigned int getKeyEvent(
   }
 
   return GETKEY(KEY_EVENT_MAP.find(event)->second);
+}
+
+unsigned int getTrainingKeyEvent(
+  const int _7kaaSkillIndex
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return SDLK_UNKNOWN;
+  }
+
+  assert(_7kaaSkillIndex >= 1 && _7kaaSkillIndex <= MAX_TRAINABLE_SKILL);
+
+  return getKeyEvent(TRAINING_KEY_EVENTS[_7kaaSkillIndex - 1]);
 }
 
 void setOrClearRallyPoint(

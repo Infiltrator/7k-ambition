@@ -240,6 +240,13 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_SPY_MOBILISE, "R");
 	bind_key(KEYEVENT_SPY_MENU, "Q");
 	bind_key(KEYEVENT_SPY_STEAL_REPORTS, "Z");
+
+	bind_key(KEYEVENT_TRAIN_BUILDER, "I");
+	bind_key(KEYEVENT_TRAIN_SOLDIER, "F"); // Select fort conflicts with this.
+	bind_key(KEYEVENT_TRAIN_MINER, "R");
+	bind_key(KEYEVENT_TRAIN_ARTISAN, "A");
+	bind_key(KEYEVENT_TRAIN_RESEARCHER, "H");
+	bind_key(KEYEVENT_TRAIN_SPY, "Q");
 }
 //------------- End of Mouse::init_key -------------//
 
