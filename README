@@ -100,8 +100,7 @@ Optional dependencies
   -> Packagers: Copy music into program data folder or PACKAGE_DATA_DIR
   -> Make sure the file names are in upper-case
 * NSIS for building a Windows installer
-* TeX Live with latexmk, fontaxes, accanthis, universalis, and yfonts for
-  generating the game manual in pdf
+* TeX Live for generating the game manual in pdf
 
 Autoconf 2.65+ and autoconf-archive are required when generating a configure
 script. You do not need to generate a configure script when you are building
