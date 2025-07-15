@@ -269,7 +269,7 @@ void Info::disp_trade(int refreshFlag)
 //
 void Info::detect_trade()
 {
-	if (_7kaaAmbitionInterface::Input::detectTradeReportCaravanCloneButton(browse_caravan)) {
+	if (mode_unit == BROWSE_CARAVAN && _7kaaAmbitionInterface::Input::detectTradeReportCaravanCloneButton(browse_caravan)) {
 		return;
 	}
 
