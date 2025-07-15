@@ -13,6 +13,8 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed incorrect and misplaced field labels for Workers in the info pane.
+- Fixed Inn scrolling not showing lower guests when there are more than 4
+  guests.
 - Fixed config.txt settings for `KEYEVENT_CANCEL` and `KEYEVENT_CONFIRM` not
   working.
 
