@@ -22,6 +22,7 @@
 //Description : Single player game interface
 
 #include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -1017,12 +1018,12 @@ static int select_option()
 		// --------- detect input name --------//
 
 		// --------- detect start button --------//
-		if( startButton.detect() )
+		if( startButton.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Confirm)) )
 		{
 			retFlag = 1;
 			break;			// break while(1)
 		}
-		else if( returnButton.detect() )
+		else if( returnButton.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) )
 		{
 			retFlag = 0;
 			break;			// break while(1)

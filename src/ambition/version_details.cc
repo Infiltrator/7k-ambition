@@ -24,6 +24,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added keybinds and keybind display to Spy menu buttons.  The events for the config.txt file are: `KEYEVENT_ _UNIT_ _REWARD`, `KEYEVENT_ _SPY_ _ASSASSINATE`, `KEYEVENT_ _SPY_ _BRIBE`, `KEYEVENT_ _SPY_ _CAPTURE`, `KEYEVENT_ _SPY_ _CHANGE_ _MISSION`, `KEYEVENT_ _SPY_ _MOBILISE`, `KEYEVENT_ _SPY_ _MENU`, and `KEYEVENT_ _SPY_ _STEAL_ _REPORTS`."),
           _("Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for duplication.  Settings in Ambition's config.txt override those is 7kaa's one."),
           _("Added Discord and feedback links to the main menu, in the bottom-left corner."),
+          _("Added keybinds for starting a new single-player game (`KEYEVENT_ _CONFIRM`) and for going back (`KEYEVENT_ _CANCEL`)."),
         },
       },
       {
