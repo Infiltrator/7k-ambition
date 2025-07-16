@@ -31,6 +31,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Enabled default hotkeys for the build menu and disabled default `Q`, `W`, and `E` for selecting map modes.  The new default `E` now cycles through all of the map modes; and `W` is the default hotkey for building a War Factory.  This can all be overridden in the config.txt file."),
           _("Reduced the brightness of the building guide lines from bright white, so that they're less jarring."),
+          _("Only ask for feedback about once a month, instead of every time."),
           _("Split local data into multiple directories, to make finding what you need easier: `config`, `screenshot`, `save/singleplayer`, and `save/multiplayer`.  Existing files in the base directory will be migrated to their appropriate location."),
           _("Tweak the wording of the feedback request pop-up buttons."),
         },
