@@ -33,6 +33,7 @@ speaking, considered to be the player's experience.
   can all be overridden in the config.txt file.
 - Reduced the brightness of the building guide lines from bright white, so that
   they're less jarring.
+- Tweak the wording of the feedback request pop-up buttons.
 
 
 ## [3.2.0] — 2025-08-10

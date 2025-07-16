@@ -48,8 +48,8 @@ void requestFeedback(
         "\nWould you be willing to share your feedback now?  (Will open in a"
         " web browser.)"
       ),
-      _("Yes"),
-      _("Not now")
+      _("I want to be heard!"),
+      _("Later")
     )
   ) {
     Control::openFeedback();
