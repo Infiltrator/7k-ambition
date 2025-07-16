@@ -812,7 +812,7 @@ void Vga::flip()
 //-------- Beginning of function Vga::save_status_report ----------//
 void Vga::save_status_report()
 {
-   FilePath path(sys.dir_config);
+   FilePath path(Ambition::Config::configDirectoryPath().c_str());
    FILE *file;
    int num, i;
    const char *s;

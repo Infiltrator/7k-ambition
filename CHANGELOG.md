@@ -33,6 +33,10 @@ speaking, considered to be the player's experience.
   can all be overridden in the config.txt file.
 - Reduced the brightness of the building guide lines from bright white, so that
   they're less jarring.
+- Split local data into multiple directories, to make finding what you need
+  easier: `config`, `screenshot`, `save/singleplayer`, and `save/multiplayer`.
+  Existing files in the base directory will be migrated to their appropriate
+  location.
 - Tweak the wording of the feedback request pop-up buttons.
 
 

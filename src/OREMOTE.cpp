@@ -21,6 +21,8 @@
 //Filename    : OREMOTE.CPP
 //Description : Object Remote
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <ALL.h>
 #include <OSYS.h>
 #include <OREMOTE.h>
@@ -127,7 +129,7 @@ void Remote::init_replay_save(NewNationPara *mpGame, int playerCount)
 {
 	err_when( connectivity_mode != MODE_MP_ENABLED );
 
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	full_path += "NONAME.RPL";
 	if( !full_path.error_flag )
 		replay.open_write(full_path, mpGame, playerCount);

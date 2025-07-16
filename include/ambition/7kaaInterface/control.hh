@@ -40,6 +40,15 @@ void delayFrame(
 void displayNews(
 );
 
+/**
+ * Migrate files from the everything-in-one config directory to the separate
+ * ones.
+ *
+ * \sa Ambition::migrateLocalDataDirectories
+ */
+void migrateLocalDataDirectories(
+);
+
 void pasteFromClipboard(
   char* destination,
   const unsigned int maximumSize

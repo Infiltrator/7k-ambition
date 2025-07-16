@@ -661,7 +661,7 @@ void Battle::run_replay()
 {
 	NewNationPara *mpGame = (NewNationPara *)mem_add(sizeof(NewNationPara)*MAX_NATION);
 	int mpPlayerCount = 0;
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::saveDirectoryPath(".RPL").c_str());
 	Config tmpConfig = config;
 
 	full_path += "NONAME.RPL";

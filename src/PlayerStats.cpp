@@ -21,6 +21,8 @@
 //Filename    : PlayerStats.cpp
 //Description : Handles file IO for player statistics information
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <PlayerStats.h>
 #include <OSYS.h>
 
@@ -49,7 +51,7 @@ PlayerStats::~PlayerStats() {
 //------- Begin of function PlayerStats::load_player_stats ------//
 //
 bool PlayerStats::load_player_stats(bool force_reload) {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	int  rc;
 	File file;
 
@@ -104,7 +106,7 @@ bool PlayerStats::load_player_stats(bool force_reload) {
 // Will (re)write the entire file
 //
 bool PlayerStats::write_player_stats() {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	full_path += scn_dat_file;
 	if (full_path.error_flag) { return 0; }
 

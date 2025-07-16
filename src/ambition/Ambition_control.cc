@@ -25,12 +25,15 @@
 
 #include "Ambition_control.hh"
 
+#include <array>
+#include <filesystem>
 #include <SDL2/SDL_misc.h>
 
 #include "gettext.h"
 #include "OBOX.h"
 #include "OSYS.h"
 
+#include "Ambition_config.hh"
 #include "Ambition_repository.hh"
 
 
@@ -65,6 +68,57 @@ void resetGameState(
 
 
 namespace Control {
+
+void migrateLocalDataDirectories(
+) {
+  constexpr std::array CONFIG_FILES = {
+    "CONFIG.DAT",
+    "config.txt",
+    "cookies.txt",
+    "HALLFAME.DAT",
+    "last-displayed-news-version",
+    "sdl.txt",
+  };
+
+  std::filesystem::create_directories(DirectoryPath::config());
+  std::filesystem::create_directories(DirectoryPath::multiplayerSave());
+  std::filesystem::create_directories(DirectoryPath::screenshot());
+  std::filesystem::create_directories(DirectoryPath::singleplayerSave());
+
+  const std::filesystem::path basePath = sys.dir_config;
+
+  for (const auto filename : CONFIG_FILES) {
+    const auto path = basePath / filename;
+    if (std::filesystem::exists(path)) {
+      std::filesystem::rename(path, DirectoryPath::config() / filename);
+    }
+  }
+
+  for (const auto file : std::filesystem::directory_iterator(basePath)) {
+    if (!file.is_regular_file()) {
+      continue;
+    }
+
+    const auto extension = file.path().extension();
+
+    if (extension == ".SAV") {
+      std::filesystem::rename(
+        file,
+        DirectoryPath::singleplayerSave() / file.path().filename()
+      );
+    } else if (extension == ".RPL" || extension == ".SVM") {
+      std::filesystem::rename(
+        file,
+        DirectoryPath::multiplayerSave() / file.path().filename()
+      );
+    } else if (extension == ".BMP") {
+      std::filesystem::rename(
+        file,
+        DirectoryPath::screenshot() / file.path().filename()
+      );
+    }
+  }
+}
 
 void openDiscord(
 ) {

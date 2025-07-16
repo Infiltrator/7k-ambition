@@ -303,6 +303,8 @@ int main(int argc, char **argv)
 	locale_res.init();
 	sys.set_config_dir();
 
+	Ambition::Control::migrateLocalDataDirectories();
+
 	//try to read from CONFIG.DAT, moved to AM.CPP
 
 	if( !config.load("CONFIG.DAT") )

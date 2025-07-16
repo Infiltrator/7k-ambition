@@ -771,7 +771,7 @@ int GameFileArray::process_action(int saveNew)
 	{
 		GameFile* gameFile = (*this)[browse_recno];
 
-		int rc = gameFile->load_game((const char*)sys.dir_config, NULL);
+		int rc = gameFile->load_game(Ambition::Config::saveDirectoryPath(gameFile->file_name).c_str(), NULL);
 		if( rc > 0 )
 		{
 			strcpy(last_file_name, (*this)[browse_recno]->file_name);
@@ -840,7 +840,7 @@ int GameFileArray::save_new_game(const char* fileName)
 	{
 		strcpy( last_file_name, gameFile.file_name );
 
-		FilePath full_path(sys.dir_config);
+		FilePath full_path(Ambition::Config::saveDirectoryPath(gameFile.file_name).c_str());
 		full_path += gameFile.file_name;
 		Directory saveGameDirectory;
 		saveGameDirectory.read(full_path, 0);  // 0-Don't sort file names
@@ -970,7 +970,7 @@ void GameFileArray::del_game()
 	if( !box.ask( _("This saved game will be deleted. Proceed?") ) )
 		return;
 
-	FilePath fullPath(sys.dir_config);
+	FilePath fullPath(Ambition::Config::saveDirectoryPath((*this)[recNo]->file_name).c_str());
 	fullPath += (*this)[recNo]->file_name;
 	if( fullPath.error_flag )
 		return;
@@ -992,7 +992,7 @@ void GameFileArray::load_all_game_header(const char *extStr)
 {
 	zap();
 
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::saveDirectoryPath(extStr).c_str());
 
 	full_path += extStr;
 	if( full_path.error_flag )
@@ -1006,7 +1006,7 @@ void GameFileArray::load_all_game_header(const char *extStr)
 	for( int i=1 ; i<=gameDir.size() ; i++ )
 	{
 		const char* const gameFileName = gameDir[i]->name;
-		FilePath save_game_path(sys.dir_config);
+		FilePath save_game_path(Ambition::Config::saveDirectoryPath(extStr).c_str());
 
 		save_game_path += gameFileName;
 		if( save_game_path.error_flag )

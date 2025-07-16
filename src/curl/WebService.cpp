@@ -21,6 +21,8 @@
 // Filename    : WebService.cpp
 // Description : A curl implementation to access web services
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <OSYS.h>
 #include <WebService.h>
 #include <FilePath.h>
@@ -51,7 +53,7 @@ void WebService::init()
 	if( !curl )
 		return;
 
-	FilePath cookie_file(sys.dir_config);
+	FilePath cookie_file(Ambition::Config::configDirectoryPath().c_str());
 	cookie_file += "cookies.txt";
 	if( !cookie_file.error_flag )
 		curl_easy_setopt(curl, CURLOPT_COOKIEJAR, (char*)cookie_file);

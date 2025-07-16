@@ -71,7 +71,7 @@ void HallOfFame::set_last_savegame_file_name(const char* fileName) {
 //
 int HallOfFame::read_hall_of_fame()
 {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	int  rc;
 	File file;
 
@@ -108,7 +108,7 @@ int HallOfFame::read_hall_of_fame()
 //
 int HallOfFame::write_hall_of_fame()
 {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	int  rc;
 	File file;
 

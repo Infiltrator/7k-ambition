@@ -42,6 +42,11 @@ bool compatibleWith7kaa(
   return Ambition::config.compatibleWith7kaa();
 }
 
+std::string configDirectoryPath(
+) {
+  return Ambition::DirectoryPath::config();
+}
+
 bool enhancementsAvailable(
 ) {
   return Ambition::config.enhancementsAvailable();
@@ -71,6 +76,17 @@ void set7kaaConfigOption(
   const int lineNumber
 ) {
   Ambition::set7kaaConfigOption(key, value, lineNumber);
+}
+
+std::string screenshotDirectoryPath(
+) {
+  return Ambition::DirectoryPath::screenshot();
+}
+
+std::string saveDirectoryPath(
+  const std::string filename
+) {
+  return Ambition::DirectoryPath::save(filename);
 }
 
 void report7kaaConfigLoadingErrors(

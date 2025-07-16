@@ -36,6 +36,9 @@ namespace _7kaaAmbitionInterface::Config {
 bool compatibleWith7kaa(
 );
 
+std::string configDirectoryPath(
+);
+
 /**
  * Whether the current running mode has enhancements available.
  */
@@ -63,6 +66,13 @@ void set7kaaConfigOption(
   char* key,
   char* value,
   const int lineNumber
+);
+
+std::string screenshotDirectoryPath(
+);
+
+std::string saveDirectoryPath(
+  const std::string filename
 );
 
 /**
