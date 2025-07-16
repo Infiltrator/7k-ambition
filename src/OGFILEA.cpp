@@ -524,7 +524,7 @@ int GameFileArray::menu(int actionMode, int *recno)
 			break;		// break while(1)
 		}
 		else if( (action_mode == 1 || (action_mode == 2 && browse_recno))
-			&& saveButton.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Confirm)) )
+			&& saveButton.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Confirm)) )
 		{
 			// save / load button
 			refreshFlag = LSOPTION_ALL;
@@ -540,7 +540,7 @@ int GameFileArray::menu(int actionMode, int *recno)
 			}
 			// ##### end Gilbert 15/10 #####//
 		}
-		else if( action_mode == 1 && saveNewButton.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Confirm)) )
+		else if( action_mode == 1 && saveNewButton.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Confirm)) )
 		{
 			// save new button
 			refreshFlag = LSOPTION_ALL;

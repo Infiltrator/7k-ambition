@@ -1005,7 +1005,7 @@ void Unit::detect_build_menu()
 
 	//---------- detect cancel button ----------//
 
-	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
+	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1070,7 +1070,7 @@ void Unit::disp_build(int refreshFlag)
 //
 void Unit::detect_build()
 {
-	if( button_cancel2.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), GETKEY(KEYEVENT_UNIT_CANCEL)) )
+	if( button_cancel2.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), GETKEY(KEYEVENT_UNIT_CANCEL)) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -1108,7 +1108,7 @@ void Unit::disp_settle(int refreshFlag)
 //
 void Unit::detect_settle()
 {
-	if( button_cancel2.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), GETKEY(KEYEVENT_UNIT_CANCEL)) )
+	if( button_cancel2.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), GETKEY(KEYEVENT_UNIT_CANCEL)) )
 	{
 		// ###### begin Gilbert 26/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");

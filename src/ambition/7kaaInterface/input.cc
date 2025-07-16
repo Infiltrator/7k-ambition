@@ -178,34 +178,34 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
   { ReportType::Ranking, Ambition::UserInterface::VIEWPORT },
 };
 
-const std::map<KeyEvent, KeyEventType> KEY_EVENT_MAP = {
-  { KeyEvent::Common_Cancel, KEYEVENT_CANCEL },
-  { KeyEvent::Common_Confirm, KEYEVENT_CONFIRM },
-  { KeyEvent::Common_Reward, KEYEVENT_UNIT_REWARD },
+const std::map<Action, KeyEventType> KEY_EVENT_MAP = {
+  { Action::Common_Cancel, KEYEVENT_CANCEL },
+  { Action::Common_Confirm, KEYEVENT_CONFIRM },
+  { Action::Common_Reward, KEYEVENT_UNIT_REWARD },
 
-  { KeyEvent::Spy_Assassinate, KEYEVENT_SPY_ASSASSINATE },
-  { KeyEvent::Spy_Bribe, KEYEVENT_SPY_BRIBE },
-  { KeyEvent::Spy_Capture, KEYEVENT_SPY_CAPTURE },
-  { KeyEvent::Spy_ChangeMission, KEYEVENT_SPY_CHANGE_MISSION },
-  { KeyEvent::Spy_Mobilise, KEYEVENT_SPY_MOBILISE },
-  { KeyEvent::Spy_Menu, KEYEVENT_SPY_MENU },
-  { KeyEvent::Spy_StealReports, KEYEVENT_SPY_STEAL_REPORTS },
+  { Action::Spy_Assassinate, KEYEVENT_SPY_ASSASSINATE },
+  { Action::Spy_Bribe, KEYEVENT_SPY_BRIBE },
+  { Action::Spy_Capture, KEYEVENT_SPY_CAPTURE },
+  { Action::Spy_ChangeMission, KEYEVENT_SPY_CHANGE_MISSION },
+  { Action::Spy_Mobilise, KEYEVENT_SPY_MOBILISE },
+  { Action::Spy_Menu, KEYEVENT_SPY_MENU },
+  { Action::Spy_StealReports, KEYEVENT_SPY_STEAL_REPORTS },
 
-  { KeyEvent::Town_Train_Builder, KEYEVENT_TRAIN_BUILDER },
-  { KeyEvent::Town_Train_Soldier, KEYEVENT_TRAIN_SOLDIER },
-  { KeyEvent::Town_Train_Miner, KEYEVENT_TRAIN_MINER },
-  { KeyEvent::Town_Train_Artisan, KEYEVENT_TRAIN_ARTISAN },
-  { KeyEvent::Town_Train_Researcher, KEYEVENT_TRAIN_RESEARCHER },
-  { KeyEvent::Town_Train_Spy, KEYEVENT_TRAIN_SPY },
+  { Action::Town_Train_Builder, KEYEVENT_TRAIN_BUILDER },
+  { Action::Town_Train_Soldier, KEYEVENT_TRAIN_SOLDIER },
+  { Action::Town_Train_Miner, KEYEVENT_TRAIN_MINER },
+  { Action::Town_Train_Artisan, KEYEVENT_TRAIN_ARTISAN },
+  { Action::Town_Train_Researcher, KEYEVENT_TRAIN_RESEARCHER },
+  { Action::Town_Train_Spy, KEYEVENT_TRAIN_SPY },
 };
 
-constexpr KeyEvent TRAINING_KEY_EVENTS[MAX_TRAINABLE_SKILL] = {
-  KeyEvent::Town_Train_Builder,
-  KeyEvent::Town_Train_Soldier,
-  KeyEvent::Town_Train_Miner,
-  KeyEvent::Town_Train_Artisan,
-  KeyEvent::Town_Train_Researcher,
-  KeyEvent::Town_Train_Spy,
+constexpr Action TRAINING_KEY_ACTIONS[MAX_TRAINABLE_SKILL] = {
+  Action::Town_Train_Builder,
+  Action::Town_Train_Soldier,
+  Action::Town_Train_Miner,
+  Action::Town_Train_Artisan,
+  Action::Town_Train_Researcher,
+  Action::Town_Train_Spy,
 };
 
 
@@ -640,13 +640,13 @@ bool detectWhatsNewClick(
 }
 
 unsigned int getKeyEvent(
-  const KeyEvent event
+  const Action action
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return SDLK_UNKNOWN;
   }
 
-  return GETKEY(KEY_EVENT_MAP.find(event)->second);
+  return GETKEY(KEY_EVENT_MAP.find(action)->second);
 }
 
 unsigned int getTrainingKeyEvent(
@@ -658,7 +658,7 @@ unsigned int getTrainingKeyEvent(
 
   assert(_7kaaSkillIndex >= 1 && _7kaaSkillIndex <= MAX_TRAINABLE_SKILL);
 
-  return getKeyEvent(TRAINING_KEY_EVENTS[_7kaaSkillIndex - 1]);
+  return getKeyEvent(TRAINING_KEY_ACTIONS[_7kaaSkillIndex - 1]);
 }
 
 void setOrClearRallyPoint(

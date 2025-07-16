@@ -33,7 +33,7 @@ class VBrowseIF;
 
 namespace _7kaaAmbitionInterface::Input {
 
-enum class KeyEvent {
+enum class Action {
   Common_Cancel,
   Common_Confirm,
   Common_Reward,
@@ -147,7 +147,7 @@ bool detectWhatsNewClick(
 );
 
 unsigned int getKeyEvent(
-  const KeyEvent event
+  const Action action
 );
 
 unsigned int getTrainingKeyEvent(

@@ -363,7 +363,7 @@ void SpyArray::disp_view_secret_menu(int spyRecno, int refreshFlag)
 
 	button_secret_report_cancel.paint_text( INFO_X1, y, INFO_X2, y+22, _("Cancel") );
 
-	Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), button_secret_report_cancel);
+	Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), button_secret_report_cancel);
 }
 //----------- End of function SpyArray::disp_view_secret_menu -----------//
 
@@ -391,7 +391,7 @@ int SpyArray::detect_view_secret_menu(int spyRecno, int nationRecno)
 
 	//-------- detect cancel button --------//
 
-	if( button_secret_report_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
+	if( button_secret_report_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) )
 		rc = 1;
 
 	return rc;

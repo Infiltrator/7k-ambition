@@ -103,7 +103,7 @@ void Firm::disp_bribe_menu(int refreshFlag)
 
 		disp_bribe_button( y, 0, 1);
 
-		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), INFO_X1, y - 2, INFO_X2, y + BRIBE_OPTION_HEIGHT - 1 + 2);
+		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), INFO_X1, y - 2, INFO_X2, y + BRIBE_OPTION_HEIGHT - 1 + 2);
 	}
 
 	//------ display the bribe result -----//
@@ -130,7 +130,7 @@ void Firm::disp_bribe_menu(int refreshFlag)
 		y+=26;
 		button_cancel.paint( INFO_X1, y, 'A', "CONTINUE" );
 
-		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), button_cancel);
+		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), button_cancel);
 	}
 }
 //----------- End of function Firm::disp_bribe_menu -----------//
@@ -144,7 +144,7 @@ void Firm::detect_bribe_menu()
 
 	if( bribe_result != BRIBE_NONE )
 	{
-		if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
+		if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) )
 		{
 			firm_menu_mode = FIRM_MENU_MAIN;
 			bribe_result   = BRIBE_NONE;
@@ -197,7 +197,7 @@ void Firm::detect_bribe_menu()
 	//------ detect the cancel button --------//
 
 	if( mouse.single_click(INFO_X1, y, INFO_X2, y+BRIBE_OPTION_HEIGHT-1)
-		|| (mouse.unique_key_code && mouse.unique_key_code == Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel))
+		|| (mouse.unique_key_code && mouse.unique_key_code == Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel))
 	)
 	{
 		disp_bribe_button( y, 0, 0);		// 0-display pressed button
@@ -594,7 +594,7 @@ void Firm::disp_assassinate_result(int refreshFlag)
 	y+=26;
 	button_cancel.paint( INFO_X1, y, 'A', "CONTINUE" );
 
-	Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), button_cancel);
+	Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel), button_cancel);
 }
 //----------- End of function Firm::disp_assassinate_result -----------//
 
@@ -605,7 +605,7 @@ void Firm::detect_assassinate_result()
 {
 	//----- if it is display the bribe result right now -----//
 
-	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
+	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) )
 	{
 		firm_menu_mode = FIRM_MENU_MAIN;
 		assassinate_result = 0;

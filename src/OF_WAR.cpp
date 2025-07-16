@@ -427,7 +427,7 @@ int FirmWar::detect_build_menu()
 	}
 	//------ detect the cancel button --------//
 
-	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) || (!waitFlag && mouse.any_click(1)) )
+	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) || (!waitFlag && mouse.any_click(1)) )
 	{
 		// ##### begin Gilbert 25/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");

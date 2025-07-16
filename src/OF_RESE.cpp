@@ -337,7 +337,7 @@ int FirmResearch::detect_research_menu()
 
 	if( i >= added_count )		// no research button has been pressed
 	{
-		if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
+		if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Cancel)) )
 		{
 			// ##### begin Gilbert 25/9 ######//
 			se_ctrl.immediate_sound("TURN_OFF");
