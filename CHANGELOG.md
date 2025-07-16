@@ -23,6 +23,7 @@ speaking, considered to be the player's experience.
   `KEYEVENT_SPY_STEAL_REPORTS`.
 - Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for
   duplication.  Settings in Ambition's config.txt override those is 7kaa's one.
+- Added Discord and feedback links to the main menu, in the bottom-left corner.
 
 ### Changed
 

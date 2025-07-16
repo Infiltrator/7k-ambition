@@ -608,6 +608,17 @@ int centreHitbar(
   return Ambition::centreHitbar(left, maximumWidth, currentWidth);
 }
 
+void discordButton(
+) {
+  const auto buttonBitmap = image_button.get_ptr("DISCORD");
+
+  vga_front.put_bitmap_trans(
+    Ambition::UserInterface::DISCORD_BUTTON.start.left,
+    Ambition::UserInterface::DISCORD_BUTTON.start.top,
+    buttonBitmap
+  );
+}
+
 void doneButtonText(
   const ButtonCustom& button
 ) {
@@ -633,6 +644,11 @@ void doneButtonText(
     Ambition::UserInterface::HorizontalAlignment::Right,
     Ambition::UserInterface::VerticalAlignment::Centre
   );
+}
+
+void feedbackLink(
+) {
+  Ambition::drawFeedbackLink();
 }
 
 void hitbarOutline(

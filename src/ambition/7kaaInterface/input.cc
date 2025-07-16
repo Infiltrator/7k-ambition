@@ -43,6 +43,7 @@
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_control.hh"
 #include "Ambition_input.hh"
 #include "Ambition_news.hh"
 #include "Ambition_trade.hh"
@@ -350,6 +351,26 @@ bool detectClipboardKeys(
   }
 
   return false;
+}
+
+void detectDiscordClick(
+) {
+  if (Ambition::UserInterface::detectMouseClick(
+      Ambition::UserInterface::DISCORD_BUTTON_CLICK_AREA
+    )
+  ) {
+    Ambition::Control::openDiscord();
+  }
+}
+
+void detectFeedbackLinkClick(
+) {
+  if (Ambition::UserInterface::detectMouseClick(
+      Ambition::UserInterface::FEEDBACK_LINK_CLICK_AREA
+    )
+  ) {
+    Ambition::Control::openFeedback();
+  }
 }
 
 bool detectModeSelectClick(

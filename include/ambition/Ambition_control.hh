@@ -34,4 +34,15 @@ void requestFeedback(
 void resetGameState(
 );
 
+
+namespace Control {
+
+void openDiscord(
+);
+
+void openFeedback(
+);
+
+} // namespace Ambition::Control
+
 } // namespace Ambition

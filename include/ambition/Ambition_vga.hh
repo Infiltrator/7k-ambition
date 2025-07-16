@@ -195,6 +195,9 @@ void drawButtonOverlay(
   std::string text
 );
 
+void drawFeedbackLink(
+);
+
 /**
  * Draw a builder icon for the firm if it has a builder.
  *

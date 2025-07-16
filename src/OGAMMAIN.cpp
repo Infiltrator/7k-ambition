@@ -222,6 +222,8 @@ void Game::main_menu()
 
 		Ambition::Draw::modeInformation();
 		Ambition::Draw::whatsNewButton();
+		Ambition::Draw::discordButton();
+		Ambition::Draw::feedbackLink();
 
 		sys.blt_virtual_buf();		// blt the virtual front buffer to the screen
 
@@ -233,6 +235,8 @@ void Game::main_menu()
 
 		refreshFlag = Ambition::Input::detectModeSelectClick();
 		refreshFlag = Ambition::Input::detectWhatsNewClick() || refreshFlag;
+		Ambition::Input::detectDiscordClick();
+		Ambition::Input::detectFeedbackLinkClick();
 
 		optionInfo = main_option_array;
 
