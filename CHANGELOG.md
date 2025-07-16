@@ -31,6 +31,8 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Made the keybind displays appear transparent over their buttons, to obscure
+  less of the underlying buttons.
 - Enabled default hotkeys for the build menu and disabled default `Q`, `W`, and
   `E` for selecting map modes.  The new default `E` now cycles through all of
   the map modes; and `W` is the default hotkey for building a War Factory.  This

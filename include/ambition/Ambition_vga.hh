@@ -108,6 +108,10 @@ int centreHitbar(
   const int currentWidth
 );
 
+void copyFrontBufferToBack(
+  const UserInterface::Rectangle& area
+);
+
 void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );

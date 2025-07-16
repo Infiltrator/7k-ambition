@@ -43,6 +43,7 @@
 #include "OFIRM.h"
 #include "OFONT.h"
 #include "OIMGRES.h"
+#include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
 #include "OREMOTE.h"
@@ -231,6 +232,30 @@ int calculateWorkerPortraitX(
   return
     (UserInterface::INFO_PANE_CONTENTS.start.left + 2)
     + ((workerIndex % COLUMN_COUNT) * COLUMN_SIZE);
+}
+
+void copyFrontBufferToBack(
+  const UserInterface::Rectangle& area
+) {
+  mouse.hide_area(
+    area.start.left,
+    area.start.top,
+    area.end.left,
+    area.end.top
+  );
+
+  IMGcopy(
+    vga_back.buf_ptr(),
+    vga_back.buf_pitch(),
+    vga_front.buf_ptr(),
+    vga_front.buf_pitch(),
+    area.start.left,
+    area.start.top,
+    area.end.left,
+    area.end.top
+  );
+
+  mouse.show_area();
 }
 
 void delayFrame(

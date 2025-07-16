@@ -346,8 +346,19 @@ void buttonKeybind(
       panel.start.left,
       panel.start.top,
       panel.end.left,
-      panel.end.top
+      panel.end.top,
+      1
     );
+
+    Ambition::UserInterface::printText(
+      font_san,
+      keyString,
+      textArea,
+      Ambition::UserInterface::Clear::None,
+      Ambition::UserInterface::HorizontalAlignment::Centre
+    );
+
+    Ambition::copyFrontBufferToBack(panel);
   } else {
     vga_util.blt_buf(
       panel.start.left,
@@ -357,14 +368,6 @@ void buttonKeybind(
       0
     );
   }
-
-  Ambition::UserInterface::printText(
-    font_san,
-    keyString,
-    textArea,
-    Ambition::UserInterface::Clear::None,
-    Ambition::UserInterface::HorizontalAlignment::Centre
-  );
 }
 void buttonKeybind(
   const unsigned int keyCode,
