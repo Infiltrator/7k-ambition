@@ -612,7 +612,7 @@ bool detectTownScroll(
 
 bool detectWhatsNewClick(
 ) {
-  constexpr Ambition::UserInterface::Rectangle WhatsNewButton = {
+  constexpr Ambition::UserInterface::Rectangle WHATS_NEW_BUTTON = {
     .start = {
       .left = 770,
       .top = 550,
@@ -622,7 +622,7 @@ bool detectWhatsNewClick(
       .top = 570,
     },
   };
-  const auto clickArea = WhatsNewButton.outer(8);
+  const auto clickArea = WHATS_NEW_BUTTON.outer(8);
 
   if (
     mouse.single_click(
