@@ -39,6 +39,9 @@
 
 namespace Ambition::UserInterface {
 
+constexpr auto PIXELS_PER_DISTANCE = 32.0 / Coordinates::SCALING_FACTOR;
+
+
 int rankReportComparison7kaaNationRecordNumber = 0;
 
 BuildingMenu buildingMenu = BuildingMenu::_7kaa;
@@ -49,6 +52,23 @@ short selected7kaaFirmOrTownRecordNumber = 0;
 char _7kaaJustification(
   const HorizontalAlignment horizontalAlignment
 );
+
+
+Rectangle Rectangle::fromWorldRectangle(
+  const Coordinates::Rectangle& coordinateRectangle
+) {
+  return fromPoint(
+    fromWorldPoint(coordinateRectangle.topLeft()),
+    {
+      .width = static_cast<int>(
+        coordinateRectangle.width() * PIXELS_PER_DISTANCE
+      ),
+      .height = static_cast<int>(
+        coordinateRectangle.height() * PIXELS_PER_DISTANCE
+      ),
+    }
+  );
+}
 
 
 bool Rectangle::contains(
@@ -257,8 +277,6 @@ Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport
 ) {
-  constexpr auto PIXELS_PER_DISTANCE = 32.0 / Coordinates::SCALING_FACTOR;
-
   const auto relative = (worldPoint - viewport.topLeft()) * PIXELS_PER_DISTANCE;
 
   return {

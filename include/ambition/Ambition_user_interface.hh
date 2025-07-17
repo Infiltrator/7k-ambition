@@ -103,6 +103,9 @@ struct Rectangle {
       },
     };
   }
+  static Rectangle fromWorldRectangle(
+    const Coordinates::Rectangle& coordinateRectangle
+  );
 
   inline bool operator==(const Rectangle& rhs) const noexcept {
     return start == rhs.start && end == rhs.end;
