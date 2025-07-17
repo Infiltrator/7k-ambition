@@ -21,6 +21,9 @@
 //Filename    : OF_BASE.CPP
 //Description : Firm Base
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -192,6 +195,8 @@ void FirmBase::put_info(int refreshFlag)
 			button_reward.paint( INFO_X1 + BUTTON_ACTION_WIDTH, y, 'A', "REWARDSP" );
 			button_vacate_firm.paint(INFO_X1 + BUTTON_ACTION_WIDTH * 2, y, 'A', "RECRUIT");
 			button_vacate_firm.set_help_code("MOBILIZE");
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All), button_vacate_firm);
 		}
 
 		if( can_invoke() )
@@ -316,7 +321,7 @@ int FirmBase::detect_info()
 
 	//-------- detect mobilize button ----------//
 
-	if( button_vacate_firm.detect() )
+	if( button_vacate_firm.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All)) )
 	{
 		mobilize_all_workers(COMMAND_PLAYER);
 		return 1;

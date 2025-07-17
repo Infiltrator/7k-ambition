@@ -197,6 +197,8 @@ const std::map<Action, KeyEventType> KEY_EVENT_MAP = {
   { Action::Town_Train_Artisan, KEYEVENT_TRAIN_ARTISAN },
   { Action::Town_Train_Researcher, KEYEVENT_TRAIN_RESEARCHER },
   { Action::Town_Train_Spy, KEYEVENT_TRAIN_SPY },
+
+  { Action::Building_Mobilise_All, KEYEVENT_FIRM_PATROL },
 };
 
 constexpr Action TRAINING_KEY_ACTIONS[MAX_TRAINABLE_SKILL] = {

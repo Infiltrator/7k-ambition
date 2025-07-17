@@ -175,6 +175,8 @@ void FirmWar::disp_main_menu(int refreshFlag)
 
 			button_vacate_firm.paint(INFO_X1 + BUTTON_ACTION_WIDTH, INFO_Y1 + 235, 'A', "RECRUIT");
 			button_vacate_firm.set_help_code("MOBILIZE");
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All), button_vacate_firm);
 		}
 
 		Ambition::Draw::queueCount(this);
@@ -244,7 +246,7 @@ int FirmWar::detect_main_menu()
 
 	//-------- detect mobilize button ----------//
 
-	if (button_vacate_firm.detect())
+	if (button_vacate_firm.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All)))
 	{
 		mobilize_all_workers(COMMAND_PLAYER);
 		return 1;
