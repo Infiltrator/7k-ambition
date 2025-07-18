@@ -252,7 +252,8 @@ void printParagraph(
     0,
     justification
   );
-  const auto textHeight = font.next_text_y - area.start.top;
+  const auto textHeight
+    = font.next_text_y - font.font_height - lineSpacing - area.start.top;
 
   const auto textArea = area.internal(
     {
