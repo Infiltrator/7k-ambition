@@ -41,6 +41,8 @@ speaking, considered to be the player's experience.
 ### Changed
 
 - Increased bribe choices to include $2500 and $3500.
+- Made the build guidelines on the Standard tileset slightly brighter, to make
+  them more visible.
 
 
 ## [3.2.2] — 2025-08-18

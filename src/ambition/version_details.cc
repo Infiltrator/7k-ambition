@@ -40,6 +40,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Increased bribe choices to include $2500 and $3500."),
+          _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
         },
       },
     },

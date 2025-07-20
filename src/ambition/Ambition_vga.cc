@@ -906,7 +906,7 @@ void drawBuildMarkerGridLines(
   assert(::config.terrain_set >= 1 && ::config.terrain_set <= 3);
   switch (::config.terrain_set) {
   case 1:
-    colour = VGA_GRAY + 11;
+    colour = VGA_GRAY + 13;
     break;
   case 2:
     colour = VGA_GRAY + 6;
