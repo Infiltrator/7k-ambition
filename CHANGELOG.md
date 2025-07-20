@@ -18,6 +18,8 @@ speaking, considered to be the player's experience.
 - Added an assassination confirmation screen with a Spy-estimated success
   chance.  This estimate varies in accuracy over time and based on the spy's
   skill.
+- Added a steal report confirmation screen with a Spy-estimated escape chance.
+  This estimate varies in accuracy over time and based on the spy's skill.
 
 ### Fixed
 

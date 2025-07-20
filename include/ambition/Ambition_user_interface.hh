@@ -36,6 +36,7 @@ enum class BuildingMenu {
   _7kaa,
 
   AssassinationConfirmation,
+  StealReportConfirmation,
 };
 
 enum class Clear {
@@ -57,6 +58,7 @@ enum class VerticalAlignment {
 
 
 extern BuildingMenu buildingMenu;
+extern int reportType;
 extern short selected7kaaFirmRecordNumber;
 
 

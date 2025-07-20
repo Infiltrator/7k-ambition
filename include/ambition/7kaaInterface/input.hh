@@ -159,6 +159,10 @@ bool detectWhatsNewClick(
 bool enterAssassinationConfirmationMenu(
 );
 
+bool enterStealReportConfirmationMenu(
+  const int reportType
+);
+
 unsigned int getKeyEvent(
   const Action action
 );

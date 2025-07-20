@@ -472,6 +472,86 @@ void displayInnGuestLeavingSoonMark(
   }
 }
 
+void displayStealReportsConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const int report
+) {
+  if (refreshFlag != INFO_REPAINT) {
+    return;
+  }
+
+  const auto titleArea = UserInterface::INFO_PANE_CONTENTS.internal(
+    {
+      .width = UserInterface::INFO_PANE_CONTENTS.width(),
+      .height = 19,
+    }
+  );
+
+  UserInterface::drawPanel(titleArea);
+  UserInterface::printText(
+    font_san,
+    _("Steal Reports"),
+    titleArea,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 22, 0, 0)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width(),
+        .height = 19,
+      }
+    );
+
+  UserInterface::drawPanel(panelArea);
+
+  const auto textArea = panelArea.inner(4);
+
+  constexpr const char* REPORT_NAMES[] = {
+    "Kingdoms Report",
+    "Villages Report",
+    "Economy Report",
+    "Trade Report",
+    "Military Report",
+    "Technology Report",
+    "Espionage Report",
+  };
+
+  UserInterface::printText(font_san, _(REPORT_NAMES[report]), textArea);
+  printStealReportsEstimate(_7kaaSpy, report);
+
+  Spy::stealReportsButton.paint(
+    UserInterface::ASSASSINATION_BUTTON.start.left,
+    UserInterface::ASSASSINATION_BUTTON.start.top,
+    'A',
+    "VSECRET"
+  );
+  _7kaaAmbitionInterface::Draw::buttonKeybind(
+    _7kaaAmbitionInterface::Input::getKeyEvent(
+      _7kaaAmbitionInterface::Input::Action::Common_Confirm
+    ),
+    Spy::stealReportsButton
+  );
+
+  Spy::cancelButton.paint(
+    UserInterface::CANCEL_BUTTON.start.left,
+    UserInterface::CANCEL_BUTTON.start.top,
+    'A',
+    "PREVMENU"
+  );
+  _7kaaAmbitionInterface::Draw::buttonKeybind(
+    _7kaaAmbitionInterface::Input::getKeyEvent(
+      _7kaaAmbitionInterface::Input::Action::Common_Cancel
+    ),
+    Spy::cancelButton
+  );
+}
+
 void displayTownQualityOfLife(
   Town* town,
   const int refreshFlag,
@@ -1875,6 +1955,49 @@ int printWarMachineInformation(
   );
 
   return SIZE.height + 1;
+}
+
+void printStealReportsEstimate(
+  const ::Spy* _7kaaSpy,
+  const char report
+) {
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 41, 0, 0)
+    .inner(4)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width() - 8,
+        .height = 44,
+      },
+      UserInterface::HorizontalAlignment::Left,
+      UserInterface::VerticalAlignment::Top
+    );
+  const auto textArea = panelArea.inner(4);
+
+  const int estimatedChance = std::round(
+    std::min(
+      99.0, /* You know what happens if you tell people 100%. */
+      Ambition::Spy::stealReportEspaceChanceEstimate(
+        _7kaaSpy,
+        report
+      ) * 100
+    )
+  );
+
+  UserInterface::drawPanel(panelArea);
+  UserInterface::printParagraph(
+    font_std,
+    format(
+      _("Your spy estimates an escape chance of %d%%."),
+      estimatedChance
+    ),
+    textArea,
+    DEFAULT_LINE_SPACE,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
 }
 
 void unlockBuffer(

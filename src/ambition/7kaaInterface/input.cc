@@ -38,6 +38,7 @@
 #include "OMOUSE2.h"
 #include "OSLIDCUS.h"
 #include "OSPY.h"
+#include "OSYS.h"
 #include "OTOWN.h"
 #include "OU_CARA.h"
 #include "OVBROWIF.h"
@@ -251,6 +252,34 @@ bool detectBuildingMenu(
         = Ambition::UserInterface::BuildingMenu::_7kaa;
       info.disp();
     }
+    return true;
+    break;
+
+  case Ambition::UserInterface::BuildingMenu::StealReportConfirmation:
+    if (Ambition::Spy::stealReportsButton.detect(
+        Input::getKeyEvent(Input::Action::Common_Confirm)
+      )
+    ) {
+      sys.set_view_mode(
+        Ambition::UserInterface::reportType + 1,
+        _7kaaFirm->nation_recno,
+        _7kaaSpy->spy_recno
+      );
+      menu = FIRM_MENU_MAIN;
+      Ambition::UserInterface::buildingMenu
+        = Ambition::UserInterface::BuildingMenu::_7kaa;
+      info.disp();
+    }
+    if (Ambition::Spy::cancelButton.detect(
+        Input::getKeyEvent(Input::Action::Common_Cancel)
+      )
+    ) {
+      menu = FIRM_MENU_MAIN;
+      Ambition::UserInterface::buildingMenu
+        = Ambition::UserInterface::BuildingMenu::_7kaa;
+      info.disp();
+    }
+    return true;
     break;
   }
 
@@ -695,6 +724,21 @@ bool enterAssassinationConfirmationMenu(
 
   Ambition::UserInterface::buildingMenu
     = Ambition::UserInterface::BuildingMenu::AssassinationConfirmation;
+  Ambition::UserInterface::selected7kaaFirmRecordNumber
+    = firm_array.selected_recno;
+  return true;
+}
+
+bool enterStealReportConfirmationMenu(
+  const int reportType
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  Ambition::UserInterface::buildingMenu
+    = Ambition::UserInterface::BuildingMenu::StealReportConfirmation;
+  Ambition::UserInterface::reportType = reportType;
   Ambition::UserInterface::selected7kaaFirmRecordNumber
     = firm_array.selected_recno;
   return true;

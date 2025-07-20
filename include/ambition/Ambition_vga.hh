@@ -31,6 +31,7 @@ class Button3D;
 class Firm;
 class Font;
 class InnUnit;
+class Nation;
 class SnowLayer;
 class Spy;
 class Town;
@@ -142,6 +143,12 @@ void displayInnGuestDetailsStayingInformation(
 void displayInnGuestLeavingSoonMark(
   const InnUnit* _7kaaInnGuest,
   const int top
+);
+
+void displayStealReportsConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const int report
 );
 
 void displayTownQualityOfLife(
@@ -329,6 +336,11 @@ void printWarMachineInBuildingInformation(
 int printWarMachineInformation(
   const ::Unit* _7kaaUnit,
   const int refreshFlag
+);
+
+void printStealReportsEstimate(
+  const ::Spy* _7kaaSpy,
+  const char report
 );
 
 /**

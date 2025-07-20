@@ -36,6 +36,7 @@ namespace Ambition::Spy {
 
 extern Button3D assassinationButton;
 extern Button3D cancelButton;
+extern Button3D stealReportsButton;
 
 
 double assassinationChanceEstimate(
@@ -51,6 +52,11 @@ int bribeAmountEstimate(
 int bribeAmountEstimate(
   const ::Spy* _7kaaSpy,
   ::Unit* target
+);
+
+double stealReportEspaceChanceEstimate(
+  const ::Spy* _7kaaSpy,
+  const char report
 );
 
 } // namespace Ambition::Spy

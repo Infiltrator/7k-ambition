@@ -135,6 +135,15 @@ bool buildingMenu(
     );
     return true;
     break;
+
+  case Ambition::UserInterface::BuildingMenu::StealReportConfirmation:
+    Ambition::displayStealReportsConfirmationMenu(
+      refreshFlag,
+      _7kaaSpy,
+      Ambition::UserInterface::reportType
+    );
+    return true;
+    break;
   }
 
   return false;

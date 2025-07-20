@@ -25,6 +25,7 @@
 
 #include "Ambition_spy.hh"
 
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
 
@@ -41,6 +42,7 @@ namespace Ambition::Spy {
 
 Button3D assassinationButton;
 Button3D cancelButton;
+Button3D stealReportsButton;
 
 
 double confidenceFactor(
@@ -181,6 +183,28 @@ int bribeAmountEstimate(
     target->race_id,
     target->commander_power()
   );
+}
+
+double stealReportEspaceChanceEstimate(
+  const ::Spy* _7kaaSpy,
+  const char report
+) {
+  constexpr int REPORT_REQUIRED_SKILLS[] = { 40, 20, 30, 30, 50, 40, 90 };
+
+  const auto skillMargin
+    = _7kaaSpy->spy_skill - REPORT_REQUIRED_SKILLS[report];
+
+  if (skillMargin < 30) {
+    return 0;
+  }
+
+  const auto estimatedEscapeChance
+    = 1.0
+    - (1.0
+      / (floor(skillMargin / 15) * confidenceFactor(_7kaaSpy))
+    );
+
+  return std::clamp(estimatedEscapeChance, 0.0, 1.0);
 }
 
 } // namespace Ambition::Spy
