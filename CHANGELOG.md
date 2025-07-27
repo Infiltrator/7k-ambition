@@ -30,6 +30,9 @@ speaking, considered to be the player's experience.
   tilesets.
 - Fixed some build guidelines appearing a different colour on top of
   highlighting.
+- Fixed the Villages Report yearly Firm costs, Military Report yearly Unit
+  costs, and War Machine yearly costs showing up 10% higher than actual, now
+  that the day accounting bug has been fixed and reduced these costs again.
 - Fixed save file names and dates running off on the right side of the load
   screen, creating artefacts.  This was especially problematic in some
   non-English languages where the text is wider or longer.

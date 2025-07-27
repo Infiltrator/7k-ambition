@@ -1679,8 +1679,6 @@ void printMilitaryReportCostLine(
     = unitID == -1
       ? GENERAL_YEAR_SALARY
       : unit_res[unitID]->year_cost;
-  /* Adjust for the day accounting bug. */
-  yearlyUnitCost = yearlyUnitCost * 11 / 10;
 
   /* Generals who are spies only get paid their spy salary, and do not show up
      under general expenses. */
@@ -1774,8 +1772,6 @@ void printMilitaryReportTotalCost(
         ];
     }
   }
-  /* Adjust for the day accounting bug. */
-  totalUnitCost = totalUnitCost * 11 / 10;
 
   const auto totalCostCell = rowArea.intersection(
     Ambition::UserInterface::MilitaryReport::UnitList::TotalCost::VALUE
@@ -1959,8 +1955,7 @@ void printWarMachineInBuildingInformation(
   );
   UserInterface::printText(
     font_san,
-    /* Adjust for the day accounting bug. */
-    format("$%'.0f", _7kaaUnitInformation->year_cost * 1.1),
+    format("$%'d", _7kaaUnitInformation->year_cost),
     FIELD_1_VALUE_AREA,
     UserInterface::Clear::EntireArea
   );
@@ -2021,8 +2016,7 @@ int printWarMachineInformation(
     FIELD_1_AREA.start.top,
     _("Yearly Upkeep"),
     FIELD_1_AREA.inner(NAME.width, 0, 0, 0).start.left,
-    /* Adjust for the day accounting bug. */
-    _7kaaUnitInformation->year_cost * 1.1,
+    _7kaaUnitInformation->year_cost,
     2,
     FIELD_1_AREA.end.left,
     refreshFlag

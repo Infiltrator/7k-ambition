@@ -31,6 +31,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed build guidelines not being clearly visible on Snow and Badlands tilesets."),
           _("Fixed some build guidelines appearing a different colour on top of highlighting."),
+          _("Fixed the Villages Report yearly Firm costs, Military Report yearly Unit costs, and War Machine yearly costs showing up 10% higher than actual, now that the day accounting bug has been fixed and reduced these costs again."),
           _("Fixed save file names and dates running off on the right side of the load screen, creating artefacts.  This was especially problematic in some non-English languages where the text is wider or longer."),
           _("Fixed a crash when selling or demolishing an empty Fort which has a rally point."),
           _("Fixed Spy steal report escape chances not actually depending on the type of report stolen.  Now, different report types will have different chances of escape after stealing them."),
