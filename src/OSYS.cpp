@@ -2839,6 +2839,22 @@ int Sys::chdir_to_game_dir()
          return 1;
    }
 
+#if defined(USE_POSIX) && defined(PACKAGE_DATA_WITH_EXE)
+   /* tests for data local to exe on linux */
+   char *path = realpath("/proc/self/exe", NULL);
+   if( path )
+   {
+      char *pos = strrchr(path, '/');
+      if( pos )
+         *pos = 0;
+      chdir(path);
+      free(path);
+      if (misc.is_file_exist(test_file))
+         return 1;
+   }
+#endif
+
+#ifdef HAVE__NSGETEXECUTABLEPATH
    /* on Mac OS X, test the bundle resources directory */
    std::string bundle_resources_path = get_bundle_resources_path();
    if (!bundle_resources_path.empty())
@@ -2847,9 +2863,10 @@ int Sys::chdir_to_game_dir()
       if (misc.is_file_exist(test_file))
 	 return 1;
    }
+#endif
 
-   // test compile time path
-#ifdef PACKAGE_DATA_DIR
+#ifdef USE_FHS
+   /* tests compile time path */
    chdir(PACKAGE_DATA_DIR);
    if (misc.is_file_exist(test_file))
       return 1;

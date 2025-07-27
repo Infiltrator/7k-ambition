@@ -239,7 +239,7 @@ const char *LocaleRes::get_locale_dir()
 		return "locale";
 	if( misc.is_file_exist(getenv("SKLOCALE")) )
 		return getenv("SKLOCALE");
-#ifdef LOCALE_DIR
+#ifdef USE_FHS
 	if( misc.is_file_exist(LOCALE_DIR) )
 		return LOCALE_DIR;
 #endif

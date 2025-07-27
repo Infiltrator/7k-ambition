@@ -130,6 +130,11 @@ AC_ARG_ENABLE([debug],
   [], [enable_debug=no]
 )
 
+AC_ARG_ENABLE([fhs],
+  AS_HELP_STRING([--disable-fhs], [disable fhs support]),
+  [], [enable_fhs=yes]
+)
+
 AC_ARG_ENABLE([multiplayer],
   AS_HELP_STRING([--disable-multiplayer], [disable multiplayer support in menu]),
   [], [enable_multiplayer=yes]
@@ -163,6 +168,7 @@ AM_CONDITIONAL([USE_WINDOWS],  [test "$platform"      = windows])
 AM_CONDITIONAL([USE_ASM],      [test "$enable_asm"    = yes])
 AM_CONDITIONAL([USE_CURL],     [test "$enable_curl"   = yes])
 AM_CONDITIONAL([USE_ENET],     [test "$enable_enet"   = yes])
+AM_CONDITIONAL([USE_FHS],      [test "$enable_fhs"    = yes])
 
 # Sync multiplayer support options
 AS_IF([test "$enable_multiplayer" = yes], [

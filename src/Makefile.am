@@ -287,10 +287,12 @@ bin_PROGRAMS = 7kaa
 	vgautil.cpp \
 	vgautil2.cpp
 
-AM_CPPFLAGS = \
-	-I$(top_srcdir)/include \
-	-DPACKAGE_DATA_DIR=\"$(pkgdatadir)\" \
+AM_CPPFLAGS = -I$(top_srcdir)/include
+
+if USE_FHS
+AM_CPPFLAGS += -DPACKAGE_DATA_DIR=\"$(pkgdatadir)\" \
 	-DLOCALE_DIR=\"$(localedir)\"
+endif
 
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
