@@ -193,7 +193,7 @@ void OptionMenu::enter(char untilExitFlag)
 	{
 		auto cycle = 0;
 
-		while( is_active() )
+		while( is_active() && !sys.signal_exit_flag )
 		{
 			if (cycle < 2) {
 				cycle++;

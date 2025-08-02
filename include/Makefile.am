@@ -64,6 +64,7 @@ noinst_HEADERS = \
 	OGET.h \
 	OGETA.h \
 	OGFILE.h \
+	OGF_REC.h \
 	OGF_V1.h \
 	OGODRES.h \
 	OGRPSEL.h \
@@ -127,9 +128,6 @@ noinst_HEADERS = \
 	OSPY.h \
 	OSTR.h \
 	OSYS.h \
-	OSaveGameArray.h \
-	OSaveGameInfo.h \
-	OSaveGameProvider.h \
 	OTALKMSG.h \
 	OTALKRES.h \
 	OTARRAY.h \
@@ -174,11 +172,8 @@ noinst_HEADERS = \
 	c99_printf.h \
 	dbglog.h \
 	file_input_stream.h \
-	file_io_visitor.h \
 	file_output_stream.h \
-	file_reader.h \
 	file_util.h \
-	file_writer.h \
 	gettext-gnu.h \
 	gettext.h \
 	input_stream.h \

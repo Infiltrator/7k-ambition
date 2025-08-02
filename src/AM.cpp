@@ -42,7 +42,7 @@
 #include <OFONT.h>
 #include <OGAME.h>
 #include <OGAMESET.h>
-#include <OSaveGameArray.h>
+#include <OGFILE.h>
 #include <OGAMHALL.h>
 #include <OGODRES.h>
 #include <OHELP.h>
@@ -115,7 +115,7 @@
 //------- define game version constant --------//
 
 	const char *GAME_VERSION_STR = SKVERSION;
-	const int GAME_VERSION = 212;	// Version 2.00, don't change it unless the format of save game files has been changed
+	const int GAME_VERSION = 213;	// Version 2.00, don't change it unless the format of save game files has been changed
 
 //-------- System class ----------//
 
@@ -231,7 +231,8 @@ Battle            battle;
 Power             power;
 World             world;
 char              scenario_file_name[FilePath::MAX_FILE_PATH+1];
-SaveGameArray     save_game_array;
+GameFileArray     game_file_array;
+GameFile          game_file;
 nsPlayerStats::PlayerStats playerStats;
 HallOfFame        hall_of_fame;
 // ###### begin Gilbert 23/10 #######//
@@ -409,7 +410,7 @@ static void extra_error_handler()
 	if( game.game_mode != GAME_SINGLE_PLAYER )
 		return;
 
-	save_game_array.save_new_game("ERROR.SAV");  // save a new game immediately without prompting menu
+	game_file_array.save_new_game("ERROR.SAV");  // save a new game immediately without prompting menu
 
 	box.msg( "Error encountered. The game has been saved to ERROR.SAV" );
 }

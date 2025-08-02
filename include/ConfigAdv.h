@@ -27,6 +27,9 @@
 #include <GAMEDEF.h>
 #include <stdint.h>
 
+struct ConfigAdvGF;
+class File;
+
 class ConfigAdv
 {
 public:
@@ -46,14 +49,24 @@ public:
 	uint32_t		flags;
 
 	// firm settings
+	char			firm_ai_enable_think_spy_capture;
 	char			firm_mobilize_civilian_aggressive;
 	char			firm_migrate_stricter_rules;
 
 	// bug fix settings
+	char			fix_ai_consider_trade_treaty;
 	char			fix_path_blocked_by_team;
 	char			fix_recruit_dec_loyalty;
 	char			fix_sea_travel_final_move;
 	char			fix_town_unjob_worker;
+	int			fix_world_warp_slop;
+
+	// game settings
+	int			game_load_default_frame_speed;
+	int			game_new_default_frame_speed;
+
+	// game file settings
+	char			game_file_patching;
 
 	// locale settings
 	char			locale[LOCALE_LEN+1];
@@ -65,14 +78,25 @@ public:
 	char			monster_alternate_attack_curve;
 	int			monster_attack_divisor;
 
+	// mp settings
+	char*			mp_service_addr;
+
 	// nation settings
+	char			nation_ai_defeat_when_no_towns;
+	char			nation_ai_no_treaty_with_biggest;
 	char			nation_ai_unite_min_relation_level;
 	int			nation_start_god_level;
 	int			nation_start_tech_inc_all_level;
 
+	// news settings
+	char			news_notify_complete;
+
 	// race settings
 	char			race_random_list[MAX_RACE];
 	int			race_random_list_max;
+
+	// rebel settings
+	char			rebel_think_town_action;
 
 	// remote settings
 	char		        remote_compare_object_crc;
@@ -116,6 +140,14 @@ public:
 	int			load(char *filename);
 	void			reset();
 	int			set(char *name, char *value);
+
+	//--------- file functions -----------//
+
+	int			write_file(File* filePtr);
+	int			read_file(File* filePtr);
+
+	void			write_record(ConfigAdvGF *r);
+	void			read_record(ConfigAdvGF *r);
 
 private:
 	void			update_check_sum(char *name, char *value);

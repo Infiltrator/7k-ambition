@@ -16,30 +16,6 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign])
 ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([no])])
 
-dnl Utility definitions
-
-dnl SEARCH_LIB_FLAGS(FUNCTION, LIB-FLAGS,
-dnl		     [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]])
-AC_DEFUN([SEARCH_LIB_FLAGS], [
-  ac_save_LIBS="$LIBS"
-  ac_check_libs_found=no
-  AS_FOR([], [ac_lib], [$2], [
-    LIBS="$ac_lib $ac_save_LIBS"
-    AC_MSG_CHECKING([for $1 in $ac_lib])
-    AC_LINK_IFELSE([AC_LANG_CALL([], [$1])], [
-      AC_MSG_RESULT([yes])
-      ac_check_libs_found=yes
-      $3
-      break
-    ], [
-      AC_MSG_RESULT([no])
-    ])
-  ])
-  AS_IF([test "$ac_check_libs_found" = no], [
-    $4
-  ])
-])
-
 # Checks for programs.
 AC_LANG(C++)
 AC_PROG_CXX
@@ -161,6 +137,11 @@ AC_ARG_ENABLE([debug],
   [], [enable_debug=no]
 )
 
+AC_ARG_ENABLE([fhs],
+  AS_HELP_STRING([--disable-fhs], [disable fhs support]),
+  [], [enable_fhs=yes]
+)
+
 AC_ARG_ENABLE([mem-class],
   AS_HELP_STRING([--enable-mem-class],
   [enable Mem class for memory managementmonitoring]),
@@ -200,6 +181,7 @@ AM_CONDITIONAL([USE_WINDOWS],  [test "$platform"      = windows])
 AM_CONDITIONAL([USE_ASM],      [test "$enable_asm"    = yes])
 AM_CONDITIONAL([USE_CURL],     [test "$enable_curl"   = yes])
 AM_CONDITIONAL([USE_ENET],     [test "$enable_enet"   = yes])
+AM_CONDITIONAL([USE_FHS],      [test "$enable_fhs"    = yes])
 
 # Sync multiplayer support options
 AS_IF([test "$enable_multiplayer" = yes], [
@@ -283,9 +265,7 @@ LIBS="$SDL_LIBS $LIBS"
 
 AS_IF([test "$enable_enet" = yes], [
   PKG_CHECK_MODULES([ENET], [libenet], [], [
-    SEARCH_LIB_FLAGS([enet_initialize], ["-lenet -lws2_32 -lwinmm" -lenet],, [
-      AC_MSG_ERROR(enet not found)
-    ])
+    AC_MSG_ERROR(enet not found)
   ])
 
   LIBS="$LIBS $ENET_LIBS"

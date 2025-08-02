@@ -108,6 +108,8 @@ bin_PROGRAMS = 7k-ambition
 	OGFILE.cpp \
 	OGFILE2.cpp \
 	OGFILE3.cpp \
+	OGFILEA.cpp \
+	OGF_REC.cpp \
 	OGF_V1.cpp \
 	OGODRES.cpp \
 	OGRPSEL.cpp \
@@ -165,9 +167,6 @@ bin_PROGRAMS = 7k-ambition
 	OR_TECH.cpp \
 	OR_TOWN.cpp \
 	OR_TRADE.cpp \
-	OSaveGameArray.cpp \
-	OSaveGameInfo.cpp \
-	OSaveGameProvider.cpp \
 	OSCROLL.cpp \
 	OSE.cpp \
 	OSERES.cpp \
@@ -278,9 +277,7 @@ bin_PROGRAMS = 7k-ambition
 	dbglog.cpp \
 	file_input_stream.cpp \
 	file_output_stream.cpp \
-	file_reader.cpp \
 	file_util.cpp \
-	file_writer.cpp \
 	input_stream.cpp \
 	mem_input_stream.cpp \
 	misc_uuid.cpp \
@@ -290,9 +287,12 @@ bin_PROGRAMS = 7k-ambition
 	vgautil.cpp \
 	vgautil2.cpp
 
-AM_CPPFLAGS = \
-	-DPACKAGE_DATA_DIR=\"$(pkgdatadir)\" \
+AM_CPPFLAGS = -I$(top_srcdir)/include
+
+if USE_FHS
+AM_CPPFLAGS += -DPACKAGE_DATA_DIR=\"$(pkgdatadir)\" \
 	-DLOCALE_DIR=\"$(localedir)\"
+endif
 
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)

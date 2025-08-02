@@ -57,6 +57,8 @@ enum { RESTOCK_ANY = 0,
 
 //------- Define class MarketInfo --------//
 
+struct MarketGoodsGF;
+
 #pragma pack(1)
 struct MarketGoods
 {
@@ -80,12 +82,16 @@ struct MarketGoods
 	float		last_year_sales;
 	float		sales_365days()		{ return last_year_sales*(365-info.year_day)/365 +
 											  cur_year_sales; }
+
+	void		write_record(MarketGoodsGF *r);
+	void		read_record(MarketGoodsGF *r);
 };
 #pragma pack()
 
-struct FirmMarketCrc;
-
 //------- Define class FirmMarket --------//
+
+struct FirmMarketCrc;
+struct FirmMarketGF;
 
 #pragma pack(1)
 class FirmMarket : public Firm
@@ -140,8 +146,6 @@ public:
 
 	void		process_ai();	// ai process entry point
 
-	int		read_derived_file(File* filePtr);
-
 	int		is_raw_market();
 	int		is_retail_market();
 	void		switch_restock();
@@ -150,6 +154,11 @@ public:
 	virtual	uint8_t crc8();
 	virtual	void	clear_ptr();
 	virtual	void	init_crc(FirmMarketCrc *c);
+
+	int		write_derived_file(File *filePtr);
+	int		read_derived_file(File *filePtr);
+	void		write_derived_record(FirmMarketGF *r);
+	void		read_derived_record(FirmMarketGF *r);
 
 private:
 	void		put_market_info(int dispY1, int refreshFlag);

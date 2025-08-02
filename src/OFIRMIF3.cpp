@@ -43,7 +43,6 @@
 //-------- Define bribe amounts ---------//
 
 #define BRIBE_AMOUNT_COUNT  6
-#define MAX_BRIBE_AMOUNT	 4000
 
 static short bribe_amount_array[] = { 500, 1000, 1500, 2000, 3000, 4000 };
 

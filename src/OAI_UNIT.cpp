@@ -144,23 +144,25 @@ Unit* Nation::find_skilled_unit(int skillId, int raceId, short destX, short dest
 		if( raceId && unitPtr->race_id != raceId )
 			continue;
 
+		if( unitPtr->skill.skill_id!=skillId || unitPtr->skill.skill_level < TRAIN_SKILL_LEVEL )
+			continue;
+
 		//---- if this unit is on a mission ----//
 
 		if( unitPtr->home_camp_firm_recno )
-			continue;
-
-		if( unitPtr->region_id() != destRegionId )
 			continue;
 
 		//----- if this is a mobile unit ------//
 
 		if( unitPtr->is_visible() )
 		{
+			if( unitPtr->region_id() != destRegionId )
+				continue;
+
 			if( !unitPtr->is_ai_all_stop() )
 				continue;
 
-			if( unitPtr->skill.skill_id==skillId &&
-				 unitPtr->cur_action!=SPRITE_ATTACK && !unitPtr->ai_action_id )
+			if( unitPtr->cur_action!=SPRITE_ATTACK && !unitPtr->ai_action_id )
 			{
 				curDist = misc.points_distance(unitPtr->next_x_loc(), unitPtr->next_y_loc(), destX, destY);
 
@@ -197,13 +199,18 @@ Unit* Nation::find_skilled_unit(int skillId, int raceId, short destX, short dest
 		{
 			firmPtr = firm_array[unitPtr->unit_mode_para];
 
-			if( !firmPtr->under_construction )		// only if the unit is repairing instead of constructing the firm
+			if( firmPtr->region_id != destRegionId )
+				continue;
+
+			//--- skip if the unit is constructing or needed to finish repairing ---//
+
+			if( firmPtr->under_construction || (firmPtr->hit_points*100/firmPtr->max_hit_points)<=90 || info.game_date <= firmPtr->last_attacked_date+8 )
+				continue;
+
+			if( firmPtr->set_builder(0) )			// return 1 if the builder is mobilized successfully, 0 if the builder was killed because of out of space on the map
 			{
-				if( firmPtr->set_builder(0) )			// return 1 if the builder is mobilized successfully, 0 if the builder was killed because of out of space on the map
-				{
-					skilledUnit = unitPtr;
-					break;
-				}
+				skilledUnit = unitPtr;
+				break;
 			}
 		}
 	}

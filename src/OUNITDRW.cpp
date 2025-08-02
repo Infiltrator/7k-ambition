@@ -128,15 +128,18 @@ void Unit::draw(const int outlined)
 
 		//---- also draw square on units that this unit is attacking ----//
 
-		if( action_mode==ACTION_ATTACK_UNIT )
+		if( is_own() || !nation_array.player_recno )
 		{
-			if( !unit_array.is_deleted(action_para) )
+			if( action_mode==ACTION_ATTACK_UNIT &&
+				!unit_array.is_deleted(action_para) )
+			{
 				unit_array[action_para]->draw_selected();
-		}
-		else if( action_mode==ACTION_ATTACK_FIRM )
-		{
-			if( !firm_array.is_deleted(action_para) )
+			}
+			else if( action_mode==ACTION_ATTACK_FIRM &&
+				!firm_array.is_deleted(action_para) )
+			{
 				firm_array[action_para]->draw_selected();
+			}
 		}
 	}
 

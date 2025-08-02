@@ -2242,7 +2242,10 @@ void Unit::handle_blocked_by_idle_unit(Unit *unitPtr)
 		return;
 	}
 
-	stop(KEEP_DEFENSE_MODE);
+	if( config_adv.fix_path_blocked_by_team )
+		stop(KEEP_PRESERVE_ACTION);
+	else
+		stop(KEEP_DEFENSE_MODE);
 
 	//--------------------------------------------------------------------------------//
 	// improved version!!!

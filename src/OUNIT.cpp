@@ -1813,7 +1813,7 @@ void Unit::inc_minor_combat_level(int incLevel)
 
    skill.combat_level_minor += incLevel;
 
-   if( skill.combat_level_minor > 100 )
+   if( skill.combat_level_minor >= 100 )
    {
       if( skill.combat_level < 100 )
          set_combat_level(skill.combat_level+1);
@@ -1828,11 +1828,11 @@ void Unit::inc_minor_combat_level(int incLevel)
 //
 void Unit::inc_minor_skill_level(int incLevel)
 {
-   err_when( incLevel<0 || incLevel>100 );
+   err_when( incLevel<0 );
 
    skill.skill_level_minor += incLevel;
 
-   if( skill.skill_level_minor > 100 )
+   while( skill.skill_level_minor >= 100 )
    {
       if( skill.skill_level < 100 )
          skill.skill_level++;
@@ -2316,8 +2316,13 @@ int Unit::can_spy_change_nation()
          if( unit_array.is_deleted(unitRecno) )    // the unit is dying, its recno is still in the location
             continue;
 
-         if( unit_array[unitRecno]->true_nation_recno() != trueNationRecno )
+         Unit* unitPtr = unit_array[unitRecno];
+
+         if( unitPtr->true_nation_recno() != trueNationRecno &&
+             unitPtr->nation_recno != trueNationRecno )
+         {
             return 0;
+         }
       }
    }
 
@@ -2397,7 +2402,7 @@ uint8_t Unit::region_id()
 	}
 	else
 	{
-		if( unit_mode == UNIT_MODE_OVERSEE )
+		if( unit_mode == UNIT_MODE_OVERSEE || unit_mode == UNIT_MODE_CONSTRUCT )
 			return firm_array[unit_mode_para]->region_id;
 	}
 

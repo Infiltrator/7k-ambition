@@ -812,7 +812,12 @@ void Town::set_nation(int newNationRecno)
 	//---- if there is unit being trained currently, change its nation ---//
 
 	if( train_unit_recno )
-		unit_array[train_unit_recno]->change_nation(newNationRecno);
+	{
+		if( newNationRecno )
+			unit_array[train_unit_recno]->change_nation(newNationRecno);
+		else // independent nations cannot train units
+			cancel_train_unit();
+	}
 
 	//-------- update loyalty ---------//
 
@@ -3297,7 +3302,7 @@ void Town::distribute_demand()
 
 //------- Begin of function Town::setup_link ---------//
 //
-void Town::setup_link()
+void Town::setup_link(int reload)
 {
 	//-----------------------------------------------------------------------------//
 	// check the connected firms location and structure if ai_link_checked is true
@@ -3311,7 +3316,8 @@ void Town::setup_link()
 	Firm* firmPtr;
 	FirmInfo* firmInfo;
 
-	linked_firm_count = 0;
+	if( !reload )
+		linked_firm_count = 0;
 
 	for( firmRecno=firm_array.size() ; firmRecno>0 ; firmRecno-- )
 	{
@@ -3320,6 +3326,11 @@ void Town::setup_link()
 
 		firmPtr  = firm_array[firmRecno];
 		firmInfo = firm_res[firmPtr->firm_id];
+
+		//---- if we are loading make sure it's not linked already ----//
+
+		if( reload && firmPtr->is_linked_to_town(town_recno) )
+			continue;
 
 		if( !firmInfo->is_linkable_to_town )
 			continue;
@@ -3391,7 +3402,8 @@ void Town::setup_link()
 
 	//----- build town-to-town link relationship -------//
 
-	linked_town_count = 0;
+	if( !reload )
+		linked_town_count = 0;
 
 	int   townRecno;
 	Town* townPtr;
@@ -3402,6 +3414,11 @@ void Town::setup_link()
 			continue;
 
 		townPtr = town_array[townRecno];
+
+		//---- if we are loading make sure it's not linked already ----//
+
+		if( reload && townPtr->is_linked_to_town(town_recno) )
+			continue;
 
 		//------ check if the town is close enough to this town -------//
 
@@ -4206,7 +4223,7 @@ void Town::get_most_populated_race(int& mostRaceId1, int& mostRaceId2)
 			mostRaceId2 = mostRaceId1;
 			mostRaceId1 = i+1;
 		}
-		else if( racePop >= mostRaceId2 )
+		else if( racePop >= mostRacePop2 )
 		{
 			mostRacePop2 = racePop;
 			mostRaceId2  = i+1;
@@ -4616,6 +4633,28 @@ int Town::closest_own_camp()
 	return closestFirmRecno;
 }
 //-------- End of function Town::closest_own_camp ---------//
+
+
+//------- Begin of function Town::is_linked_to_firm -------//
+int Town::is_linked_to_firm(short firmRecno)
+{
+	for( int i=0; i<linked_firm_count; i++ )
+		if( linked_firm_array[i] == firmRecno )
+			return 1;
+	return 0;
+}
+//-------- End of function Town::is_linked_to_firm ---------//
+
+
+//------- Begin of function Town::is_linked_to_town -------//
+int Town::is_linked_to_town(short townRecno)
+{
+	for( int i=0; i<linked_town_count; i++ )
+		if( linked_town_array[i] == townRecno )
+			return 1;
+	return 0;
+}
+//-------- End of function Town::is_linked_to_town ---------//
 
 
 //-------- Begin of static function random_race --------//

@@ -20,7 +20,7 @@
 %*
 
 \documentclass[openany]{book}
-\usepackage[paperwidth=5.51in, paperheight=8.81in, top=0.6205in, bottom=1.005in, right=0.505in, left=0.705in,]{geometry} % From the original manual. Do not change.
+\usepackage[paperwidth=5.51in, paperheight=8.51in, top=0.6205in, bottom=1.005in, right=0.505in, left=0.705in,]{geometry} % From the original manual. Do not change.
 
 % Fonts:
 \usepackage[utf8]{inputenc} % Now we can write UTF8 characters directly in the .tex files
@@ -32,11 +32,27 @@
 % Graphics, figures and tables:
 \usepackage{graphicx} % Basic support for figures
 \graphicspath{{assets/}}
+\usepackage[document]{ragged2e} % load soon to avoid conflicts
+\usepackage{pdfpages}
 \usepackage{wrapfig} % Wrap figure around text
 \usepackage{xcolor} % An extended support for colors, required by tabu
 \usepackage{colortbl} % Pretty colored tables, required by tabu
 \usepackage{longtable} % for long tables spanning multiple pages, required by tabu
 \usepackage{tabu} % for any sort of tables, unifies other environments into tabu and longtabu, but does not load required packages
+
+% Table of contents
+\usepackage{tocloft}
+\renewcommand{\cftsecdotsep}{\cftnodots} % remove dots in toc
+\renewcommand{\cftsecleader}{\hspace{1em}} % reduce space between sec. and pg # in toc
+\renewcommand{\cftchapleader}{\hspace{1em}} % reduce space between chap. and pg # in toc
+\renewcommand{\cftchapnumwidth}{0pt} % don't indent chapter titles in toc
+\renewcommand\numberline[1]{} % don't number anything in the toc
+\renewcommand{\cftaftertoctitle}{\par\noindent\rule{\linewidth}{0.4pt}} % add line under toc title
+\addtolength{\cftbeforetoctitleskip}{3cm} % add more whitespace at top of page for toc
+\setlength{\cftaftertoctitleskip}{10pt} % reduce whitespace between toc title and first chap title
+\setlength{\cftbeforesecskip}{0.25em} % vertical space between section titles in toc
+\setlength{\cftsecindent}{2.5em} % indent sectioning in toc
+\setcounter{tocdepth}{1} % Display only chapters and sections in toc - from the original manual.
 
 % Miscellaneous 
 \usepackage{fancyhdr} % An extended support for fancy headers and footers
@@ -87,18 +103,8 @@
     \makeindex
 \usepackage[hidelinks]{hyperref} % For the index and TOC but not for external links. Non color, frameless links from the original manual.
 
-%\usepackage{showframe} % For testing.
-
-% -- New Environment -- %
-% \raggedright % From the original manual.
-\setcounter{tocdepth}{1} % Display only chapters and sections in toc - from the original manual.
-\setcounter{secnumdepth}{0}
-\makeatletter
-\renewcommand\@dotsep{140} % default value 4.5
-\makeatother
-% -- New Environment end -- %
-
-% -- Additional Options -- %
+\raggedbottom
+\setcounter{secnumdepth}{0} % don't number any of the sectioning
 
 \setlength{\parskip}{1ex} % From the original manual.
 \setlength{\parindent}{0pt} % From the original manual.
@@ -108,6 +114,8 @@
 % -- Additional Options end -- %
 
 \begin{document}
+
+\setcounter{page}{0}\includepdf{cover-front}
 
 \title{
 \includegraphics[width=0.9\linewidth]{7klogo}~\\[1cm]
@@ -198,5 +206,7 @@ This manual is part of the community project. It has been updated to reflect the
 \cleardoublepage
 \addcontentsline{toc}{chapter}{Index}
 \printindex
+
+\includepdf{cover-back}
 
 \end{document}

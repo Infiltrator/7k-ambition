@@ -105,7 +105,7 @@ void InGameMenu::enter(char untilExitFlag)
    {
       auto cycle = 0;
 
-      while( is_active() )
+      while( is_active() && !sys.signal_exit_flag )
       {
          if (cycle < 2) {
             cycle++;
@@ -185,6 +185,9 @@ int InGameMenu::detect()
 {
    if( !active_flag )
       return 0;
+
+   if( mouse.key_code==KEY_F11 )
+      sys.capture_screen();  // quick way to save map ID with mini map
 
    int i, y=GAME_OPTION_Y1, x2, y2;
 

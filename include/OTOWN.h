@@ -83,6 +83,8 @@
 
 //-------- Define class Town ----------//
 
+struct TownGF;
+
 class Unit;
 #pragma pack(1)
 class Town
@@ -202,9 +204,6 @@ public:
 
 	int 	 closest_own_camp();
 
-	//========== NOTE: The following members are not loaded from/saved to file ==========//
-	enum {SIZEOF_NONSAVED_ELEMENTS = sizeof(int)+sizeof(bool)};
-
 	//--------- town network ----------//
 	int		town_network_recno;						// The recno of the town network this town belongs to. Note: this value can change between saving and loading.
 	bool	town_network_pulsed;					// Used for pulsing the town network to check which parts are still connected. Must always be set to false, and can only be true during a pulse-operation
@@ -242,13 +241,15 @@ public:
 	int 	pick_random_race(int pickNonRecruitableAlso, int pickSpyFlag);
 	int 	camp_influence(int unitRecno);
 
-	void  setup_link();
+	void  setup_link(int reload=0);
 	void  release_link();
 	void  release_firm_link(int);
 	void  release_town_link(int);
 	int	  linked_active_camp_count();
 	int   can_toggle_firm_link(int firmRecno);
 	void  update_camp_link();
+	int   is_linked_to_firm(short townRecno);
+	int   is_linked_to_town(short townRecno);
 
 	void  init_pop(int raceId, int addPop, int loyalty, int hasJob=0, int firstInit=0);
 	void  inc_pop(int raceId, int unitHasJob, int unitLoyalty);
@@ -311,6 +312,8 @@ public:
 
 	int   write_file(File*);
 	int   read_file(File*);
+	void  write_record(TownGF *r);
+	void  read_record(TownGF *r);
 
 	//-------- ai functions ---------//
 
@@ -413,6 +416,9 @@ private:
 
 //-------- Begin of class TownArray ------------//
 
+struct TownArrayGF;
+struct Version_1_TownArrayGF;
+
 class TownArray : public DynArrayB
 {
 public:
@@ -447,8 +453,11 @@ public:
 
 	void	stop_attack_nation(short nationRecno);
 
-   int   write_file(File*);
-   int   read_file(File*);
+	int   write_file(File*);
+	int   read_file(File*);
+	void  write_record(TownArrayGF *r);
+	void  read_record(TownArrayGF *r);
+	void  read_record_v1(Version_1_TownArrayGF *r);
 
 	int   is_deleted(int recNo);
 
@@ -459,6 +468,7 @@ public:
 	#endif
 
 	void  disp_next(int seekDir, int sameNation);
+	void  update_town_links();
 };
 
 extern TownArray town_array;

@@ -192,7 +192,7 @@ void Sys::process()
 
 	//------ check if it's time for the next day ------//
 
-	if( ++day_frame_count > FRAMES_PER_DAY )
+	if( ++day_frame_count >= FRAMES_PER_DAY )
 	{
 		LOG_MSG("begin info.next_day()");
 		info.next_day();
@@ -398,7 +398,6 @@ void Sys::detect_button()
 		update_view();
 		Ambition::Draw::printGameSpeed(0);
 		// ##### begin Gilbert 5/11 #######//
-		// game.in_game_menu();
 		in_game_menu.enter(!remote.is_enable());
 		// ##### end Gilbert 5/11 #######//
 		return;

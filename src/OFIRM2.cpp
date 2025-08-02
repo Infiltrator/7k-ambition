@@ -123,6 +123,8 @@ void Firm::kill_worker(int workerId)
 		selected_worker_id = 0;
 
 	err_when( selected_worker_id > worker_count );
+
+	sort_worker();
 }
 //----------- End of function Firm::kill_worker -----------//
 
@@ -199,7 +201,7 @@ int Firm::find_idle_builder(int nearest)
 		if( unitPtr->skill.skill_id != SKILL_CONSTRUCTION )
 			continue;
 
-		if( unitPtr->is_visible() && unitPtr->region_id() != region_id )
+		if( unitPtr->region_id() != region_id )
 			continue;
 
 		if( unitPtr->unit_mode == UNIT_MODE_CONSTRUCT )

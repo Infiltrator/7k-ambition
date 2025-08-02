@@ -26,6 +26,7 @@
 #include <OCONFIG.h>
 #include <dbglog.h>
 #include <FilePath.h>
+#include <OGF_REC.h>
 
 DBGLOG_DEFAULT_CHANNEL(Config);
 
@@ -217,8 +218,11 @@ void Config::default_preference()
 
 //--------- Begin of function Config::change_game_setting --------//
 // for synchronize the game setting with the host before a multiplayer game
-void Config::change_game_setting( Config &c )
+void Config::change_game_setting( ConfigGF &in )
 {
+	Config c;
+	c.read_record(&in);
+
 	//-------- game settings  ---------//
 	ai_nation_count        = c.ai_nation_count;
 	start_up_cash          = c.start_up_cash;
@@ -424,7 +428,7 @@ int Config::load(const char *filename)
 	int retFlag = 0;
 
 	// check file size is the same
-	if( configFile.file_size() == 144 )
+	if( configFile.file_size() == sizeof(ConfigGF) )
 	{
 		retFlag = read_file(&configFile);
 	}
@@ -456,7 +460,7 @@ int Config::single_player_difficulty()
 		score += 7;
 	if( fog_of_war )
 		score += 7;
-	score += (7 - MAX(start_up_raw_site, 7)) * 5;
+	score += (7 - MIN(start_up_raw_site, 7)) * 5;
 
 //	if( start_up_cash <= SMALL_STARTUP_RESOURCE )
 //		score += 16;

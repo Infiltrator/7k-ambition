@@ -34,8 +34,8 @@ enum { BUTTON_TYPE_SHELL,		// use the button standard shells combining with bitm
 
 enum { BUTTON_STYLE_ACTION='A' };		// Action button
 
-enum { BUTTON_ACTION_WIDTH=52,
-		 BUTTON_ACTION_HEIGHT=43,
+enum { BUTTON_ACTION_WIDTH=51,
+		 BUTTON_ACTION_HEIGHT=46,
 	  };
 
 //------- Define class Button3D -------//

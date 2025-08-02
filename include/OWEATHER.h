@@ -55,6 +55,8 @@ typedef enum _WeatherType
 
 //--------- Define class Weather ----------//
 
+struct WeatherGF;
+
 #pragma pack(1)
 class Weather
 {
@@ -107,6 +109,8 @@ public:
 
 	int 	write_file(File* filePtr);
 	int	read_file(File* filePtr);
+	void	write_record(WeatherGF *r);
+	void	read_record(WeatherGF *r);
 
 private:
 	short base_temp();
@@ -116,6 +120,8 @@ private:
 
 
 // ------- define class MagicWeather -----------//
+
+struct MagicWeatherGF;
 
 #pragma pack(1)
 class MagicWeather
@@ -145,6 +151,8 @@ public:
 
 	int 	write_file(File* filePtr);
 	int	read_file(File* filePtr);
+	void	write_record(MagicWeatherGF *r);
+	void	read_record(MagicWeatherGF *r);
 
 	friend class Weather;
 };

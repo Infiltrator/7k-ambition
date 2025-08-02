@@ -125,6 +125,18 @@ struct DisplaySort
 };
 
 
+//------------ begin of static function get_zoom_pos -----------//
+static void get_zoom_pos(short posX, short posY, short& xPoint, short& yPoint)
+{
+	xPoint = posX + ZOOM_X1 + (ZOOM_LOC_WIDTH / 2) -
+		(world.zoom_matrix->top_x_loc * ZOOM_LOC_WIDTH);
+
+	yPoint = posY + ZOOM_Y1 + (ZOOM_LOC_HEIGHT / 2) -
+		(world.zoom_matrix->top_y_loc * ZOOM_LOC_HEIGHT);
+}
+//------------ end of static function get_zoom_pos -----------//
+
+
 //------------ begin of static function draw_unit_path_on_zoom_map -----------//
 // ##### begin Gilbert 9/10 #######//
 static void draw_unit_path_on_zoom_map(int displayLayer)
@@ -185,28 +197,11 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 			continue;
 
 		//-----------------------------------------------------------//
-		const auto baseX
-			= ZOOM_X1
-			+ (ZOOM_LOC_WIDTH / 2)
-			- (world.zoom_matrix->top_x_loc * ZOOM_LOC_WIDTH);
-		const auto baseY
-			= ZOOM_Y1
-			+ (ZOOM_LOC_HEIGHT / 2)
-			- (world.zoom_matrix->top_y_loc * ZOOM_LOC_HEIGHT);
 
 		if(unitPtr->cur_x!=unitPtr->go_x || unitPtr->cur_y!=unitPtr->go_y)
 		{
-			lineFromX = unitPtr->go_x - world.zoom_matrix->top_x_loc*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
-			lineFromY = unitPtr->go_y - world.zoom_matrix->top_y_loc*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
-			lineToX = unitPtr->cur_x - world.zoom_matrix->top_x_loc*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
-			lineToY = unitPtr->cur_y - world.zoom_matrix->top_y_loc*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
-
-			if (Ambition::Config::enhancementsAvailable()) {
-				lineFromX = baseX + unitPtr->cur_x;
-				lineFromY = baseY + unitPtr->cur_y;
-				lineToX = baseX + unitPtr->go_x;
-				lineToY = baseY + unitPtr->go_y;
-			}
+			get_zoom_pos(unitPtr->cur_x, unitPtr->cur_y, lineFromX, lineFromY);
+			get_zoom_pos(unitPtr->go_x, unitPtr->go_y, lineToX, lineToY);
 
 			anim_line.draw_line(&vga_back, lineFromX, lineFromY, lineToX, lineToY);
 		}
@@ -215,33 +210,13 @@ static void draw_unit_path_on_zoom_map(int displayLayer)
 		err_when(resultNodeRecno<1);
 		resultNode1 = unitPtr->result_node_array + resultNodeRecno - 1;
 		resultNode2 = resultNode1 + 1;
-		lineToX = (resultNode1->node_x - world.zoom_matrix->top_x_loc)*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
-		lineToY = (resultNode1->node_y - world.zoom_matrix->top_y_loc)*ZOOM_LOC_HEIGHT	+ ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
-
-		if (Ambition::Config::enhancementsAvailable()) {
-			lineFromX = baseX + resultNode1->node_x * ZOOM_LOC_WIDTH;
-			lineFromY = baseY + resultNode1->node_y * ZOOM_LOC_HEIGHT;
-		}
-
+		get_zoom_pos(resultNode1->node_x * ZOOM_LOC_WIDTH, resultNode1->node_y * ZOOM_LOC_HEIGHT, lineFromX, lineFromY);
 		for(j=resultNodeRecno+1; j<=resultNodeCount; j++, resultNode1++, resultNode2++)
 		{
-			if (Ambition::Config::enhancementsAvailable()) {
-				lineToX = baseX + resultNode2->node_x * ZOOM_LOC_WIDTH;
-				lineToY = baseY + resultNode2->node_y * ZOOM_LOC_HEIGHT;
-			} else {
-				lineFromX = (resultNode2->node_x - world.zoom_matrix->top_x_loc)*ZOOM_LOC_WIDTH + ZOOM_X1 + ZOOM_LOC_WIDTH/2;
-				lineFromY = (resultNode2->node_y - world.zoom_matrix->top_y_loc)*ZOOM_LOC_HEIGHT + ZOOM_Y1 + ZOOM_LOC_HEIGHT/2;
-			}
-
+			get_zoom_pos(resultNode2->node_x * ZOOM_LOC_WIDTH, resultNode2->node_y * ZOOM_LOC_HEIGHT, lineToX, lineToY);
 			anim_line.draw_line(&vga_back, lineFromX, lineFromY, lineToX, lineToY);
-
-			if (Ambition::Config::enhancementsAvailable()) {
-				lineFromX = lineToX;
-				lineFromY = lineToY;
-			} else {
-				lineToX = lineFromX;
-				lineToY = lineFromY;
-			}
+			lineFromX = lineToX;
+			lineFromY = lineToY;
 		}
 	}
 }

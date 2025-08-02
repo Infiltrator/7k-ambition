@@ -56,6 +56,7 @@ static const char *keyevent_map[] = {
 	"KEYEVENT_UNIT_RETURN",
 	"KEYEVENT_UNIT_SETTLE",
 	"KEYEVENT_UNIT_UNLOAD",
+	"KEYEVENT_UNIT_CANCEL",
 
 	"KEYEVENT_BUILD_BASE",
 	"KEYEVENT_BUILD_CAMP",
@@ -94,6 +95,7 @@ static const char *keyevent_map[] = {
 	"KEYEVENT_GOTO_SPY",
 	"KEYEVENT_GOTO_SHIP",
 	"KEYEVENT_GOTO_CAMP",
+	"KEYEVENT_GOTO_SELECTED",
 
 	"KEYEVENT_CHEAT_ENABLE1",
 	"KEYEVENT_CHEAT_ENABLE2",
@@ -106,12 +108,35 @@ static const char *keyevent_map[] = {
 	"KEYEVENT_MANUF_QUEUE_REMOVE",
 	"KEYEVENT_MANUF_QUEUE_REMOVE_BATCH",
 
+	"KEYEVENT_SEL_GROUP_1",
+	"KEYEVENT_SEL_GROUP_2",
+	"KEYEVENT_SEL_GROUP_3",
+	"KEYEVENT_SEL_GROUP_4",
+	"KEYEVENT_SEL_GROUP_5",
+	"KEYEVENT_SEL_GROUP_6",
+	"KEYEVENT_SEL_GROUP_7",
+	"KEYEVENT_SEL_GROUP_8",
+	"KEYEVENT_SEL_GROUP_9",
+
+	"KEYEVENT_SET_GROUP_1",
+	"KEYEVENT_SET_GROUP_2",
+	"KEYEVENT_SET_GROUP_3",
+	"KEYEVENT_SET_GROUP_4",
+	"KEYEVENT_SET_GROUP_5",
+	"KEYEVENT_SET_GROUP_6",
+	"KEYEVENT_SET_GROUP_7",
+	"KEYEVENT_SET_GROUP_8",
+	"KEYEVENT_SET_GROUP_9",
+
 	"KEYEVENT_MAX"
 };
+
+static const char *default_service_addr = "battle.7kfans.com";
 
 static int read_int(char *in, int *out);
 static int read_bool(char *in, char *out);
 static int read_key(char *in, char **out, KeyEventMap *event);
+static int read_string(const char *in, char **out);
 
 //--------- Begin of function ConfigAdv::ConfigAdv -----------//
 
@@ -135,6 +160,8 @@ ConfigAdv::ConfigAdv()
 
 	// this is set on program load for LocaleRes
 	locale[0] = 0;
+
+	mp_service_addr = NULL;
 }
 //--------- End of function ConfigAdv::ConfigAdv --------//
 
@@ -143,6 +170,11 @@ ConfigAdv::ConfigAdv()
 
 ConfigAdv::~ConfigAdv()
 {
+	if( mp_service_addr )
+	{
+		mem_del(mp_service_addr);
+		mp_service_addr = NULL;
+	}
 }
 //--------- End of function ConfigAdv::ConfigAdv --------//
 
@@ -233,13 +265,21 @@ int ConfigAdv::load(char *filename)
 //
 void ConfigAdv::reset()
 {
+	firm_ai_enable_think_spy_capture = 0;
 	firm_mobilize_civilian_aggressive = 0;
 	firm_migrate_stricter_rules = 1;
 
+	fix_ai_consider_trade_treaty = 1;
 	fix_path_blocked_by_team = 1;
 	fix_recruit_dec_loyalty = 1;
 	fix_sea_travel_final_move = 1;
 	fix_town_unjob_worker = 1;
+	fix_world_warp_slop = 2;
+
+	game_load_default_frame_speed = 9;
+	game_new_default_frame_speed = 12;
+
+	game_file_patching = 1;
 
 	locale[0] = 0;
 
@@ -248,13 +288,21 @@ void ConfigAdv::reset()
 	monster_alternate_attack_curve = 0;
 	monster_attack_divisor = 4;
 
+	read_string(default_service_addr, &mp_service_addr);
+
+	nation_ai_defeat_when_no_towns = 0;
+	nation_ai_no_treaty_with_biggest = 1;
 	nation_ai_unite_min_relation_level = NATION_NEUTRAL;
 	nation_start_god_level = 0;
 	nation_start_tech_inc_all_level = 0;
 
+	news_notify_complete = 0;
+
 	race_random_list_max = MAX_RACE;
 	for (int i = 0; i < race_random_list_max; i++)
 		race_random_list[i] = i+1;
+
+	rebel_think_town_action = 0;
 
 	remote_compare_object_crc = 1;
 	remote_compare_random_seed = 1;
@@ -304,6 +352,12 @@ int ConfigAdv::set(char *name, char *value)
 		if( !read_key(value, &key, &event) || !mouse.bind_key(event.type, key) )
 			return 0;
 	}
+	else if( !strcmp(name, "firm_ai_enable_think_spy_capture") )
+	{
+		if( !read_bool(value, &firm_ai_enable_think_spy_capture) )
+			return 0;
+		update_check_sum(name, value);
+	}
 	else if( !strcmp(name, "firm_mobilize_civilian_aggressive") )
 	{
 		if( !read_bool(value, &firm_mobilize_civilian_aggressive) )
@@ -313,6 +367,12 @@ int ConfigAdv::set(char *name, char *value)
 	else if( !strcmp(name, "firm_migrate_stricter_rules") )
 	{
 		if( !read_bool(value, &firm_migrate_stricter_rules) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "fix_ai_consider_trade_treaty") )
+	{
+		if( !read_bool(value, &fix_ai_consider_trade_treaty) )
 			return 0;
 		update_check_sum(name, value);
 	}
@@ -340,6 +400,29 @@ int ConfigAdv::set(char *name, char *value)
 			return 0;
 		update_check_sum(name, value);
 	}
+	else if( !strcmp(name, "fix_world_warp_slop") )
+	{
+		if( !read_int(value, &fix_world_warp_slop) )
+			return 0;
+	}
+	else if( !strcmp(name, "game_load_default_frame_speed") )
+	{
+		if( !read_int(value, &game_load_default_frame_speed) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "game_new_default_frame_speed") )
+	{
+		if( !read_int(value, &game_new_default_frame_speed) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "game_file_patching") )
+	{
+		if( !read_bool(value, &game_file_patching) )
+			return 0;
+		update_check_sum(name, value);
+	}
 	else if( !strcmp(name, "locale") )
 	{
 		strncpy(locale, value, LOCALE_LEN);
@@ -355,13 +438,28 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &monster_alternate_attack_curve) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "monster_attack_divisor") )
 	{
 		if( !read_int(value, &monster_attack_divisor) )
 			return 0;
 		if( CHECK_BOUND(monster_attack_divisor, 1, 6) )
+			return 0;
+	}
+	else if( !strcmp(name, "mp_service_addr") )
+	{
+		if( !read_string(value, &mp_service_addr) )
+			return 0;
+	}
+	else if( !strcmp(name, "nation_ai_defeat_when_no_towns") )
+	{
+		if( !read_bool(value, &nation_ai_defeat_when_no_towns) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "nation_ai_no_treaty_with_biggest") )
+	{
+		if( !read_bool(value, &nation_ai_no_treaty_with_biggest) )
 			return 0;
 		update_check_sum(name, value);
 	}
@@ -381,7 +479,6 @@ int ConfigAdv::set(char *name, char *value)
 			nation_ai_unite_min_relation_level = NATION_ALLIANCE+1; // disables
 		else
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "nation_start_god_level") )
 	{
@@ -389,7 +486,6 @@ int ConfigAdv::set(char *name, char *value)
 			return 0;
 		if( CHECK_BOUND(nation_start_god_level, 0, 2) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "nation_start_tech_inc_all_level") )
 	{
@@ -397,7 +493,11 @@ int ConfigAdv::set(char *name, char *value)
 			return 0;
 		if( CHECK_BOUND(nation_start_tech_inc_all_level, 0, 2) )
 			return 0;
-		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "news_notify_complete") )
+	{
+		if( !read_bool(value, &news_notify_complete) )
+			return 0;
 	}
 	else if( !strcmp(name, "race_random_list") )
 	{
@@ -407,12 +507,17 @@ int ConfigAdv::set(char *name, char *value)
 			race_random_list_max = 7;
 			for (int i = 0; i < race_random_list_max; i++)
 				race_random_list[i] = i+1;
-			update_check_sum(name, value);
 		}
 		else
 		{
 			return 0;
 		}
+	}
+	else if( !strcmp(name, "rebel_think_town_action") )
+	{
+		if( !read_bool(value, &rebel_think_town_action) )
+			return 0;
+		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "remote_compare_object_crc") )
 	{
@@ -433,13 +538,11 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_int(value, &town_ai_emerge_nation_pop_limit) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "town_ai_emerge_town_pop_limit") )
 	{
 		if( !read_int(value, &town_ai_emerge_town_pop_limit) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "town_migration") )
 	{
@@ -451,7 +554,6 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &town_loyalty_qol) )
 			return 0;
-		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "unit_ai_team_help") )
 	{
@@ -528,6 +630,7 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &wall_building_allowed) )
 			return 0;
+		update_check_sum(name, value);
 	}
 	else
 	{
@@ -589,5 +692,14 @@ static int read_key(char *in, char **out, KeyEventMap *event)
 	if( i>=(int)KEYEVENT_MAX )
 		return 0;
 	event->index = i;
+	return 1;
+}
+
+static int read_string(const char *in, char **out)
+{
+	*out = mem_resize(*out, strlen(in)+1);
+	if( !*out )
+		return 0;
+	strcpy(*out, in);
 	return 1;
 }

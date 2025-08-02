@@ -57,6 +57,9 @@ void Firm::process_common_ai()
 //
 void Firm::think_repair()
 {
+	if( builder_recno )
+		return;
+
 	Nation* ownNation = nation_array[nation_recno];
 
 	//----- check if the damage is serious enough -----//
@@ -468,6 +471,7 @@ int Firm::think_capture()
 
 	//------- capture the firm --------//
 
+	short oldNation = nation_recno;
 	capture_firm(i);
 
 	//------ order troops to attack nearby enemy camps -----//
@@ -484,7 +488,7 @@ int Firm::think_capture()
 
 		//----- only attack enemy camps -----//
 
-		if( firmPtr->nation_recno != nation_recno ||
+		if( firmPtr->nation_recno != oldNation ||
 			 firmPtr->firm_id != FIRM_CAMP )
 		{
 			continue;

@@ -53,6 +53,8 @@ struct ColorRemapMethod
 
 //--------- Define struct ColorRemap ----------//
 
+struct ColorRemapGF;
+
 #pragma pack(1)
 struct ColorRemap
 {
@@ -63,6 +65,9 @@ public:
 public:
 	void	set_remap_color(ColorRemapMethod*);
    void	load(char*);
+
+	void	write_record(ColorRemapGF *r);
+	void	read_record(ColorRemapGF *r);
 };
 #pragma pack()
 
@@ -82,6 +87,7 @@ struct ScenInfo
 
 //-------- Define class Game -----------//
 
+struct GameGF;
 struct Location;
 struct NewNationPara;
 
@@ -105,8 +111,6 @@ public:
 	void			deinit(int loadGameCall=0);
 
 	void			main_menu();
-   void			in_game_menu();
-	int			in_game_option_menu();
 	void 			game_end(int winNationRecno, int playerDestroyed=0, int surrenderToNationRecno=0, int retireFlag=0);
 
 	int 			select_run_scenario();
@@ -131,6 +135,8 @@ public:
 
 	int 			write_file(File* filePtr);
 	int			read_file(File* filePtr);
+	void			write_record(GameGF *r);
+	void			read_record(GameGF *r);
 
 private:
 	void			init_remap_table();

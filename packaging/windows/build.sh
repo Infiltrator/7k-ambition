@@ -28,8 +28,8 @@ STRIP=${HOST}-strip
 BOOST_PATH="/usr/${HOST}"
 BOOST_OPTION="--with-boost=${BOOST_PATH}"
 
-./configure --disable-silent-rules $HOST_OPT ${BOOST_OPTION}
-make -j6 pkgdatadir="" localedir=locale
+./configure --disable-fhs $HOST_OPT ${BOOST_OPTION}
+make -j6
 make install DESTDIR="${DESTINATION_DIRECTORY}" bindir=/ docdir=/ pkgdatadir=/ localedir=/locale
 $STRIP "${DESTINATION_DIRECTORY}/7k-ambition.exe"
 

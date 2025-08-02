@@ -209,7 +209,7 @@ protected:
     char race_id;
     char rank_id;
     char skill_id;
-    char skill_potential;
+    unsigned char skill_potential;
     short town_recno;
     char unit_id;
 

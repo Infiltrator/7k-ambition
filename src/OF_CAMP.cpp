@@ -690,13 +690,7 @@ void FirmCamp::train_unit()
 					  * (int) overseerUnit->hit_points / overseerUnit->max_hit_points
 					  * (100+overseerUnit->skill.skill_potential*2) / 100;
 
-		overseerUnit->skill.skill_level_minor += incValue;
-
-		if( overseerUnit->skill.skill_level_minor >= 100 )
-		{
-			overseerUnit->skill.skill_level_minor -= 100;
-			overseerUnit->skill.skill_level++;
-		}
+		overseerUnit->inc_minor_skill_level(incValue);
 	}
 
 	//------- increase the commander's combat level ---------//
@@ -706,14 +700,7 @@ void FirmCamp::train_unit()
 		incValue = 20 * (int) overseerUnit->hit_points / overseerUnit->max_hit_points
 					  * (100+overseerUnit->skill.skill_potential*2) / 100;
 
-		overseerUnit->skill.combat_level_minor += incValue;
-
-		if( overseerUnit->skill.combat_level_minor >= 100 )
-		{
-			overseerUnit->skill.combat_level_minor -= 100;
-
-			overseerUnit->set_combat_level(overseerUnit->skill.combat_level+1);
-		}
+		overseerUnit->inc_minor_combat_level(incValue);
 	}
 
 	//------- increase the solider's combat level -------//
@@ -753,15 +740,17 @@ void FirmCamp::train_unit()
 						  * workerPtr->hit_points / workerPtr->max_hit_points()
 						  * workerPtr->skill_potential*2 / 100;
 
-			workerPtr->skill_level_minor += incValue;
+			levelMinor = workerPtr->skill_level_minor + incValue;
 
 			err_when( workerPtr->skill_level >= 100 );
 
-			if( workerPtr->skill_level_minor > 100 )
+			while( levelMinor >= 100 )
 			{
+				levelMinor -= 100;
 				workerPtr->skill_level++;
-				workerPtr->skill_level_minor -= 100;
 			}
+
+			workerPtr->skill_level_minor = levelMinor;
 		}
 	}
 

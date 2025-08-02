@@ -42,7 +42,9 @@
 #include <OSE.h>
 #include <OSERES.h>
 #include <OBUTTCUS.h>
+#include <ONEWS.h>
 #include "gettext.h"
+#include <ConfigAdv.h>
 
 
 //------------- Define constant ------------//
@@ -425,7 +427,7 @@ int FirmWar::detect_build_menu()
 	}
 	//------ detect the cancel button --------//
 
-	if( button_cancel.detect(Ambition::Input::cancelKeyEvent()) || (!waitFlag && mouse.any_click(1)) )
+	if( button_cancel.detect() || (!waitFlag && mouse.any_click(1)) )
 	{
 		// ##### begin Gilbert 25/9 ######//
 		se_ctrl.immediate_sound("TURN_OFF");
@@ -991,6 +993,7 @@ void FirmWar::process_build()
 		}
 
 		const short unitRecordNumber = unit_array.add_unit( build_unit_id, nation_recno, 0, 0, xLoc, yLoc );
+		const auto unitRecno = unitRecordNumber;
 
 		if( firm_array.selected_recno == firm_recno )
 		{
@@ -1000,7 +1003,11 @@ void FirmWar::process_build()
 		}
 
 		if( own_firm() )
+		{
+			if( config_adv.news_notify_complete )
+				news_array.weapon_ship_built(unitRecno, firm_recno);
 			se_res.far_sound(center_x, center_y, 1, 'F', firm_id, "FINS", 'S', unit_res[build_unit_id]->sprite_id);
+		}
 
 		Ambition::Building::sendUnitsToRallyPoint(this, { unitRecordNumber });
 

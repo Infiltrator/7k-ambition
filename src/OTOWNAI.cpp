@@ -185,6 +185,8 @@ void Town::process_ai()
 			LOG_MSG(misc.get_random_seed());
 			return;
 		}
+		if( population==0 ) // if last pop was a foreign spy, town will be deleted
+			return;
 	}
 
 	//---- think about anti-spies activities ----//
@@ -197,6 +199,8 @@ void Town::process_ai()
 			LOG_MSG(misc.get_random_seed());
 			return;
 		}
+		if( population==0 ) // if last pop was a foreign spy, town will be deleted
+			return;
 	}
 
 	//--- think about setting up firms next to this town ---//

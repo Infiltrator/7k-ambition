@@ -49,6 +49,7 @@
 #include <OSE.h>
 #include <OSERES.h>
 #include <OBUTTCUS.h>
+#include <ONEWS.h>
 #include "gettext.h"
 #include <ConfigAdv.h>
 
@@ -2130,7 +2131,11 @@ void Town::finish_train(Unit* unitPtr)
 	unitPtr->init_sprite(xLoc, yLoc);
 
 	if( unitPtr->is_own() )
+	{
+		if( config_adv.news_notify_complete )
+			news_array.unit_trained(unitPtr->sprite_recno, town_recno);
 		se_res.far_sound( xLoc, yLoc, 1, 'S', unitPtr->sprite_id, "RDY");
+	}
 
 	unitPtr->unit_mode = 0;		// reset it to 0 from UNIT_MODE_UNDER_TRAINING
 

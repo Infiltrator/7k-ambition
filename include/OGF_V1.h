@@ -38,6 +38,8 @@
 #define	VERSION_1_GODRES_GOD_COUNT				7
 #define	VERSION_1_TECH_COUNT						7
 
+struct Version_1_TownGF;
+
 #pragma pack(1)
 class Version_1_Town
 {
@@ -127,8 +129,13 @@ public:
 
 public:
 	void	convert_to_version_2(Town *townPtr);
+
+	void	write_record(Version_1_TownGF *r);
+	void	read_record(Version_1_TownGF *r);
 };
 #pragma pack()
+
+struct Version_1_NationArrayGF;
 
 #pragma pack(1)
 class Version_1_NationArray// : public DynArrayB
@@ -182,6 +189,8 @@ class Version_1_NationArray// : public DynArrayB
 
 	public:
 		void	convert_to_version_2(NationArray *nationArrayPtr);
+		void	write_record(Version_1_NationArrayGF *r);
+		void	read_record(Version_1_NationArrayGF *r);
 };
 #pragma pack()
 
@@ -308,6 +317,8 @@ class Version_1_NationBase
 };
 #pragma pack()
 
+struct Version_1_NationGF;
+
 #pragma pack(1)
 class Version_1_Nation : public Version_1_NationBase
 {
@@ -414,6 +425,8 @@ class Version_1_Nation : public Version_1_NationBase
 
 	public:
 		void			convert_to_version_2(Nation *nationPtr);
+		void			write_record(Version_1_NationGF *r);
+		void			read_record(Version_1_NationGF *r);
 
 		virtual void dummy();
 };

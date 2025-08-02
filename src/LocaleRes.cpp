@@ -132,28 +132,16 @@ void LocaleRes::deinit()
 void LocaleRes::load(const char *locale)
 {
 #ifdef ENABLE_NLS
-	if( locale && locale[0] )
-	{
-		setlocale(LC_MESSAGES, locale);
-		setlocale(LC_CTYPE, locale);
-		// The gettext team says setting the env var is the best way to
-		// inform gettext of the change.
-		setenv("LC_MESSAGES", locale, 1);
-	}
-	locale = get_messages_locale();
-
 	if( !locale || !locale[0] )
 	{
-		// The platform doesn't have full POSIX localization, and the
-		// user did not specify a locale in the game config. Default to
-		// English. The reason why to do this is if gettext does end up
-		// mapping the locale internally, we don't know what font to
-		// use. English is a safe choice.
-		locale = "en_US";
-		setlocale(LC_MESSAGES, locale);
-		setlocale(LC_CTYPE, locale);
-		setenv("LC_MESSAGES", locale, 1);
+		// Try some recognizable language
+		locale = get_messages_locale();
+		if( !locale )
+			locale = "en_US";
 	}
+
+	setlocale(LC_ALL, locale); // for LC_MESSAGES and LC_CTYPE
+	setenv("LANGUAGE", locale, 1); // if setlocale is not supported
 
 	LocaleRec *localeRec;
 	String localeDbName;
@@ -251,7 +239,7 @@ const char *LocaleRes::get_locale_dir()
 		return "locale";
 	if( misc.is_file_exist(getenv("SKLOCALE")) )
 		return getenv("SKLOCALE");
-#ifdef LOCALE_DIR
+#ifdef USE_FHS
 	if( misc.is_file_exist(LOCALE_DIR) )
 		return LOCALE_DIR;
 #endif
@@ -266,12 +254,9 @@ const char *LocaleRes::get_messages_locale()
 {
 	const char *locale;
 
-#ifdef HAVE_LC_MESSAGES
-	/* setlocale(LC_ALL, "") has been done previously */
-	locale = setlocale(LC_MESSAGES, NULL);
+	locale = getenv("LANGUAGE");
 	if( locale && locale[0] )
 		return locale;
-#endif
 
 	locale = getenv("LC_ALL");
 	if( locale && locale[0] )
@@ -284,6 +269,12 @@ const char *LocaleRes::get_messages_locale()
 	locale = getenv("LANG");
 	if( locale && locale[0] )
 		return locale;
+
+#if defined ENABLE_NLS && defined HAVE_LC_MESSAGES
+	locale = setlocale(LC_MESSAGES, NULL);
+	if( locale && locale[0] )
+		return locale;
+#endif
 
 	// We don't spend the time to map what Windows uses for locales. And
 	// some platforms don't have a POSIX setlocale, so if the user does not
