@@ -178,17 +178,6 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
 };
 
 
-void calculateScroll(
-  int& x,
-  int& y
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::calculateScroll(x, y);
-}
-
 unsigned int cancelKeyEvent(
 ) {
   if (!Ambition::config.enhancementsAvailable()) {

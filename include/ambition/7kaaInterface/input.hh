@@ -52,11 +52,6 @@ enum class ReportType {
 };
 
 
-void calculateScroll(
-  int& x,
-  int& y
-);
-
 unsigned int cancelKeyEvent(
 );
 

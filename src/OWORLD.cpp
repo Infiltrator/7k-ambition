@@ -321,8 +321,6 @@ int World::detect_scroll()
 
    int rc=0;
 
-	Ambition::Input::calculateScroll(scroll_x, scroll_y);
-
    if ( scroll_x || scroll_y )
    {
        zoom_matrix->scroll(scroll_x, scroll_y);

@@ -32,27 +32,7 @@
 #include "Ambition_user_interface.hh"
 
 
-namespace Ambition {
-
-void calculateScroll(
-  int& x,
-  int& y
-) {
-  if (mouse.cur_x <= mouse.bound_x1 + 1) {
-    x = -1;
-  }
-  if (mouse.cur_x >= mouse.bound_x2 - 1) {
-    x = 1;
-  }
-  if (mouse.cur_y <= mouse.bound_y1 + 1) {
-    y = -1;
-  }
-  if (mouse.cur_y >= mouse.bound_y2 - 1) {
-    y = 1;
-  }
-}
-
-namespace Input {
+namespace Ambition::Input {
 
 bool detectReportScroll(
   VBrowseIF& browser,
@@ -163,5 +143,3 @@ bool detectScroll(
 }
 
 } // namespace Ambition::Input
-
-} // namespace Ambition
