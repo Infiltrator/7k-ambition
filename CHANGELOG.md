@@ -21,6 +21,11 @@ speaking, considered to be the player's experience.
   and was not meant to be put in yet.  (Cloning ships is a planned featured to
   be added later.)
 
+### Changed
+
+- Updated 7kaa compatibility to the recently-released 7kaa 2.15.7 (see below for
+  more details about the update).
+
 
 ## 7K:AA [2.15.7] — 2025-07-25
 

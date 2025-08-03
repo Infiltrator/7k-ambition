@@ -25,6 +25,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Removed the clone button for ships on the Trade Report, which causes a crash and was not meant to be put in yet.  (Cloning ships is a planned featured to be added later.)"),
         },
       },
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Updated 7kaa compatibility to the recently-released 7kaa 2.15.7 (see below for more details about the update).")
+        },
+      },
     },
   },
   {
