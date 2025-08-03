@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed incorrect and misplaced field labels for Workers in the info pane.
+
 
 ## 7K:AA [2.15.7] — 2025-07-25
 
