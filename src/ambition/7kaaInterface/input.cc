@@ -225,6 +225,11 @@ bool detectInnScroll(
         [&guestBrowser](
           int amount
         ) {
+          guestBrowser.top_rec_no = std::clamp(
+            guestBrowser.top_rec_no + amount,
+            1,
+            std::max(1, guestBrowser.total_rec() - guestBrowser.y_max_rec + 1)
+          );
           guestBrowser.rec_no = std::clamp(
             guestBrowser.rec_no + amount,
             1,

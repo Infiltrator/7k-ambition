@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed incorrect and misplaced field labels for Workers in the info pane."),
+          _("Fixed Inn scrolling not showing lower guests when there are more than 4 guests."),
           _("Fixed config.txt settings for `KEYEVENT_ _CANCEL` and `KEYEVENT_ _CONFIRM` not working."),
         },
       },
