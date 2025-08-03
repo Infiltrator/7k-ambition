@@ -364,6 +364,14 @@ AS_IF([test "$enable_debug" = yes], [
   ])
 ])
 
+AS_IF([test "$enable_fhs" = yes], [
+  AC_DEFINE(
+    [USE_FHS],
+    [1],
+    [Define to 1 if using FHS],
+  )
+])
+
 AS_IF([test "$enable_mem_class" != yes], [
   AC_DEFINE([NO_MEM_CLASS], [1], [Define to 1 if not monitoring memory alloc])
 ])
