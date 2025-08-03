@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the oversized Town training buttons and the artefacts they caused on the
+  info pane.
+
+
 ## [3.2-rc1] — 2025-08-03
 
 ### Fixed
