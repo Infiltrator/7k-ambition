@@ -1700,7 +1700,7 @@ int calculateFirmFrame(
 
   short frameSteps[animatedFrameCount];
   for (int i = 0; i < animatedFrameCount; i++) {
-    frameSteps[i] = 1 + firmBuild->frame_delay(i);
+    frameSteps[i] = 1 + firmBuild->frame_delay(i + 1);
     totalSteps += frameSteps[i];
   }
 
