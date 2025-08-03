@@ -10,6 +10,8 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+## [3.2-rc1] — 2025-08-03
+
 ### Fixed
 
 - Fixed incorrect and misplaced field labels for Workers in the info pane.
