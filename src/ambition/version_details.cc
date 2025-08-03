@@ -22,6 +22,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed incorrect and misplaced field labels for Workers in the info pane."),
           _("Fixed Inn scrolling not showing lower guests when there are more than 4 guests."),
           _("Fixed config.txt settings for `KEYEVENT_ _CANCEL` and `KEYEVENT_ _CONFIRM` not working."),
+          _("Removed the clone button for ships on the Trade Report, which causes a crash and was not meant to be put in yet.  (Cloning ships is a planned featured to be added later.)"),
         },
       },
     },
