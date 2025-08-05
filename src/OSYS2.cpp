@@ -480,7 +480,7 @@ void Sys::set_view_mode(int viewMode, int viewingNationRecno, int viewingSpyRecn
 			int escapeChance = spyPtr->spy_skill - needViewSecretSkill;
 			int killFlag = 0;
 
-			if( escapeChance > 0 )
+			if( escapeChance > 0 || (Ambition::Config::enhancementsAvailable() && escapeChance >= 0) )
 			{
 				if( misc2.random( escapeChance/15 )==0  )		// use m2 instead of m to maintain mulitplayer sync
 					killFlag = 1;

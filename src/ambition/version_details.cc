@@ -32,6 +32,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed leadership status artefacts on the info pane when the status changes."),
+          _("Fixed spies having a 100% escape chance when stealing reports."),
         },
       },
       {
