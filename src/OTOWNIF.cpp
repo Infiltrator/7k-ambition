@@ -78,6 +78,7 @@ enum { TOWN_MENU_MAIN,
 		 TOWN_MENU_SET_AUTO_GRANT,
 	  };
 
+#define TRAIN_BUTTON_HEIGHT 43
 #define BUTTON_LOYALTY_COUNT	8
 #define COUNT_BUTTON_OFFSET_X	165
 #define COUNT_BUTTON_OFFSET_Y 5
@@ -936,13 +937,13 @@ void Town::disp_train_menu(int refreshFlag)
 			i_disp_queue_skill_button, ButtonCustomPara(this,i));
 
 			button_skill[i-1].paint(INFO_X1, y, 
-			INFO_X2, y+BUTTON_ACTION_HEIGHT-1,
+			INFO_X2, y+(Ambition::Config::enhancementsAvailable() ? TRAIN_BUTTON_HEIGHT : BUTTON_ACTION_HEIGHT)-1,
 			i_disp_skill_button, ButtonCustomPara(&button_queue_skill[i-1],i) );
 
-			y += BUTTON_ACTION_HEIGHT;
+			y += (Ambition::Config::enhancementsAvailable() ? TRAIN_BUTTON_HEIGHT : BUTTON_ACTION_HEIGHT);
 		}
 
-		button_cancel3.paint( INFO_X1, y, INFO_X2, y+BUTTON_ACTION_HEIGHT*3/4-1,
+		button_cancel3.paint( INFO_X1, y, INFO_X2, y+(Ambition::Config::enhancementsAvailable() ? TRAIN_BUTTON_HEIGHT : BUTTON_ACTION_HEIGHT)*3/4-1,
 		ButtonCustom::disp_text_button_func, ButtonCustomPara((void*)_("Done"),0) );
 
 		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_CANCEL), button_cancel3);

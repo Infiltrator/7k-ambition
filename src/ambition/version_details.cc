@@ -16,6 +16,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed the oversized Town training buttons and the artefacts they caused on the info pane."),
+        },
+      },
     },
   },
   {
