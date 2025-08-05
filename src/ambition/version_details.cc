@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the oversized Town training buttons and the artefacts they caused on the info pane."),
+          _("Fixed the file time display of old save game files."),
         },
       },
     },

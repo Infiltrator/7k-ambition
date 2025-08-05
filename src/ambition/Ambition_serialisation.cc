@@ -27,10 +27,16 @@
 
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
+#include <chrono>
+#include <filesystem>
 #include <fstream>
 
+#define _AMBITION_IMPLEMENTATION
 #include "gettext.h"
 #include "OBOX.h"
+#include "ODATE.h"
+#include "OGFILE.h"
+#include "OSYS.h"
 
 #include "Ambition_building.hh"
 #include "Ambition_entity.hh"
@@ -52,6 +58,35 @@ enum HeaderFlags : uint64_t {
   BoostXml = 1 << 1,
 };
 
+
+namespace Serialisation {
+
+std::string calculateFileDateString(
+  const std::string _7kaaCalculation,
+  const GameFile* saveFile
+) {
+  const auto fileWritetime = std::chrono::system_clock::to_time_t(
+    std::chrono::file_clock::to_sys(
+      std::filesystem::directory_entry(
+        std::filesystem::path(sys.dir_config) / saveFile->file_name
+      ).last_write_time()
+    )
+  );
+  const auto time = std::localtime(&fileWritetime);
+
+  return (
+    std::string(_("File Date"))
+    + ": "
+    + date.date_str(
+      date.julian(time->tm_year + 1900, time->tm_mon + 1, time->tm_mday),
+      1
+    )
+    + " "
+    + date.time_str(time->tm_hour * 100 + time->tm_min)
+  );
+}
+
+} // namespace Ambition::Serialisation
 
 void read(
   const std::string filename,

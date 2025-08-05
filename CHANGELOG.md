@@ -14,6 +14,7 @@ speaking, considered to be the player's experience.
 
 - Fixed the oversized Town training buttons and the artefacts they caused on the
   info pane.
+- Fixed the file time display of old save game files.
 
 
 ## [3.2-rc1] — 2025-08-03
