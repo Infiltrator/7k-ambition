@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2-rc2] — 2025-08-07
+
 ### Fixed
 
 - Fixed the oversized Town training buttons and the artefacts they caused on the
