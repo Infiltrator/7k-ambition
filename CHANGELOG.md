@@ -46,6 +46,9 @@ speaking, considered to be the player's experience.
   easier: `config`, `screenshot`, `save/singleplayer`, and `save/multiplayer`.
   Existing files in the base directory will be migrated to their appropriate
   location.
+- Start playing music straight away on the What's New screen instead of only on
+  the main menu, to give the right atmosphere.  The usual settings for music and
+  volume are respected.
 - Tweak the wording of the feedback request pop-up buttons.
 
 

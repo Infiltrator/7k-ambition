@@ -58,6 +58,9 @@ void openDiscord(
 void openFeedback(
 );
 
+void startMusic(
+);
+
 } // namespace Ambition::Control
 
 } // namespace Ambition

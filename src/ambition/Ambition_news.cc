@@ -42,6 +42,7 @@
 #include "vga_util.h"
 
 #include "Ambition_config.hh"
+#include "Ambition_control.hh"
 #include "Ambition_input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_version.hh"
@@ -133,6 +134,8 @@ void display(
   Button3D scrollDown;
 
   SlideVBar slideBar;
+
+  Control::startMusic();
 
   startButton.create(
     START_BUTTON.left,
