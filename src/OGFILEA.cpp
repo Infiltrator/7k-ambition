@@ -25,6 +25,7 @@
 #include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/serialisation.hh"
 
 #ifdef USE_WINDOWS
 #include <io.h>
@@ -712,6 +713,8 @@ void GameFileArray::disp_entry_info(const GameFile* entry, int x, int y)
 	str += " ";
 	str += date.time_str(lt->tm_hour*100 + lt->tm_min);
 #endif
+
+	str = Ambition::Serialisation::calculateFileDateString(str.str_buf, entry).c_str();
 
 	#if(defined(FRENCH))
 		font_small.put( x+318, y+34, str );

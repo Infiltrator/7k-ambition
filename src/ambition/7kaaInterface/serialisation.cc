@@ -26,12 +26,34 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/serialisation.hh"
 
+#include "OGFILE.h"
+
 #include "Ambition_config.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_serialisation.hh"
 
 
 namespace _7kaaAmbitionInterface::Serialisation {
+
+std::string calculateFileDateString(
+  const std::string _7kaaCalculation,
+  const GameFile* saveFile
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  if (saveFile->file_date.dwHighDateTime != 0
+    || saveFile->file_date.dwLowDateTime != 0
+  ) {
+    return _7kaaCalculation;
+  }
+
+  return Ambition::Serialisation::calculateFileDateString(
+    _7kaaCalculation,
+    saveFile
+  );
+}
 
 void loadGame(
   const std::string filename,

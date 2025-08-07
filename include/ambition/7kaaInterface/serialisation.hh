@@ -27,8 +27,15 @@
 
 #include <string>
 
+class GameFile;
+
 
 namespace _7kaaAmbitionInterface::Serialisation {
+
+std::string calculateFileDateString(
+  const std::string _7kaaCalculation,
+  const GameFile* saveFile
+);
 
 void loadGame(
   const std::string filename,

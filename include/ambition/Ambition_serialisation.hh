@@ -28,6 +28,8 @@
 #include <boost/serialization/version.hpp>
 #include <string>
 
+class GameFile;
+
 
 namespace Ambition {
 
@@ -49,6 +51,15 @@ void read(
 void write(
   const std::string filename
 );
+
+namespace Serialisation {
+
+std::string calculateFileDateString(
+  const std::string _7kaaCalculation,
+  const GameFile* saveFile
+);
+
+} // namespace Ambition::Serialisation
 
 } // namespace Ambition
 
