@@ -29,6 +29,12 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed leadership status artefacts on the info pane when the status changes."),
+        },
+      },
+      {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Made the keybind displays appear transparent over their buttons, to obscure less of the underlying buttons."),

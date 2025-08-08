@@ -1371,13 +1371,15 @@ void printLeadershipStatus(
     drawPanel(PANEL);
   }
 
+  std::string statusText;
   if (!_7kaaUnit->leader_unit_recno) {
-    printText(font_san, _("No leader assigned"), TEXT_BOX);
+    statusText = _("No leader assigned");
   } else if (!Unit::isReceivingLeadershipBonus(_7kaaUnit)) {
-    printText(font_san, _("Leader out of range"), TEXT_BOX);
+    statusText = _("Leader out of range");
   } else {
-    printText(font_san, _("Leader is providing bonuses"), TEXT_BOX);
+    statusText = _("Leader is providing bonuses");
   }
+  printText(font_san, statusText, TEXT_BOX, UserInterface::Clear::EntireArea);
 }
 
 void printMilitaryReportCostHeadings(
