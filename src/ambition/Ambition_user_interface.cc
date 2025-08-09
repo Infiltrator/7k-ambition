@@ -28,6 +28,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "KEY.h"
 #include "OFONT.h"
+#include "OMOUSE.h"
 #include "OWORLD.h"
 #include "vga_util.h"
 
@@ -182,6 +183,17 @@ Size bitmapSize(
     .width = bitmapHeader[0] + (bitmapHeader[1] << 8),
     .height = bitmapHeader[2] + (bitmapHeader[3] << 8),
   };
+}
+
+bool detectMouseClick(
+  const Rectangle area
+) {
+  return mouse.single_click(
+    area.start.left,
+    area.start.top,
+    area.end.left,
+    area.end.top
+  );
 }
 
 void drawPanel(

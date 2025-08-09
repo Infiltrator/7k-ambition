@@ -23,6 +23,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added keybinds and keybind display to Town training menu buttons.  The events for the config.txt file are: `KEYEVENT_ _TRAIN_ _BUILDER`, `KEYEVENT_ _TRAIN_ _SOLDIER`, `KEYEVENT_ _TRAIN_ _MINER`, `KEYEVENT_ _TRAIN_ _ARTISAN`, `KEYEVENT_ _TRAIN_ _RESEARCHER`, and `KEYEVENT_ _TRAIN_ _SPY`."),
           _("Added keybinds and keybind display to Spy menu buttons.  The events for the config.txt file are: `KEYEVENT_ _UNIT_ _REWARD`, `KEYEVENT_ _SPY_ _ASSASSINATE`, `KEYEVENT_ _SPY_ _BRIBE`, `KEYEVENT_ _SPY_ _CAPTURE`, `KEYEVENT_ _SPY_ _CHANGE_ _MISSION`, `KEYEVENT_ _SPY_ _MOBILISE`, `KEYEVENT_ _SPY_ _MENU`, and `KEYEVENT_ _SPY_ _STEAL_ _REPORTS`."),
           _("Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for duplication.  Settings in Ambition's config.txt override those is 7kaa's one."),
+          _("Added Discord and feedback links to the main menu, in the bottom-left corner."),
         },
       },
       {
@@ -30,6 +31,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Enabled default hotkeys for the build menu and disabled default `Q`, `W`, and `E` for selecting map modes.  The new default `E` now cycles through all of the map modes; and `W` is the default hotkey for building a War Factory.  This can all be overridden in the config.txt file."),
           _("Reduced the brightness of the building guide lines from bright white, so that they're less jarring."),
+          _("Tweak the wording of the feedback request pop-up buttons."),
         },
       },
     },

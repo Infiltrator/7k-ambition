@@ -96,6 +96,12 @@ bool detectClipboardKeys(
   GetA* textField
 );
 
+void detectDiscordClick(
+);
+
+void detectFeedbackLinkClick(
+);
+
 /**
  * Detect whether the mode selection button was clicked and then run the mode
  * selection screen.

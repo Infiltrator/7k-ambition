@@ -242,8 +242,14 @@ int centreHitbar(
   const int currentWidth
 );
 
+void discordButton(
+);
+
 void doneButtonText(
   const ButtonCustom& button
+);
+
+void feedbackLink(
 );
 
 /**

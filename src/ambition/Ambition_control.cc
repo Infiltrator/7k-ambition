@@ -25,10 +25,7 @@
 
 #include "Ambition_control.hh"
 
-#ifdef USE_WINDOWS
-#include <windows.h>
-#include <shellapi.h>
-#endif
+#include <SDL2/SDL_misc.h>
 
 #include "gettext.h"
 #include "OBOX.h"
@@ -51,24 +48,11 @@ void requestFeedback(
         "\nWould you be willing to share your feedback now?  (Will open in a"
         " web browser.)"
       ),
-      _("Yes"),
-      _("Not now")
+      _("I want to be heard!"),
+      _("Later")
     )
   ) {
-#ifdef USE_WINDOWS
-    ShellExecute(
-      0,
-      0,
-      "https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/",
-      0,
-      0,
-      SW_SHOW
-    );
-#else
-    system(
-      "open https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/"
-    );
-#endif
+    Control::openFeedback();
   }
 
   sys.signal_exit_flag = saveSignalExitFlag;
@@ -78,5 +62,25 @@ void resetGameState(
 ) {
   entityRepository.reset();
 }
+
+
+namespace Control {
+
+void openDiscord(
+) {
+  constexpr auto DISCORD_INVITATION_URL = "https://discord.gg/xJs99xK38G";
+
+  const auto sdlReturnCode = SDL_OpenURL(DISCORD_INVITATION_URL);
+}
+
+void openFeedback(
+) {
+  constexpr auto FEEDBACK_URL
+    = "https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/";
+
+  const auto sdlReturnCode = SDL_OpenURL(FEEDBACK_URL);
+}
+
+} // namespace Ambition::Control
 
 } // namespace Ambition
