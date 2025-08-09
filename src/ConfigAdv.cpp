@@ -188,6 +188,9 @@ int ConfigAdv::init()
 {
 	char filename[] = "config.txt";
 	reset();
+
+	Ambition::Config::load7kaaConfig();
+
 	if( !load(filename) )
 	{
 		reset();
@@ -198,7 +201,7 @@ int ConfigAdv::init()
 
 //--------- Begin of function ConfigAdv::load -------------//
 //
-int ConfigAdv::load(char *filename)
+int ConfigAdv::load(const char *filename)
 {
 	FilePath full_path(sys.dir_config);
 	full_path += filename;

@@ -137,7 +137,7 @@ public:
 	~ConfigAdv();
 
 	int			init();
-	int			load(char *filename);
+	int			load(const char *filename);
 	void			reset();
 	int			set(char *name, char *value);
 

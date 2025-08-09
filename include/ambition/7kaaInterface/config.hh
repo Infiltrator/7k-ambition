@@ -42,6 +42,9 @@ bool compatibleWith7kaa(
 bool enhancementsAvailable(
 );
 
+void load7kaaConfig(
+);
+
 /**
  * A string representation of the current running mode.
  */
