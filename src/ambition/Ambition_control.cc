@@ -26,7 +26,9 @@
 #include "Ambition_control.hh"
 
 #include <array>
+#include <chrono>
 #include <filesystem>
+#include <fstream>
 #include <SDL2/SDL_misc.h>
 
 #include "gettext.h"
@@ -39,8 +41,28 @@
 
 namespace Ambition {
 
+namespace Control {
+
+std::chrono::time_point<std::chrono::system_clock> lastFeedbackRequestTime(
+);
+
+void saveFeedbackRequestTime(
+);
+
+} // namespace Ambition::Control
+
+
 void requestFeedback(
 ) {
+  const auto daysSinceLastRequest = std::chrono::duration_cast<std::chrono::days>(
+    std::chrono::system_clock::now() - Control::lastFeedbackRequestTime()
+  );
+  if (daysSinceLastRequest < std::chrono::days(30)) {
+    return;
+  }
+
+  Control::saveFeedbackRequestTime();
+
   const auto saveSignalExitFlag = sys.signal_exit_flag;
   sys.signal_exit_flag = 0;
 
@@ -68,6 +90,9 @@ void resetGameState(
 
 
 namespace Control {
+
+constexpr auto LAST_FEEDBACK_REQUEST_FILENAME = "last-feedback-request";
+
 
 void migrateLocalDataDirectories(
 ) {
@@ -133,6 +158,47 @@ void openFeedback(
     = "https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/";
 
   const auto sdlReturnCode = SDL_OpenURL(FEEDBACK_URL);
+}
+
+
+/* Private functions. */
+
+std::chrono::time_point<std::chrono::system_clock> lastFeedbackRequestTime(
+) {
+  std::ifstream file(
+    DirectoryPath::config() / LAST_FEEDBACK_REQUEST_FILENAME,
+    std::ios::binary
+  );
+  if (!file.good()) {
+    return std::chrono::time_point<std::chrono::system_clock>(
+      std::chrono::system_clock::duration { 0 }
+    );
+  }
+
+  std::chrono::time_point<std::chrono::system_clock>::rep storedValue;
+  if (!file.read(reinterpret_cast<char*>(&storedValue), sizeof(storedValue))) {
+    return std::chrono::time_point<std::chrono::system_clock>(
+      std::chrono::system_clock::duration { 0 }
+    );
+  }
+
+  return std::chrono::time_point<std::chrono::system_clock>(
+    std::chrono::system_clock::duration { storedValue }
+  );
+}
+
+void saveFeedbackRequestTime(
+) {
+  std::ofstream file(
+    DirectoryPath::config() / LAST_FEEDBACK_REQUEST_FILENAME,
+    std::ios::binary
+  );
+  if (!file.good()) {
+    return;
+  }
+
+  const auto now = std::chrono::system_clock::now().time_since_epoch().count();
+  file.write(reinterpret_cast<const char*>(&now), sizeof(now));
 }
 
 } // namespace Ambition::Control
