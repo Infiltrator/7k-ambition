@@ -184,10 +184,10 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_SAVE_GAME, "S");
 	bind_key(KEYEVENT_LOAD_GAME, "L");
 
-	bind_key(KEYEVENT_OBJECT_PREV, "Up");
-	bind_key(KEYEVENT_OBJECT_NEXT, "Down");
-	bind_key(KEYEVENT_NATION_OBJECT_PREV, "Left");
-	bind_key(KEYEVENT_NATION_OBJECT_NEXT, "Right");
+	bind_key(KEYEVENT_OBJECT_PREV, ",");
+	bind_key(KEYEVENT_OBJECT_NEXT, ".");
+	bind_key(KEYEVENT_NATION_OBJECT_PREV, "shift+,");
+	bind_key(KEYEVENT_NATION_OBJECT_NEXT, "shift+.");
 
 	bind_key(KEYEVENT_GOTO_RAW, "J");
 	bind_key(KEYEVENT_GOTO_KING, "K");

@@ -35,6 +35,8 @@ speaking, considered to be the player's experience.
   `E` for selecting map modes.  The new default `E` now cycles through all of
   the map modes; and `W` is the default hotkey for building a War Factory.  This
   can all be overridden in the config.txt file.
+- Changed the default hotkeys for next/previous object to `.`, `,`, `shift+.`,
+  and `shift+,`, so that they do not conflict with scrolling.
 - Reduced the brightness of the building guide lines from bright white, so that
   they're less jarring.
 - Only ask for feedback about once a month, instead of every time.
