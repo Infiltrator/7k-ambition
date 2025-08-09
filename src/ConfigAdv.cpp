@@ -220,7 +220,7 @@ int ConfigAdv::init()
 //
 int ConfigAdv::load(const char *filename)
 {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	full_path += filename;
 	if( full_path.error_flag )
 		return 0;

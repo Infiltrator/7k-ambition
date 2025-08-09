@@ -80,6 +80,11 @@ void displayNews(
   }
 }
 
+void migrateLocalDataDirectories(
+) {
+  Ambition::Control::migrateLocalDataDirectories();
+}
+
 void pasteFromClipboard(
   char* destination,
   const unsigned int maximumSize

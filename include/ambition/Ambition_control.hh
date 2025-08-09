@@ -37,6 +37,21 @@ void resetGameState(
 
 namespace Control {
 
+/**
+ * Migrate files from the everything-in-one config directory to the separate
+ * ones.
+ *
+ * 7kaa has everything together in the base config directory, which can get
+ * confusing, especially when asking users to locate specific files.  Ambition
+ * stores separate data types in separate config, single-player saves,
+ * multi-player saves, and screenshot directories.
+ *
+ * As Ambition used to have the same behaviour as 7kaa, this function migrates
+ * any existing files that were created in the past into the new directories.
+ */
+void migrateLocalDataDirectories(
+);
+
 void openDiscord(
 );
 

@@ -1052,8 +1052,8 @@ void Sys::auto_save()
       {
          //---------- get path to savegames ----------//
 
-         FilePath auto1_path(dir_config);
-         FilePath auto2_path(dir_config);
+         FilePath auto1_path(Ambition::Config::saveDirectoryPath("AUTO.SAV").c_str());
+         FilePath auto2_path(auto1_path);
 
          auto1_path += "AUTO.SAV";
          auto2_path += "AUTO2.SAV";
@@ -1101,8 +1101,8 @@ void Sys::auto_save()
    {
       //---------- get path to savegames ----------//
 
-      FilePath auto1_path(dir_config);
-      FilePath auto2_path(dir_config);
+      FilePath auto1_path(Ambition::Config::saveDirectoryPath("AUTO.SVM").c_str());
+      FilePath auto2_path(auto1_path);
 
       auto1_path += "AUTO.SVM";
       auto2_path += "AUTO2.SVM";
@@ -2680,14 +2680,14 @@ void Sys::set_speed(int frameSpeed, int remoteCall)
 //
 void Sys::capture_screen()
 {
-   FilePath full_path(dir_config);
+   FilePath full_path(Ambition::Config::screenshotDirectoryPath().c_str());
    const char filename_template[] = "7KXXXXXX.BMP";
 
    full_path += filename_template; // template for screenshot filename
    if( full_path.error_flag )
       return;
 
-   char *filename = (char*)full_path+strlen(dir_config);
+   char *filename = (char*)full_path+strlen(Ambition::Config::screenshotDirectoryPath().c_str());
 
    int i;
    for( i=0 ; i<=999999 ; i++ )

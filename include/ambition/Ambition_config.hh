@@ -25,6 +25,7 @@
 
 #pragma once
 
+#include <filesystem>
 #include <string>
 
 namespace Ambition {
@@ -102,5 +103,26 @@ void set7kaaConfigOption(
   char* value,
   const int lineNumber
 );
+
+
+namespace DirectoryPath {
+
+std::filesystem::path config(
+);
+
+std::filesystem::path multiplayerSave(
+);
+
+std::filesystem::path save(
+  const std::string filename
+);
+
+std::filesystem::path screenshot(
+);
+
+std::filesystem::path singleplayerSave(
+);
+
+} // namespace Ambition::DirectoryPath
 
 } // namespace Ambition

@@ -39,6 +39,7 @@
 #include "OSYS.h"
 
 #include "Ambition_building.hh"
+#include "Ambition_config.hh"
 #include "Ambition_entity.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
@@ -68,7 +69,7 @@ std::string calculateFileDateString(
   const auto fileWritetime = std::chrono::system_clock::to_time_t(
     std::chrono::file_clock::to_sys(
       std::filesystem::directory_entry(
-        std::filesystem::path(sys.dir_config) / saveFile->file_name
+        DirectoryPath::save(saveFile->file_name) / saveFile->file_name
       ).last_write_time()
     )
   );

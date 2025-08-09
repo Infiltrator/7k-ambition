@@ -21,6 +21,8 @@
 //Filename    : OCONFIG.CPP
 //Description : Config Object
 
+#include "ambition/7kaaInterface/config.hh"
+
 #include <OSYS.h>
 #include <OHELP.h>
 #include <OCONFIG.h>
@@ -389,7 +391,7 @@ void Config::disable_weather_audio()
 //--------- Begin of function Config::save -------------//
 int Config::save(const char *filename)
 {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	File configFile;
 
 	full_path += filename;
@@ -415,7 +417,7 @@ int Config::save(const char *filename)
 //
 int Config::load(const char *filename)
 {
-	FilePath full_path(sys.dir_config);
+	FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
 	File configFile;
 
 	full_path += filename;

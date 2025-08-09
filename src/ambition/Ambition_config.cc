@@ -195,6 +195,54 @@ void set7kaaConfigOption(
 }
 
 
+namespace DirectoryPath {
+
+std::filesystem::path config(
+) {
+  constexpr auto _7KAA_DIRECTORY = "7kaa";
+
+  /* When we read 7kaa's config.txt, we need to read from the base directory
+     instead. */
+  const auto path = std::filesystem::path(sys.dir_config);
+  if (path.parent_path().filename() == _7KAA_DIRECTORY
+    || path.filename() == _7KAA_DIRECTORY
+  ) {
+    return std::filesystem::path(sys.dir_config);
+  }
+
+  return path / "config/";
+}
+
+std::filesystem::path multiplayerSave(
+) {
+  return std::filesystem::path(sys.dir_config) / "save" / "multiplayer/";
+}
+
+std::filesystem::path save(
+  const std::string filename
+) {
+  const auto extension = std::filesystem::path(filename).extension();
+
+  if (extension == ".SAV") {
+    return singleplayerSave();
+  } else {
+    return multiplayerSave();
+  }
+}
+
+std::filesystem::path screenshot(
+) {
+  return std::filesystem::path(sys.dir_config) / "screenshot/";
+}
+
+std::filesystem::path singleplayerSave(
+) {
+  return std::filesystem::path(sys.dir_config) / "save" / "singleplayer/";
+}
+
+} // namespace Ambition::DirectoryPath
+
+
 /* Private functions. */
 
 void runModeSelectionScreen(

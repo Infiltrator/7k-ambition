@@ -41,6 +41,7 @@
 #include "OVGA.h"
 #include "vga_util.h"
 
+#include "Ambition_config.hh"
 #include "Ambition_input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_version.hh"
@@ -48,6 +49,9 @@
 
 
 namespace Ambition::News {
+
+constexpr auto LAST_DISPLAYED_NEWS_VERSION_FILENAME = "last-displayed-news-version";
+
 
 static void displaySlideBall(
   SlideVBar *slideBar,
@@ -449,10 +453,7 @@ void display(
 
 std::string lastDisplayedNewsVersion(
 ) {
-  FilePath versionSaveFilePath(sys.dir_config);
-  versionSaveFilePath += "last-displayed-news-version";
-
-  std::ifstream file(versionSaveFilePath);
+  std::ifstream file(DirectoryPath::config() / LAST_DISPLAYED_NEWS_VERSION_FILENAME);
   if (!file.good()) {
     return "Error roading last displayed news version file";
   }
@@ -465,10 +466,7 @@ std::string lastDisplayedNewsVersion(
 
 void saveDisplayedNewsVersion(
 ) {
-  FilePath versionSaveFilePath(sys.dir_config);
-  versionSaveFilePath += "last-displayed-news-version";
-
-  std::ofstream file(versionSaveFilePath);
+  std::ofstream file(DirectoryPath::config() / LAST_DISPLAYED_NEWS_VERSION_FILENAME);
   if (file.good()) {
     file << versionString();
   }

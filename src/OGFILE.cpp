@@ -27,6 +27,7 @@
 #include <ctime>
 #endif
 
+#include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/serialisation.hh"
 
 #ifdef USE_WINDOWS
@@ -74,7 +75,7 @@ static int last_status = ERROR_NONE;
 //
 int GameFile::save_game(const char* fileName)
 {
-	FilePath fullPath(sys.dir_config);
+	FilePath fullPath;
 	File file;
 	bool fileOpened = false;
 
@@ -83,6 +84,7 @@ int GameFile::save_game(const char* fileName)
 	if( fileName )
 		strcpy(file_name, fileName);
 
+	fullPath = Ambition::Config::saveDirectoryPath(file_name).c_str();
 	fullPath += file_name;
 	if( fullPath.error_flag )
 	{
