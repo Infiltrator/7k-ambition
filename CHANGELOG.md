@@ -11,6 +11,16 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
+## [3.2.0] — 2025-08-10
+
+A 7kaa-compatibility release.  7kaa recently released a new version (2.15.7),
+and this merges in those changes, and adds a few fixes.
+
+See [the v3.2-rc1](#3-2-rc1), [the v3.2-rc2](#3-2-rc2), and [the 7kaa
+2.15.7](#7kaa-2-15-7) sections for more details.
+
+
+<a id="3-2-rc2"></a>
 ## [3.2-rc2] — 2025-08-07
 
 ### Fixed
@@ -20,6 +30,7 @@ speaking, considered to be the player's experience.
 - Fixed the file time display of old save game files.
 
 
+<a id="3-2-rc1"></a>
 ## [3.2-rc1] — 2025-08-03
 
 ### Fixed
@@ -39,6 +50,7 @@ speaking, considered to be the player's experience.
   more details about the update).
 
 
+<a id="7kaa-2-15-7"></a>
 ## 7K:AA [2.15.7] — 2025-07-25
 
 ### Changes taken from Ambition

@@ -5,6 +5,7 @@
 
 namespace Ambition::News {
 
+const auto HEADING_PREAMBLE = _("Preamble");
 constexpr auto HEADING_ADDED = "Added";
 constexpr auto HEADING_FIXED = "Fixed";
 constexpr auto HEADING_CHANGED = "Changed";
@@ -19,23 +20,20 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
-    .identifier = _("v3.2-rc2 -- 2025-08-07"),
+    .identifier = _("v3.2.0 -- 2025-08-10"),
     .sections = {
+      {
+        .heading = HEADING_PREAMBLE,
+        .items = {
+          _("This is a 7kaa-compatibility release.  7kaa recently released a new version (2.15.7), and this merges in those changes, and adds a few fixes."),
+          _("See the below sections for more details."),
+        },
+      },
       {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed the oversized Town training buttons and the artefacts they caused on the info pane."),
           _("Fixed the file time display of old save game files."),
-        },
-      },
-    },
-  },
-  {
-    .identifier = _("v3.2-rc1 -- 2025-08-03"),
-    .sections = {
-      {
-        .heading = _(HEADING_FIXED),
-        .items = {
           _("Fixed incorrect and misplaced field labels for Workers in the info pane."),
           _("Fixed Inn scrolling not showing lower guests when there are more than 4 guests."),
           _("Fixed config.txt settings for `KEYEVENT_ _CANCEL` and `KEYEVENT_ _CONFIRM` not working."),
@@ -48,7 +46,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Updated 7kaa compatibility to the recently-released 7kaa 2.15.7 (see below for more details about the update).")
         },
       },
-    },
+    }
   },
   {
     .identifier = _("7K:AA [2.15.7] -- 2025-07-25"),
