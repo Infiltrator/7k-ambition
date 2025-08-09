@@ -33,6 +33,8 @@
 
 #include "gettext.h"
 #include "OBOX.h"
+#include "OCONFIG.h"
+#include "OMUSIC.h"
 #include "OSYS.h"
 
 #include "Ambition_config.hh"
@@ -158,6 +160,15 @@ void openFeedback(
     = "https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/";
 
   const auto sdlReturnCode = SDL_OpenURL(FEEDBACK_URL);
+}
+
+void startMusic(
+) {
+  if (::config.music_flag) {
+    if (!music.is_playing(1)) {
+      music.play(1, sys.cdrom_drive ? MUSIC_CD_THEN_WAV : 0 );
+    }
+  }
 }
 
 
