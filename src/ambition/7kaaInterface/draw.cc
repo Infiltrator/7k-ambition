@@ -301,7 +301,8 @@ void buttonKeybind(
   const int left,
   const int top,
   const int right,
-  const int bottom
+  const int bottom,
+  const int refreshFlag
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
@@ -340,12 +341,23 @@ void buttonKeybind(
   );
   const auto textArea = panel.inner(PADDING);
 
-  vga_util.d3_panel_up(
-    panel.start.left,
-    panel.start.top,
-    panel.end.left,
-    panel.end.top
-  );
+  if (refreshFlag == INFO_REPAINT) {
+    vga_util.d3_panel_up(
+      panel.start.left,
+      panel.start.top,
+      panel.end.left,
+      panel.end.top
+    );
+  } else {
+    vga_util.blt_buf(
+      panel.start.left,
+      panel.start.top,
+      panel.end.left,
+      panel.end.top,
+      0
+    );
+  }
+
   Ambition::UserInterface::printText(
     font_san,
     keyString,
@@ -370,7 +382,8 @@ void buttonKeybind(
 }
 void buttonKeybind(
   const unsigned int keyCode,
-  const Button3D& button
+  const Button3D& button,
+  const int refreshFlag
 ) {
   /* 7kaa buttons have extra pixels around. */
   constexpr auto LEFT_MARGIN = 0;
@@ -384,7 +397,8 @@ void buttonKeybind(
     button.x1 + LEFT_MARGIN + LEFT_PADDING,
     button.y1,
     button.x2,
-    button.y2 - BOTTOM_MARGIN - BOTTOM_PADDING
+    button.y2 - BOTTOM_MARGIN - BOTTOM_PADDING,
+    refreshFlag
   );
 }
 void buttonKeybind(

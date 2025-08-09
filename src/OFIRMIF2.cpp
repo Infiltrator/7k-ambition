@@ -21,6 +21,7 @@
 //Filename    : OFIRMIF2.CPP
 //Description : Firm interface functions - part 2
 
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 
 #include <OINFO.h>
@@ -136,10 +137,14 @@ void Firm::disp_spy_menu(int refreshFlag)
 			button_spy_mobilize.paint( x, y, 'A', "MOBILSPY" );
 			x+=BUTTON_ACTION_WIDTH;
 
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Mobilise), button_spy_mobilize);
+
 			//--------- reward spy button --------//
 
 			button_spy_reward.paint( x, y, 'A', "REWARD" );
 			x+=BUTTON_ACTION_WIDTH;
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Reward), button_spy_reward);
 
 			//------ change spy action button ------//
 
@@ -147,6 +152,8 @@ void Firm::disp_spy_menu(int refreshFlag)
 			{
 				button_spy_action.paint( x, y, 'A', "SPYCHACT" );
 				x+=BUTTON_ACTION_WIDTH;
+
+				Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_ChangeMission), button_spy_action);
 			}
 			else
 				button_spy_action.reset();
@@ -157,6 +164,8 @@ void Firm::disp_spy_menu(int refreshFlag)
 			{
 				button_capture.paint( x, y, 'A', "SPYCAPT" );
 				x+=BUTTON_ACTION_WIDTH;
+
+				Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Capture), button_capture);
 
 				if( x+BUTTON_ACTION_WIDTH-5 > INFO_X2 )
 				{
@@ -173,6 +182,8 @@ void Firm::disp_spy_menu(int refreshFlag)
 			{
 				button_view_secret.paint( x, y, 'A', "VSECRET" );
 				x+=BUTTON_ACTION_WIDTH;
+
+				Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_StealReports), button_view_secret);
 
 				if( x+BUTTON_ACTION_WIDTH-5 > INFO_X2 )
 				{
@@ -191,6 +202,8 @@ void Firm::disp_spy_menu(int refreshFlag)
 				button_assassinate.paint( x, y, 'A', "ASSASSIN" );
 				x+=BUTTON_ACTION_WIDTH;
 
+				Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Assassinate), button_assassinate);
+
 				if( x+BUTTON_ACTION_WIDTH-5 > INFO_X2 )
 				{
 					x  = BUTTON_X1;
@@ -207,6 +220,8 @@ void Firm::disp_spy_menu(int refreshFlag)
 		{
 			button_bribe.paint( x, y, 'A', "BRIBE" );
 			x+=BUTTON_ACTION_WIDTH;
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Bribe), button_bribe);
 		}
 		else
 			err_here();
@@ -214,6 +229,8 @@ void Firm::disp_spy_menu(int refreshFlag)
 		//----------- cancel button -----------//
 
 		button_cancel.paint( x, y, 'A', "PREVMENU" );
+
+		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel), button_cancel);
 	}
 
 	//---- enable/disable view secret button ----//
@@ -225,7 +242,11 @@ void Firm::disp_spy_menu(int refreshFlag)
 		Spy* spyPtr = spy_array[ spy_filter( browse_spy.recno() ) ];
 
 		if( spyPtr->spy_skill >= MIN_VIEW_SECRET_SPYING_SKILL )
+		{
 			button_view_secret.enable();
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_StealReports), button_view_secret, refreshFlag);
+		}
 		else
 			button_view_secret.disable();
 	}
@@ -322,7 +343,7 @@ void Firm::detect_spy_menu()
 	{
 		//------ mobilize spy ---------//
 
-		if( button_spy_mobilize.detect() )
+		if( button_spy_mobilize.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Mobilise)))
 		{
 			if( !remote.is_enable() )
 			{
@@ -343,14 +364,14 @@ void Firm::detect_spy_menu()
 
 		//------ reward spy ---------//
 
-		else if( button_spy_reward.detect() )
+		else if( button_spy_reward.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Reward)) )
 		{
 			spyPtr->reward(COMMAND_PLAYER);
 		}
 
 		//------- change spy action ---------//
 
-		else if( button_spy_action.detect() )		// set action mode
+		else if( button_spy_action.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_ChangeMission)))		// set action mode
 		{
 			if( !remote.is_enable() )
 			{
@@ -367,7 +388,7 @@ void Firm::detect_spy_menu()
 
 		//------ capture firm ---------//
 
-		else if( button_capture.detect() )
+		else if( button_capture.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Capture)) )
 		{
 			int spyRecno = can_player_spy_capture();
 
@@ -390,7 +411,7 @@ void Firm::detect_spy_menu()
 
 		//------ view secret ---------//
 
-		else if( button_view_secret.detect() )
+		else if( button_view_secret.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_StealReports)) )
 		{
 			action_spy_recno = spyPtr->spy_recno;
 			firm_menu_mode   = FIRM_MENU_VIEW_SECRET;
@@ -399,7 +420,7 @@ void Firm::detect_spy_menu()
 
 		//-------- assassinate ------//
 
-		else if( button_assassinate.detect() )
+		else if( button_assassinate.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Assassinate)) )
 		{
 			spyPtr->assassinate( overseer_recno, COMMAND_PLAYER );
 		}
@@ -409,7 +430,7 @@ void Firm::detect_spy_menu()
 
 	else if( firm_menu_mode == FIRM_MENU_SELECT_BRIBER )
 	{
-		if( button_bribe.detect() )
+		if( button_bribe.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Bribe)) )
 		{
 			action_spy_recno = spyPtr->spy_recno;
 			firm_menu_mode   = FIRM_MENU_SET_BRIBE_AMOUNT;
@@ -423,7 +444,7 @@ void Firm::detect_spy_menu()
 
 	//--------- detect cancel button --------//
 
-	if( button_cancel.detect() )
+	if( button_cancel.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Common_Cancel)) )
 	{
 		firm_menu_mode = FIRM_MENU_MAIN;
 		info.disp();
@@ -537,7 +558,11 @@ void Firm::disp_spy_button(int x, int y, int refreshFlag)
 		//------------ spy menu -----------//
 
 		if( refreshFlag == INFO_REPAINT )
+		{
 			button_spy_menu.paint( x, y, 'A', "SPYMENU" );
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Menu), button_spy_menu);
+		}
 
 		x += BUTTON_ACTION_WIDTH;
 
@@ -556,7 +581,11 @@ void Firm::disp_spy_button(int x, int y, int refreshFlag)
 			//-------- display the bribe button -------//
 
 			if( refreshFlag == INFO_REPAINT )
+			{
 				button_bribe.paint( x, y, 'A', "SELBRIBE" );
+
+				Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Bribe), button_bribe);
+			}
 
 			if( canBribe )
 				button_bribe.enable();
@@ -574,7 +603,11 @@ void Firm::disp_spy_button(int x, int y, int refreshFlag)
 	if( canCapture )
 	{
 		if( !button_capture.enable_flag || refreshFlag==INFO_REPAINT )
+		{
 			button_capture.paint( x, y, 'A', "CAPTURE" );
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Capture), button_capture);
+		}
 	}
 	else
 	{
@@ -594,7 +627,7 @@ int Firm::detect_spy_button()
 {
 	if( player_spy_count>0 )
 	{
-		if( button_spy_menu.detect() )
+		if( button_spy_menu.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Menu)) )
 		{
 			firm_menu_mode = FIRM_MENU_SPY;
 			info.disp();
@@ -603,7 +636,7 @@ int Firm::detect_spy_button()
 
 		if( nation_recno != nation_array.player_recno )		// only display the bribe button for non-player towns
 		{
-			if( button_bribe.detect() )
+			if( button_bribe.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Bribe)) )
 			{
 				if( player_spy_count > 1 )
 				{
@@ -623,7 +656,7 @@ int Firm::detect_spy_button()
 
 	//-----------------------------------------//
 
-	if( button_capture.detect() && can_worker_capture(nation_array.player_recno) )
+	if( button_capture.detect(Ambition::Input::getKeyEvent(Ambition::Input::KeyEvent::Spy_Capture)) && can_worker_capture(nation_array.player_recno) )
 	{
 		// ##### begin Gilbert 24/6 ##########//
 		if( !remote.is_enable() )

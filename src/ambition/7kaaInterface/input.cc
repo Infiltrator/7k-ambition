@@ -177,24 +177,20 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
   { ReportType::Ranking, Ambition::UserInterface::VIEWPORT },
 };
 
+const std::map<KeyEvent, KeyEventType> KEY_EVENT_MAP = {
+  { KeyEvent::Common_Cancel, KEYEVENT_CANCEL },
+  { KeyEvent::Common_Confirm, KEYEVENT_CONFIRM },
+  { KeyEvent::Common_Reward, KEYEVENT_UNIT_REWARD },
 
-unsigned int cancelKeyEvent(
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return SDLK_UNKNOWN;
-  }
+  { KeyEvent::Spy_Assassinate, KEYEVENT_SPY_ASSASSINATE },
+  { KeyEvent::Spy_Bribe, KEYEVENT_SPY_BRIBE },
+  { KeyEvent::Spy_Capture, KEYEVENT_SPY_CAPTURE },
+  { KeyEvent::Spy_ChangeMission, KEYEVENT_SPY_CHANGE_MISSION },
+  { KeyEvent::Spy_Mobilise, KEYEVENT_SPY_MOBILISE },
+  { KeyEvent::Spy_Menu, KEYEVENT_SPY_MENU },
+  { KeyEvent::Spy_StealReports, KEYEVENT_SPY_STEAL_REPORTS },
+};
 
-  return GETKEY(KEYEVENT_CANCEL);
-}
-
-unsigned int confirmKeyEvent(
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return SDLK_UNKNOWN;
-  }
-
-  return GETKEY(KEYEVENT_CONFIRM);
-}
 
 void detectCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
@@ -604,6 +600,16 @@ bool detectWhatsNewClick(
   }
 
   return false;
+}
+
+unsigned int getKeyEvent(
+  const KeyEvent event
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return SDLK_UNKNOWN;
+  }
+
+  return GETKEY(KEY_EVENT_MAP.find(event)->second);
 }
 
 void setOrClearRallyPoint(

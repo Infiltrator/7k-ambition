@@ -230,6 +230,16 @@ void Mouse::init_key()
 
 	bind_key(KEYEVENT_CANCEL, "Escape");
 	bind_key(KEYEVENT_CONFIRM, "Return");
+
+	bind_key(KEYEVENT_UNIT_REWARD, "W");
+
+	bind_key(KEYEVENT_SPY_ASSASSINATE, "A");
+	bind_key(KEYEVENT_SPY_BRIBE, "B");
+	bind_key(KEYEVENT_SPY_CAPTURE, "C");
+	bind_key(KEYEVENT_SPY_CHANGE_MISSION, "Q");
+	bind_key(KEYEVENT_SPY_MOBILISE, "R");
+	bind_key(KEYEVENT_SPY_MENU, "Q");
+	bind_key(KEYEVENT_SPY_STEAL_REPORTS, "Z");
 }
 //------------- End of Mouse::init_key -------------//
 
