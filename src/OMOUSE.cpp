@@ -142,7 +142,7 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_UNIT_UNLOAD, "R");
 	reset_key(KEYEVENT_UNIT_CANCEL);
 
-#ifdef BUILD_HOTKEYS
+#ifndef MAP_MODE_HOTKEYS
 	bind_key(KEYEVENT_BUILD_BASE, "P");
 	bind_key(KEYEVENT_BUILD_CAMP, "F");
 	bind_key(KEYEVENT_BUILD_FACTORY, "A");

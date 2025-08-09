@@ -15,6 +15,13 @@ speaking, considered to be the player's experience.
 - Load 7kaa's config.txt file as well as Ambition's one, to reduce the need for
   duplication.  Settings in Ambition's config.txt override those is 7kaa's one.
 
+### Changed
+
+- Enabled default hotkeys for the build menu and disabled default `Q`, `W`, and
+  `E` for selecting map modes.  The new default `E` now cycles through all of
+  the map modes; and `W` is the default hotkey for building a War Factory.  This
+  can all be overridden in the config.txt file.
+
 
 ## [3.2.0] — 2025-08-10
 
