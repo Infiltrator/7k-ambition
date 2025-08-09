@@ -12,6 +12,10 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Added keybinds and keybind display to Town training menu buttons.  The events
+  for the config.txt file are: `KEYEVENT_TRAIN_BUILDER`,
+  `KEYEVENT_TRAIN_SOLDIER`, `KEYEVENT_TRAIN_MINER`, `KEYEVENT_TRAIN_ARTISAN`,
+  `KEYEVENT_TRAIN_RESEARCHER`, and `KEYEVENT_TRAIN_SPY`.
 - Added keybinds and keybind display to Spy menu buttons.  The events for the
   config.txt file are: `KEYEVENT_UNIT_REWARD`, `KEYEVENT_SPY_ASSASSINATE`,
   `KEYEVENT_SPY_BRIBE`, `KEYEVENT_SPY_CAPTURE`, `KEYEVENT_SPY_CHANGE_MISSION`,

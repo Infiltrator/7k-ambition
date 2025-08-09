@@ -941,6 +941,8 @@ void Town::disp_train_menu(int refreshFlag)
 			i_disp_skill_button, ButtonCustomPara(&button_queue_skill[i-1],i) );
 
 			y += (Ambition::Config::enhancementsAvailable() ? TRAIN_BUTTON_HEIGHT : BUTTON_ACTION_HEIGHT);
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getTrainingKeyEvent(i), button_skill[i-1]);
 		}
 
 		button_cancel3.paint( INFO_X1, y, INFO_X2, y+(Ambition::Config::enhancementsAvailable() ? TRAIN_BUTTON_HEIGHT : BUTTON_ACTION_HEIGHT)*3/4-1,
@@ -1093,7 +1095,7 @@ int Town::detect_train_menu()
 		// ###### begin Gilbert 10/9 ########//
 		//------ detect pressing on the small queue count button -------//
 		rc = 0;
-		if( (rc = button_queue_skill[b-1].detect(0,0,2)) != 0)
+		if( (rc = button_queue_skill[b-1].detect(Ambition::Input::getTrainingKeyEvent(b),0,2)) != 0)
 		{
 			quitFlag = 0;		// don't quit the menu right after pressing the button
 		}
@@ -1116,7 +1118,7 @@ int Town::detect_train_menu()
 			// Holding shift will use batches of FIRMWAR_BUILD_BATCH_COUNT
 			int trainCancelAmount = shiftPressed ? TOWN_TRAIN_BATCH_COUNT : 1;
 
-			if( rc==1 )		// left button
+			if( rc==1 || (_7kaaAmbitionInterface::Config::enhancementsAvailable() && rc == 3) )		// left button or key press
 			{
 				if (Ambition::Building::enqueueTraining(this, queueOrder, race_filter(browse_race.recno()), b, trainCancelAmount)) {
 					se_ctrl.immediate_sound("TURN_ON");

@@ -45,6 +45,13 @@ enum class KeyEvent {
   Spy_Mobilise,
   Spy_Menu,
   Spy_StealReports,
+
+  Town_Train_Builder,
+  Town_Train_Soldier,
+  Town_Train_Miner,
+  Town_Train_Artisan,
+  Town_Train_Researcher,
+  Town_Train_Spy,
 };
 
 
@@ -135,6 +142,10 @@ bool detectWhatsNewClick(
 
 unsigned int getKeyEvent(
   const KeyEvent event
+);
+
+unsigned int getTrainingKeyEvent(
+  const int _7kaaSkillIndex
 );
 
 void setOrClearRallyPoint(
