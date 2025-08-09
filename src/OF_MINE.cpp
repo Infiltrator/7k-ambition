@@ -21,6 +21,9 @@
 //Filename    : OF_MINE.CPP
 //Description : Firm Mine
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OINFO.h>
 #include <vga_util.h>
 #include <OSTR.h>
@@ -198,6 +201,8 @@ void FirmMine::put_info(int refreshFlag)
 		{
 			button_vacate_firm.paint(INFO_X1, INFO_Y1 + 249, 'A', "RECRUIT");
 			button_vacate_firm.set_help_code("MOBILIZE");
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All), button_vacate_firm);
 		}
 
 		if( have_own_workers() )
@@ -243,7 +248,7 @@ int FirmMine::detect_info()
 
 	//-------- detect mobilize button ----------//
 
-	if (button_vacate_firm.detect())
+	if (button_vacate_firm.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All)))
 	{
 		mobilize_all_workers(COMMAND_PLAYER);
 		return 1;

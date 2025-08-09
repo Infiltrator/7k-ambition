@@ -52,6 +52,8 @@ enum class Action {
   Town_Train_Artisan,
   Town_Train_Researcher,
   Town_Train_Spy,
+
+  Building_Mobilise_All,
 };
 
 

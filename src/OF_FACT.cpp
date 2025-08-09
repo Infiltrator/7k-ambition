@@ -21,6 +21,9 @@
 //Filename    : OF_FACT.CPP
 //Description : Firm Factory
 
+#include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
+
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>
@@ -220,6 +223,8 @@ void FirmFactory::put_info(int refreshFlag)
 			button_change_production.paint(INFO_X1, INFO_Y1 + 248, 'A', "CHGPROD");
 			button_vacate_firm.paint(INFO_X1 + BUTTON_ACTION_WIDTH, INFO_Y1 + 248, 'A', "RECRUIT");
 			button_vacate_firm.set_help_code("MOBILIZE");
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All), button_vacate_firm);
 		}
 
 		if( have_own_workers() )
@@ -277,7 +282,7 @@ int FirmFactory::detect_info()
 
 	//-------- detect mobilize button ----------//
 
-	if (button_vacate_firm.detect())
+	if (button_vacate_firm.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Building_Mobilise_All)))
 	{		
 		mobilize_all_workers(COMMAND_PLAYER);
 		return 1;
