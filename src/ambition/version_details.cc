@@ -36,6 +36,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Changed the default hotkeys for next/previous object to `.`, `,`, `shift+.`, and `shift+,`, so that they do not conflict with scrolling."),
           _("Reduced the brightness of the building guide lines from bright white, so that they're less jarring."),
           _("Only ask for feedback about once a month, instead of every time."),
+          _("Treat config.txt lines which begin with `#ambition` as actual settings (ignoring the `#ambition` part and using the rest of the line) instead of comments.  This allows sharing of configs with 7kaa without worrying about Ambition settings not being recognised by 7kaa."),
           _("Split local data into multiple directories, to make finding what you need easier: `config`, `screenshot`, `save/singleplayer`, and `save/multiplayer`.  Existing files in the base directory will be migrated to their appropriate location."),
           _("Start playing music straight away on the What's New screen instead of only on the main menu, to give the right atmosphere.  The usual settings for music and volume are respected."),
           _("Tweak the wording of the feedback request pop-up buttons."),

@@ -245,8 +245,11 @@ int ConfigAdv::load(const char *filename)
 		fileTxt.match_chars(" \t");
 		if(fileTxt.match_chars("#"))
 		{
-			fileTxt.next_line();
-			continue;
+			if (!fileTxt.match_str("ambition")) {
+				fileTxt.next_line();
+				continue;
+			}
+			fileTxt.match_chars(" \t");
 		}
 		name = fileTxt.data_ptr;
 		if( !fileTxt.match_chars_ex("= \t\r\n\x1a") )

@@ -42,6 +42,10 @@ speaking, considered to be the player's experience.
 - Reduced the brightness of the building guide lines from bright white, so that
   they're less jarring.
 - Only ask for feedback about once a month, instead of every time.
+- Treat config.txt lines which begin with `#ambition` as actual settings
+  (ignoring the `#ambition` part and using the rest of the line) instead of
+  comments.  This allows sharing of configs with 7kaa without worrying about
+  Ambition settings not being recognised by 7kaa.
 - Split local data into multiple directories, to make finding what you need
   easier: `config`, `screenshot`, `save/singleplayer`, and `save/multiplayer`.
   Existing files in the base directory will be migrated to their appropriate
