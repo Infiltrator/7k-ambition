@@ -29,6 +29,10 @@ speaking, considered to be the player's experience.
 - Added keybinds for starting a new single-player game (`KEYEVENT_CONFIRM`) and
   for going back (`KEYEVENT_CANCEL`).
 
+### Fixed
+
+- Fixed leadership status artefacts on the info pane when the status changes.
+
 ### Changed
 
 - Made the keybind displays appear transparent over their buttons, to obscure
