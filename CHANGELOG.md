@@ -32,6 +32,7 @@ speaking, considered to be the player's experience.
 ### Fixed
 
 - Fixed leadership status artefacts on the info pane when the status changes.
+- Fixed spies seemingly always getting caught after stealing reports.
 - Fixed spies having a 100% escape chance when stealing reports.
 
 ### Changed
