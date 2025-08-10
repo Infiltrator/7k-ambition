@@ -298,6 +298,8 @@ static void extra_error_handler();
 //
 int main(int argc, char **argv)
 {
+	misc2.randomize();
+
 	if (!sys.set_game_dir())
 		return 1;
 	locale_res.init();
