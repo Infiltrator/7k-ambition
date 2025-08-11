@@ -104,6 +104,7 @@ void migrateLocalDataDirectories(
     "cookies.txt",
     "HALLFAME.DAT",
     "last-displayed-news-version",
+    "PLAYSTAT.DAT",
     "sdl.txt",
   };
 
