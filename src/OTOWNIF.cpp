@@ -491,7 +491,11 @@ void Town::disp_main_menu(int refreshFlag)
 	if( refreshFlag == INFO_REPAINT )
 	{
 		if( spyFlag )				// only display the spy button for non-player towns
+		{
 			button_spy.paint( x, y, 'A', "SPYMENU" );
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_Menu), button_spy);
+		}
 		else
 			button_spy.reset();
 	}
@@ -500,7 +504,11 @@ void Town::disp_main_menu(int refreshFlag)
 		if( spyFlag != button_spy.init_flag )		// if the button availability has just changed
 		{
 			if(spyFlag)		// only display the spy button for non-player towns
+			{
 				button_spy.paint( x, y, 'A', "SPYMENU" );
+
+				Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_Menu), button_spy);
+			}
 			else				// remove the button from the screen
 				button_spy.hide();
 		}
@@ -569,7 +577,7 @@ int Town::detect_main_menu()
 		return 1;
 	}
 
-	if( button_spy.detect() )	// switch to the spy menu
+	if( button_spy.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_Menu)) )	// switch to the spy menu
 	{
 		town_menu_mode  = TOWN_MENU_SPY;
 		disable_refresh = 1;    // static var for disp_info() only
@@ -1539,21 +1547,29 @@ void Town::disp_spy_menu(int refreshFlag)
 		button_spy_mobilize.paint( x, y, 'A', "MOBILSPY" );
 		x+=BUTTON_ACTION_WIDTH;
 
+		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_Mobilise), button_spy_mobilize);
+
 		//--------- reward spy button --------//
 
 		button_spy_reward.paint( x, y, 'A', "REWARD" );
 		x+=BUTTON_ACTION_WIDTH;
 
+		Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Reward), button_spy_reward);
+
 		if( nation_recno != nation_array.player_recno )		// if the spy is in another nation's town
 		{
 			button_spy_action.paint( x, y, 'A', "SPYCHACT" );
 			x+=BUTTON_ACTION_WIDTH;
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_ChangeMission), button_spy_action);
 		}
 
 		if( nation_recno && nation_recno != nation_array.player_recno )
 		{
 			button_spy_view_secret.paint( x, y, 'A', "VSECRET" );
 			x+=BUTTON_ACTION_WIDTH;
+
+			Ambition::Draw::buttonKeybind(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_StealReports), button_spy_view_secret);
 
 			if( x+BUTTON_ACTION_WIDTH-5 > INFO_X2 )
 			{
@@ -1584,7 +1600,7 @@ int Town::detect_spy_menu()
 
 	//------- mobilize spy --------//
 
-	if( button_spy_mobilize.detect() )
+	if( button_spy_mobilize.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_Mobilise)) )
 	{
 		if( !remote.is_enable() )
 		{
@@ -1605,7 +1621,7 @@ int Town::detect_spy_menu()
 
 	//------ reward spy ---------//
 
-	else if( button_spy_reward.detect() )
+	else if( button_spy_reward.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Common_Reward)) )
 	{
 		spyPtr->reward(COMMAND_PLAYER);
 		return 1;
@@ -1615,7 +1631,7 @@ int Town::detect_spy_menu()
 
 	if( nation_recno != nation_array.player_recno )		// if the spy is in another nation's town
 	{
-		if( button_spy_action.detect() )		// set action mode
+		if( button_spy_action.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_ChangeMission)) )		// set action mode
 		{
 			if( !remote.is_enable() )
 			{
@@ -1636,7 +1652,7 @@ int Town::detect_spy_menu()
 
 	if( nation_recno && nation_recno != nation_array.player_recno )
 	{
-		if( button_spy_view_secret.detect() )
+		if( button_spy_view_secret.detect(Ambition::Input::getKeyEvent(Ambition::Input::Action::Spy_StealReports)) )
 		{
 			action_spy_recno = spyPtr->spy_recno;
 			town_menu_mode   = TOWN_MENU_VIEW_SECRET;
