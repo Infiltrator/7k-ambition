@@ -12,6 +12,9 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed save file names and dates running off on the right side of the load
+  screen, creating artefacts.  This was especially problematic in some
+  non-English languages where the text is wider or longer.
 - Fixed a crash when selling or demolishing an empty Fort which has a rally
   point.
 

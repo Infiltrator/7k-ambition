@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_FIXED),
         .items = {
+          _("Fixed save file names and dates running off on the right side of the load screen, creating artefacts.  This was especially problematic in some non-English languages where the text is wider or longer."),
           _("Fixed a crash when selling or demolishing an empty Fort which has a rally point."),
         },
       },

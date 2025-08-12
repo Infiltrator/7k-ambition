@@ -847,6 +847,78 @@ bool printLeadershipStatus(
   return true;
 }
 
+
+bool printSaveFileDate(
+  const std::string string,
+  const int left,
+  const int top
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  const auto slotArea = Ambition::UserInterface::Rectangle::fromPoint(
+    {
+      .left = left - 60,
+      .top = top
+    },
+    Ambition::UserInterface::SAVE_SLOT_SIZE
+  );
+  const auto slotContentsArea = slotArea.inner(10);
+
+  const auto textArea = slotContentsArea.internal(
+    Ambition::UserInterface::SAVE_INFORMATION_TEXT_AREA_SIZE,
+    Ambition::UserInterface::HorizontalAlignment::Right,
+    Ambition::UserInterface::VerticalAlignment::Bottom
+  );
+
+  Ambition::UserInterface::printText(
+    font_small,
+    string,
+    textArea,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+  return true;
+}
+
+bool printSaveFilename(
+  const std::string string,
+  const int left,
+  const int top
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  const auto slotArea = Ambition::UserInterface::Rectangle::fromPoint(
+    {
+      .left = left - 60,
+      .top = top
+    },
+    Ambition::UserInterface::SAVE_SLOT_SIZE
+  );
+  const auto slotContentsArea = slotArea.inner(10);
+
+  const auto textArea
+    = slotContentsArea
+    .inner(0, 0, 0, Ambition::UserInterface::SAVE_SLOT_SIZE.height)
+    .internal(
+      Ambition::UserInterface::SAVE_INFORMATION_TEXT_AREA_SIZE,
+      Ambition::UserInterface::HorizontalAlignment::Right,
+      Ambition::UserInterface::VerticalAlignment::Bottom
+    );
+
+  Ambition::UserInterface::printText(
+    font_small,
+    string,
+    textArea,
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Right
+  );
+  return true;
+}
+
 void printSyncError(
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
