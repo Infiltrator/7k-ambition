@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.1] — 2025-08-12
+
 ### Added
 
 - Added keybinds and keybind display to Town training menu buttons.  The events
