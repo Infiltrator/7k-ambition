@@ -350,6 +350,10 @@ void Unit::sendToDestination(
   std::vector<short> _7kaaUnitRecordNumbers,
   const Waypoint& destination
 ) {
+  if (_7kaaUnitRecordNumbers.empty()) {
+    return;
+  }
+
   const auto location = world.get_loc(
     destination.point.to7kaaCoordinates().x,
     destination.point.to7kaaCoordinates().y

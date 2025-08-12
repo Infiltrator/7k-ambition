@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a crash when selling or demolishing an empty Fort which has a rally
+  point.
+
 
 ## [3.2.2] — 2025-08-18
 

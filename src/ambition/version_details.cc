@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed a crash when selling or demolishing an empty Fort which has a rally point."),
+        },
+      },
     },
   },
   {
