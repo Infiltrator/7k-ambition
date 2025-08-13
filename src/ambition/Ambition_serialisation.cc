@@ -168,7 +168,6 @@ void read(
 
   size_t recordCount;
   archive >> BOOST_SERIALIZATION_NVP(recordCount);
-  entityRepository.reset();
 
   for (auto i = 0; i < recordCount; i++) {
     Entity* entity;

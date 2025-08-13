@@ -29,6 +29,7 @@
 #include "OGFILE.h"
 
 #include "Ambition_config.hh"
+#include "Ambition_control.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_serialisation.hh"
 
@@ -63,7 +64,7 @@ void loadGame(
     return;
   }
 
-  Ambition::entityRepository.reset();
+  Ambition::resetGameState();
   Ambition::read(filename, startingPosition);
 }
 
