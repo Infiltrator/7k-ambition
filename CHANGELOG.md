@@ -17,6 +17,9 @@ speaking, considered to be the player's experience.
   non-English languages where the text is wider or longer.
 - Fixed a crash when selling or demolishing an empty Fort which has a rally
   point.
+- Fixed Spy steal report escape chances not actually depending on the type of
+  report stolen.  Now, different report types will have different chances of
+  escape after stealing them.
 
 
 ## [3.2.2] — 2025-08-18

@@ -476,7 +476,7 @@ void Sys::set_view_mode(int viewMode, int viewingNationRecno, int viewingSpyRecn
 		{
 			Spy* spyPtr = spy_array[info.viewing_spy_recno];
 
-			int needViewSecretSkill = spy_array.needed_view_secret_skill(info.viewing_spy_recno);
+			int needViewSecretSkill = spy_array.needed_view_secret_skill(Ambition::Config::enhancementsAvailable() ? view_mode : info.viewing_spy_recno);
 			int escapeChance = spyPtr->spy_skill - needViewSecretSkill;
 			int killFlag = 0;
 
