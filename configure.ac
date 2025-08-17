@@ -361,6 +361,12 @@ AS_IF([test "$enable_enet" = yes], [
   ])
 ])
 
+AS_IF([test "$enable_fhs" = yes], [
+  AC_DEFINE([USE_FHS], [1], [
+    Define to 1 if using FHS directory layout
+  ])
+])
+
 AS_IF([test "$have_register" = yes], [
   AC_DEFINE([REGISTER], [register], [
     Define to the register keyword your compiler allows
