@@ -31,6 +31,7 @@ class Button3D;
 class Firm;
 class Font;
 class InnUnit;
+class Nation;
 class SnowLayer;
 class Spy;
 class Town;
@@ -117,6 +118,13 @@ void delayFrame(
   const unsigned long long int deadlineSdlTicks64 = 0
 );
 
+void displayAssassinationConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+);
+
 /**
  * Display the given game speed on the screen.
  *
@@ -135,6 +143,12 @@ void displayInnGuestDetailsStayingInformation(
 void displayInnGuestLeavingSoonMark(
   const InnUnit* _7kaaInnGuest,
   const int top
+);
+
+void displayStealReportsConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const int report
 );
 
 void displayTownQualityOfLife(
@@ -284,6 +298,12 @@ bool initialiseSnowLayer(
   double slideSpeed
 );
 
+void printAssasinationEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+);
+
 void printBribeEstimate(
   const ::Spy* _7kaaSpy,
   Firm* _7kaaFirm,
@@ -316,6 +336,11 @@ void printWarMachineInBuildingInformation(
 int printWarMachineInformation(
   const ::Unit* _7kaaUnit,
   const int refreshFlag
+);
+
+void printStealReportsEstimate(
+  const ::Spy* _7kaaSpy,
+  const char report
 );
 
 /**

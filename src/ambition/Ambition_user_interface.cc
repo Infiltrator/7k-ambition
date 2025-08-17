@@ -37,6 +37,11 @@
 
 namespace Ambition::UserInterface {
 
+BuildingMenu buildingMenu = BuildingMenu::_7kaa;
+int reportType = -1;
+short selected7kaaFirmRecordNumber = 0;
+
+
 char _7kaaJustification(
   const HorizontalAlignment horizontalAlignment
 );
@@ -223,6 +228,9 @@ std::string keyString(
   }
   if (keyCode == KEY_ESC) {
     return "Esc";
+  }
+  if (keyCode == KEY_RETURN) {
+    return "Enter";
   }
 
   return "UNKNOWN";

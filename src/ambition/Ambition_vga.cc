@@ -56,6 +56,8 @@
 #include "OUNIT.h"
 #include "vga_util.h"
 
+#include "7kaaInterface/draw.hh"
+#include "7kaaInterface/input.hh"
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_polity.hh"
@@ -297,6 +299,90 @@ int centreHitbar(
   return left + (maximumWidth - currentWidth) / 2;
 }
 
+void displayAssassinationConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+) {
+  if (refreshFlag != INFO_REPAINT) {
+    return;
+  }
+
+  const auto titleArea = UserInterface::INFO_PANE_CONTENTS.internal(
+    {
+      .width = UserInterface::INFO_PANE_CONTENTS.width(),
+      .height = 19,
+    }
+  );
+
+  UserInterface::drawPanel(titleArea);
+  UserInterface::printText(
+    font_san,
+    _("Assassinate"),
+    titleArea,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 22, 0, 0)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width(),
+        .height = 46,
+      }
+    );
+
+  UserInterface::drawPanel(panelArea);
+
+  const auto bitmap
+    = unit_res[target->unit_id]->get_large_icon_ptr(target->rank_id);
+  const auto bitmapSize = UserInterface::bitmapSize(bitmap);
+
+  const auto bitmapArea = panelArea.inner(6, 4);
+
+  vga_front.put_bitmap(bitmapArea.start.left, bitmapArea.start.top, bitmap);
+
+  const auto textArea = panelArea.inner(12 + bitmapSize.width, 4, 0, 0);
+
+  UserInterface::printText(font_san, target->unit_name(), textArea);
+  UserInterface::printText(
+    font_san,
+    format(_("Hit Points: %.0f"), target->hit_points),
+    textArea.inner(0, 20)
+  );
+  printAssasinationEstimate(_7kaaSpy, _7kaaFirm, target);
+
+  Spy::assassinationButton.paint(
+    UserInterface::ASSASSINATION_BUTTON.start.left,
+    UserInterface::ASSASSINATION_BUTTON.start.top,
+    'A',
+    "ASSASSIN"
+  );
+  _7kaaAmbitionInterface::Draw::buttonKeybind(
+    _7kaaAmbitionInterface::Input::getKeyEvent(
+      _7kaaAmbitionInterface::Input::Action::Common_Confirm
+    ),
+    Spy::assassinationButton
+  );
+
+  Spy::cancelButton.paint(
+    UserInterface::CANCEL_BUTTON.start.left,
+    UserInterface::CANCEL_BUTTON.start.top,
+    'A',
+    "PREVMENU"
+  );
+  _7kaaAmbitionInterface::Draw::buttonKeybind(
+    _7kaaAmbitionInterface::Input::getKeyEvent(
+      _7kaaAmbitionInterface::Input::Action::Common_Cancel
+    ),
+    Spy::cancelButton
+  );
+}
+
 void displayGameSpeed(
   int speed
 ) {
@@ -384,6 +470,86 @@ void displayInnGuestLeavingSoonMark(
       Ambition::UserInterface::HorizontalAlignment::Right
     );
   }
+}
+
+void displayStealReportsConfirmationMenu(
+  const int refreshFlag,
+  const ::Spy* _7kaaSpy,
+  const int report
+) {
+  if (refreshFlag != INFO_REPAINT) {
+    return;
+  }
+
+  const auto titleArea = UserInterface::INFO_PANE_CONTENTS.internal(
+    {
+      .width = UserInterface::INFO_PANE_CONTENTS.width(),
+      .height = 19,
+    }
+  );
+
+  UserInterface::drawPanel(titleArea);
+  UserInterface::printText(
+    font_san,
+    _("Steal Reports"),
+    titleArea,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 22, 0, 0)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width(),
+        .height = 19,
+      }
+    );
+
+  UserInterface::drawPanel(panelArea);
+
+  const auto textArea = panelArea.inner(4);
+
+  constexpr const char* REPORT_NAMES[] = {
+    "Kingdoms Report",
+    "Villages Report",
+    "Economy Report",
+    "Trade Report",
+    "Military Report",
+    "Technology Report",
+    "Espionage Report",
+  };
+
+  UserInterface::printText(font_san, _(REPORT_NAMES[report]), textArea);
+  printStealReportsEstimate(_7kaaSpy, report);
+
+  Spy::stealReportsButton.paint(
+    UserInterface::ASSASSINATION_BUTTON.start.left,
+    UserInterface::ASSASSINATION_BUTTON.start.top,
+    'A',
+    "VSECRET"
+  );
+  _7kaaAmbitionInterface::Draw::buttonKeybind(
+    _7kaaAmbitionInterface::Input::getKeyEvent(
+      _7kaaAmbitionInterface::Input::Action::Common_Confirm
+    ),
+    Spy::stealReportsButton
+  );
+
+  Spy::cancelButton.paint(
+    UserInterface::CANCEL_BUTTON.start.left,
+    UserInterface::CANCEL_BUTTON.start.top,
+    'A',
+    "PREVMENU"
+  );
+  _7kaaAmbitionInterface::Draw::buttonKeybind(
+    _7kaaAmbitionInterface::Input::getKeyEvent(
+      _7kaaAmbitionInterface::Input::Action::Common_Cancel
+    ),
+    Spy::cancelButton
+  );
 }
 
 void displayTownQualityOfLife(
@@ -1350,6 +1516,51 @@ bool initialiseSnowLayer(
   return true;
 }
 
+void printAssasinationEstimate(
+  const ::Spy* _7kaaSpy,
+  const Firm* _7kaaFirm,
+  ::Unit* target
+) {
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 68, 0, 0)
+    .inner(4)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width() - 8,
+        .height = 44,
+      },
+      UserInterface::HorizontalAlignment::Left,
+      UserInterface::VerticalAlignment::Top
+    );
+  const auto textArea = panelArea.inner(4);
+
+  const int estimatedChance = std::round(
+    std::min(
+      99.0, /* You know what happens if you tell people 100%. */
+      Ambition::Spy::assassinationChanceEstimate(
+        _7kaaSpy,
+        _7kaaFirm,
+        target
+      ) * 100
+    )
+  );
+
+  UserInterface::drawPanel(panelArea);
+  UserInterface::printParagraph(
+    font_std,
+    format(
+      _("Your spy estimates a success chance of %d%%."),
+      estimatedChance
+    ),
+    textArea,
+    DEFAULT_LINE_SPACE,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+}
+
 void printBribeEstimate(
   const ::Spy* _7kaaSpy,
   Firm* _7kaaFirm,
@@ -1744,6 +1955,49 @@ int printWarMachineInformation(
   );
 
   return SIZE.height + 1;
+}
+
+void printStealReportsEstimate(
+  const ::Spy* _7kaaSpy,
+  const char report
+) {
+  const auto panelArea
+    = UserInterface::INFO_PANE_CONTENTS
+    .inner(0, 41, 0, 0)
+    .inner(4)
+    .internal(
+      {
+        .width = UserInterface::INFO_PANE_CONTENTS.width() - 8,
+        .height = 44,
+      },
+      UserInterface::HorizontalAlignment::Left,
+      UserInterface::VerticalAlignment::Top
+    );
+  const auto textArea = panelArea.inner(4);
+
+  const int estimatedChance = std::round(
+    std::min(
+      99.0, /* You know what happens if you tell people 100%. */
+      Ambition::Spy::stealReportEspaceChanceEstimate(
+        _7kaaSpy,
+        report
+      ) * 100
+    )
+  );
+
+  UserInterface::drawPanel(panelArea);
+  UserInterface::printParagraph(
+    font_std,
+    format(
+      _("Your spy estimates an escape chance of %d%%."),
+      estimatedChance
+    ),
+    textArea,
+    DEFAULT_LINE_SPACE,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
 }
 
 void unlockBuffer(

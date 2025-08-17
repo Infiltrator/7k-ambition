@@ -39,6 +39,7 @@
 
 #include "Ambition_config.hh"
 #include "Ambition_repository.hh"
+#include "Ambition_user_interface.hh"
 
 
 namespace Ambition {
@@ -87,6 +88,8 @@ void requestFeedback(
 
 void resetGameState(
 ) {
+  UserInterface::buildingMenu = UserInterface::BuildingMenu::_7kaa;
+
   entityRepository.reset();
 }
 

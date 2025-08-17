@@ -20,43 +20,25 @@
 /**
  * @file
  *
- * Header file for Ambition::Spy.
+ * Header file for _7kaaAmbitionInterface::Spy.
  */
 
 #pragma once
 
-class Button3D;
-class Firm;
-class Spy;
-class Unit;
-class Worker;
 
+namespace _7kaaAmbitionInterface::Spy {
 
-namespace Ambition::Spy {
-
-extern Button3D assassinationButton;
-extern Button3D cancelButton;
-extern Button3D stealReportsButton;
-
-
-double assassinationChanceEstimate(
-  const ::Spy* _7kaaSpy,
-  const Firm* _7kaaFirm,
-  ::Unit* target
+int bribeChoiceCount(
 );
 
-int bribeAmountEstimate(
-  const ::Spy* _7kaaSpy,
-  Worker& target
-);
-int bribeAmountEstimate(
-  const ::Spy* _7kaaSpy,
-  ::Unit* target
+int bribeChoiceAmount(
+  const int choice,
+  const short _7kaaBribeAmountArray[6]
 );
 
-double stealReportEspaceChanceEstimate(
-  const ::Spy* _7kaaSpy,
-  const char report
-);
+} // namespace _7kaaAmbitionInterface::Spy
 
-} // namespace Ambition::Spy
+#ifndef _AMBITION_IMPLEMENTATION
+/** Allow 7kaa to call using Ambition::*. */
+namespace Ambition = _7kaaAmbitionInterface;
+#endif

@@ -7,5 +7,6 @@ noinst_HEADERS = \
   input.hh \
   polity.hh \
   serialisation.hh \
+  spy.hh \
   unit.hh \
   # end

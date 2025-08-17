@@ -20,43 +20,42 @@
 /**
  * @file
  *
- * Header file for Ambition::Spy.
+ * Implementation file for _7kaaAmbitionInterface::Spy.
  */
 
-#pragma once
+#define _AMBITION_IMPLEMENTATION
+#include "spy.hh"
 
-class Button3D;
-class Firm;
-class Spy;
-class Unit;
-class Worker;
+#include "OSPY.h"
 
-
-namespace Ambition::Spy {
-
-extern Button3D assassinationButton;
-extern Button3D cancelButton;
-extern Button3D stealReportsButton;
+#include "Ambition_config.hh"
 
 
-double assassinationChanceEstimate(
-  const ::Spy* _7kaaSpy,
-  const Firm* _7kaaFirm,
-  ::Unit* target
-);
+namespace _7kaaAmbitionInterface::Spy {
 
-int bribeAmountEstimate(
-  const ::Spy* _7kaaSpy,
-  Worker& target
-);
-int bribeAmountEstimate(
-  const ::Spy* _7kaaSpy,
-  ::Unit* target
-);
+constexpr auto BRIBE_AMOUNT_STEP = 500;
 
-double stealReportEspaceChanceEstimate(
-  const ::Spy* _7kaaSpy,
-  const char report
-);
 
-} // namespace Ambition::Spy
+int bribeChoiceCount(
+) {
+  constexpr auto _7KAA_BRIBE_CHOICE_COUNT = 6;
+
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7KAA_BRIBE_CHOICE_COUNT;
+  }
+
+  return MAX_BRIBE_AMOUNT / BRIBE_AMOUNT_STEP;
+}
+
+int bribeChoiceAmount(
+  const int choice,
+  const short _7kaaBribeAmountArray[6]
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaBribeAmountArray[choice];
+  }
+
+  return BRIBE_AMOUNT_STEP * (choice + 1);
+}
+
+} // namespace _7kaaAmbitionInterface::Spy

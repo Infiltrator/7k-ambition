@@ -8,6 +8,7 @@ lib7kaa_ambition_interface_a_SOURCES = \
   input.cc \
   polity.cc \
   serialisation.cc \
+  spy.cc \
   unit.cc \
   # end
 

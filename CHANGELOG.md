@@ -15,6 +15,11 @@ speaking, considered to be the player's experience.
 - Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in
   accuracy over time and based on the spy's skill.  But keep in mind that your
   spies do not know about enemy spies.
+- Added an assassination confirmation screen with a Spy-estimated success
+  chance.  This estimate varies in accuracy over time and based on the spy's
+  skill.
+- Added a steal report confirmation screen with a Spy-estimated escape chance.
+  This estimate varies in accuracy over time and based on the spy's skill.
 
 ### Fixed
 
@@ -26,6 +31,10 @@ speaking, considered to be the player's experience.
 - Fixed Spy steal report escape chances not actually depending on the type of
   report stolen.  Now, different report types will have different chances of
   escape after stealing them.
+
+### Changed
+
+- Increased bribe choices to include $2500 and $3500.
 
 
 ## [3.2.2] — 2025-08-18

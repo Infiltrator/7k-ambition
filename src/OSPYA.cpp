@@ -383,6 +383,11 @@ int SpyArray::detect_view_secret_menu(int spyRecno, int nationRecno)
 	{
 		if( button_secret_report_array[i].detect() )
 		{
+			if (Ambition::Input::enterStealReportConfirmationMenu(i)) {
+				rc = 1;
+				break;
+			}
+
 			sys.set_view_mode( secret_view_mode_array[i], nationRecno, spyRecno );
 			rc=1;
 			break;
