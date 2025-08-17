@@ -22,6 +22,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed save file names and dates running off on the right side of the load screen, creating artefacts.  This was especially problematic in some non-English languages where the text is wider or longer."),
           _("Fixed a crash when selling or demolishing an empty Fort which has a rally point."),
+          _("Fixed Spy steal report escape chances not actually depending on the type of report stolen.  Now, different report types will have different chances of escape after stealing them."),
         },
       },
     },
