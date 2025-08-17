@@ -198,6 +198,15 @@ const auto PERCENTAGE = COLUMN_CONTENTS.internal(
 
 } // namespace MilitaryReport
 
+constexpr Ambition::UserInterface::Size SAVE_SLOT_SIZE = {
+  .width = 538,
+  .height = 62,
+};
+constexpr Ambition::UserInterface::Size SAVE_INFORMATION_TEXT_AREA_SIZE = {
+  .width = 190,
+  .height = 17,
+};
+
 constexpr Rectangle INFO_PANE_CONTENTS = {
   .start = {
     .left = 585,

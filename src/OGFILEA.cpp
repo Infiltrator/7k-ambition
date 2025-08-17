@@ -687,6 +687,7 @@ void GameFileArray::disp_entry_info(const GameFile* entry, int x, int y)
 	str += ": ";
 	str += entry->file_name;
 
+	if (!Ambition::Draw::printSaveFilename(str.str_buf, x, y)) {
 	#if(defined(FRENCH))
 		font_small.put( x+320, y+16, str );
 	#elif(defined(GERMAN))
@@ -694,6 +695,7 @@ void GameFileArray::disp_entry_info(const GameFile* entry, int x, int y)
 	#else
 		font_small.put( x+335, y+16, str );
 	#endif
+	}
 
 	str  = _("File Date");
 	str += ": ";
@@ -716,6 +718,7 @@ void GameFileArray::disp_entry_info(const GameFile* entry, int x, int y)
 
 	str = Ambition::Serialisation::calculateFileDateString(str.str_buf, entry).c_str();
 
+	if (!Ambition::Draw::printSaveFileDate(str.str_buf, x, y)) {
 	#if(defined(FRENCH))
 		font_small.put( x+318, y+34, str );
 	#elif(defined(GERMAN))
@@ -723,6 +726,7 @@ void GameFileArray::disp_entry_info(const GameFile* entry, int x, int y)
 	#else
 		font_small.put( x+335, y+34, str );
 	#endif
+	}
 }
 //--------- End of function GameFileArray::disp_entry_info --------//
 

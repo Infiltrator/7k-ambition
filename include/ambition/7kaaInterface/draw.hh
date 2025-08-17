@@ -342,6 +342,18 @@ bool printLeadershipStatus(
   const int refreshFlag
 );
 
+bool printSaveFileDate(
+  const std::string string,
+  const int left,
+  const int top
+);
+
+bool printSaveFilename(
+  const std::string string,
+  const int left,
+  const int top
+);
+
 void printSyncError(
 );
 
