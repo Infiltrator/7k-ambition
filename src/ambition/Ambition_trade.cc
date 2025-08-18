@@ -25,8 +25,6 @@
 
 #include "Ambition_trade.hh"
 
-#include <cstdint>
-
 #define _AMBITION_IMPLEMENTATION
 #include "OBUTT3D.h"
 #include "OF_FACT.h"

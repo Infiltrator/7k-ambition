@@ -26,8 +26,6 @@
 #define _AMBITION_IMPLEMENTATION
 #include "inn.hh"
 
-#include <cstdint>
-
 #include "OBUTT3D.h"
 #include "OF_INN.h"
 #include "OMOUSE.h"

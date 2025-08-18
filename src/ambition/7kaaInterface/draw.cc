@@ -26,8 +26,6 @@
 #define _AMBITION_IMPLEMENTATION
 #include "draw.hh"
 
-#include <cstdint>
-
 #include "OBUTT3D.h"
 #include "OBUTTCUS.h"
 #include "OCONFIG.h"

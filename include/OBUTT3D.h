@@ -24,6 +24,8 @@
 #ifndef __OBUTT3D_H
 #define __OBUTT3D_H
 
+#include <cstdint>
+
 //------- Define button type -------//
 
 enum { BUTTON_TYPE_SHELL,		// use the button standard shells combining with bitmap for each button
