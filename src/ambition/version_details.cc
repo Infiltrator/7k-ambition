@@ -20,6 +20,17 @@ std::vector<VersionUpdates> versionDetails = {
     },
   },
   {
+    .identifier = _("v3.2.2 -- 2025-08-18"),
+    .sections = {
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("No game changes.  This just has packaging changes to work with Gentoo."),
+        },
+      },
+    },
+  },
+  {
     .identifier = _("v3.2.1 -- 2025-08-12"),
     .sections = {
       {

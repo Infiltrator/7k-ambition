@@ -11,6 +11,13 @@ speaking, considered to be the player's experience.
 ## [Unreleased]
 
 
+## [3.2.2] — 2025-08-18
+
+### Changed
+
+- No game changes.  This just has packaging changes to work with Gentoo.
+
+
 ## [3.2.1] — 2025-08-12
 
 ### Added
