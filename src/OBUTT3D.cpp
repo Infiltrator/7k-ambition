@@ -23,6 +23,8 @@
 
 #include "ambition/7kaaInterface/config.hh"
 
+#include <cstdint>
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OHELP.h>

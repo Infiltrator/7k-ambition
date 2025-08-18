@@ -2,9 +2,18 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.65])
+
+m4_define([package_version], [v3.2.1])
+
 AC_INIT(
   [Seven Kingdoms: Ambition],
-  [m4_esyscmd_s([git describe --always --dirty --tags])],
+  [m4_esyscmd_s([
+    if test -d .git; then
+      git describe --always --dirty --tags 2>/dev/null || echo "[package_version]-novcs";
+     else
+      echo "[package_version]-novcs";
+    fi
+  ])],
   [seven-kingdoms-ambition-bugs@lists.sourceforge.net],
   [7k-ambition],
   [https://seven-kingdoms-ambition.sourceforge.io/]

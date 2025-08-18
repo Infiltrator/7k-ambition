@@ -25,7 +25,11 @@
 
 #include "Ambition_version.hh"
 
+#if __has_include("git_string.h")
 #include "git_string.h"
+#else
+#define GIT_STRING "-novcs"
+#endif
 
 namespace Ambition {
 
