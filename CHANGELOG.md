@@ -23,6 +23,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed build guidelines not being clearly visible on Snow and Badlands
+  tilesets.
 - Fixed save file names and dates running off on the right side of the load
   screen, creating artefacts.  This was especially problematic in some
   non-English languages where the text is wider or longer.

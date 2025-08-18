@@ -35,6 +35,7 @@
 #include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
+#include "OCONFIG.h"
 #include "OF_HARB.h"
 #include "OF_INN.h"
 #include "OF_MARK.h"
@@ -901,7 +902,20 @@ void drawBuildingRallyPoint(
 void drawBuildMarkerGridLines(
   const UserInterface::Rectangle marker
 ) {
-  constexpr auto COLOUR = VGA_GRAY + 11;
+  int colour;
+  assert(::config.terrain_set >= 1 && ::config.terrain_set <= 3);
+  switch (::config.terrain_set) {
+  case 1:
+    colour = VGA_GRAY + 11;
+    break;
+  case 2:
+    colour = VGA_GRAY + 6;
+    break;
+  case 3:
+    colour = VGA_GRAY + 4;
+    break;
+  }
+
   constexpr auto PIXELS_PER_TILE = 32;
 
   const auto buildMarker = marker.intersection(UserInterface::VIEWPORT);
@@ -914,28 +928,28 @@ void drawBuildMarkerGridLines(
     perimeterMarker.start.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     perimeterMarker.start.top,
-    COLOUR
+    colour
   );
   vga_back.bar(
     Ambition::UserInterface::VIEWPORT.start.left,
     buildMarker.start.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     buildMarker.start.top,
-    COLOUR
+    colour
   );
   vga_back.bar(
     Ambition::UserInterface::VIEWPORT.start.left,
     buildMarker.end.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     buildMarker.end.top,
-    COLOUR
+    colour
   );
   vga_back.bar(
     Ambition::UserInterface::VIEWPORT.start.left,
     perimeterMarker.end.top,
     Ambition::UserInterface::VIEWPORT.end.left,
     perimeterMarker.end.top,
-    COLOUR
+    colour
   );
 
   vga_back.bar(
@@ -943,28 +957,28 @@ void drawBuildMarkerGridLines(
     Ambition::UserInterface::VIEWPORT.start.top,
     perimeterMarker.start.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    COLOUR
+    colour
   );
   vga_back.bar(
     buildMarker.start.left,
     Ambition::UserInterface::VIEWPORT.start.top,
     buildMarker.start.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    COLOUR
+    colour
   );
   vga_back.bar(
     buildMarker.end.left,
     Ambition::UserInterface::VIEWPORT.start.top,
     buildMarker.end.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    COLOUR
+    colour
   );
   vga_back.bar(
     perimeterMarker.end.left,
     Ambition::UserInterface::VIEWPORT.start.top,
     perimeterMarker.end.left,
     Ambition::UserInterface::VIEWPORT.end.top,
-    COLOUR
+    colour
   );
 }
 
