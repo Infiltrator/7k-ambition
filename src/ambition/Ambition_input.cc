@@ -25,6 +25,8 @@
 
 #include "Ambition_input.hh"
 
+#include <algorithm>
+
 #define _AMBITION_IMPLEMENTATION
 #include "OMOUSE.h"
 #include "OVBROWIF.h"
