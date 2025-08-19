@@ -39,6 +39,13 @@ int getInnSelectedRecordNumber(
   const FirmInn* inn,
   const int browserRecordNumber
 ) {
+  // TODO: Log and/or dig into why this condition occurs.
+  if (browserRecordNumber < 1
+    || browserRecordNumber > inn->inn_unit_count
+  ) {
+    return 1;
+  }
+
   return inn->inn_unit_count - browserRecordNumber + 1;
 }
 
