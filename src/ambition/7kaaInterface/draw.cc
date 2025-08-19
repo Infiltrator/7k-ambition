@@ -253,8 +253,8 @@ void buildMarkerGridLines(
       .top = top,
     },
     .end = {
-      .left = right,
-      .top = bottom,
+      .left = right - 1,
+      .top = bottom - 1,
     },
   };
 
