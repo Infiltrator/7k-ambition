@@ -59,6 +59,7 @@ Required dependencies
 * SDL 2.24.0+
 * enet 1.3.xx Reliable UDP networking library
 * OpenAL-soft or equivalent driver
+* Boost >= 1.74
 
 Optional dependencies
 * libcurl for full 7kfans multiplayer integration (website requires TLS1.2)
