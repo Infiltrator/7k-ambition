@@ -46,6 +46,7 @@ speaking, considered to be the player's experience.
 - Increased bribe choices to include $2500 and $3500.
 - Made the build guidelines on the Standard tileset slightly brighter, to make
   them more visible.
+- Lined up the villager and peasant numbers on the Villages Report.
 
 
 ## [3.2.2] — 2025-08-18

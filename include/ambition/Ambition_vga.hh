@@ -329,6 +329,12 @@ void printMilitaryReportTotalCost(
   const UserInterface::Rectangle rowArea
 );
 
+void printVillagesReportTownPopulations(
+  const int top,
+  const int villagers,
+  const int peasants
+);
+
 void printVillagesReportUpperTotals(
   const int totalVillagers,
   const int totalPeasants,

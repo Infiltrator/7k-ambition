@@ -986,6 +986,23 @@ bool printSaveFilename(
   return true;
 }
 
+bool villagesReportTownPopulations(
+  const int top,
+  const int villagers,
+  const int peasants
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  Ambition::printVillagesReportTownPopulations(
+    top,
+    villagers,
+    peasants
+  );
+  return true;
+}
+
 bool villagesReportUpperTotals(
   const int totalVillagers,
   const int totalPeasants

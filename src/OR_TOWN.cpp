@@ -358,8 +358,12 @@ static void put_town_rec(int recNo, int x, int y, int refreshFlag)
 	y+=3;
 
 	font_san.put( x    , y, townPtr->town_name() );
-	font_san.put( x+175, y, townPtr->population );
-	font_san.put( x+241, y, townPtr->jobless_population );
+
+	if (!Ambition::Draw::villagesReportTownPopulations(y, townPtr->population, townPtr->jobless_population)) {
+		font_san.put( x+175, y, townPtr->population );
+		font_san.put( x+241, y, townPtr->jobless_population );
+	}
+
 	font_san.put( x+309, y, townPtr->average_loyalty() );
 
 	//------- display race icons -------//
