@@ -1822,6 +1822,77 @@ void printMilitaryReportTotalCost(
   );
 }
 
+void printVillagesReportTownPopulations(
+  const int top,
+  const int villagers,
+  const int peasants
+) {
+  using namespace UserInterface::Report::Villages::Towns;
+
+  const auto rowArea = UserInterface::Rectangle::fromPoint(
+    {
+      .left = AREA.start.left,
+      .top = top,
+    },
+    {
+      .width = AREA.width(),
+      .height = 21,
+    }
+  );
+
+  UserInterface::printText(
+    font_san,
+    format("%'d", villagers),
+    rowArea.intersection(VILLAGERS_COLUMN),
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Right
+  );
+
+  UserInterface::printText(
+    font_san,
+    format("%'d", peasants),
+    rowArea.intersection(PEASANTS_COLUMN),
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Right
+  );
+}
+
+void printVillagesReportUpperTotals(
+  const int totalVillagers,
+  const int totalPeasants,
+  Nation* target7kaaNation
+) {
+  using namespace UserInterface::Report::Villages::Towns;
+
+  UserInterface::printText(
+    font_san,
+    format("%'d", totalVillagers),
+    UPPER_TOTAL_TEXT_AREA.intersection(VILLAGERS_COLUMN),
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Right
+  );
+
+  UserInterface::printText(
+    font_san,
+    format("%'d", totalPeasants),
+    UPPER_TOTAL_TEXT_AREA.intersection(PEASANTS_COLUMN),
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Right
+  );
+
+  const auto surplusPeasantCount
+    = (target7kaaNation->yearly_food_production()
+      - target7kaaNation->yearly_food_consumption())
+    / PEASANT_FOOD_YEAR_PRODUCTION;
+  UserInterface::printText(
+    font_san,
+    format(_("Surplus Peasants: %'d"), surplusPeasantCount),
+    SURPLUS_TEXT_AREA,
+    UserInterface::Clear::None,
+    UserInterface::HorizontalAlignment::Left
+  );
+}
+
 void printWarMachineInBuildingInformation(
   const Worker* _7kaaWorker
 ) {

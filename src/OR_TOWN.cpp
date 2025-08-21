@@ -21,6 +21,7 @@
 //Filename    : OR_TOWN.CPP
 //Description : Town Report
 
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 
 #include "OFIRM.h"
@@ -207,15 +208,19 @@ static void disp_total()
 
    //-------------------------------//
 
-	snprintf( str, MAX_STR_LEN+1, _("Total Villagers: %s"), misc.format(total_population) );
+	if (!Ambition::Draw::villagesReportUpperTotals(total_population, total_peasant)) {
 
-	font_san.put( x+180, y, str );
+		snprintf( str, MAX_STR_LEN+1, _("Total Villagers: %s"), misc.format(total_population) );
 
-	//-------------------------------//
+		font_san.put( x+180, y, str );
 
-	snprintf( str, MAX_STR_LEN+1, _("Total Peasants: %s"), misc.format(total_peasant) );
+		//-------------------------------//
 
-	font_san.put( x+360, y, str );
+		snprintf( str, MAX_STR_LEN+1, _("Total Peasants: %s"), misc.format(total_peasant) );
+
+		font_san.put( x+360, y, str );
+
+	}
 
 	//------- display other totals --------//
 
@@ -353,8 +358,12 @@ static void put_town_rec(int recNo, int x, int y, int refreshFlag)
 	y+=3;
 
 	font_san.put( x    , y, townPtr->town_name() );
-	font_san.put( x+175, y, townPtr->population );
-	font_san.put( x+241, y, townPtr->jobless_population );
+
+	if (!Ambition::Draw::villagesReportTownPopulations(y, townPtr->population, townPtr->jobless_population)) {
+		font_san.put( x+175, y, townPtr->population );
+		font_san.put( x+241, y, townPtr->jobless_population );
+	}
+
 	font_san.put( x+309, y, townPtr->average_loyalty() );
 
 	//------- display race icons -------//

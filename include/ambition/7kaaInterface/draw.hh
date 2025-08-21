@@ -373,6 +373,17 @@ bool printSaveFilename(
   const int top
 );
 
+bool villagesReportTownPopulations(
+  const int top,
+  const int villagers,
+  const int peasants
+);
+
+bool villagesReportUpperTotals(
+  const int totalVillagers,
+  const int totalPeasants
+);
+
 void printSyncError(
 );
 

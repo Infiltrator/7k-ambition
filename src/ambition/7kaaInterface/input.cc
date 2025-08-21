@@ -80,12 +80,7 @@ const std::map<ReportType, Ambition::UserInterface::Rectangle> detectionAreas = 
   { ReportType::News, Ambition::UserInterface::VIEWPORT },
   {
     ReportType::VillagesTowns,
-    Ambition::UserInterface::VIEWPORT.internal(
-      {
-        .width = Ambition::UserInterface::VIEWPORT.width(),
-        .height = 309,
-      }
-    ),
+    Ambition::UserInterface::Report::Villages::Towns::AREA.outer(6, 6, 6, 2),
   },
   {
     ReportType::VillagesFirms,

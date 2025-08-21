@@ -170,13 +170,64 @@ const auto VIEWPORT = BOUNDS.internal(
   VerticalAlignment::Bottom
 );
 
-const auto REPORT_AREA = VIEWPORT.inner(6);
+
+namespace Report {
+
+const auto AREA = VIEWPORT.inner(6);
+
+namespace Villages {
+
+namespace Towns {
+
+const auto AREA = Report::AREA.internal(
+  {
+    .width = Report::AREA.width(),
+    .height = 301,
+  }
+);
+
+const auto VILLAGERS_COLUMN
+  = AREA
+  .inner(184, 0, 0, 0)
+  .internal({ .width = 14, .height = AREA.height() });
+
+const auto PEASANTS_COLUMN
+  = AREA
+  .inner(250, 0, 0, 0)
+  .internal({ .width = 14, .height = AREA.height() });
+
+const auto UPPER_TOTAL_AREA
+  = AREA
+  .inner(0, 0, 0, 20)
+  .internal(
+    {
+      .width = AREA.width(),
+      .height = 19,
+    },
+    HorizontalAlignment::Centre,
+    VerticalAlignment::Bottom
+  );
+const auto UPPER_TOTAL_TEXT_AREA
+  = UPPER_TOTAL_AREA
+  .inner(2, 2, 3, 3)
+  .inner(7, 0);
+
+const auto SURPLUS_TEXT_AREA
+  = UPPER_TOTAL_TEXT_AREA
+  .inner(360, 0, 0, 0)
+  .internal({ .width = 200, .height = 16 });
+
+} // namespace Report::Villages::Towns
+
+} // namespace Report::Villages
+
+} // namespace Report
 
 namespace MilitaryReport {
 
 namespace UnitList {
 
-const auto AREA = REPORT_AREA.inner(0, 246, 0, 0);
+const auto AREA = Report::AREA.inner(0, 246, 0, 0);
 
 namespace UnitCost {
 
