@@ -41,6 +41,7 @@ speaking, considered to be the player's experience.
 - Fixed Spy steal report escape chances not actually depending on the type of
   report stolen.  Now, different report types will have different chances of
   escape after stealing them.
+- Fixed save game list scrolling further than expected.
 - Fixed a bug where a ghost guest in an Inn could cause a segmentation fault
   crash.
 

@@ -325,7 +325,10 @@ int GameFileArray::menu(int actionMode, int *recno)
 		//---------- yield --------//
 
 		sys.yield();
-		vga.flip();
+
+		if (!Ambition::Config::enhancementsAvailable()) {
+			vga.flip();
+		}
 
 		mouse.get_event();
 
@@ -439,6 +442,10 @@ int GameFileArray::menu(int actionMode, int *recno)
 		}
 
 		sys.blt_virtual_buf();
+
+		if (Ambition::Config::enhancementsAvailable()) {
+			vga.flip();
+		}
 
 		Ambition::Input::detectSaveGameScroll(minRecno, size(), browse_recno, browse_top_recno, refreshFlag, scrollBar);
 
