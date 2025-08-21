@@ -23,6 +23,10 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed build guidelines not being clearly visible on Snow and Badlands
+  tilesets.
+- Fixed some build guidelines appearing a different colour on top of
+  highlighting.
 - Fixed save file names and dates running off on the right side of the load
   screen, creating artefacts.  This was especially problematic in some
   non-English languages where the text is wider or longer.
@@ -37,6 +41,8 @@ speaking, considered to be the player's experience.
 ### Changed
 
 - Increased bribe choices to include $2500 and $3500.
+- Made the build guidelines on the Standard tileset slightly brighter, to make
+  them more visible.
 
 
 ## [3.2.2] — 2025-08-18
