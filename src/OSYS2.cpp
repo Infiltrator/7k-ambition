@@ -22,6 +22,7 @@
 //Description : System resource management object
 
 #include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
 
 #include <OVGA.h>
@@ -537,6 +538,10 @@ void Sys::disp_frame()
 	}
 	else
 	{
+		if (!Ambition::Control::shouldDrawFrame()) {
+			return;
+		}
+
 		if (Ambition::Config::enhancementsAvailable()) {
 			dirt_array.process();
 			rock_array.process();
