@@ -1165,6 +1165,16 @@ void queueCount(
   );
 }
 
+bool shouldDrawUnitIcon(
+  const Unit* _7kaaUnit
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return true;
+  }
+
+  return _7kaaUnit->action_mode != ACTION_DIE;
+}
+
 void tradeReportcaravanCloneButton(
   VBrowseIF& caravanBrowser
 ) {

@@ -418,6 +418,10 @@ void queueCount(
   const Town* _7kaaTown
 );
 
+bool shouldDrawUnitIcon(
+  const Unit* _7kaaUnit
+);
+
 void tradeReportcaravanCloneButton(
   VBrowseIF& caravanBrowser
 );

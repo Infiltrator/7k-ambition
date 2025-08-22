@@ -44,12 +44,14 @@ speaking, considered to be the player's experience.
 - Fixed save game list scrolling further than expected.
 - Fixed a bug where a ghost guest in an Inn could cause a segmentation fault
   crash.
+- Fixed dying units always showing the outside-leadership-range icon.
 
 ### Changed
 
 - Increased bribe choices to include $2500 and $3500.
 - Made the build guidelines on the Standard tileset slightly brighter, to make
   them more visible.
+- Hide icons for units that are dying.
 - Lined up the villager and peasant numbers on the Villages Report.
 - Increased the game speed of the unlimited speed by not drawing every frame,
   but only 60 FPS.

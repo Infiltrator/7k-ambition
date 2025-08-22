@@ -302,6 +302,10 @@ void Unit::draw_selected()
 //----------- Begin of function Unit::draw_skill_icon ----------//
 void Unit::draw_skill_icon()
 {
+	if (!Ambition::Draw::shouldDrawUnitIcon(this)) {
+		return;
+	}
+
 	Ambition::Draw::outsideLeadershipIcon(this);
 
 	if( !race_id )		// only for human units
