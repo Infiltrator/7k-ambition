@@ -108,6 +108,25 @@ void resetGameState(
   Ambition::resetGameState();
 }
 
+bool shouldDrawFrame(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return true;
+  }
+
+  constexpr auto FRAMES_PER_SECOND = 60;
+  constexpr auto MILLISECONDS_PER_FRAME = 1000 / FRAMES_PER_SECOND;
+
+  static auto nextFrameTime = SDL_GetTicks64();
+  const auto now = SDL_GetTicks64();
+
+  if (now >= nextFrameTime) {
+    nextFrameTime = now + MILLISECONDS_PER_FRAME;
+    return true;
+  }
+  return false;
+}
+
 void unlockBuffer(
   VgaBuf& buffer
 ) {

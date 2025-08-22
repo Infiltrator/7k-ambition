@@ -45,6 +45,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Increased bribe choices to include $2500 and $3500."),
           _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
           _("Lined up the villager and peasant numbers on the Villages Report."),
+          _("Increased the game speed of the unlimited speed by not drawing every frame, but only 60 FPS."),
         },
       },
     },

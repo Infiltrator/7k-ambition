@@ -60,6 +60,9 @@ void requestFeedback(
 void resetGameState(
 );
 
+bool shouldDrawFrame(
+);
+
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.
  *
