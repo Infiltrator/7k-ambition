@@ -37,6 +37,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed Spy steal report escape chances not actually depending on the type of report stolen.  Now, different report types will have different chances of escape after stealing them."),
           _("Fixed save game list scrolling further than expected."),
           _("Fixed a bug where a ghost guest in an Inn could cause a segmentation fault crash."),
+          _("Fixed dying units always showing the outside-leadership-range icon."),
         },
       },
       {
@@ -44,6 +45,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Increased bribe choices to include $2500 and $3500."),
           _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
+          _("Hide icons for units that are dying."),
           _("Lined up the villager and peasant numbers on the Villages Report."),
           _("Increased the game speed of the unlimited speed by not drawing every frame, but only 60 FPS."),
         },
