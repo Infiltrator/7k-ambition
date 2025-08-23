@@ -21,6 +21,8 @@
 //Filename    : OTALKRES.CPP
 //Description : Object Talk
 
+#include "ambition/7kaaInterface/diplomacy.hh"
+
 #include <OMOUSE.h>
 #include <OSYS.h>
 #include "OVGABUF.h"
@@ -343,6 +345,10 @@ int TalkRes::add_buy_food_choices()
 	{
 		choice_question = _("How much food do you want to purchase?");
 
+		if (Ambition::Diplomacy::setFoodPurchaseQuantities(this, ~nation_array)) {
+			return 1;
+		}
+
 		static const char* qtyStrArray[] = { "500.", "1000.", "2000.", "4000." };
 		static short qtyArray[] = { 500, 1000, 2000, 4000 };
 
@@ -357,6 +363,10 @@ int TalkRes::add_buy_food_choices()
 	else if( !cur_talk_msg.talk_para2 )
 	{
 		choice_question = _("How much do you offer for 10 units of food?");
+
+		if (Ambition::Diplomacy::setFoodPurchasePrices(this, ~nation_array, cur_talk_msg.talk_para1)) {
+			return 1;
+		}
 
 		static const char* priceStrArray[] = { "$5.", "$10.", "$15.", "$20." };
 		static short priceArray[] = { 5, 10, 15, 20 };
@@ -381,6 +391,10 @@ int TalkRes::add_tribute_choices()
 {
 	if( cur_talk_msg.talk_para1 )
 		return 0;
+
+	if (Ambition::Diplomacy::setTributeQuantities(this, ~nation_array)) {
+		return 1;
+	}
 
 	static const char* tributeStrArray[] = { "$500.", "$1000.", "$2000.", "$3000.", "$4000." };
 	static short tributeAmtArray[] = { 500, 1000, 2000, 3000, 4000 };

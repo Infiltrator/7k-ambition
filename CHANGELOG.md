@@ -24,6 +24,8 @@ speaking, considered to be the player's experience.
   Report.  This is how many extra peasants you currently have over the amount
   you need to exactly balance food production and consumption.
 - Increased bribe choices to include $2500 and $3500.
+- Added more food purchasing quantity and price options.
+- Added more aid and tribute amount options.
 
 ### Fixed
 
@@ -53,8 +55,11 @@ speaking, considered to be the player's experience.
   them more visible.
 - Hide icons for units that are dying.
 - Lined up the villager and peasant numbers on the Villages Report.
+- Show the per-unit and total costs of food purchase requests.
 - Increased the game speed of the unlimited speed by not drawing every frame,
   but only 60 FPS.
+- Use thousands separators for food purchase quantities and aid and tribute
+  amounts.
 
 
 ## [3.2.2] — 2025-08-18

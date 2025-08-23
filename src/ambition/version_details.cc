@@ -25,6 +25,8 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added a steal report confirmation screen with a Spy-estimated escape chance.  This estimate varies in accuracy over time and based on the spy's skill."),
           _("Show the surplus (or deficit) number of peasants that you have on the Villages Report.  This is how many extra peasants you currently have over the amount you need to exactly balance food production and consumption."),
           _("Increased bribe choices to include $2500 and $3500."),
+          _("Added more food purchasing quantity and price options."),
+          _("Added more aid and tribute amount options."),
         },
       },
       {
@@ -47,7 +49,9 @@ std::vector<VersionUpdates> versionDetails = {
           _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
           _("Hide icons for units that are dying."),
           _("Lined up the villager and peasant numbers on the Villages Report."),
+          _("Show the per-unit and total costs of food purchase requests."),
           _("Increased the game speed of the unlimited speed by not drawing every frame, but only 60 FPS."),
+          _("Use thousands separators for food purchase quantities and aid and tribute amounts."),
         },
       },
     },
