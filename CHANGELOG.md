@@ -57,6 +57,8 @@ speaking, considered to be the player's experience.
 - Lined up the villager and peasant numbers on the Villages Report.
 - Increased the game speed of the unlimited speed by not drawing every frame,
   but only 60 FPS.
+- Use thousands separators for food purchase quantities and aid and tribute
+  amounts.
 
 
 ## [3.2.2] — 2025-08-18

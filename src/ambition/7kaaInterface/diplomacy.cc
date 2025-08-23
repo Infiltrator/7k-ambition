@@ -78,7 +78,7 @@ bool setFoodPurchaseQuantities(
 
     add7kaaTalkChoice(
       _7kaaDiplomaticMessageResource,
-      format("%d.", amount),
+      format("%'d.", amount),
       amount
     );
   }
@@ -154,7 +154,7 @@ bool setTributeQuantities(
 
     add7kaaTalkChoice(
       _7kaaDiplomaticMessageResource,
-      format("$%d.", amount),
+      format("$%'d.", amount),
       amount
     );
   }
