@@ -23,6 +23,7 @@ speaking, considered to be the player's experience.
 - Show the surplus (or deficit) number of peasants that you have on the Villages
   Report.  This is how many extra peasants you currently have over the amount
   you need to exactly balance food production and consumption.
+- Increased bribe choices to include $2500 and $3500.
 
 ### Fixed
 
@@ -48,7 +49,6 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
-- Increased bribe choices to include $2500 and $3500.
 - Made the build guidelines on the Standard tileset slightly brighter, to make
   them more visible.
 - Hide icons for units that are dying.

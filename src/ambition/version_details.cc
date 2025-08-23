@@ -24,6 +24,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Added an assassination confirmation screen with a Spy-estimated success chance.  This estimate varies in accuracy over time and based on the spy's skill."),
           _("Added a steal report confirmation screen with a Spy-estimated escape chance.  This estimate varies in accuracy over time and based on the spy's skill."),
           _("Show the surplus (or deficit) number of peasants that you have on the Villages Report.  This is how many extra peasants you currently have over the amount you need to exactly balance food production and consumption."),
+          _("Increased bribe choices to include $2500 and $3500."),
         },
       },
       {
@@ -43,7 +44,6 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_CHANGED),
         .items = {
-          _("Increased bribe choices to include $2500 and $3500."),
           _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
           _("Hide icons for units that are dying."),
           _("Lined up the villager and peasant numbers on the Villages Report."),
