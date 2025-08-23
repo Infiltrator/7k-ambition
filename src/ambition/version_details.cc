@@ -49,6 +49,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
           _("Hide icons for units that are dying."),
           _("Lined up the villager and peasant numbers on the Villages Report."),
+          _("Show the per-unit and total costs of food purchase requests."),
           _("Increased the game speed of the unlimited speed by not drawing every frame, but only 60 FPS."),
           _("Use thousands separators for food purchase quantities and aid and tribute amounts."),
         },

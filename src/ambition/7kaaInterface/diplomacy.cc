@@ -29,6 +29,7 @@
 #include <array>
 #include <cassert>
 
+#include "gettext.h"
 #include "ONATION.h"
 #include "OTALKRES.h"
 
@@ -108,6 +109,9 @@ bool setFoodPurchasePrices(
     5.0,
   };
 
+  _7kaaDiplomaticMessageResource->choice_question
+    = _("What price do you offer per unit of food?");
+
   for (const auto& price : PRICES) {
     if (source7kaaNation->cash < quantity * price) {
       break;
@@ -115,7 +119,11 @@ bool setFoodPurchasePrices(
 
     add7kaaTalkChoice(
       _7kaaDiplomaticMessageResource,
-      format("$%.0f.", price * _7KAA_PRICE_FACTOR),
+      format(
+        _("$%.1f per unit of food.  Total cost: $%'.0f."),
+        price,
+        quantity * price
+      ),
       price * _7KAA_PRICE_FACTOR
     );
   }

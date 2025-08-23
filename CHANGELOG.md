@@ -55,6 +55,7 @@ speaking, considered to be the player's experience.
   them more visible.
 - Hide icons for units that are dying.
 - Lined up the villager and peasant numbers on the Villages Report.
+- Show the per-unit and total costs of food purchase requests.
 - Increased the game speed of the unlimited speed by not drawing every frame,
   but only 60 FPS.
 - Use thousands separators for food purchase quantities and aid and tribute
