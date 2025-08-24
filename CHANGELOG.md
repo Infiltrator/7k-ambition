@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.3] — 2025-08-24
+
 ### Added
 
 - Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in

@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.65])
 
-m4_define([package_version], [v3.2.2])
+m4_define([package_version], [v3.2.3])
 
 AC_INIT(
   [Seven Kingdoms: Ambition],
