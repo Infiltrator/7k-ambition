@@ -123,7 +123,7 @@ double assassinationChanceEstimate(
     } else {
       defenderCount++;
       apparentDefenceRating += 4 + _7kaaWorker.hit_points / 30;
-      possibleExtraDefenceRating = 50 - (4 + _7kaaWorker.hit_points / 30);
+      possibleExtraDefenceRating += 50 - (4 + _7kaaWorker.hit_points / 30);
     }
   }
 

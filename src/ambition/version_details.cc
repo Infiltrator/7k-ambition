@@ -26,6 +26,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_FIXED),
         .items = {
+          _("Fixed the estimated assassination success chance not properly taking into account other defenders present, showing too high when other units were present."),
           _("Fixed the estimated assassination success chance against a king being too low."),
           _("Fixed the war machine type and level identifiers inside forts causing artefacts when they moved around in the list."),
         },
