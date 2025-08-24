@@ -242,7 +242,7 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_SPY_STEAL_REPORTS, "Z");
 
 	bind_key(KEYEVENT_TRAIN_BUILDER, "I");
-	bind_key(KEYEVENT_TRAIN_SOLDIER, "W");
+	bind_key(KEYEVENT_TRAIN_SOLDIER, "F");
 	bind_key(KEYEVENT_TRAIN_MINER, "R");
 	bind_key(KEYEVENT_TRAIN_ARTISAN, "A");
 	bind_key(KEYEVENT_TRAIN_RESEARCHER, "H");
