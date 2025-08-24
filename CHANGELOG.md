@@ -17,6 +17,7 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed the estimated assassination success chance against a king being too low.
 - Fixed the war machine type and level identifiers inside forts causing
   artefacts when they moved around in the list.
 
