@@ -29,6 +29,7 @@
 #include "KEY.h"
 #include "OFONT.h"
 #include "OMOUSE.h"
+#include "OVGA.h"
 #include "OWORLD.h"
 #include "vga_util.h"
 
@@ -36,6 +37,8 @@
 
 
 namespace Ambition::UserInterface {
+
+int rankReportComparison7kaaNationRecordNumber = 0;
 
 BuildingMenu buildingMenu = BuildingMenu::_7kaa;
 int reportType = -1;
@@ -198,6 +201,19 @@ bool detectMouseClick(
     area.start.top,
     area.end.left,
     area.end.top
+  );
+}
+
+void drawRectangle(
+  const Rectangle& rectangle,
+  const int colourIndex
+) {
+  vga.active_buf->bar(
+    rectangle.start.left,
+    rectangle.start.top,
+    rectangle.end.left,
+    rectangle.end.top,
+    colourIndex
   );
 }
 

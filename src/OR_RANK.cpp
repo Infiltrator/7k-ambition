@@ -22,6 +22,7 @@
 //Description : Ranking report
 
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/score.hh"
 
 #include <ODATE.h>
 #include <OFONT.h>
@@ -212,6 +213,8 @@ static void disp_score()
 	font_san.put( x2+170, y+12, str);
 
 	y+=36;
+
+	Ambition::Score::printComparisonScores(viewNationRecno);
 }
 //----------- End of static function disp_score -----------//
 
@@ -352,6 +355,7 @@ static void disp_play_time(int y1)
 void Info::detect_rank()
 {
 	Ambition::Input::detectReportScroll(Ambition::Input::ReportType::Ranking, browse_nation, browse_nation_recno);
+	Ambition::Score::detectComparisonButton(nation_filter(browse_nation.recno()));
 
 	//------- detect nation browser ------//
 

@@ -31,10 +31,12 @@
 #include <fstream>
 #include <SDL2/SDL_misc.h>
 
+#define _AMBITION_IMPLEMENTATION
 #include "gettext.h"
 #include "OBOX.h"
 #include "OCONFIG.h"
 #include "OMUSIC.h"
+#include "ONATION.h"
 #include "OSYS.h"
 
 #include "Ambition_config.hh"
@@ -89,6 +91,8 @@ void requestFeedback(
 void resetGameState(
 ) {
   UserInterface::buildingMenu = UserInterface::BuildingMenu::_7kaa;
+  UserInterface::rankReportComparison7kaaNationRecordNumber
+    = nation_array.player_recno;
 
   entityRepository.reset();
 }

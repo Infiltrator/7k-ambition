@@ -25,6 +25,8 @@
 
 #pragma once
 
+#include "COLOR.h"
+
 #include "Ambition_coordinates.hh"
 
 class Font;
@@ -56,6 +58,8 @@ enum class VerticalAlignment {
   Bottom,
 };
 
+
+extern int rankReportComparison7kaaNationRecordNumber;
 
 extern BuildingMenu buildingMenu;
 extern int reportType;
@@ -221,6 +225,41 @@ const auto SURPLUS_TEXT_AREA
 
 } // namespace Report::Villages
 
+namespace Rank {
+
+namespace Scores {
+
+const Size SIZE = { .width = Report::AREA.width(), .height = 151 };
+const auto AREA
+  = Report::AREA.inner(0, 226, 0, 0)
+  .internal(SIZE);
+
+const auto COMPARISON_AREA = AREA.inner(372, 0, 0, 0);
+const auto COMPARISON_TEXT_AREA = COMPARISON_AREA.inner(6);
+
+constexpr auto COLUMN_GAP = 8;
+
+const auto COMPARISON_SCORE_COLUMN = COMPARISON_TEXT_AREA.internal(
+  { .width = 40, .height = COMPARISON_TEXT_AREA.height() }
+);
+const auto COMPARISON_SCORE_DIFFERENCE_COLUMN
+  = COMPARISON_TEXT_AREA
+  .inner(COMPARISON_SCORE_COLUMN.width() + COLUMN_GAP, 0, 0, 0)
+  .internal({ .width = 56, .height = COMPARISON_TEXT_AREA.height() });
+
+const auto COMPARISON_BUTTON
+  = COMPARISON_TEXT_AREA
+  .outer(0, 0, 0, 4)
+  .internal(
+    { .width = COMPARISON_TEXT_AREA.width(), .height = 40 },
+    HorizontalAlignment::Centre,
+    VerticalAlignment::Bottom
+  );
+
+} // namespace Report::Rank::Scores
+
+} // namespace Report::Rank
+
 } // namespace Report
 
 namespace MilitaryReport {
@@ -343,6 +382,11 @@ Size bitmapSize(
 
 bool detectMouseClick(
   const Rectangle area
+);
+
+void drawRectangle(
+  const Rectangle& rectangle,
+  const int colourIndex = V_BLACK
 );
 
 void drawPanel(
