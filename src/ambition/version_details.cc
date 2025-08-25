@@ -24,6 +24,12 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed the war machine type and level identifiers inside forts causing artefacts when they moved around in the list."),
+        },
+      },
+      {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Changed default keybind for train soldier to `F` from `W`, to make it more consistent with the other fort-related keybinds (build fort)."),

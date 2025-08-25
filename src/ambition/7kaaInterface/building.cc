@@ -317,9 +317,10 @@ bool printWarMachineIdentifier(
       },
       .end = {
         .left = right,
-        .top = top,
+        .top = top + font_san.font_height - 1,
       },
-    }
+    },
+    Ambition::UserInterface::Clear::EntireArea
   );
 
   return true;
