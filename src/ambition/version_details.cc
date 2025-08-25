@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Changed default keybind for train soldier to `F` from `W`, to make it more consistent with the other fort-related keybinds (build fort)."),
+        },
+      },
     },
   },
   {
