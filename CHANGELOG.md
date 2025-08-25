@@ -15,6 +15,11 @@ speaking, considered to be the player's experience.
 - Added kingdom-to-kingdom score comparison to the Rank Report, allowing you to
   see the scores of two kingdoms side-by-side.
 
+### Fixed
+
+- Fixed the war machine type and level identifiers inside forts causing
+  artefacts when they moved around in the list.
+
 ### Changed
 
 - Changed default keybind for train soldier to `F` from `W`, to make it more
