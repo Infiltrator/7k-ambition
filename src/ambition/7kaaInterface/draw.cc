@@ -169,6 +169,15 @@ const std::map<short, short> ROCK_BITMAP_REMAPPINGS = {
   { 504, 424 },
 
   /* == Look like they take up less space than they do. == */
+  /* DGA9.  4×4 rock on high ground that looks passable in the NE corner.
+   * Replacing only the corner. */
+  { 177, 11 },
+
+  /* EGB1.  2×2 water that looks passable in the SW corner.  Animated over two
+   * frames.  Replacing only the SW corner. */
+  { 593, 581 },
+  { 594, 582 },
+
   /* EGC3.  3×3 lake that only takes up 3×2. */
   { 643, 634 },
   { 644, 635 },
@@ -179,6 +188,57 @@ const std::map<short, short> ROCK_BITMAP_REMAPPINGS = {
   { 649, 640 },
   { 650, 641 },
   { 651, 642 },
+
+  /* EGD1.  4×3 fissure waterfall that looks passable in the NE and SW corners.
+   * Animated over two frames.  Replacing only the corners. */
+  { 658, 201 },
+  { 659, 201 },
+  { 668, 156 },
+  { 669, 156 },
+
+  /* EGD2.  4×3 fissure in the ground that looks passable in the northern
+   * corners and along the entire southern third.  Replacing the northern
+   * corners and the southern line. */
+  { 676, 157 },
+  { 679, 361 },
+  { 684, 796 },
+  { 685, 797 },
+  { 686, 798 },
+  { 687, 799 },
+
+  /* EGD5.  4×4 waterfall that looks passable in the NE and SW corners.
+   * Animated over three frames.  Replacing only the corners. */
+  { 697, 158 },
+  { 698, 158 },
+  { 699, 158 },
+  { 724, 187 },
+  { 725, 187 },
+  { 726, 187 },
+
+  /* EGD6.  4×4 waterfall that looks passable in the NW, NE, and SW corners.
+   * Animated over three frames.  Replacing only the corners. */
+  { 736, 157 },
+  { 737, 157 },
+  { 738, 157 },
+  { 745, 188 },
+  { 746, 188 },
+  { 747, 188 },
+  { 772, 71 },
+  { 773, 71 },
+  { 774, 71 },
+
+  /* EGD7.  4×4 hill where the NE corner looks passable.  Replacing only the NE
+   * corner. */
+  { 787, 201 },
+
+  /* EGD9.  4×4 waterfall that looks passable in the NE and SW corners.
+   * Animated over three frames.  Replacing only the corners. */
+  { 825, 677 },
+  { 826, 677 },
+  { 827, 677 },
+  { 852, 188 },
+  { 853, 188 },
+  { 854, 188 },
 
   /* == Look like they should not block but do. == */
   /* EGB5.  2×2 normal looking dirt. */
