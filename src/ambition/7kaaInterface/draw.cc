@@ -26,6 +26,8 @@
 #define _AMBITION_IMPLEMENTATION
 #include "draw.hh"
 
+#include <map>
+
 #include "OBUTT3D.h"
 #include "OBUTTCUS.h"
 #include "OCONFIG.h"
@@ -52,6 +54,140 @@
 
 
 namespace _7kaaAmbitionInterface::Draw {
+
+const std::map<short, short> ROCK_BITMAP_REMAPPINGS = {
+  /* == Look like they should block but do not. == */
+  /* DDAA.  1×1 fissure on high ground. */
+  { 10, 4 },
+
+  /* DDAB.  1×1 pile of rocks on high ground. */
+  { 11, 18 },
+
+  /* DDAC.  1×1 pile of rocks on high ground. */
+  { 12, 7 },
+
+  /* DDBD.  2×2 fissure on high ground. */
+  { 67, 43 },
+  { 68, 44 },
+  { 69, 45 },
+  { 70, 46 },
+
+  /* DDBE.  2×2 with rocks. */
+  { 71, 63 },
+  { 72, 64 },
+  { 73, 65 },
+  { 74, 66 },
+
+  /* DFA1.  1×1 fissure in the ground. */
+  { 156, 189 },
+
+  /* DFA2.  1×1 fissure in the ground. */
+  { 157, 193 },
+
+  /* DFA3.  1×1 fissure in the ground. */
+  { 158, 176 },
+
+  /* DGAJ.  1×1 rock. */
+  { 187, 190 },
+
+  /* DGAK.  1×1 rock. */
+  { 188, 164 },
+
+  /* DGAX.  1×1 fissure in the ground. */
+  { 201, 248 },
+
+  /* DGBJ.  2×2 fissure in the ground. */
+  { 276, 220 },
+  { 277, 221 },
+  { 278, 222 },
+  { 279, 223 },
+
+  /* DGBK.  2×2 rock with water. */
+  { 280, 288 },
+  { 281, 289 },
+  { 282, 290 },
+  { 283, 291 },
+
+  /* DGBL.  2×2 lake. */
+  { 284, 208 },
+  { 285, 209 },
+  { 286, 210 },
+  { 287, 211 },
+
+  /* DGD4.  4×4 with rocks. */
+  { 361, 329 },
+  { 362, 330 },
+  { 363, 331 },
+  { 364, 332 },
+  { 365, 333 },
+  { 366, 334 },
+  { 367, 335 },
+  { 368, 336 },
+  { 369, 337 },
+  { 370, 338 },
+  { 371, 339 },
+  { 372, 340 },
+  { 373, 341 },
+  { 374, 342 },
+  { 375, 343 },
+  { 376, 344 },
+
+  /* DGD8.  4×4 with rocks. */
+  { 425, 441 },
+  { 426, 442 },
+  { 427, 443 },
+  { 428, 444 },
+  { 429, 445 },
+  { 430, 446 },
+  { 431, 447 },
+  { 432, 448 },
+  { 433, 449 },
+  { 434, 450 },
+  { 435, 451 },
+  { 436, 452 },
+  { 437, 453 },
+  { 438, 454 },
+  { 439, 455 },
+  { 440, 456 },
+
+  /* DGDC.  4×4 with rocks. */
+  { 489, 409 },
+  { 490, 410 },
+  { 491, 411 },
+  { 492, 412 },
+  { 493, 413 },
+  { 494, 414 },
+  { 495, 415 },
+  { 496, 416 },
+  { 497, 417 },
+  { 498, 418 },
+  { 499, 419 },
+  { 500, 420 },
+  { 501, 421 },
+  { 502, 422 },
+  { 503, 423 },
+  { 504, 424 },
+
+  /* == Look like they take up less space than they do. == */
+  /* EGC3.  3×3 lake that only takes up 3×2. */
+  { 643, 634 },
+  { 644, 635 },
+  { 645, 636 },
+  { 646, 637 },
+  { 647, 638 },
+  { 648, 639 },
+  { 649, 640 },
+  { 650, 641 },
+  { 651, 642 },
+
+  /* == Look like they should not block but do. == */
+  /* EGB5.  2×2 normal looking dirt. */
+  { 621, 280 },
+  { 622, 281 },
+  { 623, 282 },
+  { 624, 283 },
+};
+
 
 void buildingAnimationFrame(
   Firm* firm,
@@ -559,6 +695,25 @@ short calculateRainSpeed(
   }
 
   return Ambition::calculateRainSpeed(_7kaaCalculation);
+}
+
+short calculateRockBitmapRecordNumber(
+  const short _7kaaCaclulation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCaclulation;
+  }
+
+  if (::config.terrain_set != 1) {
+    return _7kaaCaclulation;
+  }
+
+  const auto bitmapRemapping = ROCK_BITMAP_REMAPPINGS.find(_7kaaCaclulation);
+  if (bitmapRemapping != ROCK_BITMAP_REMAPPINGS.end()) {
+    return bitmapRemapping->second;
+  }
+
+  return _7kaaCaclulation;
 }
 
 char calculateRockRemainingDelay(

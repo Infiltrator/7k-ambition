@@ -25,6 +25,8 @@
 
 #include <OROCKRES.h>
 
+#include "ambition/7kaaInterface/draw.hh"
+
 #include "ODB.h"
 #include <OMISC.h>
 #include <OWORLD.h>
@@ -379,6 +381,8 @@ RockBlockInfo *RockRes::get_block_info(short rockBlockRecno)
 // ------------ begin of function RockRes::get_bitmap_info -----------//
 RockBitmapInfo *RockRes::get_bitmap_info(short rockBitmapRecno)
 {
+	rockBitmapRecno = Ambition::Draw::calculateRockBitmapRecordNumber(rockBitmapRecno);
+
 	err_when( rockBitmapRecno <= 0 || rockBitmapRecno > rock_bitmap_count);
 	return rock_bitmap_array + rockBitmapRecno - 1;
 }

@@ -32,6 +32,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_CHANGED),
         .items = {
+          _("Changed the graphics of Standard tileset terrain that looked like it should block building and movement but didn't, and vice versa, so that it's now obvious by just looking at it."),
           _("Changed default keybind for train soldier to `F` from `W`, to make it more consistent with the other fort-related keybinds (build fort)."),
         },
       },
