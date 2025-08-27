@@ -21,6 +21,11 @@ speaking, considered to be the player's experience.
   account other defenders present, showing too high when other units were
   present.
 - Fixed the estimated assassination success chance against a king being too low.
+- Fixed the build Seat of Power keybind (P) not working because it was
+  conflicting with toggling opaque report mode.  The default keybind for
+  toggling opaque report mode has been cleared.  You can re-enable the keybind
+  with the `KEYEVENT_REPORT_OPAQUE_TOGGLE` event, with a different key, in the
+  config.txt file.
 - Fixed the war machine type and level identifiers inside forts causing
   artefacts when they moved around in the list.
 

@@ -173,7 +173,9 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_MAP_MODE1, "W");
 	bind_key(KEYEVENT_MAP_MODE2, "E");
 #endif
-	bind_key(KEYEVENT_REPORT_OPAQUE_TOGGLE, "P");
+
+	reset_key(KEYEVENT_REPORT_OPAQUE_TOGGLE);
+
 	bind_key(KEYEVENT_CLEAR_NEWS, "X");
 	bind_key(KEYEVENT_OPEN_DIPLOMATIC_MSG, "D");
 	bind_key(KEYEVENT_OPEN_OPTION_MENU, "O");
