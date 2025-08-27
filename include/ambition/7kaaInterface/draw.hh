@@ -210,6 +210,10 @@ short calculateRainSpeed(
   const short _7kaaCalculation
 );
 
+short calculateRockBitmapRecordNumber(
+  const short _7kaaCaclulation
+);
+
 char calculateRockRemainingDelay(
   const char _7kaaCalculation
 );
