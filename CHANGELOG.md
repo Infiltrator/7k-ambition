@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added a feedback sound when clicking the Clone Caravan button.
+
 ### Fixed
 
 - Fixed issue with "Building Complete" (and other) sounds not being audible when
