@@ -40,6 +40,7 @@ class SnowLayer;
 class Spy;
 class Town;
 class Unit;
+class UnitCaravan;
 class VBrowseIF;
 class Worker;
 struct FirmBitmap;
@@ -252,6 +253,7 @@ int calculateWorkerPortraitLeft(
 );
 
 void caravanCloneButton(
+  UnitCaravan* _7kaaCaravan,
   const int refreshFlag
 );
 

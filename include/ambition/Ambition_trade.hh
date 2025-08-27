@@ -36,7 +36,7 @@ void checkCaravanForReplacement(
 );
 
 void detectCaravanCloneButton(
-  const UnitCaravan* _7kaaCaravan
+  UnitCaravan* _7kaaCaravan
 );
 
 bool detectReportCaravanCloneButton(
@@ -44,6 +44,7 @@ bool detectReportCaravanCloneButton(
 );
 
 void drawCaravanCloneButton(
+  UnitCaravan* _7kaaCaravan
 );
 
 void drawReportCaravanCloneButton(

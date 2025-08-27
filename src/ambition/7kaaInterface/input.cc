@@ -287,7 +287,7 @@ bool detectBuildingMenu(
 }
 
 void detectCaravanCloneButton(
-  const UnitCaravan* _7kaaCaravan
+  UnitCaravan* _7kaaCaravan
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;

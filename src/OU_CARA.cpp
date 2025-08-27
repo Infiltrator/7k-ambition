@@ -87,7 +87,7 @@ void UnitCaravan::disp_info(int refreshFlag)
 
 	disp_goods(INFO_Y1+234, refreshFlag);
 
-	Ambition::Draw::caravanCloneButton(refreshFlag);
+	Ambition::Draw::caravanCloneButton(this, refreshFlag);
 }
 //---------- End of function UnitCaravan::disp_info ----------//
 
