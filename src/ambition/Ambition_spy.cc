@@ -108,7 +108,7 @@ double assassinationChanceEstimate(
 ) {
   auto attackRating = 0;
   int apparentDefenceRating = 60 + target->hit_points / 2;
-  auto possibleExtraDefenceRating = 100;
+  auto possibleExtraDefenceRating = 0;
   auto defenderCount = 0;
   for (auto i = 0; i < _7kaaFirm->worker_count; i++) {
     const auto _7kaaWorker = _7kaaFirm->worker_array[i];
@@ -123,12 +123,15 @@ double assassinationChanceEstimate(
     } else {
       defenderCount++;
       apparentDefenceRating += 4 + _7kaaWorker.hit_points / 30;
-      possibleExtraDefenceRating = 50 - (4 + _7kaaWorker.hit_points / 30);
+      possibleExtraDefenceRating += 50 - (4 + _7kaaWorker.hit_points / 30);
     }
   }
 
   if (target->rank_id == RANK_KING) {
     apparentDefenceRating += 50;
+  } else {
+    // Target can be a spy and have up to 100 spy skill.
+    possibleExtraDefenceRating += 100;
   }
 
   /* The spy always want to not get caught. */
