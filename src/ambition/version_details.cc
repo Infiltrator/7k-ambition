@@ -35,6 +35,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_CHANGED),
         .items = {
+          _("Shifted the bitmaps of Firms to better align with the squares they actually take up so that they look more on-centre, especially the Seats of Power."),
           _("Shifted the bitmaps of Fryhtan Lairs to better align with the squares they actually take up so that they look more on-centre, especially the Wyrm and Ick ones."),
           _("Changed the graphics of Standard tileset terrain that looked like it should block building and movement but didn't, and vice versa, so that it's now obvious by just looking at it."),
           _("Adjusted the graphics of Standard tileset terrain that looked like it should allow building and movement around its corners and edges but didn't, so that it's now obvious by just looking that it's not."),

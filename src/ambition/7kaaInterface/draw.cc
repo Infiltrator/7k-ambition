@@ -31,6 +31,7 @@
 #include "OBUTT3D.h"
 #include "OBUTTCUS.h"
 #include "OCONFIG.h"
+#include "OF_BASE.h"
 #include "OF_HARB.h"
 #include "OF_MONS.h"
 #include "OF_WAR.h"
@@ -39,6 +40,7 @@
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
+#include "ORACERES.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
@@ -60,6 +62,25 @@ const std::map<
   int,
   Ambition::UserInterface::Point
 > BUILDING_DRAWING_OFFSETS = {
+  { 11, { 0, -8 } }, /* Fort. */
+  { 12, { 2, -10 } }, /* Factory. */
+  { 17, { 0, -12 } }, /* Inn. */
+  { 18, { 0, -12 } }, /* Market. */
+  { 19, { 0, -6 } }, /* Mine. */
+  { 33, { 2, -12 } }, /* Tower of Science. */
+  { 34, { 0, -12 } }, /* War Factory. */
+
+  { 1, { 1, -22 } }, /* Norman Seat of Power. */
+  { 2, { 0, -20 } }, /* Mayan Seat of Power. */
+  { 3, { 0, -10 } }, /* Greek Seat of Power. */
+  { 4, { 0, -20 } }, /* Viking Seat of Power. */
+  { 5, { 0, -22 } }, /* Persian Seat of Power. */
+  { 6, { 0, -20 } }, /* Chinese Seat of Power. */
+  { 7, { 0, -22 } }, /* Japanese Seat of Power. */
+  { 8, { 5, -20 } }, /* Egyptian Seat of Power. */
+  { 9, { 0, -12 } }, /* Mughal Seat of Power. */
+  { 10, { 0, -14 } }, /* Zulu Seat of Power. */
+
   { 20, { -6, -14 } }, /* Holgh Lair. */
   { 21, { 4, -10 } }, /* Karrotten Lair. */
   { 22, { 0, -16 } }, /* Haubudam Lair. */

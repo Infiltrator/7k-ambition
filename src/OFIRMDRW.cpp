@@ -304,8 +304,13 @@ void Firm::draw_frame(int frameId, int displayLayer)
 	{
 		firmBitmap = firm_res.get_bitmap(bitmapRecno);
 
+		int leftOffset = 0;
+		int topOffset = 0;
+		int _UNUSED;
+		Ambition::Draw::calculateFirmDrawLocation(this->firm_build_id, leftOffset, topOffset, _UNUSED, _UNUSED);
+
 		if( firmBitmap )
-			firmBitmap->draw_at(loc_x1*ZOOM_LOC_WIDTH, loc_y1*ZOOM_LOC_HEIGHT, colorRemapTable, displayLayer);
+			firmBitmap->draw_at(loc_x1*ZOOM_LOC_WIDTH + leftOffset, loc_y1*ZOOM_LOC_HEIGHT + topOffset, colorRemapTable, displayLayer);
 	}
 }
 //--------- End of function Firm::draw_frame -----------//
