@@ -816,6 +816,9 @@ void UnitArray::disp_next(int seekDir, int sameNation)
 		if( !unitPtr->is_visible() )
 			continue;
 
+		if( unitPtr->is_shealth() )
+			continue;
+
 		//--- check if the location of the unit has been explored ---//
 
 		if( !world.get_loc(unitPtr->next_x_loc(), unitPtr->next_y_loc())->explored() )
