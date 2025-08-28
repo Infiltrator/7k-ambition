@@ -21,6 +21,7 @@
 // Filename    : OFIRMDIE.CPP
 // Description : destruting firm
 
+#include "ambition/7kaaInterface/draw.hh"
 
 #include <OSTR.h>
 #include <OFIRMRES.h>
@@ -372,7 +373,13 @@ void FirmDie::draw(int displayLayer)
 			firmBitmap->bitmap_ptr = bitmapPtr = firm_die_res.res_bitmap.read_imported(firmBitmap->bitmap_offset);
 			firmBitmap->width = *(short *)bitmapPtr;
 			firmBitmap->height= *(1+(short *)bitmapPtr);
-			firmBitmap->draw_at(loc_x1*ZOOM_LOC_WIDTH, loc_y1*ZOOM_LOC_HEIGHT, colorRemapTable, displayLayer);
+
+			int leftOffset = 0;
+			int topOffset = 0;
+			int _UNUSED;
+			Ambition::Draw::calculateFirmDrawLocation(this->firm_build_id, leftOffset, topOffset, _UNUSED, _UNUSED);
+
+			firmBitmap->draw_at(loc_x1*ZOOM_LOC_WIDTH + leftOffset, loc_y1*ZOOM_LOC_HEIGHT + topOffset, colorRemapTable, displayLayer);
 		}
 	}
 }

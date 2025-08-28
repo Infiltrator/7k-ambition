@@ -196,6 +196,14 @@ FirmBitmap* calculateFirmBitmap(
   Firm* firm
 );
 
+void calculateFirmDrawLocation(
+  const int _7kaaFirmBuildId,
+  int& left,
+  int& top,
+  int& right,
+  int& bottom
+);
+
 int calculateHitbarBaseColour(
   const int _7kaaCalculation,
   const double maximumHitpoints

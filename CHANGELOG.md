@@ -31,6 +31,11 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Shifted the bitmaps of Firms to better align with the squares they actually
+  take up so that they look more on-centre, especially the Seats of Power.
+- Shifted the bitmaps of Fryhtan Lairs to better align with the squares they
+  actually take up so that they look more on-centre, especially the Wyrm and Ick
+  ones.
 - Changed the graphics of Standard tileset terrain that looked like it should
   block building and movement but didn't, and vice versa, so that it's now
   obvious by just looking at it.

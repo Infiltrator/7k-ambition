@@ -74,8 +74,13 @@ void Firm::draw(int displayLayer)
 	if( firmBuild->ground_bitmap_recno &&
 		(!under_construction || construction_frame() >= firmBuild->under_construction_bitmap_count-1))
 	{
+		int leftOffset = 0;
+		int topOffset = 0;
+		int _UNUSED;
+		Ambition::Draw::calculateFirmDrawLocation(this->firm_build_id, leftOffset, topOffset, _UNUSED, _UNUSED);
+
 		firm_res.get_bitmap(firmBuild->ground_bitmap_recno)
-			->draw_at(loc_x1*ZOOM_LOC_WIDTH, loc_y1*ZOOM_LOC_HEIGHT, NULL, displayLayer);
+			->draw_at(loc_x1*ZOOM_LOC_WIDTH + leftOffset, loc_y1*ZOOM_LOC_HEIGHT + topOffset, NULL, displayLayer);
 	}
 
 	if( firmBuild->animate_full_size )
@@ -243,6 +248,8 @@ void Firm::draw_full_size(int displayLayer)
 	}
 	else	//----- display the normal image (not under construction) ----//
 	{
+		Ambition::Draw::calculateFirmDrawLocation(this->firm_build_id, x1, y1, x2, y2);
+
 		//---- only portion of the sprite is inside the view area ------//
 
 		if( x1 < 0 || x2 >= ZOOM_WIDTH || y1 < 0 || y2 >= ZOOM_HEIGHT )
@@ -297,8 +304,13 @@ void Firm::draw_frame(int frameId, int displayLayer)
 	{
 		firmBitmap = firm_res.get_bitmap(bitmapRecno);
 
+		int leftOffset = 0;
+		int topOffset = 0;
+		int _UNUSED;
+		Ambition::Draw::calculateFirmDrawLocation(this->firm_build_id, leftOffset, topOffset, _UNUSED, _UNUSED);
+
 		if( firmBitmap )
-			firmBitmap->draw_at(loc_x1*ZOOM_LOC_WIDTH, loc_y1*ZOOM_LOC_HEIGHT, colorRemapTable, displayLayer);
+			firmBitmap->draw_at(loc_x1*ZOOM_LOC_WIDTH + leftOffset, loc_y1*ZOOM_LOC_HEIGHT + topOffset, colorRemapTable, displayLayer);
 	}
 }
 //--------- End of function Firm::draw_frame -----------//
