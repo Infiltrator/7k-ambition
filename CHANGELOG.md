@@ -44,6 +44,9 @@ speaking, considered to be the player's experience.
   it's now obvious by just looking that it's not.
 - Changed default keybind for train soldier to `F` from `W`, to make it more
   consistent with the other fort-related keybinds (build fort).
+- Swapped the default keybinds for same kingdom/any kingdom object switching
+  keybinds (`,`/`.` and `<`/`>`), to make it easier to do the more common task
+  (switching between units of the same kingdom) without holding they shift key.
 
 
 ## [3.2.3] — 2025-08-24
