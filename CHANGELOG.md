@@ -30,6 +30,8 @@ speaking, considered to be the player's experience.
   config.txt file.
 - Fixed the war machine type and level identifiers inside forts causing
   artefacts when they moved around in the list.
+- Fixed possible crashes when pasting text containing characters unprintable by
+  the game.
 
 ### Changed
 
