@@ -114,6 +114,7 @@ double assassinationChanceEstimate(
     const auto _7kaaWorker = _7kaaFirm->worker_array[i];
     if (_7kaaWorker.spy_recno == _7kaaSpy->spy_recno) {
       attackRating += _7kaaSpy->spy_skill;
+      attackRating += _7kaaSpy->spy_skill / 4;
       attackRating += _7kaaWorker.hit_points / 2;
     } else if (_7kaaWorker.spy_recno
       && spy_array[_7kaaWorker.spy_recno]->true_nation_recno
