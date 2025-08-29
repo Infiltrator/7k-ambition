@@ -47,6 +47,8 @@ speaking, considered to be the player's experience.
 - Swapped the default keybinds for same kingdom/any kingdom object switching
   keybinds (`,`/`.` and `<`/`>`), to make it easier to do the more common task
   (switching between units of the same kingdom) without holding they shift key.
+- Break up the 7K:AA changelog entries into categories, thanks to a poster on
+  Discord, to make it easier to read.
 
 
 ## [3.2.3] — 2025-08-24
@@ -206,7 +208,7 @@ See [the v3.2-rc1](#3-2-rc1), [the v3.2-rc2](#3-2-rc2), and [the 7kaa
 <a id="7kaa-2-15-7"></a>
 ## 7K:AA [2.15.7] — 2025-07-25
 
-### Changes taken from Ambition
+### Improvements from Ambition
 
 - Allow comments in config.txt (lines starting with `#`).
 - Fixed requested builder sometimes being unable to reach destination.
@@ -220,7 +222,8 @@ See [the v3.2-rc1](#3-2-rc1), [the v3.2-rc2](#3-2-rc2), and [the 7kaa
 
 #### Added
 
-- Extended game file and synchronization code to support extensions to the game
+##### UI
+
 - Added support for a hotkey to center on the selected unit
 - Added support to make numeric keys configurable
 - Added advanced options for news notifications
@@ -228,47 +231,67 @@ See [the v3.2-rc1](#3-2-rc1), [the v3.2-rc2](#3-2-rc2), and [the 7kaa
 - Allow screenshots of in-game menu, to easily record map seed
 - Added hotkey support to cancel build or settle (typically right mouse button)
 
+##### General
+
+- Extended game file and synchronization code to support extensions to the game
+- Allowed the scenario settings to persist across save and load.
+
 #### Fixed
 
-- Fixed some in-game statistics
-- Tried again to fix mouse sticky/scrolling issues
-- Fixed some game file bugs
-- Fixed a problem with unit pathing to board ships
+##### UI
+
+- Fixed mouse sticky/scrolling issues.
+- Fixed an issue selecting invisible units.
+
+##### AI
+
 - Fixed poor ai logic that cause the ai to always accept a trade treaty
-- Removed a bug causing a fake earthquake
-- Removed a possible accidental disclosure of the presence of spies
 - Fixed poor ai logic concerning building weapons
 - Fixed poor ai logic concerning hiring spies
-- Fixed an error occuring sometimes when a town turns independent
 - Fixed an error when the ai attacking an unit that enters a building
-- Fixed an error occuring sometimes on recruiting the last pop of a town
-- Fixed a pathing issue
 - Corrected utilization of base towns, typically an ai concept
 - Improved ai to avoid more cases of accepting treaties of large rivals
-- Fixed an issue selecting invisible units
 - Fixed an issue that caused the ai to duplicate fort build actions
 - Fixed more sea based ai actions
-- Fixed ai to check skill of workers in managements actions
-- Fixed ai to prioritize higher skilled generals in management actions
-- Fixed ai to prioritize higher combat level soldiers in management actions
 - Corrected more instances where the ai incorrect targets itself
+- Fixed some ai capture code
+- Fixed sea-based AI actions and pathing to board ships.
+
+##### General
+
+- Fixed some in-game statistics
+- Fixed some game file bugs
+- Removed a bug causing a fake earthquake
+- Removed a possible accidental disclosure of the presence of spies
+- Fixed an error occuring sometimes when a town turns independent
+- Fixed an error occuring sometimes on recruiting the last pop of a town
+- Fixed a pathing issue
 - Fixed issue that allowed resigning ships with units in ships
 - Fixed memory issue in multiplayer
 - Fixed difficulty calculation
 - Fixed crash when clicking on a player market with version 1 scenarios
-- Fixed attack detection
-- Fixed some ai capture code
 
 #### Changed
 
-- Allowed the scenario settings to persist across save and load
-- Improved caravan/caraval trade stop code
+##### UI
+
+- Improved mouse wheel scrolling
+- Increased max screenshot file limit.
+
+##### AI
+
 - Improved detection of the likely target nation of an attack
 - Improved ai management of firms
 - Improved ai in managing town capture operations
-- Improved mouse wheel scrolling
-- Increased the max file limit of screenshots
-- Improved manual, added cover
+- Ensured AI checks worker skills in management actions.
+- Adjusted AI to avoid accepting treaties from large rivals.
+- Prioritized higher-skilled generals and combat-level soldiers in management.
+
+##### General
+
+- Allowed the scenario settings to persist across save and load
+- Improved caravan/caraval trade stop logic
+- Improved manual and added a cover.
 - Improved multi-language support
 - Increased the speed of the 9th speed level
 
