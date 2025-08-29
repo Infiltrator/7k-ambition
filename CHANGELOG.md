@@ -14,6 +14,8 @@ speaking, considered to be the player's experience.
 
 - Added kingdom-to-kingdom score comparison to the Rank Report, allowing you to
   see the scores of two kingdoms side-by-side.
+- Independent towns will show that their resistance is dropping to 0 when they
+  are working for you.
 
 ### Fixed
 

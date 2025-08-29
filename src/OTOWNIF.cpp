@@ -25,6 +25,7 @@
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/population.hh"
 
 #include "KEY.h"
 #include <OINFO.h>
@@ -877,6 +878,8 @@ static void put_race_rec(int recNo, int x, int y, int refreshFlag)
 	{
 		curLoyalty    = (int) townPtr->race_resistance_array[raceId-1][nation_array.player_recno-1];
 		targetLoyalty = (int) townPtr->race_target_resistance_array[raceId-1][nation_array.player_recno-1];
+
+		targetLoyalty = Ambition::Population::calculateTargetResistance(targetLoyalty, townPtr, nation_array.player_ptr, raceId);
 
 		if( targetLoyalty > curLoyalty )		// resistance only decrease, won't increase
 			targetLoyalty = -1;					// don't display the decrease target
