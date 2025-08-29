@@ -8,6 +8,7 @@ lib7kaa_ambition_interface_a_SOURCES = \
   inn.cc \
   input.cc \
   polity.cc \
+  population.cc \
   score.cc \
   serialisation.cc \
   spy.cc \

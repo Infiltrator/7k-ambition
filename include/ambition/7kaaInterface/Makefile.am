@@ -7,6 +7,7 @@ noinst_HEADERS = \
   inn.hh \
   input.hh \
   polity.hh \
+  population.hh \
   score.hh \
   serialisation.hh \
   spy.hh \
