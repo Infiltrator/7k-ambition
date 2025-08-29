@@ -28,6 +28,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed the estimated assassination success chance not properly taking into account other defenders present, showing too high when other units were present."),
           _("Fixed the estimated assassination success chance against a king being too low."),
+          _("Fixed the production queue sizes showing the wrong number when training a unit finishes."),
           _("Fixed the build Seat of Power keybind (P) not working because it was conflicting with toggling opaque report mode.  The default keybind for toggling opaque report mode has been cleared.  You can re-enable the keybind with the `KEYEVENT_ _REPORT_ _OPAQUE_ _TOGGLE` event, with a different key, in the config.txt file."),
           _("Fixed the war machine type and level identifiers inside forts causing artefacts when they moved around in the list."),
         },

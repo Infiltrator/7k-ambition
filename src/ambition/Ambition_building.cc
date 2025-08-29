@@ -736,6 +736,8 @@ void Building::popViableProductionRequest(
       if (iterator->amount == 0) {
         productionQueue.erase(iterator);
       }
+
+      info.disp();
       break;
     }
   }
