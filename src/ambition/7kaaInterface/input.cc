@@ -210,6 +210,11 @@ constexpr Action TRAINING_KEY_ACTIONS[MAX_TRAINABLE_SKILL] = {
 };
 
 
+char* stripUnprintable7kaaCharacters(
+  char* input
+);
+
+
 bool detectBuildingMenu(
   char& menu,
   ::Spy* _7kaaSpy,
@@ -388,7 +393,7 @@ bool detectClipboardKeys(
   }
 
   if (key == 'v') {
-    const auto buffer = SDL_GetClipboardText();
+    const auto buffer = stripUnprintable7kaaCharacters(SDL_GetClipboardText());
     const auto fieldLength = strlen(textField->input_field);
     const auto remainingLength = textField->field_len - fieldLength;
     const auto charactersToInsert = std::min(remainingLength, strlen(buffer));
@@ -787,6 +792,27 @@ void setOrClearRallyPoint(
     { .x =_7kaaX, .y = _7kaaY },
     allowAction && location->explored()
   );
+}
+
+
+/* Private functions. */
+
+char* stripUnprintable7kaaCharacters(
+  char* input
+) {
+  const auto length = strlen(input);
+  for(auto readIndex = 0, writeIndex = readIndex;
+      readIndex < length;
+      readIndex++
+  ) {
+    const auto character = input[readIndex];
+    if (character > 0 && character < ' ') {
+      continue;
+    }
+    input[writeIndex] = input[readIndex];
+    writeIndex++;
+  }
+  return input;
 }
 
 } // namespace _7kaaAmbitionInterface::Input
