@@ -192,6 +192,7 @@ int Game::run_scenario(ScenInfo* scenInfo)
 
 			if( config_adv.scenario_config )
 				config_adv = backup;
+			backup.mp_service_addr = NULL;
 		}
 		else
 		{
