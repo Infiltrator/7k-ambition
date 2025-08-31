@@ -32,6 +32,10 @@ speaking, considered to be the player's experience.
   config.txt file.
 - Fixed the war machine type and level identifiers inside forts causing
   artefacts when they moved around in the list.
+- Fixed a bug where loading and unloading a scenario would cause multiplayer to
+  stop working.
+- Fixed a crash where loading and unloading a scenario and then loading and
+  unloading a scenario again would crash the game.
 - Fixed possible crashes when pasting text containing characters unprintable by
   the game.
 
