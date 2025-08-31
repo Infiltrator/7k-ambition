@@ -59,6 +59,8 @@ speaking, considered to be the player's experience.
 - Swapped the default keybinds for same kingdom/any kingdom object switching
   keybinds (`,`/`.` and `<`/`>`), to make it easier to do the more common task
   (switching between units of the same kingdom) without holding they shift key.
+- Adjusted the page scrolling on the save game list to keep one item on the
+  page, so that it's evident that it's scrolling only one page at a time.
 - Break up the 7K:AA changelog entries into categories, thanks to a poster on
   Discord, to make it easier to read.
 

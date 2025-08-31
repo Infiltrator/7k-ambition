@@ -565,7 +565,7 @@ void detectSaveGameScroll(
         }
       },
     },
-    []() { return SLOT_COUNT; }
+    []() { return SLOT_COUNT - 1; }
   );
 
   Ambition::Input::detectScroll(
@@ -613,7 +613,7 @@ void detectSaveGameScroll(
         }
       },
     },
-    []() { return SLOT_COUNT; }
+    []() { return SLOT_COUNT - 1; }
   );
 }
 

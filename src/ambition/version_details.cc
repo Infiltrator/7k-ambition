@@ -47,6 +47,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Adjusted the graphics of Standard tileset terrain that looked like it should allow building and movement around its corners and edges but didn't, so that it's now obvious by just looking that it's not."),
           _("Changed default keybind for train soldier to `F` from `W`, to make it more consistent with the other fort-related keybinds (build fort)."),
           _("Swapped the default keybinds for same kingdom/any kingdom object switching keybinds (`,`/`.` and `<`/`>`), to make it easier to do the more common task (switching between units of the same kingdom) without holding they shift key."),
+          _("Adjusted the page scrolling on the save game list to keep one item on the page, so that it's evident that it's scrolling only one page at a time."),
           _("Break up the 7K:AA changelog entries into categories, thanks to a poster on Discord, to make it easier to read."),
         },
       },
