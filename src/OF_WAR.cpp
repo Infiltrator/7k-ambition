@@ -786,6 +786,8 @@ void FirmWar::add_queue(int unitId, int amount)
 
 	for (int i = 0; i < enqueueAmount; ++i)
 		build_queue_array[build_queue_count++] = unitId;
+
+	Ambition::Building::productionAccepted(this, unitId);
 }
 //----------- End of function FirmWar::add_queue -----------//
 

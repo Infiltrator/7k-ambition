@@ -123,6 +123,16 @@ void processTrainingQueue(
   Town* _7kaaTown
 );
 
+void productionAccepted(
+  const Firm* _7kaaFirm,
+  const int _7kaaUnitId
+);
+void productionAccepted(
+  const Town* _7kaaTown,
+  const int _7kaaRaceId,
+  const int _7kaaSkillId
+);
+
 void sendUnitsToRallyPoint(
   const Firm* _7kaaFirm,
   const std::vector<short> _7kaaUnitRecordNumbers

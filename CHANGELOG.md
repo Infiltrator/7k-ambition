@@ -27,6 +27,8 @@ speaking, considered to be the player's experience.
 - Fixed the estimated assassination success chance against a king being too low.
 - Fixed the production queue sizes showing the wrong number when training a unit
   finishes.
+- Fixed the production queue size display bouncing down and up in multiplayer
+  when a unit starts production.
 - Fixed the build Seat of Power keybind (P) not working because it was
   conflicting with toggling opaque report mode.  The default keybind for
   toggling opaque report mode has been cleared.  You can re-enable the keybind

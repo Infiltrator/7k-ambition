@@ -2004,6 +2004,8 @@ int Town::recruit(int trainSkillId, int raceId, char remoteAction)
 			info.disp();
 	}
 
+	Ambition::Building::productionAccepted(this, raceId, trainSkillId);
+
 	return unitRecno;
 }
 //----------- End of function Town::recruit -----------//
