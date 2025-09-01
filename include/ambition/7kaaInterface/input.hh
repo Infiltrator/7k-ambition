@@ -139,6 +139,15 @@ void detectSaveGameScroll(
   SlideVBar& scrollBar
 );
 
+void detectScenarioScroll(
+  const int minimumRecordNumber,
+  const int size,
+  int& browseRecordNumber,
+  SlideVBar& scrollBar,
+  SlideVBar& descriptionScrollBar,
+  int& refreshFlag
+);
+
 bool detectSpyScroll(
   VBrowseIF& spyBrowser
 );

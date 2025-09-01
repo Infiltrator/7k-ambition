@@ -16,6 +16,8 @@ speaking, considered to be the player's experience.
   see the scores of two kingdoms side-by-side.
 - Independent towns will show that their resistance is dropping to 0 when they
   are working for you.
+- Added scrolling with the mouse wheel, up/down, home/end, and pg up/down keys
+  to the scenario selection list and description.
 
 ### Fixed
 
