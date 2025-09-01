@@ -1187,13 +1187,17 @@ static char westPierTera[3][3] = { {2,2,3},{2,2,1},{2,2,3} };
 static char eastPierTera[3][3] = { {3,2,2},{1,2,2},{3,2,2} };
 				int x = xLoc - xLoc1;
 				int y = yLoc - yLoc1;
-				if(!locPtr->can_build_harbor(northPierTera[y][x]) )
+				if(!locPtr->can_build_harbor(northPierTera[y][x]) &&
+					(!locPtr->has_unit(UNIT_LAND) || locPtr->unit_recno(UNIT_LAND)!=unitRecno || !locPtr->walkable(northPierTera[y][x])) )
 					pierFlag &= ~1;
-				if(!locPtr->can_build_harbor(southPierTera[y][x]) )
+				if(!locPtr->can_build_harbor(southPierTera[y][x]) &&
+					(!locPtr->has_unit(UNIT_LAND) || locPtr->unit_recno(UNIT_LAND)!=unitRecno || !locPtr->walkable(southPierTera[y][x])) )
 					pierFlag &= ~2;
-				if(!locPtr->can_build_harbor(westPierTera[y][x]) )
+				if(!locPtr->can_build_harbor(westPierTera[y][x]) &&
+					(!locPtr->has_unit(UNIT_LAND) || locPtr->unit_recno(UNIT_LAND)!=unitRecno || !locPtr->walkable(westPierTera[y][x])) )
 					pierFlag &= ~4;
-				if(!locPtr->can_build_harbor(eastPierTera[y][x]) )
+				if(!locPtr->can_build_harbor(eastPierTera[y][x]) &&
+					(!locPtr->has_unit(UNIT_LAND) || locPtr->unit_recno(UNIT_LAND)!=unitRecno || !locPtr->walkable(eastPierTera[y][x])) )
 					pierFlag &= ~8;
 			}
 		}
