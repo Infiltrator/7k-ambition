@@ -715,7 +715,7 @@ void Building::migrate7kaaQueue(
   }
 }
 
-void Building::popViableProductionRequest(
+void Building::processProductionQueue(
 ) {
   if (destroyed()) {
     return;
@@ -731,13 +731,6 @@ void Building::popViableProductionRequest(
   ) {
     if (canProduce(iterator->_7kaaRaceId, iterator->_7kaaSkillId)) {
       produce(iterator->_7kaaRaceId, iterator->_7kaaSkillId);
-
-      iterator->amount--;
-      if (iterator->amount == 0) {
-        productionQueue.erase(iterator);
-      }
-
-      info.disp();
       break;
     }
   }
@@ -786,6 +779,34 @@ void Building::produce(
     } else {
       _7kaaHarbour->add_queue(_7kaaSkillId, 1);
     }
+  }
+}
+
+void Building::productionAccepted(
+  const int _7kaaRaceId,
+  const int _7kaaSkillId
+) {
+  if (destroyed()) {
+    return;
+  }
+
+  for (auto iterator = productionQueue.begin();
+    iterator != productionQueue.end();
+    iterator++
+  ) {
+    if (iterator->_7kaaRaceId != _7kaaRaceId
+      || iterator->_7kaaSkillId != _7kaaSkillId
+    ) {
+      continue;
+    }
+
+    iterator->amount--;
+    if (iterator->amount == 0) {
+      productionQueue.erase(iterator);
+    }
+
+    info.disp();
+    break;
   }
 }
 

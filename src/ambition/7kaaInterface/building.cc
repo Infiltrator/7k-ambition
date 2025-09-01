@@ -368,7 +368,7 @@ void processProductionQueue(
     return;
   }
 
-  building->popViableProductionRequest();
+  building->processProductionQueue();
 }
 
 void processTrainingQueue(
@@ -384,7 +384,41 @@ void processTrainingQueue(
     return;
   }
 
-  building->popViableProductionRequest();
+  building->processProductionQueue();
+}
+
+void productionAccepted(
+  const Firm* _7kaaFirm,
+  const int _7kaaUnitId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaFirm(_7kaaFirm);
+
+  if (!building) {
+    return;
+  }
+
+  building->productionAccepted(-1, _7kaaUnitId);
+}
+void productionAccepted(
+  const Town* _7kaaTown,
+  const int _7kaaRaceId,
+  const int _7kaaSkillId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto building = Ambition::Building::findBy7kaaTown(_7kaaTown);
+
+  if (!building) {
+    return;
+  }
+
+  building->productionAccepted(_7kaaRaceId, _7kaaSkillId);
 }
 
 void sendUnitsToRallyPoint(

@@ -163,11 +163,16 @@ public:
   void migrate7kaaQueue(
   );
 
-  void popViableProductionRequest(
+  void processProductionQueue(
   );
 
   void produce(
     const char _7kaaRaceId,
+    const int _7kaaSkillId
+  );
+
+  void productionAccepted(
+    const int _7kaaRaceId,
     const int _7kaaSkillId
   );
 
