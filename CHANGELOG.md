@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.4] — 2025-09-03
+
 ### Added
 
 - Added kingdom-to-kingdom score comparison to the Rank Report, allowing you to
