@@ -903,6 +903,7 @@ int calculateWorkerPortraitLeft(
 }
 
 void caravanCloneButton(
+  UnitCaravan* _7kaaCaravan,
   const int refreshFlag
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
@@ -913,7 +914,7 @@ void caravanCloneButton(
     return;
   }
 
-  Ambition::Trade::drawCaravanCloneButton();
+  Ambition::Trade::drawCaravanCloneButton(_7kaaCaravan);
 }
 
 int centreHitbar(

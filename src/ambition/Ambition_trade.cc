@@ -91,9 +91,13 @@ void checkCaravanForReplacement(
 }
 
 void detectCaravanCloneButton(
-  const UnitCaravan* _7kaaCaravan
+  UnitCaravan* _7kaaCaravan
 ) {
   if (!caravanCloneButton.detect(GETKEY(KEYEVENT_FIRM_PATROL))) {
+    return;
+  }
+
+  if (isCaravanIdle(_7kaaCaravan)) {
     return;
   }
 
@@ -114,6 +118,7 @@ bool detectReportCaravanCloneButton(
 }
 
 void drawCaravanCloneButton(
+  UnitCaravan* _7kaaCaravan
 ) {
   caravanCloneButton.paint(
     UserInterface::BUTTON_ROW_LOWER.start.left,
@@ -128,7 +133,9 @@ void drawCaravanCloneButton(
   );
 
   const auto polity = Polity::getBy7kaaRecordNumber(nation_array.player_recno);
-  if (!polity->idleCaravans().empty() || polity->canHireCaravan()) {
+  if (!isCaravanIdle(_7kaaCaravan)
+    && (!polity->idleCaravans().empty() || polity->canHireCaravan())
+  ) {
     caravanCloneButton.enable();
   } else {
     caravanCloneButton.disable();
@@ -146,8 +153,25 @@ void drawCaravanCloneButton(
 void drawReportCaravanCloneButton(
   VBrowseIF& caravanBrowser
 ) {
+  reportCloneButton.enable_flag = 0;
+
+  const auto polity = Polity::getBy7kaaRecordNumber(nation_array.player_recno);
+  if (polity->idleCaravans().empty() && !polity->canHireCaravan()) {
+    return;
+  }
+
   int x1, y1, x2, y2;
-  if (caravanBrowser.mouse_over(&x1, &y1, &x2, &y2)) {
+  if (const auto browserRecordNumber
+    = caravanBrowser.mouse_over(&x1, &y1, &x2, &y2)
+  ) {
+    auto _7kaaCaravan = dynamic_cast<UnitCaravan*>(
+      unit_array[info.get_report_data(browserRecordNumber)]
+    );
+
+    if (!_7kaaCaravan || isCaravanIdle(_7kaaCaravan)) {
+      return;
+    }
+
     reportCloneButton.paint_text(
       x2 - 42,
       y1 - 4,
@@ -155,9 +179,8 @@ void drawReportCaravanCloneButton(
       1,
       reportCloneButton.button_wait > 0
     );
+
     reportCloneButton.enable_flag = 1;
-  } else {
-    reportCloneButton.enable_flag = 0;
   }
 }
 

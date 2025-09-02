@@ -56,6 +56,8 @@ speaking, considered to be the player's experience.
 - Adjusted the graphics of Standard tileset terrain that looked like it should
   allow building and movement around its corners and edges but didn't, so that
   it's now obvious by just looking that it's not.
+- Disabled the caravan clone button (and remove it in the trade report) for idle
+  caravans, since trying to clone them does nothing anyway.
 - Changed default keybind for train soldier to `F` from `W`, to make it more
   consistent with the other fort-related keybinds (build fort).
 - Swapped the default keybinds for same kingdom/any kingdom object switching
