@@ -55,7 +55,12 @@ compiler under Linux. The same mingw-w64 is available from MSYS native to
 Windows.
 
 Required dependencies
-* GCC 4.6+ C++11 compliant compiler
+* GCC 12 C++20 compliant compiler
+
+  Note that binaries built with gcc 14.2.0 and 14.3.0 are known to cause desyncs
+  with 7kaa and Ambition built with gcc 12.  Until 7kaa is released with a build
+  by gcc 14, gcc 12 is required.  A known good version of gcc is 12.4.0-5.
+
 * SDL 2.24.0+
 * enet 1.3.xx Reliable UDP networking library
 * OpenAL-soft or equivalent driver
