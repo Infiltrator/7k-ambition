@@ -30,6 +30,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed the estimated assassination success chance not properly taking into account other defenders present, showing too high when other units were present."),
           _("Fixed the estimated assassination success chance against a king being too low."),
+          _("Fixed the estimated assassination success chance being too low based on the spy skill."),
           _("Fixed the production queue sizes showing the wrong number when training a unit finishes."),
           _("Fixed the production queue size display bouncing down and up in multiplayer when a unit starts production."),
           _("Fixed the build Seat of Power keybind (P) not working because it was conflicting with toggling opaque report mode.  The default keybind for toggling opaque report mode has been cleared.  You can re-enable the keybind with the `KEYEVENT_ _REPORT_ _OPAQUE_ _TOGGLE` event, with a different key, in the config.txt file."),
@@ -46,6 +47,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Shifted the bitmaps of Fryhtan Lairs to better align with the squares they actually take up so that they look more on-centre, especially the Wyrm and Ick ones."),
           _("Changed the graphics of Standard tileset terrain that looked like it should block building and movement but didn't, and vice versa, so that it's now obvious by just looking at it."),
           _("Adjusted the graphics of Standard tileset terrain that looked like it should allow building and movement around its corners and edges but didn't, so that it's now obvious by just looking that it's not."),
+          _("Reworked the assassination chance estimate calculation to better take into account the possibility or lack of enemy spies."),
           _("Disabled the caravan clone button (and remove it in the trade report) for idle caravans, since trying to clone them does nothing anyway."),
           _("Changed default keybind for train soldier to `F` from `W`, to make it more consistent with the other fort-related keybinds (build fort)."),
           _("Swapped the default keybinds for same kingdom/any kingdom object switching keybinds (`,`/`.` and `<`/`>`), to make it easier to do the more common task (switching between units of the same kingdom) without holding they shift key."),

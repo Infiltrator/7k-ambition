@@ -106,14 +106,30 @@ double assassinationChanceEstimate(
   const Firm* _7kaaFirm,
   ::Unit* target
 ) {
+  constexpr auto BASE_DEFENCE = 30;
+  constexpr auto EXTRA_RANDOM_DEFENCE = 29;
+  constexpr auto HIT_POINTS_DIVISOR = 2;
+  constexpr auto KING_DEFENCE_RATING = 50;
+  constexpr auto POSSIBLE_SPY_SKILL = 100;
+
+  constexpr auto DEFENDING_SPY_SKILL_DIVISOR = 2;
+  constexpr auto DEFENDING_SPY_POSSIBLE_DEFENCE
+    = POSSIBLE_SPY_SKILL / DEFENDING_SPY_SKILL_DIVISOR;
+  constexpr auto DEFENDER_BASE_DEFENCE = 4;
+  constexpr auto DEFENDER_HIT_POINTS_DIVISOR = 30;
+
+  constexpr auto ESCAPE_THRESHOLD = 80;
+
   auto attackRating = 0;
-  int apparentDefenceRating = 60 + target->hit_points / 2;
+  int apparentDefenceRating
+    = BASE_DEFENCE + target->hit_points / HIT_POINTS_DIVISOR;
   auto possibleExtraDefenceRating = 0;
   auto defenderCount = 0;
   for (auto i = 0; i < _7kaaFirm->worker_count; i++) {
     const auto _7kaaWorker = _7kaaFirm->worker_array[i];
     if (_7kaaWorker.spy_recno == _7kaaSpy->spy_recno) {
       attackRating += _7kaaSpy->spy_skill;
+      attackRating += _7kaaSpy->spy_skill / 4;
       attackRating += _7kaaWorker.hit_points / 2;
     } else if (_7kaaWorker.spy_recno
       && spy_array[_7kaaWorker.spy_recno]->true_nation_recno
@@ -122,41 +138,53 @@ double assassinationChanceEstimate(
       attackRating += spy_array[_7kaaWorker.spy_recno]->spy_skill / 4;
     } else {
       defenderCount++;
-      apparentDefenceRating += 4 + _7kaaWorker.hit_points / 30;
-      possibleExtraDefenceRating += 50 - (4 + _7kaaWorker.hit_points / 30);
+      const auto defenderApparentDefence
+        = DEFENDER_BASE_DEFENCE
+        + _7kaaWorker.hit_points / DEFENDER_HIT_POINTS_DIVISOR;
+      apparentDefenceRating += defenderApparentDefence;
+      possibleExtraDefenceRating
+        += DEFENDING_SPY_POSSIBLE_DEFENCE - defenderApparentDefence;
     }
   }
 
   if (target->rank_id == RANK_KING) {
-    apparentDefenceRating += 50;
+    apparentDefenceRating += KING_DEFENCE_RATING;
   } else {
     // Target can be a spy and have up to 100 spy skill.
-    possibleExtraDefenceRating += 100;
+    possibleExtraDefenceRating += POSSIBLE_SPY_SKILL;
   }
 
-  /* The spy always want to not get caught. */
+  if (attackRating - apparentDefenceRating < 0) {
+    constexpr auto CHANCE_NONE = 0.0;
+    return CHANCE_NONE;
+  }
+
+  constexpr auto CHANCE_MINIMUM = 0.01;
+  constexpr auto CHANCE_MAXIMUM = 1.0;
+
+  /* The spy always wants to avoid getting caught. */
   if (defenderCount > 0) {
-    apparentDefenceRating += 80;
+    if (attackRating - apparentDefenceRating < ESCAPE_THRESHOLD) {
+      return CHANCE_MINIMUM;
+    }
+
+    apparentDefenceRating += ESCAPE_THRESHOLD;
   }
 
   const auto clearance = attackRating - apparentDefenceRating;
 
-  auto chance = 0.0;
-  if (clearance < -30) {
-    chance = 0;//return 0;
-  } else {
-    chance = 0.7 * std::min(1.0, (clearance + 30) / 30.0);
-  }
-
-  if (clearance > 0) {
-    const auto estimatedDefence
-      = apparentDefenceRating
-      + possibleExtraDefenceRating * 2 / (1 + confidenceFactor(_7kaaSpy));
-    chance
-      += 0.3 * std::sqrt(clearance / (estimatedDefence - apparentDefenceRating));
-  }
-
-  return chance;
+  return std::clamp(
+    (
+      sqrt(
+        841 + (
+          4 * (possibleExtraDefenceRating + 1)
+          * (clearance + 1) * confidenceFactor(_7kaaSpy)
+        )
+      ) - 29
+    ) / (2 * (possibleExtraDefenceRating + 1)),
+    CHANCE_MINIMUM,
+    CHANCE_MAXIMUM
+  );
 }
 
 int bribeAmountEstimate(
