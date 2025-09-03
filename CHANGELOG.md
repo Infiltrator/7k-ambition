@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Changed
+
+- Start the kingdom score comparison with your own kingdom selected by default.
+  You can deselect it or select another kingdom by clicking the button.
+
 
 ## [3.2.4] — 2025-09-03
 

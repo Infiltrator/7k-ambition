@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Start the kingdom score comparison with your own kingdom selected by default.  You can deselect it or select another kingdom by clicking the button."),
+        },
+      },
     },
   },
   {
