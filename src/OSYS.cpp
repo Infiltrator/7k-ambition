@@ -583,13 +583,13 @@ void Sys::run(int isLoadedGame)
    sys.disp_frame();
    disp_view_mode();
 
+	Ambition::Control::resetGameState();
+
    //----------- run the main loop -----------//
 
    main_loop(isLoadedGame);
 
    //-----------------------------------------//
-
-	Ambition::Control::resetGameState();
 
    //------ reset mouse ---------//
 
