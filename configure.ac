@@ -47,7 +47,7 @@ AC_MSG_CHECKING(checking if compiler can emit 387 instructions)
 AC_COMPILE_IFELSE([AC_LANG_SOURCE(
   )],[
     AC_MSG_RESULT(yes)
-    GLOBAL_CFLAGS="$GLOBAL_CFLAGS -mfpmath=387 -ffloat-store"
+    GLOBAL_CFLAGS="$GLOBAL_CFLAGS -mfpmath=387 -ffloat-store -fexcess-precision=fast"
     fpu_type=387
   ],[
     AC_MSG_RESULT(no)
