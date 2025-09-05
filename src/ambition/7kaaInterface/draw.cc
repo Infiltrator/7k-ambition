@@ -1453,9 +1453,16 @@ bool shouldDrawUnitIcon(
 }
 
 void tradeReportcaravanCloneButton(
+  const char browserMode,
   VBrowseIF& caravanBrowser
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto BROWSER_MODE_CARAVAN = 0;
+
+  if (browserMode != BROWSER_MODE_CARAVAN) {
     return;
   }
 
