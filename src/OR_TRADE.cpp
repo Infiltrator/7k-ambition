@@ -229,7 +229,7 @@ void Info::disp_trade(int refreshFlag)
 
 	disp_button();
 
-	Ambition::Draw::tradeReportcaravanCloneButton(browse_caravan);
+	Ambition::Draw::tradeReportcaravanCloneButton(mode_unit, browse_caravan);
 
 	if( can_copy_caravan() )
 	{

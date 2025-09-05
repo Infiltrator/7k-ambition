@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a crash when looking at the ship list on the trade report.
+
 ### Changed
 
 - Start the kingdom score comparison with your own kingdom selected by default.

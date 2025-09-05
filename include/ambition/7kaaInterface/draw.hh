@@ -437,6 +437,7 @@ bool shouldDrawUnitIcon(
 );
 
 void tradeReportcaravanCloneButton(
+  const char browserMode,
   VBrowseIF& caravanBrowser
 );
 
