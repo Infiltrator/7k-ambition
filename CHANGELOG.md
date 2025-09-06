@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added $100,000 throne purchase option.
+
 ### Fixed
 
 - Fixed a crash when looking at the ship list on the trade report.
@@ -20,6 +24,7 @@ speaking, considered to be the player's experience.
   You can deselect it or select another kingdom by clicking the button.
 - Show the per-unit and total costs when choosing how to respond to food
   purchase requests.
+- Use thousands separators for throne purchase amounts options.
 
 
 ## [3.2.4] — 2025-09-03

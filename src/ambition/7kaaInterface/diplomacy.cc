@@ -160,6 +160,42 @@ bool setFoodPurchasePrices(
   return true;
 }
 
+bool setThronePurchaseAmounts(
+  TalkRes* _7kaaDiplomaticMessageResource,
+  const Nation* source7kaaNation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  constexpr auto AMOUNTS = std::array {
+    5'000,
+    7'500,
+    10'000,
+    15'000,
+    20'000,
+    30'000,
+    40'000,
+    50'000,
+    100'000,
+  };
+
+  for (const auto amount : AMOUNTS) {
+    assert (amount / 10 <= std::numeric_limits<short>::max());
+
+    if (source7kaaNation->cash < amount) {
+      break;
+    }
+
+    add7kaaTalkChoice(
+      _7kaaDiplomaticMessageResource,
+      format("$%'d.", amount),
+      amount / 10
+    );
+  }
+  return true;
+}
+
 bool setTributeQuantities(
   TalkRes* _7kaaDiplomaticMessageResource,
   const Nation* source7kaaNation
