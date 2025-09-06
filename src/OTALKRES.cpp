@@ -474,6 +474,10 @@ int TalkRes::add_request_surrender_choices()
 
 	choice_question = _("How much do you offer?");
 
+	if (Ambition::Diplomacy::setThronePurchaseAmounts(this, ~nation_array)) {
+		return 1;
+	}
+
 	static const char* strArray[] = { "$5000.", "$7500.", "$10000.",
 		"$15000.", "$20000.", "$30000.", "$40000.", "$50000." };
 

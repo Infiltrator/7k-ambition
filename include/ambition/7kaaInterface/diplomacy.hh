@@ -50,6 +50,11 @@ bool setFoodPurchasePrices(
   const int quantity
 );
 
+bool setThronePurchaseAmounts(
+  TalkRes* _7kaaDiplomaticMessageResource,
+  const Nation* source7kaaNation
+);
+
 bool setTributeQuantities(
   TalkRes* _7kaaDiplomaticMessageResource,
   const Nation* source7kaaNation
