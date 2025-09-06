@@ -23,6 +23,8 @@
 
 #if( !defined(GERMAN) && !defined(FRENCH) && !defined(SPANISH) )
 
+#include "ambition/7kaaInterface/diplomacy.hh"
+
 #include <ONATION.h>
 #include <OTALKRES.h>
 #include "gettext.h"
@@ -484,6 +486,8 @@ void TalkMsg::request_buy_food()
 	{
 		// TRANSLATORS: <King>'s Kingdom<Color> offers <Amount> for 10 units of food.
 		snprintf(str, MAX_STR_LEN+1, _("%s's Kingdom%s offers %s for 10 units of food."), FROM_NATION, FROM_COLOR, misc.format(talk_para2,2));
+
+		Ambition::Diplomacy::getFoodPurchasePriceDescription(str, this);
 
 		return;
 	}

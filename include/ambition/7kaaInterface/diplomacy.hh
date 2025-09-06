@@ -25,11 +25,19 @@
 
 #pragma once
 
+#include "OSTR.h"
+
 class Nation;
+class TalkMsg;
 class TalkRes;
 
 
 namespace _7kaaAmbitionInterface::Diplomacy {
+
+String& getFoodPurchasePriceDescription(
+  String& _7kaaCalculation,
+  const TalkMsg* _7kaaDiplomaticMessage
+);
 
 bool setFoodPurchaseQuantities(
   TalkRes* _7kaaDiplomaticMessageResource,

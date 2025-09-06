@@ -18,6 +18,8 @@ speaking, considered to be the player's experience.
 
 - Start the kingdom score comparison with your own kingdom selected by default.
   You can deselect it or select another kingdom by clicking the button.
+- Show the per-unit and total costs when choosing how to respond to food
+  purchase requests.
 
 
 ## [3.2.4] — 2025-09-03

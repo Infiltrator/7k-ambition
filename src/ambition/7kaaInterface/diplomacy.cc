@@ -50,6 +50,36 @@ void add7kaaTalkChoice(
 );
 
 
+String& getFoodPurchasePriceDescription(
+  String& _7kaaCalculation,
+  const TalkMsg* _7kaaDiplomaticMessage
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  const auto _7kaaNation = nation_array[
+    _7kaaDiplomaticMessage->from_nation_recno
+  ];
+  const auto colourCode = format(
+    " @COL%d",
+    _7kaaNation->color_scheme_id
+  );
+
+  const auto amount = _7kaaDiplomaticMessage->talk_para1;
+  const auto price = _7kaaDiplomaticMessage->talk_para2 / 10.0;
+
+  _7kaaCalculation = format(
+    _("%s's Kingdom%s offers $%.1f per unit of food, for a total of $%'.0f."),
+    _7kaaNation->king_name(1),
+    colourCode.c_str(),
+    price,
+    amount * price
+  ).c_str();
+
+  return _7kaaCalculation;
+}
+
 bool setFoodPurchaseQuantities(
   TalkRes* _7kaaDiplomaticMessageResource,
   const Nation* source7kaaNation
