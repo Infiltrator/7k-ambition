@@ -27,6 +27,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Start the kingdom score comparison with your own kingdom selected by default.  You can deselect it or select another kingdom by clicking the button."),
+          _("Show the per-unit and total costs when choosing how to respond to food purchase requests."),
         },
       },
     },
