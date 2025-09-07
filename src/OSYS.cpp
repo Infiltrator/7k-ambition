@@ -583,7 +583,7 @@ void Sys::run(int isLoadedGame)
    sys.disp_frame();
    disp_view_mode();
 
-	Ambition::Control::resetGameState();
+	Ambition::Control::resetUiState();
 
    //----------- run the main loop -----------//
 

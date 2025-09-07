@@ -34,6 +34,7 @@
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
 #include "Ambition_news.hh"
+#include "Ambition_user_interface.hh"
 #include "Ambition_version.hh"
 #include "Ambition_vga.hh"
 #include "format.hh"
@@ -106,6 +107,11 @@ void requestFeedback(
 void resetGameState(
 ) {
   Ambition::resetGameState();
+}
+
+void resetUiState(
+) {
+  Ambition::UserInterface::resetState();
 }
 
 bool shouldDrawFrame(

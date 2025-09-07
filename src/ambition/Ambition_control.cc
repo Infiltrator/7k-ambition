@@ -90,10 +90,6 @@ void requestFeedback(
 
 void resetGameState(
 ) {
-  UserInterface::buildingMenu = UserInterface::BuildingMenu::_7kaa;
-  UserInterface::rankReportComparison7kaaNationRecordNumber
-    = nation_array.player_recno;
-
   entityRepository.reset();
 }
 

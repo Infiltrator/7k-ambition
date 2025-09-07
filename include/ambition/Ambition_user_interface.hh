@@ -442,4 +442,7 @@ void printText(
   const VerticalAlignment verticalAlignment = VerticalAlignment::Top
 );
 
+void resetState(
+);
+
 } // namespace Ambition::UserInterface

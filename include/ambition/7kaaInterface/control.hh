@@ -60,6 +60,9 @@ void requestFeedback(
 void resetGameState(
 );
 
+void resetUiState(
+);
+
 bool shouldDrawFrame(
 );
 
