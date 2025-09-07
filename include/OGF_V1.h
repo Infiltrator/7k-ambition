@@ -312,8 +312,6 @@ class Version_1_NationBase
 
 	public:
 		void	convert_to_version_2(Nation *nationPtr);
-
-		virtual void dummy();
 };
 #pragma pack()
 
@@ -427,8 +425,6 @@ class Version_1_Nation : public Version_1_NationBase
 		void			convert_to_version_2(Nation *nationPtr);
 		void			write_record(Version_1_NationGF *r);
 		void			read_record(Version_1_NationGF *r);
-
-		virtual void dummy();
 };
 #pragma pack()
 
