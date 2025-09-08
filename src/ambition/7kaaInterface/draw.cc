@@ -999,6 +999,17 @@ bool initialiseSnowLayer(
   return Ambition::initialiseSnowLayer(layer, level, animationSpeed, slideSpeed);
 }
 
+void harbourShipCount(
+  const short count,
+  const int refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::printHarbourShipCount(count, refreshFlag);
+}
+
 void innGuestCount(
   const short count,
   const int refreshFlag

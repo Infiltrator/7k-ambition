@@ -310,6 +310,11 @@ void printBribeEstimate(
   const char selectedWorkerId
 );
 
+void printHarbourShipCount(
+  const short count,
+  const int refreshFlag
+);
+
 void printLeadershipStatus(
   ::Unit *_7kaaUnit,
   const int top,
