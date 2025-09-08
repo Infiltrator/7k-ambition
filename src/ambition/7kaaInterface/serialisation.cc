@@ -32,6 +32,7 @@
 #include "Ambition_control.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_serialisation.hh"
+#include "Ambition_user_interface.hh"
 
 
 namespace _7kaaAmbitionInterface::Serialisation {
@@ -66,6 +67,7 @@ void loadGame(
 
   Ambition::resetGameState();
   Ambition::read(filename, startingPosition);
+  Ambition::UserInterface::resetState();
 }
 
 void saveGame(

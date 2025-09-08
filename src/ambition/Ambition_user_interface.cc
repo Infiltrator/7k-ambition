@@ -29,6 +29,7 @@
 #include "KEY.h"
 #include "OFONT.h"
 #include "OMOUSE.h"
+#include "ONATIONA.h"
 #include "OVGA.h"
 #include "OWORLD.h"
 #include "vga_util.h"
@@ -362,6 +363,15 @@ void printText(
     0,
     textArea.end.left
   );
+}
+
+void resetState(
+) {
+  rankReportComparison7kaaNationRecordNumber = nation_array.player_recno;
+
+  buildingMenu = BuildingMenu::_7kaa;
+  reportType = -1;
+  selected7kaaFirmRecordNumber = 0;
 }
 
 

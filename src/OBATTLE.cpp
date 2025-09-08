@@ -21,6 +21,8 @@
 //Filename    : OBATTLE.CPP
 //Description : Battle Object
 
+#include "ambition/7kaaInterface/control.hh"
+
 #include <OSYS.h>
 #include "OU_GOD.h"
 #include <OWORLD.h>
@@ -73,6 +75,8 @@ void Battle::deinit()
 //
 void Battle::run(NewNationPara *mpGame, int mpPlayerCount)
 {
+	Ambition::Control::resetGameState();
+
 	int oldCursor = mouse_cursor.get_icon();
 	mouse_cursor.set_icon(CURSOR_WAITING);
 
