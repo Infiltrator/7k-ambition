@@ -51,6 +51,8 @@ public:
 	int	is_operating()		{ return productivity > 0 && build_unit_id; }
 
 public:
+	static bool menuModeMain();
+
 	FirmWar();
 	~FirmWar();
 

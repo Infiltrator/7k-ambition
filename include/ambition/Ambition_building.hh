@@ -160,6 +160,9 @@ public:
   Coordinates::Point getRallyLocation(
   ) const;
 
+  bool mainMenuActive(
+  );
+
   void migrate7kaaQueue(
   );
 

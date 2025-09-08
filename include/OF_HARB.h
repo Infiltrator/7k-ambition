@@ -69,6 +69,8 @@ public:
 					 { return linked_mine_num + linked_factory_num + linked_market_num; }
 
 public:
+	static bool menuModeMain();
+
 	FirmHarbor();
 
 	void  init(int xLoc, int yLoc, int nationRecno, int firmId, const char* buildCode=NULL, short builderRecno=0);

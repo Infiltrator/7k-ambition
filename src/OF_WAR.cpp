@@ -88,6 +88,11 @@ static Button3D	button_vacate_firm;
 static void i_disp_build_button(ButtonCustom *button, int);
 static void i_disp_queue_button(ButtonCustom *button, int);
 
+
+bool FirmWar::menuModeMain() {
+	return war_menu_mode == WAR_MENU_MAIN;
+}
+
 //--------- Begin of function FirmWar::FirmWar ---------//
 //
 FirmWar::FirmWar()

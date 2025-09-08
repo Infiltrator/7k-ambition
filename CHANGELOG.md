@@ -16,6 +16,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed building menus (Town training, Harbour/War Factory build, spy menus,
+  etc.) exiting back to the main menu when production of a new unit starts.
 - Fixed a crash when looking at the ship list on the trade report.
 
 ### Changed
