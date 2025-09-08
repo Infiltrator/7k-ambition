@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_ADDED),
         .items = {
+          _("Added scrolling with the mouse wheel, up/down, and home/end keys to the Harbour ship list."),
           _("Added $100,000 throne purchase option."),
         },
       },

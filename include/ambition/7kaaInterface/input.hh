@@ -94,10 +94,6 @@ void detectCaravanCloneButton(
   UnitCaravan* _7kaaCaravan
 );
 
-bool detectInnScroll(
-  VBrowseIF& guestBrowser
-);
-
 bool detectTradeReportCaravanCloneButton(
   VBrowseIF& caravanBrowser
 );
@@ -154,6 +150,10 @@ bool detectSpyScroll(
 
 bool detectTownScroll(
   VBrowseIF& raceBrowser
+);
+
+bool detectUnitListScroll(
+  VBrowseIF& guestBrowser
 );
 
 /**

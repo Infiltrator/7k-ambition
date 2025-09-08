@@ -425,6 +425,10 @@ int FirmHarbor::detect_main_menu()
 		}
 	}
 
+	if (Ambition::Input::detectUnitListScroll(browse_ship)) {
+		put_det(INFO_UPDATE);
+	}
+
 	return 0;
 }
 //----------- End of function FirmHarbor::detect_main_menu -----------//

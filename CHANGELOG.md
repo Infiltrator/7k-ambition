@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Added scrolling with the mouse wheel, up/down, and home/end keys to the
+  Harbour ship list.
 - Added $100,000 throne purchase option.
 
 ### Fixed
