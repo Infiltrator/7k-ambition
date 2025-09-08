@@ -296,14 +296,12 @@ void detectCaravanCloneButton(
   Ambition::Trade::detectCaravanCloneButton(_7kaaCaravan);
 }
 
-bool detectInnScroll(
+bool detectUnitListScroll(
   VBrowseIF& guestBrowser
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return false;
   }
-
-  constexpr auto SLOT_COUNT = 4;
 
   return Ambition::Input::detectScroll(
     true,
@@ -329,7 +327,7 @@ bool detectInnScroll(
         }
       },
     },
-    []() { return SLOT_COUNT; }
+    [&guestBrowser]() { return guestBrowser.y_max_rec - 1; }
   );
 }
 

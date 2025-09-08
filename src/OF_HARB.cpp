@@ -54,17 +54,13 @@
 
 #define SHIP_BROWSE_X1 INFO_X1
 #define SHIP_BROWSE_X2 INFO_X2
-enum {
-		 SHIP_BROWSE_Y1 = INFO_Y1+54,
-		 SHIP_BROWSE_Y2 = SHIP_BROWSE_Y1+100
-	  };
+#define SHIP_BROWSE_Y1 (INFO_Y1+54 + (Ambition::Config::enhancementsAvailable() ? 22 : 0))
+#define SHIP_BROWSE_Y2 (SHIP_BROWSE_Y1+100)
 
 #define SHIP_DET_X1 INFO_X1
 #define SHIP_DET_X2 INFO_X2
-enum {
-		 SHIP_DET_Y1 = SHIP_BROWSE_Y2+5,
-		 SHIP_DET_Y2 = SHIP_DET_Y1+92
-	  };
+#define SHIP_DET_Y1 (SHIP_BROWSE_Y2+5)
+#define SHIP_DET_Y2 (SHIP_DET_Y1+92)
 
 //---------- Define constant ------------//
 
@@ -319,6 +315,8 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 
 	if( refreshFlag == INFO_REPAINT )
 	{
+		Ambition::Draw::harbourShipCount(ship_count, refreshFlag);
+
 		browse_ship.init( SHIP_BROWSE_X1, SHIP_BROWSE_Y1, SHIP_BROWSE_X2, SHIP_BROWSE_Y2,
 								0, 25, ship_count, put_ship_rec );
 
@@ -423,6 +421,10 @@ int FirmHarbor::detect_main_menu()
 			}
 			return 1;
 		}
+	}
+
+	if (Ambition::Input::detectUnitListScroll(browse_ship)) {
+		put_det(INFO_UPDATE);
 	}
 
 	return 0;

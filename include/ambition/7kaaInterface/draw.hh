@@ -297,6 +297,11 @@ bool initialiseSnowLayer(
   double slideSpeed
 );
 
+void harbourShipCount(
+  const short count,
+  const int refreshFlag
+);
+
 void innGuestCount(
   const short count,
   const int refreshFlag

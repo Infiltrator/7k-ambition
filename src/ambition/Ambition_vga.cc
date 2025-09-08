@@ -1617,6 +1617,32 @@ void printBribeEstimate(
   );
 }
 
+void printHarbourShipCount(
+  const short count,
+  const int refreshFlag
+) {
+  const auto panel = UserInterface::INFO_PANE_CONTENTS.inner(0, 50).internal(
+    {
+      .width = UserInterface::INFO_PANE_CONTENTS.width(),
+      .height = 24,
+    }
+  );
+  const auto field = panel.inner(4, 3);
+
+  if (refreshFlag == INFO_REPAINT) {
+    UserInterface::drawPanel(panel);
+  }
+  font_san.field(
+    field.start.left,
+    field.start.top,
+    _("Ships"),
+    field.start.left + 100,
+    format("%d/%d", count, MAX_SHIP_IN_HARBOR).c_str(),
+    field.end.left,
+    refreshFlag
+  );
+}
+
 void printLeadershipStatus(
   ::Unit *_7kaaUnit,
   const int top,

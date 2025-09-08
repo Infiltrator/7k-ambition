@@ -221,7 +221,7 @@ int FirmInn::detect_info()
 
 	//-------------------------------------//
 
-	if (Ambition::Input::detectInnScroll(browse_hire)) {
+	if (Ambition::Input::detectUnitListScroll(browse_hire)) {
 		Ambition::Inn::guestSelected(this, Ambition::Inn::getSelectedRecordNumber(this, browse_hire.recno()));
 		put_det(INFO_UPDATE);
 		return 1;
