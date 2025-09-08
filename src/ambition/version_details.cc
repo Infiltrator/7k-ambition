@@ -26,6 +26,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_FIXED),
         .items = {
+          _("Fixed building menus (Town training, Harbour/War Factory build, spy menus, etc.) exiting back to the main menu when production of a new unit starts."),
           _("Fixed a crash when looking at the ship list on the trade report."),
         },
       },

@@ -107,6 +107,11 @@ static void put_ship_rec(int recNo, int x, int y, int refreshFlag);
 static void i_disp_build_button(ButtonCustom *button, int);
 static void i_disp_queue_button(ButtonCustom *button, int);
 
+
+bool FirmHarbor::menuModeMain() {
+	return harbor_menu_mode == HARBOR_MENU_MAIN;
+}
+
 //--------- Begin of function FirmHarbor::FirmHarbor ---------//
 //
 FirmHarbor::FirmHarbor()

@@ -782,6 +782,37 @@ void Building::produce(
   }
 }
 
+bool Building::mainMenuActive(
+) {
+  if (type == _7kaaType::Town) {
+    return (
+      UserInterface::buildingMenu == UserInterface::BuildingMenu::_7kaa
+      && Town::menuModeMain()
+    );
+  }
+
+  if (type == _7kaaType::Firm) {
+    const auto commonFirmMenu
+      = UserInterface::buildingMenu == UserInterface::BuildingMenu::_7kaa
+      && Firm::firm_menu_mode == FIRM_MENU_MAIN;
+
+    if (const auto _7kaaWarFactory
+      = dynamic_cast<FirmWar*>(underlying7kaaObject().object.firm)
+    ) {
+      return commonFirmMenu && _7kaaWarFactory->menuModeMain();
+    }
+    if (const auto _7kaaHarbour
+      = dynamic_cast<FirmHarbor*>(underlying7kaaObject().object.firm)
+    ) {
+      return commonFirmMenu && _7kaaHarbour->menuModeMain();
+    }
+
+    return commonFirmMenu;
+  }
+
+  assert((type == _7kaaType::Town || type == _7kaaType::Firm) && false);
+}
+
 void Building::productionAccepted(
   const int _7kaaRaceId,
   const int _7kaaSkillId
@@ -805,7 +836,9 @@ void Building::productionAccepted(
       productionQueue.erase(iterator);
     }
 
-    info.disp();
+    if (mainMenuActive()) {
+      info.disp();
+    }
     break;
   }
 }
