@@ -10,6 +10,8 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+## [3.2.5] — 2025-09-09
+
 ### Added
 
 - Added scrolling with the mouse wheel, up/down, and home/end keys to the

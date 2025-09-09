@@ -7,9 +7,9 @@ AC_INIT(
   [Seven Kingdoms: Ambition],
   [m4_esyscmd_s([
     if test -d .git; then
-      git describe --always --dirty --tags 2>/dev/null || echo "v3.2.4-novcs";
+      git describe --always --dirty --tags 2>/dev/null || echo "v3.2.5-novcs";
      else
-      echo "v3.2.4-novcs";
+      echo "v3.2.5-novcs";
     fi
   ])],
   [seven-kingdoms-ambition-bugs@lists.sourceforge.net],
