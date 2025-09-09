@@ -3,15 +3,13 @@
 
 AC_PREREQ([2.65])
 
-m4_define([package_version], [v3.2.4])
-
 AC_INIT(
   [Seven Kingdoms: Ambition],
   [m4_esyscmd_s([
     if test -d .git; then
-      git describe --always --dirty --tags 2>/dev/null || echo "[package_version]-novcs";
+      git describe --always --dirty --tags 2>/dev/null || echo "v3.2.4-novcs";
      else
-      echo "[package_version]-novcs";
+      echo "v3.2.4-novcs";
     fi
   ])],
   [seven-kingdoms-ambition-bugs@lists.sourceforge.net],
