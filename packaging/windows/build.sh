@@ -28,7 +28,10 @@ STRIP=${HOST}-strip
 BOOST_PATH="/usr/${HOST}"
 BOOST_OPTION="--with-boost=${BOOST_PATH}"
 
-./configure --disable-fhs $HOST_OPT ${BOOST_OPTION}
+# Windows before Vista do not work with C++20 onwards.
+WINDOWS_VERSION="-D_WIN32_WINNT=0x0600"
+
+./configure --disable-fhs $HOST_OPT ${BOOST_OPTION} CXXFLAGS="${WINDOWS_VERSION}"
 make -j6
 make install DESTDIR="${DESTINATION_DIRECTORY}" bindir=/ docdir=/ pkgdatadir=/ localedir=/locale
 $STRIP "${DESTINATION_DIRECTORY}/7k-ambition.exe"
