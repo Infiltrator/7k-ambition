@@ -24,6 +24,7 @@
 
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <OSTR.h>
 #include <OFONT.h>
@@ -718,6 +719,10 @@ static void create_ship_list()
 //
 static int is_caravan_route_idle(UnitCaravan* unitPtr)
 {
+	if (Ambition::Unit::caravanIdle(unitPtr)) {
+		return 1;
+	}
+
 	int stops = 0;
 	int can_pick_up = 0;
 	for( int i = 0; i<MAX_STOP_FOR_CARAVAN; i++ )
