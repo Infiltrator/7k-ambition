@@ -108,7 +108,7 @@ if test x"$ac_cv_string_strcasecmp" = "xno" ; then
 fi
 
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.20])
+AM_GNU_GETTEXT_REQUIRE_VERSION([0.19])
 
 # Configuration variables
 

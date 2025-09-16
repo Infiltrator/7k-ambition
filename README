@@ -63,7 +63,7 @@ Required dependencies
 
 Optional dependencies
 * libcurl for full 7kfans multiplayer integration (website requires TLS1.2)
-* gettext 0.20
+* gettext 0.19
 * Game music: 7kaa-music-2.15
   -> Packagers: Copy music into program data folder or PACKAGE_DATA_DIR
   -> Make sure the file names are in upper-case
