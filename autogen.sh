@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo " ***"
 echo "WARNING: autogen.sh is deprecated and will be removed in the future."
