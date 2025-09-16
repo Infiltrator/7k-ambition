@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed caravans with no stops not being counted as idle, and so never being
+  retired or re-used.
 - Fixed diagonal lines (unit paths, waypoints, rally points, building links)
   looking stretched out compared to orthogonal lines.
 - Fixed an issue where accepting a friendly treaty would override a declaration

@@ -315,7 +315,7 @@ bool isCaravanIdle(
       return true;
     }
   }
-  if (_7kaaCaravan->stop_defined_num == 1
+  if (_7kaaCaravan->stop_defined_num <= 1
     && carriedGoodCount == 0) {
     return true;
   }

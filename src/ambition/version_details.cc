@@ -24,6 +24,7 @@ std::vector<VersionUpdates> getVersionDetails(
       {
         .heading = HEADING_FIXED,
         .items = {
+          _("Fixed caravans with no stops not being counted as idle, and so never being retired or re-used."),
           _("Fixed diagonal lines (unit paths, waypoints, rally points, building links) looking stretched out compared to orthogonal lines."),
           _("Fixed an issue where accepting a friendly treaty would override a declaration of war."),
           _("Preserve all the user options (Report Backgrounds, News Display, Unit Identity Display, and Unit Path Display) when loading a save file or starting a scenario (which loads a save file, internally)."),
