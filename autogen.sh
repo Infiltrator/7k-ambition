@@ -1,8 +1,8 @@
 #!/bin/bash
 
-autopoint --force > /dev/null
-rm ABOUT-NLS* po/Makevars.template*
-aclocal --force --install -I m4
-autoconf --force
-autoheader --force
-automake --add-missing --copy --force-missing
+echo " ***"
+echo "WARNING: autogen.sh is deprecated and will be removed in the future."
+echo "Please use \`autoreconf --verbose --install' directly instead."
+echo " ***"
+
+autoreconf --verbose --install
