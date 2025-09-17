@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed translations not working on Windows and always showing English.  Now,
+  the game will respect the config.txt `locale` setting on Windows.
+
+
 ## [3.2.5] — 2025-09-09
 
 ### Added

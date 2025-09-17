@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed translations not working on Windows and always showing English.  Now, the game will respect the config.txt `locale` setting on Windows."),
+        },
+      },
     },
   },
   {
