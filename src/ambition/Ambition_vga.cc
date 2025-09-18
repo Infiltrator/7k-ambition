@@ -43,6 +43,7 @@
 #include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OFONT.h"
+#include "OHELP.h"
 #include "OIMGRES.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
@@ -1341,11 +1342,10 @@ void drawFirmFrame(
 void drawFirmHitBar(
   Firm* firm
 ) {
-  if(firm->hit_points >= firm->max_hit_points) {
+  if (!shouldDrawFirmHitBar(firm)) {
     return;
   }
 
-  // If the firm is not at 100% HP, draw a hit bar.
   const auto barWidth = ZOOM_LOC_WIDTH * (firm->loc_x2 - firm->loc_x1 + 1);
   constexpr auto BAR_HEIGHT = 5;
 

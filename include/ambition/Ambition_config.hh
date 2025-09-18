@@ -28,6 +28,9 @@
 #include <filesystem>
 #include <string>
 
+class Firm;
+
+
 namespace Ambition {
 
 /**
@@ -102,6 +105,10 @@ void set7kaaConfigOption(
   char* key,
   char* value,
   const int lineNumber
+);
+
+bool shouldDrawFirmHitBar(
+  const Firm* _7kaaFirm
 );
 
 

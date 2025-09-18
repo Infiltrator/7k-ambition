@@ -285,6 +285,17 @@ Point fromWorldPoint(
   };
 }
 
+bool mouseCursorInArea(
+  const Rectangle area
+) {
+  return mouse.in_area(
+    area.start.left,
+    area.start.top,
+    area.end.left,
+    area.end.top
+  );
+}
+
 void printParagraph(
   Font& font,
   const std::string text,

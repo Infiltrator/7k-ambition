@@ -426,6 +426,10 @@ Point fromWorldPoint(
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
 );
 
+bool mouseCursorInArea(
+  const Rectangle area
+);
+
 void printParagraph(
   Font& font,
   const std::string text,
