@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_FIXED),
         .items = {
+          _("Fixed a crash that sometimes happened after an earthquake, where automatic caravan cloning would try to both clone and retire an idle caravan at the same time, resulting in a segfault."),
           _("Fixed translations not working on Windows and always showing English.  Now, the game will respect the config.txt `locale` setting on Windows."),
         },
       },
