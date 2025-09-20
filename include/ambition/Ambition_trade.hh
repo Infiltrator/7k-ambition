@@ -44,7 +44,7 @@ bool detectReportCaravanCloneButton(
 );
 
 void drawCaravanCloneButton(
-  UnitCaravan* _7kaaCaravan
+  const UnitCaravan* _7kaaCaravan
 );
 
 void drawReportCaravanCloneButton(
@@ -52,7 +52,7 @@ void drawReportCaravanCloneButton(
 );
 
 bool isCaravanIdle(
-  UnitCaravan* _7kaaCaravan
+  const UnitCaravan* _7kaaCaravan
 );
 
 } // namespace Ambition::Trade

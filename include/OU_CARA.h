@@ -144,7 +144,7 @@ public:
 	short			raw_qty_array[MAX_RAW];
 	short			product_raw_qty_array[MAX_PRODUCT];
 
-   int			carrying_qty(int pickupType);
+   int carrying_qty(const int pickupType) const;
 
 public:
 	UnitCaravan();

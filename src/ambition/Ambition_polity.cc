@@ -130,6 +130,10 @@ void Polity::cloneCaravan(
     return;
   }
 
+  if (Trade::isCaravanIdle(_7kaaCaravan)) {
+    return;
+  }
+
   if (idleCaravans().size() <= _7kaaCaravansToCloneRecordNumbers.size()) {
     const auto _7kaaMarketRecordNumber = findNearest7kaaMarket(
       Coordinates::Point::from7kaaCoordinates(
