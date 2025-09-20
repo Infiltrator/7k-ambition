@@ -30,6 +30,8 @@
 #include <cmath>
 #include <cstring>
 #include <gettext.h>
+#include <numeric>
+#include <ranges>
 #include <SDL_events.h>
 #include <SDL_timer.h>
 
@@ -888,7 +890,21 @@ bool drawBuildingInformationPanel(
   }
 
   if (::config.disp_spy_sign && _7kaaFirm->player_spy_count > 0) {
-    lines.push_back(_("(Spy)"));
+    const auto generalIsSpy
+      = _7kaaFirm->overseer_recno
+      && unit_array[_7kaaFirm->overseer_recno]->is_own_spy();
+
+    lines.push_back(
+      format(
+        ngettext(
+          "(%s%d Spy)",
+          "(%s%d Spies)",
+          _7kaaFirm->player_spy_count - generalIsSpy
+        ),
+        generalIsSpy ? _("G+") : "",
+        _7kaaFirm->player_spy_count - generalIsSpy
+      )
+    );
   }
 
   if (lines.empty()) {
@@ -984,7 +1000,32 @@ bool drawBuildingInformationPanel(
   }
 
   if (::config.disp_spy_sign && _7kaaTown->has_player_spy()) {
-    lines.push_back(_("(Spy)"));
+    const auto _7kaaSpyRecordNumbers = std::views::iota(1, spy_array.size() + 1);
+    const auto spyCount = std::transform_reduce(
+      _7kaaSpyRecordNumbers.begin(),
+      _7kaaSpyRecordNumbers.end(),
+      0,
+      std::plus{},
+      [&_7kaaTown](const auto _7kaaSpyRecordNumber) {
+        if (spy_array.is_deleted(_7kaaSpyRecordNumber)) {
+          return 0;
+        }
+
+        const auto _7kaaSpy = spy_array[_7kaaSpyRecordNumber];
+        if (_7kaaSpy->spy_place == SPY_TOWN
+          && _7kaaSpy->spy_place_para == _7kaaTown->town_recno
+          && _7kaaSpy->true_nation_recno == nation_array.player_recno
+        ) {
+          return 1;
+        }
+
+        return 0;
+      }
+    );
+
+    lines.push_back(
+      format(ngettext("(%d Spy)", "(%d Spies)", spyCount), spyCount)
+    );
   }
 
   if (lines.empty()) {

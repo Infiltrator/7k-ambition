@@ -42,6 +42,9 @@ speaking, considered to be the player's experience.
   selected building and any building hovered over with the mouse.  When it is
   set to Detailed, they will be displayed as per the old behaviour—when the
   building is at less than 100% hitpoints.
+- Town and Firm information panels will show the number of spies you have inside
+  of them instead of just "(Spy)".  If the general is also your spy, it will say
+  "G+" the number of other spies you have.
 
 
 ## [3.2.5] — 2025-09-09

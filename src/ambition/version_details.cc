@@ -38,6 +38,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Changed when building hitbars are displayed based on the help setting in the options menu.  When it is set to None, building hitbars will never be displayed.  When it is set to Brief, they will be displayed for the currently selected building and any building hovered over with the mouse.  When it is set to Detailed, they will be displayed as per the old behaviour--when the building is at less than 100% hitpoints."),
+          _("Town and Firm information panels will show the number of spies you have inside of them instead of just \"(Spy)\".  If the general is also your spy, it will say \"G+\" the number of other spies you have."),
         },
       },
     },
