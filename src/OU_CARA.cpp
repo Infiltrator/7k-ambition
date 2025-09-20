@@ -1582,7 +1582,7 @@ int UnitCaravan::has_pick_up_type(int stopId, int pickUpType)
 // Return whether the qty of the specific product/raw type that
 // this caravan is currently carrying.
 //
-int UnitCaravan::carrying_qty(int pickUpType)
+int UnitCaravan::carrying_qty(const int pickUpType) const
 {
 	if( pickUpType >= PICK_UP_RAW_FIRST &&
 		 pickUpType <= PICK_UP_RAW_LAST )

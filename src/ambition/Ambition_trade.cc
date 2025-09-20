@@ -118,7 +118,7 @@ bool detectReportCaravanCloneButton(
 }
 
 void drawCaravanCloneButton(
-  UnitCaravan* _7kaaCaravan
+  const UnitCaravan* _7kaaCaravan
 ) {
   caravanCloneButton.paint(
     UserInterface::BUTTON_ROW_LOWER.start.left,
@@ -164,7 +164,7 @@ void drawReportCaravanCloneButton(
   if (const auto browserRecordNumber
     = caravanBrowser.mouse_over(&x1, &y1, &x2, &y2)
   ) {
-    auto _7kaaCaravan = dynamic_cast<UnitCaravan*>(
+    const auto _7kaaCaravan = dynamic_cast<UnitCaravan*>(
       unit_array[info.get_report_data(browserRecordNumber)]
     );
 
@@ -185,7 +185,7 @@ void drawReportCaravanCloneButton(
 }
 
 bool isCaravanIdle(
-  UnitCaravan* _7kaaCaravan
+  const UnitCaravan* _7kaaCaravan
 ) {
   auto dropOffCount = 0;
   auto pickUpCount = 0;

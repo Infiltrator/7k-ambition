@@ -253,7 +253,7 @@ int calculateWorkerPortraitLeft(
 );
 
 void caravanCloneButton(
-  UnitCaravan* _7kaaCaravan,
+  const UnitCaravan* _7kaaCaravan,
   const int refreshFlag
 );
 
