@@ -181,13 +181,13 @@ int UnitCaravan::think_del_stop()
 			int j;
 			for( j=PICK_UP_RAW_FIRST ; j<=PICK_UP_RAW_LAST ; j++ )
 			{
-				if( tradeStop->pick_up_array[j] )
+				if( tradeStop->pick_up_array[j-1] )
 					hasPickUp = 1;
 			}
 
 			for( j=PICK_UP_PRODUCT_FIRST ; j<=PICK_UP_PRODUCT_LAST ; j++ )
 			{
-				if( tradeStop->pick_up_array[j] )
+				if( tradeStop->pick_up_array[j-1] )
 					hasPickUp = 1;
 			}
 
