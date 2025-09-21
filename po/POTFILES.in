@@ -26,6 +26,7 @@ src/OGAMHALL.cpp
 src/OGAMMAIN.cpp
 src/OGAMSCE2.cpp
 src/OGFILE.cpp
+src/OGFILEA.cpp
 src/OHELP.cpp
 src/OINFO.cpp
 src/OINGMENU.cpp
@@ -50,8 +51,6 @@ src/OSPY.cpp
 src/OSPYA.cpp
 src/OSYS.cpp
 src/OSYS2.cpp
-src/OSaveGameArray.cpp
-src/OSaveGameProvider.cpp
 src/OTALKENG.cpp
 src/OTALKMSG.cpp
 src/OTALKRES.cpp
