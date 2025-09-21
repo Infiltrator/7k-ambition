@@ -33,6 +33,7 @@ speaking, considered to be the player's experience.
   config.txt and not an Ambition one.
 - Added button help text to the Egyptian, Mughal, and Zulu Greater Being spell
   buttons.
+- Fixed the grammar in the "Desperate Bowmen" scenario description.
 - Fixed the manual showing the wrong targeting type for the Mughal Greater Being
   (Djinni).
 
