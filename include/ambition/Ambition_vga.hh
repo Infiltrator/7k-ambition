@@ -164,6 +164,14 @@ void displayUnitContribution(
   const int y
 );
 
+namespace Vga {
+
+bool drawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+);
+
+} // namespace Ambition::Vga
+
 void drawBuildingLinkLine(
   const int sourceFirmId,
   const int destinationFirmId,

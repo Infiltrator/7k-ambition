@@ -143,7 +143,7 @@ const char *monster_firm_name[] =
 };
 //------- Begin of function FirmMonster::firm_name -----------//
 //
-char* FirmMonster::firm_name()
+char* FirmMonster::firm_name() const
 {
 	static String str;
 

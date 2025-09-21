@@ -41,12 +41,14 @@
 #include "OF_HARB.h"
 #include "OF_INN.h"
 #include "OF_MARK.h"
+#include "OF_MONS.h"
 #include "OF_RESE.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OFONT.h"
 #include "OHELP.h"
 #include "OIMGRES.h"
+#include "OMONSRES.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
@@ -624,6 +626,83 @@ void displayUnitContribution(
      INFO_SPECIAL
    );
 }
+
+namespace Vga {
+
+bool drawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+) {
+  if (::config.help_mode == NO_HELP) {
+    return false;
+  }
+
+  const auto firmArea = UserInterface::Rectangle::fromWorldRectangle(
+    Coordinates::Rectangle::from7kaaRectangle(
+      { .x = _7kaaFirm->loc_x1, .y = _7kaaFirm->loc_y1 },
+      { .x = _7kaaFirm->loc_x2, .y = _7kaaFirm->loc_y2 }
+    )
+  );
+
+  if (::config.help_mode == BRIEF_HELP
+    && firm_array.selected_recno != _7kaaFirm->firm_recno
+    && !UserInterface::mouseCursorInArea(firmArea)
+  ) {
+    return false;
+  }
+
+  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
+
+  const auto height = 54;
+  const auto panelArea
+    = firmArea
+    .internal(
+      { .width = firmArea.width() - PANEL_SIDE_MARGINS, .height = height },
+      UserInterface::HorizontalAlignment::Centre,
+      UserInterface::VerticalAlignment::Centre
+    );
+
+  if (!UserInterface::VIEWPORT.intersects(panelArea)) {
+    return false;
+  }
+
+  std::vector<std::string> lines;
+
+  if (_7kaaFirm->firm_id == FIRM_MONSTER) {
+    const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
+    assert(_7kaaFryhtanLair);
+
+    lines.push_back(_7kaaFryhtanLair->firm_name());
+    lines.push_back(
+      format(_("Level: %d"), monster_res[_7kaaFryhtanLair->monster_id]->level)
+    );
+  }
+
+  if (_7kaaFirm->should_show_info()) {
+    switch (_7kaaFirm->firm_id) {
+    case FIRM_MONSTER: {
+      const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
+      assert(_7kaaFryhtanLair);
+
+      lines.push_back(
+        format(_("Ordos: %d"), _7kaaFryhtanLair->monster_general_count)
+      );
+      break;
+    }
+    }
+  }
+
+  if (lines.empty()) {
+    return false;
+  }
+
+  return UserInterface::drawInformationPanel(
+    UserInterface::VIEWPORT,
+    panelArea,
+    lines
+  );
+}
+
+} // namespace Ambition::Vga
 
 void drawBuildingLinkLine(
   const int sourceFirmId,

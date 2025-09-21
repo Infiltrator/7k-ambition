@@ -18,6 +18,12 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Show an information panel for Fryhtan Lairs with their species name and level.  The level is an approximate relative reflection of the species' strength and the gold reward for killing Ordos.  Note that this reflects only the species, not the current unit count and combat level, which can only be seen with a Phoenix."),
+        },
+      },
+      {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed a crash that sometimes happened after an earthquake, where automatic caravan cloning would try to both clone and retire an idle caravan at the same time, resulting in a segfault."),

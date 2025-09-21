@@ -10,6 +10,14 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show an information panel for Fryhtan Lairs with their species name and level.
+  The level is an approximate relative reflection of the species' strength and
+  the gold reward for killing Ordos.  Note that this reflects only the species,
+  not the current unit count and combat level, which can only be seen with a
+  Phoenix.
+
 ### Fixed
 
 - Fixed a crash that sometimes happened after an earthquake, where automatic

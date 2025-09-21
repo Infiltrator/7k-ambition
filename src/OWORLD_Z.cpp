@@ -1037,6 +1037,10 @@ void ZoomMatrix::disp_text()
 
 			firmPtr = firm_array[i];
 
+			if (Ambition::Draw::buildingInformationPanel(firmPtr)) {
+				continue;
+			}
+
 			if( firmPtr->player_spy_count )
 			{
 				put_center_text( (firmPtr->abs_x1+firmPtr->abs_x2)/2,

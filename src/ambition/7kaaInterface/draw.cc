@@ -408,6 +408,20 @@ bool buildingOccupantHitbar(
   );
 }
 
+bool buildingInformationPanel(
+  const Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (!world.get_loc(_7kaaFirm->center_x, _7kaaFirm->center_y)->explored()) {
+    return false;
+  }
+
+  return Ambition::Vga::drawBuildingInformationPanel(_7kaaFirm);
+}
+
 void buildingProgressBar(
   const Firm* firm
 ) {

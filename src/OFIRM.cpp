@@ -3852,7 +3852,7 @@ int Firm::can_assign_capture()
 //
 // Whether information of this firm should be shown.
 //
-int Firm::should_show_info()
+int Firm::should_show_info() const
 {
 	if( config.show_ai_info || nation_recno==nation_array.player_recno ||
 		 player_spy_count > 0 )
@@ -4023,7 +4023,7 @@ void Firm::reward(int workerId, int remoteAction)
 //
 // <int> checkSpy - optionally check for cloaked spies as well (default : 0)
 //
-int Firm::have_own_workers(int checkSpy)
+int Firm::have_own_workers(int checkSpy) const
 {
 	Worker* workerPtr = worker_array;
 

@@ -26,6 +26,9 @@
 #pragma once
 
 #include "COLOR.h"
+#include "OFONT.h"
+
+#include <vector>
 
 #include "Ambition_coordinates.hh"
 
@@ -157,6 +160,10 @@ struct Rectangle {
 
   Rectangle intersection(
     const Rectangle with
+  ) const;
+
+  bool intersects(
+    const Rectangle& with
   ) const;
 };
 
@@ -420,6 +427,15 @@ Size bitmapSize(
 
 bool detectMouseClick(
   const Rectangle area
+);
+
+bool drawInformationPanel(
+  const Rectangle& bounds,
+  const Rectangle& buildingArea,
+  const std::vector<std::string>& lines,
+  const HorizontalAlignment alignment = HorizontalAlignment::Centre,
+  Font& font = font_san,
+  const int lineSpacing = 2
 );
 
 void drawRectangle(

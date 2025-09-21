@@ -25,9 +25,10 @@
 
 #include "Ambition_user_interface.hh"
 
+#include <ranges>
+
 #define _AMBITION_IMPLEMENTATION
 #include "KEY.h"
-#include "OFONT.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OSYS.h"
@@ -205,6 +206,21 @@ Rectangle Rectangle::intersection(
   };
 }
 
+bool Rectangle::intersects(
+  const Rectangle& with
+) const {
+  return (
+    (((start.left >= with.start.left && start.left <= with.end.left)
+       || (end.left >= with.start.left && end.left <= with.end.left))
+      && ((start.top >= with.start.top && start.top <= with.end.top)
+        || (end.top >= with.start.top && end.top <= with.end.top)))
+    || (((with.start.left >= start.left && with.start.left <= end.left)
+        || (with.end.left >= start.left && with.end.left <= end.left))
+      && ((with.start.top >= start.top && with.start.top <= end.top)
+        || (with.end.top >= start.top && with.end.top <= end.top)))
+  );
+}
+
 
 Size bitmapSize(
   const char* bitmap
@@ -225,6 +241,62 @@ bool detectMouseClick(
     area.end.left,
     area.end.top
   );
+}
+
+bool drawInformationPanel(
+  const Rectangle& bounds,
+  const Rectangle& panelArea,
+  const std::vector<std::string>& lines,
+  const HorizontalAlignment alignment,
+  Font& font,
+  const int lineSpacing
+) {
+  if (!VIEWPORT.intersects(panelArea)) {
+    return false;
+  }
+
+  const auto totalTextHeight
+    = lines.size() * font.font_height
+    + (lines.size() - 1) * lineSpacing;
+
+  const auto textArea = panelArea.internal(
+    { .width = panelArea.width(), .height = static_cast<int>(totalTextHeight) },
+    HorizontalAlignment::Centre,
+    VerticalAlignment::Centre
+  );
+
+  /* The panel interferes with the panels drawn by the reports. */
+  if (sys.view_mode == MODE_NORMAL) {
+    drawPanel(VIEWPORT.intersection(panelArea));
+  }
+
+  const auto restoreVgaFront = !vga.use_back_buf;
+  vga.use_back();
+
+  for (const auto i : std::views::iota(0U, lines.size())) {
+    const auto lineArea = textArea.inner(
+      0,
+      i * (font.font_height + lineSpacing),
+      0,
+      0
+    );
+
+    printText(
+      font,
+      lines[i],
+      lineArea,
+      Clear::None,
+      alignment,
+      VerticalAlignment::Top,
+      VIEWPORT
+    );
+  }
+
+  if (restoreVgaFront) {
+    vga.use_front();
+  }
+
+  return true;
 }
 
 void drawRectangle(

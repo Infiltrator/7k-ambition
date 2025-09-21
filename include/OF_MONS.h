@@ -106,7 +106,7 @@ public:
 
 	~FirmMonster();
 
-	char*	firm_name();
+	char* firm_name() const;
 
 	void 	put_info(int refreshFlag);
 	int	detect_info();

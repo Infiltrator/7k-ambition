@@ -107,6 +107,10 @@ bool buildingOccupantHitbar(
   const int maximumHitpoints
 );
 
+bool buildingInformationPanel(
+  const Firm* _7kaaFirm
+);
+
 void buildingProgressBar(
   const Firm* firm
 );
