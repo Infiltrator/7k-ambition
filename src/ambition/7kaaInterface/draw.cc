@@ -353,7 +353,9 @@ bool buildingMenu(
   }
 
   if (firm_array.selected_recno
-    != Ambition::UserInterface::selected7kaaFirmRecordNumber
+    != Ambition::UserInterface::selected7kaaFirmOrTownRecordNumber
+    && town_array.selected_recno
+    != Ambition::UserInterface::selected7kaaFirmOrTownRecordNumber
   ) {
     return false;
   }

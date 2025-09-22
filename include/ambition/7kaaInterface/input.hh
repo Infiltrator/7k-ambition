@@ -29,6 +29,7 @@ class Firm;
 class GetA;
 class SlideVBar;
 class Spy;
+class Town;
 class UnitCaravan;
 class VBrowseIF;
 
@@ -88,6 +89,11 @@ bool detectBuildingMenu(
   char& menu,
   ::Spy* _7kaaSpy,
   const Firm* _7kaaFirm
+);
+bool detectBuildingMenu(
+  char& menu,
+  const ::Spy* _7kaaSpy,
+  const Town* _7kaaTown
 );
 
 void detectCaravanCloneButton(

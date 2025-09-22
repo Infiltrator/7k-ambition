@@ -43,7 +43,7 @@ int rankReportComparison7kaaNationRecordNumber = 0;
 
 BuildingMenu buildingMenu = BuildingMenu::_7kaa;
 int reportType = -1;
-short selected7kaaFirmRecordNumber = 0;
+short selected7kaaFirmOrTownRecordNumber = 0;
 
 
 char _7kaaJustification(
@@ -371,7 +371,7 @@ void resetState(
 
   buildingMenu = BuildingMenu::_7kaa;
   reportType = -1;
-  selected7kaaFirmRecordNumber = 0;
+  selected7kaaFirmOrTownRecordNumber = 0;
 }
 
 

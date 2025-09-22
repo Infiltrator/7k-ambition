@@ -210,6 +210,13 @@ constexpr Action TRAINING_KEY_ACTIONS[MAX_TRAINABLE_SKILL] = {
 };
 
 
+void detectStealReportConfirmationMenu(
+  char& menu,
+  const char _7kaaMenuMain,
+  const ::Spy* _7kaaSpy,
+  const short _7kaaNationRecordNumber
+);
+
 char* stripUnprintable7kaaCharacters(
   char* input
 );
@@ -225,7 +232,7 @@ bool detectBuildingMenu(
   }
 
   if (firm_array.selected_recno
-    != Ambition::UserInterface::selected7kaaFirmRecordNumber
+    != Ambition::UserInterface::selected7kaaFirmOrTownRecordNumber
   ) {
     return false;
   }
@@ -256,29 +263,50 @@ bool detectBuildingMenu(
     break;
 
   case Ambition::UserInterface::BuildingMenu::StealReportConfirmation:
-    if (Ambition::Spy::stealReportsButton.detect(
-        Input::getKeyEvent(Input::Action::Common_Confirm)
-      )
-    ) {
-      sys.set_view_mode(
-        Ambition::UserInterface::reportType + 1,
-        _7kaaFirm->nation_recno,
-        _7kaaSpy->spy_recno
-      );
-      menu = FIRM_MENU_MAIN;
-      Ambition::UserInterface::buildingMenu
-        = Ambition::UserInterface::BuildingMenu::_7kaa;
-      info.disp();
-    }
-    if (Ambition::Spy::cancelButton.detect(
-        Input::getKeyEvent(Input::Action::Common_Cancel)
-      )
-    ) {
-      menu = FIRM_MENU_MAIN;
-      Ambition::UserInterface::buildingMenu
-        = Ambition::UserInterface::BuildingMenu::_7kaa;
-      info.disp();
-    }
+    detectStealReportConfirmationMenu(
+      menu,
+      FIRM_MENU_MAIN,
+      _7kaaSpy,
+      _7kaaFirm->nation_recno
+    );
+    return true;
+    break;
+  }
+
+  return false;
+}
+bool detectBuildingMenu(
+  char& menu,
+  const ::Spy* _7kaaSpy,
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (town_array.selected_recno
+    != Ambition::UserInterface::selected7kaaFirmOrTownRecordNumber
+  ) {
+    return false;
+  }
+
+  switch (Ambition::UserInterface::buildingMenu) {
+  case Ambition::UserInterface::BuildingMenu::_7kaa:
+    break;
+
+  case Ambition::UserInterface::BuildingMenu::AssassinationConfirmation:
+    assert(false);
+    break;
+
+  case Ambition::UserInterface::BuildingMenu::StealReportConfirmation:
+    constexpr auto TOWN_MENU_MAIN = 0;
+
+    detectStealReportConfirmationMenu(
+      menu,
+      TOWN_MENU_MAIN,
+      _7kaaSpy,
+      _7kaaTown->nation_recno
+    );
     return true;
     break;
   }
@@ -846,7 +874,7 @@ bool enterAssassinationConfirmationMenu(
 
   Ambition::UserInterface::buildingMenu
     = Ambition::UserInterface::BuildingMenu::AssassinationConfirmation;
-  Ambition::UserInterface::selected7kaaFirmRecordNumber
+  Ambition::UserInterface::selected7kaaFirmOrTownRecordNumber
     = firm_array.selected_recno;
   return true;
 }
@@ -861,8 +889,8 @@ bool enterStealReportConfirmationMenu(
   Ambition::UserInterface::buildingMenu
     = Ambition::UserInterface::BuildingMenu::StealReportConfirmation;
   Ambition::UserInterface::reportType = reportType;
-  Ambition::UserInterface::selected7kaaFirmRecordNumber
-    = firm_array.selected_recno;
+  Ambition::UserInterface::selected7kaaFirmOrTownRecordNumber
+    = firm_array.selected_recno ?: town_array.selected_recno;
   return true;
 }
 
@@ -918,6 +946,37 @@ void setOrClearRallyPoint(
 
 
 /* Private functions. */
+
+void detectStealReportConfirmationMenu(
+  char& menu,
+  const char _7kaaMenuMain,
+  const ::Spy* _7kaaSpy,
+  const short _7kaaNationRecordNumber
+) {
+  if (Ambition::Spy::stealReportsButton.detect(
+      Input::getKeyEvent(Input::Action::Common_Confirm)
+    )
+  ) {
+    sys.set_view_mode(
+      Ambition::UserInterface::reportType + 1,
+      _7kaaNationRecordNumber,
+      _7kaaSpy->spy_recno
+    );
+    menu = _7kaaMenuMain;
+    Ambition::UserInterface::buildingMenu
+      = Ambition::UserInterface::BuildingMenu::_7kaa;
+    info.disp();
+  }
+  if (Ambition::Spy::cancelButton.detect(
+      Input::getKeyEvent(Input::Action::Common_Cancel)
+    )
+  ) {
+    menu = _7kaaMenuMain;
+    Ambition::UserInterface::buildingMenu
+      = Ambition::UserInterface::BuildingMenu::_7kaa;
+    info.disp();
+  }
+}
 
 char* stripUnprintable7kaaCharacters(
   char* input

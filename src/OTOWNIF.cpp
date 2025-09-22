@@ -170,6 +170,10 @@ void Town::disp_info(int refreshFlag)
 
 	//-----------------------------------//
 
+	if (Ambition::Draw::buildingMenu(refreshFlag, spy_array[action_spy_recno], nullptr)) {
+		return;
+	}
+
 	switch( town_menu_mode )
 	{
 		case TOWN_MENU_MAIN:
@@ -211,6 +215,10 @@ void Town::detect_info()
 	}
 
 	if_town_recno = town_recno;
+
+	if (Ambition::Input::detectBuildingMenu(town_menu_mode, spy_array[action_spy_recno], this)) {
+		return;
+	}
 
 	switch( town_menu_mode )
 	{

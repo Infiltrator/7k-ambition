@@ -63,7 +63,7 @@ extern int rankReportComparison7kaaNationRecordNumber;
 
 extern BuildingMenu buildingMenu;
 extern int reportType;
-extern short selected7kaaFirmRecordNumber;
+extern short selected7kaaFirmOrTownRecordNumber;
 
 
 struct Point {
