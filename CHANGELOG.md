@@ -13,6 +13,8 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Automatically detect the language on Windows.
+- Show the average target resistance of independent towns on the information
+  panel when you have workers.
 
 ### Changed
 
