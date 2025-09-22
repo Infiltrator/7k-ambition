@@ -1242,6 +1242,7 @@ void drawBuildingProgressBar(
   if (firm->firm_id != FIRM_RESEARCH
       && firm->firm_id != FIRM_HARBOR
       && firm->firm_id != FIRM_WAR_FACTORY
+    && firm->firm_id != FIRM_BASE
   ) {
     return;
   }
@@ -1274,6 +1275,11 @@ void drawBuildingProgressBar(
     progress
       = ((FirmWar*) firm)->build_progress_days
       / unit_res[((FirmWar*) firm)->build_unit_id]->build_days;
+  } else if (firm->firm_id == FIRM_BASE) {
+    const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(firm);
+    assert(_7kaaSeatOfPower);
+
+    progress = _7kaaSeatOfPower->pray_points / MAX_PRAY_POINTS;
   }
 
   const auto barWidth = ZOOM_LOC_WIDTH * (firm->loc_x2 - firm->loc_x1 + 1);

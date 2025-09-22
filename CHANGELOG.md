@@ -24,6 +24,7 @@ speaking, considered to be the player's experience.
   the gold reward for killing Ordos.  Note that this reflects only the species,
   not the current unit count and combat level, which can only be seen with a
   Phoenix.
+- Added a progress bar for Seats of Power.
 
 ### Fixed
 
