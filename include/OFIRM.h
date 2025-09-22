@@ -205,7 +205,7 @@ public:
 	char	 player_spy_count;
 	uint8_t	 sabotage_level;			// 0-100 for counter productivity
 
-	int	 average_worker_skill();
+	int average_worker_skill() const;
 
 	virtual int is_operating()		{ return productivity > 0; }
 

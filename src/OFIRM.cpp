@@ -2264,7 +2264,7 @@ void Firm::calc_productivity()
 //
 // Return the average skill level of the workers in this firm.
 //
-int Firm::average_worker_skill()
+int Firm::average_worker_skill() const
 {
 	err_when( !worker_array );    // this function shouldn't be called if this firm does not need worker
 

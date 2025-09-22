@@ -26,6 +26,7 @@
 #include "Ambition_vga.hh"
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <cstring>
 #include <gettext.h>
@@ -38,15 +39,19 @@
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
 #include "OCONFIG.h"
+#include "OF_BASE.h"
 #include "OF_CAMP.h"
+#include "OF_FACT.h"
 #include "OF_HARB.h"
 #include "OF_INN.h"
 #include "OF_MARK.h"
+#include "OF_MINE.h"
 #include "OF_MONS.h"
 #include "OF_RESE.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OFONT.h"
+#include "OGODRES.h"
 #include "OHELP.h"
 #include "OIMGRES.h"
 #include "OMONSRES.h"
@@ -659,7 +664,7 @@ bool drawBuildingInformationPanel(
   constexpr auto BUILDER_ICON_CLEARANCE = 12;
   constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
 
-  const auto height = 54;
+  const auto height = _7kaaFirm->firm_id == FIRM_BASE ? 70 : 54;
   const auto panelArea
     = firmArea
     .inner(0, BUILDER_ICON_CLEARANCE, 0, 0)
@@ -686,7 +691,31 @@ bool drawBuildingInformationPanel(
   }
 
   if (_7kaaFirm->should_show_info()) {
+    static const auto RESOURCE_NAMES = std::array{
+      _("Cl"),
+      _("Co"),
+      _("Ir"),
+    };
+
     switch (_7kaaFirm->firm_id) {
+    case FIRM_BASE: {
+      const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(_7kaaFirm);
+      assert(_7kaaSeatOfPower);
+      lines.push_back(unit_res[god_res[_7kaaSeatOfPower->god_id]->unit_id]->name);
+      if (_7kaaFirm->overseer_recno) {
+        lines.push_back(
+          format(
+            "%s: %d",
+            _("Leadership"),
+            unit_array[_7kaaFirm->overseer_recno]->skill.skill_level
+          )
+        );
+      } else {
+        lines.push_back(_("No general"));
+      }
+      break;
+    }
+
     case FIRM_CAMP:
       if (_7kaaFirm->overseer_recno) {
         lines.push_back(
@@ -709,9 +738,74 @@ bool drawBuildingInformationPanel(
       );
       break;
     }
+
+    case FIRM_FACTORY: {
+      const auto _7kaaFactory = dynamic_cast<const FirmFactory*>(_7kaaFirm);
+      assert(_7kaaFactory);
+      lines.push_back(
+        format(
+          "%s: %'.0f/%'.0f",
+          RESOURCE_NAMES[_7kaaFactory->product_raw_id - 1],
+          std::floor(_7kaaFactory->stock_qty),
+          std::floor(_7kaaFactory->raw_stock_qty)
+        )
+      );
+      break;
+    }
+
+    case FIRM_MINE: {
+      const auto _7kaaMine = dynamic_cast<const FirmMine*>(_7kaaFirm);
+      assert(_7kaaMine);
+      lines.push_back(
+        format(
+          "%s: %'.0f",
+          RESOURCE_NAMES[_7kaaMine->raw_id - 1],
+          std::floor(_7kaaMine->reserve_qty)
+        )
+      );
+      break;
+    }
+
+    case FIRM_WAR_FACTORY: {
+      const auto _7kaaWarFactory = dynamic_cast<const FirmWar*>(_7kaaFirm);
+      assert(_7kaaWarFactory);
+
+      if (_7kaaWarFactory->build_unit_id) {
+        lines.push_back(unit_res[_7kaaWarFactory->build_unit_id]->name);
+      } else {
+        lines.push_back(_("Idle"));
+      }
+      break;
+    }
     }
 
     switch (_7kaaFirm->firm_id) {
+    case FIRM_BASE:
+    case FIRM_FACTORY:
+    case FIRM_MINE:
+    case FIRM_WAR_FACTORY:
+      lines.push_back(
+        format(
+          ngettext("%d wrk (%d)", "%d wrk (%d)", _7kaaFirm->worker_count),
+          _7kaaFirm->worker_count,
+          _7kaaFirm->average_worker_skill()
+        )
+      );
+      break;
+
+    case FIRM_RESEARCH:
+      /* Towers of Science are narrow, so there isn't as much room for the
+       * panel, so we split the worker count and average skill over two
+       * lines. */
+      lines.push_back(
+        format(
+          ngettext("%d wrk", "%d wrk", _7kaaFirm->worker_count),
+          _7kaaFirm->worker_count
+        )
+      );
+      lines.push_back(format("(%d)", _7kaaFirm->average_worker_skill()));
+      break;
+
     case FIRM_CAMP: {
       const auto _7kaaCamp = dynamic_cast<const FirmCamp*>(_7kaaFirm);
       assert(_7kaaCamp);
@@ -724,7 +818,77 @@ bool drawBuildingInformationPanel(
       );
       break;
     }
+
+    case FIRM_INN: {
+      const auto _7kaaInn = dynamic_cast<const FirmInn*>(_7kaaFirm);
+      assert(_7kaaInn);
+      lines.push_back(
+        format(
+          ngettext("%d guest", "%d guests", _7kaaInn->inn_unit_count),
+          _7kaaInn->inn_unit_count
+        )
+      );
+      break;
     }
+
+    case FIRM_HARBOR: {
+      const auto _7kaaHarbour = dynamic_cast<const FirmHarbor*>(_7kaaFirm);
+      assert(_7kaaHarbour);
+      lines.push_back(
+        format(_("Ships: %d/%d"), _7kaaHarbour->ship_count, MAX_SHIP_IN_HARBOR)
+      );
+      break;
+    }
+
+    case FIRM_MONSTER:
+    case FIRM_MARKET:
+      /* Markets should show when trade is allowed, which is handled below. */
+      break;
+
+    default:
+      assert(false);
+    }
+  }
+
+  if (_7kaaFirm->firm_id == FIRM_MARKET
+    && (_7kaaFirm->own_firm()
+      || nation_array[_7kaaFirm->nation_recno]->get_relation(
+        nation_array.player_recno
+      )->trade_treaty)
+  ) {
+    static const auto GOOD_NAMES = std::array{
+      _("Raw Cl"),
+      _("Raw Co"),
+      _("Raw Ir"),
+      _("Clay"),
+      _("Copper"),
+      _("Iron"),
+    };
+
+    const auto _7kaaMarket = dynamic_cast<const FirmMarket*>(_7kaaFirm);
+    assert(_7kaaMarket);
+
+    for (const auto& marketGoods : _7kaaMarket->market_goods_array) {
+      if (!marketGoods.raw_id && !marketGoods.product_raw_id) {
+        continue;
+      }
+
+      lines.push_back(
+        format(
+          "%s: %'.0f",
+          GOOD_NAMES[(marketGoods.raw_id ?: marketGoods.product_raw_id + 3) - 1],
+          std::floor(marketGoods.stock_qty)
+        )
+      );
+    }
+
+    if (lines.empty()) {
+      lines.push_back(_("Empty"));
+    }
+  }
+
+  if (::config.disp_spy_sign && _7kaaFirm->player_spy_count > 0) {
+    lines.push_back(_("(Spy)"));
   }
 
   if (lines.empty()) {
