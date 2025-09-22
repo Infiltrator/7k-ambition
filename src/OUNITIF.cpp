@@ -174,6 +174,9 @@ void Unit::disp_info(int refreshFlag)
 //
 void Unit::detect_info()
 {
+	if( detect_select_hotkey() )
+		return;
+
 	switch( unit_menu_mode )
 	{
 		case UNIT_MENU_MAIN:
@@ -196,9 +199,6 @@ void Unit::detect_info()
 			detect_build_menu();
 			break;
 	}
-
-	if( detect_select_hotkey() )
-		return;
 }
 //----------- End of function Unit::detect_info -----------//
 
