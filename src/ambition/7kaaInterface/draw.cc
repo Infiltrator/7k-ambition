@@ -302,7 +302,7 @@ void buildingAnimationFrame(
 }
 
 void buildingBuilderIcon(
-  Firm* firm
+  const Firm* firm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
@@ -312,7 +312,7 @@ void buildingBuilderIcon(
 }
 
 void buildingHitBar(
-  Firm* firm
+  const Firm* firm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
@@ -409,7 +409,7 @@ bool buildingOccupantHitbar(
 }
 
 void buildingProgressBar(
-  Firm* firm
+  const Firm* firm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
@@ -458,7 +458,7 @@ void buildingRallyButton(
 }
 
 void buildingRallyPoint(
-  Firm* _7kaaFirm
+  const Firm* _7kaaFirm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;

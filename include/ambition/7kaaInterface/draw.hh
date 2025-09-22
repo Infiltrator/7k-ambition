@@ -64,7 +64,7 @@ void buildingAnimationFrame(
  * @param firm A pointer to the Firm for which to draw the icon.
  */
 void buildingBuilderIcon(
-  Firm* firm
+  const Firm* firm
 );
 
 /**
@@ -73,7 +73,7 @@ void buildingBuilderIcon(
  * @param firm The Firm for which to draw a hitbar.
  */
 void buildingHitBar(
-  Firm* firm
+  const Firm* firm
 );
 
 void buildingLinkLine(
@@ -108,7 +108,7 @@ bool buildingOccupantHitbar(
 );
 
 void buildingProgressBar(
-  Firm* firm
+  const Firm* firm
 );
 
 void buildingProgressBar(
@@ -123,7 +123,7 @@ void buildingRallyButton(
 );
 
 void buildingRallyPoint(
-  Firm* _7kaaFirm
+  const Firm* _7kaaFirm
 );
 void buildingRallyPoint(
   Town* _7kaaTown

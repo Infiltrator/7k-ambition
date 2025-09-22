@@ -1331,7 +1331,7 @@ void Firm::restore_world_matrix()
 
 //---------- Begin of function Firm::own_firm --------//
 //
-int Firm::own_firm()
+int Firm::own_firm() const
 {
    return nation_recno == nation_array.player_recno;
 }

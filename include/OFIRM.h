@@ -166,7 +166,7 @@ public:
 	char   race_id;
 	short  nation_recno;       // this firm's parent company nation
 	char   majority_race();		// the race that has the majority of the population
-	int    own_firm();         // whether the firm is controlled by the current player
+	int own_firm() const; // whether the firm is controlled by the current player
 	int	 can_sell() 		{ return hit_points >= (int) max_hit_points * CAN_SELL_HIT_POINTS_PERCENT / 100; }
 
 	//-------- firm name vars ---------//

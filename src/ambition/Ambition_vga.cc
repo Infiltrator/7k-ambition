@@ -815,7 +815,7 @@ bool drawBuildingOccupantHitbar(
 }
 
 void drawBuildingProgressBar(
-  Firm* firm
+  const Firm* firm
 ) {
   if (firm->nation_recno != nation_array.player_recno) {
     return;
@@ -876,7 +876,7 @@ void drawBuildingProgressBar(
 }
 
 void drawBuildingRallyPoint(
-  Firm* _7kaaFirm
+  const Firm* _7kaaFirm
 ) {
   if (firm_array.selected_recno == _7kaaFirm->firm_recno
     && _7kaaFirm->own_firm()
@@ -1263,7 +1263,7 @@ void drawFeedbackLink(
 }
 
 void drawFirmBuilderIcon(
-  Firm* firm
+  const Firm* firm
 ) {
   constexpr auto FRAME_COUNT = 2;
   constexpr auto FRAME_RATE = 2;
@@ -1340,7 +1340,7 @@ void drawFirmFrame(
 }
 
 void drawFirmHitBar(
-  Firm* firm
+  const Firm* firm
 ) {
   if (!shouldDrawFirmHitBar(firm)) {
     return;
