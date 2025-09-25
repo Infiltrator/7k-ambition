@@ -103,6 +103,9 @@ struct Rectangle {
       },
     };
   }
+  static Rectangle fromWorldRectangle(
+    const Coordinates::Rectangle& coordinateRectangle
+  );
 
   inline bool operator==(const Rectangle& rhs) const noexcept {
     return start == rhs.start && end == rhs.end;
@@ -421,6 +424,10 @@ std::string keyString(
 Point fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
+);
+
+bool mouseCursorInArea(
+  const Rectangle area
 );
 
 void printParagraph(

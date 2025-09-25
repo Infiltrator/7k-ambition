@@ -25,6 +25,7 @@
 
 #include "Ambition_config.hh"
 
+#include <cassert>
 #include <stdexcept>
 #include <vector>
 
@@ -33,13 +34,17 @@
 #include "gettext.h"
 #include "KEY.h"
 #include "OBUTT3D.h"
+#include "OCONFIG.h"
+#include "OFIRM.h"
 #include "OFONT.h"
+#include "OHELP.h"
 #include "OIMGRES.h"
 #include "OMOUSE.h"
 #include "OMOUSECR.h"
 #include "OSYS.h"
 #include "vga_util.h"
 
+#include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
 
 
@@ -191,6 +196,34 @@ void set7kaaConfigOption(
 
   if (!success) {
     _7kaaConfigErrorLineNumbers.push_back(lineNumber);
+  }
+}
+
+bool shouldDrawFirmHitBar(
+  const Firm* _7kaaFirm
+) {
+  switch (::config.help_mode) {
+  case NO_HELP:
+    return false;
+
+  case BRIEF_HELP: {
+    const auto buildingArea = UserInterface::Rectangle::fromWorldRectangle(
+      Coordinates::Rectangle::from7kaaRectangle(
+        { .x = _7kaaFirm->loc_x1, .y = _7kaaFirm->loc_y1 },
+        { .x = _7kaaFirm->loc_x2, .y = _7kaaFirm->loc_y2 }
+      )
+    );
+    return (
+      firm_array.selected_recno == _7kaaFirm->firm_recno
+      || UserInterface::mouseCursorInArea(buildingArea)
+    );
+  }
+
+  case DETAIL_HELP:
+    return _7kaaFirm->hit_points < _7kaaFirm->max_hit_points;
+
+  default:
+    assert(false);
   }
 }
 

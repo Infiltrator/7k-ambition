@@ -19,6 +19,15 @@ speaking, considered to be the player's experience.
 - Fixed translations not working on Windows and always showing English.  Now,
   the game will respect the config.txt `locale` setting on Windows.
 
+### Changed
+
+- Changed when building hitbars are displayed based on the help setting in the
+  options menu.  When it is set to None, building hitbars will never be
+  displayed.  When it is set to Brief, they will be displayed for the currently
+  selected building and any building hovered over with the mouse.  When it is
+  set to Detailed, they will be displayed as per the old behaviour—when the
+  building is at less than 100% hitpoints.
+
 
 ## [3.2.5] — 2025-09-09
 
