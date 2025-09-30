@@ -53,6 +53,7 @@ struct Rectangle;
 namespace UserInterface {
 struct Point;
 struct Rectangle;
+struct Size;
 }
 
 
@@ -297,6 +298,15 @@ bool initialiseSnowLayer(
   const char animationSpeed,
   double slideSpeed
 );
+
+namespace Vga {
+
+char* prepareBitmapBuffer(
+  char* buffer,
+  const UserInterface::Size& size
+);
+
+} // namespace UserInterface::Vga
 
 void printAssasinationEstimate(
   const ::Spy* _7kaaSpy,

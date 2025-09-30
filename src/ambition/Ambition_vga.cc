@@ -27,11 +27,13 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <gettext.h>
 #include <SDL_events.h>
 #include <SDL_timer.h>
 
 #define _AMBITION_IMPLEMENTATION
+#include "COLCODE.h"
 #include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
@@ -1529,6 +1531,26 @@ bool initialiseSnowLayer(
 
   return true;
 }
+
+namespace Vga {
+
+char* prepareBitmapBuffer(
+  char* buffer,
+  const UserInterface::Size& size
+) {
+  constexpr auto BYTE_CAPACITY = 1 << 8;
+
+  *(buffer++) = size.width % BYTE_CAPACITY;
+  *(buffer++) = size.width / BYTE_CAPACITY;
+  *(buffer++) = size.height % BYTE_CAPACITY;
+  *(buffer++) = size.height / BYTE_CAPACITY;
+
+  std::memset(buffer, TRANSPARENT_CODE, size.width * size.height);
+
+  return buffer;
+}
+
+} // namespace UserInterface::Vga
 
 void printAssasinationEstimate(
   const ::Spy* _7kaaSpy,

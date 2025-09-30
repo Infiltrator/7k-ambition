@@ -30,11 +30,13 @@
 #include "OFONT.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
+#include "OSYS.h"
 #include "OVGA.h"
 #include "OWORLD.h"
 #include "vga_util.h"
 
 #include "Ambition_coordinates.hh"
+#include "Ambition_vga.hh"
 
 
 namespace Ambition::UserInterface {
@@ -140,12 +142,12 @@ Rectangle Rectangle::outer(
 
   return {
     .start = {
-      .left = std::max(start.left - marginLeft, BOUNDS.start.left),
-      .top = std::max(start.top - marginTop, BOUNDS.start.top),
+      .left = start.left - marginLeft,
+      .top = start.top - marginTop,
     },
     .end = {
-      .left = std::min(end.left + marginRight, BOUNDS.end.left),
-      .top = std::min(end.top + marginBottom, BOUNDS.end.top),
+      .left = end.left + marginRight,
+      .top = end.top + marginBottom,
     },
   };
 }
@@ -360,7 +362,8 @@ void printText(
   const UserInterface::Rectangle area,
   const Clear clear,
   const HorizontalAlignment horizontalAlignment,
-  const VerticalAlignment verticalAlignment
+  const VerticalAlignment verticalAlignment,
+  const Rectangle& bounds
 ) {
   const auto textWidth = font.text_width(text.c_str());
   const auto textHeight = font.text_height();
@@ -375,7 +378,9 @@ void printText(
   );
 
   if (clear != Clear::None) {
-    const auto clearArea = clear == Clear::EntireArea ? area : textArea;
+    const auto clearArea
+      = (clear == Clear::EntireArea ? area : textArea)
+      .intersection(bounds);
     vga_util.blt_buf(
       clearArea.start.left,
       clearArea.start.top,
@@ -385,13 +390,53 @@ void printText(
     );
   }
 
-  font.put(
-    textArea.start.left,
-    textArea.start.top,
-    text.c_str(),
+  const auto drawArea = textArea.outer(
     0,
-    textArea.end.left
+    0,
+    0,
+    font.max_font_height - font.font_height
   );
+  const auto withinBounds = bounds.contains(drawArea);
+  const auto drawBuffer
+    = withinBounds
+    ? vga.active_buf->buf_ptr(drawArea.start.left, drawArea.start.top)
+    : Vga::prepareBitmapBuffer(sys.common_data_buf, drawArea.size());
+  const auto bufferPitch
+    = withinBounds ? vga.active_buf->buf_pitch() : drawArea.width();
+
+  const auto printArea = Rectangle::fromPoint(
+    { .left = 0, .top = 0 },
+    drawArea.size()
+  );
+
+  font.put_to_buffer(
+    drawBuffer,
+    bufferPitch,
+    printArea.start.left,
+    printArea.start.top,
+    text.c_str()
+  );
+
+  if (!withinBounds) {
+    const auto inside = bounds.intersection(drawArea);
+    const auto sourceArea = Rectangle::fromPoint(
+      {
+        .left = inside.start.left - drawArea.start.left,
+        .top = inside.start.top - drawArea.start.top,
+      },
+      inside.size()
+    );
+
+    vga.active_buf->put_bitmap_area_trans(
+      drawArea.start.left,
+      drawArea.start.top,
+      sys.common_data_buf,
+      sourceArea.start.left,
+      sourceArea.start.top,
+      sourceArea.end.left,
+      sourceArea.end.top
+    );
+  }
 }
 
 void resetState(

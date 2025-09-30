@@ -111,8 +111,22 @@ struct Rectangle {
     return start == rhs.start && end == rhs.end;
   }
 
-  inline int width() const { return end.left - start.left + 1; }
-  inline int height() const { return end.top - start.top + 1; }
+  constexpr Size size(
+  ) const {
+    return {
+      .width = width(),
+      .height = height(),
+    };
+  }
+
+  constexpr int width(
+  ) const {
+    return end.left - start.left + 1;
+  }
+  constexpr int height(
+  ) const {
+    return end.top - start.top + 1;
+  }
 
   bool contains(
     const Point& point
@@ -446,7 +460,8 @@ void printText(
   const Rectangle area,
   const Clear clear = Clear::None,
   const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
-  const VerticalAlignment verticalAlignment = VerticalAlignment::Top
+  const VerticalAlignment verticalAlignment = VerticalAlignment::Top,
+  const Rectangle& bounds = BOUNDS
 );
 
 void resetState(
