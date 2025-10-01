@@ -1372,7 +1372,7 @@ void Font::put_to_buffer(char* dest, int destPitch, int x1, int y1, const char *
 		if( x1 + charWidth <= x2 )
 			put_char_to_buffer( dest, destPitch, x1, y1, textChar);
 
-		x1 += charWidth;
+		x1 += charWidth + inter_char_space;
 		text += charSize;
 	}
 }
