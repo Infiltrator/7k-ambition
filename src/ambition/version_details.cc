@@ -18,6 +18,16 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = HEADING_PREAMBLE,
+        .items = {
+          _("The behaviour of the newly added information panels and the building hitbars (see the sections below) is controlled (for now*) by the Help level setting in the Options menu.  You are encouraged to tweak this setting to your liking."),
+          _("When set to None, they will never be displayed."),
+          _("When set to Brief, they will be displayed for the currently selected building and any building that is hovered over with the mouse."),
+          _("When set to Detailed, they will be displayed for all buildings all the time."),
+          _("* Ambition will have its own Settings menu with more fine-grained control over features in the future."),
+        },
+      },
+      {
         .heading = _(HEADING_ADDED),
         .items = {
           _("Show an information panel for Towns, with the number of peasants, total population, number of races, and loyalty or resistance."),
