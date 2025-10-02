@@ -29,7 +29,6 @@
 #include <array>
 #include <cmath>
 #include <cstring>
-#include <gettext.h>
 #include <numeric>
 #include <ranges>
 #include <SDL_events.h>
@@ -37,6 +36,7 @@
 
 #define _AMBITION_IMPLEMENTATION
 #include "COLCODE.h"
+#include "gettext.h"
 #include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
