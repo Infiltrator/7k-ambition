@@ -30,10 +30,12 @@
 
 #include "pragma_silence_7kaa_warnings.hh"
 #include "OCONFIG.h"
+#include "OF_CAMP.h"
 #include "OFIRMA.h"
 #include "OINFO.h"
 #include "OMUSIC.h"
 #include "OREMOTE.h"
+#include "OSITE.h"
 #include "OSYS.h"
 #include "OU_CARA.h"
 #include "OU_MARI.h"
@@ -255,6 +257,26 @@ bool shouldDrawFrame(
     return true;
   }
   return false;
+}
+
+bool shouldSelectSortiedUnits(
+  const FirmCamp* _7kaaCamp
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return true;
+  }
+
+  return (
+    firm_array.selected_recno == _7kaaCamp->firm_recno
+    || (firm_array.selected_recno == 0
+      && town_array.selected_recno == 0
+      && unit_array.selected_recno == 0
+      && site_array.selected_recno == 0
+    ) || (!unit_array.is_deleted(unit_array.selected_recno)
+      && unit_array[unit_array.selected_recno]->home_camp_firm_recno
+        == _7kaaCamp->firm_recno
+    )
+  );
 }
 
 void unlockBuffer(

@@ -25,6 +25,7 @@
 
 #pragma once
 
+class FirmCamp;
 class UnitCaravan;
 class UnitMarine;
 class VgaBuf;
@@ -97,6 +98,10 @@ void resetUiState(
 );
 
 bool shouldDrawFrame(
+);
+
+bool shouldSelectSortiedUnits(
+  const FirmCamp* _7kaaCamp
 );
 
 /**

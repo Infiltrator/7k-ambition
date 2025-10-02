@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Changed
+
+- Select sortied units only if the Fort is still selected, instead of overriding
+  the selection, preventing accidentally giving orders to the wrong units in
+  multiplayer.
+
 
 ## [3.2.11] — 2026-08-24
 

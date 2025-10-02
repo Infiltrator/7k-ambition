@@ -25,6 +25,7 @@
 
 #include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/config.hh"
+#include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
 
 #include <OINFO.h>
@@ -824,7 +825,7 @@ void FirmCamp::patrol()
 	err_when( !overseer_recno && !worker_count );
 	err_when( firm_ai && ai_capture_town_recno );		// ai_capture_town_recno is set after patrol() is called
 
-	if( nation_recno == nation_array.player_recno )
+	if( nation_recno == nation_array.player_recno && Ambition::Control::shouldSelectSortiedUnits(this) )
 		power.reset_selection();
 
 	//------------------------------------------------------------//
@@ -866,7 +867,7 @@ void FirmCamp::patrol()
 		err_when(unitPtr->rank_id!=RANK_GENERAL && unitPtr->rank_id!=RANK_KING);
 		unitPtr->team_id = unit_array.cur_team_id-1;   // set it to the same team as the soldiers which are defined in mobilize_all_worker()
 
-		if( nation_recno == nation_array.player_recno )
+		if( nation_recno == nation_array.player_recno && Ambition::Control::shouldSelectSortiedUnits(this) )
 		{
 			unitPtr->selected_flag = 1;
 			unit_array.selected_recno = overseer_recno;
@@ -976,7 +977,7 @@ int FirmCamp::patrol_all_soldier()
 					  unit_array[overseer_recno]->rank_id != RANK_GENERAL );
 		}
 
-		if( nation_recno == nation_array.player_recno )
+		if( nation_recno == nation_array.player_recno && Ambition::Control::shouldSelectSortiedUnits(this) )
 		{
 			unitPtr->selected_flag = 1;
 			unit_array.selected_count++;
