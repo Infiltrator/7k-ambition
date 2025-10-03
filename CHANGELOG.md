@@ -31,6 +31,10 @@ speaking, considered to be the player's experience.
 - Fixed a crash that sometimes happened after an earthquake, where automatic
   caravan cloning would try to both clone and retire an idle caravan at the same
   time, resulting in a segfault.
+- Fixed the build Fort keybind (F) not working because it was conflicting with
+  selecting a Fort.  The default keybind for selecting a fort has been changed
+  to `N`.  You can change by binding the `KEYEVENT_BUILD_CAMP` and
+  `KEYEVENT_GOTO_CAMP` events to different keys in the config.txt file.
 - Fixed spy Steal Reports option not working in Towns.
 - Fixed translations not working on Windows and always showing English.  Now,
   the game will respect the config.txt `locale` setting on Windows.
