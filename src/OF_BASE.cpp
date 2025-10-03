@@ -21,6 +21,7 @@
 //Filename    : OF_BASE.CPP
 //Description : Firm Base
 
+#include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 
@@ -631,6 +632,8 @@ void FirmBase::disp_god_info(int dispY1, int refreshFlag)
 void FirmBase::invoke_god()
 {
 	god_unit_recno = god_res[god_id]->invoke(firm_recno, center_x, center_y);
+
+	Ambition::Building::sendUnitsToRallyPoint(this, { god_unit_recno });
 }
 //----------- End of function FirmBase::invoke_god -----------//
 

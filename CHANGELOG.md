@@ -25,6 +25,8 @@ speaking, considered to be the player's experience.
   not the current unit count and combat level, which can only be seen with a
   Phoenix.
 - Added a progress bar for Seats of Power.
+- Greater Beings will now go to the rally points of their Seats of Power when
+  they are summoned.
 
 ### Fixed
 
