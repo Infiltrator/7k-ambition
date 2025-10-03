@@ -166,7 +166,7 @@ public:
 	char   race_id;
 	short  nation_recno;       // this firm's parent company nation
 	char   majority_race();		// the race that has the majority of the population
-	int    own_firm();         // whether the firm is controlled by the current player
+	int own_firm() const; // whether the firm is controlled by the current player
 	int	 can_sell() 		{ return hit_points >= (int) max_hit_points * CAN_SELL_HIT_POINTS_PERCENT / 100; }
 
 	//-------- firm name vars ---------//
@@ -205,7 +205,7 @@ public:
 	char	 player_spy_count;
 	uint8_t	 sabotage_level;			// 0-100 for counter productivity
 
-	int	 average_worker_skill();
+	int average_worker_skill() const;
 
 	virtual int is_operating()		{ return productivity > 0; }
 
@@ -296,7 +296,7 @@ public:
 
 	int      is_in_zoom_win();
 	int		find_settle_town();
-	int 		should_show_info();
+	int should_show_info() const;
 
 	int		set_builder(short newBuilderRecno);
 	int		find_idle_builder(int nearest);
@@ -308,7 +308,7 @@ public:
 	int		can_assign_capture();
 	int		can_worker_capture(int captureNationRecno);
 	virtual int	 is_worker_full();
-	int		have_own_workers(int checkSpy=0);
+	int have_own_workers(int checkSpy=0) const;
 
 	void 		set_worker_home_town(int townRecno, char remoteAction, int workerId=0);
 	int 		can_spy_bribe(int bribeWorkerId, int briberNationRecno);

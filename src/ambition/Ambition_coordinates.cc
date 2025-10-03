@@ -264,7 +264,7 @@ long int Rectangle::height(
 
 long int Rectangle::width(
 ) const {
-  return std::abs(start.y - end.y);
+  return std::abs(start.x - end.x);
 }
 
 Rectangle Rectangle::intersection(

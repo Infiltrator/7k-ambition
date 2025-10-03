@@ -18,6 +18,26 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
       {
+        .heading = HEADING_PREAMBLE,
+        .items = {
+          _("The behaviour of the newly added information panels and the building hitbars (see the sections below) is controlled (for now*) by the Help level setting in the Options menu.  You are encouraged to tweak this setting to your liking."),
+          _("When set to None, they will never be displayed."),
+          _("When set to Brief, they will be displayed for the currently selected building and any building that is hovered over with the mouse."),
+          _("When set to Detailed, they will be displayed for all buildings all the time."),
+          _("* Ambition will have its own Settings menu with more fine-grained control over features in the future."),
+        },
+      },
+      {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Show an information panel for Towns, with the number of peasants, total population, number of races, and loyalty or resistance."),
+          _("Show an information panel for Forts, with the general or king leadership level, number of soldiers, and the approximate total strength, including the effects of the leader."),
+          _("Show information panels for other buildings, with information relevant to them, such as worker and good counts."),
+          _("Show an information panel for Fryhtan Lairs with their species name and level.  The level is an approximate relative reflection of the species' strength and the gold reward for killing Ordos.  Note that this reflects only the species, not the current unit count and combat level, which can only be seen with a Phoenix."),
+          _("Added a progress bar for Seats of Power."),
+        },
+      },
+      {
         .heading = _(HEADING_FIXED),
         .items = {
           _("Fixed a crash that sometimes happened after an earthquake, where automatic caravan cloning would try to both clone and retire an idle caravan at the same time, resulting in a segfault."),
@@ -29,6 +49,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Changed when building hitbars are displayed based on the help setting in the options menu.  When it is set to None, building hitbars will never be displayed.  When it is set to Brief, they will be displayed for the currently selected building and any building hovered over with the mouse.  When it is set to Detailed, they will be displayed as per the old behaviour--when the building is at less than 100% hitpoints."),
+          _("Town and Firm information panels will show the number of spies you have inside of them instead of just \"(Spy)\".  If the general is also your spy, it will say \"G+\" the number of other spies you have."),
         },
       },
     },

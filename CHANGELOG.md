@@ -10,6 +10,22 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show an information panel for Towns, with the number of peasants, total
+  population, number of races, and loyalty or resistance.
+- Show an information panel for Forts, with the general or king leadership
+  level, number of soldiers, and the approximate total strength, including the
+  effects of the leader.
+- Show information panels for other buildings, with information relevant to
+  them, such as worker and good counts.
+- Show an information panel for Fryhtan Lairs with their species name and level.
+  The level is an approximate relative reflection of the species' strength and
+  the gold reward for killing Ordos.  Note that this reflects only the species,
+  not the current unit count and combat level, which can only be seen with a
+  Phoenix.
+- Added a progress bar for Seats of Power.
+
 ### Fixed
 
 - Fixed a crash that sometimes happened after an earthquake, where automatic
@@ -27,6 +43,9 @@ speaking, considered to be the player's experience.
   selected building and any building hovered over with the mouse.  When it is
   set to Detailed, they will be displayed as per the old behaviour—when the
   building is at less than 100% hitpoints.
+- Town and Firm information panels will show the number of spies you have inside
+  of them instead of just "(Spy)".  If the general is also your spy, it will say
+  "G+" the number of other spies you have.
 
 
 ## [3.2.5] — 2025-09-09

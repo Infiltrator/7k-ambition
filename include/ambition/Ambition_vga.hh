@@ -53,6 +53,7 @@ struct Rectangle;
 namespace UserInterface {
 struct Point;
 struct Rectangle;
+struct Size;
 }
 
 
@@ -163,6 +164,17 @@ void displayUnitContribution(
   const int y
 );
 
+namespace Vga {
+
+bool drawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+);
+bool drawBuildingInformationPanel(
+  const Town* _7kaaTown
+);
+
+} // namespace Ambition::Vga
+
 void drawBuildingLinkLine(
   const int sourceFirmId,
   const int destinationFirmId,
@@ -189,11 +201,11 @@ bool drawBuildingOccupantHitbar(
 );
 
 void drawBuildingProgressBar(
-  Firm* firm
+  const Firm* firm
 );
 
 void drawBuildingRallyPoint(
-  Firm* _7kaaFirm
+  const Firm* _7kaaFirm
 );
 void drawBuildingRallyPoint(
   Town* _7kaaTown
@@ -225,7 +237,7 @@ void drawFeedbackLink(
  * @param firm A pointer to the Firm for which to draw the icon.
  */
 void drawFirmBuilderIcon(
-  Firm* firm
+  const Firm* firm
 );
 
 void drawFirmFrame(
@@ -239,7 +251,7 @@ void drawFirmFrame(
  * @param firm The Firm for which to draw a hitbar.
  */
 void drawFirmHitBar(
-  Firm* firm
+  const Firm* firm
 );
 
 /**
@@ -297,6 +309,15 @@ bool initialiseSnowLayer(
   const char animationSpeed,
   double slideSpeed
 );
+
+namespace Vga {
+
+char* prepareBitmapBuffer(
+  char* buffer,
+  const UserInterface::Size& size
+);
+
+} // namespace UserInterface::Vga
 
 void printAssasinationEstimate(
   const ::Spy* _7kaaSpy,

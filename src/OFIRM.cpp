@@ -1331,7 +1331,7 @@ void Firm::restore_world_matrix()
 
 //---------- Begin of function Firm::own_firm --------//
 //
-int Firm::own_firm()
+int Firm::own_firm() const
 {
    return nation_recno == nation_array.player_recno;
 }
@@ -2264,7 +2264,7 @@ void Firm::calc_productivity()
 //
 // Return the average skill level of the workers in this firm.
 //
-int Firm::average_worker_skill()
+int Firm::average_worker_skill() const
 {
 	err_when( !worker_array );    // this function shouldn't be called if this firm does not need worker
 
@@ -3852,7 +3852,7 @@ int Firm::can_assign_capture()
 //
 // Whether information of this firm should be shown.
 //
-int Firm::should_show_info()
+int Firm::should_show_info() const
 {
 	if( config.show_ai_info || nation_recno==nation_array.player_recno ||
 		 player_spy_count > 0 )
@@ -4023,7 +4023,7 @@ void Firm::reward(int workerId, int remoteAction)
 //
 // <int> checkSpy - optionally check for cloaked spies as well (default : 0)
 //
-int Firm::have_own_workers(int checkSpy)
+int Firm::have_own_workers(int checkSpy) const
 {
 	Worker* workerPtr = worker_array;
 

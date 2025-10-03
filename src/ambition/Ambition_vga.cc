@@ -26,25 +26,37 @@
 #include "Ambition_vga.hh"
 
 #include <algorithm>
+#include <array>
 #include <cmath>
+#include <cstring>
 #include <gettext.h>
+#include <numeric>
+#include <ranges>
 #include <SDL_events.h>
 #include <SDL_timer.h>
 
 #define _AMBITION_IMPLEMENTATION
+#include "COLCODE.h"
 #include "OANLINE.h"
 #include "OAUDIO.h"
 #include "OBUTT3D.h"
 #include "OCONFIG.h"
+#include "OF_BASE.h"
+#include "OF_CAMP.h"
+#include "OF_FACT.h"
 #include "OF_HARB.h"
 #include "OF_INN.h"
 #include "OF_MARK.h"
+#include "OF_MINE.h"
+#include "OF_MONS.h"
 #include "OF_RESE.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OFONT.h"
+#include "OGODRES.h"
 #include "OHELP.h"
 #include "OIMGRES.h"
+#include "OMONSRES.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
@@ -63,6 +75,7 @@
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_polity.hh"
+#include "Ambition_population.hh"
 #include "Ambition_spy.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
@@ -623,6 +636,411 @@ void displayUnitContribution(
    );
 }
 
+namespace Vga {
+
+bool drawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+) {
+  if (_7kaaFirm->under_construction) {
+    return false;
+  }
+
+  if (::config.help_mode == NO_HELP) {
+    return false;
+  }
+
+  const auto firmArea = UserInterface::Rectangle::fromWorldRectangle(
+    Coordinates::Rectangle::from7kaaRectangle(
+      { .x = _7kaaFirm->loc_x1, .y = _7kaaFirm->loc_y1 },
+      { .x = _7kaaFirm->loc_x2, .y = _7kaaFirm->loc_y2 }
+    )
+  );
+
+  if (::config.help_mode == BRIEF_HELP
+    && firm_array.selected_recno != _7kaaFirm->firm_recno
+    && !UserInterface::mouseCursorInArea(firmArea)
+  ) {
+    return false;
+  }
+
+  constexpr auto BUILDER_ICON_CLEARANCE = 12;
+  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
+
+  const auto height = _7kaaFirm->firm_id == FIRM_BASE ? 70 : 54;
+  const auto panelArea
+    = firmArea
+    .inner(0, BUILDER_ICON_CLEARANCE, 0, 0)
+    .internal(
+      { .width = firmArea.width() - PANEL_SIDE_MARGINS, .height = height },
+      UserInterface::HorizontalAlignment::Centre,
+      UserInterface::VerticalAlignment::Centre
+    );
+
+  if (!UserInterface::VIEWPORT.intersects(panelArea)) {
+    return false;
+  }
+
+  std::vector<std::string> lines;
+
+  if (_7kaaFirm->firm_id == FIRM_MONSTER) {
+    const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
+    assert(_7kaaFryhtanLair);
+
+    lines.push_back(_7kaaFryhtanLair->firm_name());
+    lines.push_back(
+      format(_("Level: %d"), monster_res[_7kaaFryhtanLair->monster_id]->level)
+    );
+  }
+
+  if (_7kaaFirm->should_show_info()) {
+    static const auto RESOURCE_NAMES = std::array{
+      _("Cl"),
+      _("Co"),
+      _("Ir"),
+    };
+
+    switch (_7kaaFirm->firm_id) {
+    case FIRM_BASE: {
+      const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(_7kaaFirm);
+      assert(_7kaaSeatOfPower);
+      lines.push_back(unit_res[god_res[_7kaaSeatOfPower->god_id]->unit_id]->name);
+      if (_7kaaFirm->overseer_recno) {
+        lines.push_back(
+          format(
+            "%s: %d",
+            _("Leadership"),
+            unit_array[_7kaaFirm->overseer_recno]->skill.skill_level
+          )
+        );
+      } else {
+        lines.push_back(_("No general"));
+      }
+      break;
+    }
+
+    case FIRM_CAMP:
+      if (_7kaaFirm->overseer_recno) {
+        lines.push_back(
+          format(
+            _("Ldr: %d"),
+            unit_array[_7kaaFirm->overseer_recno]->skill.skill_level
+          )
+        );
+      } else {
+        lines.push_back(_("No general"));
+      }
+      break;
+
+    case FIRM_MONSTER: {
+      const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
+      assert(_7kaaFryhtanLair);
+
+      lines.push_back(
+        format(_("Ordos: %d"), _7kaaFryhtanLair->monster_general_count)
+      );
+      break;
+    }
+
+    case FIRM_FACTORY: {
+      const auto _7kaaFactory = dynamic_cast<const FirmFactory*>(_7kaaFirm);
+      assert(_7kaaFactory);
+      lines.push_back(
+        format(
+          "%s: %'.0f/%'.0f",
+          RESOURCE_NAMES[_7kaaFactory->product_raw_id - 1],
+          std::floor(_7kaaFactory->stock_qty),
+          std::floor(_7kaaFactory->raw_stock_qty)
+        )
+      );
+      break;
+    }
+
+    case FIRM_MINE: {
+      const auto _7kaaMine = dynamic_cast<const FirmMine*>(_7kaaFirm);
+      assert(_7kaaMine);
+      lines.push_back(
+        format(
+          "%s: %'.0f",
+          RESOURCE_NAMES[_7kaaMine->raw_id - 1],
+          std::floor(_7kaaMine->reserve_qty)
+        )
+      );
+      break;
+    }
+
+    case FIRM_WAR_FACTORY: {
+      const auto _7kaaWarFactory = dynamic_cast<const FirmWar*>(_7kaaFirm);
+      assert(_7kaaWarFactory);
+
+      if (_7kaaWarFactory->build_unit_id) {
+        lines.push_back(unit_res[_7kaaWarFactory->build_unit_id]->name);
+      } else {
+        lines.push_back(_("Idle"));
+      }
+      break;
+    }
+    }
+
+    switch (_7kaaFirm->firm_id) {
+    case FIRM_BASE:
+    case FIRM_FACTORY:
+    case FIRM_MINE:
+    case FIRM_WAR_FACTORY:
+      lines.push_back(
+        format(
+          ngettext("%d wrk (%d)", "%d wrk (%d)", _7kaaFirm->worker_count),
+          _7kaaFirm->worker_count,
+          _7kaaFirm->average_worker_skill()
+        )
+      );
+      break;
+
+    case FIRM_RESEARCH:
+      /* Towers of Science are narrow, so there isn't as much room for the
+       * panel, so we split the worker count and average skill over two
+       * lines. */
+      lines.push_back(
+        format(
+          ngettext("%d wrk", "%d wrk", _7kaaFirm->worker_count),
+          _7kaaFirm->worker_count
+        )
+      );
+      lines.push_back(format("(%d)", _7kaaFirm->average_worker_skill()));
+      break;
+
+    case FIRM_CAMP: {
+      const auto _7kaaCamp = dynamic_cast<const FirmCamp*>(_7kaaFirm);
+      assert(_7kaaCamp);
+      lines.push_back(
+        format(
+          ngettext("%d sld (%.0f)", "%d sld (%.0f)", _7kaaCamp->worker_count),
+          _7kaaCamp->worker_count,
+          _7kaaCamp->total_combat_level() / 10.0
+        )
+      );
+      break;
+    }
+
+    case FIRM_INN: {
+      const auto _7kaaInn = dynamic_cast<const FirmInn*>(_7kaaFirm);
+      assert(_7kaaInn);
+      lines.push_back(
+        format(
+          ngettext("%d guest", "%d guests", _7kaaInn->inn_unit_count),
+          _7kaaInn->inn_unit_count
+        )
+      );
+      break;
+    }
+
+    case FIRM_HARBOR: {
+      const auto _7kaaHarbour = dynamic_cast<const FirmHarbor*>(_7kaaFirm);
+      assert(_7kaaHarbour);
+      lines.push_back(
+        format(_("Ships: %d/%d"), _7kaaHarbour->ship_count, MAX_SHIP_IN_HARBOR)
+      );
+      break;
+    }
+
+    case FIRM_MONSTER:
+    case FIRM_MARKET:
+      /* Markets should show when trade is allowed, which is handled below. */
+      break;
+
+    default:
+      assert(false);
+    }
+  }
+
+  if (_7kaaFirm->firm_id == FIRM_MARKET
+    && (_7kaaFirm->own_firm()
+      || nation_array[_7kaaFirm->nation_recno]->get_relation(
+        nation_array.player_recno
+      )->trade_treaty)
+  ) {
+    static const auto GOOD_NAMES = std::array{
+      _("Raw Cl"),
+      _("Raw Co"),
+      _("Raw Ir"),
+      _("Clay"),
+      _("Copper"),
+      _("Iron"),
+    };
+
+    const auto _7kaaMarket = dynamic_cast<const FirmMarket*>(_7kaaFirm);
+    assert(_7kaaMarket);
+
+    for (const auto& marketGoods : _7kaaMarket->market_goods_array) {
+      if (!marketGoods.raw_id && !marketGoods.product_raw_id) {
+        continue;
+      }
+
+      lines.push_back(
+        format(
+          "%s: %'.0f",
+          GOOD_NAMES[(marketGoods.raw_id ?: marketGoods.product_raw_id + 3) - 1],
+          std::floor(marketGoods.stock_qty)
+        )
+      );
+    }
+
+    if (lines.empty()) {
+      lines.push_back(_("Empty"));
+    }
+  }
+
+  if (::config.disp_spy_sign && _7kaaFirm->player_spy_count > 0) {
+    const auto generalIsSpy
+      = _7kaaFirm->overseer_recno
+      && unit_array[_7kaaFirm->overseer_recno]->is_own_spy();
+
+    lines.push_back(
+      format(
+        ngettext(
+          "(%s%d Spy)",
+          "(%s%d Spies)",
+          _7kaaFirm->player_spy_count - generalIsSpy
+        ),
+        generalIsSpy ? _("G+") : "",
+        _7kaaFirm->player_spy_count - generalIsSpy
+      )
+    );
+  }
+
+  if (lines.empty()) {
+    return false;
+  }
+
+  return UserInterface::drawInformationPanel(
+    UserInterface::VIEWPORT,
+    panelArea,
+    lines
+  );
+}
+bool drawBuildingInformationPanel(
+  const Town* _7kaaTown
+) {
+  if (::config.help_mode == NO_HELP) {
+    return false;
+  }
+
+  const auto townArea = UserInterface::Rectangle::fromWorldRectangle(
+    Coordinates::Rectangle::from7kaaRectangle(
+      { .x = _7kaaTown->loc_x1, .y = _7kaaTown->loc_y1 },
+      { .x = _7kaaTown->loc_x2, .y = _7kaaTown->loc_y2 }
+    )
+  );
+
+  if (::config.help_mode == BRIEF_HELP
+    && town_array.selected_recno != _7kaaTown->town_recno
+    && !UserInterface::mouseCursorInArea(townArea)
+  ) {
+    return false;
+  }
+
+  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
+  constexpr auto PANEL_HEIGHT = 70;
+
+  const auto panelArea = townArea.internal(
+    { .width = townArea.width() - PANEL_SIDE_MARGINS, .height = PANEL_HEIGHT },
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+
+  if (!UserInterface::VIEWPORT.intersects(panelArea)) {
+    return false;
+  }
+
+  std::vector<std::string> lines;
+
+  if (::config.disp_town_name) {
+    lines.push_back(_7kaaTown->town_name());
+
+    const auto raceCount = Ambition::Population::raceCount(_7kaaTown);
+    const auto countString = raceCount > 1 ? format(" (%d)", raceCount) : "";
+
+    lines.push_back(
+      format(
+        "%s: %d/%d%s",
+        _("Pop"),
+        _7kaaTown->jobless_population,
+        _7kaaTown->population,
+        countString.c_str()
+      )
+    );
+
+    const auto levelName = _7kaaTown->nation_recno ? _("Lty") : _("Rst");
+
+    const auto currentLevel
+      = _7kaaTown->nation_recno
+      ? _7kaaTown->average_loyalty()
+      : _7kaaTown->average_resistance(nation_array.player_recno);
+    const auto targetLevel
+      = _7kaaTown->nation_recno
+      ? _7kaaTown->average_target_loyalty()
+      : _7kaaTown->average_target_resistance(nation_array.player_recno);
+
+    if (targetLevel == currentLevel
+      || (!_7kaaTown->nation_recno && targetLevel >= currentLevel)
+    ) {
+      lines.push_back(format("%s: %d", levelName, currentLevel, targetLevel));
+    } else {
+      const auto iconKey = targetLevel < currentLevel ? "ARROWDWN" : "ARROWUP";
+
+      lines.push_back(
+        format(
+          "%s: %d@ICN(%s)%d",
+          levelName,
+          currentLevel,
+          iconKey,
+          targetLevel
+        )
+      );
+    }
+  }
+
+  if (::config.disp_spy_sign && _7kaaTown->has_player_spy()) {
+    const auto _7kaaSpyRecordNumbers = std::views::iota(1, spy_array.size() + 1);
+    const auto spyCount = std::transform_reduce(
+      _7kaaSpyRecordNumbers.begin(),
+      _7kaaSpyRecordNumbers.end(),
+      0,
+      std::plus{},
+      [&_7kaaTown](const auto _7kaaSpyRecordNumber) {
+        if (spy_array.is_deleted(_7kaaSpyRecordNumber)) {
+          return 0;
+        }
+
+        const auto _7kaaSpy = spy_array[_7kaaSpyRecordNumber];
+        if (_7kaaSpy->spy_place == SPY_TOWN
+          && _7kaaSpy->spy_place_para == _7kaaTown->town_recno
+          && _7kaaSpy->true_nation_recno == nation_array.player_recno
+        ) {
+          return 1;
+        }
+
+        return 0;
+      }
+    );
+
+    lines.push_back(
+      format(ngettext("(%d Spy)", "(%d Spies)", spyCount), spyCount)
+    );
+  }
+
+  if (lines.empty()) {
+    return false;
+  }
+
+  return UserInterface::drawInformationPanel(
+    UserInterface::VIEWPORT,
+    panelArea,
+    lines
+  );
+}
+
+} // namespace Ambition::Vga
+
 void drawBuildingLinkLine(
   const int sourceFirmId,
   const int destinationFirmId,
@@ -815,7 +1233,7 @@ bool drawBuildingOccupantHitbar(
 }
 
 void drawBuildingProgressBar(
-  Firm* firm
+  const Firm* firm
 ) {
   if (firm->nation_recno != nation_array.player_recno) {
     return;
@@ -824,6 +1242,7 @@ void drawBuildingProgressBar(
   if (firm->firm_id != FIRM_RESEARCH
       && firm->firm_id != FIRM_HARBOR
       && firm->firm_id != FIRM_WAR_FACTORY
+    && firm->firm_id != FIRM_BASE
   ) {
     return;
   }
@@ -856,6 +1275,11 @@ void drawBuildingProgressBar(
     progress
       = ((FirmWar*) firm)->build_progress_days
       / unit_res[((FirmWar*) firm)->build_unit_id]->build_days;
+  } else if (firm->firm_id == FIRM_BASE) {
+    const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(firm);
+    assert(_7kaaSeatOfPower);
+
+    progress = _7kaaSeatOfPower->pray_points / MAX_PRAY_POINTS;
   }
 
   const auto barWidth = ZOOM_LOC_WIDTH * (firm->loc_x2 - firm->loc_x1 + 1);
@@ -876,7 +1300,7 @@ void drawBuildingProgressBar(
 }
 
 void drawBuildingRallyPoint(
-  Firm* _7kaaFirm
+  const Firm* _7kaaFirm
 ) {
   if (firm_array.selected_recno == _7kaaFirm->firm_recno
     && _7kaaFirm->own_firm()
@@ -1263,7 +1687,7 @@ void drawFeedbackLink(
 }
 
 void drawFirmBuilderIcon(
-  Firm* firm
+  const Firm* firm
 ) {
   constexpr auto FRAME_COUNT = 2;
   constexpr auto FRAME_RATE = 2;
@@ -1340,7 +1764,7 @@ void drawFirmFrame(
 }
 
 void drawFirmHitBar(
-  Firm* firm
+  const Firm* firm
 ) {
   if (!shouldDrawFirmHitBar(firm)) {
     return;
@@ -1529,6 +1953,26 @@ bool initialiseSnowLayer(
 
   return true;
 }
+
+namespace Vga {
+
+char* prepareBitmapBuffer(
+  char* buffer,
+  const UserInterface::Size& size
+) {
+  constexpr auto BYTE_CAPACITY = 1 << 8;
+
+  *(buffer++) = size.width % BYTE_CAPACITY;
+  *(buffer++) = size.width / BYTE_CAPACITY;
+  *(buffer++) = size.height % BYTE_CAPACITY;
+  *(buffer++) = size.height / BYTE_CAPACITY;
+
+  std::memset(buffer, TRANSPARENT_CODE, size.width * size.height);
+
+  return buffer;
+}
+
+} // namespace UserInterface::Vga
 
 void printAssasinationEstimate(
   const ::Spy* _7kaaSpy,

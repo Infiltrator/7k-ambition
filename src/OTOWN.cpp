@@ -4013,7 +4013,7 @@ int Town::think_layout_id()
 
 //-------- Begin of function Town::average_loyalty ------//
 //
-int Town::average_loyalty()
+int Town::average_loyalty() const
 {
 	int i, totalLoyalty=0;
 
@@ -4027,7 +4027,7 @@ int Town::average_loyalty()
 
 //-------- Begin of function Town::average_target_loyalty ------//
 //
-int Town::average_target_loyalty()
+int Town::average_target_loyalty() const
 {
 	int i, totalLoyalty=0;
 
@@ -4044,7 +4044,7 @@ int Town::average_target_loyalty()
 // Return the average resistance of all the races in the town
 // against a specific nation.
 //
-int Town::average_resistance(int nationRecno)
+int Town::average_resistance(int nationRecno) const
 {
 	int   thisPop;
 	float totalResistance=(float)0;
@@ -4067,7 +4067,7 @@ int Town::average_resistance(int nationRecno)
 // Return the average target resistance of all the races in the town
 // against a specific nation.
 //
-int Town::average_target_resistance(int nationRecno)
+int Town::average_target_resistance(int nationRecno) const
 {
 	int   thisPop, t, totalResistance=0;
 

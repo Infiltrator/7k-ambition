@@ -1003,6 +1003,10 @@ void ZoomMatrix::disp_text()
 			if( !world.get_loc(townPtr->center_x, townPtr->center_y)->explored() )
 				continue;
 
+			if (Ambition::Draw::buildingInformationPanel(townPtr)) {
+				continue;
+			}
+
 			y = (townPtr->abs_y1+townPtr->abs_y2)/2;
 
 			dispSpy = config.disp_spy_sign && townPtr->has_player_spy();
@@ -1036,6 +1040,10 @@ void ZoomMatrix::disp_text()
 				continue;
 
 			firmPtr = firm_array[i];
+
+			if (Ambition::Draw::buildingInformationPanel(firmPtr)) {
+				continue;
+			}
 
 			if( firmPtr->player_spy_count )
 			{

@@ -25,21 +25,32 @@
 
 #include "Ambition_user_interface.hh"
 
+#include <ranges>
+
 #define _AMBITION_IMPLEMENTATION
+#include "COLCODE.h"
 #include "KEY.h"
-#include "OFONT.h"
+#include "OIMGRES.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
+#include "OSYS.h"
 #include "OVGA.h"
 #include "OWORLD.h"
 #include "vga_util.h"
 
 #include "Ambition_coordinates.hh"
+#include "Ambition_vga.hh"
 
 
 namespace Ambition::UserInterface {
 
 constexpr auto PIXELS_PER_DISTANCE = 32.0 / Coordinates::SCALING_FACTOR;
+
+
+struct Section {
+  std::string text;
+  char* bitmap;
+};
 
 
 int rankReportComparison7kaaNationRecordNumber = 0;
@@ -51,6 +62,10 @@ short selected7kaaFirmOrTownRecordNumber = 0;
 
 char _7kaaJustification(
   const HorizontalAlignment horizontalAlignment
+);
+
+std::vector<Section> processCodes(
+  const std::string text
 );
 
 
@@ -140,12 +155,12 @@ Rectangle Rectangle::outer(
 
   return {
     .start = {
-      .left = std::max(start.left - marginLeft, BOUNDS.start.left),
-      .top = std::max(start.top - marginTop, BOUNDS.start.top),
+      .left = start.left - marginLeft,
+      .top = start.top - marginTop,
     },
     .end = {
-      .left = std::min(end.left + marginRight, BOUNDS.end.left),
-      .top = std::min(end.top + marginBottom, BOUNDS.end.top),
+      .left = end.left + marginRight,
+      .top = end.top + marginBottom,
     },
   };
 }
@@ -203,6 +218,21 @@ Rectangle Rectangle::intersection(
   };
 }
 
+bool Rectangle::intersects(
+  const Rectangle& with
+) const {
+  return (
+    (((start.left >= with.start.left && start.left <= with.end.left)
+       || (end.left >= with.start.left && end.left <= with.end.left))
+      && ((start.top >= with.start.top && start.top <= with.end.top)
+        || (end.top >= with.start.top && end.top <= with.end.top)))
+    || (((with.start.left >= start.left && with.start.left <= end.left)
+        || (with.end.left >= start.left && with.end.left <= end.left))
+      && ((with.start.top >= start.top && with.start.top <= end.top)
+        || (with.end.top >= start.top && with.end.top <= end.top)))
+  );
+}
+
 
 Size bitmapSize(
   const char* bitmap
@@ -223,6 +253,62 @@ bool detectMouseClick(
     area.end.left,
     area.end.top
   );
+}
+
+bool drawInformationPanel(
+  const Rectangle& bounds,
+  const Rectangle& panelArea,
+  const std::vector<std::string>& lines,
+  const HorizontalAlignment alignment,
+  Font& font,
+  const int lineSpacing
+) {
+  if (!VIEWPORT.intersects(panelArea)) {
+    return false;
+  }
+
+  const auto totalTextHeight
+    = lines.size() * font.font_height
+    + (lines.size() - 1) * lineSpacing;
+
+  const auto textArea = panelArea.internal(
+    { .width = panelArea.width(), .height = static_cast<int>(totalTextHeight) },
+    HorizontalAlignment::Centre,
+    VerticalAlignment::Centre
+  );
+
+  /* The panel interferes with the panels drawn by the reports. */
+  if (sys.view_mode == MODE_NORMAL) {
+    drawPanel(VIEWPORT.intersection(panelArea));
+  }
+
+  const auto restoreVgaFront = !vga.use_back_buf;
+  vga.use_back();
+
+  for (const auto i : std::views::iota(0U, lines.size())) {
+    const auto lineArea = textArea.inner(
+      0,
+      i * (font.font_height + lineSpacing),
+      0,
+      0
+    );
+
+    printText(
+      font,
+      lines[i],
+      lineArea,
+      Clear::None,
+      alignment,
+      VerticalAlignment::Top,
+      VIEWPORT
+    );
+  }
+
+  if (restoreVgaFront) {
+    vga.use_front();
+  }
+
+  return true;
 }
 
 void drawRectangle(
@@ -360,10 +446,27 @@ void printText(
   const UserInterface::Rectangle area,
   const Clear clear,
   const HorizontalAlignment horizontalAlignment,
-  const VerticalAlignment verticalAlignment
+  const VerticalAlignment verticalAlignment,
+  const Rectangle& bounds
 ) {
-  const auto textWidth = font.text_width(text.c_str());
-  const auto textHeight = font.text_height();
+  const auto sections = processCodes(text);
+
+  constexpr auto BITMAP_MARGIN_LEFT = 1;
+  constexpr auto BITMAP_MARGIN_RIGHT = 2;
+  constexpr auto TOTAL_BITMAP_MARGIN = BITMAP_MARGIN_LEFT + BITMAP_MARGIN_RIGHT;
+
+  int textWidth = 0;
+  int textHeight = 0;
+  for (const auto& section : sections) {
+    if (section.bitmap) {
+      const auto iconSize = bitmapSize(section.bitmap);
+      textWidth += iconSize.width + TOTAL_BITMAP_MARGIN;
+      textHeight = std::max(textHeight, iconSize.height);
+    } else {
+      textWidth += font.text_width(section.text.c_str());
+      textHeight = std::max(textHeight, font.text_height());
+    }
+  }
 
   const auto textArea = area.internal(
     {
@@ -375,7 +478,9 @@ void printText(
   );
 
   if (clear != Clear::None) {
-    const auto clearArea = clear == Clear::EntireArea ? area : textArea;
+    const auto clearArea
+      = (clear == Clear::EntireArea ? area : textArea)
+      .intersection(bounds);
     vga_util.blt_buf(
       clearArea.start.left,
       clearArea.start.top,
@@ -385,13 +490,75 @@ void printText(
     );
   }
 
-  font.put(
-    textArea.start.left,
-    textArea.start.top,
-    text.c_str(),
+  const auto drawArea = textArea.outer(
     0,
-    textArea.end.left
+    0,
+    0,
+    font.max_font_height - font.font_height
   );
+  const auto withinBounds = bounds.contains(drawArea);
+  const auto drawBuffer
+    = withinBounds
+    ? vga.active_buf->buf_ptr(drawArea.start.left, drawArea.start.top)
+    : Vga::prepareBitmapBuffer(sys.common_data_buf, drawArea.size());
+  const auto bufferPitch
+    = withinBounds ? vga.active_buf->buf_pitch() : drawArea.width();
+
+  auto printArea = Rectangle::fromPoint(
+    { .left = 0, .top = 0 },
+    drawArea.size()
+  );
+
+  for (const auto& section : sections) {
+    if (section.bitmap) {
+      const auto iconArea
+        = printArea
+        .inner(BITMAP_MARGIN_LEFT, 0, 0, font.max_font_height - font.font_height)
+        .internal(
+          bitmapSize(section.bitmap),
+          HorizontalAlignment::Left,
+          VerticalAlignment::Centre
+        );
+      IMGbltTrans(
+        drawBuffer,
+        bufferPitch,
+        iconArea.start.left,
+        iconArea.start.top,
+        section.bitmap
+      );
+      printArea = printArea.inner(iconArea.width() + TOTAL_BITMAP_MARGIN, 0, 0);
+    } else {
+      font.put_to_buffer(
+        drawBuffer,
+        bufferPitch,
+        printArea.start.left,
+        printArea.start.top,
+        section.text.c_str()
+      );
+      printArea = printArea.inner(font.text_width(section.text.c_str()), 0, 0);
+    }
+  }
+
+  if (!withinBounds) {
+    const auto inside = bounds.intersection(drawArea);
+    const auto sourceArea = Rectangle::fromPoint(
+      {
+        .left = inside.start.left - drawArea.start.left,
+        .top = inside.start.top - drawArea.start.top,
+      },
+      inside.size()
+    );
+
+    vga.active_buf->put_bitmap_area_trans(
+      drawArea.start.left,
+      drawArea.start.top,
+      sys.common_data_buf,
+      sourceArea.start.left,
+      sourceArea.start.top,
+      sourceArea.end.left,
+      sourceArea.end.top
+    );
+  }
 }
 
 void resetState(
@@ -420,6 +587,45 @@ char _7kaaJustification(
   }
 
   return Font::AUTO_JUSTIFY;
+}
+
+Section processSection(
+  const std::string text
+) {
+  constexpr auto ICON_CODE = "@ICN(";
+  if (text.starts_with(ICON_CODE)) {
+    const auto iconKey = text.substr(5);
+    return { "@ERR", image_icon.read(iconKey.c_str()) };
+  }
+
+  return { text, nullptr };
+}
+std::vector<Section> processCodes(
+  const std::string text
+) {
+  std::vector<Section> sections;
+
+  std::string buffer;
+  for (auto character : text) {
+    if (buffer[0] == '@') {
+      if (character == ')') {
+        sections.push_back(processSection(buffer));
+        buffer.clear();
+        continue;
+      }
+    } else {
+      if (character == '@') {
+        sections.push_back(processSection(buffer));
+        buffer.clear();
+      }
+    }
+
+    buffer.push_back(character);
+  }
+
+  sections.push_back(processSection(buffer));
+
+  return sections;
 }
 
 } // namespace Ambition::UserInterface

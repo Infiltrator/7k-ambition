@@ -11,6 +11,7 @@ libambition_a_SOURCES = \
 	Ambition_input.cc \
 	Ambition_minimap.cc \
 	Ambition_news.cc \
+	Ambition_population.cc \
 	Ambition_polity.cc \
 	Ambition_remote.cc \
 	Ambition_repository.cc \

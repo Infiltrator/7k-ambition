@@ -533,7 +533,7 @@ int FirmCamp::ai_combat_level_needed()
 // return: <int> the total combat level - it is the sum of hit points
 //					  of all the units in the camp.
 //
-int FirmCamp::total_combat_level()
+int FirmCamp::total_combat_level() const
 {
 	int 	  totalCombatLevel=0;
 	Worker* workerPtr = worker_array;

@@ -26,6 +26,9 @@
 #pragma once
 
 #include "COLOR.h"
+#include "OFONT.h"
+
+#include <vector>
 
 #include "Ambition_coordinates.hh"
 
@@ -111,8 +114,22 @@ struct Rectangle {
     return start == rhs.start && end == rhs.end;
   }
 
-  inline int width() const { return end.left - start.left + 1; }
-  inline int height() const { return end.top - start.top + 1; }
+  constexpr Size size(
+  ) const {
+    return {
+      .width = width(),
+      .height = height(),
+    };
+  }
+
+  constexpr int width(
+  ) const {
+    return end.left - start.left + 1;
+  }
+  constexpr int height(
+  ) const {
+    return end.top - start.top + 1;
+  }
 
   bool contains(
     const Point& point
@@ -143,6 +160,10 @@ struct Rectangle {
 
   Rectangle intersection(
     const Rectangle with
+  ) const;
+
+  bool intersects(
+    const Rectangle& with
   ) const;
 };
 
@@ -408,6 +429,15 @@ bool detectMouseClick(
   const Rectangle area
 );
 
+bool drawInformationPanel(
+  const Rectangle& bounds,
+  const Rectangle& buildingArea,
+  const std::vector<std::string>& lines,
+  const HorizontalAlignment alignment = HorizontalAlignment::Centre,
+  Font& font = font_san,
+  const int lineSpacing = 2
+);
+
 void drawRectangle(
   const Rectangle& rectangle,
   const int colourIndex = V_BLACK
@@ -446,7 +476,8 @@ void printText(
   const Rectangle area,
   const Clear clear = Clear::None,
   const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
-  const VerticalAlignment verticalAlignment = VerticalAlignment::Top
+  const VerticalAlignment verticalAlignment = VerticalAlignment::Top,
+  const Rectangle& bounds = BOUNDS
 );
 
 void resetState(
