@@ -40,6 +40,8 @@ speaking, considered to be the player's experience.
 - Fixed spy Steal Reports option not working in Towns.
 - Fixed translations not working on Windows and always showing English.  Now,
   the game will respect the config.txt `locale` setting on Windows.
+- Fixed cloned caravans sometimes appearing on another island or in an otherwise
+  inaccessible location and not being able to follow its route.
 
 ### Changed
 

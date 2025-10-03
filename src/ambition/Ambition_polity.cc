@@ -187,6 +187,7 @@ short Polity::findNearest7kaaMarket(
     const auto _7kaaFirm = firm_array[i];
     if (_7kaaFirm->nation_recno != _7kaaRecordNumber
       || _7kaaFirm->firm_id != FIRM_MARKET
+      || _7kaaFirm->region_id != _7kaaLocation->region_id
     ) {
       continue;
     }
