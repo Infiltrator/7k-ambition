@@ -22,6 +22,7 @@
 //Filename    : OFIRMAI.CPP
 //Description : AI functions for the class Firm
 
+#include "ConfigAdv.h"
 #include <OF_INN.h>
 #include <OF_MINE.h>
 #include <OF_FACT.h>
@@ -227,7 +228,8 @@ void Firm::being_attacked(int attackerUnitRecno)
 {
 	const Unit* attackingUnit = unit_array[attackerUnitRecno];
 
-	if( info.game_date >= last_attacked_date + 7 && nation_recno == nation_array.player_recno )
+	if( config_adv.news_notify_attack &&
+		info.game_date >= last_attacked_date + 7 && nation_recno == nation_array.player_recno )
 	{
 		news_array.firm_attacked(firm_recno, attackingUnit, attackingUnit->nation_recno);
 	}

@@ -88,6 +88,7 @@ public:
 	int			nation_start_tech_inc_all_level;
 
 	// news settings
+	char			news_notify_attack;
 	char			news_notify_complete;
 
 	// race settings

@@ -295,6 +295,7 @@ void ConfigAdv::reset()
 	nation_start_god_level = 0;
 	nation_start_tech_inc_all_level = 0;
 
+	news_notify_attack = 0;
 	news_notify_complete = 0;
 
 	race_random_list_max = MAX_RACE;
@@ -491,6 +492,11 @@ int ConfigAdv::set(char *name, char *value)
 		if( !read_int(value, &nation_start_tech_inc_all_level) )
 			return 0;
 		if( CHECK_BOUND(nation_start_tech_inc_all_level, 0, 2) )
+			return 0;
+	}
+	else if( !strcmp(name, "news_notify_attack") )
+	{
+		if( !read_bool(value, &news_notify_attack) )
 			return 0;
 	}
 	else if( !strcmp(name, "news_notify_complete") )
