@@ -896,11 +896,19 @@ bool drawBuildingInformationPanel(
 
     lines.push_back(
       format(
-        ngettext(
-          "(%s%d Spy)",
-          "(%s%d Spies)",
-          _7kaaFirm->player_spy_count - generalIsSpy
-        ),
+        _7kaaFirm->firm_id == FIRM_RESEARCH
+          ? npgettext(
+            "narrow_panel",
+            "(%s%d Spy)",
+            "(%s%d Sp)" ,
+            _7kaaFirm->player_spy_count - generalIsSpy
+          )
+          : npgettext(
+            "standard_panel",
+            "(%s%d Spy)",
+            "(%s%d Spies)",
+            _7kaaFirm->player_spy_count - generalIsSpy
+          ),
         generalIsSpy ? _("G+") : "",
         _7kaaFirm->player_spy_count - generalIsSpy
       )
