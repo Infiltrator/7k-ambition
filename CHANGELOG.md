@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.6] — 2025-10-08
+
 ### Added
 
 - Show an information panel for Towns, with the number of peasants, total
