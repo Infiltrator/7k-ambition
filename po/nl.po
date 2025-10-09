@@ -42,50 +42,50 @@ msgstr "Vergelijken met %s's Kingdom%s"
 msgid "Compare %s's Kingdom%s"
 msgstr "Vergelijk %s's Kingdom%s"
 
-#: src/ambition/Ambition_config.cc:61
+#: src/ambition/Ambition_config.cc:66
 msgid "classic"
 msgstr "origineel"
 
-#: src/ambition/Ambition_config.cc:63
+#: src/ambition/Ambition_config.cc:68
 msgid "enhanced"
 msgstr "verbeterd"
 
-#: src/ambition/Ambition_config.cc:65
+#: src/ambition/Ambition_config.cc:70
 msgid "advanced"
 msgstr "uitgebreide"
 
-#: src/ambition/Ambition_config.cc:67
+#: src/ambition/Ambition_config.cc:72
 msgid "ambition"
 msgstr "ambition"
 
-#: src/ambition/Ambition_config.cc:70
+#: src/ambition/Ambition_config.cc:75
 msgid "ERROR:UNKNOWN"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:137
+#: src/ambition/Ambition_config.cc:142
 msgid "Current mode:"
 msgstr "Huidige Mode:"
 
-#: src/ambition/Ambition_config.cc:171
+#: src/ambition/Ambition_config.cc:176
 #, c-format
 msgid "Error in %s at lines:\n"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:173
+#: src/ambition/Ambition_config.cc:178
 #, c-format
 msgid "%d, "
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:177
+#: src/ambition/Ambition_config.cc:182
 msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:278
+#: src/ambition/Ambition_config.cc:311
 msgid "I. Classic"
 msgstr "I. Classic"
 
-#: src/ambition/Ambition_config.cc:280
+#: src/ambition/Ambition_config.cc:313
 msgid ""
 "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer with "
 "7K:AA."
@@ -93,11 +93,11 @@ msgstr ""
 "Speel het spel zonder aanpassingen, precies zoals het originele 7K:AA. Speel "
 "ook multiplayer met 7K:AA."
 
-#: src/ambition/Ambition_config.cc:285
+#: src/ambition/Ambition_config.cc:318
 msgid "II. Enhanced"
 msgstr "II. Verbeterd"
 
-#: src/ambition/Ambition_config.cc:287
+#: src/ambition/Ambition_config.cc:320
 msgid ""
 "Add enhancements that do not affect gameplay.  Allows for multiplayer with "
 "7K:AA."
@@ -155,52 +155,52 @@ msgstr ""
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:377
-#: src/ambition/Ambition_vga.cc:323
+#: src/ambition/Ambition_vga.cc:337
 msgid "Assassinate"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:355
+#: src/ambition/Ambition_vga.cc:369
 #, c-format
 msgid "Hit Points: %.0f"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:394
+#: src/ambition/Ambition_vga.cc:408
 msgid "Speed: "
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:396
+#: src/ambition/Ambition_vga.cc:410
 msgid "PAUSED"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:398
+#: src/ambition/Ambition_vga.cc:412
 msgid "UNLIMITED"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:414
+#: src/ambition/Ambition_vga.cc:428
 msgid "GAME IS PAUSED"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:441 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
+#: src/ambition/Ambition_vga.cc:455 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
 msgid "Status"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:443
+#: src/ambition/Ambition_vga.cc:457
 msgid "Leaving soon"
 msgstr "Vertrekt zo"
 
-#: src/ambition/Ambition_vga.cc:443
+#: src/ambition/Ambition_vga.cc:457
 msgid "Enjoying stay"
 msgstr "Te gast"
 
-#: src/ambition/Ambition_vga.cc:468
+#: src/ambition/Ambition_vga.cc:482
 msgid "*"
 msgstr "*"
 
-#: src/ambition/Ambition_vga.cc:495
+#: src/ambition/Ambition_vga.cc:509
 msgid "Steal Reports"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:588
+#: src/ambition/Ambition_vga.cc:602
 msgid "Goods supplied"
 msgstr ""
 
@@ -223,7 +223,7 @@ msgstr ""
 msgid "Ir"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:711 src/ambition/Ambition_vga.cc:2419
+#: src/ambition/Ambition_vga.cc:711 src/ambition/Ambition_vga.cc:2435
 #: src/OF_BASE.cpp:397 src/OF_CAMP.cpp:593 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
 msgid "Leadership"
 msgstr "Leiderschap"
@@ -244,75 +244,79 @@ msgstr ""
 msgid "Ordos: %d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:778
+#: src/ambition/Ambition_vga.cc:770
+msgid "No res"
+msgstr ""
+
+#: src/ambition/Ambition_vga.cc:782
 msgid "Idle"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:791
+#: src/ambition/Ambition_vga.cc:795
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:804
+#: src/ambition/Ambition_vga.cc:808
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:816
+#: src/ambition/Ambition_vga.cc:820
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:829
+#: src/ambition/Ambition_vga.cc:833
 #, c-format
 msgid "%d guest"
 msgid_plural "%d guests"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:840
+#: src/ambition/Ambition_vga.cc:845
 #, c-format
 msgid "Ships: %d/%d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:862
+#: src/ambition/Ambition_vga.cc:870
 msgid "Raw Cl"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:863
+#: src/ambition/Ambition_vga.cc:871
 msgid "Raw Co"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:864
+#: src/ambition/Ambition_vga.cc:872
 msgid "Raw Ir"
 msgstr ""
 
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:865
+#: src/ambition/Ambition_vga.cc:873
 msgid "Clay"
 msgstr "Klei"
 
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:866
+#: src/ambition/Ambition_vga.cc:874
 msgid "Copper"
 msgstr "Koper"
 
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:867
+#: src/ambition/Ambition_vga.cc:875
 msgid "Iron"
 msgstr "IJzer"
 
-#: src/ambition/Ambition_vga.cc:888
+#: src/ambition/Ambition_vga.cc:896
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/ambition/Ambition_vga.cc:902
+#: src/ambition/Ambition_vga.cc:910
 #, c-format
 msgctxt "narrow_panel"
 msgid "(%s%d Spy)"
@@ -320,7 +324,7 @@ msgid_plural "(%s%d Sp)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:908
+#: src/ambition/Ambition_vga.cc:916
 #, c-format
 msgctxt "standard_panel"
 msgid "(%s%d Spy)"
@@ -328,207 +332,398 @@ msgid_plural "(%s%d Spies)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:912
+#: src/ambition/Ambition_vga.cc:920
 msgid "G+"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:973
+#: src/ambition/Ambition_vga.cc:981
 msgid "Pop"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:980
+#: src/ambition/Ambition_vga.cc:988
 msgid "Lty"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:980
+#: src/ambition/Ambition_vga.cc:988
 msgid "Rst"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:1035
+#: src/ambition/Ambition_vga.cc:1047
 #, c-format
 msgid "(%d Spy)"
 msgid_plural "(%d Spies)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:1688
+#: src/ambition/Ambition_vga.cc:1700
 msgid "Feedback"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:1386
+#: src/ambition/Ambition_vga.cc:1830
 msgid "Guests"
 msgstr "Gasten"
 
-#: src/ambition/Ambition_vga.cc:1567
+#: src/ambition/Ambition_vga.cc:2031
 #, c-format
 msgid "Your spy estimates a success chance of %d%%."
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:1611
+#: src/ambition/Ambition_vga.cc:2075
 #, c-format
 msgid "Your spy suggests a bribe of $%'d."
 msgstr ""
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/TUT_LIST.RES
-#: src/ambition/Ambition_vga.cc:1638
+#: src/ambition/Ambition_vga.cc:2102
 msgid "Ships"
 msgstr "Schepen"
 
-#: src/ambition/Ambition_vga.cc:1670
+#: src/ambition/Ambition_vga.cc:2138
 msgid "No leader assigned"
 msgstr "Heeft geen leider"
 
-#: src/ambition/Ambition_vga.cc:1672
+#: src/ambition/Ambition_vga.cc:2140
 msgid "Leader out of range"
 msgstr "Leider te ver weg"
 
-#: src/ambition/Ambition_vga.cc:1674
+#: src/ambition/Ambition_vga.cc:2142
 msgid "Leader is providing bonuses"
 msgstr "Leider zorgt voor vechtbonus"
 
-#: src/ambition/Ambition_vga.cc:1683 src/OR_TOWN.cpp:112
+#: src/ambition/Ambition_vga.cc:2151 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
 msgstr "Kosten"
 
-#: src/ambition/Ambition_vga.cc:1690 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
+#: src/ambition/Ambition_vga.cc:2158 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
 msgid "Yearly Expense"
 msgstr "Jaarlijkse Kosten"
 
-#: src/ambition/Ambition_vga.cc:1723 src/ambition/Ambition_vga.cc:1742
-#: src/ambition/Ambition_vga.cc:1808
+#: src/ambition/Ambition_vga.cc:2191 src/ambition/Ambition_vga.cc:2210
+#: src/ambition/Ambition_vga.cc:2276
 msgid "$"
 msgstr "€"
 
-#: src/ambition/Ambition_vga.cc:1911
+#: src/ambition/Ambition_vga.cc:2379
 #, c-format
 msgid "Surplus Peasants: %'d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:1961 src/OF_BASE.cpp:407 src/OF_CAMP.cpp:604
-#: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OFIRMIF.cpp:724
-#: src/OFIRMIF.cpp:731 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
-#: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:315 src/OTOWNIF.cpp:1511
-#: src/OU_MARIF.cpp:510 src/OUNITIF.cpp:1177
+#: src/ambition/Ambition_vga.cc:2429 src/OFIRMIF.cpp:724 src/OFIRMIF.cpp:731
+#: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:408
+#: src/OF_CAMP.cpp:604 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
+#: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:323 src/OTOWNIF.cpp:1519
+#: src/OUNITIF.cpp:1177 src/OU_MARIF.cpp:510
 msgid "Loyalty"
 msgstr "Loyaliteit"
 
-#: src/ambition/Ambition_vga.cc:1978 src/ambition/Ambition_vga.cc:2043
+#: src/ambition/Ambition_vga.cc:2446 src/ambition/Ambition_vga.cc:2511
 msgid "Yearly Upkeep"
 msgstr "Jaarlijkse kosten"
 
-#: src/ambition/Ambition_vga.cc:1991 src/ambition/Ambition_vga.cc:2054
+#: src/ambition/Ambition_vga.cc:2459 src/ambition/Ambition_vga.cc:2522
 msgid "Attack Range"
 msgstr "Aanval afstand"
 
-#: src/ambition/Ambition_vga.cc:2097
+#: src/ambition/Ambition_vga.cc:2565
 #, c-format
 msgid "Your spy estimates an escape chance of %d%%."
 msgstr ""
 
-#: src/ambition/version_details.cc:8
+#. TRANSLATORS: … You have a version compatible with 7kfans' 7kaa <version
+#. number>. … Your config.txt file can be found here: <config directory
+#. path and path separator>config.txt …
+#. The name of the file—config.txt—does not change with language.
+#: src/ambition/Ambition_vga.cc:2606
+#, c-format
+msgid ""
+"Your game version may not match the host's version.\n"
+"You have a version compatible with 7kfans' 7kaa %s.\n"
+"Or, if your versions do match (check the bottom-right of the main menu), you "
+"may have incompatible config.txt settings.\n"
+"Your config.txt file can be found here: %sconfig.txt\n"
+"(The path has been copied to your clipboard.)"
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid "Preamble"
 msgstr ""
 
-#: src/ambition/version_details.cc:23
+#: src/ambition/version_details.cc
+msgid "Automatically detect the language on Windows."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Added a Dutch translation, thanks to Jan Miedema."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Show the average target resistance of independent towns on the information "
+"panel when you have workers."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed target resistance being shown incorrectly when you have workers in the "
+"independent town."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the buttons of the Harbour interface overlapping with the production "
+"progress bar."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the Harbour production count not being placed properly on the button."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed mines built outside of natural resources showing \"null\" on their "
+"information panels."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed not being able to play replays (R key) because the NONAME.RPL was "
+"being saved in the wrong place."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Base the display of the building guide on the Help setting.  Not shown when "
+"set to None; only the grid lines when set to Brief; and both highlighting "
+"and grid lines when set to Detailed."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Changed the Harbour ship count to include the currently-building ship, as it "
+"blocks other ships from entering, so counts towards the limit."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.6 -- 2025-10-08"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"The behaviour of the newly added information panels and the building hitbars "
+"(see the sections below) is controlled (for now*) by the Help level setting "
+"in the Options menu.  You are encouraged to tweak this setting to your "
+"liking."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "When set to None, they will never be displayed."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"When set to Brief, they will be displayed for the currently selected "
+"building and any building that is hovered over with the mouse."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"When set to Detailed, they will be displayed for all buildings all the time."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"* Ambition will have its own Settings menu with more fine-grained control "
+"over features in the future."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Show an information panel for Towns, with the number of peasants, total "
+"population, number of races, and loyalty or resistance."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Show an information panel for Forts, with the general or king leadership "
+"level, number of soldiers, and the approximate total strength, including the "
+"effects of the leader."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Show information panels for other buildings, with information relevant to "
+"them, such as worker and good counts."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Show an information panel for Fryhtan Lairs with their species name and "
+"level.  The level is an approximate relative reflection of the species' "
+"strength and the gold reward for killing Ordos.  Note that this reflects "
+"only the species, not the current unit count and combat level, which can "
+"only be seen with a Phoenix."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Added a progress bar for Seats of Power."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Greater Beings will now go to the rally points of their Seats of Power when "
+"they are summoned."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed a crash that sometimes happened after an earthquake, where automatic "
+"caravan cloning would try to both clone and retire an idle caravan at the "
+"same time, resulting in a segfault."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the build Fort keybind (F) not working because it was conflicting with "
+"selecting a Fort.  The default keybind for selecting a fort has been changed "
+"to `N`.  You can change by binding the `KEYEVENT_ _BUILD_ _CAMP` and "
+"`KEYEVENT_ _GOTO_ _CAMP` events to different keys in the config.txt file."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed spy Steal Reports option not working in Towns."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed translations not working on Windows and always showing English.  Now, "
+"the game will respect the config.txt `locale` setting on Windows."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed cloned caravans sometimes appearing on another island or in an "
+"otherwise inaccessible location and not being able to follow its route."
+msgstr ""
+
+#: src/ambition/version_details.cc
+#, c-format
+msgid ""
+"Changed when building hitbars are displayed based on the help setting in the "
+"options menu.  When it is set to None, building hitbars will never be "
+"displayed.  When it is set to Brief, they will be displayed for the "
+"currently selected building and any building hovered over with the mouse.  "
+"When it is set to Detailed, they will be displayed as per the old behaviour--"
+"when the building is at less than 100% hitpoints."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Town and Firm information panels will show the number of spies you have "
+"inside of them instead of just \"(Spy)\".  If the general is also your spy, "
+"it will say \"G+\" the number of other spies you have."
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid "v3.2.5 -- 2025-09-09"
 msgstr ""
 
-#: src/ambition/version_details.cc:28
+#: src/ambition/version_details.cc
 msgid ""
 "Added scrolling with the mouse wheel, up/down, and home/end keys to the "
 "Harbour ship list."
 msgstr ""
 
-#: src/ambition/version_details.cc:29
+#: src/ambition/version_details.cc
 msgid "Added ship count and capacity display to Harbours on the info pane."
 msgstr ""
 
-#: src/ambition/version_details.cc:30
+#: src/ambition/version_details.cc
 msgid "Added $100,000 throne purchase option."
 msgstr ""
 
-#: src/ambition/version_details.cc:36
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed building menus (Town training, Harbour/War Factory build, spy menus, "
 "etc.) exiting back to the main menu when production of a new unit starts."
 msgstr ""
 
-#: src/ambition/version_details.cc:37
+#: src/ambition/version_details.cc
 msgid "Fixed a crash when looking at the ship list on the trade report."
 msgstr ""
 
-#: src/ambition/version_details.cc:43
+#: src/ambition/version_details.cc
 msgid ""
 "Start the kingdom score comparison with your own kingdom selected by "
 "default.  You can deselect it or select another kingdom by clicking the "
 "button."
 msgstr ""
 
-#: src/ambition/version_details.cc:44
+#: src/ambition/version_details.cc
 msgid ""
 "Show the per-unit and total costs when choosing how to respond to food "
 "purchase requests."
 msgstr ""
 
-#: src/ambition/version_details.cc:45
+#: src/ambition/version_details.cc
 msgid "Use thousands separators for throne purchase amounts options."
 msgstr ""
 
-#: src/ambition/version_details.cc:51
+#: src/ambition/version_details.cc
 msgid "v3.2.4 -- 2025-09-03"
 msgstr ""
 
-#: src/ambition/version_details.cc:56
+#: src/ambition/version_details.cc
 msgid ""
 "Added kingdom-to-kingdom score comparison to the Rank Report, allowing you "
 "to see the scores of two kingdoms side-by-side."
 msgstr ""
 
-#: src/ambition/version_details.cc:57
+#: src/ambition/version_details.cc
 msgid ""
 "Independent towns will show that their resistance is dropping to 0 when they "
 "are working for you."
 msgstr ""
 
-#: src/ambition/version_details.cc:58
+#: src/ambition/version_details.cc
 msgid ""
 "Added scrolling with the mouse wheel, up/down, home/end, and pg up/down keys "
 "to the scenario selection list and description."
 msgstr ""
 
-#: src/ambition/version_details.cc:64
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the estimated assassination success chance not properly taking into "
 "account other defenders present, showing too high when other units were "
 "present."
 msgstr ""
 
-#: src/ambition/version_details.cc:65
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the estimated assassination success chance against a king being too "
 "low."
 msgstr ""
 
-#: src/ambition/version_details.cc:66
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the estimated assassination success chance being too low based on the "
 "spy skill."
 msgstr ""
 
-#: src/ambition/version_details.cc:67
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the production queue sizes showing the wrong number when training a "
 "unit finishes."
 msgstr ""
 
-#: src/ambition/version_details.cc:68
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the production queue size display bouncing down and up in multiplayer "
 "when a unit starts production."
 msgstr ""
 
-#: src/ambition/version_details.cc:69
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the build Seat of Power keybind (P) not working because it was "
 "conflicting with toggling opaque report mode.  The default keybind for "
@@ -537,151 +732,151 @@ msgid ""
 "in the config.txt file."
 msgstr ""
 
-#: src/ambition/version_details.cc:70
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the war machine type and level identifiers inside forts causing "
 "artefacts when they moved around in the list."
 msgstr ""
 
-#: src/ambition/version_details.cc:71
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed possible crashes when pasting text containing characters unprintable "
 "by the game."
 msgstr ""
 
-#: src/ambition/version_details.cc:72
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed a bug where loading and unloading a scenario would cause multiplayer "
 "to stop working."
 msgstr ""
 
-#: src/ambition/version_details.cc:73
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed a crash where loading and unloading a scenario and then loading and "
 "unloading a scenario again would crash the game."
 msgstr ""
 
-#: src/ambition/version_details.cc:79
+#: src/ambition/version_details.cc
 msgid ""
 "Shifted the bitmaps of Firms to better align with the squares they actually "
 "take up so that they look more on-centre, especially the Seats of Power."
 msgstr ""
 
-#: src/ambition/version_details.cc:80
+#: src/ambition/version_details.cc
 msgid ""
 "Shifted the bitmaps of Fryhtan Lairs to better align with the squares they "
 "actually take up so that they look more on-centre, especially the Wyrm and "
 "Ick ones."
 msgstr ""
 
-#: src/ambition/version_details.cc:81
+#: src/ambition/version_details.cc
 msgid ""
 "Changed the graphics of Standard tileset terrain that looked like it should "
 "block building and movement but didn't, and vice versa, so that it's now "
 "obvious by just looking at it."
 msgstr ""
 
-#: src/ambition/version_details.cc:82
+#: src/ambition/version_details.cc
 msgid ""
 "Adjusted the graphics of Standard tileset terrain that looked like it should "
 "allow building and movement around its corners and edges but didn't, so that "
 "it's now obvious by just looking that it's not."
 msgstr ""
 
-#: src/ambition/version_details.cc:83
+#: src/ambition/version_details.cc
 msgid ""
 "Reworked the assassination chance estimate calculation to better take into "
 "account the possibility or lack of enemy spies."
 msgstr ""
 
-#: src/ambition/version_details.cc:84
+#: src/ambition/version_details.cc
 msgid ""
 "Disabled the caravan clone button (and remove it in the trade report) for "
 "idle caravans, since trying to clone them does nothing anyway."
 msgstr ""
 
-#: src/ambition/version_details.cc:85
+#: src/ambition/version_details.cc
 msgid ""
 "Changed default keybind for train soldier to `F` from `W`, to make it more "
 "consistent with the other fort-related keybinds (build fort)."
 msgstr ""
 
-#: src/ambition/version_details.cc:86
+#: src/ambition/version_details.cc
 msgid ""
 "Swapped the default keybinds for same kingdom/any kingdom object switching "
 "keybinds (`,`/`.` and `<`/`>`), to make it easier to do the more common task "
 "(switching between units of the same kingdom) without holding they shift key."
 msgstr ""
 
-#: src/ambition/version_details.cc:87
+#: src/ambition/version_details.cc
 msgid ""
 "Adjusted the page scrolling on the save game list to keep one item on the "
 "page, so that it's evident that it's scrolling only one page at a time."
 msgstr ""
 
-#: src/ambition/version_details.cc:88
+#: src/ambition/version_details.cc
 msgid ""
 "Break up the 7K:AA changelog entries into categories, thanks to a poster on "
 "Discord, to make it easier to read."
 msgstr ""
 
-#: src/ambition/version_details.cc:94
+#: src/ambition/version_details.cc
 msgid "v3.2.3 -- 2025-08-24"
 msgstr ""
 
-#: src/ambition/version_details.cc:99
+#: src/ambition/version_details.cc
 msgid ""
 "Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in "
 "accuracy over time and based on the spy's skill.  But keep in mind that your "
 "spies do not know about enemy spies."
 msgstr ""
 
-#: src/ambition/version_details.cc:100
+#: src/ambition/version_details.cc
 msgid ""
 "Added an assassination confirmation screen with a Spy-estimated success "
 "chance.  This estimate varies in accuracy over time and based on the spy's "
 "skill."
 msgstr ""
 
-#: src/ambition/version_details.cc:101
+#: src/ambition/version_details.cc
 msgid ""
 "Added a steal report confirmation screen with a Spy-estimated escape "
 "chance.  This estimate varies in accuracy over time and based on the spy's "
 "skill."
 msgstr ""
 
-#: src/ambition/version_details.cc:102
+#: src/ambition/version_details.cc
 msgid ""
 "Show the surplus (or deficit) number of peasants that you have on the "
 "Villages Report.  This is how many extra peasants you currently have over "
 "the amount you need to exactly balance food production and consumption."
 msgstr ""
 
-#: src/ambition/version_details.cc:103
+#: src/ambition/version_details.cc
 msgid "Increased bribe choices to include $2500 and $3500."
 msgstr ""
 
-#: src/ambition/version_details.cc:104
+#: src/ambition/version_details.cc
 msgid "Added more food purchasing quantity and price options."
 msgstr ""
 
-#: src/ambition/version_details.cc:105
+#: src/ambition/version_details.cc
 msgid "Added more aid and tribute amount options."
 msgstr ""
 
-#: src/ambition/version_details.cc:111
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed build guidelines not being clearly visible on Snow and Badlands "
 "tilesets."
 msgstr ""
 
-#: src/ambition/version_details.cc:112
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed some build guidelines appearing a different colour on top of "
 "highlighting."
 msgstr ""
 
-#: src/ambition/version_details.cc:113
+#: src/ambition/version_details.cc
 #, c-format
 msgid ""
 "Fixed the Villages Report yearly Firm costs, Military Report yearly Unit "
@@ -689,83 +884,83 @@ msgid ""
 "that the day accounting bug has been fixed and reduced these costs again."
 msgstr ""
 
-#: src/ambition/version_details.cc:114
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed save file names and dates running off on the right side of the load "
 "screen, creating artefacts.  This was especially problematic in some non-"
 "English languages where the text is wider or longer."
 msgstr ""
 
-#: src/ambition/version_details.cc:115
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed a crash when selling or demolishing an empty Fort which has a rally "
 "point."
 msgstr ""
 
-#: src/ambition/version_details.cc:116
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed Spy steal report escape chances not actually depending on the type of "
 "report stolen.  Now, different report types will have different chances of "
 "escape after stealing them."
 msgstr ""
 
-#: src/ambition/version_details.cc:117
+#: src/ambition/version_details.cc
 msgid "Fixed save game list scrolling further than expected."
 msgstr ""
 
-#: src/ambition/version_details.cc:118
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed a bug where a ghost guest in an Inn could cause a segmentation fault "
 "crash."
 msgstr ""
 
-#: src/ambition/version_details.cc:119
+#: src/ambition/version_details.cc
 msgid "Fixed dying units always showing the outside-leadership-range icon."
 msgstr ""
 
-#: src/ambition/version_details.cc:125
+#: src/ambition/version_details.cc
 msgid ""
 "Made the build guidelines on the Standard tileset slightly brighter, to make "
 "them more visible."
 msgstr ""
 
-#: src/ambition/version_details.cc:126
+#: src/ambition/version_details.cc
 msgid "Hide icons for units that are dying."
 msgstr ""
 
-#: src/ambition/version_details.cc:127
+#: src/ambition/version_details.cc
 msgid "Lined up the villager and peasant numbers on the Villages Report."
 msgstr ""
 
-#: src/ambition/version_details.cc:128
+#: src/ambition/version_details.cc
 msgid "Show the per-unit and total costs of food purchase requests."
 msgstr ""
 
-#: src/ambition/version_details.cc:129
+#: src/ambition/version_details.cc
 msgid ""
 "Increased the game speed of the unlimited speed by not drawing every frame, "
 "but only 60 FPS."
 msgstr ""
 
-#: src/ambition/version_details.cc:130
+#: src/ambition/version_details.cc
 msgid ""
 "Use thousands separators for food purchase quantities and aid and tribute "
 "amounts."
 msgstr ""
 
-#: src/ambition/version_details.cc:136
+#: src/ambition/version_details.cc
 msgid "v3.2.2 -- 2025-08-18"
 msgstr ""
 
-#: src/ambition/version_details.cc:141
+#: src/ambition/version_details.cc
 msgid "No game changes.  This just has packaging changes to work with Gentoo."
 msgstr ""
 
-#: src/ambition/version_details.cc:147
+#: src/ambition/version_details.cc
 msgid "v3.2.1 -- 2025-08-12"
 msgstr ""
 
-#: src/ambition/version_details.cc:152
+#: src/ambition/version_details.cc
 msgid ""
 "Added keybinds and keybind display to Town training menu buttons.  The "
 "events for the config.txt file are: `KEYEVENT_ _TRAIN_ _BUILDER`, `KEYEVENT_ "
@@ -773,7 +968,7 @@ msgid ""
 "`KEYEVENT_ _TRAIN_ _RESEARCHER`, and `KEYEVENT_ _TRAIN_ _SPY`."
 msgstr ""
 
-#: src/ambition/version_details.cc:153
+#: src/ambition/version_details.cc
 msgid ""
 "Added keybinds and keybind display to Spy menu buttons.  The events for the "
 "config.txt file are: `KEYEVENT_ _UNIT_ _REWARD`, `KEYEVENT_ _SPY_ "
@@ -782,51 +977,51 @@ msgid ""
 "_SPY_ _MENU`, and `KEYEVENT_ _SPY_ _STEAL_ _REPORTS`."
 msgstr ""
 
-#: src/ambition/version_details.cc:154
+#: src/ambition/version_details.cc
 msgid ""
 "Added a keybind for mobilising all workers in a building.  This uses the "
 "existing event of `KEYEVENT_ _FIRM_ _PATROL` (defaults to `R`)."
 msgstr ""
 
-#: src/ambition/version_details.cc:155
+#: src/ambition/version_details.cc
 msgid ""
 "Load 7kaa's config.txt file as well as Ambition's one, to reduce the need "
 "for duplication.  Settings in Ambition's config.txt override those is 7kaa's "
 "one."
 msgstr ""
 
-#: src/ambition/version_details.cc:156
+#: src/ambition/version_details.cc
 msgid ""
 "Added Discord and feedback links to the main menu, in the bottom-left corner."
 msgstr ""
 
-#: src/ambition/version_details.cc:157
+#: src/ambition/version_details.cc
 msgid ""
 "Added keybinds for starting a new single-player game (`KEYEVENT_ _CONFIRM`) "
 "and for going back (`KEYEVENT_ _CANCEL`)."
 msgstr ""
 
-#: src/ambition/version_details.cc:163
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed leadership status artefacts on the info pane when the status changes."
 msgstr ""
 
-#: src/ambition/version_details.cc:164
+#: src/ambition/version_details.cc
 msgid "Fixed spies seemingly always getting caught after stealing reports."
 msgstr ""
 
-#: src/ambition/version_details.cc:165
+#: src/ambition/version_details.cc
 #, c-format
 msgid "Fixed spies having a 100% escape chance when stealing reports."
 msgstr ""
 
-#: src/ambition/version_details.cc:171
+#: src/ambition/version_details.cc
 msgid ""
 "Made the keybind displays appear transparent over their buttons, to obscure "
 "less of the underlying buttons."
 msgstr ""
 
-#: src/ambition/version_details.cc:172
+#: src/ambition/version_details.cc
 msgid ""
 "Enabled default hotkeys for the build menu and disabled default `Q`, `W`, "
 "and `E` for selecting map modes.  The new default `E` now cycles through all "
@@ -834,23 +1029,23 @@ msgid ""
 "This can all be overridden in the config.txt file."
 msgstr ""
 
-#: src/ambition/version_details.cc:173
+#: src/ambition/version_details.cc
 msgid ""
 "Changed the default hotkeys for next/previous object to `.`, `,`, `shift+.`, "
 "and `shift+,`, so that they do not conflict with scrolling."
 msgstr ""
 
-#: src/ambition/version_details.cc:174
+#: src/ambition/version_details.cc
 msgid ""
 "Reduced the brightness of the building guide lines from bright white, so "
 "that they're less jarring."
 msgstr ""
 
-#: src/ambition/version_details.cc:175
+#: src/ambition/version_details.cc
 msgid "Only ask for feedback about once a month, instead of every time."
 msgstr ""
 
-#: src/ambition/version_details.cc:176
+#: src/ambition/version_details.cc
 msgid ""
 "Treat config.txt lines which begin with `#ambition` as actual settings "
 "(ignoring the `#ambition` part and using the rest of the line) instead of "
@@ -858,7 +1053,7 @@ msgid ""
 "Ambition settings not being recognised by 7kaa."
 msgstr ""
 
-#: src/ambition/version_details.cc:177
+#: src/ambition/version_details.cc
 msgid ""
 "Split local data into multiple directories, to make finding what you need "
 "easier: `config`, `screenshot`, `save/singleplayer`, and `save/"
@@ -866,359 +1061,359 @@ msgid ""
 "their appropriate location."
 msgstr ""
 
-#: src/ambition/version_details.cc:178
+#: src/ambition/version_details.cc
 msgid ""
 "Start playing music straight away on the What's New screen instead of only "
 "on the main menu, to give the right atmosphere.  The usual settings for "
 "music and volume are respected."
 msgstr ""
 
-#: src/ambition/version_details.cc:179
+#: src/ambition/version_details.cc
 msgid "Tweak the wording of the feedback request pop-up buttons."
 msgstr ""
 
-#: src/ambition/version_details.cc:185
+#: src/ambition/version_details.cc
 msgid "v3.2.0 -- 2025-08-10"
 msgstr ""
 
-#: src/ambition/version_details.cc:190
+#: src/ambition/version_details.cc
 msgid ""
 "This is a 7kaa-compatibility release.  7kaa recently released a new version "
 "(2.15.7), and this merges in those changes, and adds a few fixes."
 msgstr ""
 
-#: src/ambition/version_details.cc:191
+#: src/ambition/version_details.cc
 msgid "See the below sections for more details."
 msgstr ""
 
-#: src/ambition/version_details.cc:197
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the oversized Town training buttons and the artefacts they caused on "
 "the info pane."
 msgstr ""
 
-#: src/ambition/version_details.cc:198
+#: src/ambition/version_details.cc
 msgid "Fixed the file time display of old save game files."
 msgstr ""
 
-#: src/ambition/version_details.cc:199
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed incorrect and misplaced field labels for Workers in the info pane."
 msgstr ""
 
-#: src/ambition/version_details.cc:200
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed Inn scrolling not showing lower guests when there are more than 4 "
 "guests."
 msgstr ""
 
-#: src/ambition/version_details.cc:201
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed config.txt settings for `KEYEVENT_ _CANCEL` and `KEYEVENT_ _CONFIRM` "
 "not working."
 msgstr ""
 
-#: src/ambition/version_details.cc:202
+#: src/ambition/version_details.cc
 msgid ""
 "Removed the clone button for ships on the Trade Report, which causes a crash "
 "and was not meant to be put in yet.  (Cloning ships is a planned featured to "
 "be added later.)"
 msgstr ""
 
-#: src/ambition/version_details.cc:208
+#: src/ambition/version_details.cc
 msgid ""
 "Updated 7kaa compatibility to the recently-released 7kaa 2.15.7 (see below "
 "for more details about the update)."
 msgstr ""
 
-#: src/ambition/version_details.cc:214
+#: src/ambition/version_details.cc
 msgid "7K:AA [2.15.7] -- 2025-07-25"
 msgstr ""
 
-#: src/ambition/version_details.cc:217
+#: src/ambition/version_details.cc
 msgid "Improvements from Ambition"
 msgstr ""
 
-#: src/ambition/version_details.cc:219
+#: src/ambition/version_details.cc
 msgid "Allow comments in config.txt (lines starting with `#`)."
 msgstr ""
 
-#: src/ambition/version_details.cc:220
+#: src/ambition/version_details.cc
 msgid "Fixed requested builder sometimes being unable to reach destination."
 msgstr ""
 
-#: src/ambition/version_details.cc:221
+#: src/ambition/version_details.cc
 msgid "Correct day counting."
 msgstr ""
 
-#: src/ambition/version_details.cc:222
+#: src/ambition/version_details.cc
 msgid "Fixed high-potential soldiers gaining less leadership."
 msgstr ""
 
-#: src/ambition/version_details.cc:223
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed unit skill potential to persist, and not continually be randomised"
 msgstr ""
 
-#: src/ambition/version_details.cc:224
+#: src/ambition/version_details.cc
 msgid "Fixed issues with skills being reset when entering buildings"
 msgstr ""
 
-#: src/ambition/version_details.cc:225
+#: src/ambition/version_details.cc
 msgid "Improved some graphic drawing"
 msgstr ""
 
-#: src/ambition/version_details.cc:229
+#: src/ambition/version_details.cc
 msgid "Added (UI)"
 msgstr ""
 
-#: src/ambition/version_details.cc:231
+#: src/ambition/version_details.cc
 msgid "Added support for a hotkey to center on the selected unit"
 msgstr ""
 
-#: src/ambition/version_details.cc:232
+#: src/ambition/version_details.cc
 msgid "Added support to make numeric keys configurable"
 msgstr ""
 
-#: src/ambition/version_details.cc:233
+#: src/ambition/version_details.cc
 msgid "Added advanced options for news notifications"
 msgstr ""
 
-#: src/ambition/version_details.cc:234
+#: src/ambition/version_details.cc
 msgid "Added support for ctrl button in hotkey mapping"
 msgstr ""
 
-#: src/ambition/version_details.cc:235
+#: src/ambition/version_details.cc
 msgid "Allow screenshots of in-game menu, to easily record map seed"
 msgstr ""
 
-#: src/ambition/version_details.cc:236
+#: src/ambition/version_details.cc
 msgid ""
 "Added hotkey support to cancel build or settle (typically right mouse button)"
 msgstr ""
 
-#: src/ambition/version_details.cc:240
+#: src/ambition/version_details.cc
 msgid "Added (General)"
 msgstr ""
 
-#: src/ambition/version_details.cc:242
+#: src/ambition/version_details.cc
 msgid ""
 "Extended game file and synchronization code to support extensions to the game"
 msgstr ""
 
-#: src/ambition/version_details.cc:243
+#: src/ambition/version_details.cc
 msgid "Allowed the scenario settings to persist across save and load."
 msgstr ""
 
-#: src/ambition/version_details.cc:247
+#: src/ambition/version_details.cc
 msgid "Fixed (UI)"
 msgstr ""
 
-#: src/ambition/version_details.cc:249
+#: src/ambition/version_details.cc
 msgid "Fixed mouse sticky/scrolling issues."
 msgstr ""
 
-#: src/ambition/version_details.cc:250
+#: src/ambition/version_details.cc
 msgid "Fixed an issue selecting invisible units."
 msgstr ""
 
-#: src/ambition/version_details.cc:254
+#: src/ambition/version_details.cc
 msgid "Fixed (AI)"
 msgstr ""
 
-#: src/ambition/version_details.cc:256
+#: src/ambition/version_details.cc
 msgid "Fixed poor ai logic that cause the ai to always accept a trade treaty"
 msgstr ""
 
-#: src/ambition/version_details.cc:257
+#: src/ambition/version_details.cc
 msgid "Fixed poor ai logic concerning building weapons"
 msgstr ""
 
-#: src/ambition/version_details.cc:258
+#: src/ambition/version_details.cc
 msgid "Fixed poor ai logic concerning hiring spies"
 msgstr ""
 
-#: src/ambition/version_details.cc:259
+#: src/ambition/version_details.cc
 msgid "Fixed an error when the ai attacking an unit that enters a building"
 msgstr ""
 
-#: src/ambition/version_details.cc:260
+#: src/ambition/version_details.cc
 msgid "Corrected utilization of base towns, typically an ai concept"
 msgstr ""
 
-#: src/ambition/version_details.cc:261
+#: src/ambition/version_details.cc
 msgid "Improved ai to avoid more cases of accepting treaties of large rivals"
 msgstr ""
 
-#: src/ambition/version_details.cc:262
+#: src/ambition/version_details.cc
 msgid "Fixed an issue that caused the ai to duplicate fort build actions"
 msgstr ""
 
-#: src/ambition/version_details.cc:263
+#: src/ambition/version_details.cc
 msgid "Fixed more sea based ai actions"
 msgstr ""
 
-#: src/ambition/version_details.cc:264
+#: src/ambition/version_details.cc
 msgid "Corrected more instances where the ai incorrect targets itself"
 msgstr ""
 
-#: src/ambition/version_details.cc:265
+#: src/ambition/version_details.cc
 msgid "Fixed some ai capture code"
 msgstr ""
 
-#: src/ambition/version_details.cc:266
+#: src/ambition/version_details.cc
 msgid "Fixed sea-based AI actions and pathing to board ships."
 msgstr ""
 
-#: src/ambition/version_details.cc:270
+#: src/ambition/version_details.cc
 msgid "Fixed (General)"
 msgstr ""
 
-#: src/ambition/version_details.cc:272
+#: src/ambition/version_details.cc
 msgid "Fixed some in-game statistics"
 msgstr ""
 
-#: src/ambition/version_details.cc:273
+#: src/ambition/version_details.cc
 msgid "Fixed some game file bugs"
 msgstr ""
 
-#: src/ambition/version_details.cc:274
+#: src/ambition/version_details.cc
 msgid "Removed a bug causing a fake earthquake"
 msgstr ""
 
-#: src/ambition/version_details.cc:275
+#: src/ambition/version_details.cc
 msgid "Removed a possible accidental disclosure of the presence of spies"
 msgstr ""
 
-#: src/ambition/version_details.cc:276
+#: src/ambition/version_details.cc
 msgid "Fixed an error occuring sometimes when a town turns independent"
 msgstr ""
 
-#: src/ambition/version_details.cc:277
+#: src/ambition/version_details.cc
 msgid "Fixed an error occuring sometimes on recruiting the last pop of a town"
 msgstr ""
 
-#: src/ambition/version_details.cc:278
+#: src/ambition/version_details.cc
 msgid "Fixed a pathing issue"
 msgstr ""
 
-#: src/ambition/version_details.cc:279
+#: src/ambition/version_details.cc
 msgid "Fixed issue that allowed resigning ships with units in ships"
 msgstr ""
 
-#: src/ambition/version_details.cc:280
+#: src/ambition/version_details.cc
 msgid "Fixed memory issue in multiplayer"
 msgstr ""
 
-#: src/ambition/version_details.cc:281
+#: src/ambition/version_details.cc
 msgid "Fixed difficulty calculation"
 msgstr ""
 
-#: src/ambition/version_details.cc:282
+#: src/ambition/version_details.cc
 msgid "Fixed crash when clicking on a player market with version 1 scenarios"
 msgstr ""
 
-#: src/ambition/version_details.cc:286
+#: src/ambition/version_details.cc
 msgid "Changed (UI)"
 msgstr ""
 
-#: src/ambition/version_details.cc:288
+#: src/ambition/version_details.cc
 msgid "Improved mouse wheel scrolling"
 msgstr ""
 
-#: src/ambition/version_details.cc:289
+#: src/ambition/version_details.cc
 msgid "Increased max screenshot file limit."
 msgstr ""
 
-#: src/ambition/version_details.cc:293
+#: src/ambition/version_details.cc
 msgid "Changed (AI)"
 msgstr ""
 
-#: src/ambition/version_details.cc:295
+#: src/ambition/version_details.cc
 msgid "Improved detection of the likely target nation of an attack"
 msgstr ""
 
-#: src/ambition/version_details.cc:296
+#: src/ambition/version_details.cc
 msgid "Improved ai management of firms"
 msgstr ""
 
-#: src/ambition/version_details.cc:297
+#: src/ambition/version_details.cc
 msgid "Improved ai in managing town capture operations"
 msgstr ""
 
-#: src/ambition/version_details.cc:298
+#: src/ambition/version_details.cc
 msgid "Ensured AI checks worker skills in management actions."
 msgstr ""
 
-#: src/ambition/version_details.cc:299
+#: src/ambition/version_details.cc
 msgid "Adjusted AI to avoid accepting treaties from large rivals."
 msgstr ""
 
-#: src/ambition/version_details.cc:300
+#: src/ambition/version_details.cc
 msgid ""
 "Prioritized higher-skilled generals and combat-level soldiers in management."
 msgstr ""
 
-#: src/ambition/version_details.cc:304
+#: src/ambition/version_details.cc
 msgid "Changed (General)"
 msgstr ""
 
-#: src/ambition/version_details.cc:306
+#: src/ambition/version_details.cc
 msgid "Allowed the scenario settings to persist across save and load"
 msgstr ""
 
-#: src/ambition/version_details.cc:307
+#: src/ambition/version_details.cc
 msgid "Improved caravan/caraval trade stop logic"
 msgstr ""
 
-#: src/ambition/version_details.cc:308
+#: src/ambition/version_details.cc
 msgid "Improved manual and added a cover."
 msgstr ""
 
-#: src/ambition/version_details.cc:309
+#: src/ambition/version_details.cc
 msgid "Improved multi-language support"
 msgstr ""
 
-#: src/ambition/version_details.cc:310
+#: src/ambition/version_details.cc
 msgid "Increased the speed of the 9th speed level"
 msgstr ""
 
-#: src/ambition/version_details.cc:316
+#: src/ambition/version_details.cc
 msgid "v3.1.10 -- 2025-07-05"
 msgstr ""
 
-#: src/ambition/version_details.cc:321
+#: src/ambition/version_details.cc
 msgid ""
 "Added save/load game list scrolling with the mouse wheel or touchpad, up/"
 "down keys, pg up/pg down keys, left/right keys, and home/end keys."
 msgstr ""
 
-#: src/ambition/version_details.cc:322
+#: src/ambition/version_details.cc
 msgid ""
 "Added news scrolling with the mouse wheel or touchpad, up/down keys, pg up/"
 "pg down keys, left/right keys, and home/end keys."
 msgstr ""
 
-#: src/ambition/version_details.cc:323
+#: src/ambition/version_details.cc
 msgid ""
 "Added scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg "
 "down keys, left/right keys, and home/end keys to the Kingdoms, Villages, "
 "Economy, Trade, Military, Technology, Espionage, and Raking reports."
 msgstr ""
 
-#: src/ambition/version_details.cc:324
+#: src/ambition/version_details.cc
 msgid ""
 "Added Inn guest list scrolling with the mouse wheel or touchpad and up/down "
 "and home/end keys."
 msgstr ""
 
-#: src/ambition/version_details.cc:325
+#: src/ambition/version_details.cc
 msgid ""
 "Added spy list scrolling with the mouse wheel or touchpad, up/down keys, pg "
 "up/pg down keys, left/right keys, and home/end keys."
 msgstr ""
 
-#: src/ambition/version_details.cc:326
+#: src/ambition/version_details.cc
 msgid ""
 "Added ctrl+click priority builder request to request the nearest builder, "
 "ignoring all optimisations and what the nearest builder is doing (except "
@@ -1227,109 +1422,109 @@ msgid ""
 "builder who could walk there."
 msgstr ""
 
-#: src/ambition/version_details.cc:327
+#: src/ambition/version_details.cc
 msgid "Show war machine yearly upkeep and attack range in the info pane."
 msgstr ""
 
-#: src/ambition/version_details.cc:328
+#: src/ambition/version_details.cc
 msgid "Show the Inn guests that will be leaving soon (within 20 days)."
 msgstr ""
 
-#: src/ambition/version_details.cc:329
+#: src/ambition/version_details.cc
 msgid ""
 "Added ctrl+click to mobilise workers from a building before selling or "
 "demolishing it."
 msgstr ""
 
-#: src/ambition/version_details.cc:330
+#: src/ambition/version_details.cc
 msgid ""
 "Added Town race list scrolling with the mouse wheel or touchpad, up/down "
 "keys, pg up/pg down keys, left/right keys, and home/end keys."
 msgstr ""
 
-#: src/ambition/version_details.cc:331
+#: src/ambition/version_details.cc
 msgid "Added scroll up and scroll down prompts to the What's New screen."
 msgstr ""
 
-#: src/ambition/version_details.cc:332
+#: src/ambition/version_details.cc
 msgid "Added scroll hints to the What's New screen."
 msgstr ""
 
-#: src/ambition/version_details.cc:338
+#: src/ambition/version_details.cc
 msgid "Fixed crash when requesting a builder while training one in a Town."
 msgstr ""
 
-#: src/ambition/version_details.cc:339
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed a desync on selling a fort with soldiers or a general in it in "
 "multiplayer."
 msgstr ""
 
-#: src/ambition/version_details.cc:340
+#: src/ambition/version_details.cc
 msgid "Fixed Inn selected guest changing when another one leaves."
 msgstr ""
 
-#: src/ambition/version_details.cc:341
+#: src/ambition/version_details.cc
 msgid "Fixed the build marker flashing too fast."
 msgstr ""
 
-#: src/ambition/version_details.cc:342
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed items sometimes showing up under the wrong heading on the What's New "
 "screen."
 msgstr ""
 
-#: src/ambition/version_details.cc:343
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the building guide lines not reaching the top and right edges of the "
 "viewport."
 msgstr ""
 
-#: src/ambition/version_details.cc:349
+#: src/ambition/version_details.cc
 msgid ""
 "Display the contribution value in the info pane exactly as it relates to "
 "total reward and loyalty (the true effect on loyalty is the newly displayed "
 "contribution value minus the reward value)."
 msgstr ""
 
-#: src/ambition/version_details.cc:350
+#: src/ambition/version_details.cc
 msgid ""
 "Prevent accidentally hiring the wrong Inn guest if the currently selected "
 "guest leaves the Inn by disabling the hire button until another selection is "
 "made."
 msgstr ""
 
-#: src/ambition/version_details.cc:351
+#: src/ambition/version_details.cc
 msgid ""
 "Made the no leader assigned message more obvious by adding \"assigned\"."
 msgstr ""
 
-#: src/ambition/version_details.cc:357
+#: src/ambition/version_details.cc
 msgid "v3.1.9 -- 2025-06-25"
 msgstr ""
 
-#: src/ambition/version_details.cc:362
+#: src/ambition/version_details.cc
 msgid "Fixed save game filenames being all underscores."
 msgstr ""
 
-#: src/ambition/version_details.cc:368
+#: src/ambition/version_details.cc
 msgid "v3.1.8 -- 2025-06-23"
 msgstr ""
 
-#: src/ambition/version_details.cc:373
+#: src/ambition/version_details.cc
 msgid ""
 "Added a clone button to Caravans.  If there is an idle Caravan, it is used "
 "as the clone.  Otherwise, a new Caravan spawns at the Market closest to the "
 "Caravan's first stop."
 msgstr ""
 
-#: src/ambition/version_details.cc:374
+#: src/ambition/version_details.cc
 msgid ""
 "Added a caravan clone button to the trade report, next to the paste route "
 "button."
 msgstr ""
 
-#: src/ambition/version_details.cc:375
+#: src/ambition/version_details.cc
 #, c-format
 msgid ""
 "Automatically \"heal\" caravans by replacing damaged ones using the above "
@@ -1338,77 +1533,77 @@ msgid ""
 "be replaced if they fall to 80% or below."
 msgstr ""
 
-#: src/ambition/version_details.cc:376
+#: src/ambition/version_details.cc
 msgid ""
 "Show the skill icon of the unit being trained in Towns under the progress "
 "bar on the world map and in the info pane."
 msgstr ""
 
-#: src/ambition/version_details.cc:377
+#: src/ambition/version_details.cc
 msgid "Show the skill level of builders inside buildings on the hammer icon."
 msgstr ""
 
-#: src/ambition/version_details.cc:383
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the Town training icon in the info pane not appearing until clicking "
 "on the Town again and disappearing after one unit finishes training."
 msgstr ""
 
-#: src/ambition/version_details.cc:384
+#: src/ambition/version_details.cc
 msgid "Fixed high CPU usage on the \"Enter the game's address\" dialog."
 msgstr ""
 
-#: src/ambition/version_details.cc:385
+#: src/ambition/version_details.cc
 msgid "Fixed graphics corruption when hiring units from inns in multiplayer."
 msgstr ""
 
-#: src/ambition/version_details.cc:386
+#: src/ambition/version_details.cc
 msgid "Fixed graphics corruption with disabled buttons."
 msgstr ""
 
-#: src/ambition/version_details.cc:387
+#: src/ambition/version_details.cc
 msgid "Fixed memory violation with building guides."
 msgstr ""
 
-#: src/ambition/version_details.cc:393
+#: src/ambition/version_details.cc
 msgid ""
 "Preferentially use idle builders outside of buildings further away instead "
 "of from closer buildings."
 msgstr ""
 
-#: src/ambition/version_details.cc:394
+#: src/ambition/version_details.cc
 msgid ""
 "Moved the \"Done\" text to the right in the War Factory and Harbour build "
 "menus, so that they are not covered up by the \"Esc\" keybind display."
 msgstr ""
 
-#: src/ambition/version_details.cc:395
+#: src/ambition/version_details.cc
 msgid "Use lower case for default save filenames, based on the king's name."
 msgstr ""
 
-#: src/ambition/version_details.cc:401
+#: src/ambition/version_details.cc
 msgid "v3.1.7 -- 2025-06-13"
 msgstr ""
 
-#: src/ambition/version_details.cc:406
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed a bug where opening the military report before setting a global "
 "research target could cause a crash when a Tower of Science was built "
 "afterwards."
 msgstr ""
 
-#: src/ambition/version_details.cc:412
+#: src/ambition/version_details.cc
 msgid "v3.1.6 -- 2025-05-28"
 msgstr ""
 
-#: src/ambition/version_details.cc:417
+#: src/ambition/version_details.cc
 msgid ""
 "When selecting where to place a building, show grid rules of the building, "
 "and grid rules one tile out, for a walkable perimeter, to allow for easier "
 "placement and planning of buildings."
 msgstr ""
 
-#: src/ambition/version_details.cc:418
+#: src/ambition/version_details.cc
 msgid ""
 "When selecting where to place a building, highlight valid locations, darken "
 "invalid locations, and shade un-walkable locations red, to create a guide "
@@ -1416,20 +1611,20 @@ msgid ""
 "Harbours."
 msgstr ""
 
-#: src/ambition/version_details.cc:419
+#: src/ambition/version_details.cc
 msgid ""
 "Highlight possible Harbour locations brighter when they can link to other "
 "buildings, to allow for easier placement of buildings."
 msgstr ""
 
-#: src/ambition/version_details.cc:420
+#: src/ambition/version_details.cc
 msgid ""
 "Highlight possible Seat of Power locations brighter when they are away from "
 "Towns, to allow for planning so that they do not take up space that can be "
 "used by buildings that do link to Towns."
 msgstr ""
 
-#: src/ambition/version_details.cc:421
+#: src/ambition/version_details.cc
 msgid ""
 "Highlight possible Inn locations brighter when they are away from Towns and "
 "other Inns, to allow for planning so that they do not take up space that can "
@@ -1437,659 +1632,659 @@ msgid ""
 "proximity penalty."
 msgstr ""
 
-#: src/ambition/version_details.cc:422
+#: src/ambition/version_details.cc
 msgid ""
 "Highlight possible locations for other buildings brighter when they can link "
 "to other buildings, to allow for easier placement and planning of buildings."
 msgstr ""
 
-#: src/ambition/version_details.cc:423
+#: src/ambition/version_details.cc
 msgid ""
 "Show the per-unit and total costs, along with the percentages of the fixed "
 "expense, for units on the Military Report."
 msgstr ""
 
-#: src/ambition/version_details.cc:424
+#: src/ambition/version_details.cc
 msgid ""
 "Show a total for the unit costs, along with the percentage of fixed expense, "
 "on the Military Report."
 msgstr ""
 
-#: src/ambition/version_details.cc:425
+#: src/ambition/version_details.cc
 msgid ""
 "Added a keybind for confirming in saving and loading menus (defaults to "
 "Enter), settable in config.txt with `bindkey = KEYEVENT_ _CONFIRM,Return`."
 msgstr ""
 
-#: src/ambition/version_details.cc:426
+#: src/ambition/version_details.cc
 msgid ""
 "Added the KEYEVENT_ _CONFIRM keybind to mode selection screen for confirming "
 "the selection using the Enter key (by default)."
 msgstr ""
 
-#: src/ambition/version_details.cc:432
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the building expense amounts on the Villages report being lower than "
 "the real expense."
 msgstr ""
 
-#: src/ambition/version_details.cc:433
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed spy icon getting duplicated when workers are re-arranged inside "
 "buildings."
 msgstr ""
 
-#: src/ambition/version_details.cc:434
+#: src/ambition/version_details.cc
 msgid "Fixed raw material (and other) icons showing with a white background."
 msgstr ""
 
-#: src/ambition/version_details.cc:435
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed potential incorrect placement and crash with user interface bounds."
 msgstr ""
 
-#: src/ambition/version_details.cc:441
+#: src/ambition/version_details.cc
 msgid ""
 "Sortie troops from Forts before selling or destroying them, so that the "
 "troops still count as being under the general's leadership."
 msgstr ""
 
-#: src/ambition/version_details.cc:442
+#: src/ambition/version_details.cc
 msgid ""
 "When a new builder enters a building under construction, the knocked-out "
 "builder will get sent to the building's rally point.  The same applies to "
 "builders ejected by pressing the hammer button."
 msgstr ""
 
-#: src/ambition/version_details.cc:448
+#: src/ambition/version_details.cc
 msgid "v3.1.5 -- 2025-05-03"
 msgstr ""
 
-#: src/ambition/version_details.cc:453
+#: src/ambition/version_details.cc
 msgid "Show building construction costs on buttons."
 msgstr ""
 
-#: src/ambition/version_details.cc:454
+#: src/ambition/version_details.cc
 msgid ""
 "Show war machine and ship construction costs on War Factory and Harbour "
 "build menus."
 msgstr ""
 
-#: src/ambition/version_details.cc:455
+#: src/ambition/version_details.cc
 msgid ""
 "Show total production queue count and cost for War Factories and Harbours."
 msgstr ""
 
-#: src/ambition/version_details.cc:456
+#: src/ambition/version_details.cc
 msgid "Show keybinds at the bottom-left of buttons that have them."
 msgstr ""
 
-#: src/ambition/version_details.cc:457
+#: src/ambition/version_details.cc
 msgid ""
 "Add a keybind for cancelling menus (defaults to Esc), settable in config.txt "
 "with `bindkey = KEYEVENT_ _CANCEL,Escape`."
 msgstr ""
 
-#: src/ambition/version_details.cc:463
+#: src/ambition/version_details.cc
 msgid ""
 "Show Spy combat (in Forts) or primary skill (in other Firms) level in the "
 "worker list by moving the spy icon to the portrait."
 msgstr ""
 
-#: src/ambition/version_details.cc:464
+#: src/ambition/version_details.cc
 msgid ""
 "Added thousands separators to treasury and food store amounts, to make "
 "reading them easier.  (Currently, this uses groups of three with a comma as "
 "the separator for everyone.  Proper localisation will be added later.)"
 msgstr ""
 
-#: src/ambition/version_details.cc:465
+#: src/ambition/version_details.cc
 msgid ""
 "Show the war machine technology level on the portrait, instead of as part of "
 "the name, on the War Factory build list.  This frees up some room for more "
 "information."
 msgstr ""
 
-#: src/ambition/version_details.cc:471
+#: src/ambition/version_details.cc
 msgid "v3.1.4 -- 2025-04-28"
 msgstr ""
 
-#: src/ambition/version_details.cc:476
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed spy change nation colours not working properly and corruption with "
 "buttons on info pane.  (Temporarly removed the leadership panel until a "
 "better solution is implemented.)"
 msgstr ""
 
-#: src/ambition/version_details.cc:482
+#: src/ambition/version_details.cc
 msgid "v3.1.3 -- 2025-04-27"
 msgstr ""
 
-#: src/ambition/version_details.cc:487
+#: src/ambition/version_details.cc
 msgid ""
 "Added clipboard keys (Ctrl+C, Ctrl+X, Ctrl+V) to input fields, such as the "
 "address of the \"Enter Address\" multiplayer option, map ID, and name fields."
 msgstr ""
 
-#: src/ambition/version_details.cc:488
+#: src/ambition/version_details.cc
 msgid ""
 "Allow prepending to (adding to to the start of) production queues with "
 "Ctrl+click, allowing quickly producing a unit without clearing the entire "
 "queue."
 msgstr ""
 
-#: src/ambition/version_details.cc:489
+#: src/ambition/version_details.cc
 msgid ""
 "Automatically copy the map ID to the clipboard when opening the in-game "
 "menu, allowing for easy copy-pasting of the map ID."
 msgstr ""
 
-#: src/ambition/version_details.cc:490
+#: src/ambition/version_details.cc
 msgid ""
 "Automatically paste into the join address field, allowing for easy joining "
 "of games when using the \"Enter Address\" option."
 msgstr ""
 
-#: src/ambition/version_details.cc:491
+#: src/ambition/version_details.cc
 msgid ""
 "Added a What's New screen, shown on the first startup of each new version."
 msgstr ""
 
-#: src/ambition/version_details.cc:497
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed setting rally point from a Town using shift also pulling peasants."
 msgstr ""
 
-#: src/ambition/version_details.cc:498
+#: src/ambition/version_details.cc
 msgid "Fixed pixel artefacts on the bottom of credits and results screens."
 msgstr ""
 
-#: src/ambition/version_details.cc:499
+#: src/ambition/version_details.cc
 msgid "Fixed pixel artefact on text update."
 msgstr ""
 
-#: src/ambition/version_details.cc:500
+#: src/ambition/version_details.cc
 msgid "Fixed Alt+right-click not pulling peasants from a Town in Classic mode."
 msgstr ""
 
-#: src/ambition/version_details.cc:506
+#: src/ambition/version_details.cc
 msgid "v3.1.2 -- 2025-04-20"
 msgstr ""
 
-#: src/ambition/version_details.cc:511
+#: src/ambition/version_details.cc
 msgid ""
 "Show an icon for units which are outside of their general's command range "
 "and so do not receive combat bonuses and are losing loyalty."
 msgstr ""
 
-#: src/ambition/version_details.cc:512
+#: src/ambition/version_details.cc
 msgid "Display unit leadership effect status in the info pane."
 msgstr ""
 
-#: src/ambition/version_details.cc:513
+#: src/ambition/version_details.cc
 msgid "Make War Factory production queue unlimited, up from 20."
 msgstr ""
 
-#: src/ambition/version_details.cc:514
+#: src/ambition/version_details.cc
 msgid "Make Harbour production queue unlimited, up from 10."
 msgstr ""
 
-#: src/ambition/version_details.cc:515
+#: src/ambition/version_details.cc
 msgid ""
 "Show the production queue size for Towns, Harbours, and War Factories over "
 "the production button, in a manner similar to the auto-tax."
 msgstr ""
 
-#: src/ambition/version_details.cc:521
+#: src/ambition/version_details.cc
 msgid "Fixed desync when cancelling training in a Town."
 msgstr ""
 
-#: src/ambition/version_details.cc:522
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed alignment of town goods satisfaction, inn guest count, and worker list."
 msgstr ""
 
-#: src/ambition/version_details.cc:523
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed Town training queue counts not showing correctly after loading a game "
 "with a 7kaa training queue."
 msgstr ""
 
-#: src/ambition/version_details.cc:524
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed not being able to cancel production after loading a 7kaa save game "
 "with a unit already in production."
 msgstr ""
 
-#: src/ambition/version_details.cc:525
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed not being able to cancel units in the queue after loading a 7kaa save "
 "game with an existing production queue."
 msgstr ""
 
-#: src/ambition/version_details.cc:531
+#: src/ambition/version_details.cc
 msgid ""
 "Display the type and level of war machines inside forts, for easier "
 "identification."
 msgstr ""
 
-#: src/ambition/version_details.cc:532
+#: src/ambition/version_details.cc
 msgid ""
 "Harbour production queue persists even when the harbour is full (4 ships) "
 "instead of clearing the queue."
 msgstr ""
 
-#: src/ambition/version_details.cc:538
+#: src/ambition/version_details.cc
 msgid "v3.1.1 -- 2025-04-12"
 msgstr ""
 
-#: src/ambition/version_details.cc:543
+#: src/ambition/version_details.cc
 msgid ""
 "Rally points can be toggled by setting the rally point to the same place "
 "again, in addition to alt-right-clicking on the building again."
 msgstr ""
 
-#: src/ambition/version_details.cc:544
+#: src/ambition/version_details.cc
 msgid ""
 "Waypoints (and rally points) can now be set (and unset) with shift-right-"
 "click in addition to alt-right-click, to be more intuitive to people."
 msgstr ""
 
-#: src/ambition/version_details.cc:545
+#: src/ambition/version_details.cc
 msgid ""
 "Added a rally point button on the info pane for buildings, which shows when "
 "a rally point is active.  Clicking on it goes to the rally location and "
 "right-clicking on it clears the rally point."
 msgstr ""
 
-#: src/ambition/version_details.cc:546
+#: src/ambition/version_details.cc
 msgid ""
 "Added T (actually the same as the unit settle key) as a key to clear the "
 "rally point of a building."
 msgstr ""
 
-#: src/ambition/version_details.cc:552
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed positioning of the colour box on the info pane for buildings and units."
 msgstr ""
 
-#: src/ambition/version_details.cc:553
+#: src/ambition/version_details.cc
 msgid "Fixed porcupines and other not-attacking units not following waypoints."
 msgstr ""
 
-#: src/ambition/version_details.cc:559
+#: src/ambition/version_details.cc
 msgid "v3.1.0 -- 2025-04-06"
 msgstr ""
 
-#: src/ambition/version_details.cc:564
+#: src/ambition/version_details.cc
 msgid "Added rally points for War Factory war machines."
 msgstr ""
 
-#: src/ambition/version_details.cc:565
+#: src/ambition/version_details.cc
 msgid "Added rally points for Town peasants and trained units."
 msgstr ""
 
-#: src/ambition/version_details.cc:566
+#: src/ambition/version_details.cc
 msgid "Added rally points for Inn hired units."
 msgstr ""
 
-#: src/ambition/version_details.cc:567
+#: src/ambition/version_details.cc
 msgid "Added rally points for Camp units when sortieing."
 msgstr ""
 
-#: src/ambition/version_details.cc:568
+#: src/ambition/version_details.cc
 msgid "Added rally points for all firms when mobilising workers."
 msgstr ""
 
-#: src/ambition/version_details.cc:569
+#: src/ambition/version_details.cc
 msgid "Added rally points for Harbours when sailing ships."
 msgstr ""
 
-#: src/ambition/version_details.cc:575
+#: src/ambition/version_details.cc
 msgid "Fixed a crash on requesting a builder when one is on a ship."
 msgstr ""
 
-#: src/ambition/version_details.cc:581
+#: src/ambition/version_details.cc
 msgid "Make Town training queue unlimited, up from 10."
 msgstr ""
 
-#: src/ambition/version_details.cc:582
+#: src/ambition/version_details.cc
 msgid ""
 "Use global research target for all new and newly idle Towers of Science, not "
 "just the ones that were present when first clicking."
 msgstr ""
 
-#: src/ambition/version_details.cc:583
+#: src/ambition/version_details.cc
 msgid ""
 "Waypoints can now be set to attack and enter buildings instead of just "
 "moving to a destination."
 msgstr ""
 
-#: src/ambition/version_details.cc:584
+#: src/ambition/version_details.cc
 msgid ""
 "Waypoints now no longer get cleared if the unit cannot reach one "
 "destination, allowing for exploration without interruption."
 msgstr ""
 
-#: src/ambition/version_details.cc:585
+#: src/ambition/version_details.cc
 msgid ""
 "Rally points can also be set to attack and enter buildings instead of just "
 "moving to a destination, the same as waypoints."
 msgstr ""
 
-#: src/ambition/version_details.cc:586
+#: src/ambition/version_details.cc
 msgid "Rally points are now visible over unexplored blackness."
 msgstr ""
 
-#: src/ambition/version_details.cc:587
+#: src/ambition/version_details.cc
 msgid "Setting a rally point on a building will not pull peasants to it."
 msgstr ""
 
-#: src/ambition/version_details.cc:593
+#: src/ambition/version_details.cc
 msgid "v3.0.4 -- 2025-03-16"
 msgstr ""
 
-#: src/ambition/version_details.cc:598
+#: src/ambition/version_details.cc
 msgid "Added delete button to load game menu."
 msgstr ""
 
-#: src/ambition/version_details.cc:599
+#: src/ambition/version_details.cc
 msgid "Show a progress bar on the map for town training."
 msgstr ""
 
-#: src/ambition/version_details.cc:605
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed requested builder not being able to reach the destination building if "
 "there is no walkable path."
 msgstr ""
 
-#: src/ambition/version_details.cc:606
+#: src/ambition/version_details.cc
 msgid "Fixed Inn hire button being enabled/disabled incorrectly."
 msgstr ""
 
-#: src/ambition/version_details.cc:607
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed hitbars having extra pixels on the right when a worker enters or "
 "leaves the building."
 msgstr ""
 
-#: src/ambition/version_details.cc:613
+#: src/ambition/version_details.cc
 msgid ""
 "Continue loading config.txt even when there are invalid lines, so that the "
 "valid ones still apply.  Then, once finished loading, display all the line "
 "numbers which contained errors, allowing fixing them."
 msgstr ""
 
-#: src/ambition/version_details.cc:619
+#: src/ambition/version_details.cc
 msgid "v3.0.3 -- 2025-03-07"
 msgstr ""
 
-#: src/ambition/version_details.cc:624
+#: src/ambition/version_details.cc
 msgid ""
 "Show a progress bar for Harbours.  (They were missed when Towers of Science "
 "and War Factories were done.)"
 msgstr ""
 
-#: src/ambition/version_details.cc:630
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the town recruitment progress bar overlapping the buttons when a spy "
 "is present and the spy button is showing."
 msgstr ""
 
-#: src/ambition/version_details.cc:636
+#: src/ambition/version_details.cc
 msgid "v3.0.2 -- 2025-03-04"
 msgstr ""
 
-#: src/ambition/version_details.cc:641
+#: src/ambition/version_details.cc
 msgid ""
 "Show town goods demand satisfaction (quality of life) to know how much goods "
 "are demanded and how much are being supplied--and thus the level of the "
 "bonus."
 msgstr ""
 
-#: src/ambition/version_details.cc:642
+#: src/ambition/version_details.cc
 msgid "Show a progress bar for Towers of Science and War Factories."
 msgstr ""
 
-#: src/ambition/version_details.cc:648
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the unit path line (and building connection lines) animation speed "
 "breaking on game speed unlimited (9).  This should also fix the issue some "
 "users were having where moving the mouse would speed up the line animation."
 msgstr ""
 
-#: src/ambition/version_details.cc:649
+#: src/ambition/version_details.cc
 msgid "Fixed the building hitbars looking kind of off and tilted."
 msgstr ""
 
-#: src/ambition/version_details.cc:650
+#: src/ambition/version_details.cc
 msgid "Fix high CPU usage on showing help on hover."
 msgstr ""
 
-#: src/ambition/version_details.cc:656
+#: src/ambition/version_details.cc
 msgid ""
 "Scale unit hitbar widths with the (square root of) their maximum hitpoints, "
 "to give a better idea of units' toughness at a glance."
 msgstr ""
 
-#: src/ambition/version_details.cc:657
+#: src/ambition/version_details.cc
 msgid ""
 "Add more hitbar colours (dark green, orange, red) to make judging unit "
 "tougness easier."
 msgstr ""
 
-#: src/ambition/version_details.cc:658
+#: src/ambition/version_details.cc
 msgid ""
 "Draw town/building link lines consistently in the same direction, regardless "
 "of which side is selected.  Since some links make sense only as bi-"
 "directional flow, these links are drawn alternating in both direction."
 msgstr ""
 
-#: src/ambition/version_details.cc:659
+#: src/ambition/version_details.cc
 msgid ""
 "Darkened the bottom-left pixel of the hitbar outline to make it look more in "
 "place."
 msgstr ""
 
-#: src/ambition/version_details.cc:665
+#: src/ambition/version_details.cc
 msgid "v3.0.1 -- 2025-02-25"
 msgstr ""
 
-#: src/ambition/version_details.cc:670
+#: src/ambition/version_details.cc
 msgid ""
 "Added game speed display to top-right of the map and \"PAUSED\" in the "
 "middle."
 msgstr ""
 
-#: src/ambition/version_details.cc:671
+#: src/ambition/version_details.cc
 msgid ""
 "Show the guest count in an inn, to make it easy to know whether scrolling is "
 "even required."
 msgstr ""
 
-#: src/ambition/version_details.cc:672
+#: src/ambition/version_details.cc
 msgid ""
 "Show the amount that non-spy units have been rewarded, so that it's easier "
 "to tell the effects of the contribution on loyalty."
 msgstr ""
 
-#: src/ambition/version_details.cc:678
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed high CPU usage when moving the mouse cursor in-game.  This should also "
 "fix the unit path line looking like it's moving when the mouse cursor is "
 "moved."
 msgstr ""
 
-#: src/ambition/version_details.cc:679
+#: src/ambition/version_details.cc
 msgid "Fixed minimap bounding box colours."
 msgstr ""
 
-#: src/ambition/version_details.cc:685
+#: src/ambition/version_details.cc
 msgid ""
 "Display inn guest list from newest at the top to oldest at the bottom, so "
 "that it's quicker to check inns for new mercenaries."
 msgstr ""
 
-#: src/ambition/version_details.cc:686
+#: src/ambition/version_details.cc
 msgid ""
 "Preferentially use builders from undamaged buildings further away instead of "
 "from closer buildings that are still not fully repaired."
 msgstr ""
 
-#: src/ambition/version_details.cc:687
+#: src/ambition/version_details.cc
 msgid ""
 "Use all of the available space in the building info pane to show wider unit "
 "hitbars, so that they're easier to comprehend."
 msgstr ""
 
-#: src/ambition/version_details.cc:688
+#: src/ambition/version_details.cc
 msgid ""
 "Show the missing portion of unit hitbars in the building info pane, so that "
 "it's easier to tell when a unit is missing hitpoints."
 msgstr ""
 
-#: src/ambition/version_details.cc:689
+#: src/ambition/version_details.cc
 msgid ""
 "Draw a hitbar for the general/king in a camp, so that you can see his health."
 msgstr ""
 
-#: src/ambition/version_details.cc:690
+#: src/ambition/version_details.cc
 msgid ""
 "Properly centre units in the building info pane, so that the hitbars are "
 "clearly discernible."
 msgstr ""
 
-#: src/ambition/version_details.cc:691
+#: src/ambition/version_details.cc
 msgid ""
 "Use a four-slot screen for the mode selection.  This gives more space to "
 "expand the description text."
 msgstr ""
 
-#: src/ambition/version_details.cc:692
+#: src/ambition/version_details.cc
 msgid ""
 "Use roman numerals for numbering modes on the mode selection screen.  This "
 "aesthetic is more appropriate."
 msgstr ""
 
-#: src/ambition/version_details.cc:693
+#: src/ambition/version_details.cc
 msgid ""
 "Make mode selection screen translatable.  No translations have been "
 "completed yet, though."
 msgstr ""
 
-#: src/ambition/version_details.cc:699
+#: src/ambition/version_details.cc
 msgid "v3.0.0 -- 2025-02-21"
 msgstr ""
 
-#: src/ambition/version_details.cc:704
+#: src/ambition/version_details.cc
 msgid "Display the current running mode in top-right of the main menu."
 msgstr ""
 
-#: src/ambition/version_details.cc:705
+#: src/ambition/version_details.cc
 msgid ""
 "Added a rudimentary running mode switcher accessible from a button at the "
 "top-right of the main menu."
 msgstr ""
 
-#: src/ambition/version_details.cc:706
+#: src/ambition/version_details.cc
 msgid "Made the game look smoother by running at at a graphical 60 FPS."
 msgstr ""
 
-#: src/ambition/version_details.cc:707
+#: src/ambition/version_details.cc
 msgid ""
 "Added cyan highlight to selected units, making for easier identification."
 msgstr ""
 
-#: src/ambition/version_details.cc:708
+#: src/ambition/version_details.cc
 msgid ""
 "Added coloured outline to hit bars, making it easier to distinguish friendly "
 "units' hit bars from enemies'."
 msgstr ""
 
-#: src/ambition/version_details.cc:709
+#: src/ambition/version_details.cc
 msgid "Show a hitbar for firms when they are at less than 100% HP."
 msgstr ""
 
-#: src/ambition/version_details.cc:710
+#: src/ambition/version_details.cc
 msgid ""
 "Added builder icon to buildings with builders in them, allowing easy at-a-"
 "glance identification of them."
 msgstr ""
 
-#: src/ambition/version_details.cc:711
+#: src/ambition/version_details.cc
 msgid ""
 "Made the game look smoother by constantly animating buildings at a fixed "
 "rate."
 msgstr ""
 
-#: src/ambition/version_details.cc:712
+#: src/ambition/version_details.cc
 msgid ""
 "Made the game look smoother by constantly animating water and other terrain "
 "at a fixed rate."
 msgstr ""
 
-#: src/ambition/version_details.cc:713
+#: src/ambition/version_details.cc
 msgid ""
 "Made the game look smoother by having the water be more sloshy and run "
 "approximately into the south-western direction as the waves imply."
 msgstr ""
 
-#: src/ambition/version_details.cc:714
+#: src/ambition/version_details.cc
 msgid ""
 "Made the game look smoother by continuing rain and snow while game is paused."
 msgstr ""
 
-#: src/ambition/version_details.cc:715
+#: src/ambition/version_details.cc
 msgid ""
 "Display more details when a multiplayer sync error occurs to help hunt down "
 "and fix the cause."
 msgstr ""
 
-#: src/ambition/version_details.cc:721
+#: src/ambition/version_details.cc
 #, c-format
 msgid "Fixed the 100% CPU usage all the time problem."
 msgstr ""
 
-#: src/ambition/version_details.cc:722
+#: src/ambition/version_details.cc
 msgid "Fixed scrolling to the right and down not working properly."
 msgstr ""
 
-#: src/ambition/version_details.cc:723
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the unit path line flow direction to go from the unit to its "
 "destination instead of backwards."
 msgstr ""
 
-#: src/ambition/version_details.cc:724
+#: src/ambition/version_details.cc
 msgid ""
 "Centred the info pane (the one below the minimap) so that it's no longer off-"
 "centre."
 msgstr ""
 
-#: src/ambition/version_details.cc:725
+#: src/ambition/version_details.cc
 msgid "Fixed a memory leak when loading a saved game."
 msgstr ""
 
-#: src/ambition/version_details.cc:726
+#: src/ambition/version_details.cc
 msgid "Fixed a memory leak with unit waypoints."
 msgstr ""
 
-#: src/ambition/version_details.cc:732
+#: src/ambition/version_details.cc
 msgid "Use yellow colour for highlighting units on hover instead of cyan."
 msgstr ""
 
-#: src/ambition/version_details.cc:733
+#: src/ambition/version_details.cc
 msgid ""
 "Made it easier to see when units are low on hitpoints by making the unit "
 "hitbars wider."
 msgstr ""
 
-#: src/ambition/version_details.cc:734
+#: src/ambition/version_details.cc
 msgid ""
 "Change right and bottom cursor boundaries to allow the cursor to go further."
 msgstr ""
 
-#: src/ambition/version_details.cc:735
+#: src/ambition/version_details.cc
 msgid "Made development slightly easier."
 msgstr ""
 
@@ -2103,23 +2298,23 @@ msgid "Multiple startup mode options present on the command line."
 msgstr ""
 
 #: src/OBOX.cpp:180 src/OBOX.cpp:207 src/OBOX.cpp:210 src/OBOX.cpp:264
-#: src/OGAMEMP.cpp:1522 src/OGAMEMP.cpp:1623 src/OGAMEMP.cpp:3029
-#: src/OGAMEMP.cpp:3094 src/OGAMEMP.cpp:3399 src/OGAMEMP.cpp:3402
-#: src/OGAMEMP.cpp:3405 src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:3411
-#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:3465
-#: src/OGAMEMP.cpp:4941 src/OGAMEMP.cpp:5007 src/OGAMEMP.cpp:5186
-#: src/OGAMEMP.cpp:5189 src/OGAMEMP.cpp:5192 src/OGAMEMP.cpp:5195
-#: src/OGAMEMP.cpp:5198 src/OGAMEMP.cpp:5201 src/OGAMEMP.cpp:5204
-#: src/OGAMEMP.cpp:5252
+#: src/OGAMEMP.cpp:1523 src/OGAMEMP.cpp:1624 src/OGAMEMP.cpp:3030
+#: src/OGAMEMP.cpp:3095 src/OGAMEMP.cpp:3400 src/OGAMEMP.cpp:3403
+#: src/OGAMEMP.cpp:3406 src/OGAMEMP.cpp:3409 src/OGAMEMP.cpp:3412
+#: src/OGAMEMP.cpp:3415 src/OGAMEMP.cpp:3418 src/OGAMEMP.cpp:3466
+#: src/OGAMEMP.cpp:4942 src/OGAMEMP.cpp:5008 src/OGAMEMP.cpp:5187
+#: src/OGAMEMP.cpp:5190 src/OGAMEMP.cpp:5193 src/OGAMEMP.cpp:5196
+#: src/OGAMEMP.cpp:5199 src/OGAMEMP.cpp:5202 src/OGAMEMP.cpp:5205
+#: src/OGAMEMP.cpp:5253
 msgid "Ok"
 msgstr "Ok"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:70
 #: src/OBOX.cpp:213 src/OBOX.cpp:267 src/OFIRMIF3.cpp:250 src/OF_RESE.cpp:292
-#: src/OGAMEMP.cpp:1523 src/OGAMEMP.cpp:1624 src/OGAMEMP.cpp:2091
-#: src/OGAMEMP.cpp:2194 src/OGAMEMP.cpp:2258 src/OSPYA.cpp:364
-#: src/OTOWNIF.cpp:1361 src/OUNITIF.cpp:1061 src/OUNITIF.cpp:1099
+#: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:2092
+#: src/OGAMEMP.cpp:2195 src/OGAMEMP.cpp:2259 src/OSPYA.cpp:364
+#: src/OTOWNIF.cpp:1369 src/OUNITIF.cpp:1061 src/OUNITIF.cpp:1099
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -2293,7 +2488,7 @@ msgstr "Levenspunten"
 msgid "Spy Skill"
 msgstr "Spionage"
 
-#: src/OFIRMIF2.cpp:94 src/OR_SPY.cpp:79 src/OTOWNIF.cpp:1512
+#: src/OFIRMIF2.cpp:94 src/OR_SPY.cpp:79 src/OTOWNIF.cpp:1520
 msgid "Action"
 msgstr "Actie"
 
@@ -2531,239 +2726,239 @@ msgstr "Holgh Hol"
 msgid "Ordos"
 msgstr ""
 
-#: src/OGAMEMP.cpp:532
+#: src/OGAMEMP.cpp:533
 msgid "Create multiplayer session"
 msgstr ""
 
-#: src/OGAMEMP.cpp:533
+#: src/OGAMEMP.cpp:534
 msgid "Session Name:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:534
+#: src/OGAMEMP.cpp:535
 msgid "Set Password:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:579 src/OGAMEMP.cpp:841
+#: src/OGAMEMP.cpp:580 src/OGAMEMP.cpp:842
 msgid "Unable to connect from lobby"
 msgstr ""
 
-#: src/OGAMEMP.cpp:586 src/OGAMEMP.cpp:848
+#: src/OGAMEMP.cpp:587 src/OGAMEMP.cpp:849
 msgid "Cannot initialize ENet"
 msgstr ""
 
-#: src/OGAMEMP.cpp:602 src/OGAMEMP.cpp:864
+#: src/OGAMEMP.cpp:603 src/OGAMEMP.cpp:865
 msgid "Unable to retrieve leaderboard"
 msgstr ""
 
-#: src/OGAMEMP.cpp:630 src/OGAMEMP.cpp:899
+#: src/OGAMEMP.cpp:631 src/OGAMEMP.cpp:900
 msgid "Invalid game name"
 msgstr ""
 
-#: src/OGAMEMP.cpp:639 src/OGAMEMP.cpp:908
+#: src/OGAMEMP.cpp:640 src/OGAMEMP.cpp:909
 msgid "Cannot create the game"
 msgstr ""
 
-#: src/OGAMEMP.cpp:671 src/OGAMEMP.cpp:937
+#: src/OGAMEMP.cpp:672 src/OGAMEMP.cpp:938
 msgid "Enter the game's address:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:679 src/OGAMEMP.cpp:945
+#: src/OGAMEMP.cpp:680 src/OGAMEMP.cpp:946
 msgid "Service not supported"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1054
+#: src/OGAMEMP.cpp:1055
 msgid "Local Area Network"
 msgstr ""
 
 #. TRANSLATORS: This is a button label for entering a web or IP Address for connecting to an online game
-#: src/OGAMEMP.cpp:1056
+#: src/OGAMEMP.cpp:1057
 msgid "Enter Address"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1061
+#: src/OGAMEMP.cpp:1062
 msgid "Host or join a game using the local area network"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1062
+#: src/OGAMEMP.cpp:1063
 msgid "Join a game by entering an address"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1063
+#: src/OGAMEMP.cpp:1064
 msgid "Host or join a game over the internet"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1211
+#: src/OGAMEMP.cpp:1212
 msgid ""
 "Enter your 7kfans.com/forums account credentials to continue.\n"
 "TIP: If you have just previously logged in using the same username, you can "
 "leave your password blank, and the previous session is used."
 msgstr ""
 
-#: src/OGAMEMP.cpp:1212
+#: src/OGAMEMP.cpp:1213
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#: src/OGAMEMP.cpp:1213
+#: src/OGAMEMP.cpp:1214
 msgid "Password:"
 msgstr "Wachtwoord:"
 
-#: src/OGAMEMP.cpp:1401
+#: src/OGAMEMP.cpp:1402
 msgid ""
 "It is not recommended to use this save game file name. Do you wish to "
 "continue?"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1459
+#: src/OGAMEMP.cpp:1460
 msgid "Unable to connect to 7kfans.com"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1752
+#: src/OGAMEMP.cpp:1753
 msgid ""
 "Unable to connect to the 7kfans.com service. Verify your account information "
 "and try again."
 msgstr ""
 
-#: src/OGAMEMP.cpp:1754
+#: src/OGAMEMP.cpp:1755
 msgid ""
 "Unable to connect to the 7kfans service.\n"
 "(No libcurl)"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1943
+#: src/OGAMEMP.cpp:1944
 msgid "Unable to communicate with the network"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1946
+#: src/OGAMEMP.cpp:1947
 msgid "Trying to connect to the service provider"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1961
+#: src/OGAMEMP.cpp:1962
 msgid ""
 "There is a new version of Seven Kingdoms: Ambition at https://seven-kingdoms-"
 "ambition.sourceforge.io/"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2079
+#: src/OGAMEMP.cpp:2080
 msgid "Enter the game's password:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2086
+#: src/OGAMEMP.cpp:2087
 msgid "Attempting to connect"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2156
+#: src/OGAMEMP.cpp:2157
 msgid "The session you selected no longer exists."
 msgstr ""
 
-#: src/OGAMEMP.cpp:2162
+#: src/OGAMEMP.cpp:2163
 msgid "Unable to connect"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2167
+#: src/OGAMEMP.cpp:2168
 msgid "Failed to initiate connection"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2189
+#: src/OGAMEMP.cpp:2190
 msgid "Please wait while disconnecting..."
 msgstr ""
 
-#: src/OGAMEMP.cpp:2253
+#: src/OGAMEMP.cpp:2254
 msgid "Retrieving leaderboard"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2956 src/OGAMEMP.cpp:4867
+#: src/OGAMEMP.cpp:2957 src/OGAMEMP.cpp:4868
 msgid "?anonymous?"
 msgstr ""
 
-#: src/OGAMEMP.cpp:3029 src/OGAMEMP.cpp:4941
+#: src/OGAMEMP.cpp:3030 src/OGAMEMP.cpp:4942
 msgid "The game host has disconnected."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3094 src/OGAMEMP.cpp:5007
+#: src/OGAMEMP.cpp:3095 src/OGAMEMP.cpp:5008
 msgid "The game host has aborted the game."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3399 src/OGAMEMP.cpp:5186
+#: src/OGAMEMP.cpp:3400 src/OGAMEMP.cpp:5187
 msgid "Your game version does not match the host's version."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3402 src/OGAMEMP.cpp:5189
+#: src/OGAMEMP.cpp:3403 src/OGAMEMP.cpp:5190
 msgid "The game you tried to join is currently full."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3405 src/OGAMEMP.cpp:5192
+#: src/OGAMEMP.cpp:3406 src/OGAMEMP.cpp:5193
 msgid "The host refused to authorize your connection."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:5195
+#: src/OGAMEMP.cpp:3409 src/OGAMEMP.cpp:5196
 msgid "You cannot join the game because the host is loading a save."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:5198
+#: src/OGAMEMP.cpp:3412 src/OGAMEMP.cpp:5199
 msgid "You cannot join the game because the host is not loading a save."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:5201
+#: src/OGAMEMP.cpp:3415 src/OGAMEMP.cpp:5202
 msgid ""
 "You cannot join the game because the saved multiplayer game you selected is "
 "different."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:5204
+#: src/OGAMEMP.cpp:3418 src/OGAMEMP.cpp:5205
 msgid "The host refused the connection."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3465 src/OGAMEMP.cpp:5252
+#: src/OGAMEMP.cpp:3466 src/OGAMEMP.cpp:5253
 msgid "The host is using a modified game which you are not running."
 msgstr ""
 
-#: src/OGAMEMP.cpp:4159 src/OGAMEMP.cpp:5601
+#: src/OGAMEMP.cpp:4160 src/OGAMEMP.cpp:5602
 msgid "Connection string from host is corrupted"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4166
+#: src/OGAMEMP.cpp:4167
 msgid "Cannot get random seeds from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4172
+#: src/OGAMEMP.cpp:4173
 msgid "Cannot get game configuration information from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4178 src/OGAMEMP.cpp:5608
+#: src/OGAMEMP.cpp:4179 src/OGAMEMP.cpp:5609
 msgid "Cannot get kingdom information from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4184 src/OGAMEMP.cpp:5614
+#: src/OGAMEMP.cpp:4185 src/OGAMEMP.cpp:5615
 msgid "The host cannot recognize your machine."
 msgstr ""
 
-#: src/OGAMEMP.cpp:4190 src/OGAMEMP.cpp:5620
+#: src/OGAMEMP.cpp:4191 src/OGAMEMP.cpp:5621
 msgid "Cannot receive important information from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4237 src/OGAMEMP.cpp:5660
+#: src/OGAMEMP.cpp:4238 src/OGAMEMP.cpp:5661
 msgid "Some player(s) encountered errors when initializing the game."
 msgstr ""
 
-#: src/OGAMEMP.cpp:5342 src/OGAMEMP.cpp:5501
+#: src/OGAMEMP.cpp:5343 src/OGAMEMP.cpp:5502
 #, c-format
 msgid "This multiplayer saved game needs %d human player"
 msgid_plural "This multiplayer saved game needs %d human players"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/OGAMEMP.cpp:5345 src/OGAMEMP.cpp:5504
+#: src/OGAMEMP.cpp:5346 src/OGAMEMP.cpp:5505
 #, c-format
 msgid "while now there is %d human player."
 msgid_plural "while now there are %d human players."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/OGAMEMP.cpp:5348 src/OGAMEMP.cpp:5507
+#: src/OGAMEMP.cpp:5349 src/OGAMEMP.cpp:5508
 msgid "The game cannot start."
 msgstr ""
 
-#: src/OGAMEMP.cpp:5567
+#: src/OGAMEMP.cpp:5568
 msgid "Incorrect kingdom information received from the host."
 msgstr ""
 
@@ -2928,7 +3123,7 @@ msgid "Kingdom"
 msgstr "Koninkrijk"
 
 #: src/OGAMEND.cpp:477 src/OGAMHALL.cpp:268 src/OR_RANK.cpp:91
-#: src/OTOWNIF.cpp:311
+#: src/OTOWNIF.cpp:319
 msgid "Population"
 msgstr "Populatie"
 
@@ -3004,12 +3199,12 @@ msgstr "Periode"
 msgid "Difficulty"
 msgstr "Niveau"
 
-#: src/OGAMMAIN.cpp:385 src/OGAMMAIN.cpp:395
+#: src/OGAMMAIN.cpp:385
 msgid "Version"
 msgstr "Versie"
 
 #: src/OGAMMAIN.cpp:390
-msgid "compatible with 7kfans' 7kaa"
+msgid "compatible with 7kfans' 7kaa version"
 msgstr ""
 
 #: src/OGAMSCE2.cpp:178
@@ -5683,7 +5878,7 @@ msgstr ""
 msgid "Total Population: %s"
 msgstr ""
 
-#: src/OR_TOWN.cpp:249 src/OTOWNIF.cpp:338
+#: src/OR_TOWN.cpp:249 src/OTOWNIF.cpp:346
 msgid "Total"
 msgstr "Totaal"
 
@@ -7493,7 +7688,7 @@ msgstr ""
 msgid "An error occurred creating the back surface!"
 msgstr ""
 
-#: src/OWORLD_Z.cpp:1023 src/OWORLD_Z.cpp:1043
+#: src/OWORLD_Z.cpp:1027 src/OWORLD_Z.cpp:1051
 msgid "(Spy)"
 msgstr ""
 
