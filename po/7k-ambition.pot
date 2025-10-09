@@ -449,6 +449,10 @@ msgid "Automatically detect the language on Windows."
 msgstr ""
 
 #: src/ambition/version_details.cc
+msgid "Added a Dutch translation, thanks to Jan Miedema."
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid ""
 "Show the average target resistance of independent towns on the information "
 "panel when you have workers."

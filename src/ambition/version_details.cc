@@ -21,6 +21,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_ADDED),
         .items = {
           _("Automatically detect the language on Windows."),
+          _("Added a Dutch translation, thanks to Jan Miedema."),
           _("Show the average target resistance of independent towns on the information panel when you have workers."),
         },
       },
