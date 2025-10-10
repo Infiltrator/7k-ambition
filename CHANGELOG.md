@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Automatically detect the language on Windows.
+
 
 ## [3.2.6] — 2025-10-08
 

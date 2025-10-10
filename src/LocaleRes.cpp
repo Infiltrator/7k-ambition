@@ -27,6 +27,11 @@
 #include <locale.h>
 #endif
 
+#ifdef USE_WINDOWS
+#include <algorithm>
+#include <windows.h>
+#endif
+
 #include <ALL.h>
 #include <ODB.h>
 #include <LocaleRes.h>
@@ -274,6 +279,28 @@ const char *LocaleRes::get_messages_locale()
 	locale = setlocale(LC_MESSAGES, NULL);
 	if( locale && locale[0] )
 		return locale;
+#endif
+
+#ifdef USE_WINDOWS
+	wchar_t windowsLocale[LOCALE_NAME_MAX_LENGTH];
+	if (GetUserDefaultLocaleName(windowsLocale, LOCALE_NAME_MAX_LENGTH)) {
+		auto buffer = new char[LOCALE_NAME_MAX_LENGTH * 2];
+		WideCharToMultiByte(
+			CP_UTF8,
+			0,
+			windowsLocale,
+			-1,
+			buffer,
+			LOCALE_NAME_MAX_LENGTH * 2,
+			nullptr,
+			nullptr
+		);
+		std::replace(buffer, buffer + LOCALE_NAME_MAX_LENGTH * 2 - 1, '-', '_');
+		locale = buffer;
+		if (locale && locale[0]) {
+			return locale;
+		}
+	}
 #endif
 
 	// We don't spend the time to map what Windows uses for locales. And
