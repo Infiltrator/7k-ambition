@@ -137,7 +137,7 @@ void LocaleRes::load(const char *locale)
 		// Try some recognizable language
 		locale = get_messages_locale();
 		if( !locale )
-			locale = "en_US";
+			locale = "en";
 	}
 
 	setlocale(LC_ALL, locale); // for LC_MESSAGES and LC_CTYPE
