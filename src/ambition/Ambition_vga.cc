@@ -2593,6 +2593,30 @@ void unlockBuffer(
   }
 }
 
+namespace Vga {
+
+std::string versionMismatchExtraMessage(
+) {
+  return format(
+    _(
+      // TRANSLATORS: … You have a version compatible with 7kfans' 7kaa <version
+      // number>. … Your config.txt file can be found here: <config directory
+      // path and path separator>config.txt …
+      // The name of the file—config.txt—does not change with language.
+      "Your game version may not match the host's version."
+      "\nYou have a version compatible with 7kfans' 7kaa %s."
+      "\nOr, if your versions do match (check the bottom-right of the main"
+      " menu), you may have incompatible config.txt settings."
+      "\nYour config.txt file can be found here: %sconfig.txt"
+      "\n(The path has been copied to your clipboard.)"
+    ),
+    GAME_VERSION_STR,
+    Ambition::DirectoryPath::config().string().c_str()
+  );
+}
+
+} // namespace Ambition::Vga
+
 
 /* Private functions. */
 

@@ -6,6 +6,7 @@ noinst_HEADERS = \
   draw.hh \
   inn.hh \
   input.hh \
+  menu.hh \
   polity.hh \
   population.hh \
   score.hh \

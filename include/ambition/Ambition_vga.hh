@@ -394,4 +394,11 @@ void unlockBuffer(
   VgaBuf& buffer
 );
 
+namespace Vga {
+
+std::string versionMismatchExtraMessage(
+);
+
+} // namespace Ambition::Vga
+
 } // namespace Ambition
