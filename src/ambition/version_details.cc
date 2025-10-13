@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Automatically detect the language on Windows."),
+        },
+      },
     },
   },
   {
