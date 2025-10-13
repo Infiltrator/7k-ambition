@@ -3103,6 +3103,12 @@ void Firm::setup_link(int reload)
 			continue;
 		}
 
+		if( world.get_loc(firmPtr->center_x, firmPtr->center_y)->region_id
+			 != world.get_loc(center_x, center_y)->region_id )
+		{
+			continue;
+		}
+
 		//----- if the firms are linkable to each other -----//
 
 		if( !firmInfo->is_linkable_to_firm(firmPtr->firm_id) )
@@ -3192,6 +3198,12 @@ void Firm::setup_link(int reload)
 
 		if( (world.get_loc(townPtr->center_x, townPtr->center_y)->is_plateau()==1)
 			!= (world.get_loc(center_x, center_y)->is_plateau()==1) )
+		{
+			continue;
+		}
+
+		if( world.get_loc(townPtr->center_x, townPtr->center_y)->region_id
+			!= world.get_loc(center_x, center_y)->region_id )
 		{
 			continue;
 		}

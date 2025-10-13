@@ -3347,6 +3347,12 @@ void Town::setup_link(int reload)
 			continue;
 		}
 
+		if( world.get_loc(firmPtr->center_x, firmPtr->center_y)->region_id
+			 != world.get_loc(center_x, center_y)->region_id )
+		{
+			continue;
+		}
+
 		//----- check for empty link slots -----//
 
 		if( linked_firm_count >= MAX_LINKED_FIRM_TOWN )
@@ -3428,6 +3434,12 @@ void Town::setup_link(int reload)
 
 		if( (world.get_loc(townPtr->center_x, townPtr->center_y)->is_plateau()==1)
 			 != (world.get_loc(center_x, center_y)->is_plateau()==1) )
+		{
+			continue;
+		}
+
+		if( world.get_loc(townPtr->center_x, townPtr->center_y)->region_id
+			!= world.get_loc(center_x, center_y)->region_id )
 		{
 			continue;
 		}
