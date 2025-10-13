@@ -96,6 +96,8 @@ void Battle::run(NewNationPara *mpGame, int mpPlayerCount)
 	//	info.init_random_seed(0);
 	// ####### end Gilbert 24/10 #######//
 
+	misc2.randomize();
+
 	//----------- save the current seed for generating map -----------//
 	#ifdef DEBUG2
 		File seedFile;
