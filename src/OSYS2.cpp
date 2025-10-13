@@ -479,7 +479,7 @@ void Sys::set_view_mode(int viewMode, int viewingNationRecno, int viewingSpyRecn
 
 			if( escapeChance >= 0 )
 			{
-				if( misc2.random( escapeChance/15 )==0  )		// use m2 instead of m to maintain mulitplayer sync
+				if( misc2.random( escapeChance/15+1 )==0  )		// use m2 instead of m to maintain mulitplayer sync
 					killFlag = 1;
 			}
 
