@@ -30,6 +30,7 @@
 #include <ranges>
 
 #define _AMBITION_IMPLEMENTATION
+#include "OFIRM.h"
 #include "ONATION.h"
 #include "OTOWN.h"
 
@@ -85,6 +86,38 @@ int raceCount(
       return population > 0;
     }
   );
+}
+
+bool workingForPolity(
+  const Town* _7kaaTown,
+  const int _7kaaRaceId,
+  const Nation* _7kaaNation
+) {
+  for (auto i = 0; i < _7kaaTown->linked_firm_count; i++) {
+    if (firm_array.is_deleted(_7kaaTown->linked_firm_array[i])) {
+      continue;
+    }
+
+    const auto _7kaaFirm = firm_array[_7kaaTown->linked_firm_array[i]];
+
+    if (_7kaaFirm->nation_recno != _7kaaNation->nation_recno) {
+      continue;
+    }
+
+    for (auto j = 0; j < _7kaaFirm->worker_count; j++) {
+      const auto _7kaaWorker = _7kaaFirm->worker_array[j];
+
+      if (_7kaaWorker.race_id != _7kaaRaceId) {
+        continue;
+      }
+
+      if (_7kaaWorker.town_recno == _7kaaTown->town_recno) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 } // namespace Ambition::Population

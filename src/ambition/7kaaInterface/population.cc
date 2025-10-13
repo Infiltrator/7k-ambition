@@ -30,6 +30,7 @@
 #include "OTOWN.h"
 
 #include "Ambition_config.hh"
+#include "Ambition_population.hh"
 
 
 namespace _7kaaAmbitionInterface::Population {
@@ -54,11 +55,14 @@ int calculateTargetResistance(
   const auto targetResistance
     = _7kaaTown->race_target_resistance_array[_7kaaRaceId - 1][nationIndex];
 
-  const auto peasants = _7kaaTown->jobless_race_pop_array[_7kaaRaceId - 1];
-  const auto totalPopulation = _7kaaTown->race_pop_array[_7kaaRaceId - 1];
+  const auto polityHasWorkers = Ambition::Population::workingForPolity(
+    _7kaaTown,
+    _7kaaRaceId,
+    _7kaaNation
+  );
 
   if ((targetResistance == -1 || targetResistance >= currentResistance)
-    && peasants < totalPopulation
+    && polityHasWorkers
   ) {
     return 0;
   }

@@ -25,6 +25,12 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed target resistance being shown incorrectly when you have workers in the independent town."),
+        },
+      },
+      {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Base the display of the building guide on the Help setting.  Not shown when set to None; only the grid lines when set to Brief; and both highlighting and grid lines when set to Detailed."),

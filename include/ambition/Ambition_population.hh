@@ -40,4 +40,10 @@ int raceCount(
   const Town* _7kaaTown
 );
 
+bool workingForPolity(
+  const Town* _7kaaTown,
+  const int _7kaaRaceId,
+  const Nation* _7kaaNation
+);
+
 } // namespace Ambition::Population
