@@ -37,6 +37,7 @@
 #include "OF_WAR.h"
 #include "OFIRM.h"
 #include "OFONT.h"
+#include "OHELP.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
@@ -509,6 +510,10 @@ void buildMarkerGridLines(
     return;
   }
 
+  if (config.help_mode < BRIEF_HELP) {
+    return;
+  }
+
   const auto buildMarker = Ambition::UserInterface::Rectangle {
     .start = {
       .left = left,
@@ -532,6 +537,10 @@ void buildModeHighlighting(
   const short maximum7kaaY
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (config.help_mode < DETAIL_HELP) {
     return;
   }
 
