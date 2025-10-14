@@ -21,6 +21,13 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_ADDED),
         .items = {
           _("Automatically detect the language on Windows."),
+          _("Show the average target resistance of independent towns on the information panel when you have workers."),
+        },
+      },
+      {
+        .heading = _(HEADING_FIXED),
+        .items = {
+          _("Fixed target resistance being shown incorrectly when you have workers in the independent town."),
         },
       },
       {

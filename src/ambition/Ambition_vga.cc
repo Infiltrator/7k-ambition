@@ -986,7 +986,11 @@ bool drawBuildingInformationPanel(
     const auto targetLevel
       = _7kaaTown->nation_recno
       ? _7kaaTown->average_target_loyalty()
-      : _7kaaTown->average_target_resistance(nation_array.player_recno);
+      : static_cast<int>(
+        std::floor(
+          Population::averageTargetResistance(_7kaaTown, nation_array.player_ptr)
+        )
+      );
 
     if (targetLevel == currentLevel
       || (!_7kaaTown->nation_recno && targetLevel >= currentLevel)
