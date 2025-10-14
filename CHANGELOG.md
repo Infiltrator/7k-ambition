@@ -14,6 +14,12 @@ speaking, considered to be the player's experience.
 
 - Automatically detect the language on Windows.
 
+### Changed
+
+- Base the display of the building guide on the Help setting.  Not shown when
+  set to None; only the grid lines when set to Brief; and both highlighting and
+  grid lines when set to Detailed.
+
 
 ## [3.2.6] — 2025-10-08
 
