@@ -26,6 +26,7 @@
 
 #include <GAMEDEF.h>
 #include <stdint.h>
+#include <string>
 
 struct ConfigAdvGF;
 class File;
@@ -78,7 +79,7 @@ public:
 	int			monster_attack_divisor;
 
 	// mp settings
-	char*			mp_service_addr;
+	std::string		mp_service_addr;
 
 	// nation settings
 	char			nation_ai_defeat_when_no_towns;

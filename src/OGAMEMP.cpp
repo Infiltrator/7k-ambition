@@ -593,7 +593,7 @@ void Game::multi_player_game(int lobbied, char *game_host)
 
 	if (service_mode == 3 || service_mode == 4)
 	{
-		mp_obj.set_service_provider(config_adv.mp_service_addr);
+		mp_obj.set_service_provider(config_adv.mp_service_addr.c_str());
 	}
 
 	if (service_mode == 4)
@@ -852,7 +852,7 @@ void Game::load_mp_game(char *fileName, int lobbied, char *game_host)
 
 	if (service_mode == 3 || service_mode == 4)
 	{
-		mp_obj.set_service_provider(config_adv.mp_service_addr);
+		mp_obj.set_service_provider(config_adv.mp_service_addr.c_str());
 	}
 
 	if (service_mode == 4)
