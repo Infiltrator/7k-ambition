@@ -435,7 +435,8 @@ int printWarMachineInformation(
 );
 
 void queueCount(
-  const FirmHarbor* _7kaaHarbour
+  const FirmHarbor* _7kaaHarbour,
+  const Button3D& button
 );
 void queueCount(
   const FirmWar* _7kaaWarFactory

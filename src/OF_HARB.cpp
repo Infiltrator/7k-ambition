@@ -54,13 +54,13 @@
 
 #define SHIP_BROWSE_X1 INFO_X1
 #define SHIP_BROWSE_X2 INFO_X2
-#define SHIP_BROWSE_Y1 (INFO_Y1+54 + (Ambition::Config::enhancementsAvailable() ? 22 : 0))
-#define SHIP_BROWSE_Y2 (SHIP_BROWSE_Y1+100)
+#define SHIP_BROWSE_Y1 (INFO_Y1+54 + (Ambition::Config::enhancementsAvailable() ? 19 : 0))
+#define SHIP_BROWSE_Y2 (SHIP_BROWSE_Y1+100 - (Ambition::Config::enhancementsAvailable() ? 8 : 0))
 
 #define SHIP_DET_X1 INFO_X1
 #define SHIP_DET_X2 INFO_X2
-#define SHIP_DET_Y1 (SHIP_BROWSE_Y2+5)
-#define SHIP_DET_Y2 (SHIP_DET_Y1+92)
+#define SHIP_DET_Y1 (SHIP_BROWSE_Y2+5 - (Ambition::Config::enhancementsAvailable() ? 3 : 0))
+#define SHIP_DET_Y2 (SHIP_DET_Y1+92 - (Ambition::Config::enhancementsAvailable() ? 12 : 0))
 
 //---------- Define constant ------------//
 
@@ -353,7 +353,7 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_BUILD), button_build);
 	}
 
-	Ambition::Draw::queueCount(this);
+	Ambition::Draw::queueCount(this, button_build);
 
 	if( ship_count > 0 )
 		button_sail.enable();
@@ -485,7 +485,7 @@ void FirmHarbor::put_det(int refreshFlag)
 		button_mode.paint(ship_disp_mode);
 
 		if( ship_disp_mode == SHIP_MENU_UNIT )
-			disp_ship_units(shipUnitPtr, SHIP_DET_Y1+22, refreshFlag);
+			disp_ship_units(shipUnitPtr, SHIP_DET_Y1+22 - (Ambition::Config::enhancementsAvailable() ? 4 : 0), refreshFlag);
 		else
 			disp_ship_goods(shipUnitPtr, SHIP_DET_Y1+22, refreshFlag);
 	}
