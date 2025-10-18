@@ -1034,14 +1034,14 @@ bool initialiseSnowLayer(
 }
 
 void harbourShipCount(
-  const short count,
+  const FirmHarbor* _7kaaHarbour,
   const int refreshFlag
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
   }
 
-  Ambition::printHarbourShipCount(count, refreshFlag);
+  Ambition::printHarbourShipCount(_7kaaHarbour, refreshFlag);
 }
 
 void innGuestCount(

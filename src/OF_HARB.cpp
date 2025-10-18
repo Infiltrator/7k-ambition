@@ -315,7 +315,7 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 
 	if( refreshFlag == INFO_REPAINT )
 	{
-		Ambition::Draw::harbourShipCount(ship_count, refreshFlag);
+		Ambition::Draw::harbourShipCount(this, refreshFlag);
 
 		browse_ship.init( SHIP_BROWSE_X1, SHIP_BROWSE_Y1, SHIP_BROWSE_X2, SHIP_BROWSE_Y2,
 								0, 25, ship_count, put_ship_rec );

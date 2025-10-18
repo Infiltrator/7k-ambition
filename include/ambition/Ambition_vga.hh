@@ -29,6 +29,7 @@
 
 class Button3D;
 class Firm;
+class FirmHarbor;
 class Font;
 class InnUnit;
 class Nation;
@@ -332,7 +333,7 @@ void printBribeEstimate(
 );
 
 void printHarbourShipCount(
-  const short count,
+  const FirmHarbor* _7kaaHarbour,
   const int refreshFlag
 );
 

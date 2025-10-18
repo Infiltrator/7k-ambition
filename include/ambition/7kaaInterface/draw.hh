@@ -305,7 +305,7 @@ bool initialiseSnowLayer(
 );
 
 void harbourShipCount(
-  const short count,
+  const FirmHarbor* _7kaaHarbour,
   const int refreshFlag
 );
 
