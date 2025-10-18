@@ -837,7 +837,11 @@ bool drawBuildingInformationPanel(
       const auto _7kaaHarbour = dynamic_cast<const FirmHarbor*>(_7kaaFirm);
       assert(_7kaaHarbour);
       lines.push_back(
-        format(_("Ships: %d/%d"), _7kaaHarbour->ship_count, MAX_SHIP_IN_HARBOR)
+        format(
+          _("Ships: %d/%d"),
+          _7kaaHarbour->ship_count + (_7kaaHarbour->build_unit_id ? 1 : 0),
+          MAX_SHIP_IN_HARBOR
+        )
       );
       break;
     }
@@ -2074,7 +2078,7 @@ void printBribeEstimate(
 }
 
 void printHarbourShipCount(
-  const short count,
+  const FirmHarbor* _7kaaHarbour,
   const int refreshFlag
 ) {
   const auto panel = UserInterface::INFO_PANE_CONTENTS.inner(0, 50).internal(
@@ -2093,7 +2097,11 @@ void printHarbourShipCount(
     field.start.top,
     _("Ships"),
     field.start.left + 100,
-    format("%d/%d", count, MAX_SHIP_IN_HARBOR).c_str(),
+    format(
+      "%d/%d",
+      _7kaaHarbour->ship_count + (_7kaaHarbour->build_unit_id ? 1 : 0),
+      MAX_SHIP_IN_HARBOR
+    ).c_str(),
     field.end.left,
     refreshFlag
   );
