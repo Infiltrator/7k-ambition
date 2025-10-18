@@ -1400,7 +1400,8 @@ int printWarMachineInformation(
 }
 
 void queueCount(
-  const FirmHarbor* _7kaaHarbour
+  const FirmHarbor* _7kaaHarbour,
+  const Button3D& button
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
@@ -1420,8 +1421,8 @@ void queueCount(
   Ambition::drawButtonOverlay(
     Ambition::UserInterface::Rectangle::fromPoint(
       {
-        .left = 585,
-        .top = 520,
+        .left = button.x1,
+        .top = button.y1,
       },
       Ambition::UserInterface::BUTTON_SIZE
     ),

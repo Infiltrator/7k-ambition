@@ -20,6 +20,7 @@ speaking, considered to be the player's experience.
 
 - Fixed target resistance being shown incorrectly when you have workers in the
   independent town.
+- Fixed the Harbour production count not being placed properly on the button.
 
 ### Changed
 

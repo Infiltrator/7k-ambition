@@ -353,7 +353,7 @@ void FirmHarbor::disp_main_menu(int refreshFlag)
 		Ambition::Draw::buttonKeybind(GETKEY(KEYEVENT_FIRM_BUILD), button_build);
 	}
 
-	Ambition::Draw::queueCount(this);
+	Ambition::Draw::queueCount(this, button_build);
 
 	if( ship_count > 0 )
 		button_sail.enable();
