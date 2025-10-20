@@ -1,6 +1,12 @@
 # List of source files which contain translatable strings.
+src/ambition/7kaaInterface/diplomacy.cc
+src/ambition/7kaaInterface/score.cc
 src/ambition/Ambition_config.cc
+src/ambition/Ambition_control.cc
+src/ambition/Ambition_news.cc
+src/ambition/Ambition_serialisation.cc
 src/ambition/Ambition_vga.cc
+src/ambition/version_details.cc
 src/AM.cpp
 src/CmdLine.cpp
 src/ConfigAdv.cpp
@@ -27,6 +33,7 @@ src/OGAMEND.cpp
 src/OGAMHALL.cpp
 src/OGAMMAIN.cpp
 src/OGAMSCE2.cpp
+src/OGFILEA.cpp
 src/OGFILE.cpp
 src/OHELP.cpp
 src/OINFO.cpp
@@ -52,8 +59,6 @@ src/OSPY.cpp
 src/OSPYA.cpp
 src/OSYS.cpp
 src/OSYS2.cpp
-src/OSaveGameArray.cpp
-src/OSaveGameProvider.cpp
 src/OTALKENG.cpp
 src/OTALKMSG.cpp
 src/OTALKRES.cpp
