@@ -30,6 +30,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed target resistance being shown incorrectly when you have workers in the independent town."),
           _("Fixed the buttons of the Harbour interface overlapping with the production progress bar."),
           _("Fixed the Harbour production count not being placed properly on the button."),
+          _("Fixed mines built outside of natural resources showing \"null\" on their information panels."),
         },
       },
       {

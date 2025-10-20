@@ -758,13 +758,17 @@ bool drawBuildingInformationPanel(
     case FIRM_MINE: {
       const auto _7kaaMine = dynamic_cast<const FirmMine*>(_7kaaFirm);
       assert(_7kaaMine);
-      lines.push_back(
-        format(
-          "%s: %'.0f",
-          RESOURCE_NAMES[_7kaaMine->raw_id - 1],
-          std::floor(_7kaaMine->reserve_qty)
-        )
-      );
+      if (_7kaaMine->raw_id > 0) {
+        lines.push_back(
+          format(
+            "%s: %'.0f",
+            RESOURCE_NAMES[_7kaaMine->raw_id - 1],
+            std::floor(_7kaaMine->reserve_qty)
+          )
+        );
+      } else {
+        lines.push_back(_("No res"));
+      }
       break;
     }
 
