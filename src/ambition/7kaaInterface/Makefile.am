@@ -7,6 +7,7 @@ lib7kaa_ambition_interface_a_SOURCES = \
   draw.cc \
   inn.cc \
   input.cc \
+  menu.cc \
   polity.cc \
   population.cc \
   score.cc \
