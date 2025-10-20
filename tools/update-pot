@@ -18,6 +18,7 @@ fi
 
 ${XGETTEXT} --default-domain=${DOMAIN} --directory=${DIR} \
     --add-comments=TRANSLATORS: ${XGETTEXT_OPTIONS}  \
+    --from-code=UTF-8 \
     --files-from=${POTFILES} --output ${PODIR}/${DOMAIN}.src.pot
 
 ${GENPOT} ${DATADIR} | msguniq > ${PODIR}/${DOMAIN}.res.pot
