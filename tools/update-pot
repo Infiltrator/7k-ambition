@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 XGETTEXT=xgettext
 DOMAIN=7k-ambition
 DIR=$(pwd)
