@@ -14,7 +14,7 @@ XGETTEXT_OPTIONS = --keyword=_ --keyword=N_
 # $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
 # package.  (Note that the msgstr strings, extracted from the package's
 # sources, belong to the copyright holder of the package.)
-COPYRIGHT_HOLDER = Enlight Software Ltd.
+COPYRIGHT_HOLDER = Tim Sviridov
 
 # This tells whether or not to prepend "GNU " prefix to the package
 # name that gets inserted into the header of the $(DOMAIN).pot file.
@@ -37,7 +37,7 @@ PACKAGE_GNU = no
 # It can be your email address, or a mailing list address where translators
 # can write to without being subscribed, or the URL of a web page through
 # which the translators can contact you.
-MSGID_BUGS_ADDRESS = the3dfxdude@gmail.com
+MSGID_BUGS_ADDRESS = seven-kingdoms-ambition-bugs@lists.sourceforge.net
 
 # This is the list of locale categories, beyond LC_MESSAGES, for which the
 # message catalogs shall be used.  It is usually empty.
@@ -65,7 +65,7 @@ MSGINIT_OPTIONS =
 # has changed.  Possible values are "yes" and "no".  Set this to no if
 # the POT file is checked in the repository and the version control
 # program ignores timestamps.
-PO_DEPENDS_ON_POT = no
+PO_DEPENDS_ON_POT = yes
 
 # This tells whether or not to forcibly update $(DOMAIN).pot and
 # regenerate PO files on "make dist".  Possible values are "yes" and
