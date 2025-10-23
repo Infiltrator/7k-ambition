@@ -536,7 +536,7 @@ msgstr ""
 
 #: src/ambition/Ambition_vga.cc:2183 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
-msgstr "Стоимость юнита"
+msgstr "За каждое"
 
 #: src/ambition/Ambition_vga.cc:2190 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
 msgid "Yearly Expense"
@@ -3487,11 +3487,11 @@ msgstr "Королевские строения зачищены"
 
 #: src/OGAMEND.cpp:442
 msgid "Enemy Civilians Collaterally Damaged"
-msgstr "Гражданские противника понесли ущерб"
+msgstr "Претерпело урон неприятельских людей"
 
 #: src/OGAMEND.cpp:443
 msgid "King's Civilians Cruelly Murdered"
-msgstr "Граждане королевства были жестоко убиты"
+msgstr "Безжалостно убиено людей короля"
 
 #: src/OGAMEND.cpp:476 src/OR_NAT.cpp:135 src/OR_RANK.cpp:90
 msgid "Kingdom"
@@ -3762,7 +3762,7 @@ msgstr "Кукулкан"
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:538 src/OHELP.cpp:586
 msgid "Mind Turner"
-msgstr "Средний Тернер"
+msgstr "Изменитель Сознания"
 
 # data/resource/std/00005-UNIT.dbf
 #. TRANSLATORS: Unit icon help popup with rank title. In the original game, fryhtans used the human ranks in the help message. Use General or Ordo whichever makes sense.
@@ -4261,7 +4261,7 @@ msgstr "%s унаследовал трон в качестве вашего но
 #: src/ONEWSENG.cpp:472
 #, c-format
 msgid "%s has ascended the throne as the new King of %s's Kingdom%s."
-msgstr "%s унаследовал трон в качестве нового короля %s%s."
+msgstr "%s унаследовал трон в качестве нового короля королевства %s%s."
 
 #. TRANSLATORS: Your <Firm> near <Town> has been destroyed by <King>'s Kingdom<Color>.
 #: src/ONEWSENG.cpp:481
@@ -5692,7 +5692,7 @@ msgstr "%s%s сдался и покинул игру."
 #: src/ONEWSENG.cpp:1692
 #, c-format
 msgid "%s's Kingdom%s has quit the game."
-msgstr "%s%s покинул игру."
+msgstr "Королевство %s%s покинуло игру."
 
 #. TRANSLATORS: The current game has been saved to <File>.
 #: src/ONEWSENG.cpp:1710
@@ -5704,7 +5704,7 @@ msgstr "Данная игра была сохранена в %s."
 #: src/ONEWSENG.cpp:1728
 #, c-format
 msgid "The connection with %s's Kingdom%s has been lost."
-msgstr "Соединение с %s%s было потеряно."
+msgstr "Соединение с королевством %s%s было потеряно."
 
 #. TRANSLATORS: Your <Firm> has been built.
 #: src/ONEWSENG.cpp:1736
@@ -6061,11 +6061,11 @@ msgstr "Сумма сделки"
 
 #: src/OR_NAT.cpp:511
 msgid "Your Food"
-msgstr "Ваша еда"
+msgstr "Запас еды"
 
 #: src/OR_NAT.cpp:516
 msgid "Your Treasure"
-msgstr "Ваши сокровища"
+msgstr "Сокровища"
 
 #: src/OR_NAT.cpp:518
 msgid "Your Continuous Peace Time"
@@ -6105,7 +6105,7 @@ msgstr "Сокровища королевства %s"
 #: src/OR_NAT.cpp:568
 #, c-format
 msgid "%s's Kingdom's Food"
-msgstr "Еда королевства %s"
+msgstr "Запаса еды королевства %s"
 
 #. TRANSLATORS: <King>'s Kingdom's Diplomatic Status with Other Kingdoms:
 #: src/OR_NAT.cpp:584
@@ -6509,7 +6509,7 @@ msgstr "Режим непрозрачного отчёта"
 
 #: src/OSYS.cpp:1700
 msgid "Transparent report mode"
-msgstr "Режим прозрачного отчета"
+msgstr "Режим прозрачного отчёта"
 
 #: src/OSYS.cpp:1906
 msgid ""
@@ -12863,7 +12863,7 @@ msgstr ""
 
 # data/resource/help.res:397
 msgid "Summon Tornadoes"
-msgstr "Призыв торнадо"
+msgstr "Призывать торнадо"
 
 # data/resource/help.res:398
 #, fuzzy
@@ -12872,8 +12872,8 @@ msgid ""
 "Place this square over your target and Click again. Repeat until Thor's "
 "power has been depleted. "
 msgstr ""
-"Когда ты кликаешь на эту плашку, твой курсор изменится на маленький квадрат. "
-"Поместите этот квадрат поверх своей цели и щёлкните еще раз. Повторяйте до "
+"Когда Вы кликните на эту плашку, Ваш курсор изменится на маленький квадрат. "
+"Поместите этот квадрат поверх своей цели и щёлкните ещё раз. Повторяйте до "
 "тех пор, пока сила Тора не будет исчерпана. "
 
 # data/RESOURCE/HELP.RES:401
