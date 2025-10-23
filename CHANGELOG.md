@@ -25,6 +25,8 @@ speaking, considered to be the player's experience.
 - Fixed the Harbour production count not being placed properly on the button.
 - Fixed mines built outside of natural resources showing "null" on their
   information panels.
+- Fixed not being able to play replays (R key) because the NONAME.RPL file was
+  being saved to the wrong place.
 
 ### Changed
 

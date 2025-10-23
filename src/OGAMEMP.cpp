@@ -4201,7 +4201,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 		}
 		else
 		{
-			FilePath full_path(Ambition::Config::configDirectoryPath().c_str());
+			FilePath full_path(Ambition::Config::saveDirectoryPath(".RPL").c_str());
 			full_path += "NONAME.RPL";
 			if( !full_path.error_flag )
 				remote.replay.open_write(full_path, nationPara, playerCount);
