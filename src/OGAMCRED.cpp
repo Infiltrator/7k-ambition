@@ -275,6 +275,7 @@ static void disp_credits_6()
 		"Unavowed",
 		"P. J. McDermott",
 		"DieselMachine",
+		"Jan Miedema",
 		"Infiltrator",
 		NULL
 	};
