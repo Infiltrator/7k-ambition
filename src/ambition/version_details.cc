@@ -32,6 +32,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .items = {
           _("Fixed Windows showing the Russian translation completely garbled."),
           _("Fixed Catalan translation not working for countries other than Spain."),
+          _("Fixed some typos and minor errors in the Russian translation."),
           _("Fixed issue with \"Building Complete\" (and other) sounds not being audible when they are far away from the current screen location because they became too quiet."),
           _("Fixed the Start and Return buttons not animating on the Mode Selection screen."),
           _("Fixed the scrollbar thumbs appearing to overlap the scroll buttons."),

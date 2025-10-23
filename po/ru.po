@@ -2676,7 +2676,7 @@ msgstr "В командной строке имеется несколько п�
 #: src/OGAMEMP.cpp:5203 src/OGAMEMP.cpp:5206 src/OGAMEMP.cpp:5209
 #: src/OGAMEMP.cpp:5257
 msgid "Ok"
-msgstr "Ok"
+msgstr ""
 
 #: src/OBOX.cpp:213 src/OBOX.cpp:267 src/OFIRMIF3.cpp:250 src/OF_RESE.cpp:291
 #: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:2092
@@ -3091,9 +3091,8 @@ msgid "Holgh Lair"
 msgstr "Логово Холгей"
 
 #: src/OF_MONS.cpp:219
-#, fuzzy
 msgid "Ordos"
-msgstr "Ордо Икей"
+msgstr "Орды"
 
 #: src/OGAMEMP.cpp:533
 msgid "Create multiplayer session"
@@ -5158,7 +5157,7 @@ msgstr "Ваши ученые завершили исследование Дик
 #: src/ONEWSENG.cpp:1228
 #, c-format
 msgid "Your scientists have finished their Ballista Mark %s research."
-msgstr "Ваши ученые завершили исследование Балисты %s уровня."
+msgstr "Ваши ученые завершили исследование Баллисты %s уровня."
 
 #: src/ONEWSENG.cpp:1229
 #, c-format
@@ -5196,7 +5195,7 @@ msgstr "Ваши ученые завершили исследование Дик
 
 #: src/ONEWSENG.cpp:1240
 msgid "Your scientists have finished their Ballista research."
-msgstr "Ваши ученые завершили исследование Балисты."
+msgstr "Ваши ученые завершили исследование Баллисты."
 
 #: src/ONEWSENG.cpp:1241
 msgid "Your scientists have finished their Cannon research."
@@ -5465,8 +5464,8 @@ msgstr[2] "%d ваших юнитов были ранены во время зе
 msgid "%d of your villagers has been killed in an earthquake."
 msgid_plural "%d of your villagers have been killed in an earthquake."
 msgstr[0] "%d ваш поселенец погиб во время землетрясения."
-msgstr[1] "%d ваших поселенца погибло во время землетрясения ."
-msgstr[2] "%d ваших поселенцев погибли во время землетрясения ."
+msgstr[1] "%d ваших поселенца погибли во время землетрясения."
+msgstr[2] "%d ваших поселенцев погибли во время землетрясения."
 
 #. TRANSLATORS: Part of "<Number> of your buildings has/have been damaged and <Number referring to buildings> destroyed in an earthquake."
 #: src/ONEWSENG.cpp:1488
@@ -5539,14 +5538,15 @@ msgstr[2] "и %d месяцев осталсяна достижение игро
 msgid ""
 "A Catapult %s of yours has broken down due to the lack of maintenance funds."
 msgstr ""
-"Ваш Катапульта %s вышел из строя в связи с нехваткой средств на обслуживание."
+"Ваша Катапульта %s вышла из строя в связи с нехваткой средств на "
+"обслуживание."
 
 #: src/ONEWSENG.cpp:1567
 #, c-format
 msgid ""
 "A Ballista %s of yours has broken down due to the lack of maintenance funds."
 msgstr ""
-"Ваш Баллиста %s вышел из строя в связи с нехваткой средств на обслуживание."
+"Ваша Баллиста %s вышла из строя в связи с нехваткой средств на обслуживание."
 
 #: src/ONEWSENG.cpp:1568
 #, c-format
@@ -5560,7 +5560,7 @@ msgstr ""
 msgid ""
 "A Cannon %s of yours has broken down due to the lack of maintenance funds."
 msgstr ""
-"Ваш Пушка %s вышел из строя в связи с нехваткой средств на обслуживание."
+"Ваша Пушка %s вышла из строя в связи с нехваткой средств на обслуживание."
 
 #: src/ONEWSENG.cpp:1570
 #, c-format
@@ -5585,7 +5585,7 @@ msgstr ""
 msgid ""
 "A Caravel of yours has broken down due to the lack of maintenance funds."
 msgstr ""
-"Ваш Каравелла вышел из строя в связи с нехваткой средств на обслуживание."
+"Ваша Каравелла вышла из строя в связи с нехваткой средств на обслуживание."
 
 #: src/ONEWSENG.cpp:1575
 msgid ""
@@ -6026,7 +6026,7 @@ msgstr "Журнал дипломатии"
 
 #: src/OR_NAT.cpp:72
 msgid "Debug"
-msgstr "Debug"
+msgstr ""
 
 #: src/OR_NAT.cpp:79
 msgid "Send to the selected kingdom"
@@ -6121,7 +6121,7 @@ msgstr "на %s :"
 
 #: src/OR_NAT.cpp:913
 msgid "Please enter your chat message and press <Enter> to send."
-msgstr "Веедите ваше сообщение в чат и нажмите <Enter> для отправки."
+msgstr "Введите ваше сообщение в чат и нажмите <Enter> для отправки."
 
 #. TRANSLATORS: GOAL: Achieve One of the Following Before <Date>:
 #: src/OR_RANK.cpp:251
@@ -6178,31 +6178,31 @@ msgstr "Общее игровое время %s"
 #. TRANSLATORS: Ordinal number for ranking players
 #: src/OR_RANK.cpp:483
 msgid "1st"
-msgstr "1-ый"
+msgstr "1-ое"
 
 #: src/OR_RANK.cpp:484
 msgid "2nd"
-msgstr "2-ой"
+msgstr "2-ое"
 
 #: src/OR_RANK.cpp:485
 msgid "3rd"
-msgstr "3-ий"
+msgstr "3-ье"
 
 #: src/OR_RANK.cpp:486
 msgid "4th"
-msgstr "4-ый"
+msgstr "4-ое"
 
 #: src/OR_RANK.cpp:487
 msgid "5th"
-msgstr "5-ый"
+msgstr "5-ое"
 
 #: src/OR_RANK.cpp:488
 msgid "6th"
-msgstr "6-ой"
+msgstr "6-ое"
 
 #: src/OR_RANK.cpp:489
 msgid "7th"
-msgstr "7-ой"
+msgstr "7-ое"
 
 #: src/OR_SPY.cpp:74
 msgid "Spy Name"
@@ -6480,7 +6480,7 @@ msgstr "Торговля"
 # data/resource/help.res:26
 #: src/OSPYA.cpp:43
 msgid "Espionage"
-msgstr "Ппионаж"
+msgstr "Шпионаж"
 
 #: src/OSPYA.cpp:341
 msgid "Steal which type of secrets?"
