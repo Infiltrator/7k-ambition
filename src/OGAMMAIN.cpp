@@ -387,12 +387,10 @@ void Game::disp_version()
 	str += Ambition::Config::versionString().c_str();
 
 	str += " ";
-	str += _("compatible with 7kfans' 7kaa");
-	str += " ";
+	str += _("compatible with 7kfans' 7kaa version");
 
 	//----------- Display 7kaa version string. --------//
 
-	str += _("Version");
 	str += " ";
 	str += GAME_VERSION_STR;
 

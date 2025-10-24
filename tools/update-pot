@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 XGETTEXT=xgettext
 DOMAIN=7k-ambition
 DIR=$(pwd)
@@ -16,7 +18,12 @@ fi
 
 ${XGETTEXT} --default-domain=${DOMAIN} --directory=${DIR} \
     --add-comments=TRANSLATORS: ${XGETTEXT_OPTIONS}  \
+    --from-code=UTF-8 \
     --files-from=${POTFILES} --output ${PODIR}/${DOMAIN}.src.pot
+
+sed --in-place \
+  "s#src/ambition/version_details.cc:[0-9]\+#src/ambition/version_details.cc#g" \
+  ${PODIR}/${DOMAIN}.src.pot
 
 ${GENPOT} ${DATADIR} | msguniq > ${PODIR}/${DOMAIN}.res.pot
 
