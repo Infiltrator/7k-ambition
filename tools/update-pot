@@ -21,6 +21,10 @@ ${XGETTEXT} --default-domain=${DOMAIN} --directory=${DIR} \
     --from-code=UTF-8 \
     --files-from=${POTFILES} --output ${PODIR}/${DOMAIN}.src.pot
 
+sed --in-place \
+  "s#src/ambition/version_details.cc:[0-9]\+#src/ambition/version_details.cc#g" \
+  ${PODIR}/${DOMAIN}.src.pot
+
 ${GENPOT} ${DATADIR} | msguniq > ${PODIR}/${DOMAIN}.res.pot
 
 msgcat ${PODIR}/7k-ambition.src.pot ${PODIR}/7k-ambition.res.pot > ${PODIR}/7k-ambition.pot
