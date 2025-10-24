@@ -21,6 +21,8 @@
 //Filename    : OREMOTE2.CPP
 //Description : Object Remote - part 2
 
+#include "ambition/7kaaInterface/control.hh"
+
 #define DEBUG_LOG_LOCAL 1
 #include <ALL.h>
 #include <OFONT.h>
@@ -404,6 +406,8 @@ void Remote::process_receive_queue()
 		{
 			connectivity_mode = MODE_REPLAY_END;
 			sys.signal_exit_flag = 2;
+
+			Ambition::Control::finishReplay();
 		}
 	}
 	else

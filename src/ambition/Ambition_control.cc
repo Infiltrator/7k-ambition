@@ -99,6 +99,13 @@ namespace Control {
 constexpr auto LAST_FEEDBACK_REQUEST_FILENAME = "last-feedback-request";
 
 
+void finishReplay(
+) {
+  sys.signal_exit_flag = 0;
+  ::config.frame_speed = 0;
+  box.msg(_("End of replay"));
+}
+
 void migrateLocalDataDirectories(
 ) {
   constexpr std::array CONFIG_FILES = {

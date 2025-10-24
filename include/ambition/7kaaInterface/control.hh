@@ -40,6 +40,9 @@ void delayFrame(
 void displayNews(
 );
 
+void finishReplay(
+);
+
 /**
  * Migrate files from the everything-in-one config directory to the separate
  * ones.

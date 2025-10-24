@@ -35,6 +35,8 @@ speaking, considered to be the player's experience.
   grid lines when set to Detailed.
 - Changed the Harbour ship count to include the currently-building ship, as it
   blocks other ships from entering, so counts towards the limit.
+- Pause replays at the end instead of immediately exiting to the menu without
+  warning.
 
 
 ## [3.2.6] — 2025-10-08
