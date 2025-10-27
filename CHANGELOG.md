@@ -15,6 +15,12 @@ speaking, considered to be the player's experience.
 - Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg
   up/down keys to the tutorial selection list.
 
+### Fixed
+
+- Fixed non-English tutorial descriptions getting cut off at the bottom, by
+  adding a scroll bar and buttons, so that all the text can be scrolled and
+  read.
+
 
 ## [3.2.7] — 2025-10-24
 

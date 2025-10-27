@@ -69,11 +69,11 @@ enum { BROWSE_X1 = 30,
 
 enum { TEXT_AREA_X1 = 40,
 		 TEXT_AREA_Y1 = 198,
-		 TEXT_AREA_X2 = 768,
 		 TEXT_AREA_Y2 = 260,
-		 TEXT_AREA_WIDTH = TEXT_AREA_X2 - TEXT_AREA_X1 + 1,
 		 TEXT_AREA_HEIGHT = TEXT_AREA_Y2 - TEXT_AREA_Y1 + 1,
 };
+#define TEXT_AREA_X2 (Ambition::Config::enhancementsAvailable() ? 745 : 768)
+#define TEXT_AREA_WIDTH (TEXT_AREA_X2 - TEXT_AREA_X1 + 1)
 
 enum { TEXT_OFFSET_X = 11,
 		 TEXT_OFFSET_Y = 9 };
@@ -86,6 +86,7 @@ enum { TEXT_OFFSET_X = 11,
 #define TUOPTION_TEXT_AREA     0x00020000
 #define TUOPTION_PIC_AREA      0x00040000
 #define TUOPTION_SCROLL        0x00080000
+constexpr auto REFRESH_DESCRIPTION_SCROLL_BAR = 1 << 20;
 #define TUOPTION_ALL           0xffffffff
 
 
@@ -180,6 +181,46 @@ int Tutor::select_tutor(int actionMode)
 		MAX_BROWSE_DISP_REC, disp_scroll_bar_func);
 	scrollBar.set(minRecno, tutor_count, minRecno);
 
+	const auto DESCRIPTION_SCROLL_BAR_LEFT = menuX1 + SCROLL_X1;
+	const auto DESCRIPTION_SCROLL_BAR_TOP = menuY1 + TEXT_AREA_Y1 + 4;
+	const auto DESCRIPTION_SCROLL_BAR_RIGHT = menuX1 + SCROLL_X2;
+	const auto DESCRIPTION_SCROLL_BAR_BOTTOM = menuY1 + TEXT_AREA_Y2 - 14;
+	const auto DESCRIPTION_SCROLL_BAR_AREA
+		= (DESCRIPTION_SCROLL_BAR_RIGHT - DESCRIPTION_SCROLL_BAR_LEFT + 1)
+		* (DESCRIPTION_SCROLL_BAR_BOTTOM - DESCRIPTION_SCROLL_BAR_TOP + 1);
+	constexpr auto TEXT_LINE_SPACE = 4;
+	const auto ESTIMATED_LINES_IN_TEXT_AREA
+		= (TEXT_AREA_Y2 - TEXT_AREA_Y1 + 1)
+		/ (font_std.font_height + TEXT_LINE_SPACE);
+
+	Button3D descriptionScrollUp, descriptionScrollDown;
+	descriptionScrollUp.create(
+		menuX1 + DESCRIPTION_SCROLL_BAR_LEFT,
+		menuY1 + DESCRIPTION_SCROLL_BAR_TOP - 17,
+		"SV-UP-U",
+		"SV-UP-D",
+		1,
+		0
+	);
+	descriptionScrollDown.create(
+		menuX1 + DESCRIPTION_SCROLL_BAR_LEFT,
+		menuY1 + DESCRIPTION_SCROLL_BAR_BOTTOM + 1,
+		"SV-DW-U",
+		"SV-DW-D",
+		1,
+		0
+	);
+
+	SlideVBar descriptionScrollBar;
+	descriptionScrollBar.init_scroll(
+		menuX1 + DESCRIPTION_SCROLL_BAR_LEFT,
+		menuY1 + DESCRIPTION_SCROLL_BAR_TOP,
+		menuX1 + DESCRIPTION_SCROLL_BAR_RIGHT,
+		menuY1 + DESCRIPTION_SCROLL_BAR_BOTTOM,
+		ESTIMATED_LINES_IN_TEXT_AREA,
+		disp_scroll_bar_func
+	);
+
 	// try to centre the selected record on the browser
 //	int newBrowseTopRecno = browseRecno - MAX_BROWSE_DISP_REC/2;
 //	if( newBrowseTopRecno > scrollBar.max_view_recno() )
@@ -193,6 +234,7 @@ int Tutor::select_tutor(int actionMode)
 	Blob browseArea[MAX_BROWSE_DISP_REC];
 	Blob scrollArea;
 	Blob textArea;
+	Blob descriptionScrollArea;
 #endif
 
    auto firstCycle = true;
@@ -238,11 +280,31 @@ int Tutor::select_tutor(int actionMode)
 				textArea.resize(2*sizeof(short)+TEXT_AREA_WIDTH*TEXT_AREA_HEIGHT);
 				vga_front.read_bitmap(menuX1+TEXT_AREA_X1, menuY1+TEXT_AREA_Y1,
 					menuX1+TEXT_AREA_X2, menuY1+TEXT_AREA_Y2, textArea.ptr);
+
+				if (Ambition::Config::enhancementsAvailable()) {
+					constexpr auto BITMAP_HEADER_SIZE = sizeof(unsigned char) * 4;
+					descriptionScrollArea.resize(
+						BITMAP_HEADER_SIZE
+						+ sizeof(short) * DESCRIPTION_SCROLL_BAR_AREA
+					);
+					vga_front.read_bitmap(
+						menuX1 + DESCRIPTION_SCROLL_BAR_LEFT,
+						menuY1 + DESCRIPTION_SCROLL_BAR_TOP,
+						menuX1 + DESCRIPTION_SCROLL_BAR_RIGHT,
+						menuY1 + DESCRIPTION_SCROLL_BAR_BOTTOM,
+						descriptionScrollArea.ptr
+					);
+				}
 #endif
 				scrollUp.paint();
 				scrollDown.paint();
 				startButton.paint();
 				cancelButton.paint();
+
+				if (Ambition::Config::enhancementsAvailable()) {
+					descriptionScrollUp.paint();
+					descriptionScrollDown.paint();
+				}
 
 				mouse.show_area();
 			}
@@ -260,6 +322,13 @@ int Tutor::select_tutor(int actionMode)
 					// copy from ?
 #endif
 				}
+
+				int displayedLineCount;
+				int totalLineCount;
+				font_std.count_line(menuX1 + TEXT_AREA_X1, menuY1 + TEXT_AREA_Y1, menuX1 + TEXT_AREA_X2, menuY1 + TEXT_AREA_Y2, _(get_intro(browseRecno)), TEXT_LINE_SPACE, displayedLineCount, totalLineCount);
+
+				descriptionScrollBar.set(1, totalLineCount, 1);
+				refreshFlag |= REFRESH_DESCRIPTION_SCROLL_BAR;
 			}
 
 			if( refreshFlag & TUOPTION_TEXT_AREA )
@@ -278,8 +347,21 @@ int Tutor::select_tutor(int actionMode)
 					#endif
 
 					font_std.put_paragraph(menuX1+TEXT_AREA_X1, menuY1+TEXT_AREA_Y1, menuX1+TEXT_AREA_X2, menuY1+TEXT_AREA_Y2,
-						_(get_intro(browseRecno)), lineSpace );		// 4 - space between lines
+						_(get_intro(browseRecno)), lineSpace, descriptionScrollBar.view_recno ); // 4 - space between lines
 				}
+			}
+
+			if (Ambition::Config::enhancementsAvailable()
+				&& refreshFlag & REFRESH_DESCRIPTION_SCROLL_BAR
+			) {
+#ifdef TU_USE_BACKUP_SURFACE
+				vga_front.put_bitmap(
+					menuX1 + DESCRIPTION_SCROLL_BAR_LEFT,
+					menuY1 + DESCRIPTION_SCROLL_BAR_TOP,
+					descriptionScrollArea.ptr
+				);
+#endif
+				descriptionScrollBar.paint();
 			}
 
 			if( refreshFlag & TUOPTION_SCROLL )
@@ -339,7 +421,7 @@ int Tutor::select_tutor(int actionMode)
 		if (Ambition::Config::enhancementsAvailable()) {
 			vga.flip();
 		}
-		Ambition::Input::detectTutorialScroll(minRecno, tutor_count, browseRecno, scrollBar, refreshFlag);
+		Ambition::Input::detectTutorialScroll(minRecno, tutor_count, browseRecno, scrollBar, descriptionScrollBar, refreshFlag);
 
 		if( scrollBar.detect() == 1)
 		{
@@ -368,6 +450,24 @@ int Tutor::select_tutor(int actionMode)
 			//}
 			if( oldValue != scrollBar.set_view_recno(oldValue+1) )
 				refreshFlag |= TUOPTION_ALL_BROWSE | TUOPTION_SCROLL;
+		} else if (Ambition::Config::enhancementsAvailable()
+			&& descriptionScrollBar.detect() == 1
+		) {
+			refreshFlag |= REFRESH_DESCRIPTION_SCROLL_BAR | TUOPTION_TEXT_AREA;
+		} else if (Ambition::Config::enhancementsAvailable()
+			&& descriptionScrollUp.detect()
+		) {
+			const auto oldValue = descriptionScrollBar.view_recno;
+			if (oldValue != descriptionScrollBar.set_view_recno(oldValue - 1)) {
+				refreshFlag |= REFRESH_DESCRIPTION_SCROLL_BAR | TUOPTION_TEXT_AREA;
+			}
+		} else if (Ambition::Config::enhancementsAvailable()
+			&& descriptionScrollDown.detect()
+		) {
+			const auto oldValue = descriptionScrollBar.view_recno;
+			if (oldValue != descriptionScrollBar.set_view_recno(oldValue + 1)) {
+				refreshFlag |= REFRESH_DESCRIPTION_SCROLL_BAR | TUOPTION_TEXT_AREA;
+			}
 		}
 		else if( mouse.double_click( menuX1+BROWSE_X1, menuY1+BROWSE_Y1, 
 			menuX1+BROWSE_X1+BROWSE_REC_WIDTH-1, 

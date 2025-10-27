@@ -842,6 +842,7 @@ void detectTutorialScroll(
   const int size,
   int& browseRecordNumber,
   SlideVBar& scrollBar,
+  SlideVBar& descriptionScrollBar,
   int& refreshFlag
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
@@ -852,6 +853,7 @@ void detectTutorialScroll(
   constexpr auto REFRESH_DESCRIPTION = 1 << 17;
   constexpr auto REFRESH_PICTURE = 1 << 18;
   constexpr auto REFRESH_LIST_SCROLL_BAR = 1 << 19;
+  constexpr auto REFRESH_DESCRIPTION_SCROLL_BAR = 1 << 20;
   constexpr auto SLOT_COUNT = 5;
 
   const auto scrollTutorialSelection = [
@@ -888,6 +890,7 @@ void detectTutorialScroll(
 
     refreshFlag
       |= REFRESH_DESCRIPTION
+      | REFRESH_DESCRIPTION_SCROLL_BAR
       | REFRESH_PICTURE;
   };
 
@@ -899,6 +902,26 @@ void detectTutorialScroll(
       {
         Ambition::Input::ScrollOrientation::Vertical,
         scrollTutorialSelection,
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::TutorialList::DESCRIPTION_AREA,
+    Ambition::Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [ &descriptionScrollBar, &refreshFlag ] (
+          const int amount
+        ) {
+          descriptionScrollBar.set_view_recno(
+            descriptionScrollBar.view_recno + amount
+          );
+          refreshFlag |= REFRESH_DESCRIPTION | REFRESH_DESCRIPTION_SCROLL_BAR;
+        },
       },
     },
     []() { return SLOT_COUNT - 1; }

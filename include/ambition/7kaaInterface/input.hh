@@ -163,6 +163,7 @@ void detectTutorialScroll(
   const int size,
   int& browseRecordNumber,
   SlideVBar& scrollBar,
+  SlideVBar& descriptionScrollBar,
   int& refreshFlag
 );
 
