@@ -837,6 +837,105 @@ bool detectTownScroll(
   );
 }
 
+void detectTutorialScroll(
+  const int minimumRecordNumber,
+  const int size,
+  int& browseRecordNumber,
+  SlideVBar& scrollBar,
+  int& refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto REFRESH_ALL_SLOTS = (1 << 16) - 1;
+  constexpr auto REFRESH_DESCRIPTION = 1 << 17;
+  constexpr auto REFRESH_PICTURE = 1 << 18;
+  constexpr auto REFRESH_LIST_SCROLL_BAR = 1 << 19;
+  constexpr auto SLOT_COUNT = 5;
+
+  const auto scrollTutorialSelection = [
+    &browseRecordNumber,
+    &refreshFlag,
+    &scrollBar,
+    minimumRecordNumber,
+    size
+  ] (
+    const int amount
+  ) {
+    refreshFlag |= LSOPTION_SLOT(
+      browseRecordNumber - scrollBar.view_recno
+    );
+
+    browseRecordNumber = std::clamp(
+      browseRecordNumber + amount,
+      minimumRecordNumber,
+      size
+    );
+
+    refreshFlag |= LSOPTION_SLOT(
+      browseRecordNumber - scrollBar.view_recno
+    );
+
+    if (browseRecordNumber - scrollBar.view_recno < 0) {
+      scrollBar.set_view_recno(browseRecordNumber);
+      refreshFlag |= REFRESH_LIST_SCROLL_BAR | REFRESH_ALL_SLOTS;
+    }
+    if (browseRecordNumber - scrollBar.view_recno >= SLOT_COUNT) {
+      scrollBar.set_view_recno(browseRecordNumber - (SLOT_COUNT - 1));
+      refreshFlag |= REFRESH_LIST_SCROLL_BAR | REFRESH_ALL_SLOTS;
+    }
+
+    refreshFlag
+      |= REFRESH_DESCRIPTION
+      | REFRESH_PICTURE;
+  };
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::TutorialList::HEADING_AREA,
+    Ambition::Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        scrollTutorialSelection,
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    true,
+    Ambition::UserInterface::TutorialList::LIST_AREA,
+    { },
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [ &scrollBar, &refreshFlag ] (
+          const int amount
+        ) {
+          scrollBar.set_view_recno(scrollBar.view_recno + amount);
+          refreshFlag |= REFRESH_LIST_SCROLL_BAR | REFRESH_ALL_SLOTS;
+        },
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    false,
+    Ambition::UserInterface::TutorialList::LIST_AREA,
+    Ambition::Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        scrollTutorialSelection,
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+}
+
 bool detectWhatsNewClick(
 ) {
   constexpr Ambition::UserInterface::Rectangle WHATS_NEW_BUTTON = {

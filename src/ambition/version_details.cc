@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_ADDED),
+        .items = {
+          _("Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg up/down keys to the tutorial selection list."),
+        },
+      },
     },
   },
   {

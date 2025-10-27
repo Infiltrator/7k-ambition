@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg
+  up/down keys to the tutorial selection list.
+
 
 ## [3.2.7] — 2025-10-24
 

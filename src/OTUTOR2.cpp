@@ -2,6 +2,7 @@
  * Seven Kingdoms: Ancient Adversaries
  *
  * Copyright 1997,1998 Enlight Software Ltd.
+ * Copyright 2025 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +23,7 @@
 //Description : Class Tutor
 
 #include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OSYS.h>
 #include <OMOUSE.h>
@@ -199,7 +201,10 @@ int Tutor::select_tutor(int actionMode)
 		//---------- yield --------//
 
 		sys.yield();
-		vga.flip();
+
+		if (!Ambition::Config::enhancementsAvailable()) {
+			vga.flip();
+		}
 
 		mouse.get_event();
 
@@ -330,6 +335,11 @@ int Tutor::select_tutor(int actionMode)
 		}
 
 		sys.blt_virtual_buf();
+
+		if (Ambition::Config::enhancementsAvailable()) {
+			vga.flip();
+		}
+		Ambition::Input::detectTutorialScroll(minRecno, tutor_count, browseRecno, scrollBar, refreshFlag);
 
 		if( scrollBar.detect() == 1)
 		{
