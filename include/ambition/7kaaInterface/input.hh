@@ -158,6 +158,15 @@ bool detectTownScroll(
   VBrowseIF& raceBrowser
 );
 
+void detectTutorialScroll(
+  const int minimumRecordNumber,
+  const int size,
+  int& browseRecordNumber,
+  SlideVBar& scrollBar,
+  SlideVBar& descriptionScrollBar,
+  int& refreshFlag
+);
+
 bool detectUnitListScroll(
   VBrowseIF& guestBrowser
 );
