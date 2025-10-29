@@ -37,7 +37,7 @@ AM_CXXFLAGS += $(BOOST_CPPFLAGS)
 
 Ambition_version.cc: git_string.h
 
-git_string.h:
+git_string.h: .FORCE
 	@if [ -d "$(top_srcdir)/.git" ]; then \
 		echo "Using git to generate the version string."; \
 		git describe --always --dirty --long --tags \
@@ -47,8 +47,15 @@ git_string.h:
 			$$1=""; \
 			print "#define GIT_STRING \""$$(0)"\"" \
 			}' \
-			> git_string.h; \
-		echo "Generated git_string.h with content:"; cat git_string.h; \
+			> git_string.h.new; \
+		if [ ! -w git_string.h ] \
+			|| ! cmp --quiet git_string.h git_string.h.new > /dev/null; then \
+			mv git_string.h.new git_string.h; \
+			echo "Generated git_string.h with content:"; cat git_string.h; \
+		else \
+			rm git_string.h.new; \
+			echo "Generated git_string.h matches existing:"; cat git_string.h; \
+		fi \
 	elif [ -e "git_string.h" ]; then \
 		echo "Using provided git_string.h with content:"; cat git_string.h; \
 	else \
@@ -56,6 +63,6 @@ git_string.h:
 			"to generate one."; \
 	fi
 
-.PHONY: git_string.h
+.FORCE:
 
 all-am: git_string.h
