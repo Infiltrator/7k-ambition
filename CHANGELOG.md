@@ -17,6 +17,10 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed builders sometimes going to their buildings' rally points instead of to
+  the building where they were requested by the request builder button.  The
+  workaround for this means that builders will always ignore rally points, for
+  the time being.
 - Fixed non-English tutorial descriptions getting cut off at the bottom, by
   adding a scroll bar and buttons, so that all the text can be scrolled and
   read.
