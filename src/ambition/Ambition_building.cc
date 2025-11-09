@@ -855,6 +855,17 @@ void Building::sendUnitsToRallyPoint(
     return;
   }
 
+  /* Builders will never go to rally points.  This is a workaround to rally
+   * points conflicting with the request builder feature. */
+  std::erase_if(
+    _7kaaUnitRecordNumbers,
+    [](const short _7kaaUnitRecordNumber) {
+      assert(!unit_array.is_deleted(_7kaaUnitRecordNumber));
+      const auto _7kaaUnit = unit_array[_7kaaUnitRecordNumber];
+      return _7kaaUnit->skill.skill_id == SKILL_CONSTRUCTION;
+    }
+  );
+
   Unit::sendToDestination(_7kaaUnitRecordNumbers, rally);
 }
 
