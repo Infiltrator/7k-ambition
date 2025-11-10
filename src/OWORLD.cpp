@@ -1152,7 +1152,6 @@ int World::can_build_firm(int xLoc1, int yLoc1, int firmId, short unitRecno)
 			{
 				// ##### patch begin Gilbert 14/3 ######//
 				if(!locPtr->can_build_firm(teraMask) && 
-					locPtr->is_power_off() ||
 					(!locPtr->has_unit(UNIT_LAND) || locPtr->unit_recno(UNIT_LAND)!=unitRecno))
 					return 0;
 				// ##### patch end Gilbert 14/3 ######//
