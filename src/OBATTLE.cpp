@@ -584,7 +584,6 @@ void Battle::create_pregame_object()
 			if(!create_town( 0, raceId, xLoc, yLoc ) )
 			{
 				startUpIndependentTown = 0;
-				break;
 			}
 			// ##### begin Gilbert 24/10 #######//
 			else
