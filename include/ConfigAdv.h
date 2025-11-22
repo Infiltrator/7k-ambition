@@ -106,6 +106,9 @@ public:
 	// scenario settings
 	char			scenario_config;
 
+	// startup settings
+	int			start_up_monster_firm;
+
 	// town settings
 	int			town_ai_emerge_nation_pop_limit;
 	int			town_ai_emerge_town_pop_limit;

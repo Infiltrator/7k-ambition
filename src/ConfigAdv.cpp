@@ -302,6 +302,8 @@ void ConfigAdv::reset()
 
 	scenario_config = 1;
 
+	start_up_monster_firm = 10;
+
 	town_ai_emerge_nation_pop_limit = 60 * MAX_NATION;
 	town_ai_emerge_town_pop_limit = 1000;
 	town_migration = 1;
@@ -531,6 +533,14 @@ int ConfigAdv::set(char *name, char *value)
 	{
 		if( !read_bool(value, &scenario_config) )
 			return 0;
+	}
+	else if( !strcmp(name, "start_up_monster_firm") )
+	{
+		if( !read_int(value, &start_up_monster_firm) )
+			return 0;
+		if( CHECK_BOUND(start_up_monster_firm, 1, MAX_MONSTER_FIRM) )
+			return 0;
+		update_check_sum(name, value);
 	}
 	else if( !strcmp(name, "town_ai_emerge_nation_pop_limit") )
 	{

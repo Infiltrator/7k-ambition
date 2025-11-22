@@ -557,7 +557,7 @@ void Battle::create_pregame_object()
 	//### begin alex 27/8 ###//
 	int startUpIndependentTown = config.start_up_independent_town;
 	//int startUpRawSite = config.start_up_raw_site;
-	int startUpMonsterFirm = 10;
+	int startUpMonsterFirm = config_adv.start_up_monster_firm;
 	int i, j, raceId;
 
 	site_array.generate_raw_site(config.start_up_raw_site);
