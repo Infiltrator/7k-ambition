@@ -32,7 +32,6 @@
 #include <vga_util.h>
 #include <OIMGRES.h>
 #include <OHELP.h>
-#include <OSYS.h>
 #include <OSTR.h>
 #include <OFONT.h>
 #include <OMOUSE.h>

@@ -31,7 +31,6 @@
 #include <OF_MONS.h>
 #include <OTOWN.h>
 #include <OSPY.h>
-#include <OSYS.h>
 #include <OU_GOD.h>
 
 #ifdef NO_DEBUG_UNIT

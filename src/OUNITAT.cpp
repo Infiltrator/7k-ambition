@@ -35,7 +35,6 @@
 #include <OMONSRES.h>
 #include <OREBEL.h>
 #include <OSERES.h>
-#include <OSYS.h>
 #include <OWARPT.h>
 
 #ifdef NO_DEBUG_UNIT

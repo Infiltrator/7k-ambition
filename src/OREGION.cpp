@@ -24,7 +24,6 @@
 #include <stdlib.h>
 #include <OINFO.h>
 #include <OREGION.h>
-#include <OREGIONS.h>
 
 //--------- Define static function ---------//
 

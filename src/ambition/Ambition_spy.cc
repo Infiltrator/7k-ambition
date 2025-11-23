@@ -27,7 +27,7 @@
 
 #include <algorithm>
 #include <cmath>
-#include <cstdint>
+#include <limits>
 
 #define _AMBITION_IMPLEMENTATION
 #include "OBUTT3D.h"

@@ -23,7 +23,6 @@
 //
 // For the detail, see ounitam.txt
 
-#include <math.h>
 
 #include <ALL.h>
 #include <OREMOTE.h>

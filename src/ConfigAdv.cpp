@@ -32,9 +32,7 @@
 #include <OFILETXT.h>
 #include <OMISC.h>
 #include <OMOUSE.h>
-#include <OSYS.h>
 #include <posix_string_compat.h>
-#include "gettext.h"
 
 #define CHECK_BOUND(n,x,y) n<x || n>y
 

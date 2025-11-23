@@ -31,7 +31,6 @@
 #include <ONATION.h>
 #include <OPOWER.h>
 #include <OGAME.h>
-#include <OANLINE.h>
 #include <OIMGRES.h>
 #include <OWORLD.h>
 #include <OSE.h>

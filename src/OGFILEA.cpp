@@ -34,6 +34,7 @@
 #include <time.h>
 #endif
 #include <OGFILE.h>
+#include "ONATION.h"
 #include <KEY.h>
 #include <ODIR.h>
 #include <OSYS.h>
@@ -50,7 +51,6 @@
 #include <OFONT.h>
 #include <OGAME.h>
 #include <OGAMESET.h>
-#include <OGFILE.h>
 #include <OGAMHALL.h>
 #include <OBUTT3D.h>
 #include <OSLIDCUS.h>

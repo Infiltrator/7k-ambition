@@ -24,7 +24,6 @@
 #include "ambition/7kaaInterface/control.hh"
 
 #include <OSYS.h>
-#include "OU_GOD.h"
 #include <OWORLD.h>
 #include <OPOWER.h>
 #include <OCONFIG.h>

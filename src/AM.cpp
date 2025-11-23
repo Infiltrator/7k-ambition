@@ -23,7 +23,6 @@
 
 #include "ambition/7kaaInterface/control.hh"
 
-#include <ALL.h>
 #include <version.h>
 
 #ifdef ENABLE_INTRO_VIDEO

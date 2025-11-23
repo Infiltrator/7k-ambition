@@ -26,7 +26,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "menu.hh"
 
-#include <SDL.h>
+#include <SDL2/SDL_clipboard.h>
 
 #include "Ambition_config.hh"
 #include "Ambition_vga.hh"

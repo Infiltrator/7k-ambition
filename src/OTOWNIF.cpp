@@ -27,7 +27,6 @@
 #include "ambition/7kaaInterface/input.hh"
 #include "ambition/7kaaInterface/population.hh"
 
-#include "KEY.h"
 #include <OINFO.h>
 #include "OVGABUF.h"
 #include <vga_util.h>

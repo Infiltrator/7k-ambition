@@ -22,7 +22,6 @@
 //Description : Object road direction turn, derived by World, Chain class
 
 #include <ALL.h>
-#include <OVGA.h>
 #include <OSYS.h>
 #include <OTERRAIN.h>
 #include <OUNIT.h>

@@ -24,7 +24,6 @@
 #include "ambition/7kaaInterface/config.hh"
 
 #include <ALL.h>
-#include <OSYS.h>
 #include <OREMOTE.h>
 #include <multiplayer.h>
 #include <ReplayFile.h>

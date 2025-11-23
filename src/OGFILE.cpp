@@ -40,7 +40,6 @@
 #include <OMOUSECR.h>
 #include <OTALKRES.h>
 #include <ONATION.h>
-#include <OWORLD.h>
 #include <OPOWER.h>
 #include <OGAME.h>
 #include <OTownNetwork.h>

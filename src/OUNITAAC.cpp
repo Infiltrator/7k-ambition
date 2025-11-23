@@ -21,7 +21,6 @@
 //Filename    : OUNITAAC.CPP
 //Description : Object UnitArray - misc functions
 
-#include <math.h>
 
 #include <ALL.h>
 #include "ONATIONB.h"

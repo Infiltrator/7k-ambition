@@ -45,7 +45,6 @@
 #include <OREMOTE.h>
 #include <OIMGRES.h>
 #include <OGAME.h>
-#include <OSYS.h>
 #include "gettext.h"
 
 //---------- Define static variables ------------//

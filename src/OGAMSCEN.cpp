@@ -21,6 +21,7 @@
 //Filename    : OGAMSCEN.CPP
 //Description : Select Game Scenario
 
+#include "ONATION.h"
 #include <OSTR.h>
 #include <OSYS.h>
 #include <ONEWS.h>
@@ -33,7 +34,6 @@
 #include <OBOX.h>
 #include <OBATTLE.h>
 #include <OGAME.h>
-#include <ONATIONA.h>
 #include <PlayerStats.h>
 #include <ConfigAdv.h>
 

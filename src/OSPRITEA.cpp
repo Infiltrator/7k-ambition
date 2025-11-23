@@ -21,10 +21,9 @@
 //Filename    : OSPRITEA.CPP
 //Description : Object SpriteArray
 
+#include "OSPATH.h"
 #include <OSYS.h>
-#include <OSPRTRES.h>
 #include <OSPRITE.h>
-#include <OUNIT.h>
 
 #ifdef DEBUG
 #include <OBULLET.h>

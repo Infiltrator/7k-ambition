@@ -22,9 +22,6 @@
 //Description : Font Object
 
 #include <string.h>
-
-#include "ambition/7kaaInterface/config.hh"
-
 #include <ALL.h>
 #include <IMGFUN.h>
 #include <OVGA.h>

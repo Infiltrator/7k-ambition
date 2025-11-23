@@ -22,7 +22,6 @@
 //Description : Object SeekPath
 //Owner		  :  
 
-#include <math.h>
 #include <stdlib.h>
 #include <ALL.h>
 #include <OWORLD.h>

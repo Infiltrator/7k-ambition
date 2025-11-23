@@ -21,6 +21,7 @@
 //Filename    : OGAMEND.CPP
 //Description : Game ending screen
 
+#include "ONATIONA.h"
 #include <OVGA.h>
 #include <vga_util.h>
 #include <ODATE.h>
@@ -34,7 +35,6 @@
 #include <ORACERES.h>
 #include <OGAME.h>
 #include <OGAMHALL.h>
-#include <ONATION.h>
 #include <OMOUSECR.h>
 #include <OMUSIC.h>
 #include <OOPTMENU.h>

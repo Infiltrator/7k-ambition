@@ -21,7 +21,6 @@
 //Filename   : OAI_MAIN.CPP
 //Description: AI - main functions
 
-#include <OSYS.h>
 #include <ONATION.h>
 #include <OGAME.h>
 #include <OSPY.h>

@@ -25,8 +25,6 @@
 
 #include "Ambition_inn.hh"
 
-#include <stdint.h>
-
 #define _AMBITION_IMPLEMENTATION
 #include "OBUTT3D.h"
 #include "OF_INN.h"

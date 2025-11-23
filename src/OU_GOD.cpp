@@ -21,7 +21,6 @@
 //Filename   : OU_GOD.CPP
 //Description: God Unit
 
-#include <OSYS.h>
 #include <OGAME.h>
 #include <OBUTT3D.h>
 #include <OGODRES.h>

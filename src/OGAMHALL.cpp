@@ -24,13 +24,12 @@
 #include <OGAMHALL.h>
 
 #include "OCONFIG.h"
+#include "ONATIONA.h"
 #include <vga_util.h>
 #include <ODATE.h>
 #include <OSTR.h>
-#include <OSYS.h>
 #include <OFONT.h>
 #include <OMOUSE.h>
-#include <ONATION.h>
 #include <dbglog.h>
 #include "gettext.h"
 #include <FilePath.h>
