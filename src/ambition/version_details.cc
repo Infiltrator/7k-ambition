@@ -32,6 +32,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed the config.txt settings not taking effect when there was only a 7kaa config.txt and not an Ambition one."),
         },
       },
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Changed the default setting for Help from Full to Brief, to avoid overwhelming new players with information panels.  This only applies to new installations."),
+        },
+      },
     },
   },
   {

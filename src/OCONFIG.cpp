@@ -165,7 +165,7 @@ void Config::default_preference()
 	scroll_speed = 5;
 	frame_speed	 = 12;
 
-	help_mode = DETAIL_HELP;
+	help_mode = BRIEF_HELP;
 	disp_town_name = 1;
 	disp_spy_sign = 1;
 	show_all_unit_icon = 1;		// 0:show icon when pointed, 1:always

@@ -29,6 +29,11 @@ speaking, considered to be the player's experience.
 - Fixed the config.txt settings not taking effect when there was only a 7kaa
   config.txt and not an Ambition one.
 
+### Changed
+
+- Changed the default setting for Help from Full to Brief, to avoid overwhelming
+  new players with information panels.  This only applies to new installations.
+
 
 ## [3.2.7] — 2025-10-24
 
