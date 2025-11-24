@@ -29,7 +29,10 @@
 #include <SDL.h>
 
 #include "OCONFIG.h"
+#include "OFIRMA.h"
 #include "OINFO.h"
+#include "OU_CARA.h"
+#include "OU_MARI.h"
 
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
@@ -41,6 +44,13 @@
 
 
 namespace _7kaaAmbitionInterface::Control {
+
+bool tradeStopRequestValid(
+  const int _7kaaStopId,
+  const char _7kaaStopsDefinedCount,
+  const short _7kaaFirmRecordNumber
+);
+
 
 void copyMapIdToClipboard(
 ) {
@@ -108,6 +118,35 @@ void pasteFromClipboard(
   SDL_free(buffer);
 }
 
+bool preventReplaySetStopPickupDesync(
+  const UnitCaravan* _7kaaCaravan,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return !tradeStopRequestValid(
+    _7kaaStopId,
+    _7kaaCaravan->stop_defined_num,
+    _7kaaCaravan->stop_array[_7kaaStopId - 1].firm_recno
+  );
+}
+bool preventReplaySetStopPickupDesync(
+  const UnitMarine* _7kaaTradeShip,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return !tradeStopRequestValid(
+    _7kaaStopId,
+    _7kaaTradeShip->stop_defined_num,
+    _7kaaTradeShip->stop_array[_7kaaStopId - 1].firm_recno
+  );
+}
+
 void requestFeedback(
 ) {
   Ambition::requestFeedback();
@@ -146,6 +185,25 @@ void unlockBuffer(
   VgaBuf& buffer
 ) {
   Ambition::unlockBuffer(buffer);
+}
+
+
+/* Private functions */
+
+bool tradeStopRequestValid(
+  const int _7kaaStopId,
+  const char _7kaaStopsDefinedCount,
+  const short _7kaaFirmRecordNumber
+) {
+  if (_7kaaStopId > _7kaaStopsDefinedCount) {
+    return false;
+  }
+
+  if (firm_array.is_deleted(_7kaaFirmRecordNumber)) {
+    return false;
+  }
+
+  return true;
 }
 
 } // namespace _7kaaAmbitionInterface::Control

@@ -21,6 +21,8 @@
 //Filename   : OU_MARI2.CPP
 //Description: UnitMarine - functions for displaying info.
 
+#include "ambition/7kaaInterface/control.hh"
+
 #include <OVGA.h>
 #include <vga_util.h>
 #include <OINFO.h>
@@ -908,6 +910,10 @@ void UnitMarine::set_stop_pick_up(int stopId, int newPickUpType, int remoteActio
 			//-*******************************************************-//
 			#endif
 		}
+	}
+
+	if (Ambition::Control::preventReplaySetStopPickupDesync(this, stopId)) {
+		return;
 	}
 
 	switch(newPickUpType)

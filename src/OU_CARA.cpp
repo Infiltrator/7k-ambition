@@ -22,6 +22,7 @@
 //Filename    : OU_CARA.CPP
 //Description : Unit Caravan
 
+#include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 #include "ambition/7kaaInterface/polity.hh"
@@ -460,6 +461,10 @@ void UnitCaravan::set_stop_pick_up(int stopId, int newPickUpType, int remoteActi
 			//-*******************************************************-//
 			#endif
 		}
+	}
+
+	if (Ambition::Control::preventReplaySetStopPickupDesync(this, stopId)) {
+		return;
 	}
 
 	switch(newPickUpType)
