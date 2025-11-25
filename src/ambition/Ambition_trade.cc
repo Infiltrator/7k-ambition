@@ -49,6 +49,10 @@ Button reportCloneButton;
 void checkCaravanForReplacement(
   UnitCaravan* _7kaaCaravan
 ) {
+  if (nation_array.player_recno != _7kaaCaravan->nation_recno) {
+    return;
+  }
+
   if (_7kaaCaravan->hit_points == _7kaaCaravan->max_hit_points) {
     return;
   }
