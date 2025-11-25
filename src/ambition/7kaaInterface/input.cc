@@ -366,6 +366,10 @@ bool detectTradeReportCaravanCloneButton(
     return false;
   }
 
+  if (caravanBrowser.none_record) {
+    return false;
+  }
+
   const auto caravanBrowserRecordNumber = caravanBrowser.mouse_over();
   if (caravanBrowserRecordNumber < 1) {
     return false;

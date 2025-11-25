@@ -21,6 +21,8 @@ speaking, considered to be the player's experience.
   the building where they were requested by the request builder button.  The
   workaround for this means that builders will always ignore rally points, for
   the time being.
+- Fixed a crash on hovering over the caravan list of the Trade Report when you
+  have no caravans.
 - Fixed non-English tutorial descriptions getting cut off at the bottom, by
   adding a scroll bar and buttons, so that all the text can be scrolled and
   read.
