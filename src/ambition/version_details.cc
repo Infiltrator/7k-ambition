@@ -28,7 +28,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed builders sometimes going to their buildings' rally points instead of to the building where they were requested by the request builder button.  The workaround for this means that builders will always ignore rally points, for the time being."),
           _("Fixed a crash on hovering over the caravan list of the Trade Report when you have no caravans."),
-          _("Fixed replay desyncs caused by setting Caravan and trade ship stop pickup types or deleting trade stops."),
+          _("Fixed replay desyncs caused by setting Caravan and trade ship stop pickup types, deleting trade stops, or copying trade routes."),
           _("Fixed non-English tutorial descriptions getting cut off at the bottom, by adding a scroll bar and buttons, so that all the text can be scrolled and read."),
           _("Fixed the config.txt settings not taking effect when there was only a 7kaa config.txt and not an Ambition one."),
         },

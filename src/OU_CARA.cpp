@@ -396,6 +396,10 @@ void UnitCaravan::disp_goods_select_button(int stopNum, int dispY1, int refreshF
 //
 void UnitCaravan::set_stop_pick_up(int stopId, int newPickUpType, int remoteAction)
 {
+	if (Ambition::Control::preventReplaySetStopPickupDesync(remoteAction)) {
+		return;
+	}
+
 	if(remote.is_enable())
 	{
 		if(!remoteAction)

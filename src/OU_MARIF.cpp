@@ -839,6 +839,10 @@ void UnitMarine::detect_stop()
 //
 void UnitMarine::set_stop_pick_up(int stopId, int newPickUpType, int remoteAction)
 {
+	if (Ambition::Control::preventReplaySetStopPickupDesync(remoteAction)) {
+		return;
+	}
+
 	if(remote.is_enable())
 	{
 		if(!remoteAction)

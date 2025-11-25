@@ -31,6 +31,7 @@
 #include "OCONFIG.h"
 #include "OFIRMA.h"
 #include "OINFO.h"
+#include "OREMOTE.h"
 #include "OU_CARA.h"
 #include "OU_MARI.h"
 
@@ -145,6 +146,16 @@ bool preventReplayDeleteStopDesync(
   }
 
   return false;
+}
+
+bool preventReplaySetStopPickupDesync(
+  const int _7kaaActionType
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return (remote.is_replay() && _7kaaActionType == COMMAND_PLAYER);
 }
 
 bool preventReplaySetStopPickupDesync(
