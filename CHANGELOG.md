@@ -26,6 +26,8 @@ speaking, considered to be the player's experience.
 - Fixed non-English tutorial descriptions getting cut off at the bottom, by
   adding a scroll bar and buttons, so that all the text can be scrolled and
   read.
+- Fixed the config.txt settings not taking effect when there was only a 7kaa
+  config.txt and not an Ambition one.
 
 
 ## [3.2.7] — 2025-10-24

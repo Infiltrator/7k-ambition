@@ -210,7 +210,6 @@ int ConfigAdv::init()
 
 	if( !load(filename) )
 	{
-		reset();
 		return 0;
 	}
 	return 1;
