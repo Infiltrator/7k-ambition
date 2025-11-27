@@ -694,6 +694,10 @@ void UnitCaravan::del_stop(int stopId, char remoteAction)
 		return;
 	}
 
+	if (Ambition::Control::preventReplayDeleteStopDesync(this, stopId)) {
+		return;
+	}
+
 	//------ stop is deleted before receiving this message, thus, ignore invalid message -----//
 	if(remote.is_enable() && stop_array[stopId-1].firm_recno==0)
 		return;

@@ -21,6 +21,7 @@
 //Filename   : OU_MARI3.CPP
 //Description: UnitMarine - functions for loading/unloading goods, trading
 
+#include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/unit.hh"
 
 #include <ALL.h>
@@ -57,6 +58,10 @@ void UnitMarine::del_stop(int stopId, char remoteAction)
 		return;
 	}
 	// ####### end Gilbert 30/7 #######//
+
+	if (Ambition::Control::preventReplayDeleteStopDesync(this, stopId)) {
+		return;
+	}
 
 	if(remote.is_enable() && stop_array[stopId-1].firm_recno==0)
 		return;

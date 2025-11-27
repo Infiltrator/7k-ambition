@@ -118,6 +118,35 @@ void pasteFromClipboard(
   SDL_free(buffer);
 }
 
+bool preventReplayDeleteStopDesync(
+  const UnitCaravan* _7kaaCaravan,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (_7kaaCaravan->stop_array[_7kaaStopId - 1].firm_recno == 0) {
+    return true;
+  }
+
+  return false;
+}
+bool preventReplayDeleteStopDesync(
+  const UnitMarine* _7kaaTradeShip,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (_7kaaTradeShip->stop_array[_7kaaStopId - 1].firm_recno == 0) {
+    return true;
+  }
+
+  return false;
+}
+
 bool preventReplaySetStopPickupDesync(
   const UnitCaravan* _7kaaCaravan,
   const int _7kaaStopId

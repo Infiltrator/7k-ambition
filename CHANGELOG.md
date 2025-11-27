@@ -23,8 +23,8 @@ speaking, considered to be the player's experience.
   the time being.
 - Fixed a crash on hovering over the caravan list of the Trade Report when you
   have no caravans.
-- Fixed a replay desync caused by setting Caravan and trade ship stop pickup
-  types.
+- Fixed replay desyncs caused by setting Caravan and trade ship stop pickup
+  types or deleting trade stops.
 - Fixed non-English tutorial descriptions getting cut off at the bottom, by
   adding a scroll bar and buttons, so that all the text can be scrolled and
   read.
