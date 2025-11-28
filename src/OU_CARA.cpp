@@ -22,6 +22,7 @@
 //Filename    : OU_CARA.CPP
 //Description : Unit Caravan
 
+#include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 #include "ambition/7kaaInterface/polity.hh"
@@ -395,6 +396,10 @@ void UnitCaravan::disp_goods_select_button(int stopNum, int dispY1, int refreshF
 //
 void UnitCaravan::set_stop_pick_up(int stopId, int newPickUpType, int remoteAction)
 {
+	if (Ambition::Control::preventReplaySetStopPickupDesync(remoteAction)) {
+		return;
+	}
+
 	if(remote.is_enable())
 	{
 		if(!remoteAction)
@@ -460,6 +465,10 @@ void UnitCaravan::set_stop_pick_up(int stopId, int newPickUpType, int remoteActi
 			//-*******************************************************-//
 			#endif
 		}
+	}
+
+	if (Ambition::Control::preventReplaySetStopPickupDesync(this, stopId)) {
+		return;
 	}
 
 	switch(newPickUpType)
@@ -686,6 +695,10 @@ void UnitCaravan::del_stop(int stopId, char remoteAction)
 		short *shortPtr = (short *) remote.new_send_queue_msg(MSG_U_CARA_DEL_STOP, 2*sizeof(short));
 		*shortPtr = sprite_recno;
 		shortPtr[1] = stopId;
+		return;
+	}
+
+	if (Ambition::Control::preventReplayDeleteStopDesync(this, stopId)) {
 		return;
 	}
 

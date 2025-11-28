@@ -29,7 +29,11 @@
 #include <SDL.h>
 
 #include "OCONFIG.h"
+#include "OFIRMA.h"
 #include "OINFO.h"
+#include "OREMOTE.h"
+#include "OU_CARA.h"
+#include "OU_MARI.h"
 
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
@@ -41,6 +45,13 @@
 
 
 namespace _7kaaAmbitionInterface::Control {
+
+bool tradeStopRequestValid(
+  const int _7kaaStopId,
+  const char _7kaaStopsDefinedCount,
+  const short _7kaaFirmRecordNumber
+);
+
 
 void copyMapIdToClipboard(
 ) {
@@ -108,6 +119,74 @@ void pasteFromClipboard(
   SDL_free(buffer);
 }
 
+bool preventReplayDeleteStopDesync(
+  const UnitCaravan* _7kaaCaravan,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (_7kaaCaravan->stop_array[_7kaaStopId - 1].firm_recno == 0) {
+    return true;
+  }
+
+  return false;
+}
+bool preventReplayDeleteStopDesync(
+  const UnitMarine* _7kaaTradeShip,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (_7kaaTradeShip->stop_array[_7kaaStopId - 1].firm_recno == 0) {
+    return true;
+  }
+
+  return false;
+}
+
+bool preventReplaySetStopPickupDesync(
+  const int _7kaaActionType
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return (remote.is_replay() && _7kaaActionType == COMMAND_PLAYER);
+}
+
+bool preventReplaySetStopPickupDesync(
+  const UnitCaravan* _7kaaCaravan,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return !tradeStopRequestValid(
+    _7kaaStopId,
+    _7kaaCaravan->stop_defined_num,
+    _7kaaCaravan->stop_array[_7kaaStopId - 1].firm_recno
+  );
+}
+bool preventReplaySetStopPickupDesync(
+  const UnitMarine* _7kaaTradeShip,
+  const int _7kaaStopId
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return !tradeStopRequestValid(
+    _7kaaStopId,
+    _7kaaTradeShip->stop_defined_num,
+    _7kaaTradeShip->stop_array[_7kaaStopId - 1].firm_recno
+  );
+}
+
 void requestFeedback(
 ) {
   Ambition::requestFeedback();
@@ -146,6 +225,25 @@ void unlockBuffer(
   VgaBuf& buffer
 ) {
   Ambition::unlockBuffer(buffer);
+}
+
+
+/* Private functions */
+
+bool tradeStopRequestValid(
+  const int _7kaaStopId,
+  const char _7kaaStopsDefinedCount,
+  const short _7kaaFirmRecordNumber
+) {
+  if (_7kaaStopId > _7kaaStopsDefinedCount) {
+    return false;
+  }
+
+  if (firm_array.is_deleted(_7kaaFirmRecordNumber)) {
+    return false;
+  }
+
+  return true;
 }
 
 } // namespace _7kaaAmbitionInterface::Control

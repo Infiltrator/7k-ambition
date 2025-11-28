@@ -25,6 +25,8 @@
 
 #pragma once
 
+class UnitCaravan;
+class UnitMarine;
 class VgaBuf;
 
 
@@ -55,6 +57,28 @@ void migrateLocalDataDirectories(
 void pasteFromClipboard(
   char* destination,
   const unsigned int maximumSize
+);
+
+bool preventReplayDeleteStopDesync(
+  const UnitCaravan* _7kaaCaravan,
+  const int _7kaaStopId
+);
+bool preventReplayDeleteStopDesync(
+  const UnitMarine* _7kaaTradeShip,
+  const int _7kaaStopId
+);
+
+bool preventReplaySetStopPickupDesync(
+  const int _7kaaActionType
+);
+
+bool preventReplaySetStopPickupDesync(
+  const UnitCaravan* _7kaaCaravan,
+  const int _7kaaStopId
+);
+bool preventReplaySetStopPickupDesync(
+  const UnitMarine* _7kaaTradeShip,
+  const int _7kaaStopId
 );
 
 void requestFeedback(
