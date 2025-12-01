@@ -117,6 +117,10 @@ bool sendAvailableBuilderToFirm(
   const Firm* firm
 );
 
+void selectUnits(
+  const std::vector<short> _7kaaUnitRecordNumbers
+);
+
 bool toggleWaypoint(
   const std::vector<short> _7kaaUnitRecordNumbers,
   const short _7kaaX,

@@ -37,6 +37,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Changed the default setting for Help from Full to Brief, to avoid overwhelming new players with information panels.  This only applies to new installations."),
+          _("Automatically select the Greater Being upon invoking it at a Seat of Power."),
         },
       },
     },
