@@ -36,6 +36,7 @@ speaking, considered to be the player's experience.
 
 - Changed the default setting for Help from Full to Brief, to avoid overwhelming
   new players with information panels.  This only applies to new installations.
+- Automatically select the Greater Being upon invoking it at a Seat of Power.
 
 
 ## [3.2.7] — 2025-10-24

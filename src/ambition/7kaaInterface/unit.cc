@@ -28,6 +28,7 @@
 
 #include "OFIRM.h"
 #include "OMOUSE.h"
+#include "OPOWER.h"
 #include "OUNIT.h"
 #include "OSPY.h"
 
@@ -265,6 +266,27 @@ bool sendAvailableBuilderToFirm(
     firm,
     mouse.skey_state & CONTROL_KEY_MASK
   );
+}
+
+void selectUnits(
+  const std::vector<short> _7kaaUnitRecordNumbers
+) {
+  power.reset_selection();
+
+  for (const auto _7kaaUnitRecordNumber : _7kaaUnitRecordNumbers) {
+    if (unit_array.is_deleted(_7kaaUnitRecordNumber)) {
+      continue;
+    }
+
+    auto _7kaaUnit = unit_array[_7kaaUnitRecordNumber];
+    _7kaaUnit->selected_flag = true;
+    unit_array.selected_count++;
+    if (!unit_array.selected_recno) {
+      unit_array.selected_recno = _7kaaUnitRecordNumber;
+    }
+  }
+
+  info.disp();
 }
 
 bool toggleWaypoint(

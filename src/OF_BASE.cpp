@@ -24,6 +24,7 @@
 #include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <OINFO.h>
 #include "OVGABUF.h"
@@ -633,6 +634,7 @@ void FirmBase::invoke_god()
 {
 	god_unit_recno = god_res[god_id]->invoke(firm_recno, center_x, center_y);
 
+	Ambition::Unit::selectUnits({ god_unit_recno });
 	Ambition::Building::sendUnitsToRallyPoint(this, { god_unit_recno });
 }
 //----------- End of function FirmBase::invoke_god -----------//
