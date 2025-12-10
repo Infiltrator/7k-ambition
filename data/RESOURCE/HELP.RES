@@ -397,6 +397,18 @@ GODTORNA
 Summon Tornadoes
 When you Click on this tile, your cursor will change into a small square. Place this square over your target and Click again. Repeat until Thor's power has been depleted.
 ~
+GODEGYPT
+Fertility Blessing
+When you click on this tile, your cursor will change into a small square.  Place this square over one of your Villages and click again.  The population of the selected Village will increase by five for every blessing.
+~
+GODMUGL
+Strike Fear
+When you click on this tile, your cursor will change into a large white circle.  Place this circle over another kingdom's units outdoors and click again.  Units within this circle will decrease loyalty between 20 and 30 points for each cast.
+~
+GODZULU
+Increase Leadership of Zulu Leaders
+When you click on this tile, your cursor will change into a small square.  Place this square over one of your Zulu generals or king and click again.  Your general or king will gain 30 leadership skill for each cast, up to a maximum of 100.
+~
 REPAIRQ
 Structure Repair Icon
 This icon shows there is not a construction worker stationed here for repair but an idle worker may be requested. Click or right-click on this icon to request sending a construction worker.

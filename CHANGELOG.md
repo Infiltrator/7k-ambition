@@ -31,6 +31,8 @@ speaking, considered to be the player's experience.
   read.
 - Fixed the config.txt settings not taking effect when there was only a 7kaa
   config.txt and not an Ambition one.
+- Added button help text to the Egyptian, Mughal, and Zulu Greater Being spell
+  buttons.
 
 ### Changed
 
