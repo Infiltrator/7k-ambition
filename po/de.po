@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7kaa 2.14.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-21 22:37+1100\n"
-"PO-Revision-Date: 2025-10-21 15:33+1100\n"
+"POT-Creation-Date: 2025-12-11 12:37+1100\n"
+"PO-Revision-Date: 2025-12-11 12:52+1100\n"
 "Last-Translator:  <toaster@hush.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -12494,6 +12494,37 @@ msgstr ""
 "Wenn Sie auf diese Platte Klicken Sie den Cursor in einen kleinen Platz zu "
 "ändern. Legen Sie diesen Platz über Ihr Ziel und wieder klicken. "
 "Wiederholen, bis Thors Kraft erschöpft ist."
+
+# data/RESOURCE/HELP.RES:401
+msgid "Fertility Blessing"
+msgstr ""
+
+msgid ""
+"When you click on this tile, your cursor will change into a small square.  "
+"Place this square over one of your Villages and click again.  The population "
+"of the selected Village will increase by five for every blessing. "
+msgstr ""
+
+# data/RESOURCE/HELP.RES:405
+msgid "Strike Fear"
+msgstr ""
+
+msgid ""
+"When you click on this tile, your cursor will change into a large white "
+"circle.  Place this circle over another kingdom's units outdoors and click "
+"again.  Units within this circle will decrease loyalty between 20 and 30 "
+"points for each cast. "
+msgstr ""
+
+msgid "Increase Leadership of Zulu Leaders"
+msgstr ""
+
+msgid ""
+"When you click on this tile, your cursor will change into a small square.  "
+"Place this square over one of your Zulu generals or king and click again.  "
+"Your general or king will gain 30 leadership skill for each cast, up to a "
+"maximum of 100. "
+msgstr ""
 
 #, fuzzy
 msgid ""
