@@ -32,6 +32,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed non-English tutorial descriptions getting cut off at the bottom, by adding a scroll bar and buttons, so that all the text can be scrolled and read."),
           _("Fixed the config.txt settings not taking effect when there was only a 7kaa config.txt and not an Ambition one."),
           _("Added button help text to the Egyptian, Mughal, and Zulu Greater Being spell buttons."),
+          _("Fixed the manual showing the wrong targeting type for the Mughal Greater Being (Djinni)."),
         },
       },
       {
