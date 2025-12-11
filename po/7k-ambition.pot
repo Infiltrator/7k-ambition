@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-21 22:37+1100\n"
+"POT-Creation-Date: 2025-12-11 12:37+1100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10893,7 +10893,7 @@ msgstr ""
 # #-#-#-#-#  -  #-#-#-#-#
 # data/RESOURCE/HELP.RES:269
 # #-#-#-#-#  -  #-#-#-#-#
-# data/RESOURCE/HELP.RES:401
+# data/RESOURCE/HELP.RES:413
 msgid "Structure Repair Icon"
 msgstr ""
 
@@ -11160,27 +11160,62 @@ msgid ""
 "power has been depleted. "
 msgstr ""
 
+# data/RESOURCE/HELP.RES:401
+msgid "Fertility Blessing"
+msgstr ""
+
 # data/RESOURCE/HELP.RES:402
+msgid ""
+"When you click on this tile, your cursor will change into a small square.  "
+"Place this square over one of your Villages and click again.  The population "
+"of the selected Village will increase by five for every blessing. "
+msgstr ""
+
+# data/RESOURCE/HELP.RES:405
+msgid "Strike Fear"
+msgstr ""
+
+# data/RESOURCE/HELP.RES:406
+msgid ""
+"When you click on this tile, your cursor will change into a large white "
+"circle.  Place this circle over another kingdom's units outdoors and click "
+"again.  Units within this circle will decrease loyalty between 20 and 30 "
+"points for each cast. "
+msgstr ""
+
+# data/RESOURCE/HELP.RES:409
+msgid "Increase Leadership of Zulu Leaders"
+msgstr ""
+
+# data/RESOURCE/HELP.RES:410
+msgid ""
+"When you click on this tile, your cursor will change into a small square.  "
+"Place this square over one of your Zulu generals or king and click again.  "
+"Your general or king will gain 30 leadership skill for each cast, up to a "
+"maximum of 100. "
+msgstr ""
+
+# data/RESOURCE/HELP.RES:414
 msgid ""
 "This icon shows there is not a construction worker stationed here for repair "
 "but an idle worker may be requested. Click or right-click on this icon to "
 "request sending a construction worker. "
 msgstr ""
 
-# data/RESOURCE/HELP.RES:405
+# data/RESOURCE/HELP.RES:417
 msgid "Restocking Source"
 msgstr ""
 
-# data/RESOURCE/HELP.RES:406
+# data/RESOURCE/HELP.RES:418
 msgid ""
 "This shows you which type of linked buildings this market may restock from. "
 msgstr ""
 
-# data/RESOURCE/HELP.RES:409
+# data/RESOURCE/HELP.RES:421
 msgid "Switch Restocking Source"
 msgstr ""
 
-# data/RESOURCE/HELP.RES:410
+# data/RESOURCE/HELP.RES:422
 msgid ""
 "Click this button to change the type of linked buildings this market may "
 "restock from. This allows you to control this market's purpose. "
