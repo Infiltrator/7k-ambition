@@ -176,6 +176,36 @@ AC_ARG_ENABLE([enet],
   [], [enable_enet=yes]
 )
 
+AC_ARG_ENABLE([warnings],
+  AS_HELP_STRING([--enable-warnings], [Enable all warnings (-Wall)]),
+  [], [enable_warnings=no]
+)
+
+AC_ARG_ENABLE([optimisation],
+  AS_HELP_STRING([--disable-optimisation], [Set optimisation level to -O0]),
+  [], [enable_optimisation=yes]
+)
+AC_ARG_ENABLE([optimization],
+  AS_HELP_STRING(
+    [--disable-optimization],
+    [Set optimization level to -O0 (US spelling muscle memory convenience)]
+  ), [
+    AS_IF([test "$enable_optimization" = "no"], [enable_optimisation=no])
+  ]
+)
+
+AC_ARG_ENABLE([sanitisers],
+  AS_HELP_STRING([--enable-sanitisers], [Enable Address/UB sanitisers]),
+  [], [enable_sanitisers=no]
+)
+AC_ARG_ENABLE([sanitizers],
+  AS_HELP_STRING(
+    [--enable-sanitizers],
+    [Enable Address/UB sanitizers (US spelling muscle memory convenience)]
+  ), [
+    AS_IF([test "$enable_sanitizers" = "yes"], [enable_sanitisers=yes])
+  ]
+)
 
 # Select which backends to build
 
@@ -227,7 +257,7 @@ AS_IF([test "$enable_asm" = yes], [
 
 # Library dependencies
 
-AS_IF([test "$USE_NLS" = "yes"], [
+AS_IF([test "$USE_NLS" = yes], [
   found_gettext=no
   found_iconv=no
   AC_CHECK_FUNC([gettext], [found_gettext=builtin])
@@ -290,6 +320,41 @@ AS_IF([test "$enable_curl" = yes], [
   ])
 
   LIBS="$LIBS $CURL_LIBS"
+])
+
+AS_IF([test "$enable_warnings" = "yes"], [
+  CXXFLAGS="$CXXFLAGS -Wall"
+])
+
+AS_IF([test "$disable_optimisation" = "yes"], [
+  CXXFLAGS="$CXXFLAGS -O0"
+])
+
+AS_IF([test "$enable_sanitisers" = "yes"], [
+  COMMON_SANITISATION_FLAGS="\
+-fsanitize=address,pointer-compare,pointer-subtract \
+-fsanitize=leak \
+-fsanitize=undefined \
+-fno-sanitize=alignment \
+-fno-omit-frame-pointer \
+"
+
+  dnl If we have already disabled optimisation anyway—which causes multiplayer
+  dnl desyncs—then we can fully sanitise the float arithmetic.  Otherwise, we do
+  dnl not sanitise it, to prevent float rounding and desyncs.
+  AS_IF([test "$enable_optimisation" = "yes"], [
+    COMMON_SANITISATION_FLAGS="$COMMON_SANITISATION_FLAGS \
+-fno-sanitize=float-divide-by-zero,float-cast-overflow \
+"
+  ])
+
+  COMPILER_SANITISATION_FLAGS="\
+-fsanitize-address-use-after-scope \
+-fsanitize-recover=all \
+"
+
+  GLOBAL_CFLAGS="$GLOBAL_CFLAGS $COMMON_SANITISATION_FLAGS $COMPILER_SANITISATION_FLAGS"
+  GLOBAL_LDFLAGS="$GLOBAL_LDFLAGS $COMMON_SANITISATION_FLAGS"
 ])
 
 AX_BOOST_BASE([1.74],, [AC_MSG_ERROR([7k-ambition needs Boost, but it was not found in your system])])
@@ -440,5 +505,12 @@ AC_MSG_NOTICE([input backend: $input_backend])
 echo
 AC_MSG_NOTICE([x86 asm: $enable_asm])
 AC_MSG_NOTICE([multiplayer: menu=$enable_multiplayer curl=$enable_curl enet=$enable_enet fpu=$fpu_type])
+AC_MSG_NOTICE([all compiler warnings enabled: $enable_warnings])
+AC_MSG_NOTICE([optimisation enabled: $enable_optimisation])
+AS_IF([test "$enable_optimisation" = "no"], [
+  AC_MSG_WARN([Optimisation will be disabled.  This is know to cause desyncs in\
+ multiplayer due to float rounding from 80-bit to 64-bit.])
+])
+AC_MSG_NOTICE([sanitisers enabled: $enable_sanitisers])
 AC_MSG_NOTICE([debugging features: $enable_debug])
 AC_MSG_NOTICE([memory management monitoring features: $enable_mem_class])
