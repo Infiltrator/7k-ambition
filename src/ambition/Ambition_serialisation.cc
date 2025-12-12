@@ -169,7 +169,7 @@ void read(
   size_t recordCount;
   archive >> BOOST_SERIALIZATION_NVP(recordCount);
 
-  for (auto i = 0; i < recordCount; i++) {
+  for (auto i = 0u; i < recordCount; i++) {
     Entity* entity;
     archive >> BOOST_SERIALIZATION_NVP(entity);
     entityRepository.insert(std::shared_ptr<Entity>(entity));
@@ -204,7 +204,7 @@ void write(
   const auto recordCount = entityRepository.records.size();
   archive << BOOST_SERIALIZATION_NVP(recordCount);
 
-  for (const auto mapPair : entityRepository.records) {
+  for (const auto& mapPair : entityRepository.records) {
     const auto entity = mapPair.second.entity.get();
     archive << BOOST_SERIALIZATION_NVP(entity);
   }

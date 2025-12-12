@@ -322,7 +322,9 @@ void display(
         top = std::max(top, font_bard.next_text_y - font_bard.font_height);
 
         for (const auto& section : version.sections) {
-          if (currentItem + section.items.size() - 1 < itemsToSkip) {
+          if (currentItem + static_cast<int>(section.items.size()) - 1
+            < itemsToSkip
+          ) {
             currentItem += section.items.size();
             continue;
           }
@@ -390,7 +392,7 @@ void display(
       {
         {
           Input::ScrollOrientation::Vertical,
-            [&itemsToSkip, &refreshFlag, totalItemCount](
+          [&itemsToSkip, &refreshFlag, totalItemCount](
             int amount
           ) {
             itemsToSkip += amount;

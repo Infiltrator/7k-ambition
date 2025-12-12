@@ -78,7 +78,9 @@ void checkCaravanForReplacement(
 
   if (hasMarketStops) {
     const auto& currentDestination
-      = _7kaaCaravan->stop_array[_7kaaCaravan->dest_stop_id];
+      = _7kaaCaravan->stop_array[
+        static_cast<unsigned char>(_7kaaCaravan->dest_stop_id)
+      ];
     if (currentDestination.firm_id != FIRM_MARKET) {
       return;
     }

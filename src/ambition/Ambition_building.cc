@@ -310,7 +310,7 @@ void Building::dequeueTraining(
 ) {
   migrate7kaaQueue();
 
-  int removedCount = 0;
+  auto removedCount = 0u;
   for (auto iterator = productionQueue.rbegin();
     removedCount < request.amount && iterator != productionQueue.rend();
   ) {
@@ -463,7 +463,6 @@ void Building::drawProductionQueueTotals(
   }
 
   const auto costString = format("$%'d", totalCost);
-  const auto textWidth = font_mid.text_width(costString.c_str());
 
   constexpr auto BOTTOM_PADDING = 8;
   constexpr auto COUNT_PANEL_WIDTH = 30;
@@ -582,7 +581,7 @@ void Building::enqueueProduction(
   const ProductionRequest& request,
   const unsigned long long int order
 ) {
-  auto trainingCount = 0;
+  auto trainingCount = 0u;
 
   auto iterator = productionQueue.begin();
   for (;iterator != productionQueue.end(); iterator++) {
@@ -888,9 +887,9 @@ Building::Building(
 ) :
   Entity(recordNumber),
   _7kaaRecordNumber(_7kaaRecordNumber),
-  destroyedAt(Time::START),
   erected(erected),
-  type(type)
+  type(type),
+  destroyedAt(Time::START)
 {
   rally.point = underlying7kaaObjectRectangle().centre();
 }

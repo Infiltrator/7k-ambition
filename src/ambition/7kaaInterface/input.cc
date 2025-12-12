@@ -1108,7 +1108,7 @@ char* stripUnprintable7kaaCharacters(
   char* input
 ) {
   const auto length = strlen(input);
-  for(auto readIndex = 0, writeIndex = readIndex;
+  for(auto readIndex = 0u, writeIndex = readIndex;
       readIndex < length;
       readIndex++
   ) {

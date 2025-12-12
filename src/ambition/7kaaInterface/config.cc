@@ -57,7 +57,7 @@ void load7kaaConfig(
   constexpr auto FILE_NAME = "config.txt";
 
   const auto _7kaaConfigDirectory = SDL_GetPrefPath("7kfans.com", "7kaa");
-  strncpy(sys.dir_config, _7kaaConfigDirectory, FilePath::MAX_FILE_PATH);
+  snprintf(sys.dir_config, FilePath::MAX_FILE_PATH, "%s", _7kaaConfigDirectory);
   SDL_free(_7kaaConfigDirectory);
 
   config_adv.load(FILE_NAME);

@@ -173,10 +173,10 @@ Rectangle Rectangle::internal(
   const auto horizontalSpace = width() - size.width;
   const auto verticalSpace = height() - size.height;
 
-  int paddingLeft;
-  int paddingTop;
-  int paddingRight;
-  int paddingBottom;
+  int paddingLeft {};
+  int paddingTop {};
+  int paddingRight {};
+  int paddingBottom {};
 
   if (horizontalAlignment == HorizontalAlignment::Left) {
     paddingLeft = 0;

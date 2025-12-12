@@ -49,7 +49,7 @@ contains(
   Projection projection = {}
 ) {
   return std::ranges::find(
-    std::move(std::ranges::begin(range)),
+    std::ranges::begin(range),
     std::ranges::end(range),
     value,
     projection

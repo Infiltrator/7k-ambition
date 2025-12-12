@@ -325,7 +325,7 @@ void runModeSelectionScreen(
 
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
-  auto selectedMode = (size_t)config.currentMode();
+  auto selectedMode = static_cast<unsigned int>(config.currentMode());
 
   Button3D startButton;
   Button3D backButton;
@@ -359,7 +359,7 @@ void runModeSelectionScreen(
         LINE_SPACING
       );
 
-      for (auto slot = 0; slot < SLOT_COUNT; slot++) {
+      for (auto slot = 0u; slot < SLOT_COUNT; slot++) {
         const auto y1 = BROWSE_Y1 + slot * SLOT_HEIGHT;
         const auto y2 = y1 + SLOT_HEIGHT - 1;
 
@@ -395,7 +395,9 @@ void runModeSelectionScreen(
           BROWSE_Y1 + SLOT_HEIGHT * SLOT_COUNT - 1
         )
     ) { // Clicking on a mode.
-      const auto clickedSlot = (mouse.click_y(LEFT_BUTTON) - BROWSE_Y1) / SLOT_HEIGHT;
+      const auto clickedSlot
+        = (static_cast<unsigned int>(mouse.click_y(LEFT_BUTTON)) - BROWSE_Y1)
+        / SLOT_HEIGHT;
       if (clickedSlot < MODE_SELECTION_COUNT) {
         if (selectedMode != clickedSlot) {
           refreshFlag = 1;

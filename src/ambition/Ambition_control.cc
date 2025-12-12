@@ -132,7 +132,7 @@ void migrateLocalDataDirectories(
     }
   }
 
-  for (const auto file : std::filesystem::directory_iterator(basePath)) {
+  for (const auto& file : std::filesystem::directory_iterator(basePath)) {
     if (!file.is_regular_file()) {
       continue;
     }
@@ -162,7 +162,7 @@ void openDiscord(
 ) {
   constexpr auto DISCORD_INVITATION_URL = "https://discord.gg/xJs99xK38G";
 
-  const auto sdlReturnCode = SDL_OpenURL(DISCORD_INVITATION_URL);
+  SDL_OpenURL(DISCORD_INVITATION_URL);
 }
 
 void openFeedback(
@@ -170,7 +170,7 @@ void openFeedback(
   constexpr auto FEEDBACK_URL
     = "https://sourceforge.net/p/seven-kingdoms-ambition/wiki/Post-game%20Feedback/";
 
-  const auto sdlReturnCode = SDL_OpenURL(FEEDBACK_URL);
+  SDL_OpenURL(FEEDBACK_URL);
 }
 
 void startMusic(

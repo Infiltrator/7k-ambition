@@ -56,7 +56,7 @@ int bribeAmountEstimate(
 
 double stealReportEspaceChanceEstimate(
   const ::Spy* _7kaaSpy,
-  const char report
+  const unsigned char report
 );
 
 } // namespace Ambition::Spy

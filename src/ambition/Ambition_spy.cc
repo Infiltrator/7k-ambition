@@ -107,7 +107,6 @@ double assassinationChanceEstimate(
   ::Unit* target
 ) {
   constexpr auto BASE_DEFENCE = 30;
-  constexpr auto EXTRA_RANDOM_DEFENCE = 29;
   constexpr auto HIT_POINTS_DIVISOR = 2;
   constexpr auto KING_DEFENCE_RATING = 50;
   constexpr auto POSSIBLE_SPY_SKILL = 100;
@@ -218,7 +217,7 @@ int bribeAmountEstimate(
 
 double stealReportEspaceChanceEstimate(
   const ::Spy* _7kaaSpy,
-  const char report
+  const unsigned char report
 ) {
   constexpr int REPORT_REQUIRED_SKILLS[] = { 40, 20, 30, 30, 50, 40, 90 };
 

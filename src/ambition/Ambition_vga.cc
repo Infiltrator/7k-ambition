@@ -108,7 +108,6 @@ short calculateAnimatedLinePhase(
 ) {
   constexpr auto PHASE_COUNT = 8;
   constexpr auto PHASES_PER_SECOND = 60;
-  constexpr auto MILLISECONDS_PER_PHASE = 1000 / PHASES_PER_SECOND;
 
   const auto timeProgress
     = animatedFlag
@@ -2631,9 +2630,9 @@ int calculateFirmFrame(
   const auto startingFrame = firmBuild->animate_full_size ? 1 : 2;
   const auto animatedFrameCount = firmBuild->frame_count - startingFrame + 1;
 
-  int totalSteps = 0;
+  auto totalSteps = 0u;
 
-  short frameSteps[animatedFrameCount];
+  unsigned short frameSteps[animatedFrameCount];
   for (int i = 0; i < animatedFrameCount; i++) {
     frameSteps[i] = 1 + firmBuild->frame_delay(i + 1);
     totalSteps += frameSteps[i];
@@ -2644,7 +2643,7 @@ int calculateFirmFrame(
       + firm->firm_recno)
     % totalSteps;
 
-  int frame = startingFrame;
+  auto frame = startingFrame;
   while(step > frameSteps[frame - startingFrame]) {
     step -= frameSteps[frame - startingFrame];
     frame++;
