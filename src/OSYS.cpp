@@ -2742,6 +2742,7 @@ void Sys::load_game()
    {
       case 1:
          rc = 1;                 // fall through to case 0
+			/* fall through */
 
       case 0:
          signal_exit_flag = 0;

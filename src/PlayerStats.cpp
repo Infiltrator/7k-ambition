@@ -92,6 +92,8 @@ bool PlayerStats::load_player_stats(bool force_reload) {
 		scn_stat_arr = (ScenStat *)mem_add_clear(hdr.rec_size*hdr.rec_count);
 		scn_stat_arr_len = hdr.rec_count;
 		rc = file.file_read(scn_stat_arr, hdr.rec_size*hdr.rec_count);
+		break;
+
 	default:
 		rc = 0;
 	}

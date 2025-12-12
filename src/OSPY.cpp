@@ -485,6 +485,7 @@ void Spy::set_next_action_mode()
 					set_action_mode(SPY_SABOTAGE);
 					break;
 				}
+				/* fall through */
 
 			case SPY_SABOTAGE:
 				set_action_mode(SPY_SOW_DISSENT);

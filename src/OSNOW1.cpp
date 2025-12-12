@@ -140,6 +140,8 @@ void SnowLayer::draw_step(VgaBuf *vgabuf)
 				}
 			}
 		}
+		break;
+
 	case 0:
 		for(sy = snow_y,cy =0; sy <= bound_y2 && cy < period; sy+= v_sep, ++cy)
 		{

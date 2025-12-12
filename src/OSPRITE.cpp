@@ -176,6 +176,7 @@ SpriteFrame* Sprite::cur_sprite_frame(int *needMirror)
 					*needMirror = 0;			// no need to mirror at any direction
 				return sprite_frame_res[sprite_info->die.first_frame_recno+cur_frame-1];
 			}
+			/* fall through */
 
 		default:
 			return sprite_frame_res[sprite_info->move_array[curDir].first_frame_recno+cur_frame-1];

@@ -38,6 +38,10 @@ AX_CHECK_COMPILE_FLAG([-ggdb3],
   [CXXFLAGS="$CXXFLAGS -g"]
 )
 
+AX_CHECK_COMPILE_FLAG([-Werror=implicit-fallthrough],
+  [CXXFLAGS="$CXXFLAGS -Werror=implicit-fallthrough"]
+)
+
 save_CXXFLAGS="$CXXFLAGS"
 
 GLOBAL_CFLAGS="-include \"\$(top_builddir)/include/config.h\""
