@@ -59,6 +59,9 @@ void pasteFromClipboard(
   const unsigned int maximumSize
 );
 
+void playEncyclopaediaMusic(
+);
+
 bool preventReplayDeleteStopDesync(
   const UnitCaravan* _7kaaCaravan,
   const int _7kaaStopId
