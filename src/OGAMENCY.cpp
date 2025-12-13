@@ -295,9 +295,9 @@ void Game::view_encyclopedia()
 
 			if( disp_picture(main_class_id, sub_class_id_array[main_class_id-1]) )
 				nextDisplayTime = misc.get_time() + SLIDE_MODE_TIME;
+		} else {
+			Ambition::Control::delayFrame(SDL_GetTicks64() + SLIDE_MODE_TIME);
 		}
-
-		Ambition::Control::delayFrame(SDL_GetTicks64() + SLIDE_MODE_TIME);
 	}
 
 	//------- exiting: turn dark --------//
