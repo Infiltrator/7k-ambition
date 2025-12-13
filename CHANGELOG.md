@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Greatly expanded the German translation, thanks to Einheit-101.
 - Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg
   up/down keys to the tutorial selection list.
 
@@ -26,6 +27,7 @@ speaking, considered to be the player's experience.
 - Fixed replay desyncs caused by setting Caravan and trade ship stop pickup
   types, deleting trade stops, copying trade routes, or automatic caravan
   replacement.
+- Fixed and improved the German translation, thanks to Einheit-101.
 - Fixed non-English tutorial descriptions getting cut off at the bottom, by
   adding a scroll bar and buttons, so that all the text can be scrolled and
   read.
