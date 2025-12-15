@@ -144,6 +144,8 @@ void Game::view_encyclopedia()
 {
 	music.stop();			// no music for encyclopedia as it reads files from the CDROM
 
+	Ambition::Control::playEncyclopaediaMusic();
+
 	//---- load the interface into the back buffer ----//
 
 	image_encyc.put_to_buf( &vga_back, "ENCYC" );

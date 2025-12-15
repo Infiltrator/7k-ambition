@@ -31,7 +31,9 @@
 #include "OCONFIG.h"
 #include "OFIRMA.h"
 #include "OINFO.h"
+#include "OMUSIC.h"
 #include "OREMOTE.h"
+#include "OSYS.h"
 #include "OU_CARA.h"
 #include "OU_MARI.h"
 
@@ -117,6 +119,26 @@ void pasteFromClipboard(
   const auto buffer = SDL_GetClipboardText();
   strncpy(destination, buffer, maximumSize);
   SDL_free(buffer);
+}
+
+void playEncyclopaediaMusic(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto MUSIC_TRACK_NUMBER_VICTORY = 9;
+
+  if (config.music_flag) {
+    if (!music.is_playing(1)) {
+      music.play(
+        MUSIC_TRACK_NUMBER_VICTORY,
+        MUSIC_PLAY_LOOPED | (sys.cdrom_drive ? MUSIC_CD_THEN_WAV : 0)
+      );
+    }
+  } else {
+    music.stop();
+  }
 }
 
 bool preventReplayDeleteStopDesync(
