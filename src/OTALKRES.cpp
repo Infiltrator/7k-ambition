@@ -736,6 +736,11 @@ void TalkRes::send_talk_msg(TalkMsg* talkMsgPtr, char remoteAction)
 		return;
 	}
 
+	//-- a nation can be deleted before a remote message is processed --//
+
+	if( nation_array.is_deleted(talkMsgPtr->from_nation_recno) || nation_array.is_deleted(talkMsgPtr->to_nation_recno) )
+		return;
+
 	//------ the TalkMsg::reply_type ------//
 
 	if( talkMsgPtr->is_reply_needed() )
@@ -852,6 +857,12 @@ void TalkRes::reply_talk_msg(int talkMsgRecno, char replyType, char remoteAction
 	err_when( is_talk_msg_deleted(talkMsgRecno) );
 
 	TalkMsg* talkMsgPtr = get_talk_msg(talkMsgRecno);
+
+	//-- a nation can be deleted before a remote message is processed --//
+
+	if( nation_array.is_deleted(talkMsgPtr->from_nation_recno) || nation_array.is_deleted(talkMsgPtr->to_nation_recno) )
+		return;
+
 	Nation*  fromNation = nation_array[talkMsgPtr->from_nation_recno];
 
 	err_when( talkMsgPtr->reply_type == REPLY_NOT_NEEDED );
