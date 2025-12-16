@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.8] — 2025-12-16
+
 ### Added
 
 - Greatly expanded the German translation, thanks to Einheit-101.
