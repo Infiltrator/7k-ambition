@@ -313,7 +313,8 @@ int CrcStore::compare_remote(uint32_t remoteMsgId, char *dataPtr)
 // otherwise not equal
 int CrcStore::compare_frame(char *dataPtr)
 {
-	if( *(CRC_TYPE*)dataPtr != frame_check_num )
+	CRC_TYPE remote_frame_check_num = *(CRC_TYPE *)dataPtr;
+	if( remote_frame_check_num != frame_check_num )
 	{
 		send_all();
 		return 1;
