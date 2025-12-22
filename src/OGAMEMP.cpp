@@ -5046,7 +5046,7 @@ int Game::mp_select_load_option(char *fileName)
 						{
 							regPlayerId[regPlayerCount] = from;
 							playerReadyFlag[regPlayerCount] = 0;
-							raceAssigned[newPlayerMsg->race_id]++;
+							raceAssigned[newPlayerMsg->race_id-1]++;
 							playerRace[regPlayerCount] = newPlayerMsg->race_id;
 							colorAssigned[newPlayerMsg->color_scheme_id-1]=1;
 							playerColor[regPlayerCount] = newPlayerMsg->color_scheme_id;
