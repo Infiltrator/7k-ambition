@@ -1415,3 +1415,18 @@ static void put_ship_rec(int recNo, int x, int y, int refreshFlag)
 }
 //----------- End of static function put_ship_rec -----------//
 
+
+//------- Begin of function FirmHarbor::change_nation ---------//
+//
+void FirmHarbor::change_nation(int newNationRecno)
+{
+	//--- empty the build queue ---//
+
+	build_queue_count = 0;
+	if (build_unit_id) cancel_build_unit();
+
+	//-------- change the nation of this firm now ----------//
+
+	Firm::change_nation(newNationRecno);
+}
+//-------- End of function FirmHarbor::change_nation ---------//

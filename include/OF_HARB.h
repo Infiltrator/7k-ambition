@@ -76,6 +76,8 @@ public:
 	void 	put_info(int refreshFlag);
 	int	detect_info();
 
+	void	change_nation(int newNationRecno);
+
 	void 	assign_unit(int unitRecno);
 	void	next_day();
 
