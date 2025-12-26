@@ -120,6 +120,7 @@ public:
 	char			unit_finish_attack_move;
 	char			unit_loyalty_require_local_leader;
 	char			unit_allow_path_power_mode;
+	char			unit_space_for_attack_check;
 	char			unit_spy_fixed_target_loyalty;
 	char			unit_target_move_range_cycle;
 

@@ -38,6 +38,7 @@
 #include <OFONT.h>
 #include <CRC.h>
 #include <OPOWER.h>
+#include <ConfigAdv.h>
 
 #ifdef NO_DEBUG_UNIT
 #undef err_when
@@ -600,7 +601,7 @@ void UnitArray::process()
 		}
 	}
 
-	if(idle_blocked_unit_reset_count<50)
+	if( config_adv.unit_space_for_attack_check && idle_blocked_unit_reset_count<50 )
 		idle_blocked_unit_reset_count++; // the ability to restart idle blocked attacking unit
 
 	//------- process Sprite ---------//

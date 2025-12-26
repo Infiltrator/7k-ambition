@@ -313,6 +313,7 @@ void ConfigAdv::reset()
 	unit_allow_path_power_mode = 0;
 	unit_finish_attack_move = 1;
 	unit_loyalty_require_local_leader = 1;
+	unit_space_for_attack_check = 0;
 	unit_spy_fixed_target_loyalty = 0;
 	unit_target_move_range_cycle = 0;
 
@@ -584,6 +585,12 @@ int ConfigAdv::set(char *name, char *value)
 	else if( !strcmp(name, "unit_allow_path_power_mode") )
 	{
 		if( !read_bool(value, &unit_allow_path_power_mode) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "unit_space_for_attack_check") )
+	{
+		if( !read_bool(value, &unit_space_for_attack_check) )
 			return 0;
 		update_check_sum(name, value);
 	}

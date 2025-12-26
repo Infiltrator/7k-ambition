@@ -27,6 +27,7 @@
 #include <OWORLD.h>
 #include <OUNIT.h>
 #include <OGAME.h>
+#include <ConfigAdv.h>
 
 #ifdef NO_DEBUG_UNIT
 #undef err_when
@@ -430,6 +431,9 @@ int Unit::possible_place_for_range_attack(int targetXLoc, int targetYLoc, int ta
 //
 int Unit::space_for_attack(int targetXLoc, int targetYLoc, char targetMobileType, int targetWidth, int targetHeight)
 {
+	if( !config_adv.unit_space_for_attack_check )
+		return 1;
+
 	if(mobile_type==UNIT_LAND && targetMobileType==UNIT_LAND)
 		return space_around_target(targetXLoc, targetYLoc, targetWidth, targetHeight);
 
