@@ -774,6 +774,9 @@ int Unit::idle_detect_unit_checking(short targetRecno)
 	if(targetUnitPtr->unit_id == UNIT_CARAVAN)
 		return 0;
 
+	if( targetUnitPtr->unit_id == UNIT_VESSEL )
+		return 0;
+
 	//###### trevor 15/10 #######//
 
 	//-------------------------------------------//
