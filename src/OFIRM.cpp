@@ -194,7 +194,7 @@ void Firm::init(int xLoc, int yLoc, int nationRecno, int firmId, const char* bui
    center_x = (loc_x1 + loc_x2) / 2;
    center_y = (loc_y1 + loc_y2) / 2;
 
-	region_id = world.get_region_id( center_x, center_y );
+	init_region_id();
 
 	abs_x1 = xLoc * ZOOM_LOC_WIDTH  + firmBuild->min_offset_x;
 	abs_y1 = yLoc * ZOOM_LOC_HEIGHT + firmBuild->min_offset_y;
@@ -437,6 +437,15 @@ void Firm::init_name()
 	}
 }
 //--------- End of function Firm::init_name --------//
+
+
+//--------- Begin of function Firm::init_region_id --------//
+//
+void Firm::init_region_id()
+{
+	region_id = world.get_region_id( center_x, center_y );
+}
+//----------- End of function Firm::init_region_id ---------//
 
 
 //------- Begin of function Firm::get_closest_town_name_id -----------//
@@ -3097,14 +3106,11 @@ void Firm::setup_link(int reload)
 
 		//------ check if both are on the same terrain type ------//
 
+		if( firmPtr->region_id != region_id )
+			continue;
+
 		if( world.get_loc(firmPtr->center_x, firmPtr->center_y)->is_plateau()
 			 != world.get_loc(center_x, center_y)->is_plateau() )
-		{
-			continue;
-		}
-
-		if( world.get_loc(firmPtr->center_x, firmPtr->center_y)->region_id
-			 != world.get_loc(center_x, center_y)->region_id )
 		{
 			continue;
 		}
@@ -3196,14 +3202,11 @@ void Firm::setup_link(int reload)
 
 		//------ check if both are on the same terrain type ------//
 
+		if( townPtr->region_id != region_id )
+			continue;
+
 		if( (world.get_loc(townPtr->center_x, townPtr->center_y)->is_plateau()==1)
 			!= (world.get_loc(center_x, center_y)->is_plateau()==1) )
-		{
-			continue;
-		}
-
-		if( world.get_loc(townPtr->center_x, townPtr->center_y)->region_id
-			!= world.get_loc(center_x, center_y)->region_id )
 		{
 			continue;
 		}

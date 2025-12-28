@@ -256,6 +256,7 @@ public:
 
 	virtual void init(int xLoc, int yLoc, int nationRecno, int firmId, const char* buildCode=NULL, short builderRecno=0);
 	virtual void deinit();
+	virtual void init_region_id();
 
 	void		init_name();
 	int 		get_closest_town_name_id();

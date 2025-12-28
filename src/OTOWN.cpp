@@ -3341,14 +3341,11 @@ void Town::setup_link(int reload)
 
 		//------ check if both are on the same terrain type ------//
 
+		if( firmPtr->region_id != region_id )
+			continue;
+
 		if( (world.get_loc(firmPtr->center_x, firmPtr->center_y)->is_plateau()==1)
 			 != (world.get_loc(center_x, center_y)->is_plateau()==1) )
-		{
-			continue;
-		}
-
-		if( world.get_loc(firmPtr->center_x, firmPtr->center_y)->region_id
-			 != world.get_loc(center_x, center_y)->region_id )
 		{
 			continue;
 		}
@@ -3432,14 +3429,11 @@ void Town::setup_link(int reload)
 
 		//------ check if both are on the same terrain type ------//
 
+		if( townPtr->region_id != region_id )
+			continue;
+
 		if( (world.get_loc(townPtr->center_x, townPtr->center_y)->is_plateau()==1)
 			 != (world.get_loc(center_x, center_y)->is_plateau()==1) )
-		{
-			continue;
-		}
-
-		if( world.get_loc(townPtr->center_x, townPtr->center_y)->region_id
-			!= world.get_loc(center_x, center_y)->region_id )
 		{
 			continue;
 		}

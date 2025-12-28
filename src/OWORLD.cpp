@@ -1349,6 +1349,9 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 
 			//------ check if both are on the same terrain type ------//
 
+			if( townPtr->region_id != world.get_loc(srcXLoc, srcYLoc)->region_id )
+				continue;
+
 			if( (world.get_loc(townPtr->center_x, townPtr->center_y)->is_plateau()==1)
 				 != (world.get_loc(srcXLoc, srcYLoc)->is_plateau()==1) )
 			{
@@ -1408,6 +1411,9 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 		}
 
 		//------ check if both are on the same terrain type ------//
+
+		if( firmPtr->region_id != world.get_loc(srcXLoc, srcYLoc)->region_id )
+			continue;
 
 		if( (world.get_loc(firmPtr->center_x, firmPtr->center_y)->is_plateau()==1)
 			 != (world.get_loc(srcXLoc, srcYLoc)->is_plateau()==1) )

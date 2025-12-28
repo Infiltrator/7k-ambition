@@ -73,6 +73,7 @@ public:
 
 	void  init(int xLoc, int yLoc, int nationRecno, int firmId, const char* buildCode=NULL, short builderRecno=0);
 	void  deinit_derived();
+	void	init_region_id();
 	void 	put_info(int refreshFlag);
 	int	detect_info();
 

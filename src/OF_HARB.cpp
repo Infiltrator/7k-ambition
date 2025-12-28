@@ -159,42 +159,67 @@ void FirmHarbor::init(int xLoc, int yLoc, int nationRecno, int firmId, const cha
 	{
 		// check north harbour
 		Firm::init(xLoc, yLoc, nationRecno, firmId, "N", builderRecno);
-		land_region_id = world.get_loc(xLoc+1, yLoc+2)->region_id;
-		sea_region_id = world.get_loc(xLoc+1, yLoc)->region_id;
 	}
 	else if( world.get_loc(xLoc+1, yLoc)->can_build_harbor(1) )
 	{
 		// check south harbour
 		Firm::init(xLoc, yLoc, nationRecno, firmId, "S", builderRecno);
-		land_region_id = world.get_loc(xLoc+1, yLoc)->region_id;
-		sea_region_id = world.get_loc(xLoc+1, yLoc+2)->region_id;
 	}
 	else if( world.get_loc(xLoc+2, yLoc+1)->can_build_harbor(1) )
 	{
 		// check west harbour
 		Firm::init(xLoc, yLoc, nationRecno, firmId, "W", builderRecno);
-		land_region_id = world.get_loc(xLoc+2, yLoc+1)->region_id;
-		sea_region_id = world.get_loc(xLoc, yLoc+1)->region_id;
 	}
 	else if( world.get_loc(xLoc, yLoc+1)->can_build_harbor(1) )
 	{
 		// check east harbour
 		Firm::init(xLoc, yLoc, nationRecno, firmId, "E", builderRecno);
-		land_region_id = world.get_loc(xLoc, yLoc+1)->region_id;
-		sea_region_id = world.get_loc(xLoc+2, yLoc+1)->region_id;
 	}
 	else
 	{
 		err_here();
 	}
-
-	region_id = land_region_id;		// set region_id to land_region_id
+	err_when( region_id != land_region_id || region_id == sea_region_id );
 
 	//------- update the harbor count of the regions ------//
 
 	region_array.update_region_stat();
 }
 //----------- End of function FirmHarbor::init -----------//
+
+
+//--------- Begin of function Firm::init_region_id --------//
+//
+void FirmHarbor::init_region_id()
+{
+	char* buildCode = firm_res.get_build(firm_build_id)->build_code;
+	if( strcmp(buildCode, "N")==0 )
+	{
+		land_region_id = world.get_loc(loc_x1+1, loc_y1+2)->region_id;
+		sea_region_id = world.get_loc(loc_x1+1, loc_y1)->region_id;
+	}
+	else if( strcmp(buildCode, "S")==0 )
+	{
+		land_region_id = world.get_loc(loc_x1+1, loc_y1)->region_id;
+		sea_region_id = world.get_loc(loc_x1+1, loc_y1+2)->region_id;
+	}
+	else if( strcmp(buildCode, "W")==0 )
+	{
+		land_region_id = world.get_loc(loc_x1+2, loc_y1+1)->region_id;
+		sea_region_id = world.get_loc(loc_x1, loc_y1+1)->region_id;
+	}
+	else if( strcmp(buildCode, "E")==0 )
+	{
+		land_region_id = world.get_loc(loc_x1, loc_y1+1)->region_id;
+		sea_region_id = world.get_loc(loc_x1+2, loc_y1+1)->region_id;
+	}
+	else
+	{
+		err_here();
+	}
+	region_id = land_region_id;
+}
+//----------- End of function Firm::init_region_id ---------//
 
 
 //------- Begin of function FirmHarbor::assign_unit -----------//
