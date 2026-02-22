@@ -1244,7 +1244,9 @@ int World::can_build_town(int xLoc1, int yLoc1, short unitRecno)
 			// ##### patch begin Gilbert 14/3 ######//
 			// allow the building unit to stand in the area
 			if( !locPtr->can_build_town() && 
-				(!locPtr->has_unit(UNIT_LAND) || locPtr->unit_recno(UNIT_LAND)!=unitRecno) )
+				(locPtr->is_power_off() ||
+					!locPtr->has_unit(UNIT_LAND) ||
+					locPtr->unit_recno(UNIT_LAND)!=unitRecno) )
 				return 0;
 			// ##### patch end Gilbert 14/3 ######//
 		}
