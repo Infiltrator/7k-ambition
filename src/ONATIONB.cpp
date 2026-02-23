@@ -1746,7 +1746,7 @@ void NationBase::succeed_king(int kingUnitRecno)
 static int succeed_king_loyalty_change(int thisRaceId, int newKingRaceId, int oldKingRaceId)
 {
 	#define SAME_RACE_LOYALTY_INC          20
-	#define DIFFERENT_RACE_LOYALTY_DEC	   30
+	#define DIFFERENT_RACE_LOYALTY_DEC    -30
 
 	//----- the races of the new and old kings are different ----//
 
