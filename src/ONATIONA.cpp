@@ -789,6 +789,9 @@ void NationArray::update_military_rating()
 		if( unitPtr->nation_recno == 0 )
 			continue;
 
+		if( unitPtr->rank_id == RANK_KING && unitPtr->skill.skill_level < 100 )
+			nation_array[unitPtr->nation_recno]->king_leadership = unitPtr->skill.skill_level;
+
 		//---- if this unit is a ship, increase total_ship_combat_level ----//
 
 		if( unit_res[unitPtr->unit_id]->unit_class == UNIT_CLASS_SHIP )
