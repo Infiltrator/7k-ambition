@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = _(IDENTIFIER_PREVIEW),
     .sections = {
+      {
+        .heading = _(HEADING_CHANGED),
+        .items = {
+          _("Music now plays on the tutorial and scenario selection screens."),
+        },
+      },
     },
   },
   {

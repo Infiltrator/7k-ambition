@@ -10,6 +10,10 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Changed
+
+- Music now plays on the tutorial and scenario selection screens.
+
 
 ## [3.2.8] — 2025-12-16
 
