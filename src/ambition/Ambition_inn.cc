@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,15 +63,17 @@ void refreshInnBrowser(
     return;
   }
 
-  if (removedUnitIndex > inn->inn_unit_count) {
+  if (removedUnitIndex < 0) {
     browser.refresh(browser.recno() + 1, inn->inn_unit_count);
   } else {
-    if (browser.recno() == inn->inn_unit_count - removedUnitIndex + 1) {
+    /* inn->inn_unit_count has already been decremented by the removed guest, so
+     * we need to add 1 back whenever we're using it as if it were the old guest
+     * list. */
+    if (browser.recno() == (inn->inn_unit_count + 1) - removedUnitIndex + 1) {
       browser.refresh(1, inn->inn_unit_count);
       hireButton.disable();
-    } else if (
-      browser.recno() > inn->inn_unit_count - removedUnitIndex
-      && browser.recno() > 1
+    } else if (browser.recno()
+        > (inn->inn_unit_count + 1) - removedUnitIndex + 1
     ) {
       browser.refresh(browser.recno() - 1, inn->inn_unit_count);
     } else {

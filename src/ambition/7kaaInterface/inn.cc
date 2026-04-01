@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -124,7 +124,7 @@ void overrideHireButtonStatus(
   }
 }
 
-void refreshBrowser(
+bool refreshBrowser(
   const short firmRecordNumber,
   FirmInn* inn,
   VBrowseIF& browser,
@@ -132,7 +132,7 @@ void refreshBrowser(
   Button3D& hireButton
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
-    return;
+    return false;
   }
 
   Ambition::refreshInnBrowser(
@@ -142,6 +142,8 @@ void refreshBrowser(
     removedUnitIndex,
     hireButton
   );
+
+  return true;
 }
 
 } // namespace _7kaaAmbitionInterface::Inn
