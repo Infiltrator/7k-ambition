@@ -206,16 +206,15 @@ int Sys::init()
 	#ifdef BETA
 		debug_session       = misc.is_file_exist("DEBUG.SYS");
 		testing_session     = misc.is_file_exist("TESTING.SYS");
-		scenario_cheat_flag = misc.is_file_exist("CHEAT.SYS");
 	#endif
 
 	#ifdef DEBUG
 		debug_session       = misc.is_file_exist("DEBUG.SYS");
 		testing_session     = misc.is_file_exist("TESTING.SYS");
-		scenario_cheat_flag = misc.is_file_exist("CHEAT.SYS");
 	#endif
 
 //	debug_session       = misc.is_file_exist("DEBUG.SYS");
+	scenario_cheat_flag = config_adv.scenario_editor || misc.is_file_exist("CHEAT.SYS");
 
    // set game directory paths and game version
    if ( !set_game_dir() )

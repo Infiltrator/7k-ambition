@@ -301,6 +301,7 @@ void ConfigAdv::reset()
 	remote_compare_random_seed = 1;
 
 	scenario_config = 1;
+	scenario_editor = 0;
 
 	start_up_monster_firm = 10;
 
@@ -533,6 +534,11 @@ int ConfigAdv::set(char *name, char *value)
 	else if( !strcmp(name, "scenario_config") )
 	{
 		if( !read_bool(value, &scenario_config) )
+			return 0;
+	}
+	else if( !strcmp(name, "scenario_editor") )
+	{
+		if( !read_bool(value, &scenario_editor) )
 			return 0;
 	}
 	else if( !strcmp(name, "start_up_monster_firm") )

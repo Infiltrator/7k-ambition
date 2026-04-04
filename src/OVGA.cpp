@@ -504,11 +504,6 @@ void Vga::handle_messages()
                bypass = 1;
                sys.toggle_full_screen_flag = 1;
             }
-            else if( event.key.keysym.sym == SDLK_F4 )
-            {
-               bypass = 1;
-               sys.signal_exit_flag = 1;
-            }
             else if( event.key.keysym.sym == SDLK_TAB )
             {
                if( is_full_screen() )
@@ -518,10 +513,7 @@ void Vga::handle_messages()
                   SDL_MinimizeWindow(window);
                }
             }
-         }
-         else if( mod == KMOD_LCTRL || mod == KMOD_RCTRL )
-         {
-            if( event.key.keysym.sym == SDLK_g )
+            else if( event.key.keysym.sym == SDLK_g )
             {
                bypass = 1;
                set_window_grab(WINGRAB_TOGGLE);
@@ -533,6 +525,11 @@ void Vga::handle_messages()
                   set_mouse_mode( MOUSE_INPUT_REL_WARP );
                else if( mouse_mode != MOUSE_INPUT_ABS )
                   set_mouse_mode( MOUSE_INPUT_ABS );
+            }
+            else if( event.key.keysym.sym == SDLK_F4 )
+            {
+               bypass = 1;
+               sys.signal_exit_flag = 1;
             }
          }
          if( SDL_IsTextInputActive() && event.key.keysym.sym >= SDLK_SPACE && event.key.keysym.sym <= SDLK_z )

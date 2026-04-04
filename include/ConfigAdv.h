@@ -105,6 +105,7 @@ public:
 
 	// scenario settings
 	char			scenario_config;
+	char			scenario_editor;
 
 	// startup settings
 	int			start_up_monster_firm;
