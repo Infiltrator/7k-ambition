@@ -151,8 +151,6 @@ AC_ARG_ENABLE([enet],
 )
 
 
-# Select which backends to build
-
 AS_CASE(["$host"],
   [*-mingw*], [
     platform=windows
@@ -160,15 +158,6 @@ AS_CASE(["$host"],
     AC_CHECK_TOOL([WINDRES],[windres])
   ]
 )
-
-AM_CONDITIONAL([AUDIO_OPENAL], [test "$audio_backend" = openal])
-AM_CONDITIONAL([INPUT_SDL],    [test "$input_backend" = sdl])
-AM_CONDITIONAL([VIDEO_SDL],    [test "$video_backend" = sdl])
-AM_CONDITIONAL([USE_WINDOWS],  [test "$platform"      = windows])
-AM_CONDITIONAL([USE_ASM],      [test "$enable_asm"    = yes])
-AM_CONDITIONAL([USE_CURL],     [test "$enable_curl"   = yes])
-AM_CONDITIONAL([USE_ENET],     [test "$enable_enet"   = yes])
-AM_CONDITIONAL([USE_FHS],      [test "$enable_fhs"    = yes])
 
 # Sync multiplayer support options
 AS_IF([test "$enable_multiplayer" = yes], [
@@ -187,6 +176,15 @@ AS_IF([test "$enable_multiplayer" != yes], [
   enable_enet=no
 ])
 
+dnl Pass build options to automake
+AM_CONDITIONAL([AUDIO_OPENAL], [test "$audio_backend" = openal])
+AM_CONDITIONAL([INPUT_SDL],    [test "$input_backend" = sdl])
+AM_CONDITIONAL([VIDEO_SDL],    [test "$video_backend" = sdl])
+AM_CONDITIONAL([USE_WINDOWS],  [test "$platform"      = windows])
+AM_CONDITIONAL([USE_ASM],      [test "$enable_asm"    = yes])
+AM_CONDITIONAL([USE_CURL],     [test "$enable_curl"   = yes])
+AM_CONDITIONAL([USE_ENET],     [test "$enable_enet"   = yes])
+AM_CONDITIONAL([USE_FHS],      [test "$enable_fhs"    = yes])
 
 # Jwasm assembler set-up
 AS_IF([test "$enable_asm" = yes], [
