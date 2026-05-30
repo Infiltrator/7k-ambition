@@ -183,7 +183,9 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 
 	// ##### begin Gilbert 4/11 ########//
 	// stop any music
-	music.stop();
+	if (!Ambition::Config::enhancementsAvailable()) {
+		music.stop();
+	}
 	// ##### end Gilbert 4/11 ########//
 
 	int menuX1 = TUTOR_MENU_X1;
