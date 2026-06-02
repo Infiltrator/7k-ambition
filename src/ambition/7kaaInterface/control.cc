@@ -141,6 +141,18 @@ void playEncyclopaediaMusic(
   }
 }
 
+void playMultiplayerLobbyMusic(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  /* This will be made into a proper setting later, but, for now, just always
+   * stop music in the lobby. */
+
+  music.stop();
+}
+
 bool preventReplayDeleteStopDesync(
   const UnitCaravan* _7kaaCaravan,
   const int _7kaaStopId

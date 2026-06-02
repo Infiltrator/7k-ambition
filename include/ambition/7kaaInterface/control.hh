@@ -62,6 +62,9 @@ void pasteFromClipboard(
 void playEncyclopaediaMusic(
 );
 
+void playMultiplayerLobbyMusic(
+);
+
 bool preventReplayDeleteStopDesync(
   const UnitCaravan* _7kaaCaravan,
   const int _7kaaStopId
