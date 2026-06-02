@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-02 21:29+1000\n"
+"POT-Creation-Date: 2026-06-02 21:37+1000\n"
 "PO-Revision-Date: 2025-10-21 15:48+1100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -147,6 +147,10 @@ msgstr ""
 
 #: src/ambition/Ambition_control.cc:82
 msgid "Later"
+msgstr ""
+
+#: src/ambition/Ambition_control.cc:106
+msgid "End of replay"
 msgstr ""
 
 #: src/ambition/Ambition_news.cc:191
@@ -493,6 +497,122 @@ msgid "Preview Version -- not yet released"
 msgstr ""
 
 #: src/ambition/version_details.cc
+msgid "Added a Catalan translation, thanks to Júlia Rosell Saldaña."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Translate War Machine identifiers (their type and level when they are in a "
+"list)."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Music now plays on the tutorial and scenario selection screens."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Music is paused in the multiplayer game lobby."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.8 -- 2025-12-16"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Greatly expanded the German translation, thanks to Einheit-101."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg up/"
+"down keys to the tutorial selection list."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed builders sometimes going to their buildings' rally points instead of "
+"to the building where they were requested by the request builder button.  "
+"The workaround for this means that builders will always ignore rally points, "
+"for the time being."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed a crash on hovering over the caravan list of the Trade Report when you "
+"have no caravans."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed replay desyncs caused by setting Caravan and trade ship stop pickup "
+"types, deleting trade stops, copying trade routes, or automatic caravan "
+"replacement."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed and improved the German translation, thanks to Einheit-101."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed non-English tutorial descriptions getting cut off at the bottom, by "
+"adding a scroll bar and buttons, so that all the text can be scrolled and "
+"read."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the config.txt settings not taking effect when there was only a 7kaa "
+"config.txt and not an Ambition one."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Added button help text to the Egyptian, Mughal, and Zulu Greater Being spell "
+"buttons."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the Encyclopaedia slideshow showing a blank image until the mouse was "
+"moved."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed the grammar in the \"Desperate Bowmen\" scenario description."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the manual showing the wrong targeting type for the Mughal Greater "
+"Being (Djinni)."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Changed the default setting for Help from Full to Brief, to avoid "
+"overwhelming new players with information panels.  This only applies to new "
+"installations."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Automatically select the Greater Being upon invoking it at a Seat of Power."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Music now plays on the encyclopaedia."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "More changes to make development easier."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.7 -- 2025-10-24"
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid "Automatically detect the language on Windows."
 msgstr ""
 
@@ -531,8 +651,8 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid ""
-"Fixed not being able to play replays (R key) because the NONAME.RPL was "
-"being saved in the wrong place."
+"Fixed not being able to play replays (R key) because the NONAME.RPL file was "
+"being saved to the wrong place."
 msgstr ""
 
 #: src/ambition/version_details.cc
@@ -546,6 +666,12 @@ msgstr ""
 msgid ""
 "Changed the Harbour ship count to include the currently-building ship, as it "
 "blocks other ships from entering, so counts towards the limit."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Pause replays at the end instead of immediately exiting to the menu without "
+"warning."
 msgstr ""
 
 #: src/ambition/version_details.cc
