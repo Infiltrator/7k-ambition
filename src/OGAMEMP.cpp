@@ -3012,6 +3012,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 		else
 			music.stop();
 
+		Ambition::Control::playMultiplayerLobbyMusic();
+
 		// --------- detect remote message -------//
 		pollStatus = mp_obj.poll_players();
 		if (pollStatus == MP_POLL_LOGIN_FAILED)
@@ -4922,6 +4924,8 @@ int Game::mp_select_load_option(char *fileName)
 		}
 		else
 			music.stop();
+
+		Ambition::Control::playMultiplayerLobbyMusic();
 
 		// --------- detect remote message -------//
 		pollStatus = mp_obj.poll_players();

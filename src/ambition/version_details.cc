@@ -28,6 +28,7 @@ std::vector<VersionUpdates> versionDetails = {
         .heading = _(HEADING_CHANGED),
         .items = {
           _("Music now plays on the tutorial and scenario selection screens."),
+          _("Music is paused in the multiplayer game lobby."),
         },
       },
     },

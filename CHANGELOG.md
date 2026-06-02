@@ -19,6 +19,7 @@ speaking, considered to be the player's experience.
 ### Changed
 
 - Music now plays on the tutorial and scenario selection screens.
+- Music is paused in the multiplayer game lobby.
 
 
 ## [3.2.8] — 2025-12-16
