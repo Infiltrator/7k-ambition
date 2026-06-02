@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-01 12:54+1000\n"
+"POT-Creation-Date: 2026-06-02 21:29+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -472,6 +472,26 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Preamble"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Added"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Changed"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Removed"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Preview Version -- not yet released"
 msgstr ""
 
 #: src/ambition/version_details.cc

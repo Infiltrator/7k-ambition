@@ -6,26 +6,26 @@
 namespace Ambition::News {
 
 const auto HEADING_PREAMBLE = _("Preamble");
-constexpr auto HEADING_ADDED = "Added";
-constexpr auto HEADING_FIXED = "Fixed";
-constexpr auto HEADING_CHANGED = "Changed";
-constexpr auto HEADING_REMOVED = "Removed";
-constexpr auto IDENTIFIER_PREVIEW = "Preview Version -- not yet released";
+const auto HEADING_ADDED = _("Added");
+const auto HEADING_FIXED = _("Fixed");
+const auto HEADING_CHANGED = _("Changed");
+const auto HEADING_REMOVED = _("Removed");
+const auto IDENTIFIER_PREVIEW = _("Preview Version -- not yet released");
 
 
 std::vector<VersionUpdates> versionDetails = {
   {
-    .identifier = _(IDENTIFIER_PREVIEW),
+    .identifier = IDENTIFIER_PREVIEW,
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added a Catalan translation, thanks to Júlia Rosell Saldaña."),
           _("Translate War Machine identifiers (their type and level when they are in a list)."),
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Music now plays on the tutorial and scenario selection screens."),
           _("Music is paused in the multiplayer game lobby."),
@@ -37,14 +37,14 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.8 -- 2025-12-16"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Greatly expanded the German translation, thanks to Einheit-101."),
           _("Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg up/down keys to the tutorial selection list."),
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed builders sometimes going to their buildings' rally points instead of to the building where they were requested by the request builder button.  The workaround for this means that builders will always ignore rally points, for the time being."),
           _("Fixed a crash on hovering over the caravan list of the Trade Report when you have no caravans."),
@@ -59,7 +59,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Changed the default setting for Help from Full to Brief, to avoid overwhelming new players with information panels.  This only applies to new installations."),
           _("Automatically select the Greater Being upon invoking it at a Seat of Power."),
@@ -73,7 +73,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.7 -- 2025-10-24"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Automatically detect the language on Windows."),
           _("Added a Dutch translation, thanks to Jan Miedema."),
@@ -81,7 +81,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed target resistance being shown incorrectly when you have workers in the independent town."),
           _("Fixed the buttons of the Harbour interface overlapping with the production progress bar."),
@@ -91,7 +91,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Base the display of the building guide on the Help setting.  Not shown when set to None; only the grid lines when set to Brief; and both highlighting and grid lines when set to Detailed."),
           _("Changed the Harbour ship count to include the currently-building ship, as it blocks other ships from entering, so counts towards the limit."),
@@ -114,7 +114,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Show an information panel for Towns, with the number of peasants, total population, number of races, and loyalty or resistance."),
           _("Show an information panel for Forts, with the general or king leadership level, number of soldiers, and the approximate total strength, including the effects of the leader."),
@@ -125,7 +125,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed a crash that sometimes happened after an earthquake, where automatic caravan cloning would try to both clone and retire an idle caravan at the same time, resulting in a segfault."),
           _("Fixed the build Fort keybind (F) not working because it was conflicting with selecting a Fort.  The default keybind for selecting a fort has been changed to `N`.  You can change by binding the `KEYEVENT_ _BUILD_ _CAMP` and `KEYEVENT_ _GOTO_ _CAMP` events to different keys in the config.txt file."),
@@ -135,7 +135,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Changed when building hitbars are displayed based on the help setting in the options menu.  When it is set to None, building hitbars will never be displayed.  When it is set to Brief, they will be displayed for the currently selected building and any building hovered over with the mouse.  When it is set to Detailed, they will be displayed as per the old behaviour--when the building is at less than 100% hitpoints."),
           _("Town and Firm information panels will show the number of spies you have inside of them instead of just \"(Spy)\".  If the general is also your spy, it will say \"G+\" the number of other spies you have."),
@@ -147,7 +147,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.5 -- 2025-09-09"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added scrolling with the mouse wheel, up/down, and home/end keys to the Harbour ship list."),
           _("Added ship count and capacity display to Harbours on the info pane."),
@@ -155,14 +155,14 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed building menus (Town training, Harbour/War Factory build, spy menus, etc.) exiting back to the main menu when production of a new unit starts."),
           _("Fixed a crash when looking at the ship list on the trade report."),
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Start the kingdom score comparison with your own kingdom selected by default.  You can deselect it or select another kingdom by clicking the button."),
           _("Show the per-unit and total costs when choosing how to respond to food purchase requests."),
@@ -175,7 +175,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.4 -- 2025-09-03"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added kingdom-to-kingdom score comparison to the Rank Report, allowing you to see the scores of two kingdoms side-by-side."),
           _("Independent towns will show that their resistance is dropping to 0 when they are working for you."),
@@ -183,7 +183,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the estimated assassination success chance not properly taking into account other defenders present, showing too high when other units were present."),
           _("Fixed the estimated assassination success chance against a king being too low."),
@@ -198,7 +198,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Shifted the bitmaps of Firms to better align with the squares they actually take up so that they look more on-centre, especially the Seats of Power."),
           _("Shifted the bitmaps of Fryhtan Lairs to better align with the squares they actually take up so that they look more on-centre, especially the Wyrm and Ick ones."),
@@ -218,7 +218,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.3 -- 2025-08-24"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Show a Spy-suggested bribe amount on the bribe menu.  This amount varies in accuracy over time and based on the spy's skill.  But keep in mind that your spies do not know about enemy spies."),
           _("Added an assassination confirmation screen with a Spy-estimated success chance.  This estimate varies in accuracy over time and based on the spy's skill."),
@@ -230,7 +230,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed build guidelines not being clearly visible on Snow and Badlands tilesets."),
           _("Fixed some build guidelines appearing a different colour on top of highlighting."),
@@ -244,7 +244,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Made the build guidelines on the Standard tileset slightly brighter, to make them more visible."),
           _("Hide icons for units that are dying."),
@@ -260,7 +260,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.2 -- 2025-08-18"),
     .sections = {
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("No game changes.  This just has packaging changes to work with Gentoo."),
         },
@@ -271,7 +271,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.2.1 -- 2025-08-12"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added keybinds and keybind display to Town training menu buttons.  The events for the config.txt file are: `KEYEVENT_ _TRAIN_ _BUILDER`, `KEYEVENT_ _TRAIN_ _SOLDIER`, `KEYEVENT_ _TRAIN_ _MINER`, `KEYEVENT_ _TRAIN_ _ARTISAN`, `KEYEVENT_ _TRAIN_ _RESEARCHER`, and `KEYEVENT_ _TRAIN_ _SPY`."),
           _("Added keybinds and keybind display to Spy menu buttons.  The events for the config.txt file are: `KEYEVENT_ _UNIT_ _REWARD`, `KEYEVENT_ _SPY_ _ASSASSINATE`, `KEYEVENT_ _SPY_ _BRIBE`, `KEYEVENT_ _SPY_ _CAPTURE`, `KEYEVENT_ _SPY_ _CHANGE_ _MISSION`, `KEYEVENT_ _SPY_ _MOBILISE`, `KEYEVENT_ _SPY_ _MENU`, and `KEYEVENT_ _SPY_ _STEAL_ _REPORTS`."),
@@ -282,7 +282,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed leadership status artefacts on the info pane when the status changes."),
           _("Fixed spies seemingly always getting caught after stealing reports."),
@@ -290,7 +290,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Made the keybind displays appear transparent over their buttons, to obscure less of the underlying buttons."),
           _("Enabled default hotkeys for the build menu and disabled default `Q`, `W`, and `E` for selecting map modes.  The new default `E` now cycles through all of the map modes; and `W` is the default hotkey for building a War Factory.  This can all be overridden in the config.txt file."),
@@ -316,7 +316,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the oversized Town training buttons and the artefacts they caused on the info pane."),
           _("Fixed the file time display of old save game files."),
@@ -327,7 +327,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Updated 7kaa compatibility to the recently-released 7kaa 2.15.7 (see below for more details about the update).")
         },
@@ -440,7 +440,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.10 -- 2025-07-05"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added save/load game list scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
           _("Added news scrolling with the mouse wheel or touchpad, up/down keys, pg up/pg down keys, left/right keys, and home/end keys."),
@@ -457,7 +457,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed crash when requesting a builder while training one in a Town."),
           _("Fixed a desync on selling a fort with soldiers or a general in it in multiplayer."),
@@ -468,7 +468,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Display the contribution value in the info pane exactly as it relates to total reward and loyalty (the true effect on loyalty is the newly displayed contribution value minus the reward value)."),
           _("Prevent accidentally hiring the wrong Inn guest if the currently selected guest leaves the Inn by disabling the hire button until another selection is made."),
@@ -481,7 +481,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.9 -- 2025-06-25"),
     .sections = {
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed save game filenames being all underscores."),
         },
@@ -492,7 +492,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.8 -- 2025-06-23"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added a clone button to Caravans.  If there is an idle Caravan, it is used as the clone.  Otherwise, a new Caravan spawns at the Market closest to the Caravan's first stop."),
           _("Added a caravan clone button to the trade report, next to the paste route button."),
@@ -502,7 +502,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the Town training icon in the info pane not appearing until clicking on the Town again and disappearing after one unit finishes training."),
           _("Fixed high CPU usage on the \"Enter the game's address\" dialog."),
@@ -512,7 +512,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Preferentially use idle builders outside of buildings further away instead of from closer buildings."),
           _("Moved the \"Done\" text to the right in the War Factory and Harbour build menus, so that they are not covered up by the \"Esc\" keybind display."),
@@ -525,7 +525,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.7 -- 2025-06-13"),
     .sections = {
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed a bug where opening the military report before setting a global research target could cause a crash when a Tower of Science was built afterwards."),
         },
@@ -536,7 +536,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.6 -- 2025-05-28"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("When selecting where to place a building, show grid rules of the building, and grid rules one tile out, for a walkable perimeter, to allow for easier placement and planning of buildings."),
           _("When selecting where to place a building, highlight valid locations, darken invalid locations, and shade un-walkable locations red, to create a guide for placing and planning buildings.  This is especially helpful with Harbours."),
@@ -551,7 +551,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the building expense amounts on the Villages report being lower than the real expense."),
           _("Fixed spy icon getting duplicated when workers are re-arranged inside buildings."),
@@ -560,7 +560,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Sortie troops from Forts before selling or destroying them, so that the troops still count as being under the general's leadership."),
           _("When a new builder enters a building under construction, the knocked-out builder will get sent to the building's rally point.  The same applies to builders ejected by pressing the hammer button."),
@@ -572,7 +572,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.5 -- 2025-05-03"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Show building construction costs on buttons."),
           _("Show war machine and ship construction costs on War Factory and Harbour build menus."),
@@ -582,7 +582,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Show Spy combat (in Forts) or primary skill (in other Firms) level in the worker list by moving the spy icon to the portrait."),
           _("Added thousands separators to treasury and food store amounts, to make reading them easier.  (Currently, this uses groups of three with a comma as the separator for everyone.  Proper localisation will be added later.)"),
@@ -595,7 +595,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.4 -- 2025-04-28"),
     .sections = {
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed spy change nation colours not working properly and corruption with buttons on info pane.  (Temporarly removed the leadership panel until a better solution is implemented.)"),
         },
@@ -606,7 +606,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.3 -- 2025-04-27"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added clipboard keys (Ctrl+C, Ctrl+X, Ctrl+V) to input fields, such as the address of the \"Enter Address\" multiplayer option, map ID, and name fields."),
           _("Allow prepending to (adding to to the start of) production queues with Ctrl+click, allowing quickly producing a unit without clearing the entire queue."),
@@ -616,7 +616,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed setting rally point from a Town using shift also pulling peasants."),
           _("Fixed pixel artefacts on the bottom of credits and results screens."),
@@ -630,7 +630,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.2 -- 2025-04-20"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Show an icon for units which are outside of their general's command range and so do not receive combat bonuses and are losing loyalty."),
           _("Display unit leadership effect status in the info pane."),
@@ -640,7 +640,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed desync when cancelling training in a Town."),
           _("Fixed alignment of town goods satisfaction, inn guest count, and worker list."),
@@ -650,7 +650,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Display the type and level of war machines inside forts, for easier identification."),
           _("Harbour production queue persists even when the harbour is full (4 ships) instead of clearing the queue."),
@@ -662,7 +662,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.1 -- 2025-04-12"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Rally points can be toggled by setting the rally point to the same place again, in addition to alt-right-clicking on the building again."),
           _("Waypoints (and rally points) can now be set (and unset) with shift-right-click in addition to alt-right-click, to be more intuitive to people."),
@@ -671,7 +671,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed positioning of the colour box on the info pane for buildings and units."),
           _("Fixed porcupines and other not-attacking units not following waypoints."),
@@ -683,7 +683,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.1.0 -- 2025-04-06"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added rally points for War Factory war machines."),
           _("Added rally points for Town peasants and trained units."),
@@ -694,13 +694,13 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed a crash on requesting a builder when one is on a ship."),
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Make Town training queue unlimited, up from 10."),
           _("Use global research target for all new and newly idle Towers of Science, not just the ones that were present when first clicking."),
@@ -717,14 +717,14 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.4 -- 2025-03-16"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added delete button to load game menu."),
           _("Show a progress bar on the map for town training."),
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed requested builder not being able to reach the destination building if there is no walkable path."),
           _("Fixed Inn hire button being enabled/disabled incorrectly."),
@@ -732,7 +732,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Continue loading config.txt even when there are invalid lines, so that the valid ones still apply.  Then, once finished loading, display all the line numbers which contained errors, allowing fixing them."),
         },
@@ -743,13 +743,13 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.3 -- 2025-03-07"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Show a progress bar for Harbours.  (They were missed when Towers of Science and War Factories were done.)"),
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the town recruitment progress bar overlapping the buttons when a spy is present and the spy button is showing."),
         },
@@ -760,14 +760,14 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.2 -- 2025-03-04"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Show town goods demand satisfaction (quality of life) to know how much goods are demanded and how much are being supplied--and thus the level of the bonus."),
           _("Show a progress bar for Towers of Science and War Factories."),
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the unit path line (and building connection lines) animation speed breaking on game speed unlimited (9).  This should also fix the issue some users were having where moving the mouse would speed up the line animation."),
           _("Fixed the building hitbars looking kind of off and tilted."),
@@ -775,7 +775,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Scale unit hitbar widths with the (square root of) their maximum hitpoints, to give a better idea of units' toughness at a glance."),
           _("Add more hitbar colours (dark green, orange, red) to make judging unit tougness easier."),
@@ -789,7 +789,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.1 -- 2025-02-25"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Added game speed display to top-right of the map and \"PAUSED\" in the middle."),
           _("Show the guest count in an inn, to make it easy to know whether scrolling is even required."),
@@ -797,14 +797,14 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed high CPU usage when moving the mouse cursor in-game.  This should also fix the unit path line looking like it's moving when the mouse cursor is moved."),
           _("Fixed minimap bounding box colours."),
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Display inn guest list from newest at the top to oldest at the bottom, so that it's quicker to check inns for new mercenaries."),
           _("Preferentially use builders from undamaged buildings further away instead of from closer buildings that are still not fully repaired."),
@@ -823,7 +823,7 @@ std::vector<VersionUpdates> versionDetails = {
     .identifier = _("v3.0.0 -- 2025-02-21"),
     .sections = {
       {
-        .heading = _(HEADING_ADDED),
+        .heading = HEADING_ADDED,
         .items = {
           _("Display the current running mode in top-right of the main menu."),
           _("Added a rudimentary running mode switcher accessible from a button at the top-right of the main menu."),
@@ -840,7 +840,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_FIXED),
+        .heading = HEADING_FIXED,
         .items = {
           _("Fixed the 100% CPU usage all the time problem."),
           _("Fixed scrolling to the right and down not working properly."),
@@ -851,7 +851,7 @@ std::vector<VersionUpdates> versionDetails = {
         },
       },
       {
-        .heading = _(HEADING_CHANGED),
+        .heading = HEADING_CHANGED,
         .items = {
           _("Use yellow colour for highlighting units on hover instead of cyan."),
           _("Made it easier to see when units are low on hitpoints by making the unit hitbars wider."),

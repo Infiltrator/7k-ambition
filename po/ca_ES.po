@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-01 12:54+1000\n"
-"PO-Revision-Date: 2026-06-02 12:00+1000\n"
+"POT-Creation-Date: 2026-06-02 21:29+1000\n"
+"PO-Revision-Date: 2026-06-02 21:38+1000\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
 "Language: ca_ES\n"
@@ -498,6 +498,26 @@ msgstr ""
 #: src/ambition/version_details.cc
 msgid "Preamble"
 msgstr "Preàmbul"
+
+#: src/ambition/version_details.cc
+msgid "Added"
+msgstr "Afegit"
+
+#: src/ambition/version_details.cc
+msgid "Fixed"
+msgstr "Corregit"
+
+#: src/ambition/version_details.cc
+msgid "Changed"
+msgstr "Canviat"
+
+#: src/ambition/version_details.cc
+msgid "Removed"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Preview Version -- not yet released"
+msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Automatically detect the language on Windows."
