@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Translate War Machine identifiers (their type and level when they are in a
+  list).
+
 ### Changed
 
 - Music now plays on the tutorial and scenario selection screens.

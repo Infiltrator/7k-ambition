@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-11 12:37+1100\n"
-"PO-Revision-Date: 2025-12-11 14:23+1100\n"
+"POT-Creation-Date: 2026-06-01 12:54+1000\n"
+"PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -18,6 +18,37 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 2.2.1\n"
+
+#. TRANSLATORS: Single-letter war machine identifier for Catapult.
+#: src/ambition/7kaaInterface/building.cc:305
+msgid "C"
+msgstr "K"
+
+#. TRANSLATORS: Single-letter war machine identifier for Ballista.
+#: src/ambition/7kaaInterface/building.cc:307
+msgid "B"
+msgstr "B"
+
+#. TRANSLATORS: Single-letter war machine identifier for Spitfire.
+#: src/ambition/7kaaInterface/building.cc:309
+msgid "S"
+msgstr "M"
+
+#. TRANSLATORS: Single-letter war machine identifier for Cannon.
+#: src/ambition/7kaaInterface/building.cc:311
+#, fuzzy
+msgid "N"
+msgstr "D"
+
+#. TRANSLATORS: Single-letter war machine identifier for Porcupine.
+#: src/ambition/7kaaInterface/building.cc:313
+msgid "P"
+msgstr "Ż"
+
+#. TRANSLATORS: Single-letter war machine identifier for Unicorn.
+#: src/ambition/7kaaInterface/building.cc:315
+msgid "U"
+msgstr "D"
 
 #: src/ambition/7kaaInterface/diplomacy.cc:73
 #, c-format

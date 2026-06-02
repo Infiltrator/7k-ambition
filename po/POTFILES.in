@@ -1,4 +1,5 @@
 # List of source files which contain translatable strings.
+src/ambition/7kaaInterface/building.cc
 src/ambition/7kaaInterface/diplomacy.cc
 src/ambition/7kaaInterface/score.cc
 src/ambition/Ambition_config.cc

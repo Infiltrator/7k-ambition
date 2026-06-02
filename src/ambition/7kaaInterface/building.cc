@@ -26,6 +26,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/building.hh"
 
+#include "gettext.h"
 #include "OF_CAMP.h"
 #include "OF_RESE.h"
 #include "OFIRM.h"
@@ -299,9 +300,22 @@ bool printWarMachineIdentifier(
     return false;
   }
 
-  const std::string LETTERS[] = { "C", "B", "S", "N", "P", "U" };
+  const std::string LETTERS[] = {
+    /* TRANSLATORS: Single-letter war machine identifier for Catapult. */
+    _("C"),
+    /* TRANSLATORS: Single-letter war machine identifier for Ballista. */
+    _("B"),
+    /* TRANSLATORS: Single-letter war machine identifier for Spitfire. */
+    _("S"),
+    /* TRANSLATORS: Single-letter war machine identifier for Cannon. */
+    _("N"),
+    /* TRANSLATORS: Single-letter war machine identifier for Porcupine. */
+    _("P"),
+    /* TRANSLATORS: Single-letter war machine identifier for Unicorn. */
+    _("U"),
+  };
   if (_7kaaWorker->unit_id == UNIT_F_BALLISTA) {
-    text = "U";
+    text = LETTERS[5];
   } else {
     text = LETTERS[_7kaaWorker->unit_id - UNIT_CATAPULT];
   }
