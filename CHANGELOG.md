@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.9] — 2026-06-05
+
 ### Added
 
 - Added a Catalan translation, thanks to Júlia Rosell Saldaña.
