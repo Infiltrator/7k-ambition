@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Added a Catalan translation, thanks to Júlia Rosell Saldaña.
 - Translate War Machine identifiers (their type and level when they are in a
   list).
 

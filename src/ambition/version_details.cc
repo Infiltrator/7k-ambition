@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = _(HEADING_ADDED),
         .items = {
+          _("Added a Catalan translation, thanks to Júlia Rosell Saldaña."),
           _("Translate War Machine identifiers (their type and level when they are in a list)."),
         },
       },
