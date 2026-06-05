@@ -868,7 +868,6 @@ msgstr ""
 "altra illa o en un lloc inaccessible i no poguessin seguir la seva ruta."
 
 #: src/ambition/version_details.cc
-#, c-format
 msgid ""
 "Changed when building hitbars are displayed based on the help setting in the "
 "options menu.  When it is set to None, building hitbars will never be "
@@ -1238,7 +1237,6 @@ msgstr ""
 "diferent sobre el ressaltat."
 
 #: src/ambition/version_details.cc
-#, c-format
 msgid ""
 "Fixed the Villages Report yearly Firm costs, Military Report yearly Unit "
 "costs, and War Machine yearly costs showing up 10% higher than actual, now "
@@ -1426,7 +1424,6 @@ msgstr ""
 "robar informes."
 
 #: src/ambition/version_details.cc
-#, c-format
 msgid "Fixed spies having a 100% escape chance when stealing reports."
 msgstr ""
 "S'ha corregit que els espies tinguessin una probabilitat d'escapada del "
@@ -2079,7 +2076,6 @@ msgstr ""
 "botó d'enganxar ruta."
 
 #: src/ambition/version_details.cc
-#, c-format
 msgid ""
 "Automatically \"heal\" caravans by replacing damaged ones using the above "
 "caravan cloning feature.  Caravans heading to a Market will be replaced if "
@@ -3041,7 +3037,6 @@ msgstr ""
 "per ajudar a trobar-ne i corregir-ne la causa."
 
 #: src/ambition/version_details.cc
-#, c-format
 msgid "Fixed the 100% CPU usage all the time problem."
 msgstr "S'ha solucionat el problema d'ús continu de la CPU al 100%."
 
