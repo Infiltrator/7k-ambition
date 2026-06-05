@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-02 21:37+1000\n"
-"PO-Revision-Date: 2026-06-02 21:46+1000\n"
+"PO-Revision-Date: 2026-06-02 14:56+0200\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
 "Language: ca_ES\n"
@@ -162,7 +162,7 @@ msgstr "Més tard"
 
 #: src/ambition/Ambition_control.cc:106
 msgid "End of replay"
-msgstr ""
+msgstr "Fi de la repetició"
 
 #: src/ambition/Ambition_news.cc:191
 msgid "WHAT'S NEW"
@@ -517,37 +517,42 @@ msgstr "Canviat"
 
 #: src/ambition/version_details.cc
 msgid "Removed"
-msgstr ""
+msgstr "Eliminat"
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
-msgstr ""
+msgstr "Versió preliminar -- encara no llançat"
 
 #: src/ambition/version_details.cc
 msgid "Added a Catalan translation, thanks to Júlia Rosell Saldaña."
-msgstr ""
+msgstr "Afegida traducció a català, gràcies a Júlia Rosell Saldaña"
 
 #: src/ambition/version_details.cc
 msgid ""
 "Translate War Machine identifiers (their type and level when they are in a "
 "list)."
 msgstr ""
+"Tradueix els identificadors de War Machine (el seu tipus i nivell quan són "
+"en una llista)."
 
 #: src/ambition/version_details.cc
 msgid "Music now plays on the tutorial and scenario selection screens."
 msgstr ""
+"Ara es reprodueix música a les pantalles de tutorials i de selecció "
+"d'escenaris."
 
 #: src/ambition/version_details.cc
 msgid "Music is paused in the multiplayer game lobby."
-msgstr ""
+msgstr "La música està en pausa a la sala de jocs multijugador."
 
 #: src/ambition/version_details.cc
 msgid "v3.2.8 -- 2025-12-16"
-msgstr ""
+msgstr "v3.2.8 -- 2025-12-16"
 
 #: src/ambition/version_details.cc
 msgid "Greatly expanded the German translation, thanks to Einheit-101."
 msgstr ""
+"La traducció alemanya ha estat enormement ampliada, gràcies a Einheit-101."
 
 #: src/ambition/version_details.cc
 #, fuzzy
@@ -565,6 +570,11 @@ msgid ""
 "The workaround for this means that builders will always ignore rally points, "
 "for the time being."
 msgstr ""
+"S'ha corregit el problema que feia que els constructors anessin a les zones "
+"de reunió dels seus edificis en comptes d'anar a l'edifici on eren "
+"sol·licitats pel botó de sol·licitud del constructor. La solució alternativa "
+"significa que els constructors sempre ignoraran les zones de reunió, de "
+"moment."
 
 #: src/ambition/version_details.cc
 #, fuzzy
@@ -581,10 +591,15 @@ msgid ""
 "types, deleting trade stops, copying trade routes, or automatic caravan "
 "replacement."
 msgstr ""
+"S'han corregit els problemes de desincronització de la repetició causats per "
+"la configuració dels tipus de recollida de parades de caravanes i vaixells "
+"comercials, l'eliminació de parades comercials, la còpia de rutes comercials "
+"o la substitució automàtica de caravanes."
 
 #: src/ambition/version_details.cc
 msgid "Fixed and improved the German translation, thanks to Einheit-101."
 msgstr ""
+"S'ha corregit i millorat la traducció a l'alemany, gràcies a Einheit-101."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -592,34 +607,47 @@ msgid ""
 "adding a scroll bar and buttons, so that all the text can be scrolled and "
 "read."
 msgstr ""
+"S'han corregit les descripcions dels tutorials en anglès que es tallaven a "
+"la part inferior, afegint una barra de desplaçament i botons, de manera que "
+"es pugui desplaçar i llegir tot el text."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Fixed the config.txt settings not taking effect when there was only a 7kaa "
 "config.txt and not an Ambition one."
 msgstr ""
+"S'ha corregit l'error en què la configuració del fitxer config.txt no tenia "
+"efecte quan només hi havia un fitxer config.txt de 7kaa i no un d'Ambition."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Added button help text to the Egyptian, Mughal, and Zulu Greater Being spell "
 "buttons."
 msgstr ""
+"S'ha afegit text d'ajuda als botons d'encanteri d'Ésser Major egipci, mogol "
+"i zulu."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Fixed the Encyclopaedia slideshow showing a blank image until the mouse was "
 "moved."
 msgstr ""
+"S'ha corregit la presentació de diapositives de l'Enciclopèdia que mostrava "
+"una imatge en blanc fins que es movia el ratolí."
 
 #: src/ambition/version_details.cc
 msgid "Fixed the grammar in the \"Desperate Bowmen\" scenario description."
 msgstr ""
+"S'ha corregit la gramàtica a la descripció de l'escenari \"Arquers "
+"desesperats\"."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Fixed the manual showing the wrong targeting type for the Mughal Greater "
 "Being (Djinni)."
 msgstr ""
+"S'ha corregit el manual que mostrava el tipus d'objectiu incorrecte per a "
+"l'Ésser Gran Mughal (Djinni)."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -627,15 +655,19 @@ msgid ""
 "overwhelming new players with information panels.  This only applies to new "
 "installations."
 msgstr ""
+"S'ha canviat la configuració predeterminada de l'ajuda de completa a breu "
+"per evitar aclaparar els nous jugadors amb panells d'informació. Això només "
+"s'aplica a les noves instal·lacions."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Automatically select the Greater Being upon invoking it at a Seat of Power."
 msgstr ""
+"Selecciona automàticament l'Ésser Superior en invocar-lo en una Seu de Poder."
 
 #: src/ambition/version_details.cc
 msgid "Music now plays on the encyclopaedia."
-msgstr ""
+msgstr "Ara sona música a l'enciclopèdia."
 
 #: src/ambition/version_details.cc
 #, fuzzy
@@ -644,7 +676,7 @@ msgstr "S'ha fet el desenvolupament una mica més fàcil."
 
 #: src/ambition/version_details.cc
 msgid "v3.2.7 -- 2025-10-24"
-msgstr ""
+msgstr "v3.2.7 -- 2025-10-24"
 
 #: src/ambition/version_details.cc
 msgid "Automatically detect the language on Windows."
@@ -725,6 +757,8 @@ msgid ""
 "Pause replays at the end instead of immediately exiting to the menu without "
 "warning."
 msgstr ""
+"Pausa les repeticions al final en comptes de sortir immediatament al menú "
+"sense avisar."
 
 #: src/ambition/version_details.cc
 msgid "v3.2.6 -- 2025-10-08"
