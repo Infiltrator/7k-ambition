@@ -18,7 +18,7 @@ use constant {
 my $player_count = 2;
 my @msg_ids = (
 	['MSG_QUEUE_HEADER', 'Ls', [qw(senderFrameCount nationRecno)]],
-	['MSG_QUEUE_TRAILER'],
+	['MSG_QUEUE_TRAILER', 's', [qw(nationRecno)]],
 	['MSG_NEW_NATION'],
 	['MSG_UPDATE_GAME_SETTING'],
 	['MSG_START_GAME'],
@@ -90,7 +90,7 @@ my @msg_ids = (
 	['MSG_F_INN_HIRE', 'sss', [qw(firm_recno hireId nation_recno)]],
 	['MSG_F_MARKET_SCRAP'],
 	['MSG_F_MARKET_HIRE_CARA'],
-	['MSG_F_RESEARCH_START'],
+	['MSG_F_RESEARCH_START', 'ss', [qw(firm_recno techId)]],
 	['MSG_F_WAR_BUILD_WEAPON'],
 	['MSG_F_WAR_CANCEL_WEAPON'],
 	['MSG_F_WAR_SKIP_WEAPON'],
@@ -269,8 +269,10 @@ my (
 	$MSG_COMPARE_TALK,
 
 	$MSG_U_CARA_COPY_ROUTE,
-
 	$MSG_COMPARE_CRC,
+   $MSG_U_SHIP_COPY_ROUTE,
+	$MSG_FIRM_REQ_BUILDER,
+	$MSG_F_MARKET_RESTOCK,
 
 	$LAST_REMOTE_MSG_ID,
 ) = (FIRST_REMOTE_MSG_ID)..(FIRST_REMOTE_MSG_ID+scalar(@msg_ids));
