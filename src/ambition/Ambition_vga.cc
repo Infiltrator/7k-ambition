@@ -778,7 +778,7 @@ bool drawBuildingInformationPanel(
       assert(_7kaaWarFactory);
 
       if (_7kaaWarFactory->build_unit_id) {
-        lines.push_back(unit_res[_7kaaWarFactory->build_unit_id]->name);
+        lines.push_back(_(unit_res[_7kaaWarFactory->build_unit_id]->name));
       } else {
         lines.push_back(_("Idle"));
       }
