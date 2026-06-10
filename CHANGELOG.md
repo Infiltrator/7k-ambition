@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Used translated Greater Being names on the Seat of Power building information
+  panels.
+
 
 ## [3.2.9] — 2026-06-05
 

@@ -17,6 +17,12 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+      {
+        .heading = HEADING_FIXED,
+        .items = {
+          _("Used translated Greater Being names on the Seat of Power building information panels."),
+        },
+      },
     },
   },
   {

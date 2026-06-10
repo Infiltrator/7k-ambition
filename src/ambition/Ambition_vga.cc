@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -702,7 +702,9 @@ bool drawBuildingInformationPanel(
     case FIRM_BASE: {
       const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(_7kaaFirm);
       assert(_7kaaSeatOfPower);
-      lines.push_back(unit_res[god_res[_7kaaSeatOfPower->god_id]->unit_id]->name);
+      lines.push_back(
+        _(unit_res[god_res[_7kaaSeatOfPower->god_id]->unit_id]->name)
+      );
       if (_7kaaFirm->overseer_recno) {
         lines.push_back(
           format(
