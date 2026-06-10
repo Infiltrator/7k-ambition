@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed the display of non-standard characters on Windows (especially Júlia
+  Rosell Saldaña's name on the What's New screen).
 - Used translated War Machine names on the War Factory building information
   panels.
 - Used translated Greater Being names on the Seat of Power building information

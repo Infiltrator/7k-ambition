@@ -186,8 +186,8 @@ void LocaleRes::load(const char *locale)
 		iconv_close(cd);
 	if( cd_latin != (iconv_t)-1 )
 		iconv_close(cd_latin);
-	cd = iconv_open(tocode, "");
-	cd_latin = iconv_open("ISO-8859-1", "");
+	cd = iconv_open(tocode, "UTF-8");
+	cd_latin = iconv_open("ISO-8859-1", "UTF-8");
 	cd_from_sdl = iconv_open("ISO-8859-1//TRANSLIT//IGNORE", "UTF-8");
 #endif
 }

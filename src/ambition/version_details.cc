@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_FIXED,
         .items = {
+          _("Fixed the display of non-standard characters on Windows (especially Júlia Rosell Saldaña's name on the What's New screen)."),
           _("Used translated War Machine names on the War Factory building information panels."),
           _("Used translated Greater Being names on the Seat of Power building information panels."),
         },
