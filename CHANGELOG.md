@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.10] — 2026-06-12
+
 ### Fixed
 
 - Fixed the display of non-standard characters on Windows (especially Júlia
