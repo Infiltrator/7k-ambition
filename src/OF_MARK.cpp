@@ -21,6 +21,7 @@
 //Filename    : OF_MARK.CPP
 //Description : Firm Market Place
 
+#include "ambition/7kaaInterface/building.hh"
 #include "ambition/7kaaInterface/draw.hh"
 
 #include "OCONFIG.h"
@@ -327,6 +328,9 @@ int FirmMarket::detect_info()
 	if( button_hire_caravan.detect(GETKEY(KEYEVENT_FIRM_PATROL)) )
 	{
 		hire_caravan(COMMAND_PLAYER);
+
+		Ambition::Building::playCaravanHireSound(this);
+
 		return 1;
 	}
 

@@ -31,6 +31,7 @@
 #include "OF_MINE.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
+#include "OSERES.h"
 #include "OU_CARA.h"
 #include "OVBROWIF.h"
 #include "vga_util.h"
@@ -109,6 +110,15 @@ void detectCaravanCloneButton(
 
   const auto polity = Polity::getBy7kaaRecordNumber(_7kaaCaravan->nation_recno);
   polity->cloneCaravan(_7kaaCaravan);
+
+  se_res.far_sound(
+    _7kaaCaravan->cur_x_loc(),
+    _7kaaCaravan->cur_y_loc(),
+    1,
+    'S',
+    _7kaaCaravan->sprite_id,
+    "SEL"
+  );
 }
 
 bool detectReportCaravanCloneButton(

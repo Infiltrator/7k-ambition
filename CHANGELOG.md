@@ -10,6 +10,17 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Added a feedback sound when clicking the Clone Caravan button.
+- Added a feedback sound when clicking the Hire Caravan button in the Market.
+
+### Fixed
+
+- Fixed issue with "Building Complete" (and other) sounds not being audible when
+  they are far away from the current screen location because they became too
+  quiet.
+
 
 ## [3.2.10] — 2026-06-12
 

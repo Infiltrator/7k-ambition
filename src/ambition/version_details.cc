@@ -17,6 +17,19 @@ std::vector<VersionUpdates> versionDetails = {
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+      {
+        .heading = HEADING_ADDED,
+        .items = {
+          _("Added a feedback sound when clicking the Clone Caravan button."),
+          _("Added a feedback sound when clicking the Hire Caravan button in the Market."),
+        },
+      },
+      {
+        .heading = HEADING_FIXED,
+        .items = {
+          _("Fixed issue with \"Building Complete\" (and other) sounds not being audible when they are far away from the current screen location because they became too quiet."),
+        },
+      },
     },
   },
   {
