@@ -28,6 +28,7 @@
 #include <vector>
 
 class Firm;
+class FirmMarket;
 class FirmResearch;
 class Town;
 struct Worker;
@@ -94,6 +95,10 @@ bool enqueueTraining(
   const char _7kaaRaceId,
   const char _7kaaSkillId,
   const unsigned int amount
+);
+
+void playCaravanHireSound(
+  const FirmMarket* _7kaaMarket
 );
 
 void printProductionQueueTotals(

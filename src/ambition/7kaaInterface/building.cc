@@ -28,11 +28,13 @@
 
 #include "gettext.h"
 #include "OF_CAMP.h"
+#include "OF_MARK.h"
 #include "OF_RESE.h"
 #include "OFIRM.h"
 #include "OFONT.h"
 #include "OMOUSE.h"
 #include "OREMOTE.h"
+#include "OSERES.h"
 #include "OTECHRES.h"
 #include "OTOWN.h"
 
@@ -259,6 +261,25 @@ bool enqueueTraining(
     order
   );
   return true;
+}
+
+void playCaravanHireSound(
+  const FirmMarket* _7kaaMarket
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto SPRITE_ID_CARAVAN = 11;
+
+  se_res.far_sound(
+    _7kaaMarket->center_x,
+    _7kaaMarket->center_y,
+    1,
+    'S',
+    SPRITE_ID_CARAVAN,
+    "SEL"
+  );
 }
 
 void printProductionQueueTotals(

@@ -13,6 +13,7 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Added a feedback sound when clicking the Clone Caravan button.
+- Added a feedback sound when clicking the Hire Caravan button in the Market.
 
 ### Fixed
 
