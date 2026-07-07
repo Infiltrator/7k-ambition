@@ -330,7 +330,7 @@ AS_IF([test "$enable_warnings" = "yes"], [
   CXXFLAGS="$CXXFLAGS -Wall"
 ])
 
-AS_IF([test "$disable_optimisation" = "yes"], [
+AS_IF([test "$enable_optimisation" = "no"], [
   CXXFLAGS="$CXXFLAGS -O0"
 ])
 
