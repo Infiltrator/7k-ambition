@@ -25,6 +25,7 @@
 
 #include "Ambition_config.hh"
 
+#include <algorithm>
 #include <cassert>
 #include <stdexcept>
 #include <vector>
@@ -48,6 +49,7 @@
 #pragma GCC diagnostic pop
 
 #include "7kaaInterface/input.hh"
+#include "Ambition_input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
 
@@ -60,7 +62,8 @@ void runModeSelectionScreen();
 int runSelectionScreen(
   const std::string heading,
   const std::vector<std::pair<std::string, std::string>> options,
-  const int initialSelection
+  const int initialSelection,
+  const bool showDescription = true
 );
 
 
@@ -292,6 +295,70 @@ std::filesystem::path singleplayerSave(
 
 /* Private functions. */
 
+void detectScroll(
+  const int minimumRecordNumber,
+  const int size,
+  int& browseRecordNumber,
+  SlideVBar& scrollBar,
+  int& refreshFlag
+) {
+  constexpr auto SLOT_COUNT = 9;
+
+  Input::detectScroll(
+    false,
+    UserInterface::BOUNDS,
+    Input::STANDARD_ACTIVATIONS,
+    {
+      {
+        Input::ScrollOrientation::Vertical,
+        [
+          &browseRecordNumber,
+          &refreshFlag,
+          &scrollBar,
+          minimumRecordNumber,
+          size
+        ] (
+          const int amount
+        ) {
+          browseRecordNumber = std::clamp(
+            browseRecordNumber + amount,
+            minimumRecordNumber,
+            size - 1
+          );
+
+          if (browseRecordNumber - scrollBar.view_recno < 0) {
+            scrollBar.set_view_recno(browseRecordNumber);
+          }
+          if (browseRecordNumber - scrollBar.view_recno >= SLOT_COUNT) {
+            scrollBar.set_view_recno(browseRecordNumber - (SLOT_COUNT - 1));
+          }
+
+          refreshFlag = 1;
+        }
+      }
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+
+  Ambition::Input::detectScroll(
+    true,
+    UserInterface::BOUNDS,
+    { },
+    {
+      {
+        Ambition::Input::ScrollOrientation::Vertical,
+        [ &scrollBar, &refreshFlag ] (
+          const int amount
+        ) {
+          scrollBar.set_view_recno(scrollBar.view_recno + amount);
+          refreshFlag = 1;
+        },
+      },
+    },
+    []() { return SLOT_COUNT - 1; }
+  );
+}
+
 void runModeSelectionScreen(
 ) {
   const auto selection = runSelectionScreen(
@@ -325,19 +392,24 @@ void runModeSelectionScreen(
 int runSelectionScreen(
   const std::string heading,
   const std::vector<std::pair<std::string, std::string>> options,
-  const int initialSelection
+  const int initialSelection,
+  const bool showDescriptions
 ) {
   constexpr auto SLOT_HEIGHT = 44;
 
-  const auto slotCount = 4;
+  const auto slotCount = showDescriptions ? 4 : 9;
 
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
   auto selected = initialSelection;
 
-  image_interface.put_front(0, 0, "SCENARIO");
-  image_interface.put_back(0, 0, "TUTORIAL");
-  copyBackBufferToFront(UserInterface::SelectionListScreen::Buttons::SECTION);
+  if (showDescriptions) {
+    image_interface.put_front(0, 0, "SCENARIO");
+    image_interface.put_back(0, 0, "TUTORIAL");
+    copyBackBufferToFront(UserInterface::SelectionListScreen::Buttons::SECTION);
+  } else {
+    image_interface.put_front(0, 0, "LONGLIST");
+  }
   copyFrontBufferToBack(UserInterface::BOUNDS);
 
   Button3D descriptionScrollUpButton;
@@ -368,7 +440,9 @@ int runSelectionScreen(
     UserInterface::ScrollButtonDirection::Down
   );
 
-  const auto listScrollbarArea = UserInterface::SelectionListScreen::List::SCROLLBAR;
+  const auto listScrollbarArea = showDescriptions
+    ? UserInterface::SelectionListScreen::List::SCROLLBAR
+    : UserInterface::SelectionListScreen::LongList::SCROLLBAR;
   const auto listScrollUpButtonLocation = listScrollbarArea.internal(
     UserInterface::SCROLL_BUTTON_SIZE,
     UserInterface::HorizontalAlignment::Centre,
@@ -457,7 +531,9 @@ int runSelectionScreen(
     IS_NOT_PUSHED
   );
 
-  const auto slotsArea = UserInterface::SelectionListScreen::List::SLOTS;
+  const auto slotsArea = showDescriptions
+    ? UserInterface::SelectionListScreen::List::SLOT_AREA
+    : UserInterface::SelectionListScreen::LongList::SLOT_AREA;
 
   auto refreshFlag = 1;
   auto resetDescriptionScroll = true;
@@ -475,38 +551,47 @@ int runSelectionScreen(
         UserInterface::VerticalAlignment::Centre
       );
 
-      if (resetDescriptionScroll) {
-        int linesThatFitCount;
-        int totalLineCount;
-        font_std.count_line(
-          UserInterface::SelectionListScreen::Description::TEXT.start.left,
-          UserInterface::SelectionListScreen::Description::TEXT.start.top,
-          UserInterface::SelectionListScreen::Description::TEXT.end.left,
-          UserInterface::SelectionListScreen::Description::TEXT.end.top,
-          options[selected].second.c_str(),
-          LINE_SPACING,
-          linesThatFitCount,
-          totalLineCount
+      if (showDescriptions) {
+        printText(
+          font_std,
+          options[selected].second,
+          UserInterface::SelectionListScreen::Description::TEXT,
+          UserInterface::Clear::EntireArea
         );
 
-        descriptionScrollbar.set(0, totalLineCount - 1, 0);
-        resetDescriptionScroll = false;
+        if (resetDescriptionScroll) {
+          int linesThatFitCount;
+          int totalLineCount;
+          font_std.count_line(
+            UserInterface::SelectionListScreen::Description::TEXT.start.left,
+            UserInterface::SelectionListScreen::Description::TEXT.start.top,
+            UserInterface::SelectionListScreen::Description::TEXT.end.left,
+            UserInterface::SelectionListScreen::Description::TEXT.end.top,
+            options[selected].second.c_str(),
+            LINE_SPACING,
+            linesThatFitCount,
+            totalLineCount
+          );
+
+          descriptionScrollbar.set(0, totalLineCount - 1, 0);
+          resetDescriptionScroll = false;
+        }
+        descriptionScrollbar.paint();
+
+        descriptionScrollUpButton.paint();
+        descriptionScrollDownButton.paint();
+
+        UserInterface::printParagraph(
+          font_std,
+          options[selected].second,
+          UserInterface::SelectionListScreen::Description::TEXT,
+          LINE_SPACING,
+          UserInterface::Clear::EntireArea,
+          UserInterface::HorizontalAlignment::Left,
+          UserInterface::VerticalAlignment::Top,
+          descriptionScrollbar.view_recno
+        );
       }
-      descriptionScrollbar.paint();
-
-      UserInterface::printParagraph(
-        font_std,
-        options[selected].second,
-        UserInterface::SelectionListScreen::Description::TEXT,
-        LINE_SPACING,
-        UserInterface::Clear::EntireArea,
-        UserInterface::HorizontalAlignment::Left,
-        UserInterface::VerticalAlignment::Top,
-        descriptionScrollbar.view_recno
-      );
-
-      descriptionScrollUpButton.paint();
-      descriptionScrollDownButton.paint();
 
       for (auto slot = 0; slot < slotCount; slot++) {
         const auto slotArea
@@ -553,25 +638,18 @@ int runSelectionScreen(
 
     sys.yield();
 
-    _7kaaAmbitionInterface::Input::detectScenarioScroll(
-      0,
-      options.size() - 1,
-      selected,
-      listScrollbar,
-      descriptionScrollbar,
-      refreshFlag
-    );
-    constexpr auto DESCRIPTION_UPDATED = 0x00200000;
-    resetDescriptionScroll |= refreshFlag & DESCRIPTION_UPDATED;
-
-    _7kaaAmbitionInterface::Input::detectScenarioScroll(
-      0,
-      options.size() - 1,
-      selected,
-      listScrollbar,
-      descriptionScrollbar,
-      refreshFlag
-    );
+    if (showDescriptions) {
+      _7kaaAmbitionInterface::Input::detectScenarioScroll(
+        0,
+        options.size() - 1,
+        selected,
+        listScrollbar,
+        descriptionScrollbar,
+        refreshFlag
+      );
+    } else {
+      detectScroll(0, options.size(), selected, listScrollbar, refreshFlag);
+    }
 
     mouse.get_event();
 
