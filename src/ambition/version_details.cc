@@ -30,6 +30,12 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed issue with \"Building Complete\" (and other) sounds not being audible when they are far away from the current screen location because they became too quiet."),
         },
       },
+      {
+        .heading = HEADING_CHANGED,
+        .items = {
+          _("Allow Catalan translation to be used in all countries, not just Spain."),
+        },
+      },
     },
   },
   {

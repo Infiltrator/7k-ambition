@@ -21,6 +21,10 @@ speaking, considered to be the player's experience.
   they are far away from the current screen location because they became too
   quiet.
 
+### Changed
+
+- Allow Catalan translation to be used in all countries, not just Spain.
+
 
 ## [3.2.10] — 2026-06-12
 
