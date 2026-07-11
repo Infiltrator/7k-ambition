@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,6 +55,11 @@ namespace Ambition {
 std::vector<int> _7kaaConfigErrorLineNumbers;
 
 void runModeSelectionScreen();
+int runSelectionScreen(
+  const std::string heading,
+  const std::vector<std::pair<std::string, std::string>> options,
+  const int initialSelection
+);
 
 
 /** The global Ambition Config. */
@@ -287,60 +292,58 @@ std::filesystem::path singleplayerSave(
 
 void runModeSelectionScreen(
 ) {
-  constexpr auto BROWSE_X1 = 30;
-  constexpr auto BROWSE_Y1 = 336;
-  constexpr auto SLOT_WIDTH  = 725;
+  const auto selection = runSelectionScreen(
+    _("Select Mode"),
+    {
+      {
+        // TRANSLATORS: The name of the running mode.
+        _("I. Classic"),
+        _("Run everything the exact same as 7Kfans' 7kaa.  Allows for"
+          " multiplayer with 7K:AA."
+        ),
+      },
+      {
+        // TRANSLATORS: The name of the running mode.
+        _("II. Enhanced"),
+        _("Add enhancements that do not affect gameplay.  Allows for"
+          " multiplayer with 7K:AA."
+        ),
+      },
+    },
+    static_cast<int>(config.currentMode())
+  );
+
+  if (selection < 0) {
+    return;
+  }
+
+  config.setMode(Config::Mode(selection));
+}
+
+int runSelectionScreen(
+  const std::string heading,
+  const std::vector<std::pair<std::string, std::string>> options,
+  const int initialSelection
+) {
   constexpr auto SLOT_HEIGHT = 44;
-  constexpr auto BROWSE_X2 = BROWSE_X1 + SLOT_WIDTH - 1;
-
-  constexpr auto TEXT_AREA_X1 = 40;
-  constexpr auto TEXT_AREA_Y1 = 198;
-  constexpr auto TEXT_AREA_X2 = TEXT_AREA_X1 + 728;
-  constexpr auto TEXT_AREA_Y2 = TEXT_AREA_Y1 + 62;
-
-  constexpr auto TEXT_X = BROWSE_X1 + 11;
-  constexpr auto TEXT_OFFSET_Y = 9;
 
   constexpr auto SLOT_COUNT = 4;
-  constexpr auto MODE_SELECTION_COUNT = 2;
 
   constexpr auto BUTTON_TOP = 529;
   constexpr auto START_BUTTON_X = 170;
   constexpr auto BACK_BUTTON_X = 465;
 
-  struct ModeText {
-    const char* name;
-    const char* description;
-  };
-
-  const ModeText modeText[MODE_SELECTION_COUNT] = {
-    {
-      // TRANSLATORS: The name of the running mode.
-      .name = _("I. Classic"),
-      .description = _(
-        "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer"
-        " with 7K:AA."
-      ),
-    },
-    {
-      // TRANSLATORS: The name of the running mode.
-      .name = _("II. Enhanced"),
-      .description = _(
-        "Add enhancements that do not affect gameplay.  Allows for multiplayer"
-        " with 7K:AA."
-      ),
-    },
-  };
-
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
-  auto selectedMode = static_cast<unsigned int>(config.currentMode());
+  auto selected = initialSelection;
 
   Button3D startButton;
   Button3D backButton;
 
   startButton.create(START_BUTTON_X, BUTTON_TOP, "START-U", "START-D", 1, 0);
   backButton.create(BACK_BUTTON_X, BUTTON_TOP, "RETURN-U", "RETURN-D", 1, 0);
+
+  const auto slotsArea = UserInterface::SelectionListScreen::List::SLOTS;
 
   auto refreshFlag = 1;
 
@@ -355,37 +358,43 @@ void runModeSelectionScreen(
       startButton.paint();
       backButton.paint();
 
-      mouse.show();
-
       constexpr auto LINE_SPACING = 4;
-
-      font_std.put_paragraph(
-        TEXT_AREA_X1,
-        TEXT_AREA_Y1,
-        TEXT_AREA_X2,
-        TEXT_AREA_Y2,
-        _(modeText[selectedMode].description),
+      UserInterface::printParagraph(
+        font_std,
+        options[selected].second,
+        UserInterface::SelectionListScreen::Description::TEXT,
         LINE_SPACING
       );
 
       for (auto slot = 0u; slot < SLOT_COUNT; slot++) {
-        const auto y1 = BROWSE_Y1 + slot * SLOT_HEIGHT;
-        const auto y2 = y1 + SLOT_HEIGHT - 1;
+        const auto slotArea
+          = slotsArea
+          .inner({ top: static_cast<unsigned int>(slot * SLOT_HEIGHT) })
+          .internal({ height: SLOT_HEIGHT });
 
-        if (slot < MODE_SELECTION_COUNT) {
-          font_bible.put(
-            TEXT_X,
-            y1 + TEXT_OFFSET_Y,
-            _(modeText[slot].name),
-            0,
-            BROWSE_X2
+        if (static_cast<unsigned int>(slot) < options.size()) {
+          printText(
+            font_bible,
+            options[slot].first,
+            slotArea.inner(UserInterface::TEXT_BOX_PADDING, 0),
+            UserInterface::Clear::EntireArea,
+            UserInterface::HorizontalAlignment::Left,
+            UserInterface::VerticalAlignment::Centre
           );
 
-          if (slot == selectedMode) {
-            vga_front.adjust_brightness(BROWSE_X1, y1, BROWSE_X2, y2, -2);
+          if (slot == selected) {
+            vga_front.adjust_brightness(
+              slotArea.start.left,
+              slotArea.start.top,
+              slotArea.end.left,
+              slotArea.end.top,
+              -2
+            );
           }
         }
       }
+
+      mouse.show();
 
       refreshFlag = 0;
     }
@@ -397,30 +406,24 @@ void runModeSelectionScreen(
 
     mouse.get_event();
 
-    if (mouse.single_click(
-          BROWSE_X1,
-          BROWSE_Y1,
-          BROWSE_X1 + SLOT_WIDTH - 1,
-          BROWSE_Y1 + SLOT_HEIGHT * SLOT_COUNT - 1
-        )
-    ) { // Clicking on a mode.
+    if (UserInterface::detectMouseClick(slotsArea)) {
       const auto clickedSlot
-        = (static_cast<unsigned int>(mouse.click_y(LEFT_BUTTON)) - BROWSE_Y1)
+        = (mouse.click_y(LEFT_BUTTON) - slotsArea.start.top)
         / SLOT_HEIGHT;
-      if (clickedSlot < MODE_SELECTION_COUNT) {
-        if (selectedMode != clickedSlot) {
+      const auto clickedOption = clickedSlot;
+      if (static_cast<unsigned int>(clickedOption) < options.size()) {
+        if (selected != clickedOption) {
           refreshFlag = 1;
-          selectedMode = clickedSlot;
+          selected = clickedOption;
         }
       }
     } else if (backButton.detect(GETKEY(KEYEVENT_CANCEL))
       || mouse.any_click(RIGHT_BUTTON)
       || sys.signal_exit_flag == 1
     ) { // Clicking on the back button, pressing Esc, or otherwise exiting.
-      break;
+      return -1;
     } else if (startButton.detect(GETKEY(KEYEVENT_CONFIRM))) {
-      config.setMode(Config::Mode(selectedMode));
-      break;
+      return selected;
     }
 
     if (!refreshFlag) {

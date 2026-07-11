@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7kAA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 21:21+1000\n"
+"POT-Creation-Date: 2026-07-21 20:18+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: JLP\n"
 "Language-Team: \n"
@@ -117,6 +117,10 @@ msgstr ""
 #: src/ambition/Ambition_config.cc:189
 msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:296
+msgid "Select Mode"
 msgstr ""
 
 #. TRANSLATORS: The name of the running mode.

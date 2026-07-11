@@ -62,6 +62,63 @@ int reportType = -1;
 short selected7kaaFirmOrTownRecordNumber = 0;
 
 
+constexpr auto BORDER_WIDTH = 1;
+
+const Size SCROLL_BUTTON_SIZE = { .width = 14, .height = 17 };
+
+namespace SelectionListScreen {
+
+namespace Heading {
+
+const Rectangle SECTION = BOUNDS.internal({ .height = 172 });
+
+const Rectangle TEXT
+  = SECTION
+  .inner({ left: 90, right: 90, top: 32, bottom: 84 })
+  .inner(TEXT_BOX_PADDING);
+
+} // namespace SelectionListScreen::Heading
+
+namespace Description {
+
+extern const Rectangle SECTION
+  = BOUNDS
+  .inner({ top: static_cast<unsigned int>(Heading::SECTION.height()) })
+  .internal({ .height = 148 });
+
+const Rectangle TEXT_BOX
+  = SECTION.inner({ left: 30, right: 29, top: 15, bottom: 13 });
+const Rectangle TEXT
+  = TEXT_BOX
+  .inner(
+    { right: static_cast<unsigned int>(SCROLL_BUTTON_SIZE.width + BORDER_WIDTH) }
+  ).inner(TEXT_BOX_PADDING);
+
+} // namespace SelectionListScreen::Description
+
+namespace List {
+
+extern const Rectangle SECTION
+  = BOUNDS
+  .inner(
+    {
+      top: static_cast<unsigned int>(
+        Heading::SECTION.height() + Description::SECTION.height()
+      )
+    }
+  ).internal({ .height = 280 });
+
+const Rectangle SLOT_AREA
+  = SECTION.inner({ left: 30, right: 29, top: 15, bottom: 89 });
+const Rectangle SLOTS = SLOT_AREA.inner(
+  { right: static_cast<unsigned int>(SCROLL_BUTTON_SIZE.width + BORDER_WIDTH) }
+);
+
+} // namespace SelectionListScreen::List
+
+} // namespace SelectionListScreen
+
+
 char _7kaaJustification(
   const HorizontalAlignment horizontalAlignment
 );

@@ -211,6 +211,36 @@ const auto VIEWPORT = BOUNDS.internal(
   VerticalAlignment::Bottom
 );
 
+constexpr auto TEXT_BOX_PADDING = 13;
+
+extern const Size SCROLL_BUTTON_SIZE;
+
+namespace SelectionListScreen {
+
+namespace Heading {
+
+extern const Rectangle SECTION;
+extern const Rectangle TEXT;
+
+} // namespace SelectionListScreen::Heading
+
+namespace Description {
+
+extern const Rectangle SECTION;
+extern const Rectangle TEXT_BOX;
+extern const Rectangle TEXT;
+
+} // namespace SelectionListScreen::Description
+
+namespace List {
+
+extern const Rectangle SECTION;
+extern const Rectangle SLOT_AREA;
+extern const Rectangle SLOTS;
+
+} // namespace SelectionListScreen::List
+
+} // namespace SelectionListScreen
 
 namespace ScenarioList {
 
