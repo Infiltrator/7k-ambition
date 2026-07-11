@@ -51,6 +51,11 @@
 #undef DEBUG
 #endif
 
+#ifdef DEBUG
+#include "OSYS.h"
+#endif
+
+
 //----------------- Begin of function Unit::update_attack_path_dist -----------------//
 // return 1 if it is time to update result path
 // return 0 otherwise

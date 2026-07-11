@@ -29,6 +29,11 @@
 #include <OTECHRES.h>
 #include "gettext.h"
 
+#ifdef DEBUG
+#include "ONATIONA.h"
+#endif
+
+
 //---------- #define constant ------------//
 
 #define TECH_DB		  		"TECH"

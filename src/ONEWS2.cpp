@@ -30,6 +30,10 @@
 #include <OUNIT.h>
 #include <ONEWS.h>
 
+#ifdef DEBUG
+#include "OMONSRES.h"
+#endif
+
 
 //------ Begin of function NewsArray::diplomacy -----//
 //

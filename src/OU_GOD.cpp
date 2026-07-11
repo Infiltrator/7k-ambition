@@ -32,6 +32,11 @@
 #include <OWEATHER.h>
 #include <OTORNADO.h>
 
+#ifdef DEBUG
+#include "OSYS.h"
+#endif
+
+
 //--------- Define static vars ----------//
 
 static Button3D button_cast, button_cast2;
