@@ -693,8 +693,11 @@ bool drawBuildingInformationPanel(
 
   if (_7kaaFirm->should_show_info()) {
     static const auto RESOURCE_NAMES = std::array{
+      // TRANSLATORS: The short form of Clay.  Used when space is limited.
       _("Cl"),
+      // TRANSLATORS: The short form of Copper.  Used when space is limited.
       _("Co"),
+      // TRANSLATORS: The short form of Iron.  Used when space is limited.
       _("Ir"),
     };
 
@@ -723,6 +726,7 @@ bool drawBuildingInformationPanel(
       if (_7kaaFirm->overseer_recno) {
         lines.push_back(
           format(
+            // TRANSLATORS: Short form of Leadership, with the value following.
             _("Ldr: %d"),
             unit_array[_7kaaFirm->overseer_recno]->skill.skill_level
           )
@@ -768,6 +772,7 @@ bool drawBuildingInformationPanel(
           )
         );
       } else {
+        // TRANSLATORS: Short form of "no resources".
         lines.push_back(_("No res"));
       }
       break;
@@ -793,6 +798,7 @@ bool drawBuildingInformationPanel(
     case FIRM_WAR_FACTORY:
       lines.push_back(
         format(
+          // TRANSLATORS: Short form of "<number> workers (<average skill>)".
           ngettext("%d wrk (%d)", "%d wrk (%d)", _7kaaFirm->worker_count),
           _7kaaFirm->worker_count,
           _7kaaFirm->average_worker_skill()
@@ -806,6 +812,7 @@ bool drawBuildingInformationPanel(
        * lines. */
       lines.push_back(
         format(
+          // TRANSLATORS: Short form of "<number> workers".
           ngettext("%d wrk", "%d wrk", _7kaaFirm->worker_count),
           _7kaaFirm->worker_count
         )
@@ -818,6 +825,8 @@ bool drawBuildingInformationPanel(
       assert(_7kaaCamp);
       lines.push_back(
         format(
+          // TRANSLATORS: Short form of "<number> soldiers (<combined combat
+          // rating>)".
           ngettext("%d sld (%.0f)", "%d sld (%.0f)", _7kaaCamp->worker_count),
           _7kaaCamp->worker_count,
           _7kaaCamp->total_combat_level() / 10.0
@@ -868,8 +877,11 @@ bool drawBuildingInformationPanel(
       )->trade_treaty)
   ) {
     static const auto GOOD_NAMES = std::array{
+      // TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
       _("Raw Cl"),
+      // TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
       _("Raw Co"),
+      // TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
       _("Raw Ir"),
       _("Clay"),
       _("Copper"),
@@ -906,6 +918,8 @@ bool drawBuildingInformationPanel(
     lines.push_back(
       format(
         _7kaaFirm->firm_id == FIRM_RESEARCH
+          // TRANSLATORS: Short form of "<number> Spy/Spies".  Used when space
+          // is limited.
           ? npgettext(
             "narrow_panel",
             "(%s%d Spy)",
@@ -918,6 +932,7 @@ bool drawBuildingInformationPanel(
             "(%s%d Spies)",
             _7kaaFirm->player_spy_count - generalIsSpy
           ),
+        // TRANSLATORS: Short for "General", when the General is a spy.
         generalIsSpy ? _("G+") : "",
         _7kaaFirm->player_spy_count - generalIsSpy
       )
@@ -979,6 +994,7 @@ bool drawBuildingInformationPanel(
     lines.push_back(
       format(
         "%s: %d/%d%s",
+        // TRANSLATORS: Short for "population".
         _("Pop"),
         _7kaaTown->jobless_population,
         _7kaaTown->population,
@@ -986,6 +1002,7 @@ bool drawBuildingInformationPanel(
       )
     );
 
+    // TRANSLATORS: Short for "loyalty" and "resistance".
     const auto levelName = _7kaaTown->nation_recno ? _("Lty") : _("Rst");
 
     const auto currentLevel

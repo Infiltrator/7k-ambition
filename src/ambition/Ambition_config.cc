@@ -63,12 +63,16 @@ Config::modeString(
 ) const {
   switch (_mode) {
   case Mode::Classic:
+    // TRANSLATORS: The name of the running mode.
 	 return _("classic");
   case Mode::Enhanced:
+    // TRANSLATORS: The name of the running mode.
 	 return _("enhanced");
   case Mode::Advanced:
+    // TRANSLATORS: The name of the running mode.
     return _("advanced");
   case Mode::Ambition:
+    // TRANSLATORS: The name of the running mode.
     return _("ambition");
   }
 
@@ -175,6 +179,7 @@ void report7kaaConfigLoadingErrors(
   String report;
   report.catf(_("Error in %s at lines:\n"), fullPath.str_buf);
   for (const auto lineNumber : _7kaaConfigErrorLineNumbers) {
+    // TRANSLATORS: The separator for config.txt file error line numbers.
     report.catf(_("%d, "), lineNumber);
   }
   report += "\n";
@@ -308,6 +313,7 @@ void runModeSelectionScreen(
 
   const ModeText modeText[MODE_SELECTION_COUNT] = {
     {
+      // TRANSLATORS: The name of the running mode.
       .name = _("I. Classic"),
       .description = _(
         "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer"
@@ -315,6 +321,7 @@ void runModeSelectionScreen(
       ),
     },
     {
+      // TRANSLATORS: The name of the running mode.
       .name = _("II. Enhanced"),
       .description = _(
         "Add enhancements that do not affect gameplay.  Allows for multiplayer"
