@@ -13,6 +13,7 @@ speaking, considered to be the player's experience.
 ### Added
 
 - Added a locale selection screen, for switching locales (languages).
+- Added a Latin translation, thanks to Júlia Rosell Saldaña.
 - Added a feedback sound when clicking the Clone Caravan button.
 - Added a feedback sound when clicking the Hire Caravan button in the Market.
 

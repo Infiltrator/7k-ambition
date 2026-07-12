@@ -183,18 +183,22 @@ msgid "French"
 msgstr "Французский"
 
 #: src/ambition/Ambition_config.cc:503
+msgid "Latin"
+msgstr "Латинский"
+
+#: src/ambition/Ambition_config.cc:504
 msgid "Dutch"
 msgstr "Голландский"
 
-#: src/ambition/Ambition_config.cc:504
+#: src/ambition/Ambition_config.cc:505
 msgid "Polish"
 msgstr "Польский"
 
-#: src/ambition/Ambition_config.cc:505
+#: src/ambition/Ambition_config.cc:506
 msgid "Portuguese (Brazil)"
 msgstr "Португальский (Бразилия)"
 
-#: src/ambition/Ambition_config.cc:506
+#: src/ambition/Ambition_config.cc:507
 msgid "Russian"
 msgstr "Русский"
 
@@ -610,6 +614,10 @@ msgstr "Предварительная версия — ещё не выпуще
 
 #: src/ambition/version_details.cc
 msgid "Added a locale selection screen, for switching locales (languages)."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Added a Latin translation, thanks to Júlia Rosell Saldaña."
 msgstr ""
 
 #: src/ambition/version_details.cc
