@@ -20,33 +20,33 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 
 #. TRANSLATORS: Single-letter war machine identifier for Catapult.
-#: src/ambition/7kaaInterface/building.cc:305
+#: src/ambition/7kaaInterface/building.cc:326
 msgid "C"
 msgstr "K"
 
 #. TRANSLATORS: Single-letter war machine identifier for Ballista.
-#: src/ambition/7kaaInterface/building.cc:307
+#: src/ambition/7kaaInterface/building.cc:328
 msgid "B"
 msgstr "B"
 
 #. TRANSLATORS: Single-letter war machine identifier for Spitfire.
-#: src/ambition/7kaaInterface/building.cc:309
+#: src/ambition/7kaaInterface/building.cc:330
 msgid "S"
 msgstr "M"
 
 #. TRANSLATORS: Single-letter war machine identifier for Cannon.
-#: src/ambition/7kaaInterface/building.cc:311
+#: src/ambition/7kaaInterface/building.cc:332
 #, fuzzy
 msgid "N"
 msgstr "D"
 
 #. TRANSLATORS: Single-letter war machine identifier for Porcupine.
-#: src/ambition/7kaaInterface/building.cc:313
+#: src/ambition/7kaaInterface/building.cc:334
 msgid "P"
 msgstr "Ż"
 
 #. TRANSLATORS: Single-letter war machine identifier for Unicorn.
-#: src/ambition/7kaaInterface/building.cc:315
+#: src/ambition/7kaaInterface/building.cc:336
 msgid "U"
 msgstr "D"
 
@@ -253,34 +253,34 @@ msgstr ""
 msgid "Ir"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:710 src/ambition/Ambition_vga.cc:2434
-#: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:592 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
+#: src/ambition/Ambition_vga.cc:712 src/ambition/Ambition_vga.cc:2436
+#: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:596 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
 msgid "Leadership"
 msgstr "Przywódctwo"
 
-#: src/ambition/Ambition_vga.cc:715 src/ambition/Ambition_vga.cc:729
+#: src/ambition/Ambition_vga.cc:717 src/ambition/Ambition_vga.cc:731
 msgid "No general"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:724
+#: src/ambition/Ambition_vga.cc:726
 #, c-format
 msgid "Ldr: %d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:738
+#: src/ambition/Ambition_vga.cc:740
 #, c-format
 msgid "Ordos: %d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:769
+#: src/ambition/Ambition_vga.cc:771
 msgid "No res"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:781
+#: src/ambition/Ambition_vga.cc:783
 msgid "Idle"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:794
+#: src/ambition/Ambition_vga.cc:796
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
@@ -288,7 +288,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:807
+#: src/ambition/Ambition_vga.cc:809
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
@@ -296,7 +296,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:819
+#: src/ambition/Ambition_vga.cc:821
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
@@ -304,7 +304,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:832
+#: src/ambition/Ambition_vga.cc:834
 #, c-format
 msgid "%d guest"
 msgid_plural "%d guests"
@@ -312,43 +312,43 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:844
+#: src/ambition/Ambition_vga.cc:846
 #, c-format
 msgid "Ships: %d/%d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:869
+#: src/ambition/Ambition_vga.cc:871
 msgid "Raw Cl"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:870
+#: src/ambition/Ambition_vga.cc:872
 msgid "Raw Co"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:871
+#: src/ambition/Ambition_vga.cc:873
 msgid "Raw Ir"
 msgstr ""
 
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:872
+#: src/ambition/Ambition_vga.cc:874
 msgid "Clay"
 msgstr "Glina"
 
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:873
+#: src/ambition/Ambition_vga.cc:875
 msgid "Copper"
 msgstr "MIedź"
 
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:874
+#: src/ambition/Ambition_vga.cc:876
 msgid "Iron"
 msgstr "Żelazo"
 
-#: src/ambition/Ambition_vga.cc:895
+#: src/ambition/Ambition_vga.cc:897
 msgid "Empty"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:909
+#: src/ambition/Ambition_vga.cc:911
 #, c-format
 msgctxt "narrow_panel"
 msgid "(%s%d Spy)"
@@ -357,7 +357,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:915
+#: src/ambition/Ambition_vga.cc:917
 #, c-format
 msgctxt "standard_panel"
 msgid "(%s%d Spy)"
@@ -366,23 +366,23 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:919
+#: src/ambition/Ambition_vga.cc:921
 msgid "G+"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:980
+#: src/ambition/Ambition_vga.cc:982
 msgid "Pop"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:987
+#: src/ambition/Ambition_vga.cc:989
 msgid "Lty"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:987
+#: src/ambition/Ambition_vga.cc:989
 msgid "Rst"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:1046
+#: src/ambition/Ambition_vga.cc:1048
 #, c-format
 msgid "(%d Spy)"
 msgid_plural "(%d Spies)"
@@ -390,76 +390,76 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/ambition/Ambition_vga.cc:1699
+#: src/ambition/Ambition_vga.cc:1701
 msgid "Feedback"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:1829
+#: src/ambition/Ambition_vga.cc:1831
 msgid "Guests"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2030
+#: src/ambition/Ambition_vga.cc:2032
 #, c-format
 msgid "Your spy estimates a success chance of %d%%."
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2074
+#: src/ambition/Ambition_vga.cc:2076
 #, c-format
 msgid "Your spy suggests a bribe of $%'d."
 msgstr ""
 
 # data/RESOURCE/TUT_LIST.RES
-#: src/ambition/Ambition_vga.cc:2101
+#: src/ambition/Ambition_vga.cc:2103
 msgid "Ships"
 msgstr "Okręty"
 
-#: src/ambition/Ambition_vga.cc:2137
+#: src/ambition/Ambition_vga.cc:2139
 msgid "No leader assigned"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2139
+#: src/ambition/Ambition_vga.cc:2141
 msgid "Leader out of range"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2141
+#: src/ambition/Ambition_vga.cc:2143
 msgid "Leader is providing bonuses"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2150 src/OR_TOWN.cpp:112
+#: src/ambition/Ambition_vga.cc:2152 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
 msgstr "Koszty Jednostki"
 
-#: src/ambition/Ambition_vga.cc:2157 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
+#: src/ambition/Ambition_vga.cc:2159 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
 msgid "Yearly Expense"
 msgstr "Roczne Wydatki"
 
-#: src/ambition/Ambition_vga.cc:2190 src/ambition/Ambition_vga.cc:2209
-#: src/ambition/Ambition_vga.cc:2275
+#: src/ambition/Ambition_vga.cc:2192 src/ambition/Ambition_vga.cc:2211
+#: src/ambition/Ambition_vga.cc:2277
 msgid "$"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2378
+#: src/ambition/Ambition_vga.cc:2380
 #, c-format
 msgid "Surplus Peasants: %'d"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2428 src/OFIRMIF.cpp:723 src/OFIRMIF.cpp:730
+#: src/ambition/Ambition_vga.cc:2430 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
 #: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:409
-#: src/OF_CAMP.cpp:603 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
+#: src/OF_CAMP.cpp:607 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
 #: src/OUNITIF.cpp:1177 src/OU_MARIF.cpp:512
 msgid "Loyalty"
 msgstr "Lojalność"
 
-#: src/ambition/Ambition_vga.cc:2445 src/ambition/Ambition_vga.cc:2510
+#: src/ambition/Ambition_vga.cc:2447 src/ambition/Ambition_vga.cc:2512
 msgid "Yearly Upkeep"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2458 src/ambition/Ambition_vga.cc:2521
+#: src/ambition/Ambition_vga.cc:2460 src/ambition/Ambition_vga.cc:2523
 msgid "Attack Range"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:2564
+#: src/ambition/Ambition_vga.cc:2566
 #, c-format
 msgid "Your spy estimates an escape chance of %d%%."
 msgstr ""
@@ -468,7 +468,7 @@ msgstr ""
 #. number>. … Your config.txt file can be found here: <config directory
 #. path and path separator>config.txt …
 #. The name of the file—config.txt—does not change with language.
-#: src/ambition/Ambition_vga.cc:2605
+#: src/ambition/Ambition_vga.cc:2607
 #, c-format
 msgid ""
 "Your game version may not match the host's version.\n"
@@ -2632,25 +2632,25 @@ msgctxt "FirmUI|Name"
 msgid "%s %s"
 msgstr "%s %s"
 
-#: src/OFIRMIF.cpp:87
+#: src/OFIRMIF.cpp:92
 msgid "Under Construction"
 msgstr "W trakcie budowy"
 
-#: src/OFIRMIF.cpp:714
+#: src/OFIRMIF.cpp:719
 msgid "Residence"
 msgstr "Posiadłość"
 
-#: src/OFIRMIF.cpp:723 src/OFIRMIF.cpp:730 src/OFIRMIF.cpp:742
-#: src/OFIRMIF.cpp:756 src/OU_MARIF.cpp:512
+#: src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735 src/OFIRMIF.cpp:747
+#: src/OFIRMIF.cpp:761 src/OU_MARIF.cpp:512
 msgid "N/A"
 msgstr "N/D"
 
-#: src/OFIRMIF.cpp:758 src/OFIRMIF.cpp:808 src/OF_INN.cpp:452
+#: src/OFIRMIF.cpp:763 src/OFIRMIF.cpp:813 src/OF_INN.cpp:452
 #: src/OF_INN.cpp:505 src/OUNITIF.cpp:1189 src/OU_MARIF.cpp:516
 msgid "Combat"
 msgstr "Walka"
 
-#: src/OFIRMIF.cpp:767 src/OFIRMIF.cpp:817 src/OR_MIL.cpp:101
+#: src/OFIRMIF.cpp:772 src/OFIRMIF.cpp:822 src/OR_MIL.cpp:101
 #: src/OR_TECH.cpp:144 src/OR_TRADE.cpp:152 src/OU_MARIF.cpp:526
 msgid "Hit Points"
 msgstr "Punkty Życia"
@@ -2703,7 +2703,7 @@ msgstr "Twój szpieg wydostał się."
 msgid "Assassination Failed."
 msgstr "Skrytobójstwo nie powiodło się."
 
-#: src/OF_BASE.cpp:384 src/OF_CAMP.cpp:578 src/OGAMHALL.cpp:251
+#: src/OF_BASE.cpp:384 src/OF_CAMP.cpp:582 src/OGAMHALL.cpp:251
 #: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1251
 msgid "King"
 msgstr "Władca"
@@ -2757,57 +2757,57 @@ msgstr "Gotowe"
 msgid "Hiring Cost"
 msgstr "Koszt Rekrutacji"
 
-#: src/OF_MARK.cpp:433
+#: src/OF_MARK.cpp:437
 msgid "You're not permitted to trade with this market."
 msgstr "Nie masz pozwoleń by handlować z tym rynkiem."
 
-#: src/OF_MARK.cpp:487
+#: src/OF_MARK.cpp:491
 msgid "Clear"
 msgstr "Wyczyść"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:289
-#: src/OF_MARK.cpp:499
+#: src/OF_MARK.cpp:503
 msgid "Stock"
 msgstr "Zmagazynowane"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:293
-#: src/OF_MARK.cpp:501
+#: src/OF_MARK.cpp:505
 msgid "Sales"
 msgstr "Sprzedaż"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:297
-#: src/OF_MARK.cpp:509
+#: src/OF_MARK.cpp:513
 msgid "Demand"
 msgstr "Żądaj"
 
-#: src/OF_MARK.cpp:519 src/OR_TRADE.cpp:82
+#: src/OF_MARK.cpp:523 src/OR_TRADE.cpp:82
 msgid "Any"
 msgstr ""
 
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OF_MARK.cpp:520 src/OR_TRADE.cpp:80
+#: src/OF_MARK.cpp:524 src/OR_TRADE.cpp:80
 msgid "Factory"
 msgstr "Fabryka"
 
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OF_MARK.cpp:521 src/OR_TRADE.cpp:81
+#: src/OF_MARK.cpp:525 src/OR_TRADE.cpp:81
 msgid "Mine"
 msgstr "Kopalnia"
 
-#: src/OF_MARK.cpp:522
+#: src/OF_MARK.cpp:526
 msgid "None"
 msgstr ""
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:301
-#: src/OF_MARK.cpp:535 src/OR_ECO.cpp:70 src/OR_TOWN.cpp:119
+#: src/OF_MARK.cpp:539 src/OR_ECO.cpp:70 src/OR_TOWN.cpp:119
 msgid "Yearly Income"
 msgstr "Roczny przychud"
 
-#: src/OF_MARK.cpp:536
+#: src/OF_MARK.cpp:540
 msgid "Restock From"
 msgstr ""
 
