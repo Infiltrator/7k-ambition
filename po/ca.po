@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-02 21:37+1000\n"
+"POT-Creation-Date: 2026-07-12 20:37+1000\n"
 "PO-Revision-Date: 2026-06-02 14:56+0200\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
@@ -75,19 +75,23 @@ msgstr "Comparant el Regne de %s%s"
 msgid "Compare %s's Kingdom%s"
 msgstr "Compara el Regne de %s%s"
 
-#: src/ambition/Ambition_config.cc:66
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:67
 msgid "classic"
 msgstr "clàssic"
 
-#: src/ambition/Ambition_config.cc:68
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:70
 msgid "enhanced"
 msgstr "millorat"
 
-#: src/ambition/Ambition_config.cc:70
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:73
 msgid "advanced"
 msgstr "avançat"
 
-#: src/ambition/Ambition_config.cc:72
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:76
 msgid "ambition"
 msgstr "ambició"
 
@@ -104,7 +108,8 @@ msgstr "Mode actual:"
 msgid "Error in %s at lines:\n"
 msgstr "Error a %s a les línies:\n"
 
-#: src/ambition/Ambition_config.cc:178
+#. TRANSLATORS: The separator for config.txt file error line numbers.
+#: src/ambition/Ambition_config.cc:183
 #, c-format
 msgid "%d, "
 msgstr "%d, "
@@ -115,7 +120,8 @@ msgid ""
 msgstr ""
 "Seven Kingdoms: Ambition continuarà carregant només amb les línies vàlides."
 
-#: src/ambition/Ambition_config.cc:311
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:317
 msgid "I. Classic"
 msgstr "I. Clàssic"
 
@@ -127,7 +133,8 @@ msgstr ""
 "Executa-ho tot exactament igual que el 7kaa de 7Kfans.  Permet partides "
 "multijugador amb 7K:AA."
 
-#: src/ambition/Ambition_config.cc:318
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:325
 msgid "II. Enhanced"
 msgstr "II. Millorat"
 
@@ -257,15 +264,18 @@ msgstr "Béns subministrats"
 msgid "Level: %d"
 msgstr "Nivell: %d"
 
-#: src/ambition/Ambition_vga.cc:696
+#. TRANSLATORS: The short form of Clay.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:697
 msgid "Cl"
 msgstr "Arg"
 
-#: src/ambition/Ambition_vga.cc:697
+#. TRANSLATORS: The short form of Copper.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:699
 msgid "Co"
 msgstr "Cou"
 
-#: src/ambition/Ambition_vga.cc:698
+#. TRANSLATORS: The short form of Iron.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:701
 msgid "Ir"
 msgstr "Fer"
 
@@ -278,7 +288,8 @@ msgstr "Lideratge"
 msgid "No general"
 msgstr "Sense general"
 
-#: src/ambition/Ambition_vga.cc:726
+#. TRANSLATORS: Short form of Leadership, with the value following.
+#: src/ambition/Ambition_vga.cc:730
 #, c-format
 msgid "Ldr: %d"
 msgstr "Lid: %d"
@@ -288,7 +299,8 @@ msgstr "Lid: %d"
 msgid "Ordos: %d"
 msgstr "Ordos: %d"
 
-#: src/ambition/Ambition_vga.cc:771
+#. TRANSLATORS: Short form of "no resources".
+#: src/ambition/Ambition_vga.cc:776
 msgid "No res"
 msgstr "Sense rec"
 
@@ -296,21 +308,25 @@ msgstr "Sense rec"
 msgid "Idle"
 msgstr "Inactiu"
 
-#: src/ambition/Ambition_vga.cc:796
+#. TRANSLATORS: Short form of "<number> workers (<average skill>)".
+#: src/ambition/Ambition_vga.cc:802
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
 msgstr[0] "%d treb (%d)"
 msgstr[1] "%d treb (%d)"
 
-#: src/ambition/Ambition_vga.cc:809
+#. TRANSLATORS: Short form of "<number> workers".
+#: src/ambition/Ambition_vga.cc:816
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
 msgstr[0] "%d treb"
 msgstr[1] "%d treb"
 
-#: src/ambition/Ambition_vga.cc:821
+#. TRANSLATORS: Short form of "<number> soldiers (<combined combat
+#. rating>)".
+#: src/ambition/Ambition_vga.cc:830
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
@@ -329,15 +345,18 @@ msgstr[1] "%d hostes"
 msgid "Ships: %d/%d"
 msgstr "Vaixells: %d/%d"
 
-#: src/ambition/Ambition_vga.cc:871
+#. TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:881
 msgid "Raw Cl"
 msgstr "Arg cru"
 
-#: src/ambition/Ambition_vga.cc:872
+#. TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:883
 msgid "Raw Co"
 msgstr "Cou cru"
 
-#: src/ambition/Ambition_vga.cc:873
+#. TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:885
 msgid "Raw Ir"
 msgstr "Fer cru"
 
@@ -379,15 +398,18 @@ msgid_plural "(%s%d Spies)"
 msgstr[0] "(%s%d Espia)"
 msgstr[1] "(%s%d Espies)"
 
-#: src/ambition/Ambition_vga.cc:921
+#. TRANSLATORS: Short for "General", when the General is a spy.
+#: src/ambition/Ambition_vga.cc:936
 msgid "G+"
 msgstr "G+"
 
-#: src/ambition/Ambition_vga.cc:982
+#. TRANSLATORS: Short for "population".
+#: src/ambition/Ambition_vga.cc:998
 msgid "Pop"
 msgstr "Pob"
 
-#: src/ambition/Ambition_vga.cc:989
+#. TRANSLATORS: Short for "loyalty" and "resistance".
+#: src/ambition/Ambition_vga.cc:1006
 msgid "Lty"
 msgstr "Lle"
 
@@ -902,6 +924,7 @@ msgstr ""
 "altra illa o en un lloc inaccessible i no poguessin seguir la seva ruta."
 
 #: src/ambition/version_details.cc
+#, fuzzy
 msgid ""
 "Changed when building hitbars are displayed based on the help setting in the "
 "options menu.  When it is set to None, building hitbars will never be "
@@ -1271,6 +1294,7 @@ msgstr ""
 "diferent sobre el ressaltat."
 
 #: src/ambition/version_details.cc
+#, fuzzy
 msgid ""
 "Fixed the Villages Report yearly Firm costs, Military Report yearly Unit "
 "costs, and War Machine yearly costs showing up 10% higher than actual, now "
@@ -3071,6 +3095,7 @@ msgstr ""
 "per ajudar a trobar-ne i corregir-ne la causa."
 
 #: src/ambition/version_details.cc
+#, fuzzy
 msgid "Fixed the 100% CPU usage all the time problem."
 msgstr "S'ha solucionat el problema d'ús continu de la CPU al 100%."
 
@@ -13464,3 +13489,11 @@ msgstr ""
 "Fes clic en aquest botó per canviar el tipus d'edificis enllaçats des dels "
 "quals aquest mercat es pot reabastir. Això et permet controlar la finalitat "
 "d'aquest mercat."
+
+#, fuzzy
+#~ msgid "v3.2.10 -- 2026-06-12"
+#~ msgstr "v3.2.1 -- 2025-08-12"
+
+#, fuzzy
+#~ msgid "v3.2.9 -- 2026-06-05"
+#~ msgstr "v3.1.9 -- 2025-06-25"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7kaa 2.14.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-02 21:37+1000\n"
+"POT-Creation-Date: 2026-07-12 20:37+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator:  <toaster@hush.com>\n"
 "Language-Team: German\n"
@@ -73,19 +73,23 @@ msgstr "Vergleiche %s's Königreich%s"
 msgid "Compare %s's Kingdom%s"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:66
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:67
 msgid "classic"
 msgstr "Klassisch"
 
-#: src/ambition/Ambition_config.cc:68
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:70
 msgid "enhanced"
 msgstr "Erweitert"
 
-#: src/ambition/Ambition_config.cc:70
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:73
 msgid "advanced"
 msgstr "Fortgeschritten"
 
-#: src/ambition/Ambition_config.cc:72
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:76
 msgid "ambition"
 msgstr "Ambitioniert"
 
@@ -102,7 +106,8 @@ msgstr "Aktueller Modus:"
 msgid "Error in %s at lines:\n"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:178
+#. TRANSLATORS: The separator for config.txt file error line numbers.
+#: src/ambition/Ambition_config.cc:183
 #, c-format
 msgid "%d, "
 msgstr ""
@@ -112,7 +117,8 @@ msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:311
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:317
 msgid "I. Classic"
 msgstr "I. Klassisch"
 
@@ -124,7 +130,8 @@ msgstr ""
 "Das Spiel läuft mit den Standardeinstellungen vom originalen 7Kfans 7kaa. "
 "Mehrspielerkompatibel mit 7K:AA."
 
-#: src/ambition/Ambition_config.cc:318
+#. TRANSLATORS: The name of the running mode.
+#: src/ambition/Ambition_config.cc:325
 msgid "II. Enhanced"
 msgstr "II. Erweitert"
 
@@ -246,15 +253,18 @@ msgstr "Warenangebot"
 msgid "Level: %d"
 msgstr "Level: %d"
 
-#: src/ambition/Ambition_vga.cc:696
+#. TRANSLATORS: The short form of Clay.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:697
 msgid "Cl"
 msgstr "Ton"
 
-#: src/ambition/Ambition_vga.cc:697
+#. TRANSLATORS: The short form of Copper.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:699
 msgid "Co"
 msgstr "Ku."
 
-#: src/ambition/Ambition_vga.cc:698
+#. TRANSLATORS: The short form of Iron.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:701
 msgid "Ir"
 msgstr "Ei."
 
@@ -267,7 +277,8 @@ msgstr "Führung"
 msgid "No general"
 msgstr "General n/v"
 
-#: src/ambition/Ambition_vga.cc:726
+#. TRANSLATORS: Short form of Leadership, with the value following.
+#: src/ambition/Ambition_vga.cc:730
 #, c-format
 msgid "Ldr: %d"
 msgstr "Führ.: %d"
@@ -277,7 +288,8 @@ msgstr "Führ.: %d"
 msgid "Ordos: %d"
 msgstr "Generäle: %d"
 
-#: src/ambition/Ambition_vga.cc:771
+#. TRANSLATORS: Short form of "no resources".
+#: src/ambition/Ambition_vga.cc:776
 msgid "No res"
 msgstr "Keine Res."
 
@@ -285,21 +297,25 @@ msgstr "Keine Res."
 msgid "Idle"
 msgstr "Leerlauf"
 
-#: src/ambition/Ambition_vga.cc:796
+#. TRANSLATORS: Short form of "<number> workers (<average skill>)".
+#: src/ambition/Ambition_vga.cc:802
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
 msgstr[0] "%d Arb. (%d)"
 msgstr[1] "%d Arb. (%d)"
 
-#: src/ambition/Ambition_vga.cc:809
+#. TRANSLATORS: Short form of "<number> workers".
+#: src/ambition/Ambition_vga.cc:816
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
 msgstr[0] "%d Arb."
 msgstr[1] "%d Arb."
 
-#: src/ambition/Ambition_vga.cc:821
+#. TRANSLATORS: Short form of "<number> soldiers (<combined combat
+#. rating>)".
+#: src/ambition/Ambition_vga.cc:830
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
@@ -318,15 +334,18 @@ msgstr[1] "%d Gäste"
 msgid "Ships: %d/%d"
 msgstr "Schiffe: %d/%d"
 
-#: src/ambition/Ambition_vga.cc:871
+#. TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:881
 msgid "Raw Cl"
 msgstr "Roh Tn"
 
-#: src/ambition/Ambition_vga.cc:872
+#. TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:883
 msgid "Raw Co"
 msgstr "Roh Ku"
 
-#: src/ambition/Ambition_vga.cc:873
+#. TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
+#: src/ambition/Ambition_vga.cc:885
 msgid "Raw Ir"
 msgstr "Roh Ei"
 
@@ -362,15 +381,18 @@ msgid_plural "(%s%d Spies)"
 msgstr[0] "%s%d Spion"
 msgstr[1] "%s%d Spione"
 
-#: src/ambition/Ambition_vga.cc:921
+#. TRANSLATORS: Short for "General", when the General is a spy.
+#: src/ambition/Ambition_vga.cc:936
 msgid "G+"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:982
+#. TRANSLATORS: Short for "population".
+#: src/ambition/Ambition_vga.cc:998
 msgid "Pop"
 msgstr "Bev."
 
-#: src/ambition/Ambition_vga.cc:989
+#. TRANSLATORS: Short for "loyalty" and "resistance".
+#: src/ambition/Ambition_vga.cc:1006
 msgid "Lty"
 msgstr "Loy."
 
