@@ -32,6 +32,11 @@
 #include <OLOG.h>
 #include <ConfigAdv.h>
 
+#ifdef DEBUG
+#include "OSYS.h"
+#endif
+
+
 //--------- Begin of function Nation::Nation --------//
 
 Nation::Nation() : action_array( sizeof(ActionNode), 30 )

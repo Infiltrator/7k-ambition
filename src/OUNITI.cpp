@@ -47,6 +47,11 @@
 #undef DEBUG
 #endif
 
+#ifdef DEBUG
+#include "OSYS.h"
+#endif
+
+
 //-------------- define static variables -----------//
 static char		idle_detect_has_unit;
 static char		idle_detect_has_firm;

@@ -46,6 +46,10 @@
 #include <OSE.h>
 #include "gettext.h"
 
+#ifdef DEBUG
+#include "OSYS.h"
+#endif
+
 
 //----------- Define static vars -------------//
 

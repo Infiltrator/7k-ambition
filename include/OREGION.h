@@ -25,9 +25,7 @@
 #ifndef __OREGION_H
 #define __OREGION_H
 
-#ifndef DEBUG
 #include <OREGIONS.h>
-#endif
 
 #ifndef __ALL_H
 #include <ALL.h>

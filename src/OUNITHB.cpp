@@ -175,6 +175,7 @@ void Unit::handle_blocked_move_s11(Unit *unitPtr)
 		//------------------------------------------------------------------------------------//
 		case SPRITE_WAIT: // the blocking unit is waiting
 				err_when(unitPtr->go_x==unitPtr->cur_x && unitPtr->go_y==unitPtr->cur_y);
+				[[fallthrough]];
 		
 		case SPRITE_TURN:
 				if(unitPtr->nation_recno==nation_recno)

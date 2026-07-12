@@ -47,6 +47,11 @@
 #include <OGAME.h>
 #include "gettext.h"
 
+#ifdef DEBUG
+#include "OSYS.h"
+#endif
+
+
 //---------- Define static variables ------------//
 
 static Button3D button_sell, button_destruct, button_builder, button_request_builder;

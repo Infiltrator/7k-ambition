@@ -46,6 +46,11 @@
 #include <FilePath.h>
 #include <ConfigAdv.h>
 
+#ifdef DEBUG
+#include "OU_GOD.h"
+#endif
+
+
 //---------- define static functions -------------//
 
 static int is_space(int xLoc1, int yLoc1, int xLoc2, int yLoc2, char mobileType);
