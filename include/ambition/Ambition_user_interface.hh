@@ -491,6 +491,9 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
   }
 );
 
+extern const Rectangle LOCALE_BUTTON;
+extern const Rectangle LOCALE_BUTTON_CLICK_AREA;
+
 const auto DISCORD_BUTTON = BOUNDS
   .inner(4)
   .internal(

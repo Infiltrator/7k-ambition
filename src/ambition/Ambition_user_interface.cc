@@ -64,6 +64,19 @@ int reportType = -1;
 short selected7kaaFirmOrTownRecordNumber = 0;
 
 
+constexpr UserInterface::Size LOCALE_BUTTON_SIZE = {
+  .width = 34,
+  .height = 40,
+};
+const Rectangle LOCALE_BUTTON
+  = UserInterface::BOUNDS
+  .inner(10)
+  .internal(LOCALE_BUTTON_SIZE);
+constexpr auto ICON_CLICK_OUTSIDE_CLEARANCE = 4;
+const Rectangle LOCALE_BUTTON_CLICK_AREA = LOCALE_BUTTON.outer(
+  ICON_CLICK_OUTSIDE_CLEARANCE
+);
+
 constexpr auto BORDER_WIDTH = 1;
 
 const Size SCROLL_BUTTON_SIZE = { .width = 14, .height = 17 };

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 21:42+1000\n"
+"POT-Creation-Date: 2026-07-21 21:31+1000\n"
 "PO-Revision-Date: 2026-06-02 14:56+0200\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
@@ -120,7 +120,87 @@ msgid ""
 msgstr ""
 "Seven Kingdoms: Ambition continuarà carregant només amb les línies vàlides."
 
-#: src/ambition/Ambition_config.cc:296
+#: src/ambition/Ambition_config.cc:253
+msgid "Select Locale"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:270
+msgid ""
+"The locale setting has been saved to your config.txt file and will take "
+"effect the next time that Seven Kingdoms: Ambition starts.\n"
+"Would you like to exit now?"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:274 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
+#: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
+#: src/OR_NAT.cpp:334 src/OR_NAT.cpp:552
+msgid "Yes"
+msgstr "Sí"
+
+#: src/ambition/Ambition_config.cc:275 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
+#: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
+#: src/OR_NAT.cpp:334 src/OR_NAT.cpp:553
+msgid "No"
+msgstr "No"
+
+#: src/ambition/Ambition_config.cc:352
+msgid "Error opening config.txt file for reading:"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:417
+msgid "Error opening config.txt file for writing:"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:428
+#, fuzzy
+msgid "Error writing to config.txt file:"
+msgstr "Error en crear el fitxer de partida guardada"
+
+#: src/ambition/Ambition_config.cc:496
+msgid "Detect System Locale"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:497
+msgid "Catalan"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:498
+msgid "German"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:499
+msgid "English"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:500
+msgid "Esperanto"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:501
+msgid "Spanish"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:502
+msgid "French"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:503
+msgid "Dutch"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:504
+msgid "Polish"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:505
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:506
+msgid "Russian"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:597
 msgid "Select Mode"
 msgstr ""
 
@@ -548,6 +628,10 @@ msgstr "Eliminat"
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
 msgstr "Versió preliminar -- encara no llançat"
+
+#: src/ambition/version_details.cc
+msgid "Added a locale selection screen, for switching locales (languages)."
+msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Added a feedback sound when clicking the Clone Caravan button."
@@ -3911,18 +3995,6 @@ msgstr "S'ha rebut informació incorrecta del regne de l'amfitrió."
 #: src/OGAMEND.cpp:219
 msgid "Do you want to continue to stay in the game?"
 msgstr "Vols continuar jugant?"
-
-#: src/OGAMEND.cpp:219 src/OINGMENU.cpp:252 src/OINGMENU.cpp:277
-#: src/OINGMENU.cpp:293 src/OR_NAT.cpp:333 src/OR_NAT.cpp:334
-#: src/OR_NAT.cpp:552
-msgid "Yes"
-msgstr "Sí"
-
-#: src/OGAMEND.cpp:219 src/OINGMENU.cpp:252 src/OINGMENU.cpp:277
-#: src/OINGMENU.cpp:293 src/OR_NAT.cpp:333 src/OR_NAT.cpp:334
-#: src/OR_NAT.cpp:553
-msgid "No"
-msgstr "No"
 
 #: src/OGAMEND.cpp:269
 msgid "You Have Lost the Game !"

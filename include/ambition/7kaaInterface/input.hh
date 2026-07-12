@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -112,6 +112,15 @@ void detectDiscordClick(
 );
 
 void detectFeedbackLinkClick(
+);
+
+/**
+ * Detect whether the locale selection button was clicked and then run the
+ * locale selection screen.
+ *
+ * @return Whether anything was drawn to the screen and it needs to be redrawn.
+ */
+bool detectLocaleSelectClick(
 );
 
 /**

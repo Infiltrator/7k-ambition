@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 21:42+1000\n"
+"POT-Creation-Date: 2026-07-21 22:37+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,86 @@ msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:296
+#: src/ambition/Ambition_config.cc:253
+msgid "Select Locale"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:270
+msgid ""
+"The locale setting has been saved to your config.txt file and will take "
+"effect the next time that Seven Kingdoms: Ambition starts.\n"
+"Would you like to exit now?"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:274 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
+#: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
+#: src/OR_NAT.cpp:334 src/OR_NAT.cpp:552
+msgid "Yes"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:275 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
+#: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
+#: src/OR_NAT.cpp:334 src/OR_NAT.cpp:553
+msgid "No"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:352
+msgid "Error opening config.txt file for reading:"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:417
+msgid "Error opening config.txt file for writing:"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:428
+msgid "Error writing to config.txt file:"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:496
+msgid "Detect System Locale"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:497
+msgid "Catalan"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:498
+msgid "German"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:499
+msgid "English"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:500
+msgid "Esperanto"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:501
+msgid "Spanish"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:502
+msgid "French"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:503
+msgid "Dutch"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:504
+msgid "Polish"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:505
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:506
+msgid "Russian"
+msgstr ""
+
+#: src/ambition/Ambition_config.cc:597
 msgid "Select Mode"
 msgstr ""
 
@@ -522,6 +601,10 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Added a locale selection screen, for switching locales (languages)."
 msgstr ""
 
 #: src/ambition/version_details.cc
@@ -3217,18 +3300,6 @@ msgstr ""
 
 #: src/OGAMEND.cpp:219
 msgid "Do you want to continue to stay in the game?"
-msgstr ""
-
-#: src/OGAMEND.cpp:219 src/OINGMENU.cpp:252 src/OINGMENU.cpp:277
-#: src/OINGMENU.cpp:293 src/OR_NAT.cpp:333 src/OR_NAT.cpp:334
-#: src/OR_NAT.cpp:552
-msgid "Yes"
-msgstr ""
-
-#: src/OGAMEND.cpp:219 src/OINGMENU.cpp:252 src/OINGMENU.cpp:277
-#: src/OINGMENU.cpp:293 src/OR_NAT.cpp:333 src/OR_NAT.cpp:334
-#: src/OR_NAT.cpp:553
-msgid "No"
 msgstr ""
 
 #: src/OGAMEND.cpp:269

@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_ADDED,
         .items = {
+          _("Added a locale selection screen, for switching locales (languages)."),
           _("Added a feedback sound when clicking the Clone Caravan button."),
           _("Added a feedback sound when clicking the Hire Caravan button in the Market."),
         },

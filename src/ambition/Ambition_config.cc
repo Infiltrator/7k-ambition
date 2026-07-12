@@ -27,7 +27,11 @@
 
 #include <algorithm>
 #include <cassert>
+#include <fstream>
+#include <map>
+#include <optional>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 #define _AMBITION_IMPLEMENTATION
@@ -35,6 +39,7 @@
 #include "ConfigAdv.h"
 #include "gettext.h"
 #include "KEY.h"
+#include "OBOX.h"
 #include "OBUTT3D.h"
 #include "OCONFIG.h"
 #include "OFIRM.h"
@@ -52,11 +57,39 @@
 #include "Ambition_input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
+#include "format.hh"
+#include "utility.hh"
+
+
+using namespace std::literals::string_literals;
 
 
 namespace Ambition {
 
+const std::vector <std::string> localeCodes = {
+  "system",
+  "ca",
+  "de",
+  "en",
+  "eo",
+  "es",
+  "fr",
+  "nl",
+  "pl",
+  "pt_BR",
+  "ru",
+};
+
 std::vector<int> _7kaaConfigErrorLineNumbers;
+std::map<std::string, std::optional<std::string>> pendingSettings;
+
+/** The global Ambition Config. */
+Config config;
+
+
+std::string localeDescription(
+  const std::string localeCode
+);
 
 void runModeSelectionScreen();
 int runSelectionScreen(
@@ -66,9 +99,10 @@ int runSelectionScreen(
   const bool showDescription = true
 );
 
+bool setLocaleForNextBoot(
+  const std::string locale
+);
 
-/** The global Ambition Config. */
-Config config;
 
 std::string
 Config::modeString(
@@ -204,6 +238,47 @@ void report7kaaConfigLoadingErrors(
   _7kaaConfigErrorLineNumbers.clear();
 }
 
+void runLocaleSelectionScreen(
+) {
+  const std::string currentLocale = config_adv.locale;
+  auto currentLocaleIndex = 0;
+  for(auto i = 0u; i < localeCodes.size(); i++) {
+    if(currentLocale.find(localeCodes[i]) == 0) {
+      currentLocaleIndex = i;
+      break;
+    }
+  }
+
+  const auto selection = runSelectionScreen(
+    _("Select Locale"),
+    Utility::map_to<std::vector>(
+      localeCodes,
+      [](const auto& localeCode) {
+        return std::pair(localeDescription(localeCode), ""s);
+      }
+    ),
+    currentLocaleIndex,
+    false
+  );
+
+  if (selection < 0) {
+    return;
+  }
+
+  if (setLocaleForNextBoot(localeCodes[selection])
+    && box.ask(
+      _("The locale setting has been saved to your config.txt file and will"
+        " take effect the next time that Seven Kingdoms: Ambition starts."
+        "\nWould you like to exit now?"
+      ),
+      _("Yes"),
+      _("No")
+    )
+  ) {
+    sys.signal_exit_flag = 1;
+  }
+}
+
 void set7kaaConfigOption(
   char* key,
   char* value,
@@ -214,6 +289,13 @@ void set7kaaConfigOption(
   if (!success) {
     _7kaaConfigErrorLineNumbers.push_back(lineNumber);
   }
+}
+
+void setSetting(
+  const std::string setting,
+  const std::string value
+) {
+  pendingSettings[setting] = value;
 }
 
 bool shouldDrawFirmHitBar(
@@ -242,6 +324,115 @@ bool shouldDrawFirmHitBar(
   default:
     assert(false);
   }
+}
+
+void unsetSetting(
+  const std::string setting
+) {
+  pendingSettings[setting] = {};
+}
+
+bool updateSettingsFile(
+) {
+  if (pendingSettings.empty()) {
+    return false;
+  }
+
+  constexpr auto AUTO_COMMENT = "# auto";
+
+  std::string buffer;
+
+  const auto filename = DirectoryPath::config() / "config.txt";
+  if(std::filesystem::exists(filename)) {
+    std::fstream configFile(filename);
+    if (!configFile.good()) {
+      box.msg(
+        format(
+          "%s %s",
+          _("Error opening config.txt file for reading:"),
+          std::strerror(errno)
+        ).c_str()
+      );
+      return false;
+    }
+
+    while (!configFile.eof()) {
+      const auto line = Utility::getline(configFile);
+
+      if (line == AUTO_COMMENT) {
+        const auto nextLine = Utility::getline(configFile);
+        const auto key = Utility::trim(Utility::split(nextLine, '=')[0]);
+        if (pendingSettings.contains(key)) {
+          continue;
+        }
+
+        buffer += AUTO_COMMENT + "\n"s;
+      }
+
+      const auto lookat = (line.size() >= 9 && line.substr(0, 9) == "#ambition")
+        ? line.substr(9)
+        : line;
+      if (lookat.size() >= 1 && Utility::trim(lookat).substr(0, 1) != "#") {
+        const auto key = Utility::trim(Utility::split(lookat, '=')[0]);
+        if (pendingSettings.contains(key) && !pendingSettings[key].has_value()) {
+          buffer += "# " + line + "\n";
+          continue;
+        }
+      }
+
+      if (!configFile.eof() || line != "") {
+        buffer += line + "\n";
+      }
+    }
+
+    buffer = buffer.substr(0, buffer.find_last_not_of("\n") + 1);
+
+    if (!buffer.empty()) {
+      buffer += "\n";
+      if (std::any_of(
+          pendingSettings.cbegin(),
+          pendingSettings.cend(),
+          [](const auto& pair) { return pair.second.has_value(); }
+        )
+      ) {
+        buffer += "\n";
+      }
+    }
+  }
+
+  for (const auto& pendingSetting : pendingSettings) {
+    if (!pendingSetting.second.has_value()) {
+      continue;
+    }
+
+    buffer += AUTO_COMMENT + "\n"s
+      + pendingSetting.first + " = " + pendingSetting.second.value() + "\n";
+  }
+
+  std::fstream configFile(filename, std::ios_base::out | std::ios_base::trunc);
+  if (!configFile.good()) {
+    box.msg(
+      format(
+        "%s %s",
+        _("Error opening config.txt file for writing:"),
+        std::strerror(errno)
+      ).c_str()
+    );
+    return false;
+  }
+  configFile << buffer;
+  if (!configFile.good()) {
+    box.msg(
+      format(
+        "%s %s",
+        _("Error writing to config.txt file:"),
+        std::strerror(errno)
+      ).c_str()
+    );
+    return false;
+  }
+
+  return true;
 }
 
 
@@ -294,6 +485,47 @@ std::filesystem::path singleplayerSave(
 
 
 /* Private functions. */
+
+std::string localeDescription(
+  const std::string localeCode
+) {
+  static const std::map<
+    std::string,
+    std::pair<std::string, std::string>
+  > localeNames = {
+    { "system", { "detect", _("Detect System Locale") } },
+    { "ca", { "Català", _("Catalan") } },
+    { "de", { "Deutsch", _("German") } },
+    { "en", { "English", _("English") } },
+    { "eo", { "Esperanto", _("Esperanto") } },
+    { "es", { "Español", _("Spanish") } },
+    { "fr", { "Français", _("French") } },
+    { "nl", { "Nederlands", _("Dutch") } },
+    { "pl", { "Polski", _("Polish") } },
+    { "pt_BR", { "Português (Brasil)", _("Portuguese (Brazil)") } },
+    { "ru", { "Русский [Pycckuu]", _("Russian") } },
+  };
+
+  if (!localeNames.contains(localeCode)) {
+    return localeCode;
+  }
+
+  return (
+    localeCode
+    + " - " + localeNames.at(localeCode).first
+    + " - " + localeNames.at(localeCode).second
+  );
+}
+
+bool setLocaleForNextBoot(
+  const std::string locale
+) {
+  if (locale == "system") {
+    return deleteSetting("locale");
+  } else {
+    return saveSetting("locale", locale);
+  }
+}
 
 void detectScroll(
   const int minimumRecordNumber,

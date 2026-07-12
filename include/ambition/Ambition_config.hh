@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -101,15 +101,45 @@ void report7kaaConfigLoadingErrors(
   const char* filename
 );
 
+void runLocaleSelectionScreen();
+
 void set7kaaConfigOption(
   char* key,
   char* value,
   const int lineNumber
 );
 
+void setSetting(
+  const std::string setting,
+  const std::string value
+);
+
 bool shouldDrawFirmHitBar(
   const Firm* _7kaaFirm
 );
+
+void unsetSetting(
+  const std::string setting
+);
+
+bool updateSettingsFile(
+);
+
+
+inline bool deleteSetting(
+  const std::string setting
+) {
+  unsetSetting(setting);
+  return updateSettingsFile();
+}
+
+inline bool saveSetting(
+  const std::string setting,
+  const std::string value
+) {
+  setSetting(setting, value);
+  return updateSettingsFile();
+}
 
 
 namespace DirectoryPath {

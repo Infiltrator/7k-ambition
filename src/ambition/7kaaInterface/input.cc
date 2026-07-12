@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -480,6 +480,18 @@ void detectFeedbackLinkClick(
   ) {
     Ambition::Control::openFeedback();
   }
+}
+
+bool detectLocaleSelectClick(
+) {
+  if (Ambition::UserInterface::detectMouseClick(
+      Ambition::UserInterface::LOCALE_BUTTON_CLICK_AREA
+    )
+  ) {
+    Ambition::runLocaleSelectionScreen();
+    return true;
+  }
+  return false;
 }
 
 bool detectModeSelectClick(
