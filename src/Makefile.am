@@ -297,6 +297,8 @@ endif
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
 AM_CXXFLAGS += --std=c++11
+
+if SILENCE_7KAA_WARNINGS
 AM_CXXFLAGS += -Wno-char-subscripts
 AM_CXXFLAGS += -Wno-class-memaccess
 AM_CXXFLAGS += -Wno-delete-non-virtual-dtor
@@ -306,6 +308,7 @@ AM_CXXFLAGS += -Wno-parentheses
 AM_CXXFLAGS += -Wno-reorder
 AM_CXXFLAGS += -Wno-sign-compare
 AM_CXXFLAGS += -Wno-unused-function
+endif
 
 AM_LDFLAGS = $(GLOBAL_LDFLAGS)
 AM_LDFLAGS += $(BOOST_LDFLAGS)

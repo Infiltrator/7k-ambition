@@ -33,6 +33,8 @@ PKG_PROG_PKG_CONFIG
 AX_CXX_COMPILE_STDCXX_11(,[mandatory])
 AX_CXX_COMPILE_STDCXX(20,,[mandatory])
 
+CXXFLAGS="$CXXFLAGS -Wall"
+
 AX_CHECK_COMPILE_FLAG([-ggdb3],
   [CXXFLAGS="$CXXFLAGS -ggdb3"],
   [CXXFLAGS="$CXXFLAGS -g"]
@@ -181,8 +183,8 @@ AC_ARG_ENABLE([enet],
 )
 
 AC_ARG_ENABLE([warnings],
-  AS_HELP_STRING([--enable-warnings], [Enable all warnings (-Wall)]),
-  [], [enable_warnings=no]
+  AS_HELP_STRING([--enable-warnings], [Enable all the silenced warnings in 7kaa code]),
+  [], [silence_7kaa_warnings=yes]
 )
 
 AC_ARG_ENABLE([optimisation],
@@ -229,6 +231,7 @@ AM_CONDITIONAL([USE_ASM],      [test "$enable_asm"    = yes])
 AM_CONDITIONAL([USE_CURL],     [test "$enable_curl"   = yes])
 AM_CONDITIONAL([USE_ENET],     [test "$enable_enet"   = yes])
 AM_CONDITIONAL([USE_FHS],      [test "$enable_fhs"    = yes])
+AM_CONDITIONAL([SILENCE_7KAA_WARNINGS], [test "$silence_7kaa_warnings" = yes])
 
 # Sync multiplayer support options
 AS_IF([test "$enable_multiplayer" = yes], [
@@ -324,10 +327,6 @@ AS_IF([test "$enable_curl" = yes], [
   ])
 
   LIBS="$LIBS $CURL_LIBS"
-])
-
-AS_IF([test "$enable_warnings" = "yes"], [
-  CXXFLAGS="$CXXFLAGS -Wall"
 ])
 
 AS_IF([test "$enable_optimisation" = "no"], [
@@ -509,7 +508,7 @@ AC_MSG_NOTICE([input backend: $input_backend])
 echo
 AC_MSG_NOTICE([x86 asm: $enable_asm])
 AC_MSG_NOTICE([multiplayer: menu=$enable_multiplayer curl=$enable_curl enet=$enable_enet fpu=$fpu_type])
-AC_MSG_NOTICE([all compiler warnings enabled: $enable_warnings])
+AC_MSG_NOTICE([warnings in 7kaa code silenced: $silence_7kaa_warnings])
 AC_MSG_NOTICE([optimisation enabled: $enable_optimisation])
 AS_IF([test "$enable_optimisation" = "no"], [
   AC_MSG_WARN([Optimisation will be disabled.  This is know to cause desyncs in\
