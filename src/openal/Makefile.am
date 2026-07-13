@@ -5,3 +5,7 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/include
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(OPENAL_CFLAGS)
+
+if SILENCE_7KAA_WARNINGS
+AM_CXXFLAGS += -Wno-unused-result
+endif
