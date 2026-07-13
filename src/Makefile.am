@@ -307,7 +307,9 @@ AM_CXXFLAGS += -Wno-overloaded-virtual
 AM_CXXFLAGS += -Wno-parentheses
 AM_CXXFLAGS += -Wno-reorder
 AM_CXXFLAGS += -Wno-sign-compare
+AM_CXXFLAGS += -Wno-unused-but-set-variable
 AM_CXXFLAGS += -Wno-unused-function
+AM_CXXFLAGS += -Wno-unused-variable
 endif
 
 AM_LDFLAGS = $(GLOBAL_LDFLAGS)
