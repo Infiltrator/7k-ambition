@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 22:37+1000\n"
+"POT-Creation-Date: 2026-07-21 22:03+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -631,6 +631,10 @@ msgstr ""
 msgid ""
 "Fixed the Start and Return buttons not animating on the Mode Selection "
 "screen."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed the scrollbar thumbs appearing to overlap the scroll buttons."
 msgstr ""
 
 #: src/ambition/version_details.cc

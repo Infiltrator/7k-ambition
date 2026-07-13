@@ -23,6 +23,7 @@ speaking, considered to be the player's experience.
   they are far away from the current screen location because they became too
   quiet.
 - Fixed the Start and Return buttons not animating on the Mode Selection screen.
+- Fixed the scrollbar thumbs appearing to overlap the scroll buttons.
 
 ### Changed
 

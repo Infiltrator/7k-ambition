@@ -2,6 +2,7 @@
  * Seven Kingdoms: Ancient Adversaries
  *
  * Copyright 1997,1998 Enlight Software Ltd.
+ * Copyright 2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -559,8 +560,10 @@ void VgaBuf::d3_panel_up(int x1,int y1,int x2,int y2,int t,int paintCentre)
 	draw_pixel(x1+1, y2-1, 0x90);
 
 	//--------- junction between white and black border --------//
+	draw_pixel(x2, y1, 0x97);
 	draw_pixel(x2-1, y1, 0x97);
 	draw_pixel(x2-2, y1+1, 0x97);
+	draw_pixel(x1, y2, 0x97);
 	draw_pixel(x1, y2-1, 0x97);
 	draw_pixel(x1+1, y2-2, 0x97);
 
