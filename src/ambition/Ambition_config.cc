@@ -66,10 +66,10 @@ Config::modeString(
   switch (_mode) {
   case Mode::Classic:
     // TRANSLATORS: The name of the running mode.
-	 return _("classic");
+   return _("classic");
   case Mode::Enhanced:
     // TRANSLATORS: The name of the running mode.
-	 return _("enhanced");
+   return _("enhanced");
   case Mode::Advanced:
     // TRANSLATORS: The name of the running mode.
     return _("advanced");
@@ -97,7 +97,7 @@ void Config::setMode(
   const Mode mode
 ) {
   // if(!currentState.allowsModeTransitions()) {
-  // 	 throw std::domain_error("The current state does not allow mode transitions.");
+  //   throw std::domain_error("The current state does not allow mode transitions.");
   // }
 
   _mode = mode;
