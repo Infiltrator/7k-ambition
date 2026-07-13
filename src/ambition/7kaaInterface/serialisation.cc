@@ -26,7 +26,9 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/serialisation.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OGFILE.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"

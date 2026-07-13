@@ -29,9 +29,11 @@
 #include <array>
 #include <cassert>
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
 #include "ONATION.h"
 #include "OTALKRES.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "format.hh"

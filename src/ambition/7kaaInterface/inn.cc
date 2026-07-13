@@ -26,10 +26,12 @@
 #define _AMBITION_IMPLEMENTATION
 #include "inn.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OBUTT3D.h"
 #include "OF_INN.h"
 #include "OMOUSE.h"
 #include "OVBROWIF.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_inn.hh"

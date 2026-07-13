@@ -26,8 +26,10 @@
 #define _AMBITION_IMPLEMENTATION
 #include "polity.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "ONATION.h"
 #include "ONATIONB.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_polity.hh"

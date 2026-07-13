@@ -25,9 +25,11 @@
 
 #include "Ambition_minimap.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "COLOR.h"
 #include "OVGABUF.h"
 #include "OWORLDMT.h"
+#pragma GCC diagnostic pop
 
 
 namespace Ambition {

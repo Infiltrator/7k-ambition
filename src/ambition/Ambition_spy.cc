@@ -30,12 +30,14 @@
 #include <limits>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OBUTT3D.h"
 #include "OFIRM.h"
 #include "ONATIONA.h"
 #include "OSPY.h"
 #include "OSYS.h"
 #include "OUNIT.h"
+#pragma GCC diagnostic pop
 
 
 namespace Ambition::Spy {

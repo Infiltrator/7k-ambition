@@ -28,6 +28,7 @@
 
 #include <map>
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OBUTT3D.h"
 #include "OBUTTCUS.h"
 #include "OCONFIG.h"
@@ -45,6 +46,7 @@
 #include "OTOWN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"

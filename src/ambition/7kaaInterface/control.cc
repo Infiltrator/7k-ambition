@@ -28,6 +28,7 @@
 
 #include <SDL.h>
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OCONFIG.h"
 #include "OFIRMA.h"
 #include "OINFO.h"
@@ -36,6 +37,7 @@
 #include "OSYS.h"
 #include "OU_CARA.h"
 #include "OU_MARI.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"

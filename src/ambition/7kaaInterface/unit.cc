@@ -26,11 +26,13 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/unit.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OFIRM.h"
 #include "OMOUSE.h"
 #include "OPOWER.h"
 #include "OUNIT.h"
 #include "OSPY.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_coordinates.hh"

@@ -30,6 +30,7 @@
 #include <vector>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "ConfigAdv.h"
 #include "gettext.h"
 #include "KEY.h"
@@ -43,6 +44,7 @@
 #include "OMOUSECR.h"
 #include "OSYS.h"
 #include "vga_util.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"

@@ -32,12 +32,14 @@
 #include <SDL2/SDL_misc.h>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
 #include "OBOX.h"
 #include "OCONFIG.h"
 #include "OMUSIC.h"
 #include "ONATION.h"
 #include "OSYS.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_repository.hh"

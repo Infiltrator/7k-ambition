@@ -26,9 +26,11 @@
 #include "Ambition_inn.hh"
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OBUTT3D.h"
 #include "OF_INN.h"
 #include "OVBROWIF.h"
+#pragma GCC diagnostic pop
 
 
 namespace Ambition {

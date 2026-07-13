@@ -32,11 +32,13 @@
 #include <fstream>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
 #include "OBOX.h"
 #include "ODATE.h"
 #include "OGFILE.h"
 #include "OSYS.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"

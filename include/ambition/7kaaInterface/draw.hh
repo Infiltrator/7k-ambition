@@ -25,7 +25,9 @@
 
 #pragma once
 
+#include "../pragma_silence_7kaa_warnings.hh"
 #include "OINFO.h"
+#pragma GCC diagnostic pop
 
 class Button;
 class Button3D;

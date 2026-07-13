@@ -26,8 +26,10 @@
 #include "Ambition_time.hh"
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OINFO.h"
 #include "ODATE.h"
+#pragma GCC diagnostic pop
 
 
 namespace Ambition::Time {
