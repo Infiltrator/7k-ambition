@@ -554,9 +554,9 @@ void VgaBuf::d3_panel_up(int x1,int y1,int x2,int y2,int t,int paintCentre)
 
 	//--------- black border on bottom and right sides -----------//
 
-	bar(x2-2,y1+2,x2-1,y2-1, 0x90 );     // bottom side
+	bar(x2-2,y1+2,x2-1,y2-1, 0x90 );     // right side
 	draw_pixel(x2-1, y1+1, 0x90);
-	bar(x1+2,y2-2,x2-3,y2-1, 0x90 );		 // right side
+	bar(x1+2,y2-2,x2-3,y2-1, 0x90 );		 // bottom side
 	draw_pixel(x1+1, y2-1, 0x90);
 
 	//--------- junction between white and black border --------//
