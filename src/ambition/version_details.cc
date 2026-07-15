@@ -34,6 +34,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_CHANGED,
         .items = {
+          _("Made the What's New section spacing look nicer and less cramped."),
           _("Made development slightly easier."),
         },
       },

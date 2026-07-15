@@ -24,6 +24,7 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Made the What's New section spacing look nicer and less cramped.
 - Made development slightly easier.
 
 

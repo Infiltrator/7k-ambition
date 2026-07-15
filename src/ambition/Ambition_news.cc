@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -250,6 +250,9 @@ void display(
     }
   );
 
+  constexpr auto SECTION_SPACING = 6;
+  constexpr auto VERSION_SPACING = SECTION_SPACING * 4;
+
   auto currentItem = 0;
   auto itemsToSkip = 0;
 
@@ -362,7 +365,11 @@ void display(
             }
             top = std::max(top, font_std.next_text_y - font_std.font_height);
           }
+
+          top += SECTION_SPACING;
         }
+
+        top += VERSION_SPACING;
       }
     deep_break:
       if (currentItem < totalItemCount) {
