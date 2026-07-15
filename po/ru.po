@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 20:18+1000\n"
+"POT-Creation-Date: 2026-07-21 21:42+1000\n"
 "PO-Revision-Date: 2026-06-02 21:37+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -546,6 +546,12 @@ msgid ""
 "Fixed issue with \"Building Complete\" (and other) sounds not being audible "
 "when they are far away from the current screen location because they became "
 "too quiet."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the Start and Return buttons not animating on the Mode Selection "
+"screen."
 msgstr ""
 
 #: src/ambition/version_details.cc

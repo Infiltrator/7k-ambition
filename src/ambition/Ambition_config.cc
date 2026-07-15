@@ -424,10 +424,7 @@ int runSelectionScreen(
       refreshFlag = 0;
     }
 
-    sys.blt_virtual_buf();
-
     sys.yield();
-    vga.flip();
 
     mouse.get_event();
 
@@ -450,6 +447,9 @@ int runSelectionScreen(
     } else if (startButton.detect(GETKEY(KEYEVENT_CONFIRM))) {
       return selected;
     }
+
+    sys.blt_virtual_buf();
+    vga.flip();
 
     if (!refreshFlag) {
       delayFrame();

@@ -21,6 +21,7 @@ speaking, considered to be the player's experience.
 - Fixed issue with "Building Complete" (and other) sounds not being audible when
   they are far away from the current screen location because they became too
   quiet.
+- Fixed the Start and Return buttons not animating on the Mode Selection screen.
 
 ### Changed
 
