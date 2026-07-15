@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -79,8 +79,8 @@ struct Point {
 };
 
 struct Size {
-  int width;
-  int height;
+  int width = 0;
+  int height = 0;
 };
 
 struct Rectangle {
@@ -138,6 +138,16 @@ struct Rectangle {
     const Rectangle& rectangle
   ) const;
 
+  struct Space {
+    unsigned int left = 0;
+    unsigned int right = 0;
+    unsigned int top = 0;
+    unsigned int bottom = 0;
+  };
+
+  Rectangle inner(
+    const Space& padding
+  ) const;
   Rectangle inner(
     int paddingLeft,
     int paddingTop = -1,
@@ -145,6 +155,9 @@ struct Rectangle {
     int paddingBottom = -1
   ) const;
 
+  Rectangle outer(
+    const Space& margin
+  ) const;
   Rectangle outer(
     const int marginLeft,
     int marginTop = -1,

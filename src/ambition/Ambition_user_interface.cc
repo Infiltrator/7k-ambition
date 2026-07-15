@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -103,6 +103,11 @@ bool Rectangle::contains(
 }
 
 Rectangle Rectangle::inner(
+  const Space& padding
+) const {
+  return inner(padding.left, padding.top, padding.right, padding.bottom);
+}
+Rectangle Rectangle::inner(
   int paddingLeft,
   int paddingTop,
   int paddingRight,
@@ -140,6 +145,11 @@ Rectangle Rectangle::inner(
 }
 
 Rectangle Rectangle::outer(
+  const Space& margin
+) const {
+  return outer(margin.left, margin.top, margin.right, margin.bottom);
+}
+Rectangle Rectangle::outer(
   const int marginLeft,
   int marginTop,
   int marginRight,
@@ -172,8 +182,8 @@ Rectangle Rectangle::internal(
   const HorizontalAlignment horizontalAlignment,
   const VerticalAlignment verticalAlignment
 ) const {
-  const auto horizontalSpace = width() - size.width;
-  const auto verticalSpace = height() - size.height;
+  const auto horizontalSpace = size.width == 0 ? 0 : width() - size.width;
+  const auto verticalSpace = size.height == 0 ? 0 : height() - size.height;
 
   int paddingLeft {};
   int paddingTop {};
