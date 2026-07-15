@@ -240,6 +240,15 @@ extern const Rectangle SLOTS;
 
 } // namespace SelectionListScreen::List
 
+namespace Buttons {
+
+extern const Rectangle SECTION;
+extern const Rectangle BUTTON_ROW;
+extern const Rectangle START_BUTTON;
+extern const Rectangle BACK_BUTTON;
+
+} // namespace SelectionListScreen::Buttons
+
 } // namespace SelectionListScreen
 
 namespace ScenarioList {

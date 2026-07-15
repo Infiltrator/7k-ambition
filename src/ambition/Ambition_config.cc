@@ -329,24 +329,37 @@ int runSelectionScreen(
 
   constexpr auto SLOT_COUNT = 4;
 
-  constexpr auto BUTTON_TOP = 529;
-  constexpr auto START_BUTTON_X = 170;
-  constexpr auto BACK_BUTTON_X = 465;
-
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
   auto selected = initialSelection;
 
   image_interface.put_front(0, 0, "SCENARIO");
   image_interface.put_back(0, 0, "TUTORIAL");
-  vga_util.blt_buf(0, 499, 799, 599);
+  copyBackBufferToFront(UserInterface::SelectionListScreen::Buttons::SECTION);
   copyFrontBufferToBack(UserInterface::BOUNDS);
+
+  constexpr auto ELASTIC = 1;
+  constexpr auto IS_NOT_PUSHED = 0;
 
   Button3D startButton;
   Button3D backButton;
 
-  startButton.create(START_BUTTON_X, BUTTON_TOP, "START-U", "START-D", 1, 0);
-  backButton.create(BACK_BUTTON_X, BUTTON_TOP, "RETURN-U", "RETURN-D", 1, 0);
+  startButton.create(
+    UserInterface::SelectionListScreen::Buttons::START_BUTTON.start.left,
+    UserInterface::SelectionListScreen::Buttons::START_BUTTON.start.top,
+    "START-U",
+    "START-D",
+    ELASTIC,
+    IS_NOT_PUSHED
+  );
+  backButton.create(
+    UserInterface::SelectionListScreen::Buttons::BACK_BUTTON.start.left,
+    UserInterface::SelectionListScreen::Buttons::BACK_BUTTON.start.top,
+    "RETURN-U",
+    "RETURN-D",
+    ELASTIC,
+    IS_NOT_PUSHED
+  );
 
   const auto slotsArea = UserInterface::SelectionListScreen::List::SLOTS;
 

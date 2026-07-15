@@ -116,6 +116,28 @@ const Rectangle SLOTS = SLOT_AREA.inner(
 
 } // namespace SelectionListScreen::List
 
+namespace Buttons {
+
+const Rectangle SECTION = BOUNDS.internal(
+  { height: 85 },
+  HorizontalAlignment::Centre,
+  VerticalAlignment::Bottom
+);
+
+const Size BUTTON_SIZE = { .width = 166, .height = 46 };
+
+const Rectangle BUTTON_ROW = SECTION.inner({ bottom: 25 });
+const Rectangle START_BUTTON
+  = BUTTON_ROW
+  .inner({ left: 170 })
+  .internal(BUTTON_SIZE, HorizontalAlignment::Left, VerticalAlignment::Bottom);
+const Rectangle BACK_BUTTON
+  = BUTTON_ROW
+  .inner({ right: 170 })
+  .internal(BUTTON_SIZE, HorizontalAlignment::Right, VerticalAlignment::Bottom);
+
+} // namespace SelectionListScreen::Buttons
+
 } // namespace SelectionListScreen
 
 
