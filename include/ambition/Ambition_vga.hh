@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -112,6 +112,14 @@ int centreHitbar(
   const int currentWidth
 );
 
+void copyVgaBufferToBuffer(
+  const UserInterface::Rectangle& area,
+  VgaBuf& from,
+  VgaBuf& to
+);
+void copyBackBufferToFront(
+  const UserInterface::Rectangle& area
+);
 void copyFrontBufferToBack(
   const UserInterface::Rectangle& area
 );

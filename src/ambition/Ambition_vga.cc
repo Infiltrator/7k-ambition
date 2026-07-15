@@ -253,8 +253,10 @@ int calculateWorkerPortraitX(
     + ((workerIndex % COLUMN_COUNT) * COLUMN_SIZE);
 }
 
-void copyFrontBufferToBack(
-  const UserInterface::Rectangle& area
+void copyVgaBufferToBuffer(
+  const UserInterface::Rectangle& area,
+  VgaBuf& from,
+  VgaBuf& to
 ) {
   mouse.hide_area(
     area.start.left,
@@ -264,10 +266,10 @@ void copyFrontBufferToBack(
   );
 
   IMGcopy(
-    vga_back.buf_ptr(),
-    vga_back.buf_pitch(),
-    vga_front.buf_ptr(),
-    vga_front.buf_pitch(),
+    to.buf_ptr(),
+    to.buf_pitch(),
+    from.buf_ptr(),
+    from.buf_pitch(),
     area.start.left,
     area.start.top,
     area.end.left,
@@ -275,6 +277,16 @@ void copyFrontBufferToBack(
   );
 
   mouse.show_area();
+}
+void copyBackBufferToFront(
+  const UserInterface::Rectangle& area
+) {
+  copyVgaBufferToBuffer(area, vga_back, vga_front);
+}
+void copyFrontBufferToBack(
+  const UserInterface::Rectangle& area
+) {
+  copyVgaBufferToBuffer(area, vga_front, vga_back);
 }
 
 void delayFrame(

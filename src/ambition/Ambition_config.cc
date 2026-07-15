@@ -337,6 +337,11 @@ int runSelectionScreen(
 
   auto selected = initialSelection;
 
+  image_interface.put_front(0, 0, "SCENARIO");
+  image_interface.put_back(0, 0, "TUTORIAL");
+  vga_util.blt_buf(0, 499, 799, 599);
+  copyFrontBufferToBack(UserInterface::BOUNDS);
+
   Button3D startButton;
   Button3D backButton;
 
@@ -350,10 +355,6 @@ int runSelectionScreen(
   while (true) {
     if (refreshFlag) {
       mouse.hide();
-
-      image_interface.put_front(0, 0, "SCENARIO");
-      image_interface.put_back(0, 0, "TUTORIAL");
-      vga_util.blt_buf(0, 499, 799, 599);
 
       startButton.paint();
       backButton.paint();
@@ -372,9 +373,11 @@ int runSelectionScreen(
         font_std,
         options[selected].second,
         UserInterface::SelectionListScreen::Description::TEXT,
-        LINE_SPACING
+        LINE_SPACING,
+        UserInterface::Clear::EntireArea
       );
 
+      copyBackBufferToFront(slotsArea);
       for (auto slot = 0u; slot < SLOT_COUNT; slot++) {
         const auto slotArea
           = slotsArea
