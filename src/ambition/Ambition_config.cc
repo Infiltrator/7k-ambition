@@ -42,10 +42,12 @@
 #include "OIMGRES.h"
 #include "OMOUSE.h"
 #include "OMOUSECR.h"
+#include "OSLIDCUS.h"
 #include "OSYS.h"
 #include "vga_util.h"
 #pragma GCC diagnostic pop
 
+#include "7kaaInterface/input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
 
@@ -327,7 +329,7 @@ int runSelectionScreen(
 ) {
   constexpr auto SLOT_HEIGHT = 44;
 
-  constexpr auto SLOT_COUNT = 4;
+  const auto slotCount = 4;
 
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
@@ -337,6 +339,100 @@ int runSelectionScreen(
   image_interface.put_back(0, 0, "TUTORIAL");
   copyBackBufferToFront(UserInterface::SelectionListScreen::Buttons::SECTION);
   copyFrontBufferToBack(UserInterface::BOUNDS);
+
+  Button3D descriptionScrollUpButton;
+  Button3D descriptionScrollDownButton;
+  Button3D listScrollUpButton;
+  Button3D listScrollDownButton;
+
+  const auto descriptionScrollUpButtonLocation
+    = UserInterface::SelectionListScreen::Description::SCROLLBAR.internal(
+      UserInterface::SCROLL_BUTTON_SIZE,
+      UserInterface::HorizontalAlignment::Centre,
+      UserInterface::VerticalAlignment::Top
+    );
+  const auto descriptionScrollDownButtonLocation
+    = UserInterface::SelectionListScreen::Description::SCROLLBAR.internal(
+      UserInterface::SCROLL_BUTTON_SIZE,
+      UserInterface::HorizontalAlignment::Centre,
+      UserInterface::VerticalAlignment::Bottom
+    );
+  UserInterface::initScrollButton(
+    descriptionScrollUpButton,
+    descriptionScrollUpButtonLocation,
+    UserInterface::ScrollButtonDirection::Up
+  );
+  UserInterface::initScrollButton(
+    descriptionScrollDownButton,
+    descriptionScrollDownButtonLocation,
+    UserInterface::ScrollButtonDirection::Down
+  );
+
+  const auto listScrollbarArea = UserInterface::SelectionListScreen::List::SCROLLBAR;
+  const auto listScrollUpButtonLocation = listScrollbarArea.internal(
+    UserInterface::SCROLL_BUTTON_SIZE,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Top
+  );
+  const auto listScrollDownButtonLocation = listScrollbarArea.internal(
+    UserInterface::SCROLL_BUTTON_SIZE,
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Bottom
+  );
+  UserInterface::initScrollButton(
+    listScrollUpButton,
+    listScrollUpButtonLocation,
+    UserInterface::ScrollButtonDirection::Up
+  );
+  UserInterface::initScrollButton(
+    listScrollDownButton,
+    listScrollDownButtonLocation,
+    UserInterface::ScrollButtonDirection::Down
+  );
+
+  constexpr auto LINE_SPACING = 4;
+  const auto LINES_IN_DESCRIPTION_TEXT_AREA
+    = (UserInterface::SelectionListScreen::Description::TEXT.height()
+      + LINE_SPACING)
+    / (font_std.font_height + LINE_SPACING);
+
+  SlideVBar descriptionScrollbar;
+  const auto descriptionScrollbarTrough
+    = UserInterface::SelectionListScreen::Description::SCROLLBAR.inner(
+      {
+        .top
+          = static_cast<unsigned int>(UserInterface::SCROLL_BUTTON_SIZE.height),
+        .bottom
+          = static_cast<unsigned int>(UserInterface::SCROLL_BUTTON_SIZE.height),
+      }
+    );
+  descriptionScrollbar.init_scroll(
+    descriptionScrollbarTrough.start.left,
+    descriptionScrollbarTrough.start.top,
+    descriptionScrollbarTrough.end.left,
+    descriptionScrollbarTrough.end.top,
+    LINES_IN_DESCRIPTION_TEXT_AREA,
+    UserInterface::draw7kaaScrollbar
+  );
+
+  SlideVBar listScrollbar;
+  const auto listScrollbarTrough = listScrollbarArea.inner(
+    {
+      .top = static_cast<unsigned int>(UserInterface::SCROLL_BUTTON_SIZE.height),
+      .bottom
+        = static_cast<unsigned int>(UserInterface::SCROLL_BUTTON_SIZE.height),
+    }
+  );
+  listScrollbar.init_scroll(
+    listScrollbarTrough.start.left,
+    listScrollbarTrough.start.top,
+    listScrollbarTrough.end.left,
+    listScrollbarTrough.end.top,
+    slotCount,
+    UserInterface::draw7kaaScrollbar
+  );
+  listScrollbar.set(0, options.size() - 1, 0);
+  listScrollbar.set_view_recno(selected - slotCount / 2);
 
   constexpr auto ELASTIC = 1;
   constexpr auto IS_NOT_PUSHED = 0;
@@ -364,13 +460,11 @@ int runSelectionScreen(
   const auto slotsArea = UserInterface::SelectionListScreen::List::SLOTS;
 
   auto refreshFlag = 1;
+  auto resetDescriptionScroll = true;
 
   while (true) {
     if (refreshFlag) {
       mouse.hide();
-
-      startButton.paint();
-      backButton.paint();
 
       printText(
         font_bard,
@@ -381,33 +475,58 @@ int runSelectionScreen(
         UserInterface::VerticalAlignment::Centre
       );
 
-      constexpr auto LINE_SPACING = 4;
+      if (resetDescriptionScroll) {
+        int linesThatFitCount;
+        int totalLineCount;
+        font_std.count_line(
+          UserInterface::SelectionListScreen::Description::TEXT.start.left,
+          UserInterface::SelectionListScreen::Description::TEXT.start.top,
+          UserInterface::SelectionListScreen::Description::TEXT.end.left,
+          UserInterface::SelectionListScreen::Description::TEXT.end.top,
+          options[selected].second.c_str(),
+          LINE_SPACING,
+          linesThatFitCount,
+          totalLineCount
+        );
+
+        descriptionScrollbar.set(0, totalLineCount - 1, 0);
+        resetDescriptionScroll = false;
+      }
+      descriptionScrollbar.paint();
+
       UserInterface::printParagraph(
         font_std,
         options[selected].second,
         UserInterface::SelectionListScreen::Description::TEXT,
         LINE_SPACING,
-        UserInterface::Clear::EntireArea
+        UserInterface::Clear::EntireArea,
+        UserInterface::HorizontalAlignment::Left,
+        UserInterface::VerticalAlignment::Top,
+        descriptionScrollbar.view_recno
       );
 
-      copyBackBufferToFront(slotsArea);
-      for (auto slot = 0u; slot < SLOT_COUNT; slot++) {
+      descriptionScrollUpButton.paint();
+      descriptionScrollDownButton.paint();
+
+      for (auto slot = 0; slot < slotCount; slot++) {
         const auto slotArea
           = slotsArea
           .inner({ top: static_cast<unsigned int>(slot * SLOT_HEIGHT) })
           .internal({ height: SLOT_HEIGHT });
 
-        if (static_cast<unsigned int>(slot) < options.size()) {
+        if (static_cast<unsigned int>(listScrollbar.view_recno + slot)
+          < options.size()
+        ) {
           printText(
             font_bible,
-            options[slot].first,
-            slotArea.inner(UserInterface::TEXT_BOX_PADDING, 0),
+            options[listScrollbar.view_recno + slot].first,
+            slotArea,
             UserInterface::Clear::EntireArea,
             UserInterface::HorizontalAlignment::Centre,
             UserInterface::VerticalAlignment::Centre
           );
 
-          if (slot == selected) {
+          if (listScrollbar.view_recno + slot == selected) {
             vga_front.adjust_brightness(
               slotArea.start.left,
               slotArea.start.top,
@@ -421,22 +540,67 @@ int runSelectionScreen(
 
       mouse.show();
 
+      listScrollbar.paint();
+
+      listScrollUpButton.paint();
+      listScrollDownButton.paint();
+
+      startButton.paint();
+      backButton.paint();
+
       refreshFlag = 0;
     }
 
     sys.yield();
 
+    _7kaaAmbitionInterface::Input::detectScenarioScroll(
+      0,
+      options.size() - 1,
+      selected,
+      listScrollbar,
+      descriptionScrollbar,
+      refreshFlag
+    );
+    constexpr auto DESCRIPTION_UPDATED = 0x00200000;
+    resetDescriptionScroll |= refreshFlag & DESCRIPTION_UPDATED;
+
+    _7kaaAmbitionInterface::Input::detectScenarioScroll(
+      0,
+      options.size() - 1,
+      selected,
+      listScrollbar,
+      descriptionScrollbar,
+      refreshFlag
+    );
+
     mouse.get_event();
 
-    if (UserInterface::detectMouseClick(slotsArea)) {
+    if (descriptionScrollbar.detect() == 1) {
+      refreshFlag = 1;
+    } else if (descriptionScrollUpButton.detect()) {
+      descriptionScrollbar.set_view_recno(descriptionScrollbar.view_recno - 1);
+      refreshFlag = 1;
+    } else if (descriptionScrollDownButton.detect()) {
+      descriptionScrollbar.set_view_recno(descriptionScrollbar.view_recno + 1);
+      refreshFlag = 1;
+    } else if (listScrollbar.detect() == 1) {
+      refreshFlag = 1;
+    } else if (listScrollUpButton.detect()) {
+      listScrollbar.set_view_recno(listScrollbar.view_recno - 1);
+      refreshFlag = 1;
+    } else if (listScrollDownButton.detect()) {
+      listScrollbar.set_view_recno(listScrollbar.view_recno + 1);
+      refreshFlag = 1;
+    } else if (UserInterface::detectMouseClick(slotsArea)) {
       const auto clickedSlot
         = (mouse.click_y(LEFT_BUTTON) - slotsArea.start.top)
         / SLOT_HEIGHT;
-      const auto clickedOption = clickedSlot;
+      const auto clickedOption = listScrollbar.view_recno + clickedSlot;
       if (static_cast<unsigned int>(clickedOption) < options.size()) {
         if (selected != clickedOption) {
           refreshFlag = 1;
           selected = clickedOption;
+          resetDescriptionScroll = true;
         }
       }
     } else if (backButton.detect(GETKEY(KEYEVENT_CANCEL))

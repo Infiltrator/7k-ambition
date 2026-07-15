@@ -32,7 +32,9 @@
 
 #include "Ambition_coordinates.hh"
 
+class Button3D;
 class Font;
+class SlideVBar;
 
 
 namespace Ambition::UserInterface {
@@ -224,11 +226,19 @@ extern const Rectangle TEXT;
 
 } // namespace SelectionListScreen::Heading
 
+namespace ShortHeading {
+
+extern const Rectangle SECTION;
+extern const Rectangle TEXT;
+
+} // namespace SelectionListScreen::ShortHeading
+
 namespace Description {
 
 extern const Rectangle SECTION;
 extern const Rectangle TEXT_BOX;
 extern const Rectangle TEXT;
+extern const Rectangle SCROLLBAR;
 
 } // namespace SelectionListScreen::Description
 
@@ -237,8 +247,18 @@ namespace List {
 extern const Rectangle SECTION;
 extern const Rectangle SLOT_AREA;
 extern const Rectangle SLOTS;
+extern const Rectangle SCROLLBAR;
 
 } // namespace SelectionListScreen::List
+
+namespace LongList {
+
+extern const Rectangle SECTION;
+extern const Rectangle SLOT_AREA;
+extern const Rectangle SLOTS;
+extern const Rectangle SCROLLBAR;
+
+} // namespace SelectionListScreen::LongList
 
 namespace Buttons {
 
@@ -499,6 +519,11 @@ bool detectMouseClick(
   const Rectangle area
 );
 
+void draw7kaaScrollbar(
+  SlideVBar *scrollbar,
+  const int _UNUSED
+);
+
 bool drawInformationPanel(
   const Rectangle& bounds,
   const Rectangle& buildingArea,
@@ -526,6 +551,13 @@ Point fromWorldPoint(
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
 );
 
+enum ScrollButtonDirection { Up, Down };
+void initScrollButton(
+  Button3D& scrollButton,
+  const UserInterface::Rectangle& scrollButtonLocation,
+  const ScrollButtonDirection direction
+);
+
 bool mouseCursorInArea(
   const Rectangle area
 );
@@ -537,7 +569,8 @@ void printParagraph(
   const int lineSpacing = 2,
   const Clear clear = Clear::None,
   const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
-  const VerticalAlignment verticalAlignment = VerticalAlignment::Top
+  const VerticalAlignment verticalAlignment = VerticalAlignment::Top,
+  const int linesToSkip = 0
 );
 
 void printText(
