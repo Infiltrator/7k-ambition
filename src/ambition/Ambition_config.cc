@@ -378,7 +378,7 @@ int runSelectionScreen(
             options[slot].first,
             slotArea.inner(UserInterface::TEXT_BOX_PADDING, 0),
             UserInterface::Clear::EntireArea,
-            UserInterface::HorizontalAlignment::Left,
+            UserInterface::HorizontalAlignment::Centre,
             UserInterface::VerticalAlignment::Centre
           );
 
