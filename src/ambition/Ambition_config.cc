@@ -358,6 +358,15 @@ int runSelectionScreen(
       startButton.paint();
       backButton.paint();
 
+      printText(
+        font_bard,
+        heading,
+        UserInterface::SelectionListScreen::Heading::TEXT,
+        UserInterface::Clear::EntireArea,
+        UserInterface::HorizontalAlignment::Centre,
+        UserInterface::VerticalAlignment::Centre
+      );
+
       constexpr auto LINE_SPACING = 4;
       UserInterface::printParagraph(
         font_std,
