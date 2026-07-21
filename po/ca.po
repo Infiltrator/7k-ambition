@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 20:46+1000\n"
+"POT-Creation-Date: 2026-07-21 20:56+1000\n"
 "PO-Revision-Date: 2026-06-02 14:56+0200\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
@@ -19,113 +19,113 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. TRANSLATORS: Single-letter war machine identifier for Catapult.
-#: src/ambition/7kaaInterface/building.cc:326
+#: src/ambition/7kaaInterface/building.cc:328
 #, fuzzy
 msgid "C"
 msgstr "C"
 
 #. TRANSLATORS: Single-letter war machine identifier for Ballista.
-#: src/ambition/7kaaInterface/building.cc:328
+#: src/ambition/7kaaInterface/building.cc:330
 msgid "B"
 msgstr "B"
 
 #. TRANSLATORS: Single-letter war machine identifier for Spitfire.
-#: src/ambition/7kaaInterface/building.cc:330
+#: src/ambition/7kaaInterface/building.cc:332
 msgid "S"
 msgstr "L"
 
 #. TRANSLATORS: Single-letter war machine identifier for Cannon.
-#: src/ambition/7kaaInterface/building.cc:332
+#: src/ambition/7kaaInterface/building.cc:334
 #, fuzzy
 msgid "N"
 msgstr "N"
 
 #. TRANSLATORS: Single-letter war machine identifier for Porcupine.
-#: src/ambition/7kaaInterface/building.cc:334
+#: src/ambition/7kaaInterface/building.cc:336
 msgid "P"
 msgstr "P"
 
 #. TRANSLATORS: Single-letter war machine identifier for Unicorn.
-#: src/ambition/7kaaInterface/building.cc:336
+#: src/ambition/7kaaInterface/building.cc:338
 msgid "U"
 msgstr "U"
 
-#: src/ambition/7kaaInterface/diplomacy.cc:73
+#: src/ambition/7kaaInterface/diplomacy.cc:75
 #, c-format
 msgid "%s's Kingdom%s offers $%.1f per unit of food, for a total of $%'.0f."
 msgstr ""
 "El Regne de %s%s ofereix $%.1f per unitat de menjar, per un total de $%'.0f."
 
-#: src/ambition/7kaaInterface/diplomacy.cc:143
+#: src/ambition/7kaaInterface/diplomacy.cc:145
 msgid "What price do you offer per unit of food?"
 msgstr "Quin preu ofereixes per unitat de menjar?"
 
-#: src/ambition/7kaaInterface/diplomacy.cc:153
+#: src/ambition/7kaaInterface/diplomacy.cc:155
 #, c-format
 msgid "$%.1f per unit of food.  Total cost: $%'.0f."
 msgstr "$%.1f per unitat de menjar.  Cost total: $%'.0f."
 
-#: src/ambition/7kaaInterface/score.cc:102
+#: src/ambition/7kaaInterface/score.cc:104
 #, c-format
 msgid "Comparing %s's Kingdom%s"
 msgstr "Comparant el Regne de %s%s"
 
-#: src/ambition/7kaaInterface/score.cc:103
+#: src/ambition/7kaaInterface/score.cc:105
 #, c-format
 msgid "Compare %s's Kingdom%s"
 msgstr "Compara el Regne de %s%s"
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:67
+#: src/ambition/Ambition_config.cc:69
 msgid "classic"
 msgstr "clàssic"
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:70
+#: src/ambition/Ambition_config.cc:72
 msgid "enhanced"
 msgstr "millorat"
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:73
+#: src/ambition/Ambition_config.cc:75
 msgid "advanced"
 msgstr "avançat"
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:76
+#: src/ambition/Ambition_config.cc:78
 msgid "ambition"
 msgstr "ambició"
 
-#: src/ambition/Ambition_config.cc:75
+#: src/ambition/Ambition_config.cc:81
 msgid "ERROR:UNKNOWN"
 msgstr "ERROR:DESCONEGUT"
 
-#: src/ambition/Ambition_config.cc:142
+#: src/ambition/Ambition_config.cc:148
 msgid "Current mode:"
 msgstr "Mode actual:"
 
-#: src/ambition/Ambition_config.cc:176
+#: src/ambition/Ambition_config.cc:182
 #, c-format
 msgid "Error in %s at lines:\n"
 msgstr "Error a %s a les línies:\n"
 
 #. TRANSLATORS: The separator for config.txt file error line numbers.
-#: src/ambition/Ambition_config.cc:183
+#: src/ambition/Ambition_config.cc:185
 #, c-format
 msgid "%d, "
 msgstr "%d, "
 
-#: src/ambition/Ambition_config.cc:182
+#: src/ambition/Ambition_config.cc:189
 msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
 "Seven Kingdoms: Ambition continuarà carregant només amb les línies vàlides."
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:317
+#: src/ambition/Ambition_config.cc:319
 msgid "I. Classic"
 msgstr "I. Clàssic"
 
-#: src/ambition/Ambition_config.cc:313
+#: src/ambition/Ambition_config.cc:321
 msgid ""
 "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer with "
 "7K:AA."
@@ -134,11 +134,11 @@ msgstr ""
 "multijugador amb 7K:AA."
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:325
+#: src/ambition/Ambition_config.cc:327
 msgid "II. Enhanced"
 msgstr "II. Millorat"
 
-#: src/ambition/Ambition_config.cc:320
+#: src/ambition/Ambition_config.cc:329
 msgid ""
 "Add enhancements that do not affect gameplay.  Allows for multiplayer with "
 "7K:AA."
@@ -146,7 +146,7 @@ msgstr ""
 "Afegeix millores que no afecten la jugabilitat.  Permet partides "
 "multijugador amb 7K:AA."
 
-#: src/ambition/Ambition_control.cc:75
+#: src/ambition/Ambition_control.cc:77
 msgid ""
 "We hope that you have enjoyed playing Seven Kingdoms: Ambition!\n"
 "We would appreciate your feedback on the game and to hear what else you "
@@ -159,15 +159,15 @@ msgstr ""
 "hi.\n"
 "Vols compartir els teus comentaris ara?  (S'obrirà en un navegador web.)"
 
-#: src/ambition/Ambition_control.cc:81
+#: src/ambition/Ambition_control.cc:83
 msgid "I want to be heard!"
 msgstr "Vull fer-me sentir!"
 
-#: src/ambition/Ambition_control.cc:82
+#: src/ambition/Ambition_control.cc:84
 msgid "Later"
 msgstr "Més tard"
 
-#: src/ambition/Ambition_control.cc:106
+#: src/ambition/Ambition_control.cc:108
 msgid "End of replay"
 msgstr "Fi de la repetició"
 
@@ -191,11 +191,11 @@ msgstr "desplaça't amunt per veure'n més"
 msgid "scroll down for more"
 msgstr "desplaça't avall per veure'n més"
 
-#: src/ambition/Ambition_serialisation.cc:79 src/OGFILEA.cpp:707
+#: src/ambition/Ambition_serialisation.cc:81 src/OGFILEA.cpp:707
 msgid "File Date"
 msgstr "Data del fitxer"
 
-#: src/ambition/Ambition_serialisation.cc:146
+#: src/ambition/Ambition_serialisation.cc:148
 #, c-format
 msgid ""
 "Save game version is too new.\n"
@@ -210,106 +210,106 @@ msgstr ""
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:377
-#: src/ambition/Ambition_vga.cc:336
+#: src/ambition/Ambition_vga.cc:338
 msgid "Assassinate"
 msgstr "Assassinar"
 
-#: src/ambition/Ambition_vga.cc:368
+#: src/ambition/Ambition_vga.cc:370
 #, c-format
 msgid "Hit Points: %.0f"
 msgstr "Punts de vida: %.0f"
 
-#: src/ambition/Ambition_vga.cc:407
+#: src/ambition/Ambition_vga.cc:409
 msgid "Speed: "
 msgstr "Velocitat: "
 
-#: src/ambition/Ambition_vga.cc:409
+#: src/ambition/Ambition_vga.cc:411
 msgid "PAUSED"
 msgstr "EN PAUSA"
 
-#: src/ambition/Ambition_vga.cc:411
+#: src/ambition/Ambition_vga.cc:413
 msgid "UNLIMITED"
 msgstr "IL·LIMITADA"
 
-#: src/ambition/Ambition_vga.cc:427
+#: src/ambition/Ambition_vga.cc:429
 msgid "GAME IS PAUSED"
 msgstr "EL JOC ESTÀ EN PAUSA"
 
-#: src/ambition/Ambition_vga.cc:454 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
+#: src/ambition/Ambition_vga.cc:456 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
 msgid "Status"
 msgstr "Estat"
 
-#: src/ambition/Ambition_vga.cc:456
+#: src/ambition/Ambition_vga.cc:458
 msgid "Leaving soon"
 msgstr "Marxarà aviat"
 
-#: src/ambition/Ambition_vga.cc:456
+#: src/ambition/Ambition_vga.cc:458
 msgid "Enjoying stay"
 msgstr "Estada agradable"
 
-#: src/ambition/Ambition_vga.cc:481
+#: src/ambition/Ambition_vga.cc:483
 msgid "*"
 msgstr "*"
 
-#: src/ambition/Ambition_vga.cc:508
+#: src/ambition/Ambition_vga.cc:510
 msgid "Steal Reports"
 msgstr "Robar informes"
 
-#: src/ambition/Ambition_vga.cc:601
+#: src/ambition/Ambition_vga.cc:603
 msgid "Goods supplied"
 msgstr "Béns subministrats"
 
-#: src/ambition/Ambition_vga.cc:690
+#: src/ambition/Ambition_vga.cc:692
 #, c-format
 msgid "Level: %d"
 msgstr "Nivell: %d"
 
 #. TRANSLATORS: The short form of Clay.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:697
+#: src/ambition/Ambition_vga.cc:699
 msgid "Cl"
 msgstr "Arg"
 
 #. TRANSLATORS: The short form of Copper.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:699
+#: src/ambition/Ambition_vga.cc:701
 msgid "Co"
 msgstr "Cou"
 
 #. TRANSLATORS: The short form of Iron.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:701
+#: src/ambition/Ambition_vga.cc:703
 msgid "Ir"
 msgstr "Fer"
 
-#: src/ambition/Ambition_vga.cc:712 src/ambition/Ambition_vga.cc:2436
+#: src/ambition/Ambition_vga.cc:717 src/ambition/Ambition_vga.cc:2455
 #: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:596 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
 msgid "Leadership"
 msgstr "Lideratge"
 
-#: src/ambition/Ambition_vga.cc:717 src/ambition/Ambition_vga.cc:731
+#: src/ambition/Ambition_vga.cc:722 src/ambition/Ambition_vga.cc:737
 msgid "No general"
 msgstr "Sense general"
 
 #. TRANSLATORS: Short form of Leadership, with the value following.
-#: src/ambition/Ambition_vga.cc:730
+#: src/ambition/Ambition_vga.cc:732
 #, c-format
 msgid "Ldr: %d"
 msgstr "Lid: %d"
 
-#: src/ambition/Ambition_vga.cc:740
+#: src/ambition/Ambition_vga.cc:746
 #, c-format
 msgid "Ordos: %d"
 msgstr "Ordos: %d"
 
 #. TRANSLATORS: Short form of "no resources".
-#: src/ambition/Ambition_vga.cc:776
+#: src/ambition/Ambition_vga.cc:778
 msgid "No res"
 msgstr "Sense rec"
 
-#: src/ambition/Ambition_vga.cc:783
+#: src/ambition/Ambition_vga.cc:790
 msgid "Idle"
 msgstr "Inactiu"
 
 #. TRANSLATORS: Short form of "<number> workers (<average skill>)".
-#: src/ambition/Ambition_vga.cc:802
+#: src/ambition/Ambition_vga.cc:804
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
@@ -317,7 +317,7 @@ msgstr[0] "%d treb (%d)"
 msgstr[1] "%d treb (%d)"
 
 #. TRANSLATORS: Short form of "<number> workers".
-#: src/ambition/Ambition_vga.cc:816
+#: src/ambition/Ambition_vga.cc:818
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
@@ -326,63 +326,63 @@ msgstr[1] "%d treb"
 
 #. TRANSLATORS: Short form of "<number> soldiers (<combined combat
 #. rating>)".
-#: src/ambition/Ambition_vga.cc:830
+#: src/ambition/Ambition_vga.cc:832
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
 msgstr[0] "%d sold (%.0f)"
 msgstr[1] "%d sold (%.0f)"
 
-#: src/ambition/Ambition_vga.cc:834
+#: src/ambition/Ambition_vga.cc:845
 #, c-format
 msgid "%d guest"
 msgid_plural "%d guests"
 msgstr[0] "%d hoste"
 msgstr[1] "%d hostes"
 
-#: src/ambition/Ambition_vga.cc:846
+#: src/ambition/Ambition_vga.cc:857
 #, c-format
 msgid "Ships: %d/%d"
 msgstr "Vaixells: %d/%d"
 
 #. TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:881
+#: src/ambition/Ambition_vga.cc:883
 msgid "Raw Cl"
 msgstr "Arg cru"
 
 #. TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:883
+#: src/ambition/Ambition_vga.cc:885
 msgid "Raw Co"
 msgstr "Cou cru"
 
 #. TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:885
+#: src/ambition/Ambition_vga.cc:887
 msgid "Raw Ir"
 msgstr "Fer cru"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:874
+#: src/ambition/Ambition_vga.cc:888
 msgid "Clay"
 msgstr "Argila"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:875
+#: src/ambition/Ambition_vga.cc:889
 msgid "Copper"
 msgstr "Coure"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:876
+#: src/ambition/Ambition_vga.cc:890
 msgid "Iron"
 msgstr "Ferro"
 
-#: src/ambition/Ambition_vga.cc:897
+#: src/ambition/Ambition_vga.cc:911
 msgid "Empty"
 msgstr "Buit"
 
-#: src/ambition/Ambition_vga.cc:911
+#: src/ambition/Ambition_vga.cc:927
 #, c-format
 msgctxt "narrow_panel"
 msgid "(%s%d Spy)"
@@ -390,7 +390,7 @@ msgid_plural "(%s%d Sp)"
 msgstr[0] "(%s%d Espia)"
 msgstr[1] "(%s%d Esp)"
 
-#: src/ambition/Ambition_vga.cc:917
+#: src/ambition/Ambition_vga.cc:933
 #, c-format
 msgctxt "standard_panel"
 msgid "(%s%d Spy)"
@@ -399,86 +399,86 @@ msgstr[0] "(%s%d Espia)"
 msgstr[1] "(%s%d Espies)"
 
 #. TRANSLATORS: Short for "General", when the General is a spy.
-#: src/ambition/Ambition_vga.cc:936
+#: src/ambition/Ambition_vga.cc:938
 msgid "G+"
 msgstr "G+"
 
 #. TRANSLATORS: Short for "population".
-#: src/ambition/Ambition_vga.cc:998
+#: src/ambition/Ambition_vga.cc:1000
 msgid "Pop"
 msgstr "Pob"
 
 #. TRANSLATORS: Short for "loyalty" and "resistance".
-#: src/ambition/Ambition_vga.cc:1006
+#: src/ambition/Ambition_vga.cc:1008
 msgid "Lty"
 msgstr "Lle"
 
-#: src/ambition/Ambition_vga.cc:989
+#: src/ambition/Ambition_vga.cc:1008
 msgid "Rst"
 msgstr "Res"
 
-#: src/ambition/Ambition_vga.cc:1048
+#: src/ambition/Ambition_vga.cc:1067
 #, c-format
 msgid "(%d Spy)"
 msgid_plural "(%d Spies)"
 msgstr[0] "(%d Espia)"
 msgstr[1] "(%d Espies)"
 
-#: src/ambition/Ambition_vga.cc:1701
+#: src/ambition/Ambition_vga.cc:1720
 msgid "Feedback"
 msgstr "Comentaris"
 
-#: src/ambition/Ambition_vga.cc:1831
+#: src/ambition/Ambition_vga.cc:1850
 msgid "Guests"
 msgstr "Hostes"
 
-#: src/ambition/Ambition_vga.cc:2032
+#: src/ambition/Ambition_vga.cc:2051
 #, c-format
 msgid "Your spy estimates a success chance of %d%%."
 msgstr "El teu espia estima una probabilitat d'èxit del %d%%."
 
-#: src/ambition/Ambition_vga.cc:2076
+#: src/ambition/Ambition_vga.cc:2095
 #, c-format
 msgid "Your spy suggests a bribe of $%'d."
 msgstr "El teu espia suggereix un suborn de $%'d."
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/TUT_LIST.RES
-#: src/ambition/Ambition_vga.cc:2103
+#: src/ambition/Ambition_vga.cc:2122
 msgid "Ships"
 msgstr "Vaixells"
 
-#: src/ambition/Ambition_vga.cc:2139
+#: src/ambition/Ambition_vga.cc:2158
 msgid "No leader assigned"
 msgstr "No hi ha cap líder assignat"
 
-#: src/ambition/Ambition_vga.cc:2141
+#: src/ambition/Ambition_vga.cc:2160
 msgid "Leader out of range"
 msgstr "El líder és fora d'abast"
 
-#: src/ambition/Ambition_vga.cc:2143
+#: src/ambition/Ambition_vga.cc:2162
 msgid "Leader is providing bonuses"
 msgstr "El líder proporciona bonificacions"
 
-#: src/ambition/Ambition_vga.cc:2152 src/OR_TOWN.cpp:112
+#: src/ambition/Ambition_vga.cc:2171 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
 msgstr "Cost unitari"
 
-#: src/ambition/Ambition_vga.cc:2159 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
+#: src/ambition/Ambition_vga.cc:2178 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
 msgid "Yearly Expense"
 msgstr "Despesa anual"
 
-#: src/ambition/Ambition_vga.cc:2192 src/ambition/Ambition_vga.cc:2211
-#: src/ambition/Ambition_vga.cc:2277
+#: src/ambition/Ambition_vga.cc:2211 src/ambition/Ambition_vga.cc:2230
+#: src/ambition/Ambition_vga.cc:2296
 msgid "$"
 msgstr "$"
 
-#: src/ambition/Ambition_vga.cc:2380
+#: src/ambition/Ambition_vga.cc:2399
 #, c-format
 msgid "Surplus Peasants: %'d"
 msgstr "Pagesos sobrants: %'d"
 
-#: src/ambition/Ambition_vga.cc:2430 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
+#: src/ambition/Ambition_vga.cc:2449 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
 #: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:409
 #: src/OF_CAMP.cpp:607 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
@@ -486,15 +486,15 @@ msgstr "Pagesos sobrants: %'d"
 msgid "Loyalty"
 msgstr "Lleialtat"
 
-#: src/ambition/Ambition_vga.cc:2447 src/ambition/Ambition_vga.cc:2512
+#: src/ambition/Ambition_vga.cc:2466 src/ambition/Ambition_vga.cc:2531
 msgid "Yearly Upkeep"
 msgstr "Manteniment anual"
 
-#: src/ambition/Ambition_vga.cc:2460 src/ambition/Ambition_vga.cc:2523
+#: src/ambition/Ambition_vga.cc:2479 src/ambition/Ambition_vga.cc:2542
 msgid "Attack Range"
 msgstr "Abast d'atac"
 
-#: src/ambition/Ambition_vga.cc:2566
+#: src/ambition/Ambition_vga.cc:2585
 #, c-format
 msgid "Your spy estimates an escape chance of %d%%."
 msgstr "El teu espia estima una probabilitat d'escapada del %d%%."
@@ -503,7 +503,7 @@ msgstr "El teu espia estima una probabilitat d'escapada del %d%%."
 #. number>. … Your config.txt file can be found here: <config directory
 #. path and path separator>config.txt …
 #. The name of the file—config.txt—does not change with language.
-#: src/ambition/Ambition_vga.cc:2607
+#: src/ambition/Ambition_vga.cc:2626
 #, c-format
 msgid ""
 "Your game version may not match the host's version.\n"
