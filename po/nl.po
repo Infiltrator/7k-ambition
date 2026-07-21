@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7k-ambition v3.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 20:56+1000\n"
+"POT-Creation-Date: 2026-07-21 21:04+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: Jan Miedema\n"
 "Language-Team: \n"
@@ -857,6 +857,7 @@ msgid ""
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, no-c-format
 msgid ""
 "Changed when building hitbars are displayed based on the help setting in the "
 "options menu.  When it is set to None, building hitbars will never be "
@@ -1125,6 +1126,7 @@ msgid ""
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, no-c-format
 msgid ""
 "Fixed the Villages Report yearly Firm costs, Military Report yearly Unit "
 "costs, and War Machine yearly costs showing up 10% higher than actual, now "
@@ -1258,6 +1260,7 @@ msgid "Fixed spies seemingly always getting caught after stealing reports."
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, no-c-format
 msgid "Fixed spies having a 100% escape chance when stealing reports."
 msgstr ""
 
@@ -1771,6 +1774,7 @@ msgid ""
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, no-c-format
 msgid ""
 "Automatically \"heal\" caravans by replacing damaged ones using the above "
 "caravan cloning feature.  Caravans heading to a Market will be replaced if "
@@ -2486,6 +2490,7 @@ msgid ""
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, no-c-format
 msgid "Fixed the 100% CPU usage all the time problem."
 msgstr ""
 
