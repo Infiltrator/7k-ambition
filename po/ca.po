@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-21 23:37+1000\n"
-"PO-Revision-Date: 2026-06-02 14:56+0200\n"
+"PO-Revision-Date: 2026-07-15 15:19+0200\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -20,7 +20,6 @@ msgstr ""
 
 #. TRANSLATORS: Single-letter war machine identifier for Catapult.
 #: src/ambition/7kaaInterface/building.cc:328
-#, fuzzy
 msgid "C"
 msgstr "C"
 
@@ -36,7 +35,6 @@ msgstr "L"
 
 #. TRANSLATORS: Single-letter war machine identifier for Cannon.
 #: src/ambition/7kaaInterface/building.cc:334
-#, fuzzy
 msgid "N"
 msgstr "N"
 
@@ -122,7 +120,7 @@ msgstr ""
 
 #: src/ambition/Ambition_config.cc:253
 msgid "Select Locale"
-msgstr ""
+msgstr "Selecciona la llengua"
 
 #: src/ambition/Ambition_config.cc:270
 msgid ""
@@ -130,6 +128,9 @@ msgid ""
 "effect the next time that Seven Kingdoms: Ambition starts.\n"
 "Would you like to exit now?"
 msgstr ""
+"La configuració de llengua s'ha desat al fitxer config.txt i tindrà efecte "
+"la pròxima vegada que s'iniciï Seven Kingdoms: Ambition.\n"
+"Vols sortir ara?"
 
 #: src/ambition/Ambition_config.cc:274 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
 #: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
@@ -145,68 +146,67 @@ msgstr "No"
 
 #: src/ambition/Ambition_config.cc:352
 msgid "Error opening config.txt file for reading:"
-msgstr ""
+msgstr "Error en obrir el fitxer config.txt per llegir-lo:"
 
 #: src/ambition/Ambition_config.cc:417
 msgid "Error opening config.txt file for writing:"
-msgstr ""
+msgstr "Error en obrir el fitxer config.txt per escriure-hi:"
 
 #: src/ambition/Ambition_config.cc:428
-#, fuzzy
 msgid "Error writing to config.txt file:"
-msgstr "Error en crear el fitxer de partida guardada"
+msgstr "Error en escriure al fitxer config.txt:"
 
 #: src/ambition/Ambition_config.cc:496
 msgid "Detect System Locale"
-msgstr ""
+msgstr "Detecta la llengua del sistema"
 
 #: src/ambition/Ambition_config.cc:497
 msgid "Catalan"
-msgstr ""
+msgstr "Català"
 
 #: src/ambition/Ambition_config.cc:498
 msgid "German"
-msgstr ""
+msgstr "Alemany"
 
 #: src/ambition/Ambition_config.cc:499
 msgid "English"
-msgstr ""
+msgstr "Anglès"
 
 #: src/ambition/Ambition_config.cc:500
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
 #: src/ambition/Ambition_config.cc:501
 msgid "Spanish"
-msgstr ""
+msgstr "Espanyol"
 
 #: src/ambition/Ambition_config.cc:502
 msgid "French"
-msgstr ""
+msgstr "Francès"
 
 #: src/ambition/Ambition_config.cc:503
 msgid "Latin"
-msgstr ""
+msgstr "Llatí"
 
 #: src/ambition/Ambition_config.cc:504
 msgid "Dutch"
-msgstr ""
+msgstr "Neerlandès"
 
 #: src/ambition/Ambition_config.cc:505
 msgid "Polish"
-msgstr ""
+msgstr "Polonès"
 
 #: src/ambition/Ambition_config.cc:506
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portuguès (Brasil)"
 
 #: src/ambition/Ambition_config.cc:507
 msgid "Russian"
-msgstr ""
+msgstr "Rus"
 
 #: src/ambition/Ambition_config.cc:597
 msgid "Select Mode"
-msgstr ""
+msgstr "Selecciona el mode"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:601
@@ -635,25 +635,28 @@ msgstr "Versió preliminar -- encara no llançat"
 
 #: src/ambition/version_details.cc
 msgid "Added a locale selection screen, for switching locales (languages)."
-msgstr ""
+msgstr "S'ha afegit una pantalla de selecció de llengua per canviar d'idioma."
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid "Added a Latin translation, thanks to Júlia Rosell Saldaña."
-msgstr "Afegida traducció a català, gràcies a Júlia Rosell Saldaña"
+msgstr "S'ha afegit una traducció al llatí, gràcies a Júlia Rosell Saldaña."
 
 #: src/ambition/version_details.cc
 msgid "Added a feedback sound when clicking the Clone Caravan button."
-msgstr ""
+msgstr "S'ha afegit un so de resposta en fer clic al botó Clona caravana."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Added a feedback sound when clicking the Hire Caravan button in the Market."
 msgstr ""
+"S'ha afegit un so de resposta en fer clic al botó Contracta caravana al "
+"mercat."
 
 #: src/ambition/version_details.cc
 msgid "Fixed Catalan translation not working for countries other than Spain."
 msgstr ""
+"S'ha corregit que la traducció catalana no funcionés en països diferents "
+"d'Espanya."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -661,6 +664,9 @@ msgid ""
 "when they are far away from the current screen location because they became "
 "too quiet."
 msgstr ""
+"S'ha corregit un problema que feia que els sons de \"Building Complete\" (i "
+"altres) no se sentissin quan eren lluny de la ubicació actual de la pantalla "
+"perquè es feien massa fluixos."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -673,6 +679,11 @@ msgid "Fixed the scrollbar thumbs appearing to overlap the scroll buttons."
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, fuzzy
+msgid "Updated the Catalan translation, thanks to Júlia Rosell Saldaña."
+msgstr "Afegida traducció a català, gràcies a Júlia Rosell Saldaña."
+
+#: src/ambition/version_details.cc
 msgid "Made the What's New section spacing look nicer and less cramped."
 msgstr ""
 
@@ -681,36 +692,40 @@ msgid "Made development slightly easier."
 msgstr "S'ha fet el desenvolupament una mica més fàcil."
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid "v3.2.10 -- 2026-06-12"
-msgstr "v3.2.1 -- 2025-08-12"
+msgstr "v3.2.10 -- 2026-06-12"
 
 #: src/ambition/version_details.cc
 msgid ""
 "Fixed the display of non-standard characters on Windows (especially Júlia "
 "Rosell Saldaña's name on the What's New screen)."
 msgstr ""
+"S'ha corregit la visualització de caràcters no estàndard a Windows "
+"(especialment el nom de Júlia Rosell Saldaña a la pantalla Què hi ha de nou)."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Used translated War Machine names on the War Factory building information "
 "panels."
 msgstr ""
+"S'han fet servir els noms traduïts de les màquines de guerra als panells "
+"d'informació de l'edifici Fàbrica de Guerra."
 
 #: src/ambition/version_details.cc
 msgid ""
 "Used translated Greater Being names on the Seat of Power building "
 "information panels."
 msgstr ""
+"S'han fet servir els noms traduïts dels éssers superiors als panells "
+"d'informació de l'edifici Tron de Poder."
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid "v3.2.9 -- 2026-06-05"
-msgstr "v3.1.9 -- 2025-06-25"
+msgstr "v3.2.9 -- 2026-06-05"
 
 #: src/ambition/version_details.cc
 msgid "Added a Catalan translation, thanks to Júlia Rosell Saldaña."
-msgstr "Afegida traducció a català, gràcies a Júlia Rosell Saldaña"
+msgstr "Afegida traducció a català, gràcies a Júlia Rosell Saldaña."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -740,13 +755,13 @@ msgstr ""
 "La traducció alemanya ha estat enormement ampliada, gràcies a Einheit-101."
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid ""
 "Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg up/"
 "down keys to the tutorial selection list."
 msgstr ""
-"S'ha afegit desplaçament amb la roda del ratolí, amunt/avall, inici/final i "
-"Re Pàg/Av Pàg a la llista de selecció d'escenaris i a la descripció."
+"S'ha afegit desplaçament amb la roda del ratolí, el ratolí tàctil i les "
+"tecles amunt/avall, inici/final i Re Pàg/Av Pàg a la llista de selecció de "
+"tutorials."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -762,13 +777,12 @@ msgstr ""
 "moment."
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid ""
 "Fixed a crash on hovering over the caravan list of the Trade Report when you "
 "have no caravans."
 msgstr ""
-"S'ha corregit una fallada en mirar la llista de vaixells a l'informe "
-"comercial."
+"S'ha corregit una fallada en passar el cursor per sobre de la llista de "
+"caravanes de l'informe comercial quan no tens caravanes."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -855,9 +869,8 @@ msgid "Music now plays on the encyclopaedia."
 msgstr "Ara sona música a l'enciclopèdia."
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid "More changes to make development easier."
-msgstr "S'ha fet el desenvolupament una mica més fàcil."
+msgstr "Més canvis per facilitar el desenvolupament."
 
 #: src/ambition/version_details.cc
 msgid "v3.2.7 -- 2025-10-24"
@@ -1087,7 +1100,7 @@ msgstr ""
 "altra illa o en un lloc inaccessible i no poguessin seguir la seva ruta."
 
 #: src/ambition/version_details.cc
-#, fuzzy, no-c-format
+#, no-c-format
 msgid ""
 "Changed when building hitbars are displayed based on the help setting in the "
 "options menu.  When it is set to None, building hitbars will never be "
@@ -1096,13 +1109,13 @@ msgid ""
 "When it is set to Detailed, they will be displayed as per the old behaviour--"
 "when the building is at less than 100% hitpoints."
 msgstr ""
-"S'ha canviat l'hora de mostrar les barres de visualització dels edificis "
-"segons la configuració d'ajuda del menú d'opcions. Quan està definit com a "
-"Cap, les barres de visualització dels edificis no es mostraran mai. Quan "
-"està definit com a Breu, es mostraran per a l'edifici seleccionat actualment "
-"i per a qualsevol edifici sobre el qual es passi el cursor amb el cursor. "
-"Quan està definit com a Detallat, es mostraran segons el comportament "
-"anterior: quan l'edifici tingui menys del 100% dels punts de vida."
+"S'ha canviat quan es mostren les barres de vida dels edificis segons la "
+"configuració d'ajuda del menú d'opcions. Quan està definida com a Cap, les "
+"barres de vida dels edificis no es mostraran mai. Quan està definida com a "
+"Breu, es mostraran per a l'edifici seleccionat actualment i per a qualsevol "
+"edifici sobre el qual es passi el cursor. Quan està definida com a "
+"Detallada, es mostraran com abans: quan l'edifici tingui menys del 100% dels "
+"punts de vida."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -1457,17 +1470,16 @@ msgstr ""
 "diferent sobre el ressaltat."
 
 #: src/ambition/version_details.cc
-#, fuzzy, no-c-format
+#, no-c-format
 msgid ""
 "Fixed the Villages Report yearly Firm costs, Military Report yearly Unit "
 "costs, and War Machine yearly costs showing up 10% higher than actual, now "
 "that the day accounting bug has been fixed and reduced these costs again."
 msgstr ""
-"S'han corregit els costos anuals de l'empresa a l'informe de pobles, els "
-"costos anuals de les unitats a l'informe militar i els costos anuals de la "
-"màquina de guerra que es mostraven un 10% més alts del real, ara que s'ha "
-"corregit l'error de comptabilitat del dia i s'han reduït aquests costos de "
-"nou."
+"S'han corregit els costos anuals d'empreses a l'informe de pobles, els "
+"costos anuals d'unitats a l'informe militar i els costos anuals de màquines "
+"de guerra, que es mostraven un 10% més alts del real; ara que s'ha corregit "
+"l'error de comptabilització dels dies, aquests costos s'han reduït de nou."
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -1837,17 +1849,17 @@ msgid ""
 "Fixed unit skill potential to persist, and not continually be randomised"
 msgstr ""
 "S'ha corregit que el potencial d'habilitat de les unitats persistís i no es "
-"tornés a aleatoritzar contínuament."
+"tornés a aleatoritzar contínuament"
 
 #: src/ambition/version_details.cc
 msgid "Fixed issues with skills being reset when entering buildings"
 msgstr ""
 "S'han corregit problemes amb habilitats que es reiniciaven en entrar als "
-"edificis."
+"edificis"
 
 #: src/ambition/version_details.cc
 msgid "Improved some graphic drawing"
-msgstr "S'ha millorat una part del dibuix dels gràfics."
+msgstr "S'ha millorat una part del dibuix dels gràfics"
 
 #: src/ambition/version_details.cc
 msgid "Added (UI)"
@@ -1856,26 +1868,25 @@ msgstr "Afegit (IU)"
 #: src/ambition/version_details.cc
 msgid "Added support for a hotkey to center on the selected unit"
 msgstr ""
-"S'ha afegit suport per a una drecera per centrar-se en la unitat "
-"seleccionada."
+"S'ha afegit suport per a una drecera per centrar-se en la unitat seleccionada"
 
 #: src/ambition/version_details.cc
 msgid "Added support to make numeric keys configurable"
-msgstr "S'ha afegit suport perquè les tecles numèriques siguin configurables."
+msgstr "S'ha afegit suport perquè les tecles numèriques siguin configurables"
 
 #: src/ambition/version_details.cc
 msgid "Added advanced options for news notifications"
-msgstr "S'han afegit opcions avançades per a les notificacions de notícies."
+msgstr "S'han afegit opcions avançades per a les notificacions de notícies"
 
 #: src/ambition/version_details.cc
 msgid "Added support for ctrl button in hotkey mapping"
-msgstr "S'ha afegit suport per al botó Ctrl en l'assignació de dreceres."
+msgstr "S'ha afegit suport per al botó Ctrl en l'assignació de dreceres"
 
 #: src/ambition/version_details.cc
 msgid "Allow screenshots of in-game menu, to easily record map seed"
 msgstr ""
 "Permet captures de pantalla del menú dins del joc, per registrar fàcilment "
-"la llavor del mapa."
+"la llavor del mapa"
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -1893,7 +1904,7 @@ msgid ""
 "Extended game file and synchronization code to support extensions to the game"
 msgstr ""
 "S'ha ampliat el codi de fitxers de joc i sincronització per admetre "
-"extensions del joc."
+"extensions del joc"
 
 #: src/ambition/version_details.cc
 msgid "Allowed the scenario settings to persist across save and load."
@@ -1920,49 +1931,49 @@ msgstr "Corregit (IA)"
 msgid "Fixed poor ai logic that cause the ai to always accept a trade treaty"
 msgstr ""
 "S'ha corregit una mala lògica de la IA que feia que sempre acceptés un "
-"tractat comercial."
+"tractat comercial"
 
 #: src/ambition/version_details.cc
 msgid "Fixed poor ai logic concerning building weapons"
-msgstr "S'ha corregit una mala lògica de la IA sobre la construcció d'armes."
+msgstr "S'ha corregit una mala lògica de la IA sobre la construcció d'armes"
 
 #: src/ambition/version_details.cc
 msgid "Fixed poor ai logic concerning hiring spies"
-msgstr "S'ha corregit una mala lògica de la IA sobre la contractació d'espies."
+msgstr "S'ha corregit una mala lògica de la IA sobre la contractació d'espies"
 
 #: src/ambition/version_details.cc
 msgid "Fixed an error when the ai attacking an unit that enters a building"
 msgstr ""
-"S'ha corregit un error quan la IA atacava una unitat que entra en un edifici."
+"S'ha corregit un error quan la IA atacava una unitat que entra en un edifici"
 
 #: src/ambition/version_details.cc
 msgid "Corrected utilization of base towns, typically an ai concept"
-msgstr "S'ha corregit l'ús de pobles base, normalment un concepte de la IA."
+msgstr "S'ha corregit l'ús de pobles base, normalment un concepte de la IA"
 
 #: src/ambition/version_details.cc
 msgid "Improved ai to avoid more cases of accepting treaties of large rivals"
 msgstr ""
 "S'ha millorat la IA per evitar més casos d'acceptació de tractats de grans "
-"rivals."
+"rivals"
 
 #: src/ambition/version_details.cc
 msgid "Fixed an issue that caused the ai to duplicate fort build actions"
 msgstr ""
 "S'ha corregit un problema que feia que la IA dupliqués accions de "
-"construcció de forts."
+"construcció de forts"
 
 #: src/ambition/version_details.cc
 msgid "Fixed more sea based ai actions"
-msgstr "S'han corregit més accions marítimes de la IA."
+msgstr "S'han corregit més accions marítimes de la IA"
 
 #: src/ambition/version_details.cc
 msgid "Corrected more instances where the ai incorrect targets itself"
 msgstr ""
-"S'han corregit més casos en què la IA s'apuntava incorrectament a si mateixa."
+"S'han corregit més casos en què la IA s'apuntava incorrectament a si mateixa"
 
 #: src/ambition/version_details.cc
 msgid "Fixed some ai capture code"
-msgstr "S'ha corregit part del codi de captura de la IA."
+msgstr "S'ha corregit part del codi de captura de la IA"
 
 #: src/ambition/version_details.cc
 msgid "Fixed sea-based AI actions and pathing to board ships."
@@ -1975,55 +1986,55 @@ msgstr "Corregit (General)"
 
 #: src/ambition/version_details.cc
 msgid "Fixed some in-game statistics"
-msgstr "S'han corregit algunes estadístiques dins del joc."
+msgstr "S'han corregit algunes estadístiques dins del joc"
 
 #: src/ambition/version_details.cc
 msgid "Fixed some game file bugs"
-msgstr "S'han corregit alguns errors de fitxers de joc."
+msgstr "S'han corregit alguns errors de fitxers de joc"
 
 #: src/ambition/version_details.cc
 msgid "Removed a bug causing a fake earthquake"
-msgstr "S'ha eliminat un error que causava un terratrèmol fals."
+msgstr "S'ha eliminat un error que causava un terratrèmol fals"
 
 #: src/ambition/version_details.cc
 msgid "Removed a possible accidental disclosure of the presence of spies"
 msgstr ""
-"S'ha eliminat una possible revelació accidental de la presència d'espies."
+"S'ha eliminat una possible revelació accidental de la presència d'espies"
 
 #: src/ambition/version_details.cc
 msgid "Fixed an error occuring sometimes when a town turns independent"
 msgstr ""
 "S'ha corregit un error que passava de vegades quan un poble es tornava "
-"independent."
+"independent"
 
 #: src/ambition/version_details.cc
 msgid "Fixed an error occuring sometimes on recruiting the last pop of a town"
 msgstr ""
 "S'ha corregit un error que passava de vegades en reclutar l'últim habitant "
-"d'un poble."
+"d'un poble"
 
 #: src/ambition/version_details.cc
 msgid "Fixed a pathing issue"
-msgstr "S'ha corregit un problema de camins."
+msgstr "S'ha corregit un problema de camins"
 
 #: src/ambition/version_details.cc
 msgid "Fixed issue that allowed resigning ships with units in ships"
 msgstr ""
-"S'ha corregit un problema que permetia retirar vaixells amb unitats a dins."
+"S'ha corregit un problema que permetia retirar vaixells amb unitats a dins"
 
 #: src/ambition/version_details.cc
 msgid "Fixed memory issue in multiplayer"
-msgstr "S'ha corregit un problema de memòria en multijugador."
+msgstr "S'ha corregit un problema de memòria en multijugador"
 
 #: src/ambition/version_details.cc
 msgid "Fixed difficulty calculation"
-msgstr "S'ha corregit el càlcul de dificultat."
+msgstr "S'ha corregit el càlcul de dificultat"
 
 #: src/ambition/version_details.cc
 msgid "Fixed crash when clicking on a player market with version 1 scenarios"
 msgstr ""
 "S'ha corregit una fallada en fer clic en un mercat d'un jugador amb "
-"escenaris de la versió 1."
+"escenaris de la versió 1"
 
 #: src/ambition/version_details.cc
 msgid "Changed (UI)"
@@ -2031,7 +2042,7 @@ msgstr "Canviat (IU)"
 
 #: src/ambition/version_details.cc
 msgid "Improved mouse wheel scrolling"
-msgstr "S'ha millorat el desplaçament amb la roda del ratolí."
+msgstr "S'ha millorat el desplaçament amb la roda del ratolí"
 
 #: src/ambition/version_details.cc
 msgid "Increased max screenshot file limit."
@@ -2043,15 +2054,15 @@ msgstr "Canviat (IA)"
 
 #: src/ambition/version_details.cc
 msgid "Improved detection of the likely target nation of an attack"
-msgstr "S'ha millorat la detecció de la nació objectiu probable d'un atac."
+msgstr "S'ha millorat la detecció de la nació objectiu probable d'un atac"
 
 #: src/ambition/version_details.cc
 msgid "Improved ai management of firms"
-msgstr "S'ha millorat la gestió d'empreses per part de la IA."
+msgstr "S'ha millorat la gestió d'empreses per part de la IA"
 
 #: src/ambition/version_details.cc
 msgid "Improved ai in managing town capture operations"
-msgstr "S'ha millorat la IA en la gestió d'operacions de captura de pobles."
+msgstr "S'ha millorat la IA en la gestió d'operacions de captura de pobles"
 
 #: src/ambition/version_details.cc
 msgid "Ensured AI checks worker skills in management actions."
@@ -2077,12 +2088,11 @@ msgstr "Canviat (General)"
 #: src/ambition/version_details.cc
 msgid "Allowed the scenario settings to persist across save and load"
 msgstr ""
-"S'ha permès que les opcions d'escenari persisteixin entre desar i carregar."
+"S'ha permès que les opcions d'escenari persisteixin entre desar i carregar"
 
 #: src/ambition/version_details.cc
 msgid "Improved caravan/caraval trade stop logic"
-msgstr ""
-"S'ha millorat la lògica de parades comercials de caravanes/caravel·les."
+msgstr "S'ha millorat la lògica de parades comercials de caravanes/caravel·les"
 
 #: src/ambition/version_details.cc
 msgid "Improved manual and added a cover."
@@ -2090,11 +2100,11 @@ msgstr "S'ha millorat el manual i s'hi ha afegit una portada."
 
 #: src/ambition/version_details.cc
 msgid "Improved multi-language support"
-msgstr "S'ha millorat el suport multilingüe."
+msgstr "S'ha millorat el suport multilingüe"
 
 #: src/ambition/version_details.cc
 msgid "Increased the speed of the 9th speed level"
-msgstr "S'ha augmentat la velocitat del novè nivell de velocitat."
+msgstr "S'ha augmentat la velocitat del novè nivell de velocitat"
 
 #: src/ambition/version_details.cc
 msgid "v3.1.10 -- 2025-07-05"
@@ -3260,9 +3270,9 @@ msgstr ""
 "per ajudar a trobar-ne i corregir-ne la causa."
 
 #: src/ambition/version_details.cc
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Fixed the 100% CPU usage all the time problem."
-msgstr "S'ha solucionat el problema d'ús continu de la CPU al 100%."
+msgstr "S'ha corregit el problema que feia que la CPU estigués sempre al 100%."
 
 #: src/ambition/version_details.cc
 msgid "Fixed scrolling to the right and down not working properly."
@@ -8576,7 +8586,7 @@ msgstr "Resistència"
 
 #: src/OTOWNIF.cpp:346
 msgid "Avg"
-msgstr "Mitj."
+msgstr "Mitj"
 
 #: src/OTOWNIF.cpp:383
 msgid "Controlled by Rebels"
@@ -9154,7 +9164,7 @@ msgstr ""
 "En aquesta lliçó aprendràs com aprofitar millor els Pergamins de Poder i com "
 "construir i fer servir Trons de Poder. Després d'aprendre'n el funcionament, "
 "aprendràs com acollir els fidels i com utilitzar el poder de les seves "
-"pregàries per invocar éssers superiors. "
+"pregàries per invocar éssers superiors.  "
 
 # data/RESOURCE/TUT_INTR/00008-3RESEARC.TXT:1
 msgid ""
@@ -9310,7 +9320,7 @@ msgid ""
 msgstr ""
 "Per consultar ràpidament el progrés de recerca i el teu nivell tecnològic "
 "actual, fes clic al pergamí de Tecnologia de la part superior de la pantalla "
-"o prem la tecla F6 del teclat. "
+"o prem la tecla F6 del teclat.  "
 
 # data/RESOURCE/TUT_TEXT/00001-5BAS_NAV.TXT:3
 msgid ""
@@ -9630,7 +9640,7 @@ msgstr ""
 "finalitats, com ara transportar soldats o fer la guerra al mar. Un cop "
 "acabades aquestes tasques, si fas clic al botó «C» tornarà a convertir-se en "
 "«T». Aleshores el vaixell reprendrà immediatament la seva ruta comercial "
-"existent. "
+"existent.    "
 
 # data/RESOURCE/TUT_TEXT/00003-8FRYHTAN.TXT:3
 msgid ""
@@ -9695,7 +9705,7 @@ msgid ""
 msgstr ""
 "La major part del tresor consistirà en monedes i altres objectes preciosos; "
 "els més valuosos de tots, però, són els Pergamins de Poder. Per veure com "
-"utilitzar-los, continua a la secció següent. "
+"utilitzar-los, continua a la secció següent.  "
 
 # data/RESOURCE/TUT_TEXT/00004-7MERCENA.TXT:3
 msgid ""
@@ -10252,7 +10262,7 @@ msgstr ""
 "Si vols revisar una lliçó des de qualsevol partida, fes clic al botó de menú "
 "de la part superior dreta de la pantalla i després al botó d'entrenament. "
 "Tot seguit selecciona la lliçó que vols revisar. Quan facis clic al botó "
-"Inicia, la lliçó se sobreposarà a la partida actual. "
+"Inicia, la lliçó se sobreposarà a la partida actual.   "
 
 # data/RESOURCE/TUT_TEXT/00007-LOYALTY.TXT:3
 msgid ""
@@ -10762,7 +10772,7 @@ msgid ""
 "purple flashing square.  "
 msgstr ""
 "El cursor de mà es convertirà en un cursor de martell i clau, amb un quadrat "
-"negre o porpra parpellejant. "
+"negre o porpra parpellejant.  "
 
 # data/RESOURCE/TUT_TEXT/00008-2BAS_ECO.TXT:89
 msgid ""
@@ -10890,7 +10900,7 @@ msgstr ""
 "Si vols recaptar impostos de tots els teus pobles de la mateixa manera, fes "
 "clic dret en aquest número en lloc de fer-hi clic normal. Aleshores "
 "recaptaràs impostos de tots els teus pobles presents i futurs sempre que el "
-"seu nivell de lleialtat arribi a aquest número. "
+"seu nivell de lleialtat arribi a aquest número.   "
 
 # data/RESOURCE/TUT_TEXT/00009-4WEAPONS.TXT:3
 msgid ""
@@ -11019,7 +11029,7 @@ msgid ""
 "soldiers.  "
 msgstr ""
 "Aquesta reacció en cadena pot causar una gran devastació entre les files "
-"dels soldats enemics. "
+"dels soldats enemics.  "
 
 # data/RESOURCE/TUT_TEXT/00010-9SEATPOW.TXT:3
 msgid ""
@@ -11091,7 +11101,7 @@ msgid ""
 "manual for more details.  "
 msgstr ""
 "Els éssers superiors difereixen molt en els seus poders; consulta el manual "
-"per obtenir-ne més detalls. "
+"per obtenir-ne més detalls.  "
 
 # data/RESOURCE/TUT_TEXT/00011-2B_TRADE.TXT:3
 msgid ""
@@ -11208,7 +11218,7 @@ msgid ""
 "Markets, Click now on your Market.   "
 msgstr ""
 "Per fer-ho hauràs de contractar una caravana. Com que totes les caravanes es "
-"contracten als mercats, fes clic ara al teu mercat. "
+"contracten als mercats, fes clic ara al teu mercat.   "
 
 # data/RESOURCE/TUT_TEXT/00011-2B_TRADE.TXT:38
 msgid ""
@@ -11788,7 +11798,7 @@ msgid ""
 msgstr ""
 "Si vols que l'espia evacui una zona infiltrada, primer has de seleccionar "
 "l'edifici o poble on resideix, fer clic a la casella d'Espia, seleccionar "
-"l'espia i després fer clic a l'opció d'Evacuar. "
+"l'espia i després fer clic a l'opció d'Evacuar.  "
 
 # data/SCENARIO/7FOR7.SCT:1
 msgid "Seven Forts for Seven Generals"
@@ -11848,7 +11858,7 @@ msgstr ""
 "lloc. Primer, per tant, has de trobar l'or i el menjar que mantindran la "
 "lleialtat dels teus arquers i després fer servir aquests homes ben entrenats "
 "per construir un imperi i, finalment, governar el món. Per vèncer, has de "
-"destruir completament els altres regnes del món."
+"destruir completament els altres regnes del món. "
 
 # data/SCENARIO/DESPERDO.SCT:1
 msgid "Desperados"
@@ -12192,7 +12202,7 @@ msgstr ""
 "triar el successor del seu tron. Les opcions són dos bons líders de faccions "
 "minoritàries o un líder feble de la majoria. Tria bé, perquè la teva "
 "supervivència en dependrà. Aconseguiràs la victòria quan el teu regne quedi "
-"sol. "
+"sol.  "
 
 # data/SCENARIO/RESDEP.SCT:1
 msgid "Resource Depletion"
@@ -12284,7 +12294,7 @@ msgstr ""
 "viatjar a terres llunyanes i fer-se un nom destruint allò que altres han "
 "construït amb tanta paciència. La teva tasca en aquest escenari és completar "
 "la destrucció de l'últim regne independent del món abans que passin dos "
-"anys. "
+"anys.   "
 
 # data/SCENARI2/SCN_02.SCT:1
 msgid "Go Forth & Multiply"
@@ -13570,7 +13580,7 @@ msgstr ""
 "Quan facis clic en aquesta fitxa, el cursor es convertirà en un quadrat "
 "petit.  Col·loca aquest quadrat sobre un dels teus pobles i torna a fer "
 "clic.  La població del poble seleccionat augmentarà en cinc per cada "
-"benedicció."
+"benedicció. "
 
 # data/RESOURCE/HELP.RES:405
 msgid "Strike Fear"
@@ -13586,7 +13596,7 @@ msgstr ""
 "Quan facis clic en aquesta fitxa, el cursor es convertirà en un cercle blanc "
 "gran.  Col·loca aquest cercle sobre les unitats exteriors d'un altre regne i "
 "torna a fer clic.  Les unitats dins d'aquest cercle perdran entre 20 i 30 "
-"punts de lleialtat per cada ús."
+"punts de lleialtat per cada ús. "
 
 # data/RESOURCE/HELP.RES:409
 msgid "Increase Leadership of Zulu Leaders"
@@ -13602,7 +13612,7 @@ msgstr ""
 "Quan facis clic en aquesta fitxa, el cursor es convertirà en un quadrat "
 "petit.  Col·loca aquest quadrat sobre un dels teus generals zulus o sobre el "
 "rei i torna a fer clic.  El teu general o rei guanyarà 30 punts d'habilitat "
-"de lideratge per cada ús, fins a un màxim de 100."
+"de lideratge per cada ús, fins a un màxim de 100. "
 
 # data/RESOURCE/HELP.RES:414
 msgid ""
@@ -13613,7 +13623,7 @@ msgstr ""
 "Aquesta icona mostra que no hi ha cap treballador de construcció destinat "
 "aquí per reparar, però que es pot sol·licitar un treballador inactiu. Fes "
 "clic o clic dret en aquesta icona per sol·licitar l'enviament d'un "
-"treballador de construcció."
+"treballador de construcció. "
 
 # data/RESOURCE/HELP.RES:417
 msgid "Restocking Source"
@@ -13624,7 +13634,7 @@ msgid ""
 "This shows you which type of linked buildings this market may restock from. "
 msgstr ""
 "Això mostra de quin tipus d'edificis enllaçats es pot reabastir aquest "
-"mercat."
+"mercat. "
 
 # data/RESOURCE/HELP.RES:421
 msgid "Switch Restocking Source"
@@ -13637,4 +13647,4 @@ msgid ""
 msgstr ""
 "Fes clic en aquest botó per canviar el tipus d'edificis enllaçats des dels "
 "quals aquest mercat es pot reabastir. Això et permet controlar la finalitat "
-"d'aquest mercat."
+"d'aquest mercat. "

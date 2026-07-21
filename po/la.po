@@ -676,6 +676,11 @@ msgid "Fixed the scrollbar thumbs appearing to overlap the scroll buttons."
 msgstr ""
 
 #: src/ambition/version_details.cc
+#, fuzzy
+msgid "Updated the Catalan translation, thanks to Júlia Rosell Saldaña."
+msgstr "Catalana adiecit translationem per Iúlia Rosell Saldaña."
+
+#: src/ambition/version_details.cc
 msgid "Made the What's New section spacing look nicer and less cramped."
 msgstr ""
 
