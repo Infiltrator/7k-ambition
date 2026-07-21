@@ -38,6 +38,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_CHANGED,
         .items = {
+          _("Updated the Catalan translation, thanks to Júlia Rosell Saldaña."),
           _("Made the What's New section spacing look nicer and less cramped."),
           _("Made development slightly easier."),
         },
