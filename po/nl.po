@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7k-ambition v3.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-12 20:37+1000\n"
+"POT-Creation-Date: 2026-07-21 20:46+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: Jan Miedema\n"
 "Language-Team: \n"
@@ -524,6 +524,56 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Added a feedback sound when clicking the Clone Caravan button."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Added a feedback sound when clicking the Hire Caravan button in the Market."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed Catalan translation not working for countries other than Spain."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed issue with \"Building Complete\" (and other) sounds not being audible "
+"when they are far away from the current screen location because they became "
+"too quiet."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Made development slightly easier."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.10 -- 2026-06-12"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the display of non-standard characters on Windows (especially Júlia "
+"Rosell Saldaña's name on the What's New screen)."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Used translated War Machine names on the War Factory building information "
+"panels."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Used translated Greater Being names on the Seat of Power building "
+"information panels."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.9 -- 2026-06-05"
 msgstr ""
 
 #: src/ambition/version_details.cc
@@ -2476,10 +2526,6 @@ msgstr ""
 #: src/ambition/version_details.cc
 msgid ""
 "Change right and bottom cursor boundaries to allow the cursor to go further."
-msgstr ""
-
-#: src/ambition/version_details.cc
-msgid "Made development slightly easier."
 msgstr ""
 
 #: src/CmdLine.cpp:50
