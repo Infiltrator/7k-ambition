@@ -26,6 +26,7 @@
 #include "Ambition_trade.hh"
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OBUTT3D.h"
 #include "OF_FACT.h"
 #include "OF_MINE.h"
@@ -35,6 +36,7 @@
 #include "OU_CARA.h"
 #include "OVBROWIF.h"
 #include "vga_util.h"
+#pragma GCC diagnostic pop
 
 #include "7kaaInterface/draw.hh"
 #include "Ambition_polity.hh"

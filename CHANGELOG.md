@@ -22,6 +22,10 @@ speaking, considered to be the player's experience.
   they are far away from the current screen location because they became too
   quiet.
 
+### Changed
+
+- Made development slightly easier.
+
 
 ## [3.2.10] — 2026-06-12
 

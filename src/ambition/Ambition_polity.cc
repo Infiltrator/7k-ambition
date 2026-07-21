@@ -28,11 +28,13 @@
 #include <cassert>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "ONATION.h"
 #include "OSPY.h"
 #include "OU_CARA.h"
 #include "OUNIT.h"
 #include "OWORLD.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_coordinates.hh"
 #include "Ambition_repository.hh"

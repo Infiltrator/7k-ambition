@@ -30,9 +30,11 @@
 #include <ranges>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OFIRM.h"
 #include "ONATION.h"
 #include "OTOWN.h"
+#pragma GCC diagnostic pop
 
 #include "7kaaInterface/population.hh"
 

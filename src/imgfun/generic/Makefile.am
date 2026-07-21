@@ -43,3 +43,8 @@ libimgfun_generic_a_SOURCES = \
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include
 AM_CXXFLAGS = $(GLOBAL_CFLAGS)
+
+if SILENCE_7KAA_WARNINGS
+AM_CXXFLAGS += -Wno-char-subscripts
+AM_CXXFLAGS += -Wno-unused-variable
+endif

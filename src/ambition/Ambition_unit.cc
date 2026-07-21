@@ -30,6 +30,7 @@
 #include <vector>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OANLINE.h"
 #include "OFIRM.h"
 #include "OIMGRES.h"
@@ -37,6 +38,7 @@
 #include "OREMOTE.h"
 #include "OTOWN.h"
 #include "OUNIT.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_coordinates.hh"
 #include "Ambition_building.hh"

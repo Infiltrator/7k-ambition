@@ -28,7 +28,9 @@
 #include <limits>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OWORLD.h"
+#pragma GCC diagnostic pop
 
 
 namespace Ambition::Coordinates {

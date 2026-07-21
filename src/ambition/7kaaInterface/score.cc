@@ -26,10 +26,12 @@
 #define _AMBITION_IMPLEMENTATION
 #include "score.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
 #include "OBUTTON.h"
 #include "OFONT.h"
 #include "ONATION.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_user_interface.hh"

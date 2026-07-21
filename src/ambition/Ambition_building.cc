@@ -26,6 +26,7 @@
 #include "Ambition_building.hh"
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "OANLINE.h"
 #include "OF_HARB.h"
 #include "OF_WAR.h"
@@ -36,6 +37,7 @@
 #include "OTOWN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_polity.hh"
 #include "Ambition_repository.hh"

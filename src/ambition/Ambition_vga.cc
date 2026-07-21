@@ -35,6 +35,7 @@
 #include <SDL_timer.h>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "COLCODE.h"
 #include "gettext.h"
 #include "OANLINE.h"
@@ -69,6 +70,7 @@
 #include "OTERRAIN.h"
 #include "OUNIT.h"
 #include "vga_util.h"
+#pragma GCC diagnostic pop
 
 #include "7kaaInterface/draw.hh"
 #include "7kaaInterface/input.hh"

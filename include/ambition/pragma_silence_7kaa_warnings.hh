@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright © 2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,32 +20,11 @@
 /**
  * @file
  *
- * Implementation file for Ambition::Remote.
+ * Special file (basically a macro) to silence certain warnings in 7kaa code.
+ * Include this before including the 7kaa files, and put `#pragma GCC diagnostic
+ * pop` afterwards to restore warnings to previous.
  */
 
-#include "Ambition_remote.hh"
-
-#include "pragma_silence_7kaa_warnings.hh"
-#include "OCRC_STO.h"
-#include "OFONT.h"
-#include "OWORLD.h"
-#pragma GCC diagnostic pop
-
-
-namespace Ambition {
-
-void printSyncError(
-) {
-  String errorMessage;
-  errorMessage = "Sync error: ";
-  errorMessage += crc_store.crc_error_string;
-
-  font_news.disp(
-    ZOOM_X1 + 10,
-    ZOOM_Y1 + 42,
-    errorMessage,
-    MAP_X2
-  );
-}
-
-} // namespace Ambition
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wparentheses"
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"

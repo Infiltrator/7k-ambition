@@ -26,8 +26,10 @@
 #define _AMBITION_IMPLEMENTATION
 #include "population.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "ONATION.h"
 #include "OTOWN.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
 #include "Ambition_population.hh"

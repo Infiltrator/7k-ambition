@@ -29,6 +29,7 @@
 #include <algorithm>
 #include <SDL.h>
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "KEY.h"
 #include "OBUTT3D.h"
 #include "OFIRMA.h"
@@ -43,6 +44,7 @@
 #include "OU_CARA.h"
 #include "OVBROWIF.h"
 #include "OWORLD.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"

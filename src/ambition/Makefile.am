@@ -34,8 +34,6 @@ AM_CXXFLAGS = $(GLOBAL_CFLAGS)
 AM_CXXFLAGS += $(AMBITION_CFLAGS)
 AM_CXXFLAGS += $(SDL_CFLAGS)
 AM_CXXFLAGS += $(BOOST_CPPFLAGS)
-AM_CXXFLAGS += -Wno-parentheses
-AM_CXXFLAGS += -Wno-overloaded-virtual
 
 Ambition_version.cc: git_string.h
 

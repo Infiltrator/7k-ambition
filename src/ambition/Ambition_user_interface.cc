@@ -28,6 +28,7 @@
 #include <ranges>
 
 #define _AMBITION_IMPLEMENTATION
+#include "pragma_silence_7kaa_warnings.hh"
 #include "COLCODE.h"
 #include "KEY.h"
 #include "OIMGRES.h"
@@ -37,6 +38,7 @@
 #include "OVGA.h"
 #include "OWORLD.h"
 #include "vga_util.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_coordinates.hh"
 #include "Ambition_vga.hh"

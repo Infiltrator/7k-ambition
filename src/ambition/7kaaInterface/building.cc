@@ -26,6 +26,7 @@
 #define _AMBITION_IMPLEMENTATION
 #include "7kaaInterface/building.hh"
 
+#include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
 #include "OF_CAMP.h"
 #include "OF_MARK.h"
@@ -37,6 +38,7 @@
 #include "OSERES.h"
 #include "OTECHRES.h"
 #include "OTOWN.h"
+#pragma GCC diagnostic pop
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
