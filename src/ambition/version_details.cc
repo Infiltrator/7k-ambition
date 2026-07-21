@@ -175,6 +175,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_CHANGED,
         .items = {
+          /* xgettext:no-c-format */
           _("Changed when building hitbars are displayed based on the help setting in the options menu.  When it is set to None, building hitbars will never be displayed.  When it is set to Brief, they will be displayed for the currently selected building and any building hovered over with the mouse.  When it is set to Detailed, they will be displayed as per the old behaviour--when the building is at less than 100% hitpoints."),
           _("Town and Firm information panels will show the number of spies you have inside of them instead of just \"(Spy)\".  If the general is also your spy, it will say \"G+\" the number of other spies you have."),
         },
@@ -272,6 +273,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed build guidelines not being clearly visible on Snow and Badlands tilesets."),
           _("Fixed some build guidelines appearing a different colour on top of highlighting."),
+          /* xgettext:no-c-format */
           _("Fixed the Villages Report yearly Firm costs, Military Report yearly Unit costs, and War Machine yearly costs showing up 10% higher than actual, now that the day accounting bug has been fixed and reduced these costs again."),
           _("Fixed save file names and dates running off on the right side of the load screen, creating artefacts.  This was especially problematic in some non-English languages where the text is wider or longer."),
           _("Fixed a crash when selling or demolishing an empty Fort which has a rally point."),
@@ -324,6 +326,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed leadership status artefacts on the info pane when the status changes."),
           _("Fixed spies seemingly always getting caught after stealing reports."),
+          /* xgettext:no-c-format */
           _("Fixed spies having a 100% escape chance when stealing reports."),
         },
       },
@@ -534,6 +537,7 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Added a clone button to Caravans.  If there is an idle Caravan, it is used as the clone.  Otherwise, a new Caravan spawns at the Market closest to the Caravan's first stop."),
           _("Added a caravan clone button to the trade report, next to the paste route button."),
+          /* xgettext:no-c-format */
           _("Automatically \"heal\" caravans by replacing damaged ones using the above caravan cloning feature.  Caravans heading to a Market will be replaced if they have any damage, and caravans which do not have any Market stops will be replaced if they fall to 80% or below."),
           _("Show the skill icon of the unit being trained in Towns under the progress bar on the world map and in the info pane."),
           _("Show the skill level of builders inside buildings on the hammer icon."),
@@ -880,6 +884,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_FIXED,
         .items = {
+          /* xgettext:no-c-format */
           _("Fixed the 100% CPU usage all the time problem."),
           _("Fixed scrolling to the right and down not working properly."),
           _("Fixed the unit path line flow direction to go from the unit to its destination instead of backwards."),
