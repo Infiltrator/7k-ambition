@@ -12,6 +12,7 @@ speaking, considered to be the player's experience.
 
 ### Added
 
+- Added a locale selection screen, for switching locales (languages).
 - Added a feedback sound when clicking the Clone Caravan button.
 - Added a feedback sound when clicking the Hire Caravan button in the Market.
 
@@ -21,6 +22,8 @@ speaking, considered to be the player's experience.
 - Fixed issue with "Building Complete" (and other) sounds not being audible when
   they are far away from the current screen location because they became too
   quiet.
+- Fixed the Start and Return buttons not animating on the Mode Selection screen.
+- Fixed the scrollbar thumbs appearing to overlap the scroll buttons.
 
 ### Changed
 

@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,9 +31,11 @@
 #include "pragma_silence_7kaa_warnings.hh"
 #include "COLCODE.h"
 #include "KEY.h"
+#include "OBUTT3D.h"
 #include "OIMGRES.h"
 #include "OMOUSE.h"
 #include "ONATIONA.h"
+#include "OSLIDCUS.h"
 #include "OSYS.h"
 #include "OVGA.h"
 #include "OWORLD.h"
@@ -60,6 +62,137 @@ int rankReportComparison7kaaNationRecordNumber = 0;
 BuildingMenu buildingMenu = BuildingMenu::_7kaa;
 int reportType = -1;
 short selected7kaaFirmOrTownRecordNumber = 0;
+
+
+constexpr UserInterface::Size LOCALE_BUTTON_SIZE = {
+  .width = 34,
+  .height = 40,
+};
+const Rectangle LOCALE_BUTTON
+  = UserInterface::BOUNDS
+  .inner(10)
+  .internal(LOCALE_BUTTON_SIZE);
+constexpr auto ICON_CLICK_OUTSIDE_CLEARANCE = 4;
+const Rectangle LOCALE_BUTTON_CLICK_AREA = LOCALE_BUTTON.outer(
+  ICON_CLICK_OUTSIDE_CLEARANCE
+);
+
+constexpr auto BORDER_WIDTH = 1;
+
+const Size SCROLL_BUTTON_SIZE = { .width = 14, .height = 17 };
+
+namespace SelectionListScreen {
+
+namespace Heading {
+
+const Rectangle SECTION = BOUNDS.internal({ .height = 172 });
+
+const Rectangle TEXT
+  = SECTION
+  .inner({ left: 90, right: 90, top: 32, bottom: 84 })
+  .inner(TEXT_BOX_PADDING);
+
+} // namespace SelectionListScreen::Heading
+
+namespace ShortHeading {
+
+const Rectangle SECTION = BOUNDS.internal({ .height = 101 });
+
+const Rectangle TEXT
+  = SECTION
+  .inner({ left: 90, right: 90, top: 32, bottom: 13 })
+  .inner(TEXT_BOX_PADDING);
+
+} // namespace SelectionListScreen::ShortHeading
+
+namespace Description {
+
+extern const Rectangle SECTION
+  = BOUNDS
+  .inner({ top: static_cast<unsigned int>(Heading::SECTION.height()) })
+  .internal({ .height = 148 });
+
+const Rectangle TEXT_BOX
+  = SECTION.inner({ left: 30, right: 29, top: 15, bottom: 13 });
+const Rectangle TEXT
+  = TEXT_BOX
+  .inner(
+    { right: static_cast<unsigned int>(SCROLL_BUTTON_SIZE.width + BORDER_WIDTH) }
+  ).inner(TEXT_BOX_PADDING);
+
+const Rectangle SCROLLBAR = TEXT_BOX.internal(
+  { .width = SCROLL_BUTTON_SIZE.width },
+  HorizontalAlignment::Right
+);
+
+} // namespace SelectionListScreen::Description
+
+namespace List {
+
+extern const Rectangle SECTION
+  = BOUNDS
+  .inner(
+    {
+      top: static_cast<unsigned int>(
+        Heading::SECTION.height() + Description::SECTION.height()
+      )
+    }
+  ).internal({ .height = 280 });
+
+const Rectangle SLOT_AREA
+  = SECTION.inner({ left: 30, right: 29, top: 15, bottom: 89 });
+const Rectangle SLOTS = SLOT_AREA.inner(
+  { right: static_cast<unsigned int>(SCROLL_BUTTON_SIZE.width + BORDER_WIDTH) }
+);
+
+const Rectangle SCROLLBAR = SLOT_AREA.internal(
+  { .width = SCROLL_BUTTON_SIZE.width },
+  HorizontalAlignment::Right
+);
+
+} // namespace SelectionListScreen::List
+
+namespace LongList {
+
+const Rectangle SECTION
+  = BOUNDS.inner({ top: static_cast<unsigned int>(ShortHeading::SECTION.height()) });
+
+const Rectangle SLOT_AREA
+  = SECTION.inner({ left: 30, right: 29, top: 15, bottom: 89 });
+const Rectangle SLOTS = SLOT_AREA.inner(
+  { right: static_cast<unsigned int>(SCROLL_BUTTON_SIZE.width + BORDER_WIDTH) }
+);
+
+const Rectangle SCROLLBAR = SLOT_AREA.internal(
+  { .width = SCROLL_BUTTON_SIZE.width },
+  HorizontalAlignment::Right
+);
+
+} // namespace SelectionListScreen::LongList
+
+namespace Buttons {
+
+const Rectangle SECTION = BOUNDS.internal(
+  { height: 85 },
+  HorizontalAlignment::Centre,
+  VerticalAlignment::Bottom
+);
+
+const Size BUTTON_SIZE = { .width = 166, .height = 46 };
+
+const Rectangle BUTTON_ROW = SECTION.inner({ bottom: 25 });
+const Rectangle START_BUTTON
+  = BUTTON_ROW
+  .inner({ left: 170 })
+  .internal(BUTTON_SIZE, HorizontalAlignment::Left, VerticalAlignment::Bottom);
+const Rectangle BACK_BUTTON
+  = BUTTON_ROW
+  .inner({ right: 170 })
+  .internal(BUTTON_SIZE, HorizontalAlignment::Right, VerticalAlignment::Bottom);
+
+} // namespace SelectionListScreen::Buttons
+
+} // namespace SelectionListScreen
 
 
 char _7kaaJustification(
@@ -103,6 +236,11 @@ bool Rectangle::contains(
 }
 
 Rectangle Rectangle::inner(
+  const Space& padding
+) const {
+  return inner(padding.left, padding.top, padding.right, padding.bottom);
+}
+Rectangle Rectangle::inner(
   int paddingLeft,
   int paddingTop,
   int paddingRight,
@@ -140,6 +278,11 @@ Rectangle Rectangle::inner(
 }
 
 Rectangle Rectangle::outer(
+  const Space& margin
+) const {
+  return outer(margin.left, margin.top, margin.right, margin.bottom);
+}
+Rectangle Rectangle::outer(
   const int marginLeft,
   int marginTop,
   int marginRight,
@@ -172,8 +315,8 @@ Rectangle Rectangle::internal(
   const HorizontalAlignment horizontalAlignment,
   const VerticalAlignment verticalAlignment
 ) const {
-  const auto horizontalSpace = width() - size.width;
-  const auto verticalSpace = height() - size.height;
+  const auto horizontalSpace = size.width == 0 ? 0 : width() - size.width;
+  const auto verticalSpace = size.height == 0 ? 0 : height() - size.height;
 
   int paddingLeft {};
   int paddingTop {};
@@ -255,6 +398,42 @@ bool detectMouseClick(
     area.end.left,
     area.end.top
   );
+}
+
+void draw7kaaScrollbar(
+  SlideVBar *scrollbar,
+  const int _UNUSED
+) {
+  /* Refresh the entire trough from the back buffer. */
+  vga_util.blt_buf(
+    scrollbar->scrn_x1,
+    scrollbar->scrn_y1,
+    scrollbar->scrn_x2,
+    scrollbar->scrn_y2
+  );
+
+  /* Draw the thumb. */
+  const auto thumbTop = scrollbar->rect_top();
+  const auto thumbBottom = scrollbar->rect_bottom();
+  vga_front.bar(
+    scrollbar->scrn_x1,
+    thumbTop,
+    scrollbar->scrn_x2,
+    thumbBottom,
+    VGA_YELLOW + 1
+  );
+  if (thumbBottom - thumbTop > 6) {
+    constexpr auto BORDER_THICKNESS = 2;
+    constexpr auto DO_NOT_FILL = 0;
+    vga_front.d3_panel_up(
+      scrollbar->scrn_x1,
+      thumbTop,
+      scrollbar->scrn_x2,
+      thumbBottom,
+      BORDER_THICKNESS,
+      DO_NOT_FILL
+    );
+  }
 }
 
 bool drawInformationPanel(
@@ -373,6 +552,29 @@ Point fromWorldPoint(
   };
 }
 
+void initScrollButton(
+  Button3D& scrollButton,
+  const UserInterface::Rectangle& scrollButtonLocation,
+  const ScrollButtonDirection direction
+) {
+  constexpr auto UP_BUTTON_NORMAL_CODE = "SV-UP-U";
+  constexpr auto UP_BUTTON_PUSHED_CODE = "SV-UP-D";
+  constexpr auto DOWN_BUTTON_NORMAL_CODE = "SV-DW-U";
+  constexpr auto DOWN_BUTTON_PUSHED_CODE = "SV-DW-D";
+
+  constexpr auto ELASTIC = 1;
+  constexpr auto IS_NOT_PUSHED = 0;
+
+  scrollButton.create(
+    scrollButtonLocation.start.left,
+    scrollButtonLocation.start.top,
+    direction == Up ? UP_BUTTON_NORMAL_CODE : DOWN_BUTTON_NORMAL_CODE,
+    direction == Up ? UP_BUTTON_PUSHED_CODE : DOWN_BUTTON_PUSHED_CODE,
+    ELASTIC,
+    IS_NOT_PUSHED
+  );
+}
+
 bool mouseCursorInArea(
   const Rectangle area
 ) {
@@ -391,7 +593,8 @@ void printParagraph(
   const int lineSpacing,
   const Clear clear,
   const HorizontalAlignment horizontalAlignment,
-  const VerticalAlignment verticalAlignment
+  const VerticalAlignment verticalAlignment,
+  const int linesToSkip
 ) {
   const auto justification = _7kaaJustification(horizontalAlignment);
 
@@ -402,7 +605,7 @@ void printParagraph(
     area.end.top,
     text.c_str(),
     lineSpacing,
-    1,
+    linesToSkip + 1,
     0,
     justification
   );
@@ -436,7 +639,7 @@ void printParagraph(
     textArea.end.top,
     text.c_str(),
     lineSpacing,
-    1,
+    linesToSkip + 1,
     1,
     justification
   );

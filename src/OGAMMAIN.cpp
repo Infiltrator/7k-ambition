@@ -221,6 +221,7 @@ void Game::main_menu()
 		// ######### end Gilbert 23/7 ##########//
 
 		Ambition::Draw::modeInformation();
+		Ambition::Draw::localeButton();
 		Ambition::Draw::whatsNewButton();
 		Ambition::Draw::discordButton();
 		Ambition::Draw::feedbackLink();
@@ -234,6 +235,7 @@ void Game::main_menu()
 		mouse.get_event();
 
 		refreshFlag = Ambition::Input::detectModeSelectClick();
+		refreshFlag = Ambition::Input::detectLocaleSelectClick() || refreshFlag;
 		refreshFlag = Ambition::Input::detectWhatsNewClick() || refreshFlag;
 		Ambition::Input::detectDiscordClick();
 		Ambition::Input::detectFeedbackLinkClick();

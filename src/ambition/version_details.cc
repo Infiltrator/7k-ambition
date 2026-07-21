@@ -20,6 +20,7 @@ std::vector<VersionUpdates> versionDetails = {
       {
         .heading = HEADING_ADDED,
         .items = {
+          _("Added a locale selection screen, for switching locales (languages)."),
           _("Added a feedback sound when clicking the Clone Caravan button."),
           _("Added a feedback sound when clicking the Hire Caravan button in the Market."),
         },
@@ -29,6 +30,8 @@ std::vector<VersionUpdates> versionDetails = {
         .items = {
           _("Fixed Catalan translation not working for countries other than Spain."),
           _("Fixed issue with \"Building Complete\" (and other) sounds not being audible when they are far away from the current screen location because they became too quiet."),
+          _("Fixed the Start and Return buttons not animating on the Mode Selection screen."),
+          _("Fixed the scrollbar thumbs appearing to overlap the scroll buttons."),
         },
       },
       {

@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1077,6 +1077,17 @@ void innGuestLeavingSoonMark(
   }
 
   Ambition::displayInnGuestLeavingSoonMark(_7kaaInnGuest, top);
+}
+
+void localeButton(
+) {
+  const auto buttonBitmap = image_button.get_ptr("LOCALE");
+
+  vga_front.put_bitmap_trans(
+    Ambition::UserInterface::LOCALE_BUTTON.start.left,
+    Ambition::UserInterface::LOCALE_BUTTON.start.top,
+    buttonBitmap
+  );
 }
 
 void loadMenuDeleteButton(

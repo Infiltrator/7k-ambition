@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,9 @@
 
 #include "Ambition_coordinates.hh"
 
+class Button3D;
 class Font;
+class SlideVBar;
 
 
 namespace Ambition::UserInterface {
@@ -79,8 +81,8 @@ struct Point {
 };
 
 struct Size {
-  int width;
-  int height;
+  int width = 0;
+  int height = 0;
 };
 
 struct Rectangle {
@@ -138,6 +140,16 @@ struct Rectangle {
     const Rectangle& rectangle
   ) const;
 
+  struct Space {
+    unsigned int left = 0;
+    unsigned int right = 0;
+    unsigned int top = 0;
+    unsigned int bottom = 0;
+  };
+
+  Rectangle inner(
+    const Space& padding
+  ) const;
   Rectangle inner(
     int paddingLeft,
     int paddingTop = -1,
@@ -145,6 +157,9 @@ struct Rectangle {
     int paddingBottom = -1
   ) const;
 
+  Rectangle outer(
+    const Space& margin
+  ) const;
   Rectangle outer(
     const int marginLeft,
     int marginTop = -1,
@@ -198,6 +213,63 @@ const auto VIEWPORT = BOUNDS.internal(
   VerticalAlignment::Bottom
 );
 
+constexpr auto TEXT_BOX_PADDING = 13;
+
+extern const Size SCROLL_BUTTON_SIZE;
+
+namespace SelectionListScreen {
+
+namespace Heading {
+
+extern const Rectangle SECTION;
+extern const Rectangle TEXT;
+
+} // namespace SelectionListScreen::Heading
+
+namespace ShortHeading {
+
+extern const Rectangle SECTION;
+extern const Rectangle TEXT;
+
+} // namespace SelectionListScreen::ShortHeading
+
+namespace Description {
+
+extern const Rectangle SECTION;
+extern const Rectangle TEXT_BOX;
+extern const Rectangle TEXT;
+extern const Rectangle SCROLLBAR;
+
+} // namespace SelectionListScreen::Description
+
+namespace List {
+
+extern const Rectangle SECTION;
+extern const Rectangle SLOT_AREA;
+extern const Rectangle SLOTS;
+extern const Rectangle SCROLLBAR;
+
+} // namespace SelectionListScreen::List
+
+namespace LongList {
+
+extern const Rectangle SECTION;
+extern const Rectangle SLOT_AREA;
+extern const Rectangle SLOTS;
+extern const Rectangle SCROLLBAR;
+
+} // namespace SelectionListScreen::LongList
+
+namespace Buttons {
+
+extern const Rectangle SECTION;
+extern const Rectangle BUTTON_ROW;
+extern const Rectangle START_BUTTON;
+extern const Rectangle BACK_BUTTON;
+
+} // namespace SelectionListScreen::Buttons
+
+} // namespace SelectionListScreen
 
 namespace ScenarioList {
 
@@ -419,6 +491,9 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
   }
 );
 
+extern const Rectangle LOCALE_BUTTON;
+extern const Rectangle LOCALE_BUTTON_CLICK_AREA;
+
 const auto DISCORD_BUTTON = BOUNDS
   .inner(4)
   .internal(
@@ -445,6 +520,11 @@ Size bitmapSize(
 
 bool detectMouseClick(
   const Rectangle area
+);
+
+void draw7kaaScrollbar(
+  SlideVBar *scrollbar,
+  const int _UNUSED
 );
 
 bool drawInformationPanel(
@@ -474,6 +554,13 @@ Point fromWorldPoint(
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
 );
 
+enum ScrollButtonDirection { Up, Down };
+void initScrollButton(
+  Button3D& scrollButton,
+  const UserInterface::Rectangle& scrollButtonLocation,
+  const ScrollButtonDirection direction
+);
+
 bool mouseCursorInArea(
   const Rectangle area
 );
@@ -485,7 +572,8 @@ void printParagraph(
   const int lineSpacing = 2,
   const Clear clear = Clear::None,
   const HorizontalAlignment horizontalAlignment = HorizontalAlignment::Left,
-  const VerticalAlignment verticalAlignment = VerticalAlignment::Top
+  const VerticalAlignment verticalAlignment = VerticalAlignment::Top,
+  const int linesToSkip = 0
 );
 
 void printText(
