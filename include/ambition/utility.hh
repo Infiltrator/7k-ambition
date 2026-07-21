@@ -44,7 +44,7 @@ requires std::indirect_binary_predicate<
 >
 constexpr bool
 contains(
-  Range range,
+  Range&& range,
   const Element& value,
   Projection projection = {}
 ) {
