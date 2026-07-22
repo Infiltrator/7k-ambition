@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-24 13:33+1000\n"
-"PO-Revision-Date: 2026-08-24 13:44+1000\n"
+"PO-Revision-Date: 2026-07-23 17:22+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.6\n"
 
 #. TRANSLATORS: Single-letter war machine identifier for Catapult.
 #: src/ambition/7kaaInterface/building.cc:328
@@ -53,6 +53,7 @@ msgstr "Е"
 #, c-format
 msgid "%s's Kingdom%s offers $%.1f per unit of food, for a total of $%'.0f."
 msgstr ""
+"Королевство %s%s предлагает $%.1f за меру продовольствия, итого — $%'.0f."
 
 #: src/ambition/7kaaInterface/diplomacy.cc:145
 msgid "What price do you offer per unit of food?"
@@ -76,42 +77,42 @@ msgstr ""
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:113
 msgid "classic"
-msgstr ""
+msgstr "классический"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:116
 msgid "enhanced"
-msgstr ""
+msgstr "улучшенный"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:119
 msgid "advanced"
-msgstr ""
+msgstr "продвинутый"
 
 # data/scenario/eradicat.sct:1
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:122
 msgid "ambition"
-msgstr ""
+msgstr "устремление"
 
 #: src/ambition/Ambition_config.cc:125
 msgid "ERROR:UNKNOWN"
-msgstr ""
+msgstr "ОШИБКА:НЕИЗВЕСТНАЯ"
 
 #: src/ambition/Ambition_config.cc:192
 msgid "Current mode:"
-msgstr ""
+msgstr "Текущий режим действа:"
 
 #: src/ambition/Ambition_config.cc:226
 #, c-format
 msgid "Error in %s at lines:\n"
-msgstr ""
+msgstr "Ошибка в файле %s, строки:\n"
 
 #. TRANSLATORS: The separator for config.txt file error line numbers.
 #: src/ambition/Ambition_config.cc:229
 #, c-format
 msgid "%d, "
-msgstr ""
+msgstr "%d, "
 
 #: src/ambition/Ambition_config.cc:233
 msgid ""
@@ -120,7 +121,7 @@ msgstr ""
 
 #: src/ambition/Ambition_config.cc:253
 msgid "Select Locale"
-msgstr ""
+msgstr "Выбор локали"
 
 #: src/ambition/Ambition_config.cc:270
 msgid ""
@@ -204,12 +205,12 @@ msgstr "Русский"
 
 #: src/ambition/Ambition_config.cc:597
 msgid "Select Mode"
-msgstr ""
+msgstr "Выбор режима действа"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:601
 msgid "I. Classic"
-msgstr ""
+msgstr "I. Классический"
 
 #: src/ambition/Ambition_config.cc:602
 msgid ""
@@ -220,7 +221,7 @@ msgstr ""
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:608
 msgid "II. Enhanced"
-msgstr ""
+msgstr "II. Улучшенный"
 
 #: src/ambition/Ambition_config.cc:609
 msgid ""
@@ -265,7 +266,7 @@ msgstr ""
 
 #: src/ambition/Ambition_news.cc:379
 msgid "WHAT'S NEW"
-msgstr ""
+msgstr "Новые функции и возможности"
 
 #: src/ambition/Ambition_serialisation.cc:81 src/OGFILEA.cpp:707
 msgid "File Date"
@@ -292,19 +293,19 @@ msgstr ""
 
 #: src/ambition/Ambition_vga.cc:421
 msgid "Speed: "
-msgstr ""
+msgstr "Скорость: "
 
 #: src/ambition/Ambition_vga.cc:423
 msgid "PAUSED"
-msgstr ""
+msgstr "ПРИОСТАНОВЛЕНА"
 
 #: src/ambition/Ambition_vga.cc:425
 msgid "UNLIMITED"
-msgstr ""
+msgstr "БЕЗГРАНИЧНА"
 
 #: src/ambition/Ambition_vga.cc:441
 msgid "GAME IS PAUSED"
-msgstr ""
+msgstr "ИГРА ПРИОСТАНОВЛЕНА"
 
 #: src/ambition/Ambition_vga.cc:468 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
 msgid "Status"
@@ -312,7 +313,7 @@ msgstr "Статус"
 
 #: src/ambition/Ambition_vga.cc:470
 msgid "Leaving soon"
-msgstr ""
+msgstr "Скоро уйдёт"
 
 #: src/ambition/Ambition_vga.cc:470
 msgid "Enjoying stay"
@@ -338,17 +339,17 @@ msgstr ""
 #. TRANSLATORS: The short form of Clay.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:711
 msgid "Cl"
-msgstr ""
+msgstr "Гл."
 
 #. TRANSLATORS: The short form of Copper.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:713
 msgid "Co"
-msgstr ""
+msgstr "Ме."
 
 #. TRANSLATORS: The short form of Iron.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:715
 msgid "Ir"
-msgstr ""
+msgstr "Же."
 
 #: src/ambition/Ambition_vga.cc:729 src/ambition/Ambition_vga.cc:2467
 #: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:596 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
@@ -357,18 +358,18 @@ msgstr "Лидерство"
 
 #: src/ambition/Ambition_vga.cc:734 src/ambition/Ambition_vga.cc:749
 msgid "No general"
-msgstr ""
+msgstr "Нет ген."
 
 #. TRANSLATORS: Short form of Leadership, with the value following.
 #: src/ambition/Ambition_vga.cc:744
 #, c-format
 msgid "Ldr: %d"
-msgstr ""
+msgstr "Плк.: %d"
 
 #: src/ambition/Ambition_vga.cc:758
 #, c-format
 msgid "Ordos: %d"
-msgstr ""
+msgstr "Ордов: %d"
 
 #. TRANSLATORS: Short form of "no resources".
 #: src/ambition/Ambition_vga.cc:790
@@ -384,18 +385,18 @@ msgstr ""
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d рбч (%d)"
+msgstr[1] "%d рбч (%d)"
+msgstr[2] "%d рбч (%d)"
 
 #. TRANSLATORS: Short form of "<number> workers".
 #: src/ambition/Ambition_vga.cc:830
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d рбч"
+msgstr[1] "%d рбч"
+msgstr[2] "%d рбч"
 
 #. TRANSLATORS: Short form of "<number> soldiers (<combined combat
 #. rating>)".
@@ -403,37 +404,37 @@ msgstr[2] ""
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d слд (%.0f)"
+msgstr[1] "%d слд (%.0f)"
+msgstr[2] "%d слд (%.0f)"
 
 #: src/ambition/Ambition_vga.cc:857
 #, c-format
 msgid "%d guest"
 msgid_plural "%d guests"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%d постоялец"
+msgstr[1] "%d постоял."
+msgstr[2] "%d постоял."
 
 #: src/ambition/Ambition_vga.cc:869
 #, c-format
 msgid "Ships: %d/%d"
-msgstr ""
+msgstr "Кор.: %d/%d"
 
 #. TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:895
 msgid "Raw Cl"
-msgstr ""
+msgstr "Сыр. Г."
 
 #. TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:897
 msgid "Raw Co"
-msgstr ""
+msgstr "Сыр. М."
 
 #. TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:899
 msgid "Raw Ir"
-msgstr ""
+msgstr "Сыр. Ж."
 
 # data/resource/std/00003-RAW.dbf
 #: src/ambition/Ambition_vga.cc:900
@@ -452,30 +453,30 @@ msgstr "Железо"
 
 #: src/ambition/Ambition_vga.cc:923
 msgid "Empty"
-msgstr ""
+msgstr "Пустой"
 
 #: src/ambition/Ambition_vga.cc:939
 #, c-format
 msgctxt "narrow_panel"
 msgid "(%s%d Spy)"
 msgid_plural "(%s%d Sp)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(%s%d Шп)"
+msgstr[1] "(%s%d Шп)"
+msgstr[2] "(%s%d Шп)"
 
 #: src/ambition/Ambition_vga.cc:945
 #, c-format
 msgctxt "standard_panel"
 msgid "(%s%d Spy)"
 msgid_plural "(%s%d Spies)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(%s%d Шпион)"
+msgstr[1] "(%s%d Шп-а)"
+msgstr[2] "(%s%d Шп-ов)"
 
 #. TRANSLATORS: Short for "General", when the General is a spy.
 #: src/ambition/Ambition_vga.cc:950
 msgid "G+"
-msgstr ""
+msgstr "Г+"
 
 #. TRANSLATORS: Short for "population".
 #: src/ambition/Ambition_vga.cc:1012
@@ -485,19 +486,19 @@ msgstr ""
 #. TRANSLATORS: Short for "loyalty" and "resistance".
 #: src/ambition/Ambition_vga.cc:1020
 msgid "Lty"
-msgstr ""
+msgstr "Пред."
 
 #: src/ambition/Ambition_vga.cc:1020
 msgid "Rst"
-msgstr ""
+msgstr "Сопр."
 
 #: src/ambition/Ambition_vga.cc:1079
 #, c-format
 msgid "(%d Spy)"
 msgid_plural "(%d Spies)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(%d Шпион)"
+msgstr[1] "(%d Шпиона)"
+msgstr[2] "(%d Шпионов)"
 
 #: src/ambition/Ambition_vga.cc:1732
 msgid "Feedback"
@@ -505,7 +506,7 @@ msgstr ""
 
 #: src/ambition/Ambition_vga.cc:1862
 msgid "Guests"
-msgstr ""
+msgstr "Постояльцы"
 
 #: src/ambition/Ambition_vga.cc:2063
 #, c-format
@@ -558,7 +559,7 @@ msgstr ""
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
 #: src/OUNITIF.cpp:1177 src/OU_MARIF.cpp:512
 msgid "Loyalty"
-msgstr "Лояльность"
+msgstr "Предданость"
 
 #: src/ambition/Ambition_vga.cc:2478 src/ambition/Ambition_vga.cc:2543
 msgid "Yearly Upkeep"
@@ -3078,7 +3079,7 @@ msgstr "Логово Икей"
 # data/resource/std/00005-UNIT.dbf
 #: src/OF_MONS.cpp:140
 msgid "Sauroid Lair"
-msgstr "Логово Сауродинов"
+msgstr "Лог. Сауродинов"
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OF_MONS.cpp:141
@@ -3596,7 +3597,7 @@ msgstr "Пустая ячейка"
 
 #: src/OGFILEA.cpp:581
 msgid "Cannot delete this slot"
-msgstr "Эта ячейка не может быть удалена."
+msgstr "Эта ячейка не может быть удалена"
 
 #: src/OGFILEA.cpp:685
 msgid "Game Date"
@@ -3768,56 +3769,56 @@ msgstr "Изменитель Сознания"
 #. TRANSLATORS: Unit icon help popup with rank title. In the original game, fryhtans used the human ranks in the help message. Use General or Ordo whichever makes sense.
 #: src/OHELP.cpp:540
 msgid "Deezboanz General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:541
 msgid "Rattus General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:542
 msgid "Broosken General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:543
 msgid "Haubudam General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:544
 msgid "Pfith General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:545
 msgid "Rokken General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:546
 msgid "Doink General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:547
 msgid "Wyrm General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:548
 msgid "Droog General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:549
 msgid "Ick General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:550
 msgid "Sauroid General"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:551
 msgid "Karrotten General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:552
 msgid "Holgh General"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:553
 msgid "Egyptian General"
@@ -3908,65 +3909,65 @@ msgstr "Японский Король"
 #. TRANSLATORS: Unit icon help popup with rank title. In the original game, fryhtans used the human ranks in the help message. Use King or All High whichever makes sense.
 #: src/OHELP.cpp:588
 msgid "Deezboanz King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:589
 msgid "Rattus King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:590
 msgid "Broosken King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:591
 msgid "Haubudam King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:592
 msgid "Pfith King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:593
 msgid "Rokken King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:594
 msgid "Doink King"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:595
 msgid "Wyrm King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:596
 msgid "Droog King"
-msgstr "null"
+msgstr ""
 
 #: src/OHELP.cpp:597
 msgid "Ick King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:598
 msgid "Sauroid King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:599
 msgid "Karrotten King"
-msgstr "null"
+msgstr ""
 
 # data/resource/std/00005-UNIT.dbf
 #: src/OHELP.cpp:600
 msgid "Holgh King"
-msgstr "null"
+msgstr ""
 
 # #-#-#-#-#  -  #-#-#-#-#
 # data/resource/std/00005-UNIT.dbf
@@ -4879,7 +4880,7 @@ msgstr ""
 msgid ""
 "Your spy has been exposed and executed on his mission to a Fryhtan Lair near "
 "%s in %s's Kingdom%s."
-msgstr "null %s %s%s."
+msgstr ""
 
 #. TRANSLATORS: Your spy has been exposed and executed on his mission to a <Firm> near <Town>.
 #: src/ONEWSENG.cpp:897
@@ -4949,7 +4950,7 @@ msgstr "Ваш шпион был раскрыт и казнен в течени�
 msgid ""
 "Your spy has been exposed and executed on his mission to a Fryhtan Lair near "
 "%s."
-msgstr "null %s."
+msgstr ""
 
 #. TRANSLATORS: Your spy has been exposed and executed on his mission to <Town> in <King>'s Kingdom<Color>.
 #: src/ONEWSENG.cpp:951
@@ -5047,7 +5048,7 @@ msgstr "Шпион из %s%s был раскрыт и казнен в вашем
 msgid ""
 "A spy from %s's Kingdom%s has been uncovered and executed in your Fryhtan "
 "Lair near %s."
-msgstr "null %s%s %s."
+msgstr ""
 
 #. TRANSLATORS: A spy from <King>'s Kingdom<Color> has been uncovered and executed in your village of <Town>.
 #: src/ONEWSENG.cpp:1024
@@ -5662,8 +5663,7 @@ msgid ""
 "Your Tower of Science near %s has fallen into disrepair due to the lack of "
 "maintenance funds."
 msgstr ""
-"Ваш Научный центр около %s обветшала в связи с нехваткой средств на "
-"обслуживание."
+"Ваша Башня Знания около %s обветшала из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1622
 #, c-format
@@ -5896,7 +5896,7 @@ msgstr "Читерство"
 
 #: src/OR_ECO.cpp:231
 msgid "General Costs"
-msgstr "Общие затраты"
+msgstr "Расходы на генералов"
 
 #: src/OR_ECO.cpp:232
 msgid "Spy Costs"
@@ -5972,7 +5972,7 @@ msgstr "Тип юнита"
 
 #: src/OR_MIL.cpp:129
 msgid "No. of Units"
-msgstr "К-во отрядов"
+msgstr "Всего человеческих единиц: %s"
 
 #: src/OR_MIL.cpp:235
 #, c-format
@@ -6093,7 +6093,7 @@ msgstr "Мирное время с королевством %s"
 #: src/OR_NAT.cpp:547
 #, c-format
 msgid "Allow Your Units to Attack %s's Kingdom"
-msgstr "Позволить вашим отрядам атаковать %s"
+msgstr "Разрешить вашим отрядам атаковать королевство %s"
 
 #. TRANSLATORS: <King>'s Kingdom's Treasure
 #: src/OR_NAT.cpp:562
@@ -6216,7 +6216,7 @@ msgstr "Имя шпиона"
 
 #: src/OR_SPY.cpp:75
 msgid "Cloak"
-msgstr "Плащ"
+msgstr "Маскировка"
 
 #: src/OR_SPY.cpp:76 src/OR_TRADE.cpp:206
 msgid "Location"
@@ -6277,7 +6277,7 @@ msgstr "Крестьян"
 
 #: src/OR_TOWN.cpp:87
 msgid "Races"
-msgstr "Расы"
+msgstr "Племена"
 
 #: src/OR_TOWN.cpp:111
 msgid "Structure"
@@ -6310,7 +6310,7 @@ msgstr "Всего человеческих единиц: %s"
 #: src/OR_TOWN.cpp:238
 #, c-format
 msgid "Total Population: %s"
-msgstr "Общая численность населения: %s"
+msgstr "Итого населения: %s"
 
 #: src/OR_TOWN.cpp:249 src/OTOWNIF.cpp:345
 msgid "Total"
@@ -8006,7 +8006,7 @@ msgstr "Назначить остоновку"
 
 #: src/OU_CARA.cpp:186 src/OU_MARIF.cpp:630
 msgid "Pick up:"
-msgstr "Подобрать:"
+msgstr "Забрать:"
 
 #: src/OU_CARA.cpp:199 src/OU_MARIF.cpp:643
 msgid "View Stop"
@@ -8142,7 +8142,6 @@ msgid "(Spy)"
 msgstr "(Шпион)"
 
 #: src/ReplayFile.cpp:114
-#, fuzzy
 msgid "The selected replay file uses an unsupported format."
 msgstr "Выбранный файл воспроизведения использует неподдерживаемый формат."
 
@@ -8182,11 +8181,11 @@ msgstr "Морская торговля"
 
 # data/resource/tut_list.res
 msgid "Seats of Power & Greater Beings"
-msgstr "Владения и Всевышнии"
+msgstr "Верховные Храмы и Высшие Сущности"
 
 # data/resource/tut_list.res
 msgid "Weapons"
-msgstr "Оружие"
+msgstr "Орудия"
 
 # data/resource/std/00005-UNIT.dbf
 msgid "Broosken"
@@ -8340,7 +8339,7 @@ msgstr "Солдат"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "War Factory"
-msgstr "Военный завод"
+msgstr "Военный Завод"
 
 # data/resource/tut_intr/00000-1BAS_MIL.txt:1
 msgid ""
@@ -9320,8 +9319,8 @@ msgid ""
 "now standing outside. With eight Clicks you should now see eight Peasants "
 "milling around, outside the Village. "
 msgstr ""
-"С каждым кликом вы заметите, что один крестьянин покинул деревню и теперь "
-"стоит снаружи. После восьми кликов вы должны увидеть восемь крестьян, "
+"С каждым щелчком вы заметите, что один крестьянин покинул деревню и теперь "
+"стоит снаружи. После восьми щелчков, вы должны увидеть восемь крестьян, "
 "размахивающих вокруг, за деревней. "
 
 # data/resource/tut_text/00006-1BAS_MIL.txt:36
@@ -11287,7 +11286,7 @@ msgstr ""
 
 # data/scenario/makebrek.sct:1
 msgid "Make or Break"
-msgstr "Делать или перерыв"
+msgstr "Победа или Поражение"
 
 # data/scenario/makebrek.sct:5
 msgid ""
@@ -11309,7 +11308,7 @@ msgstr ""
 
 # data/scenario/meltpot.sct:1
 msgid "Melting Pot"
-msgstr "Плавильный котел"
+msgstr "Плавильный Котел"
 
 # data/scenario/meltpot.sct:5
 msgid ""
@@ -11325,7 +11324,7 @@ msgstr ""
 
 # data/scenario/monorwar.sct:1
 msgid "Make Money or War?"
-msgstr "Сделать деньги или войну?"
+msgstr "Зарабатывать Деньги или Воевать?"
 
 # data/scenario/monorwar.sct:5
 msgid ""
@@ -11385,7 +11384,7 @@ msgstr ""
 
 # data/scenario/notlost.sct:1
 msgid "Not all those who Wander are Lost"
-msgstr "Не каждому кто блуждает суждено заблудиться"
+msgstr "Не Все Те, Кто Блуждает — Потеряны"
 
 # data/scenario/notlost.sct:5
 msgid ""
@@ -11472,7 +11471,7 @@ msgstr ""
 
 # data/scenario/resdep.sct:1
 msgid "Resource Depletion"
-msgstr "Истощение ресурсов"
+msgstr "Истощение Ресурсов"
 
 # data/scenario/resdep.sct:5
 msgid ""
@@ -11492,7 +11491,7 @@ msgstr ""
 
 # data/scenario/treadcar.sct:1
 msgid "Tread Carefully"
-msgstr "Продвигайтесь осторожно"
+msgstr "Продвигайтесь Осторожно"
 
 # data/scenario/treadcar.sct:5
 msgid ""
@@ -11530,7 +11529,7 @@ msgstr ""
 
 # data/scenario/weakened.sct:1
 msgid "A Weakened State"
-msgstr "Ослабленное государство"
+msgstr "Ослабленное Государство"
 
 # data/scenario/weakened.sct:5
 msgid ""
@@ -11546,7 +11545,7 @@ msgstr ""
 
 # data/scenari2/scn_01.sct:1
 msgid "The Quick & the Dead"
-msgstr "Быстрые и мертвые"
+msgstr "Быстрые и Мёртвые"
 
 # data/scenari2/scn_01.sct:5
 msgid ""
@@ -11564,7 +11563,7 @@ msgstr ""
 
 # data/scenari2/scn_02.sct:1
 msgid "Go Forth & Multiply"
-msgstr "Вперед и помножай"
+msgstr "Идите и Размножайтесь"
 
 # data/scenari2/scn_02.sct:5
 msgid ""
@@ -11605,7 +11604,7 @@ msgstr ""
 
 # data/scenari2/scn_04.sct:1
 msgid "Shaken to the Core"
-msgstr "Потрясенный до ядра"
+msgstr "Потрясённый до Ядра"
 
 # data/scenari2/scn_04.sct:5
 msgid ""
@@ -11679,7 +11678,7 @@ msgstr ""
 
 # data/scenari2/scn_08.sct:1
 msgid "First Born"
-msgstr "Первый рожденный"
+msgstr "Первый Рождённый"
 
 # data/scenari2/scn_08.sct:5
 msgid ""
@@ -11733,7 +11732,7 @@ msgstr ""
 
 # data/scenari2/scn_11.sct:1
 msgid "The Great Lakes"
-msgstr "Великие озера"
+msgstr "Великие Озера"
 
 # data/scenari2/scn_11.sct:5
 msgid ""
@@ -11748,7 +11747,7 @@ msgstr ""
 
 # data/scenari2/scn_12.sct:1
 msgid "Eye of the Storm"
-msgstr "Глаз урагана"
+msgstr "Глаз Урагана"
 
 # data/scenari2/scn_12.sct:5
 msgid ""
@@ -12561,7 +12560,7 @@ msgid ""
 "Click on this box to reply to the message or to see the location of the "
 "event. "
 msgstr ""
-"Нажмите на это поле, чтобы ответить на сообщение или увидеть место события."
+"Щелкните на это поле, чтобы ответить на сообщение или увидеть место события. "
 
 # data/resource/help.res:277
 msgid "News Log"
