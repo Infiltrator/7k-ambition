@@ -33,6 +33,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed issue with \"Building Complete\" (and other) sounds not being audible when they are far away from the current screen location because they became too quiet."),
           _("Fixed the Start and Return buttons not animating on the Mode Selection screen."),
           _("Fixed the scrollbar thumbs appearing to overlap the scroll buttons."),
+          _("Fixed the What's New heading getting cut off when it's too long (i.e. in other languages)."),
         },
       },
       {
