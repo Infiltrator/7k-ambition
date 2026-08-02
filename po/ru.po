@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-24 13:33+1000\n"
-"PO-Revision-Date: 2026-07-23 17:22+1000\n"
+"PO-Revision-Date: 2026-08-11 21:43+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -57,22 +57,22 @@ msgstr ""
 
 #: src/ambition/7kaaInterface/diplomacy.cc:145
 msgid "What price do you offer per unit of food?"
-msgstr ""
+msgstr "Какую цену Вы предлагаете за меру продовольствия?"
 
 #: src/ambition/7kaaInterface/diplomacy.cc:155
 #, c-format
 msgid "$%.1f per unit of food.  Total cost: $%'.0f."
-msgstr ""
+msgstr "$%.1f за меру продовольствия.  Общая стоимость: $%'.0f."
 
 #: src/ambition/7kaaInterface/score.cc:104
 #, c-format
 msgid "Comparing %s's Kingdom%s"
-msgstr ""
+msgstr "Сравнение королевства %s%s"
 
 #: src/ambition/7kaaInterface/score.cc:105
 #, c-format
 msgid "Compare %s's Kingdom%s"
-msgstr ""
+msgstr "Сравнить королевство %s%s"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:113
@@ -118,6 +118,8 @@ msgstr "%d, "
 msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
+"«Семь Королевств: Устремление» продолжит загрузку, пропустив некорректные "
+"строки."
 
 #: src/ambition/Ambition_config.cc:253
 msgid "Select Locale"
@@ -129,6 +131,9 @@ msgid ""
 "effect the next time that Seven Kingdoms: Ambition starts.\n"
 "Would you like to exit now?"
 msgstr ""
+"Настройка локали сохранена в файле config.txt и вступит в силу при следующем "
+"запуске «Семь Королевств: Устремление».\n"
+"Хотите выйти сейчас?"
 
 #: src/ambition/Ambition_config.cc:274 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
 #: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
@@ -144,16 +149,15 @@ msgstr "Нет"
 
 #: src/ambition/Ambition_config.cc:352
 msgid "Error opening config.txt file for reading:"
-msgstr ""
+msgstr "Ошибка открытия файла config.txt для чтения:"
 
 #: src/ambition/Ambition_config.cc:417
 msgid "Error opening config.txt file for writing:"
-msgstr ""
+msgstr "Ошибка открытия файла config.txt для записи:"
 
 #: src/ambition/Ambition_config.cc:428
-#, fuzzy
 msgid "Error writing to config.txt file:"
-msgstr "Ошибка создания файла сохранения"
+msgstr "Ошибка записи в файл config.txt:"
 
 #: src/ambition/Ambition_config.cc:496
 msgid "Detect System Locale"
@@ -240,11 +244,11 @@ msgstr ""
 
 #: src/ambition/Ambition_control.cc:83
 msgid "I want to be heard!"
-msgstr ""
+msgstr "Делиться впечатлениями"
 
 #: src/ambition/Ambition_control.cc:84
 msgid "Later"
-msgstr ""
+msgstr "Потом"
 
 #: src/ambition/Ambition_control.cc:108
 msgid "End of replay"
@@ -284,7 +288,7 @@ msgstr ""
 # data/resource/help.res:377
 #: src/ambition/Ambition_vga.cc:350
 msgid "Assassinate"
-msgstr "Убивать"
+msgstr "Умертвить"
 
 #: src/ambition/Ambition_vga.cc:382
 #, c-format
@@ -309,7 +313,7 @@ msgstr "ИГРА ПРИОСТАНОВЛЕНА"
 
 #: src/ambition/Ambition_vga.cc:468 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
 msgid "Status"
-msgstr "Статус"
+msgstr "Состояние"
 
 #: src/ambition/Ambition_vga.cc:470
 msgid "Leaving soon"
@@ -354,7 +358,7 @@ msgstr "Же."
 #: src/ambition/Ambition_vga.cc:729 src/ambition/Ambition_vga.cc:2467
 #: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:596 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
 msgid "Leadership"
-msgstr "Лидерство"
+msgstr "Полководч."
 
 #: src/ambition/Ambition_vga.cc:734 src/ambition/Ambition_vga.cc:749
 msgid "No general"
@@ -481,7 +485,7 @@ msgstr "Г+"
 #. TRANSLATORS: Short for "population".
 #: src/ambition/Ambition_vga.cc:1012
 msgid "Pop"
-msgstr ""
+msgstr "Насел."
 
 #. TRANSLATORS: Short for "loyalty" and "resistance".
 #: src/ambition/Ambition_vga.cc:1020
@@ -502,7 +506,7 @@ msgstr[2] "(%d Шпионов)"
 
 #: src/ambition/Ambition_vga.cc:1732
 msgid "Feedback"
-msgstr ""
+msgstr "Прокомментировать"
 
 #: src/ambition/Ambition_vga.cc:1862
 msgid "Guests"
@@ -511,12 +515,12 @@ msgstr "Постояльцы"
 #: src/ambition/Ambition_vga.cc:2063
 #, c-format
 msgid "Your spy estimates a success chance of %d%%."
-msgstr ""
+msgstr "Ваш шпион оценивает шанс успеха в %d%%."
 
 #: src/ambition/Ambition_vga.cc:2107
 #, c-format
 msgid "Your spy suggests a bribe of $%'d."
-msgstr ""
+msgstr "Ваш шпион предлагает размер взятки: $%'d."
 
 # data/resource/tut_list.res
 #: src/ambition/Ambition_vga.cc:2134
@@ -525,15 +529,15 @@ msgstr "Корабли"
 
 #: src/ambition/Ambition_vga.cc:2170
 msgid "No leader assigned"
-msgstr ""
+msgstr "Военачальник не назначен"
 
 #: src/ambition/Ambition_vga.cc:2172
 msgid "Leader out of range"
-msgstr ""
+msgstr "Военачальник вне зоны действия"
 
 #: src/ambition/Ambition_vga.cc:2174
 msgid "Leader is providing bonuses"
-msgstr ""
+msgstr "Военачальник предоставляет бонусы"
 
 #: src/ambition/Ambition_vga.cc:2183 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
@@ -572,7 +576,7 @@ msgstr ""
 #: src/ambition/Ambition_vga.cc:2597
 #, c-format
 msgid "Your spy estimates an escape chance of %d%%."
-msgstr ""
+msgstr "Ваш шпион оценивает шанс побега в %d%%."
 
 #. TRANSLATORS: … You have a version compatible with 7kfans' 7kaa <version
 #. number>. … Your config.txt file can be found here: <config directory
@@ -615,7 +619,7 @@ msgstr "Предварительная версия — ещё не выпуще
 
 #: src/ambition/version_details.cc
 msgid "Added a locale selection screen, for switching locales (languages)."
-msgstr ""
+msgstr "Добавлен экран выбора локали для переключения между языками."
 
 #: src/ambition/version_details.cc
 msgid "Added a Latin translation, thanks to Júlia Rosell Saldaña."
@@ -2819,7 +2823,7 @@ msgstr "Дек."
 #, c-format
 msgctxt "FirmUI|Name"
 msgid "%s %s %d"
-msgstr "%s %s %d"
+msgstr "%2s %1s %d"
 
 #. TRANSLATORS: <Town> <Short Firm Name>
 #. This is the name of the firm.
@@ -2827,7 +2831,7 @@ msgstr "%s %s %d"
 #, c-format
 msgctxt "FirmUI|Name"
 msgid "%s %s"
-msgstr "%s %s"
+msgstr "%2s %1s"
 
 #: src/OFIRMIF.cpp:92
 msgid "Under Construction"
@@ -3105,7 +3109,7 @@ msgstr "Имя сессии:"
 
 #: src/OGAMEMP.cpp:535
 msgid "Set Password:"
-msgstr "Установка пароля:"
+msgstr "Установите пароль:"
 
 #: src/OGAMEMP.cpp:580 src/OGAMEMP.cpp:842
 msgid "Unable to connect from lobby"
@@ -3348,15 +3352,15 @@ msgstr "Невозможно начать игру."
 
 #: src/OGAMEMP.cpp:5572
 msgid "Incorrect kingdom information received from the host."
-msgstr "Неверная информация о королевстве получена от создателя."
+msgstr "Получена неверная информация о королевстве от ведущего игрока."
 
 #: src/OGAMEND.cpp:219
 msgid "Do you want to continue to stay in the game?"
-msgstr "Вы хотите остаться в игре?"
+msgstr "Хотите продолжить игру?"
 
 #: src/OGAMEND.cpp:269
 msgid "You Have Lost the Game !"
-msgstr "Вы проиграли !"
+msgstr "Вы проиграли!"
 
 #: src/OGAMEND.cpp:277
 msgid "All Fryhtans have been Destroyed !"
@@ -3376,13 +3380,13 @@ msgstr "Королевство %s достигло наивысшего боев
 #: src/OGAMEND.cpp:298
 #, c-format
 msgid "Your Kingdom has Reached its Population Goal of %s !"
-msgstr "Ваше королевство достигло целевой отметки уровня населения %s !"
+msgstr "Ваше королевство достигло цели по населению: %s!"
 
 #. TRANSLATORS: <King>'s Kingdom has Reached its Population/Economic Score/Total Score Goal of <Number> !
 #: src/OGAMEND.cpp:303
 #, c-format
 msgid "%s's Kingdom has Reached its Population Goal of %s !"
-msgstr "%s королевство достигло целевой отметки уровня населения %s !"
+msgstr "Королевство %s достигло цели по населению %s!"
 
 #. TRANSLATORS: Your Kingdom has Reached its Population/Economic Score/Total Score Goal of <Number> !
 #: src/OGAMEND.cpp:316
@@ -3440,55 +3444,55 @@ msgstr "Вы сложили власть %s."
 
 #: src/OGAMEND.cpp:424
 msgid "Duration of Your Rule"
-msgstr "Длительность вашего правления"
+msgstr "Лета вашего правления"
 
 #: src/OGAMEND.cpp:425
 msgid "Total Gaming Time"
-msgstr "Общее игровое время"
+msgstr "Общее время игры"
 
 #: src/OGAMEND.cpp:427
 msgid "Final Population"
-msgstr "Финальный уровень населения"
+msgstr "Число подданных к концу правления"
 
 #: src/OGAMEND.cpp:428
 msgid "Final Treasure"
-msgstr "Финальное сокровище"
+msgstr "Казна к концу правления"
 
 #: src/OGAMEND.cpp:430
 msgid "Enemy Soldiers Dispatched"
-msgstr "Противник выслал своих солдат"
+msgstr "Посечено неприятельских солдат"
 
 #: src/OGAMEND.cpp:431
 msgid "King's Soldiers Martyred"
-msgstr "Солдаты короля были замучены до смерти"
+msgstr "Полегло солдат короля"
 
 #: src/OGAMEND.cpp:433
 msgid "Enemy Weapons Destroyed"
-msgstr "Вооружение противника уничтожено"
+msgstr "Сокрушено неприятельских орудий"
 
 #: src/OGAMEND.cpp:434
 msgid "King's Weapons Rendered Obsolete"
-msgstr "Королевское вооружение устарело"
+msgstr "Порушено орудий короля"
 
 #: src/OGAMEND.cpp:436
 msgid "Enemy Ships Sunk"
-msgstr "Корабль противника потонул"
+msgstr "Пущено ко дну неприятельских кораблей"
 
 #: src/OGAMEND.cpp:437
 msgid "King's Ships Missing"
-msgstr "Королевские корабли пропали без вести"
+msgstr "Пропало без вести кораблей короля"
 
 #: src/OGAMEND.cpp:439
 msgid "Enemy Buildings Destroyed"
-msgstr "Строения противника уничтожены"
+msgstr "Разорено неприятельских строений"
 
 #: src/OGAMEND.cpp:440
 msgid "King's Buildings Cleared"
-msgstr "Королевские строения зачищены"
+msgstr "Порушено строений короля"
 
 #: src/OGAMEND.cpp:442
 msgid "Enemy Civilians Collaterally Damaged"
-msgstr "Претерпело урон неприятельских людей"
+msgstr "Пострадало неприятельских людей"
 
 #: src/OGAMEND.cpp:443
 msgid "King's Civilians Cruelly Murdered"
@@ -3509,11 +3513,11 @@ msgstr "Армия"
 
 #: src/OGAMEND.cpp:479 src/OR_RANK.cpp:93 src/OSPYA.cpp:43
 msgid "Economy"
-msgstr "Экономика"
+msgstr "Хозяйство"
 
 #: src/OGAMEND.cpp:480 src/OR_NAT.cpp:137 src/OR_RANK.cpp:94
 msgid "Reputation"
-msgstr "Репутация"
+msgstr "Слава"
 
 #: src/OGAMEND.cpp:482 src/OR_RANK.cpp:95
 msgid "Fryhtan Battling"
@@ -3521,19 +3525,19 @@ msgstr "Брань с фрихтанами"
 
 #: src/OGAMEND.cpp:529 src/OR_RANK.cpp:143
 msgid "Population Score"
-msgstr "Очки населения"
+msgstr "Число подданных"
 
 #: src/OGAMEND.cpp:529 src/OR_RANK.cpp:143
 msgid "Military Score"
-msgstr "Очки армии"
+msgstr "Воинская сила"
 
 #: src/OGAMEND.cpp:529 src/OR_RANK.cpp:143
 msgid "Economic Score"
-msgstr "Очки экономики"
+msgstr "Хозяйство"
 
 #: src/OGAMEND.cpp:530 src/OR_RANK.cpp:144
 msgid "Reputation Score"
-msgstr "Очки репутации"
+msgstr "Слава"
 
 #: src/OGAMEND.cpp:530 src/OR_RANK.cpp:144
 msgid "Fryhtan Battling Score"
@@ -3541,11 +3545,11 @@ msgstr "Доблесть в брани с фрихтанами"
 
 #: src/OGAMEND.cpp:551 src/OR_RANK.cpp:167
 msgid "Total Score"
-msgstr "Общий счет"
+msgstr "Общий итог"
 
 #: src/OGAMEND.cpp:564 src/OR_RANK.cpp:180
 msgid "Final Score"
-msgstr "Финальный счет"
+msgstr "Итог правления"
 
 #: src/OGAMEND.cpp:573 src/OR_RANK.cpp:189
 msgid "(Difficulty Rating)"
@@ -3577,7 +3581,7 @@ msgstr "Версия"
 
 #: src/OGAMMAIN.cpp:392
 msgid "compatible with 7kfans' 7kaa version"
-msgstr ""
+msgstr "совместима с 7kaa от 7kfans версии"
 
 #: src/OGAMSCE2.cpp:178
 msgid "Scenario files not found."
@@ -4030,23 +4034,23 @@ msgstr[2] "%d дней"
 
 #: src/OINGMENU.cpp:136
 msgid "Small"
-msgstr ""
+msgstr "Маленькая"
 
 #: src/OINGMENU.cpp:137
 msgid "Medium"
-msgstr ""
+msgstr "Средняя"
 
 #: src/OINGMENU.cpp:138
 msgid "Large"
-msgstr ""
+msgstr "Большая"
 
 #: src/OINGMENU.cpp:171
 msgid "Map I.D."
-msgstr "I.D. Карты"
+msgstr "Код карты"
 
 #: src/OINGMENU.cpp:252
 msgid "Do you really want to retire?"
-msgstr "Вы хотите окончить игру?"
+msgstr "Вы хотите сложить власть?"
 
 #: src/OINGMENU.cpp:277
 msgid "Do you really want to quit to the Main Menu?"
@@ -4078,23 +4082,23 @@ msgstr "Альянс"
 
 #: src/ONATIONB.cpp:59
 msgid "Duration of War Status"
-msgstr "Продолжительность статуса Войны"
+msgstr "Срок статуса Войны"
 
 #: src/ONATIONB.cpp:60
 msgid "Duration of Tense Status"
-msgstr "Продолжительность статуса Напряжения"
+msgstr "Срок статуса Напряжения"
 
 #: src/ONATIONB.cpp:61
 msgid "Duration of Neutral Status"
-msgstr "Продолжительность статуса Нейтралитета"
+msgstr "Срок статуса Нейтралитета"
 
 #: src/ONATIONB.cpp:62
 msgid "Duration of Friendly Status"
-msgstr "Продолжительность статуса Дружбы"
+msgstr "Срок статуса Дружбы"
 
 #: src/ONATIONB.cpp:63
 msgid "Duration of Alliance Status"
-msgstr "Продолжительность статуса Альянс"
+msgstr "Срок статуса Альянса"
 
 #. TRANSLATORS: <Name>'s Kingdom
 #: src/ONATIONB.cpp:575 src/ONEWSENG.cpp:1847 src/ONEWSENG.cpp:1849
@@ -4268,7 +4272,7 @@ msgstr "%s унаследовал трон в качестве нового ко
 #: src/ONEWSENG.cpp:481
 #, c-format
 msgid "Your Seat of Power near %s has been destroyed by %s's Kingdom%s."
-msgstr "Ваш центр власти около %s был уничтожен %s%s."
+msgstr "Ваш Верховный Храм около %s был уничтожен %s%s."
 
 #: src/ONEWSENG.cpp:482
 #, c-format
@@ -4298,7 +4302,7 @@ msgstr "Ваша Шахта около %s была уничтожена %s%s."
 #: src/ONEWSENG.cpp:487
 #, c-format
 msgid "Your Tower of Science near %s has been destroyed by %s's Kingdom%s."
-msgstr "Ваш Научный центр около %s был уничтожен %s%s."
+msgstr "Ваша Башня Знания около %s была уничтожена %s%s."
 
 #: src/ONEWSENG.cpp:488
 #, c-format
@@ -4314,7 +4318,7 @@ msgstr "Ваша Гавань около %s была уничтожена %s%s."
 #: src/ONEWSENG.cpp:495
 #, c-format
 msgid "Your Seat of Power near %s has been destroyed by Rebels."
-msgstr "Ваш Центр власти около %s был уничтожен повстанцами."
+msgstr "Ваш Верховный Храм около %s был уничтожен повстанцами."
 
 #: src/ONEWSENG.cpp:496
 #, c-format
@@ -4344,7 +4348,7 @@ msgstr "Ваша Шахта около %s была уничтожена повс
 #: src/ONEWSENG.cpp:501
 #, c-format
 msgid "Your Tower of Science near %s has been destroyed by Rebels."
-msgstr "Ваш Научный центр около %s был уничтожен повстанцами."
+msgstr "Ваша Башня Знания около %s была уничтожена повстанцами."
 
 #: src/ONEWSENG.cpp:502
 #, c-format
@@ -4360,7 +4364,7 @@ msgstr "Ваша Гавань около %s была уничтожена пов
 #: src/ONEWSENG.cpp:509
 #, c-format
 msgid "Your Seat of Power near %s has been destroyed by Fryhtans."
-msgstr "Ваша Владения около %s была уничтожена фрихтанами."
+msgstr "Ваш Верховный Храм около %s был уничтожен фрихтанами."
 
 #: src/ONEWSENG.cpp:510
 #, c-format
@@ -4390,7 +4394,7 @@ msgstr "Ваша Шахта около %s была уничтожена фрих
 #: src/ONEWSENG.cpp:515
 #, c-format
 msgid "Your Tower of Science near %s has been destroyed by Fryhtans."
-msgstr "Ваш Научный центр около %s был уничтожен фрихтанами."
+msgstr "Ваша Башня Знания около %s была уничтожена фрихтанами."
 
 #: src/ONEWSENG.cpp:516
 #, c-format
@@ -4406,7 +4410,7 @@ msgstr "Ваша Гавань около %s была уничтожена фри
 #: src/ONEWSENG.cpp:523
 #, c-format
 msgid "Your Seat of Power near %s has been destroyed."
-msgstr "Ваша Владения около %s была уничтожена."
+msgstr "Ваш Верховный Храм около %s был уничтожен."
 
 #: src/ONEWSENG.cpp:524
 #, c-format
@@ -4436,7 +4440,7 @@ msgstr "Ваша Шахта около %s была уничтожена."
 #: src/ONEWSENG.cpp:529
 #, c-format
 msgid "Your Tower of Science near %s has been destroyed."
-msgstr "Ваш Научный центр около %s был уничтожен."
+msgstr "Ваша Башня Знания около %s была уничтожена."
 
 #: src/ONEWSENG.cpp:530
 #, c-format
@@ -4802,8 +4806,8 @@ msgid ""
 "Your spy has been exposed and executed on his mission to a Seat of Power "
 "near %s in %s's Kingdom%s."
 msgstr ""
-"Ваш шпион был раскрыт и казнен в течении его миссии в Владении около %s из "
-"%s%s."
+"Ваш шпион был раскрыт и казнен в течении его миссии в Верховном Храме около "
+"%s в королевстве %s%s."
 
 #: src/ONEWSENG.cpp:884
 #, c-format
@@ -4854,7 +4858,7 @@ msgid ""
 "Your spy has been exposed and executed on his mission to a Tower of Science "
 "near %s in %s's Kingdom%s."
 msgstr ""
-"Ваш шпион был раскрыт и казнен в течении его миссии в Башня знаном около %s "
+"Ваш шпион был раскрыт и казнен в течении его миссии в Башни Знания около %s "
 "из %s%s."
 
 #: src/ONEWSENG.cpp:890
@@ -4889,7 +4893,8 @@ msgid ""
 "Your spy has been exposed and executed on his mission to a Seat of Power "
 "near %s."
 msgstr ""
-"Ваш шпион был раскрыт и казнен в течении его миссии в Владении около %s."
+"Ваш шпион был раскрыт и казнен в течении его миссии в Верховном Храме около "
+"%s."
 
 #: src/ONEWSENG.cpp:898
 #, c-format
@@ -4928,7 +4933,7 @@ msgid ""
 "Your spy has been exposed and executed on his mission to a Tower of Science "
 "near %s."
 msgstr ""
-"Ваш шпион был раскрыт и казнен в течении его миссии в Башня знаном около %s."
+"Ваш шпион был раскрыт и казнен в течении его миссии в Башни Знания около %s."
 
 #: src/ONEWSENG.cpp:904
 #, c-format
@@ -4985,7 +4990,9 @@ msgstr "Ваш шпион %s был раскрыт и казнен в течен
 msgid ""
 "A spy from %s's Kingdom%s has been uncovered and executed in your Seat of "
 "Power near %s."
-msgstr "Шпион из %s%s был раскрыт и казнен в вашем Владении около %s."
+msgstr ""
+"Шпион из королевство %s%s был раскрыт и казнен в вашем Верховном Храме около "
+"%s."
 
 #: src/ONEWSENG.cpp:980
 #, c-format
@@ -5027,7 +5034,7 @@ msgstr "Шпион из %s%s был раскрыт и казнен в вашем
 msgid ""
 "A spy from %s's Kingdom%s has been uncovered and executed in your Tower of "
 "Science near %s."
-msgstr "Шпион из %s%s был раскрыт и казнен в вашем Башня знаном около %s."
+msgstr "Шпион из %s%s был раскрыт и казнен в вашей Башни Знания около %s."
 
 #: src/ONEWSENG.cpp:986
 #, c-format
@@ -5228,53 +5235,53 @@ msgstr "Ваши ученые завершили исследование Еди
 #: src/ONEWSENG.cpp:1276
 #, c-format
 msgid "Your Seat of Power near %s has been destroyed by lightning."
-msgstr "Ваша Владения около %s была уничтожена молнией."
+msgstr "Ваш Верховный Храм около %s был уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1277
 #, c-format
 msgid "Your Factory near %s has been destroyed by lightning."
-msgstr "Ваша Фабрика около %s была уничтожена молнией."
+msgstr "Ваша Фабрика около %s была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1278
 #, c-format
 msgid "Your Inn near %s has been destroyed by lightning."
-msgstr "Ваша Гостиница около %s была уничтожена молнией."
+msgstr "Ваша Гостиница около %s была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1279
 #, c-format
 msgid "Your Market near %s has been destroyed by lightning."
-msgstr "Ваш Рынок около %s был  уничтожен молнией."
+msgstr "Ваш Рынок около %s был уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1280
 #, c-format
 msgid "Your Fort near %s has been destroyed by lightning."
-msgstr "Ваш Форт около %s был уничтожен молнией."
+msgstr "Ваш Форт около %s был уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1281
 #, c-format
 msgid "Your Mine near %s has been destroyed by lightning."
-msgstr "Ваша Шахта около %s была уничтожена молнией."
+msgstr "Ваша Шахта около %s была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1282
 #, c-format
 msgid "Your Tower of Science near %s has been destroyed by lightning."
-msgstr "Ваш Научный центр около %s был уничтожен молнией."
+msgstr "Ваша Башня Знания около %s был уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1283
 #, c-format
 msgid "Your War Factory near %s has been destroyed by lightning."
-msgstr "Ваш Военный завод около %s был уничтожен молнией."
+msgstr "Ваш Военный завод около %s был уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1284
 #, c-format
 msgid "Your Harbor near %s has been destroyed by lightning."
-msgstr "Ваша Гавань около %s была уничтожена молнией."
+msgstr "Ваша Гавань около %s была уничтожена ударом молнией."
 
 #. TRANSLATORS: Your <Firm> near <Town> has been struck by lightning.
 #: src/ONEWSENG.cpp:1290
 #, c-format
 msgid "Your Seat of Power near %s has been struck by lightning."
-msgstr "Ваша Владения около %s была повреждена молнией."
+msgstr "Ваш Верховный Храм около %s был поврежден молнией."
 
 #: src/ONEWSENG.cpp:1291
 #, c-format
@@ -5304,7 +5311,7 @@ msgstr "Ваша Шахта около %s была повреждена молн
 #: src/ONEWSENG.cpp:1296
 #, c-format
 msgid "Your Tower of Science near %s has been struck by lightning."
-msgstr "Ваш Научный центр около %s был поврежден молнией."
+msgstr "Ваша Башня Знания около %s была повреждена молнией."
 
 #: src/ONEWSENG.cpp:1297
 #, c-format
@@ -5319,44 +5326,44 @@ msgstr "Ваша Гавань около %s была повреждена мол
 #. TRANSLATORS: Your <Firm> has been destroyed by lightning.
 #: src/ONEWSENG.cpp:1304
 msgid "Your Seat of Power has been destroyed by lightning."
-msgstr "Ваша Владения была уничтожена молнией."
+msgstr "Ваш Верховный Храм был уничтожен ударом молнии."
 
 #: src/ONEWSENG.cpp:1305
 msgid "Your Factory has been destroyed by lightning."
-msgstr "Ваша Фабрика была уничтожена молнией."
+msgstr "Ваша Фабрика была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1306
 msgid "Your Inn has been destroyed by lightning."
-msgstr "Ваша Гостиница была уничтожена молнией."
+msgstr "Ваша Гостиница была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1307
 msgid "Your Market has been destroyed by lightning."
-msgstr "Ваш Рынок был уничтожен молнией."
+msgstr "Ваш Рынок был уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1308
 msgid "Your Fort has been destroyed by lightning."
-msgstr "Ваш Форт был уничтожен молнией."
+msgstr "Ваш Форт был уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1309
 msgid "Your Mine has been destroyed by lightning."
-msgstr "Ваша Шахта была была уничтожена молнией."
+msgstr "Ваша Шахта была была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1310
 msgid "Your Tower of Science has been destroyed by lightning."
-msgstr "Ваш Научный центр был уничтожен молнией."
+msgstr "Ваша Башня Знания была уничтожена ударом молнией."
 
 #: src/ONEWSENG.cpp:1311
 msgid "Your War Factory has been destroyed by lightning."
-msgstr "Ваш Военный завод былыл уничтожен молнией."
+msgstr "Ваш Военный Завод былыл уничтожен ударом молнией."
 
 #: src/ONEWSENG.cpp:1312
 msgid "Your Harbor has been destroyed by lightning."
-msgstr "Ваша Гавань была уничтожена молнией."
+msgstr "Ваша Гавань была уничтожена ударом молнией."
 
 #. TRANSLATORS: Your <Firm> has been struck by lightning.
 #: src/ONEWSENG.cpp:1318
 msgid "Your Seat of Power has been struck by lightning."
-msgstr "Ваша Владения была повреждена молнией."
+msgstr "Ваш Верховный Храм был поражён молнией."
 
 #: src/ONEWSENG.cpp:1319
 msgid "Your Factory has been struck by lightning."
@@ -5380,7 +5387,7 @@ msgstr "Ваша Шахта была повреждена молнией."
 
 #: src/ONEWSENG.cpp:1324
 msgid "Your Tower of Science has been struck by lightning."
-msgstr "Ваш Научный центр был поврежден молнией."
+msgstr "Ваша Башня Знания была повреждена молнией."
 
 #: src/ONEWSENG.cpp:1325
 msgid "Your War Factory has been struck by lightning."
@@ -5400,17 +5407,15 @@ msgstr "Ваш генерал %s был поражён молнией и пог�
 #: src/ONEWSENG.cpp:1363
 #, c-format
 msgid "Your General %s has been struck and injured by lightning."
-msgstr "Ваш Генерал %s был поражен и ранен молнией."
+msgstr "Ваш генерал %s был поражён молнией и ранен."
 
 #. TRANSLATORS: Your King has been struck and killed by lightning.
 #: src/ONEWSENG.cpp:1371
-#, fuzzy
 msgid "Your King has been struck and killed by lightning."
 msgstr "Ваш король был поражён молнией и погиб."
 
 #. TRANSLATORS: Your King has been struck and injured by lightning.
 #: src/ONEWSENG.cpp:1376
-#, fuzzy
 msgid "Your King has been struck and injured by lightning."
 msgstr "Ваш король %s был поражён молнией и ранен."
 
@@ -5418,13 +5423,13 @@ msgstr "Ваш король %s был поражён молнией и ране�
 #: src/ONEWSENG.cpp:1384
 #, c-format
 msgid "Your unit %s has been struck and killed by lightning."
-msgstr "Ваш юнит %s был поражен и убит молнией."
+msgstr "Ваш юнит %s был поражён молнией и погиб."
 
 #. TRANSLATORS: Your unit <Name> has been struck and injured by lightning.
 #: src/ONEWSENG.cpp:1389
 #, c-format
 msgid "Your unit %s has been struck and injured by lightning."
-msgstr "Ваш юнит %s был поражен и ранен молнией."
+msgstr "Ваш юнит %s был поражён молнией и ранен."
 
 #. TRANSLATORS: Your village <Town> has been destroyed by lightning.
 #: src/ONEWSENG.cpp:1423
@@ -5613,49 +5618,42 @@ msgid ""
 "Your Seat of Power near %s has fallen into disrepair due to the lack of "
 "maintenance funds."
 msgstr ""
-"Ваш центр власти около %s обветшала в связи с нехваткой средств на "
-"обслуживание."
+"Ваш Верховный Храм около %s обветшал из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1616
 #, c-format
 msgid ""
 "Your Factory near %s has fallen into disrepair due to the lack of "
 "maintenance funds."
-msgstr ""
-"Ваш Завод около %s обветшала в связи с нехваткой средств на обслуживание."
+msgstr "Ваш Завод около %s обветшал из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1617
 #, c-format
 msgid ""
 "Your Inn near %s has fallen into disrepair due to the lack of maintenance "
 "funds."
-msgstr ""
-"Ваша Гостиница около %s обветшала в связи с нехваткой средств на "
-"обслуживание."
+msgstr "Ваш Трактир около %s обветшал из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1618
 #, c-format
 msgid ""
 "Your Market near %s has fallen into disrepair due to the lack of maintenance "
 "funds."
-msgstr ""
-"Ваш Рынок около %s обветшала в связи с нехваткой средств на обслуживание."
+msgstr "Ваш Рынок около %s обветшал из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1619
 #, c-format
 msgid ""
 "Your Fort near %s has fallen into disrepair due to the lack of maintenance "
 "funds."
-msgstr ""
-"Ваш Форт около %s обветшала в связи с нехваткой средств на обслуживание."
+msgstr "Ваш Форт около %s обветшал из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1620
 #, c-format
 msgid ""
 "Your Mine near %s has fallen into disrepair due to the lack of maintenance "
 "funds."
-msgstr ""
-"Ваша Шахта около %s обветшала в связи с нехваткой средств на обслуживание."
+msgstr "Ваша Шахта около %s обветшала из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1621
 #, c-format
@@ -5671,22 +5669,20 @@ msgid ""
 "Your War Factory near %s has fallen into disrepair due to the lack of "
 "maintenance funds."
 msgstr ""
-"Ваш Военный завод около %s обветшала в связи с нехваткой средств на "
-"обслуживание."
+"Ваш Военный Завод около %s обветшал из-за нехватки средств на содержание."
 
 #: src/ONEWSENG.cpp:1623
 #, c-format
 msgid ""
 "Your Harbor near %s has fallen into disrepair due to the lack of maintenance "
 "funds."
-msgstr ""
-"Ваша Гавань около %s обветшала в связи с нехваткой средств на обслуживание."
+msgstr "Ваша Гавань около %s обветшала из-за нехватки средств на содержание."
 
 #. TRANSLATORS: <King>'s Kingdom<Color> has retired and quit the game.
 #: src/ONEWSENG.cpp:1674
 #, c-format
 msgid "%s's Kingdom%s has retired and quit the game."
-msgstr "%s%s сдался и покинул игру."
+msgstr "%s%s сложил/а власть и покинул/а игру."
 
 #. TRANSLATORS: <King>'s Kingdom<Color> has quit the game.
 #: src/ONEWSENG.cpp:1692
@@ -5709,7 +5705,7 @@ msgstr "Соединение с королевством %s%s было поте�
 #. TRANSLATORS: Your <Firm> has been built.
 #: src/ONEWSENG.cpp:1736
 msgid "Your Seat of Power has been built."
-msgstr ""
+msgstr "Ваш Верховный Храм достроен."
 
 #: src/ONEWSENG.cpp:1737
 msgid "Your Factory has been built."
@@ -5733,7 +5729,7 @@ msgstr ""
 
 #: src/ONEWSENG.cpp:1742
 msgid "Your Tower of Science has been built."
-msgstr ""
+msgstr "Ваша Башня Знания достроена."
 
 #: src/ONEWSENG.cpp:1743
 msgid "Your War Factory has been built."
@@ -5836,27 +5832,27 @@ msgstr "Железные изделия"
 
 #: src/OREMOTEM.cpp:471 src/OSYS2.cpp:1040
 msgid "Multiplayer Random Seed Sync Error"
-msgstr "Многопользовательская ошибка синхронизации случайного источника"
+msgstr "Ошибка синхронизации зерна случайных чисел"
 
 #: src/OREMOTEM.cpp:2912 src/OSYS2.cpp:1042
 msgid "Multiplayer Object Sync Error"
-msgstr "Ошибка синхронизации многопользовательского объекта"
+msgstr "Ошибка синхронизации объекта"
 
 #: src/OR_ECO.cpp:69
 msgid "Income Item"
-msgstr "Прибыль"
+msgstr "Статья доходов"
 
 #: src/OR_ECO.cpp:102
 msgid "Expense Item"
-msgstr "Расходы"
+msgstr "Статья расходов"
 
 #: src/OR_ECO.cpp:167
 msgid "Total Yearly Income"
-msgstr "Итоговая годовая прибыль"
+msgstr "Общий годовой доход"
 
 #: src/OR_ECO.cpp:177
 msgid "Total Yearly Expenses"
-msgstr "Итоговый годовой расход"
+msgstr "Общие годовые расходы"
 
 #: src/OR_ECO.cpp:186
 msgid "Yearly Balance"
@@ -5864,7 +5860,7 @@ msgstr "Годовой баланс"
 
 #: src/OR_ECO.cpp:200
 msgid "Sale of Goods"
-msgstr "Продаваемость товаров"
+msgstr "Продажа товаров"
 
 #: src/OR_ECO.cpp:201
 msgid "Exports"
@@ -5884,7 +5880,7 @@ msgstr "Доход рабочих"
 
 #: src/OR_ECO.cpp:205
 msgid "Sale of Buildings"
-msgstr "Продаваемость построек"
+msgstr "Продажа строений"
 
 #: src/OR_ECO.cpp:206
 msgid "Aid/Tribute from Other Kingdoms"
@@ -5900,51 +5896,51 @@ msgstr "Расходы на генералов"
 
 #: src/OR_ECO.cpp:232
 msgid "Spy Costs"
-msgstr "Затраты на шпионаж"
+msgstr "Расходы на шпионов"
 
 #: src/OR_ECO.cpp:233
 msgid "Other Mobile Human Unit Costs"
-msgstr "Стоимость других передвижных отрядов людей"
+msgstr "Расходы на других передвижных отрядов людей"
 
 #: src/OR_ECO.cpp:234
 msgid "Caravan Costs"
-msgstr "Затраты на караваны"
+msgstr "Расходы на караваны"
 
 #: src/OR_ECO.cpp:235
 msgid "Weapons Costs"
-msgstr "Затраты на оружие"
+msgstr "Расходы на орудие"
 
 #: src/OR_ECO.cpp:236
 msgid "Ship Costs"
-msgstr "Затраты на корабли"
+msgstr "Расходы на корабли"
 
 #: src/OR_ECO.cpp:237
 msgid "Buildings Costs"
-msgstr "Затраты на строительство"
+msgstr "Расходы на строительство"
 
 #: src/OR_ECO.cpp:238
 msgid "Training Units"
-msgstr "Тренировка отрядов"
+msgstr "Обучение"
 
 #: src/OR_ECO.cpp:239
 msgid "Hiring Units"
-msgstr "Наём отрядов"
+msgstr "Наём"
 
 #: src/OR_ECO.cpp:240
 msgid "Honoring Units"
-msgstr "Награждение отрядов"
+msgstr "Награждение"
 
 #: src/OR_ECO.cpp:241
 msgid "Foreign Worker Salaries"
-msgstr "Плата чужеземным рабочим"
+msgstr "Жалование чужеземным рабочим"
 
 #: src/OR_ECO.cpp:242
 msgid "Grants to Your Villagers"
-msgstr "Подарки вашим поселенцам"
+msgstr "Пособия вашим жителям"
 
 #: src/OR_ECO.cpp:243
 msgid "Grants to Other Villagers"
-msgstr "Подарки другим поселенцам"
+msgstr "Пособия жителям других королевст"
 
 #: src/OR_ECO.cpp:244
 msgid "Imports"
@@ -6000,7 +5996,7 @@ msgstr "В форте"
 
 #: src/OR_MIL.cpp:394
 msgid "In Seat"
-msgstr "Место"
+msgstr "В Верховном Храме"
 
 #: src/OR_MIL.cpp:401 src/OR_SPY.cpp:269
 msgid "On Ship"
@@ -6281,11 +6277,11 @@ msgstr "Племена"
 
 #: src/OR_TOWN.cpp:111
 msgid "Structure"
-msgstr "Здание"
+msgstr "Строение"
 
 #: src/OR_TOWN.cpp:116
 msgid "No. of Structures"
-msgstr "К-во зданий"
+msgstr "К-во строений"
 
 #: src/OR_TOWN.cpp:205
 #, c-format
@@ -7908,7 +7904,7 @@ msgstr "Генерал"
 #. TRANSLATORS: Please select a location to build the <Firm>.
 #: src/OUNITIF.cpp:1028
 msgid "Please select a location to build the Seat of Power."
-msgstr "Выберите место, чтобы построить Владению."
+msgstr "Выберите место, чтобы построить Верховный Храм."
 
 #: src/OUNITIF.cpp:1029
 msgid "Please select a location to build the Factory."
@@ -7932,7 +7928,7 @@ msgstr "Выберите место, чтобы построить Шахту."
 
 #: src/OUNITIF.cpp:1034
 msgid "Please select a location to build the Tower of Science."
-msgstr "Выберите место, чтобы построить Научный центр."
+msgstr "Выберите место, чтобы построить Башню Знания."
 
 #: src/OUNITIF.cpp:1035
 msgid "Please select a location to build the War Factory."
@@ -8157,11 +8153,11 @@ msgstr ""
 # POT extraction from 7KAA data files
 # data/resource/tut_list.res
 msgid "Basic Economics"
-msgstr "Базовая экономика"
+msgstr "Основы хозяйства"
 
 # data/resource/tut_list.res
 msgid "Capturing Villages"
-msgstr "Захват деревень"
+msgstr "Покорение деревень"
 
 # data/resource/tut_list.res
 msgid "Fryhtans"
@@ -8169,7 +8165,7 @@ msgstr "Фрихтаны"
 
 # data/resource/tut_list.res
 msgid "Loyalty & Reputation"
-msgstr "Преданность и Репутация"
+msgstr "Преданность и Слава"
 
 # data/resource/tut_list.res
 msgid "Mercenaries"
@@ -8331,7 +8327,7 @@ msgstr "Mолящийся"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "Seat of Power"
-msgstr "Владения"
+msgstr "Верховный Храм"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "Solider"
@@ -8360,7 +8356,7 @@ msgid ""
 msgstr ""
 "В этом уроке вы узнаете, как найти природные ресурсы, а затем как построить "
 "шахту, чтобы использовать их. Вы также узнаете, как построить завод и рынок "
-"и как использовать Связи между вашими зданиями и деревнями. Наконец, вы "
+"и как использовать Связи между вашими строениями и деревнями. Наконец, вы "
 "узнаете, как эффективно собирать налоги со своих людей. "
 
 # data/resource/tut_intr/00002-6SEATRAD.txt:1
@@ -8410,8 +8406,9 @@ msgid ""
 msgstr ""
 "На этом уроке вы узнаете, как построить гавань и использовать её для "
 "постройки кораблей. Вы узнаете, как загружать их войсками, как их "
-"перемещать, а затем как высаживать войска. Вы также узнаете о преимуществах "
-"лидерства на борту и о том, как он может улучшить ваши боевые способности. "
+"перемещать, а затем как высаживать войска. Вы также узнаете, как присутствие "
+"на борту военачальника, искусного в предводительстве, усиливает боевую мощь "
+"корабля. "
 
 # data/resource/tut_intr/00006-7MERCENA.txt:1
 msgid ""
@@ -8440,7 +8437,7 @@ msgid ""
 "In this lesson you will learn how to build a Tower of Science and then use "
 "it to conduct research into advanced Weaponry and Ships. "
 msgstr ""
-"В этом уроке вы узнаете, как построить Башню Науки, а затем использовать её "
+"В этом уроке вы узнаете, как построить Башня Знания, а затем использовать её "
 "для проведения исследований в области современного оружия и кораблей. "
 
 # data/resource/tut_intr/00009-2B_TRADE.txt:1
@@ -8489,7 +8486,7 @@ msgid ""
 "one Tower of Science. "
 msgstr ""
 "Для проведения исследований по оружию и кораблям ваше Королевство должно "
-"иметь по крайней мере одну Башню науки. "
+"иметь по крайней мере одну Башню Знания. "
 
 # data/resource/tut_text/00000-3RESEARC.txt:5
 msgid ""
@@ -8505,7 +8502,7 @@ msgid ""
 "build a Tower of Science, within Linking distance of the Village. "
 msgstr ""
 "Когда новый исследователь покинет вашу деревню, выберите его и прикажите ему "
-"построить Башню Науки, находясь на расстоянии от деревни. "
+"построить Башню Знания, находясь на расстоянии от деревни. "
 
 # data/resource/tut_text/00000-3RESEARC.txt:10
 msgid ""
@@ -8522,7 +8519,7 @@ msgid ""
 "To begin a research project, select the Tower of Science and Click on the "
 "Research Tile. "
 msgstr ""
-"Чтобы начать исследовательский проект, выберите «Башня науки» и нажмите "
+"Чтобы начать исследовательский проект, выберите «Башню Знания» и нажмите "
 "«Исследовать». "
 
 # data/resource/tut_text/00000-3RESEARC.txt:16
@@ -8730,9 +8727,10 @@ msgid ""
 "a high Leadership Level. A General with a Leadership Level of 100 will "
 "double the effectiveness of a Cannon as compared to a Ship with no Leaders. "
 msgstr ""
-"Сила этих пушек кораблей может быть усилена путем посадки на генерал с "
-"высоким уровнем лидерства. Генерал с уровнем лидерства 100 удваивает "
-"эффективность пушек по сравнению с кораблем без лидера. "
+"Мощь корабельных пушек возрастает, если на борту находится генерал, искусный "
+"в предводительстве. Генерал, чьё искусство предводительства достигло 100, "
+"удваивает силу корабельных пушек по сравнению с кораблём, не имеющим "
+"военачальника. "
 
 # data/resource/tut_text/00002-6SEATRAD.txt:3
 msgid ""
@@ -8987,7 +8985,7 @@ msgid ""
 msgstr ""
 "Наёмники наняты в гостиницы, поэтому для начала мы должны сначала построить "
 "одину. Чтобы построить гостиницу, вы должны использовать строителя. "
-"Гостиница, в отличие от других зданий, не нужно размещать далеко, для "
+"Гостиница, в отличие от других строений, не нужно размещать далеко, для "
 "связывания с любой другой структурой. "
 
 # data/resource/tut_text/00004-7MERCENA.txt:9
@@ -9093,9 +9091,9 @@ msgid ""
 "leadership ability. This will cause the Village's resistance to you to "
 "decrease rather quickly. "
 msgstr ""
-"Когда форт завершен, вам необходимо нанять его с командиром высокой "
-"лидерской способностью. Это приведёт к тому, что сопротивление деревни вам "
-"уменьшится довольно быстро. "
+"Когда строительство Форта завершится, поставьте во главе его военачальника, "
+"искусного в предводительстве. Тогда сопротивление деревни начнёт быстро "
+"уменьшаться. "
 
 # data/resource/tut_text/00005-10CAPTUR.txt:26
 msgid ""
@@ -9103,10 +9101,9 @@ msgid ""
 "your King. Whichever you use, send him into the new Fort. If you do use your "
 "King, be sure to send with him an escort of well-trained troops. "
 msgstr ""
-"Если у вас нет генерала с высокой способностью к лидерству, тогда лучше "
-"всего использовать своего короля. Какой бы вы ни использовали, отправьте его "
-"в новый форт. Если вы используете своего короля, обязательно отправьте "
-"вместе с ним эскорт хорошо подготовленных войск. "
+"Если среди ваших генералов нет искусного в предводительстве, лучше поручить "
+"это самому королю. Кого бы вы ни избрали, отправьте его в новый форт. Если "
+"же отправляете короля, непременно выделите ему хорошо обученную охрану. "
 
 # data/resource/tut_text/00005-10CAPTUR.txt:30
 msgid ""
@@ -9132,10 +9129,10 @@ msgid ""
 "early stages of the game, however, when your reputation is still low, it's "
 "unlikely a Village's resistance will decrease to 0, no matter what you do. "
 msgstr ""
-"Когда уровень уменьшится до нуля, Деревня присоединится к вашей империи. "
-"Однако на ранних этапах игры, когда ваша репутация по-прежнему низкая, вряд "
-"ли сопротивление деревни уменьшится до 0, независимо от того, что вы "
-"делаете. "
+"Когда уровень сопротивления уменьшится до нуля, деревня присоединится к "
+"вашей империи. Однако на ранних этапах игры, пока слава вашего королевства "
+"ещё невелика, сопротивление деревни едва ли уменьшится до нуля, что бы вы ни "
+"предпринимали."
 
 # data/resource/tut_text/00005-10CAPTUR.txt:39
 msgid ""
@@ -9170,9 +9167,9 @@ msgid ""
 "best to choose the common soldier with the highest leadership level in your "
 "army. After he is selected, Click on the Promote Tile. "
 msgstr ""
-"Чтобы создать нового генерала, вам нужно продвигать общего солдата. Лучше "
-"всего выбрать обычного солдата с самым высоким уровнем лидерства в вашей "
-"армии. После того, как он выбран, нажмите кнопку «Продвинуть». "
+"Чтобы получить нового генерала, возведите простого солдата в звание "
+"генерала. Лучше всего избрать того, кто превосходит прочих даром "
+"предводительства. Затем нажмите кнопку «Повысить». "
 
 # data/resource/tut_text/00005-10CAPTUR.txt:52
 msgid ""
@@ -9632,7 +9629,7 @@ msgstr ""
 "подразделения и повысит его лояльность к вашему королевству. Это особенно "
 "полезно для наёмников, у которых мало естественной верности вашему "
 "королевству. Честь также может быть предоставлена подразделениям внутри "
-"ваших зданий. Для этого выберите одно из ваших зданий. Затем выберите "
+"ваших строений. Для этого выберите одно из ваших строений. Затем выберите "
 "изображение одного устройства; затем нажмите «Почёт». "
 
 # data/resource/tut_text/00007-LOYALTY.txt:32
@@ -9642,9 +9639,9 @@ msgid ""
 "reputation to the right of the \"Thumbs Up\" or \"Thumbs Down\" icon at the "
 "top of your screen. "
 msgstr ""
-"Репутация вашего королевства зависит от уровня лояльности ваших людей, в "
-"деревнях и вне дома. Вы можете увидеть репутацию вашего королевства справа "
-"от значка «Палец вверх» или «Палец вниз» в верхней части экрана. "
+"Преданность ваших людей, как в деревнях, так и за их пределами, во многом "
+"зависит от славы вашего королевства. Показатель славы отображается справа от "
+"значка «палец вверх» или «палец вниз» в верхней части экрана."
 
 # data/resource/tut_text/00007-LOYALTY.txt:35
 msgid ""
@@ -9652,9 +9649,9 @@ msgid ""
 "Kingdoms; a higher reputation will help to keep your people loyal, and will "
 "also tend to draw immigrants to your Kingdom. "
 msgstr ""
-"Вам всегда будет лучше иметь лучшую репутацию, чем другие королевства; более "
-"высокая репутация поможет сохранить лояльность ваших людей и также будет "
-"привлекать иммигрантов в ваше королевство. "
+"Всегда полезно, чтобы слава вашего королевства превосходила славу других "
+"королевств: добрая слава укрепляет преданность ваших людей и привлекает "
+"переселенцев в ваши земли."
 
 # data/resource/tut_text/00007-LOYALTY.txt:37
 msgid ""
@@ -9662,9 +9659,9 @@ msgid ""
 "civilians, do not attack caravans or traders, do not allow your civilians to "
 "be killed and do not initiate sneak attacks on your allies or friends. "
 msgstr ""
-"Чего следует избегать, если вы хотите сохранить свою репутацию? Не нападайте "
-"на жителей, не нападайте на караваны или торговцев, не разрешайте убивать "
-"ваших жителей и не начинайте атаковать своих союзников или друзей. "
+"Чего надлежит избегать, если желаете сохранить добрую славу? Не нападайте на "
+"мирных людей, не трогайте караваны и торговцев, не допускайте гибели своих "
+"людей и не прибегайте к вероломным нападениям на союзников и друзей."
 
 # data/resource/tut_text/00007-LOYALTY.txt:40
 msgid ""
@@ -9673,20 +9670,19 @@ msgid ""
 "King with a high leadership level. If your King is slain, it is therefore "
 "important to give the throne to a soldier with a high leadership level. "
 msgstr ""
-"Что вы должны сделать, чтобы помочь вашей репутации расти? Если вы не "
-"ошибетесь, ваша репутация будет неуклонно расти сама по себе. Это "
-"предполагает, что у вас есть король с высоким уровнем лидерства. Если ваш "
-"король убит, поэтому важно отдавать трон солдату с высоким уровнем "
-"лидерства. "
+"Что надлежит делать, дабы слава вашего королевства возрастала? Если не "
+"совершать бесчестных поступков, добрая слава будет возрастать сама собой. "
+"Однако для этого необходим король, обладающий высоким даром "
+"предводительства. Если же король падёт в бою, надлежит возвести на престол "
+"воина, искусного в предводительстве."
 
 # data/resource/tut_text/00007-LOYALTY.txt:44
 msgid ""
 "Another thing you may do to raise your reputation more quickly is to attack "
 "Fryhtan Lairs.  Everybody respects the extermination of these creatures. "
 msgstr ""
-"Ещё одна вещь, которую вы можете сделать, чтобы повысить свою репутацию "
-"быстрее, – это атаковать лордов фрайтанов. Все уважают уничтожение этих "
-"существ. "
+"Ещё один способ скорее снискать добрую славу — уничтожать логова фрихтанов. "
+"Истребление этих тварей вызывает всеобщее одобрение."
 
 # data/resource/tut_text/00007-LOYALTY.txt:46
 msgid ""
@@ -9707,10 +9703,10 @@ msgid ""
 "It is just as important to appoint a General of the same nationality as the "
 "majority of the people in the village. "
 msgstr ""
-"Что вы должны сделать, чтобы помочь повысить лояльность ваших жителей? В "
-"фортах, связанных с новыми деревнями, назначьте генерала солдатом с высоким "
-"уровнем лидерства. Также важно назначить генерала той же национальности, что "
-"и большинство жителей деревни. "
+"Что надлежит делать, дабы укрепить преданность жителей? В фортах, связанных "
+"с новыми деревнями, назначайте генералами воинов, искусных в "
+"предводительстве. Не менее важно, чтобы генерал принадлежал к тому же "
+"народу, что и большинство жителей деревни. "
 
 # data/resource/tut_text/00007-LOYALTY.txt:58
 msgid ""
@@ -10028,7 +10024,7 @@ msgid ""
 "You will see that a Construction worker will be able to build every kind of "
 "building. To build a Market, Click on the Market option. "
 msgstr ""
-"Вы увидите, что строитель сможет построить все здания. Чтобы построить "
+"Вы увидите, что строитель сможет построить все строения. Чтобы построить "
 "рынок, нажмите кнопку «Рынок». "
 
 # data/resource/tut_text/00008-2BAS_ECO.txt:87
@@ -10079,9 +10075,9 @@ msgid ""
 "and then Click or Right-Click on the hammer icon you'll see to the left of "
 "the blue bar. "
 msgstr ""
-"В каждом здании может быть один строитель, когда внутри здания строитель "
-"будет ремонтировать здание, если он не подвергнут нападению. Чтобы вывести "
-"строителя из здания, сначала выберите здание, а затем щёлкните левой или "
+"В каждом строении может быть один строитель, когда внутри строения строитель "
+"будет ремонтировать строение, если он не подвергнут нападению. Чтобы вывести "
+"строителя из строения, сначала выберите строение, а затем щёлкните левой или "
 "правой кнопкой мыши по значку молотка, который вы увидите слева от синей "
 "полосы. "
 
@@ -10243,9 +10239,9 @@ msgid ""
 "their effectiveness from the leadership rating of their commander. Once "
 "combined into a Troop, they will also be easier to control. "
 msgstr ""
-"Оружие, объединенное в отряд, под командованием, получит повышение "
-"эффективности от рейтинга лидеров своего командира. Будучи объединенными в "
-"Отряд, им также будет легче управлять. "
+"Орудия, сведённые в отряд под началом военачальника, сражаются тем искуснее, "
+"чем выше его дар предводительства. Кроме того, таким отрядом легче "
+"управлять. "
 
 # data/resource/tut_text/00009-4WEAPONS.txt:32
 msgid ""
@@ -10311,8 +10307,8 @@ msgid ""
 "using a Construction Worker, a General or your King, providing they are of "
 "the same nationality as the scroll. "
 msgstr ""
-"Когда вы восстановили Свиток Силы, вы можете построить Владение с помощью "
-"строителя, генерала или короля, при условии, что они имеют ту же "
+"Когда вы восстановили Свиток Силы, вы можете построить Верховный Храм с "
+"помощью строителя, генерала, или короля, при условии, что они имеют ту же "
 "национальность, что и свиток. "
 
 # data/resource/tut_text/00010-9SEATPOW.txt:8
@@ -10321,9 +10317,9 @@ msgid ""
 "so that they may gather in prayer and Invoke the Greater Being who helped "
 "the people in ages past. "
 msgstr ""
-"Чтобы Владение приносило пользу, оно должно открыть свои двери для верных, "
-"чтобы они могли собраться в молитве и призвать Всевышнего, которое помогало "
-"людям в прошлом. "
+"Чтобы Верховный Храм исполнил своё предназначение, его двери должны "
+"открыться для верных, дабы они могли собраться в молитве и призвать Высшую "
+"Сущность, ту, что в минувшие века уже являлась людям в час величайшей нужды. "
 
 # data/resource/tut_text/00010-9SEATPOW.txt:10
 msgid ""
@@ -10332,7 +10328,7 @@ msgid ""
 "Power, to lead the people in prayer. As they pray, you will see your units "
 "slowly increasing the efficacy of their prayer. "
 msgstr ""
-"Чтобы собрать людей, отправьте до восьми крестьян во Владения правой "
+"Чтобы собрать людей, отправьте до восьми крестьян в Верховный Храм правой "
 "кнопкой. Вы должны также назначить генерала или короля, чтобы вести народ в "
 "молитве. Когда они молятся, вы увидите, что ваши подразделения медленно "
 "повышают эффективность своей молитвы. "
@@ -10813,7 +10809,7 @@ msgid ""
 "Counterspies, or be placed in Independent Villages or Foreign Kingdoms, for "
 "more dangerous duties. "
 msgstr ""
-"Шпионы могут быть отправлены в ваши собственные деревни или здания, чтобы "
+"Шпионы могут быть отправлены в ваши собственные деревни или строения, чтобы "
 "действовать в качестве контрразведчиков или быть помещены в независимые "
 "деревни или иностранные королевства для более опасных обязанностей. "
 
@@ -10931,8 +10927,8 @@ msgid ""
 "To infiltrate an enemy Building, such as a Mine, Factory, War Factory or "
 "Tower of Science, Right-Click on the Building with your Spy selected. "
 msgstr ""
-"Чтобы проникнуть в здание противника, такое как шахта, фабрика, военный "
-"завод или Башня Науки, щелкните правой кнопкой мыши по зданию с выбранным "
+"Чтобы проникнуть в строение противника, такое как Шахта, Фабрика, Военный "
+"Завод или Башня Знания, щелкните правой кнопкой мыши по строению с выбранным "
 "шпилем. "
 
 # data/resource/tut_text/00012-SPYING.txt:50
@@ -10942,10 +10938,10 @@ msgid ""
 "the Spy will be hired for work in a Building. You will, however, have no "
 "control over which Building the Spy is sent to work in. "
 msgstr ""
-"Если в здании полно рабочих, невозможно будет проникнуть; с шпилем, уже "
+"Если в строении полно рабочих, невозможно будет проникнуть; с шпилем, уже "
 "поселившимся в вражеской деревне, однако есть шанс, что шпион будет нанят "
-"для работы в здании. Тем не менее, вы не сможете контролировать в какое "
-"здание отправляется работать шпион. "
+"для работы в строении. Тем не менее, вы не сможете контролировать в какое "
+"строение отправляется работать шпион. "
 
 # data/resource/tut_text/00012-SPYING.txt:54
 msgid ""
@@ -10953,7 +10949,7 @@ msgid ""
 "Sabotage or Steal Information. He can also Sleep (which means he will "
 "function as a normal worker). "
 msgstr ""
-"Как только он окажется в здании, ваш шпион получит возможность взятку, "
+"Как только он окажется в строении, ваш шпион получит возможность взятку, "
 "саботаж или похищение информации. Он также может спать (что означает, что он "
 "будет функционировать как обычный рабочий). "
 
@@ -10964,10 +10960,10 @@ msgid ""
 "Factory or War Factory he will slow the production of Goods and Weapons, and "
 "in a Tower of Science he will slow Research. "
 msgstr ""
-"Если вы выберете саботаж, шпион сделает все возможное, чтобы замедлить "
-"производство в здании. В шахте он будет замедлять добычу сырья, на фабричной "
-"или военной фабрике он замедлит производство товаров и оружия, а в Башне "
-"науки он будет замедлять исследования. "
+"Если вы выберете саботаж, шпион сделает всё возможное, чтобы замедлить "
+"производство в строении. В Шахте он будет замедлять добычу сырья, в Заводе "
+"или Военном Заводе он замедлит производство товаров и орудий, а в Башне "
+"Знания он будет замедлять исследования. "
 
 # data/resource/tut_text/00012-SPYING.txt:59
 msgid ""
@@ -10984,9 +10980,9 @@ msgid ""
 "To Bribe an enemy unit, select the Enemy Building the Spy has infiltrated. "
 "Then Click on the picture of the Enemy Unit you wish to bribe. "
 msgstr ""
-"Чтобы подкупить вражеское подразделение, выберите вражеское здание, которое "
-"проникло в шпионаж. Затем щелкните по изображению подразделения врага, "
-"которое вы хотите подкупить. "
+"Чтобы подкупить вражеское подразделение, выберите вражеское строение, "
+"которое проникло в шпионаж. Затем щелкните по изображению подразделения "
+"врага, которое вы хотите подкупить. "
 
 # data/resource/tut_text/00012-SPYING.txt:65
 msgid ""
@@ -11051,10 +11047,10 @@ msgid ""
 "building and then on the Assassinate Button. You do not need to select the "
 "enemy target as the commander is the only possible one. "
 msgstr ""
-"Шпион в Форте или во Владении сможет совершить покушение на командующего "
-"противника, будь то генерал или король. Для этого нажмите на здание, а затем "
-"на кнопку «Убивать». Вам не нужно выбирать цель противника, поскольку "
-"командир является единственным возможным. "
+"Шпион в Форте или в Верховном Храме сможет совершить покушение на "
+"командующего противника, будь то генерал или король. Для этого нажмите на "
+"строение, а затем на кнопку «Убивать». Вам не нужно выбирать цель "
+"противника, поскольку командир является единственным возможным. "
 
 # data/resource/tut_text/00012-SPYING.txt:89
 msgid ""
@@ -11063,7 +11059,7 @@ msgid ""
 "Spy and then Click on the Evacuate Tile option.  "
 msgstr ""
 "Если вы хотите, чтобы ваш шпион эвакуировал отфильтрированную область, вы "
-"должны сначала выбрать здание или деревню, где он проживает, нажмите на "
+"должны сначала выбрать строение или деревню, где он проживает, нажмите на "
 "«Шпион», выберите вашего шпиона и затем нажмите «Эвакуация».  "
 
 # data/scenario/7for7.sct:1
@@ -11080,13 +11076,13 @@ msgid ""
 "click on their names in the top section. A reminder of your goal will be "
 "displayed in the bottom section. "
 msgstr ""
-"Вы начнете этот сценарий с семи генералов, каждый из которых отличается по "
-"национальности. Все они обладают самыми высокими навыками борьбы и "
-"лидерства. Это зависит от вас, чтобы наилучшим образом использовать эти "
-"навыки в вашей гонке, чтобы достичь общей оценки в 1000 человек. Вы можете "
-"проверить свой общий балл в средней части прокрутки рейтинга (F8). Чтобы "
-"проверить счет других королевств, нажмите на их имена в верхней части. "
-"Напоминание о вашей цели будет отображаться в нижней части. "
+"Вы начнёте этот сценарий с семью генералами, каждый из которых принадлежит к "
+"иному народу. Все они достигли высочайшего мастерства в ратном деле и "
+"предводительстве. Лишь от вашей мудрости зависит, насколько искусно вы "
+"воспользуетесь их дарованиями, дабы прежде иных королевств достичь общего "
+"итога в 1000. Следить за своим общим итогом можно в средней части Свитка "
+"рангов (F8). Чтобы узнать общий итог других королевств, нажмите на их имена "
+"в верхней части. Напоминание о вашей цели будет отображаться в нижней части. "
 
 # data/scenario/c&d.sct:1
 msgid "Cloak & Dagger"
@@ -11256,15 +11252,15 @@ msgid ""
 "the top section. A reminder of your goal will be displayed in the bottom "
 "section. Destroying all of the other kingdoms will also ensure your victory. "
 msgstr ""
-"Вы построили свою большую империю через предательство и кровавое завоевание. "
-"Ваша репутация достигла порога, и ваши люди начинают уставать от вашего "
-"правления. Удастся ли вам изменить свои пути и найти способ справиться с "
-"этим кризисом или по-прежнему будете продолжать и страдать от последствий? "
-"Ваша цель состоит в том, чтобы достичь общей оценки 1000 до любого другого "
-"королевства. Вы можете проверить свой общий балл в средней части прокрутки "
-"рейтинга (F8). Чтобы проверить общий балл других королевств, нажмите на их "
-"имена в верхней части. Напоминание о вашей цели будет отображаться в нижней "
-"части. Уничтожение всех других королевств также обеспечит вашу победу. "
+"Вы создали свою великую империю предательством и кровавыми завоеваниями. "
+"Слава вашего королевства покрылась бесчестием, и народ начинает тяготиться "
+"вашим правлением. Сумеете ли вы изменить свой путь и преодолеть этот кризис, "
+"или продолжите идти прежней дорогой и пожнёте её последствия? Ваша цель — "
+"достичь общего итога в 1000 прежде любого другого королевства. Следить за "
+"своим общим итогом можно в средней части Свитка рангов (F8). Чтобы узнать "
+"общий итог других королевств, нажмите на их имена в верхней части свитка. "
+"Напоминание о вашей цели будет показано в нижней части. Уничтожение всех "
+"остальных королевств также принесёт вам победу."
 
 # data/scenario/kukulcns.sct:1
 msgid "Kukulcan's People"
@@ -11783,7 +11779,7 @@ msgstr ""
 
 # data/scenari2/scn_14.sct:1
 msgid "Nine Lord's Quest"
-msgstr "Задача Девяти Лордов"
+msgstr "Поход девяти лордов"
 
 # data/scenari2/scn_14.sct:5
 msgid ""
@@ -11792,10 +11788,10 @@ msgid ""
 "granted to them for a mere seven years, so do not waste time with trade or "
 "with treaties. "
 msgstr ""
-"Девять лордов, обладающих самыми высокими уровнями боевого мастерства и "
-"лидерства, находятся на пути к тому, чтобы сделать известный мир своим. Их "
-"полномочия были предоставлены им всего семь лет, поэтому не тратьте время на "
-"торговлю или договоры. "
+"Девять лордов, превзошедших всех прочих в ратном искусстве и "
+"предводительстве, устремились покорить весь ведомый мир. Но сила сия "
+"дарована им лишь на семь лет, а потому не теряйте времени на торговлю и "
+"договоры. "
 
 # data/scenari2/scn_15.sct:1
 msgid "Lowlands"
@@ -11933,7 +11929,7 @@ msgstr "Показывает текущую дату. "
 
 # data/resource/help.res:47
 msgid "This shows your kingdom's reputation. "
-msgstr "Показывает репутацию королевства. "
+msgstr "Показывает славу Вашего королевства. "
 
 # data/resource/help.res:50
 msgid "Terrain Map"
@@ -12121,9 +12117,9 @@ msgid ""
 "This tile is disabled until you have enough praying points to make "
 "invocation possible. "
 msgstr ""
-"Позволяет призвать Всевышнего, который в последствие появится в ваших "
-"Владениях. Данная функция будет недоступна до накопления необходимого "
-"количества очков за молитвы. "
+"С помощью этого обряда можно призвать Высшую Сущность, которая появится над "
+"вашим Верховным Храмом. Эта возможность откроется лишь после накопления "
+"достаточного количества очков молитвы. "
 
 # data/resource/help.res:121
 msgid "Build a Ship"
@@ -12154,7 +12150,7 @@ msgstr "Мобилизовать рабочих"
 
 # data/resource/help.res:130
 msgid "This causes all workers to exit the building immediately. "
-msgstr "Принуждает всех рабочих немедленно покинуть здание "
+msgstr "Приказать всех рабочих немедленно покинуть строение."
 
 # data/resource/help.res:133
 msgid "Mobilize Spy"
@@ -12269,9 +12265,9 @@ msgid ""
 "Power. For each honor, the unit's loyalty increases by 10 points. This is "
 "disabled for the King. "
 msgstr ""
-"Это принесет честь избранному генералу или молитве в этом Владении. За "
-"каждую честь лояльность юнита увеличится на 10 пунктов. Это будет запрещено "
-"для короля. "
+"Награждает выбранного генерала или верного, находящегося в Верховном Храме. "
+"Каждая награда повышает преданность юнита на 10 пунктов. Король не нуждается "
+"в наградах. "
 
 # data/resource/help.res:177
 msgid "Sail out of Harbor"
