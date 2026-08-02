@@ -475,7 +475,7 @@ void detectDiscordClick(
 void detectFeedbackLinkClick(
 ) {
   if (Ambition::UserInterface::detectMouseClick(
-      Ambition::UserInterface::FEEDBACK_LINK_CLICK_AREA
+      Ambition::UserInterface::TitleScreen::FEEDBACK_LINK_CLICK_AREA
     )
   ) {
     Ambition::Control::openFeedback();

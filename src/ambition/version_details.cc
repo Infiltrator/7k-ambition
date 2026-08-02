@@ -34,6 +34,7 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed the Start and Return buttons not animating on the Mode Selection screen."),
           _("Fixed the scrollbar thumbs appearing to overlap the scroll buttons."),
           _("Fixed the What's New heading getting cut off when it's too long (i.e. in other languages)."),
+          _("Fixed the Feedback link getting cut off when the translation is too long."),
         },
       },
       {

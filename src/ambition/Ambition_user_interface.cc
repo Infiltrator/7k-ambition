@@ -64,6 +64,22 @@ int reportType = -1;
 short selected7kaaFirmOrTownRecordNumber = 0;
 
 
+namespace TitleScreen {
+
+const Rectangle FEEDBACK_LINK = BOUNDS
+  .inner({ bottom: DISCORD_BUTTON_CLICK_AREA.height() })
+  .inner({ left: 12, bottom: 2 })
+  .internal(
+    { .width = 160, .height = 20 },
+    HorizontalAlignment::Left,
+    VerticalAlignment::Bottom
+  );
+const Rectangle FEEDBACK_LINK_CLICK_AREA = FEEDBACK_LINK.outer(
+  { left: 4, right: 4, top: 4, bottom: 2 }
+);
+
+} // namespace TitleScreen
+
 constexpr UserInterface::Size LOCALE_BUTTON_SIZE = {
   .width = 34,
   .height = 40,
