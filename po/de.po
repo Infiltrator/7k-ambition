@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: 7kaa 2.14.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-23 00:19+1000\n"
-"PO-Revision-Date: 2026-06-02 11:37+1000\n"
-"Last-Translator:  <toaster@hush.com>\n"
+"PO-Revision-Date: 2026-08-22 08:39+0200\n"
+"Last-Translator: <toaster@hush.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -56,12 +56,12 @@ msgstr ""
 
 #: src/ambition/7kaaInterface/diplomacy.cc:145
 msgid "What price do you offer per unit of food?"
-msgstr ""
+msgstr "Welchen Preis bieten Sie pro Nahrungseinheit?"
 
 #: src/ambition/7kaaInterface/diplomacy.cc:155
 #, c-format
 msgid "$%.1f per unit of food.  Total cost: $%'.0f."
-msgstr ""
+msgstr "$%.1f pro Nahrungseinheit.  Gesamtkosten: $%'.0f."
 
 #: src/ambition/7kaaInterface/score.cc:104
 #, c-format
@@ -71,7 +71,7 @@ msgstr "Vergleiche %s's Königreich%s"
 #: src/ambition/7kaaInterface/score.cc:105
 #, c-format
 msgid "Compare %s's Kingdom%s"
-msgstr ""
+msgstr "Vergleiche %s's Königreich%s"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:113
@@ -95,7 +95,7 @@ msgstr "Ambitioniert"
 
 #: src/ambition/Ambition_config.cc:125
 msgid "ERROR:UNKNOWN"
-msgstr ""
+msgstr "Unbekannter Fehler"
 
 #: src/ambition/Ambition_config.cc:192
 msgid "Current mode:"
@@ -104,7 +104,7 @@ msgstr "Aktueller Modus:"
 #: src/ambition/Ambition_config.cc:226
 #, c-format
 msgid "Error in %s at lines:\n"
-msgstr ""
+msgstr "Fehler in %s in Zeile:\n"
 
 #. TRANSLATORS: The separator for config.txt file error line numbers.
 #: src/ambition/Ambition_config.cc:229
@@ -116,10 +116,12 @@ msgstr ""
 msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
+"Seven Kingdoms: Ambition fährt mit dem Laden fort und nutzt nur die "
+"zulässigen Einstellungen."
 
 #: src/ambition/Ambition_config.cc:253
 msgid "Select Locale"
-msgstr ""
+msgstr "Sprache auswählen"
 
 #: src/ambition/Ambition_config.cc:270
 msgid ""
@@ -127,6 +129,9 @@ msgid ""
 "effect the next time that Seven Kingdoms: Ambition starts.\n"
 "Would you like to exit now?"
 msgstr ""
+"Die Spracheinstellung wurde in Ihrer config.txt gespeichert und wird beim "
+"nächsten Neustart von Seven Kingdoms: Ambition geladen.\n"
+"Möchten Sie das Spiel jetzt beenden?"
 
 #: src/ambition/Ambition_config.cc:274 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
 #: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
@@ -142,68 +147,67 @@ msgstr "Nein"
 
 #: src/ambition/Ambition_config.cc:352
 msgid "Error opening config.txt file for reading:"
-msgstr ""
+msgstr "Fehler beim Lesen der config.txt:"
 
 #: src/ambition/Ambition_config.cc:417
 msgid "Error opening config.txt file for writing:"
-msgstr ""
+msgstr "Fehler beim Öffnen der config.txt zum Schreiben:"
 
 #: src/ambition/Ambition_config.cc:428
-#, fuzzy
 msgid "Error writing to config.txt file:"
-msgstr "Fehler beim Erstellen eines gespeicherten Spieles"
+msgstr "Fehler beim Schreiben in die config.txt:"
 
 #: src/ambition/Ambition_config.cc:496
 msgid "Detect System Locale"
-msgstr ""
+msgstr "Systemsprache erkennen"
 
 #: src/ambition/Ambition_config.cc:497
 msgid "Catalan"
-msgstr ""
+msgstr "Kataluna"
 
 #: src/ambition/Ambition_config.cc:498
 msgid "German"
-msgstr ""
+msgstr "Deutsch"
 
 #: src/ambition/Ambition_config.cc:499
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 #: src/ambition/Ambition_config.cc:500
 msgid "Esperanto"
-msgstr ""
+msgstr "Esperanto"
 
 #: src/ambition/Ambition_config.cc:501
 msgid "Spanish"
-msgstr ""
+msgstr "Spanisch"
 
 #: src/ambition/Ambition_config.cc:502
 msgid "French"
-msgstr ""
+msgstr "Französisch"
 
 #: src/ambition/Ambition_config.cc:503
 msgid "Latin"
-msgstr ""
+msgstr "Latein"
 
 #: src/ambition/Ambition_config.cc:504
 msgid "Dutch"
-msgstr ""
+msgstr "Niederländisch"
 
 #: src/ambition/Ambition_config.cc:505
 msgid "Polish"
-msgstr ""
+msgstr "Polnisch"
 
 #: src/ambition/Ambition_config.cc:506
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portugiesisch (Brasilien)"
 
 #: src/ambition/Ambition_config.cc:507
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #: src/ambition/Ambition_config.cc:597
 msgid "Select Mode"
-msgstr ""
+msgstr "Modus auswählen"
 
 #. TRANSLATORS: The name of the running mode.
 #: src/ambition/Ambition_config.cc:601
@@ -239,6 +243,10 @@ msgid ""
 "Would you be willing to share your feedback now?  (Will open in a web "
 "browser.)"
 msgstr ""
+"Wir hoffen, Ihnen gefällt Seven Kingdoms: Ambition!\n"
+"Wir freuen uns über Ihr Feedback zum Spiel und was Sie sonst noch neues im "
+"Spiel sehen möchten.\n"
+"Möchten Sie Ihr Feedback nun teilen? (Der Internetbrowser wird geöffnet)"
 
 #: src/ambition/Ambition_control.cc:83
 msgid "I want to be heard!"
@@ -250,7 +258,7 @@ msgstr "Später"
 
 #: src/ambition/Ambition_control.cc:108
 msgid "End of replay"
-msgstr ""
+msgstr "Ende der Wiederholung"
 
 #: src/ambition/Ambition_news.cc:201
 msgid ""
@@ -582,26 +590,33 @@ msgid ""
 "Your config.txt file can be found here: %sconfig.txt\n"
 "(The path has been copied to your clipboard.)"
 msgstr ""
+"Ihre Spielversion passt womöglich nicht zur Version des Hosts.\n"
+"Sie haben eine Version, die mit 7kfans' 7kaa %s kompatibel ist.\n"
+"Oder, falls beide Versionen identisch sind (Siehe die Information unten "
+"rechts im Hauptmenü), liegt es an unterschiedlichen config.txt "
+"Einstellungen.\n"
+"Ihre config.txt kann hier gefunden werden: %sconfig.txt\n"
+"(Der Pfad wurde kopiert.)"
 
 #: src/ambition/version_details.cc
 msgid "Preamble"
-msgstr ""
+msgstr "Präambel"
 
 #: src/ambition/version_details.cc
 msgid "Added"
-msgstr ""
+msgstr "Hinzugefügt"
 
 #: src/ambition/version_details.cc
 msgid "Fixed"
-msgstr ""
+msgstr "Behoben"
 
 #: src/ambition/version_details.cc
 msgid "Changed"
-msgstr ""
+msgstr "Geändert"
 
 #: src/ambition/version_details.cc
 msgid "Removed"
-msgstr ""
+msgstr "Entfernt"
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
@@ -716,11 +731,12 @@ msgid "Greatly expanded the German translation, thanks to Einheit-101."
 msgstr ""
 
 #: src/ambition/version_details.cc
-#, fuzzy
 msgid ""
 "Added scrolling with the mouse wheel, touchpad, up/down, home/end, and pg up/"
 "down keys to the tutorial selection list."
-msgstr "Scrollen mit dem Mausrad, Pfeiltasten oder Bild auf/ Bild ab."
+msgstr ""
+"Scrollen mit dem Mausrad, dem Touchpad, den Pfeiltasten, Pos1/Ende oder Bild "
+"auf/ Bild ab wurde zur Tutorialauswahl hinzugefügt"
 
 #: src/ambition/version_details.cc
 msgid ""
@@ -3391,7 +3407,7 @@ msgstr "Ihr Königreich konnte sein Ziel nicht innerhalb der Frist erreichen."
 
 #: src/OGAMEND.cpp:394
 msgid "Your Kingdom has Gone Down to Ignominious Defeat !"
-msgstr "Sie haben eine herbe Niederlage erlitten."
+msgstr "Sie haben eine herbe Niederlage erlitten!"
 
 #. TRANSLATORS: You Retired on <Date>.
 #: src/OGAMEND.cpp:409
@@ -6102,7 +6118,7 @@ msgstr ""
 #: src/OR_RANK.cpp:251
 #, c-format
 msgid "GOAL: Achieve One of the Following Before %s:"
-msgstr "ZIEL: Erreichen Sie eines der Folgenden Ziele vor Ablauf: %s"
+msgstr "ZIEL: Erreichen Sie eines der Folgenden Ziele vor Ablauf %s:"
 
 #: src/OR_RANK.cpp:255
 msgid "GOAL: Achieve One of the Following:"
@@ -6112,11 +6128,11 @@ msgstr "ZIEL: Erreichen Sie eines der folgenden Ziele:"
 #: src/OR_RANK.cpp:263
 #, c-format
 msgid "GOAL: Defeat All Other Kingdoms Before %s."
-msgstr "ZIEL: Sieg über alle Königreiche vor Ablauf: %s"
+msgstr "ZIEL: Sieg über alle Königreiche vor Ablauf %s."
 
 #: src/OR_RANK.cpp:267
 msgid "GOAL: Defeat All Other Kingdoms."
-msgstr "ZIEL: Sieg über alle Königreiche"
+msgstr "ZIEL: Sieg über alle Königreiche."
 
 #: src/OR_RANK.cpp:282
 msgid "Defeat All Other Kingdoms."
