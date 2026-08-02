@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -58,13 +58,13 @@ struct VersionUpdates {
 void display(
 );
 
+std::vector<VersionUpdates> getVersionDetails(
+);
+
 std::string lastDisplayedNewsVersion(
 );
 
 void saveDisplayedNewsVersion(
 );
-
-
-extern std::vector<VersionUpdates> versionDetails;
 
 } // namespace Ambition::News

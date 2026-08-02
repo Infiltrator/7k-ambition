@@ -173,6 +173,7 @@ void display(
 
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
+  const auto versionDetails = getVersionDetails();
   const auto totalItemCount = std::accumulate(
     versionDetails.begin(),
     versionDetails.end(),
