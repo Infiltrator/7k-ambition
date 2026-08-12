@@ -5,15 +5,16 @@
 
 namespace Ambition::News {
 
-const auto HEADING_PREAMBLE = _("Preamble");
-const auto HEADING_ADDED = _("Added");
-const auto HEADING_FIXED = _("Fixed");
-const auto HEADING_CHANGED = _("Changed");
-const auto HEADING_REMOVED = _("Removed");
-const auto IDENTIFIER_PREVIEW = _("Preview Version -- not yet released");
+std::vector<VersionUpdates> getVersionDetails(
+) {
+  const auto HEADING_PREAMBLE = _("Preamble");
+  const auto HEADING_ADDED = _("Added");
+  const auto HEADING_FIXED = _("Fixed");
+  const auto HEADING_CHANGED = _("Changed");
+  const auto HEADING_REMOVED = _("Removed");
+  const auto IDENTIFIER_PREVIEW = _("Preview Version -- not yet released");
 
-
-std::vector<VersionUpdates> versionDetails = {
+  return {
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
@@ -33,6 +34,9 @@ std::vector<VersionUpdates> versionDetails = {
           _("Fixed issue with \"Building Complete\" (and other) sounds not being audible when they are far away from the current screen location because they became too quiet."),
           _("Fixed the Start and Return buttons not animating on the Mode Selection screen."),
           _("Fixed the scrollbar thumbs appearing to overlap the scroll buttons."),
+          _("Fixed the What's New screen not getting translated."),
+          _("Fixed the What's New heading getting cut off when it's too long (i.e. in other languages)."),
+          _("Fixed the Feedback link getting cut off when the translation is too long."),
         },
       },
       {
@@ -910,6 +914,7 @@ std::vector<VersionUpdates> versionDetails = {
       },
     },
   },
-};
+  };
+}
 
 } // namespace Ambition::News

@@ -1730,7 +1730,7 @@ void drawFeedbackLink(
   UserInterface::printParagraph(
     font_news,
     std::string("_") + _("Feedback") + "_",
-    UserInterface::FEEDBACK_LINK,
+    UserInterface::TitleScreen::FEEDBACK_LINK,
     2,
     UserInterface::Clear::None,
     UserInterface::HorizontalAlignment::Left,

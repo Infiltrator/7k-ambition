@@ -25,6 +25,10 @@ speaking, considered to be the player's experience.
   quiet.
 - Fixed the Start and Return buttons not animating on the Mode Selection screen.
 - Fixed the scrollbar thumbs appearing to overlap the scroll buttons.
+- Fixed the What's New screen not getting translated.
+- Fixed the What's New heading getting cut off when it's too long (i.e. in other
+  languages).
+- Fixed the Feedback link getting cut off when the translation is too long.
 
 ### Changed
 

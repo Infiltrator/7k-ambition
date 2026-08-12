@@ -81,11 +81,11 @@ void display(
   };
   constexpr Ambition::UserInterface::Rectangle HEADING = {
     .start = {
-      .left = 300,
+      .left = 100,
       .top = 25,
     },
     .end = {
-      .left = 500,
+      .left = 700,
       .top = 45,
     },
   };
@@ -173,6 +173,7 @@ void display(
 
   mouse_cursor.set_icon(CURSOR_NORMAL);
 
+  const auto versionDetails = getVersionDetails();
   const auto totalItemCount = std::accumulate(
     versionDetails.begin(),
     versionDetails.end(),
@@ -185,15 +186,6 @@ void display(
   slideBar.set(0, totalItemCount - 1, 0);
 
   vga_util.disp_image_file("RESULTS");
-
-  printText(
-    font_bard,
-    _("WHAT'S NEW"),
-    HEADING,
-    UserInterface::Clear::EntireArea,
-    UserInterface::HorizontalAlignment::Centre,
-    UserInterface::VerticalAlignment::Centre
-  );
 
   UserInterface::printParagraph(
     font_std,
@@ -382,6 +374,15 @@ void display(
           UserInterface::VerticalAlignment::Bottom
         );
       }
+
+      printText(
+        font_bard,
+        _("WHAT'S NEW"),
+        HEADING,
+        UserInterface::Clear::None,
+        UserInterface::HorizontalAlignment::Centre,
+        UserInterface::VerticalAlignment::Centre
+      );
 
       refreshFlag = 0;
     }

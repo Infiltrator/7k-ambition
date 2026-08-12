@@ -491,6 +491,13 @@ constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
   }
 );
 
+namespace TitleScreen {
+
+extern const Rectangle FEEDBACK_LINK;
+extern const Rectangle FEEDBACK_LINK_CLICK_AREA;
+
+} // namespace TitleScreen
+
 extern const Rectangle LOCALE_BUTTON;
 extern const Rectangle LOCALE_BUTTON_CLICK_AREA;
 
@@ -502,16 +509,6 @@ const auto DISCORD_BUTTON = BOUNDS
     VerticalAlignment::Bottom
   );
 const auto DISCORD_BUTTON_CLICK_AREA = DISCORD_BUTTON.outer(4, 2, 4, 4);
-
-const auto FEEDBACK_LINK = BOUNDS
-  .inner(0, 0, 0, DISCORD_BUTTON.outer(4, 2, 4, 4).height())
-  .inner(12, 0, 0, 2)
-  .internal(
-    { .width = 132, .height = 20 },
-    HorizontalAlignment::Left,
-    VerticalAlignment::Bottom
-  );
-const auto FEEDBACK_LINK_CLICK_AREA = FEEDBACK_LINK.outer(4, 4, 4, 2);
 
 
 Size bitmapSize(

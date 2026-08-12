@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 23:37+1000\n"
+"POT-Creation-Date: 2026-07-23 00:19+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
@@ -249,10 +249,6 @@ msgstr ""
 msgid "End of replay"
 msgstr ""
 
-#: src/ambition/Ambition_news.cc:191
-msgid "WHAT'S NEW"
-msgstr ""
-
 #: src/ambition/Ambition_news.cc:201
 msgid ""
 "Scroll using the mouse wheel, up/down keys, pg-up/pg-dwn keys, or left/right "
@@ -265,6 +261,10 @@ msgstr ""
 
 #: src/ambition/Ambition_news.cc:378
 msgid "scroll down for more"
+msgstr ""
+
+#: src/ambition/Ambition_news.cc:379
+msgid "WHAT'S NEW"
 msgstr ""
 
 #: src/ambition/Ambition_serialisation.cc:81 src/OGFILEA.cpp:707
@@ -641,6 +641,12 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Fixed the scrollbar thumbs appearing to overlap the scroll buttons."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the What's New heading getting cut off when it's too long (i.e. in "
+"other languages)."
 msgstr ""
 
 #: src/ambition/version_details.cc
