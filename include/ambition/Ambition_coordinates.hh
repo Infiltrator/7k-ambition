@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,10 @@
 
 #pragma once
 
+#include <cassert>
 #include <boost/serialization/nvp.hpp>
+
+struct Location;
 
 
 namespace Ambition::Coordinates {
@@ -37,6 +40,12 @@ struct _7kaaCoordinates {
   short x;
   short y;
 };
+struct _7kaaRectangle {
+  short x1;
+  short y1;
+  short x2;
+  short y2;
+};
 
 
 struct Interval;
@@ -46,14 +55,7 @@ struct Point {
   long long int x;
   long long int y;
 
-  static Point from7kaaCoordinates(
-    const _7kaaCoordinates& _7kaaCoordinates
-  );
-
   Interval asInterval(
-  ) const;
-
-  _7kaaCoordinates to7kaaCoordinates(
   ) const;
 
   bool within(
@@ -61,8 +63,6 @@ struct Point {
   ) const;
 
   bool operator==(const Point& rhs) const noexcept;
-
-  bool operator==(const _7kaaCoordinates& rhs) const noexcept;
 
   Interval operator-(const Point& rhs) const;
 
@@ -126,6 +126,10 @@ struct Rectangle {
     };
   }
 
+  static Rectangle _7kaaTile(
+    const Point point
+  );
+
   static Rectangle from7kaaCoordinates(
     const _7kaaCoordinates& _7kaaCoordinates
   );
@@ -138,21 +142,26 @@ struct Rectangle {
     return start == rhs.start && end == rhs.end;
   }
 
-  Point point(
+  _7kaaCoordinates to7kaaCoordinates(
+  ) const;
+  _7kaaRectangle to7kaaRectangle(
+  ) const;
+
+  constexpr Rectangle subrectangle(
     const long int index,
     const Interval step
   ) const;
-  long int pointCount(
+  constexpr long int subrectangleCount(
     const Interval step
   ) const;
 
 private:
-  struct PointRange;
+  struct SubrectangleRange;
 public:
-  PointRange points(
+  SubrectangleRange subrectangles(
     const Interval step = { 1, 1 }
   ) const {
-      return PointRange(*this, step);
+    return SubrectangleRange(*this, step);
   }
 
   Point centre() const;
@@ -166,11 +175,17 @@ public:
     const Rectangle with
   ) const;
 
+  bool within(
+    const Rectangle& rectangle
+  ) const;
+
 private:
-  struct PointRange {
+  struct SubrectangleRange {
     auto begin() { return Iterator(rectangle, step, 0); }
-    auto end() { return Iterator(rectangle, step, rectangle.pointCount(step)); }
-    PointRange(
+    auto end() {
+      return Iterator(rectangle, step, rectangle.subrectangleCount(step));
+    }
+    SubrectangleRange(
       const Rectangle& rectangle,
       const Interval step
     ): rectangle(rectangle),
@@ -179,7 +194,9 @@ private:
 
   private:
     struct Iterator {
-      inline auto operator*() const { return rectangle.point(index, step); }
+      constexpr auto operator*() const {
+        return rectangle.subrectangle(index, step);
+      }
       inline auto& operator++() { index++; return *this; }
       inline bool operator!=(const Iterator& rhs) {
         return rectangle != rhs.rectangle
@@ -207,16 +224,47 @@ private:
   };
 };
 
+constexpr Rectangle Rectangle::subrectangle(
+  const long int index,
+  const Interval step
+) const {
+  const auto low = Point {
+    std::min(start.x, end.x),
+    std::min(start.y, end.y),
+  };
+  const auto high = Point {
+    std::max(start.x, end.x),
+    std::max(start.y, end.y),
+  };
+
+  const auto stepCountX = (high.x - low.x) / step.x;
+
+  return fromPoint(
+    {
+      low.x + (index % stepCountX) * step.x,
+      low.y + (index / stepCountX) * step.y,
+    },
+    step
+  );
+}
+
+constexpr long int Rectangle::subrectangleCount(
+  const Interval step
+) const {
+  return ((std::max(start.x, end.x) - std::min(start.x, end.x)) / step.x)
+    * ((std::max(start.y, end.y) - std::min(start.y, end.y)) / step.y);
+}
+
 
 constexpr auto _7KAA_COORDINATE_STEP = Interval {
   SCALING_FACTOR,
   SCALING_FACTOR,
 };
-constexpr auto _7KAA_OFFSET = Interval {
-  -SCALING_FACTOR / 2,
-  SCALING_FACTOR / 2
-};
 
+
+Location* get7kaaLocation(
+  const Rectangle& at
+);
 
 /** The coordinates of the current viewport. */
 Rectangle viewport(

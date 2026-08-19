@@ -47,6 +47,7 @@ speaking, considered to be the player's experience.
 - Select sortied units only if the Fort is still selected, instead of overriding
   the selection, preventing accidentally giving orders to the wrong units in
   multiplayer.
+- Improved the performance of building placement highlighting.
 - Made development slightly easier.
 
 

@@ -225,7 +225,7 @@ void drawBuildMarkerGridLines(
 );
 
 void drawBuildModeHighlighting(
-  const Coordinates::Point locationCoordinates,
+  const Coordinates::Rectangle& locationCoordinates,
   const UserInterface::Pixel screenCoordinates,
   const Coordinates::Rectangle worldBounds
 );

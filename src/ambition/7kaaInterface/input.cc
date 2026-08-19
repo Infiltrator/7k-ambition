@@ -540,10 +540,10 @@ bool detectRallyButtonClick(
       0
     )
   ) {
-    world.go_loc(
-      building->getRallyLocation().to7kaaCoordinates().x,
-      building->getRallyLocation().to7kaaCoordinates().y
-    );
+    const auto _7kaaCoordinates = Ambition::Coordinates::Rectangle::_7kaaTile(
+      building->getRallyLocation()
+    ).to7kaaCoordinates();
+    world.go_loc(_7kaaCoordinates.x, _7kaaCoordinates.y);
     return true;
   }
 

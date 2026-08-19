@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -165,24 +165,24 @@ std::vector<int> Building::countLinks(
         continue;
       }
 
+      const auto target7kaaRectangle = target.to7kaaRectangle();
       if (misc.rects_distance(
           town->loc_x1,
           town->loc_y1,
           town->loc_x2,
           town->loc_y2,
-          target.topLeft().to7kaaCoordinates().x,
-          target.topLeft().to7kaaCoordinates().y,
-          target.bottomRight().to7kaaCoordinates().x,
-          target.bottomRight().to7kaaCoordinates().y
+          target7kaaRectangle.x1,
+          target7kaaRectangle.y1,
+          target7kaaRectangle.x2,
+          target7kaaRectangle.y2
         ) > effectiveDistanceLimit
       ) {
         continue;
       }
 
       if (world.get_loc(town->center_x, town->center_y)->is_plateau()
-        != world.get_loc(
-          target.centre().to7kaaCoordinates().x,
-          target.centre().to7kaaCoordinates().y
+        != Coordinates::get7kaaLocation(
+          target.subrectangle(0, Coordinates::_7KAA_COORDINATE_STEP)
         )->is_plateau()
       ) {
         continue;
@@ -221,24 +221,24 @@ std::vector<int> Building::countLinks(
       continue;
     }
 
+    const auto _7kaaRectangle = target.to7kaaRectangle();
     if (misc.rects_distance(
         firm->loc_x1,
         firm->loc_y1,
         firm->loc_x2,
         firm->loc_y2,
-        target.topLeft().to7kaaCoordinates().x,
-        target.topLeft().to7kaaCoordinates().y,
-        target.bottomRight().to7kaaCoordinates().x,
-        target.bottomRight().to7kaaCoordinates().y
+        _7kaaRectangle.x1,
+        _7kaaRectangle.y1,
+        _7kaaRectangle.x2,
+        _7kaaRectangle.y2
       ) > effectiveDistanceLimit
     ) {
       continue;
     }
 
     if (world.get_loc(firm->center_x, firm->center_y)->is_plateau()
-      != world.get_loc(
-        target.centre().to7kaaCoordinates().x,
-        target.centre().to7kaaCoordinates().y
+      != Coordinates::get7kaaLocation(
+        target.subrectangle(0, Coordinates::_7KAA_COORDINATE_STEP)
       )->is_plateau()
     ) {
       continue;
@@ -576,7 +576,25 @@ void Building::drawRallyPoint(
     );
   }
 
-  drawMinimapLine(locationRectangle.centre(), rally.point, 2);
+  const auto widthTileCount
+    = locationRectangle.width() / Coordinates::SCALING_FACTOR;
+  const auto halfHeightTileCountRoundedUp
+    = (locationRectangle.height() + Coordinates::SCALING_FACTOR / 2)
+    / Coordinates::SCALING_FACTOR
+    / 2;
+  const auto halfWidthTileCountRoundedUp
+    = (locationRectangle.width() + Coordinates::SCALING_FACTOR / 2)
+    / Coordinates::SCALING_FACTOR
+    / 2;
+
+  const auto centralTile = locationRectangle.subrectangle(
+    (widthTileCount * halfHeightTileCountRoundedUp)
+      - halfWidthTileCountRoundedUp
+      + 1
+      - 1,
+    Coordinates::_7KAA_COORDINATE_STEP
+  );
+  drawMinimapLine(centralTile.centre(), rally.point, 2);
 }
 
 void Building::enqueueProduction(
@@ -918,7 +936,8 @@ void setOrClearRallyPoint(
           .action = allowAction
             ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
             : Ambition::Unit::Waypoint::Action::MoveOnly,
-          .point = Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates),
+          .point = Coordinates::Rectangle::from7kaaCoordinates(_7kaaCoordinates)
+            .centre(),
         }
       );
     }
@@ -941,7 +960,8 @@ void setOrClearRallyPoint(
           .action = allowAction
             ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
             : Ambition::Unit::Waypoint::Action::MoveOnly,
-          .point = Coordinates::Point::from7kaaCoordinates(_7kaaCoordinates),
+          .point = Coordinates::Rectangle::from7kaaCoordinates(_7kaaCoordinates)
+            .centre(),
         }
       );
     }
@@ -1000,14 +1020,10 @@ const Coordinates::Rectangle Building::underlying7kaaObjectRectangle(
 ) const {
   const auto object = underlying7kaaObject();
 
-  return {
-    .start = Coordinates::Point::from7kaaCoordinates(
-      { .x = object.loc_x1(), .y = object.loc_y1() }
-    ),
-    .end = Coordinates::Point::from7kaaCoordinates(
-      { .x = object.loc_x2(), .y = object.loc_y2() }
-    ),
-  };
+  return Coordinates::Rectangle::from7kaaRectangle(
+    { object.loc_x1(), object.loc_y1() },
+    { object.loc_x2(), object.loc_y2() }
+  );
 }
 
 

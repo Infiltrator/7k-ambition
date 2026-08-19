@@ -555,16 +555,14 @@ void buildModeHighlighting(
   using Ambition::Coordinates::Point;
 
   Ambition::drawBuildModeHighlighting(
-    Point::from7kaaCoordinates({ _7kaaX, _7kaaY }),
+    Ambition::Coordinates::Rectangle::from7kaaCoordinates({ _7kaaX, _7kaaY }),
     { left, top },
-    Ambition::Coordinates::Rectangle::fromPoint(
-      Point::from7kaaCoordinates({ 0, 0 }),
-      Point::from7kaaCoordinates(
-        {
+    Ambition::Coordinates::Rectangle::from7kaaRectangle(
+      { 0, 0 },
+      {
           static_cast<short>(maximum7kaaX - 1),
           static_cast<short>(maximum7kaaY - 1),
-        }
-      ) - Point::from7kaaCoordinates({ 0, 0 })
+      }
     )
   );
 }

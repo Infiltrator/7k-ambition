@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -138,7 +138,7 @@ void Polity::cloneCaravan(
 
   if (idleCaravans().size() <= _7kaaCaravansToCloneRecordNumbers.size()) {
     const auto _7kaaMarketRecordNumber = findNearest7kaaMarket(
-      Coordinates::Point::from7kaaCoordinates(
+      Coordinates::Rectangle::from7kaaCoordinates(
         {
           .x = _7kaaCaravan->stop_array[0].firm_loc_x1,
           .y = _7kaaCaravan->stop_array[0].firm_loc_y1,
@@ -160,13 +160,10 @@ void Polity::cloneCaravan(
 }
 
 short Polity::findNearest7kaaMarket(
-  const Coordinates::Point location
+  const Coordinates::Rectangle& location
 ) const {
   /* Check whether the location has a Market. */
-  const auto _7kaaLocation = world.get_loc(
-    location.to7kaaCoordinates().x,
-    location.to7kaaCoordinates().y
-  );
+  const auto _7kaaLocation = Coordinates::get7kaaLocation(location);
   const auto _7kaaFirmRecordNumber = _7kaaLocation->firm_recno();
   if (_7kaaFirmRecordNumber && !firm_array.is_deleted(_7kaaFirmRecordNumber)) {
     const auto firm = firm_array[_7kaaFirmRecordNumber];
@@ -194,11 +191,12 @@ short Polity::findNearest7kaaMarket(
       continue;
     }
 
+    const auto _7kaaRectangle = location.to7kaaRectangle();
     const auto distance = misc.points_distance(
       _7kaaFirm->loc_x1,
       _7kaaFirm->loc_y1,
-      location.to7kaaCoordinates().x,
-      location.to7kaaCoordinates().y
+      _7kaaRectangle.x1,
+      _7kaaRectangle.y1
     );
 
     if (distance < nearest7kaaMarketDistance) {

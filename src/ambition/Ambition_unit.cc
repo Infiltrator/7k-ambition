@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -356,10 +356,10 @@ void Unit::sendToDestination(
     return;
   }
 
-  const auto location = world.get_loc(
-    destination.point.to7kaaCoordinates().x,
-    destination.point.to7kaaCoordinates().y
-  );
+  const auto destinationTile
+    = Coordinates::Rectangle::_7kaaTile(destination.point);
+  const auto location = Coordinates::get7kaaLocation(destinationTile);
+  const auto _7kaaCoordinates = destinationTile.to7kaaCoordinates();
 
   if (destination.action > Unit::Waypoint::Action::MoveOnly
     && location->is_firm()
@@ -373,8 +373,8 @@ void Unit::sendToDestination(
         && nation->get_relation_should_attack(target->nation_recno)
       ) {
         unit_array.attack(
-          destination.point.to7kaaCoordinates().x,
-          destination.point.to7kaaCoordinates().y,
+          _7kaaCoordinates.x,
+          _7kaaCoordinates.y,
           0,
           &_7kaaUnitRecordNumbers[0],
           _7kaaUnitRecordNumbers.size(),
@@ -388,8 +388,8 @@ void Unit::sendToDestination(
       if (unit->nation_recno == target->nation_recno) {
         if (target->firm_id==FIRM_CAMP) {
           unit_array.assign_to_camp(
-            destination.point.to7kaaCoordinates().x,
-            destination.point.to7kaaCoordinates().y,
+            _7kaaCoordinates.x,
+            _7kaaCoordinates.y,
             COMMAND_PLAYER,
             &_7kaaUnitRecordNumbers[0],
             _7kaaUnitRecordNumbers.size()
@@ -397,8 +397,8 @@ void Unit::sendToDestination(
           return;
         } else if (unit_res[unit->unit_id]->race_id > 0) {
           unit_array.assign(
-            destination.point.to7kaaCoordinates().x,
-            destination.point.to7kaaCoordinates().y,
+            _7kaaCoordinates.x,
+            _7kaaCoordinates.y,
             0,
             COMMAND_PLAYER,
             &_7kaaUnitRecordNumbers[0],
@@ -411,8 +411,8 @@ void Unit::sendToDestination(
   }
 
   unit_array.move_to(
-    destination.point.to7kaaCoordinates().x,
-    destination.point.to7kaaCoordinates().y,
+    _7kaaCoordinates.x,
+    _7kaaCoordinates.y,
     0,
     &_7kaaUnitRecordNumbers[0],
     _7kaaUnitRecordNumbers.size(),
@@ -589,7 +589,7 @@ void Unit::toggleWaypoint(
 Coordinates::Point Unit::currentDestination(
 ) const {
   const auto _7kaaUnit = unit_array[_7kaaSpriteRecordNumber];
-  return Coordinates::Point::from7kaaCoordinates(
+  return Coordinates::Rectangle::from7kaaCoordinates(
     {
       .x = _7kaaUnit->result_node_array
         ? _7kaaUnit->result_node_array[_7kaaUnit->result_node_count - 1].node_x
@@ -598,7 +598,7 @@ Coordinates::Point Unit::currentDestination(
         ? _7kaaUnit->result_node_array[_7kaaUnit->result_node_count - 1].node_y
         : _7kaaUnit->go_y_loc(),
     }
-  );
+  ).centre();
 }
 
 
