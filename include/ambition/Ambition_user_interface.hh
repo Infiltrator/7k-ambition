@@ -71,11 +71,11 @@ extern int reportType;
 extern short selected7kaaFirmOrTownRecordNumber;
 
 
-struct Point {
+struct Pixel {
   int left;
   int top;
 
-  inline bool operator==(const Point& rhs) const noexcept {
+  constexpr bool operator==(const Pixel rhs) const noexcept {
     return left == rhs.left && top == rhs.top;
   }
 };
@@ -86,18 +86,18 @@ struct Size {
 };
 
 struct Rectangle {
-  Point start;
-  Point end;
+  Pixel start;
+  Pixel end;
 
-  constexpr static Rectangle fromPoint(
-    const Point start,
+  constexpr static Rectangle fromPixel(
+    const Pixel start,
     const int width,
     const int height
   ) {
-    return fromPoint(start, { .width = width, .height = height });
+    return fromPixel(start, { width, height });
   }
-  constexpr static Rectangle fromPoint(
-    const Point start,
+  constexpr static Rectangle fromPixel(
+    const Pixel start,
     Size size
   ) {
     return {
@@ -134,7 +134,7 @@ struct Rectangle {
   }
 
   bool contains(
-    const Point& point
+    const Pixel pixel
   ) const;
   bool contains(
     const Rectangle& rectangle
@@ -193,7 +193,7 @@ constexpr Size BUTTON_SIZE_WITH_SHADOW = {
   .height = BUTTON_SIZE.height + 6,
 };
 
-constexpr auto BOUNDS = Rectangle::fromPoint(
+constexpr auto BOUNDS = Rectangle::fromPixel(
   {
     .left = 0,
     .top = 0,
@@ -480,7 +480,7 @@ const auto CANCEL_BUTTON = BUTTON_ROW_LOWER.internal(
   VerticalAlignment::Bottom
 );
 
-constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPoint(
+constexpr auto RALLY_POINT_BUTTON = Rectangle::fromPixel(
   {
     .left = INFO_PANE_CONTENTS.start.left + 29,
     .top = INFO_PANE_CONTENTS.start.top,
@@ -546,7 +546,7 @@ std::string keyString(
   const unsigned int keyCode
 );
 
-Point fromWorldPoint(
+Pixel fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport = Ambition::Coordinates::viewport()
 );

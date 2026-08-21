@@ -471,7 +471,7 @@ void Building::drawProductionQueueTotals(
   constexpr auto PANEL_WIDTH = 108;
   constexpr auto BUTTON_PANEL_GAP = 12;
 
-  const auto panel = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto panel = UserInterface::Rectangle::fromPixel(
     {
       .left = doneButtonRight,
       .top = top,

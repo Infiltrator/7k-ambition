@@ -63,7 +63,7 @@ namespace _7kaaAmbitionInterface::Draw {
 
 const std::map<
   int,
-  Ambition::UserInterface::Point
+  Ambition::UserInterface::Pixel
 > BUILDING_DRAWING_OFFSETS = {
   { 11, { 0, -8 } }, /* Fort. */
   { 12, { 2, -10 } }, /* Factory. */
@@ -1259,7 +1259,7 @@ bool printSaveFileDate(
     return false;
   }
 
-  const auto slotArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto slotArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left - 60,
       .top = top
@@ -1293,7 +1293,7 @@ bool printSaveFilename(
     return false;
   }
 
-  const auto slotArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto slotArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left - 60,
       .top = top
@@ -1432,7 +1432,7 @@ void queueCount(
   }
 
   Ambition::drawButtonOverlay(
-    Ambition::UserInterface::Rectangle::fromPoint(
+    Ambition::UserInterface::Rectangle::fromPixel(
       {
         .left = button.x1,
         .top = button.y1,
@@ -1461,7 +1461,7 @@ void queueCount(
   }
 
   Ambition::drawButtonOverlay(
-    Ambition::UserInterface::Rectangle::fromPoint(
+    Ambition::UserInterface::Rectangle::fromPixel(
       {
         .left = 585,
         .top = 500,
@@ -1490,7 +1490,7 @@ void queueCount(
   }
 
   Ambition::drawButtonOverlay(
-    Ambition::UserInterface::Rectangle::fromPoint(
+    Ambition::UserInterface::Rectangle::fromPixel(
       {
         .left = 637,
         .top = 471,
@@ -1609,7 +1609,7 @@ void warMachineTechnologyLevel(
     return;
   }
 
-  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left,
       .top = top,
@@ -1652,7 +1652,7 @@ void workerSpyIcon(
   }
 
   const auto iconBitmap = image_icon.get_ptr(*spyIconName);
-  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left,
       .top = top,

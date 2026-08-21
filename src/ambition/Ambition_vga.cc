@@ -489,7 +489,7 @@ void displayInnGuestLeavingSoonMark(
   constexpr auto STAY_CYCLE_LOW_THRESHOLD = 2;
 
   if (_7kaaInnGuest->stay_count <= STAY_CYCLE_LOW_THRESHOLD) {
-    const auto textArea = Ambition::UserInterface::Rectangle::fromPoint(
+    const auto textArea = UserInterface::Rectangle::fromPixel(
       {
         .left = 750,
         .top = top + 2,
@@ -1470,7 +1470,7 @@ void drawBuildMarkerGridLines(
 
 void drawBuildModeHighlighting(
   const Coordinates::Point locationCoordinates,
-  const UserInterface::Point screenCoordinates,
+  const UserInterface::Pixel screenCoordinates,
   const Coordinates::Rectangle worldBounds
 ) {
   const auto firmId = power.command_para;
@@ -1781,7 +1781,7 @@ void drawFirmBuilderIcon(
 
     const auto iconSize = UserInterface::bitmapSize(icon);
 
-    const auto textArea = UserInterface::Rectangle::fromPoint(
+    const auto textArea = UserInterface::Rectangle::fromPixel(
       {
         .left = x,
         .top = y,
@@ -1920,7 +1920,7 @@ void drawMinimapLine(
 void drawOutsideLeadershipIcon(
   const ::Unit* _7kaaUnit
 ) {
-  const UserInterface::Point displayLocation = {
+  const UserInterface::Pixel displayLocation = {
     .left = ZOOM_X1 + _7kaaUnit->cur_x - World::view_top_x + 10,
     .top = calculateUnitIconY(
       ZOOM_Y1 + _7kaaUnit->cur_y - World::view_top_y - 23
@@ -2360,7 +2360,7 @@ void printVillagesReportTownPopulations(
 ) {
   using namespace UserInterface::Report::Villages::Towns;
 
-  const auto rowArea = UserInterface::Rectangle::fromPoint(
+  const auto rowArea = UserInterface::Rectangle::fromPixel(
     {
       .left = AREA.start.left,
       .top = top,

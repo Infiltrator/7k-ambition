@@ -52,7 +52,7 @@ struct Rectangle;
 }
 
 namespace UserInterface {
-struct Point;
+struct Pixel;
 struct Rectangle;
 struct Size;
 }
@@ -226,7 +226,7 @@ void drawBuildMarkerGridLines(
 
 void drawBuildModeHighlighting(
   const Coordinates::Point locationCoordinates,
-  const UserInterface::Point screenCoordinates,
+  const UserInterface::Pixel screenCoordinates,
   const Coordinates::Rectangle worldBounds
 );
 
