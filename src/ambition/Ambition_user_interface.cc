@@ -67,8 +67,9 @@ short selected7kaaFirmOrTownRecordNumber = 0;
 namespace TitleScreen {
 
 const Rectangle FEEDBACK_LINK = BOUNDS
-  .inner({ bottom: DISCORD_BUTTON_CLICK_AREA.height() })
-  .inner({ left: 12, bottom: 2 })
+  .inner(
+    { bottom: static_cast<unsigned int>(DISCORD_BUTTON_CLICK_AREA.height()) }
+  ).inner({ left: 12, bottom: 2 })
   .internal(
     { .width = 160, .height = 20 },
     HorizontalAlignment::Left,
