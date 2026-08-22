@@ -33,6 +33,7 @@ speaking, considered to be the player's experience.
 ### Changed
 
 - Updated the Catalan translation, thanks to Júlia Rosell Saldaña.
+- Updated the German translation, thanks to Einheit-101.
 - Made the What's New section spacing look nicer and less cramped.
 - Made development slightly easier.
 
