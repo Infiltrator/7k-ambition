@@ -505,7 +505,7 @@ std::string localeDescription(
     { "nl", { "Nederlands", _("Dutch") } },
     { "pl", { "Polski", _("Polish") } },
     { "pt_BR", { "Português (Brasil)", _("Portuguese (Brazil)") } },
-    { "ru", { "Русский [Pycckuu]", _("Russian") } },
+    { "ru", { "Русский [Pycckuû]", _("Russian") } },
   };
 
   if (!localeNames.contains(localeCode)) {
