@@ -5,13 +5,13 @@ AC_PREREQ([2.65])
 
 AC_INIT(
   [Seven Kingdoms: Ambition],
-  [m4_esyscmd_s([
+  [m4_normalize(m4_esyscmd_s([
     if test -d .git; then
-      git describe --always --dirty --tags 2>/dev/null || echo "v3.2.10-novcs";
+      git describe --always --dirty --tags 2>/dev/null || cat VERSION;
      else
-      echo "v3.2.10-novcs";
+      cat VERSION;
     fi
-  ])],
+  ]))],
   [seven-kingdoms-ambition-bugs@lists.sourceforge.net],
   [7k-ambition],
   [https://seven-kingdoms-ambition.sourceforge.io/]
