@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ namespace Ambition {
 
 constexpr auto MAJOR_VERSION = 3;
 constexpr auto MINOR_VERSION = 2;
-constexpr auto PATCH_VERSION = 10;
+constexpr auto PATCH_VERSION = 11;
 constexpr auto RELEASE_CANDIDATE = false;
 
 std::string versionString();

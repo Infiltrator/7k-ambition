@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.11] — 2026-08-24
+
 ### Added
 
 - Added a locale selection screen, for switching locales (languages).
