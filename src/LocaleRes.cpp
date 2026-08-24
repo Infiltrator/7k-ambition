@@ -206,7 +206,6 @@ const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 
 	size_t in_left;
 	size_t out_left;
-	char *p1 = in_buf;
 	char *p2 = out_buf;
 
 	in_left = strlen(s);
@@ -215,6 +214,8 @@ const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 		in_buf_size = in_left;
 		in_buf = mem_resize(in_buf, in_buf_size+1);
 	}
+	char* p1 = in_buf;
+
 	strncpy(in_buf, s, in_left);
 	in_buf[in_left] = 0;
 	out_left = out_buf_size;
@@ -229,6 +230,7 @@ const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 				out_left += BUF_INCR;
 				out_buf_size += BUF_INCR;
 				out_buf = mem_resize(out_buf, out_buf_size+1);
+				p2 = out_buf + (out_buf_size - out_left);
 				continue;
 			}
 
