@@ -19,6 +19,7 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed Windows showing the Russian translation completely garbled.
 - Fixed Catalan translation not working for countries other than Spain.
 - Fixed issue with "Building Complete" (and other) sounds not being audible when
   they are far away from the current screen location because they became too

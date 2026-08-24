@@ -96,6 +96,7 @@ void LocaleRes::init()
 	}
 	textdomain(PACKAGE);
 	setlocale(LC_ALL, "");
+	bind_textdomain_codeset(PACKAGE, "UTF-8");
 	load(getenv("SKMESSAGES"));
 
 	in_buf = mem_add(INIT_BUF_SIZE+1);

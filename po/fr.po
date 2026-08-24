@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7kAA\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 00:19+1000\n"
+"POT-Creation-Date: 2026-08-24 13:33+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: JLP\n"
 "Language-Team: \n"
@@ -621,6 +621,10 @@ msgstr ""
 #: src/ambition/version_details.cc
 msgid ""
 "Added a feedback sound when clicking the Hire Caravan button in the Market."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Fixed Windows showing the Russian translation completely garbled."
 msgstr ""
 
 #: src/ambition/version_details.cc
