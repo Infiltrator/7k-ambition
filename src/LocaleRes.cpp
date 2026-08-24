@@ -2,6 +2,7 @@
  * Seven Kingdoms: Ancient Adversaries
  *
  * Copyright 2018 Jesse Allen
+ * Copyright 2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +22,7 @@
 //Filename    : LocaleRes.cpp
 //Description : Locale Resources
 
+#include <cerrno>
 #include <stdlib.h>
 #ifdef ENABLE_NLS
 #include <libintl.h>
@@ -221,12 +223,32 @@ const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 	{
 		c = iconv(cd, &p1, &in_left, &p2, &out_left);
 		if( c == (size_t)-1 )
-			return s;
-		if( in_left )
 		{
-			out_left += BUF_INCR;
-			out_buf_size += BUF_INCR;
-			out_buf = mem_resize(out_buf, out_buf_size+1);
+			if (errno == E2BIG) {
+				out_left += BUF_INCR;
+				out_buf_size += BUF_INCR;
+				out_buf = mem_resize(out_buf, out_buf_size+1);
+				continue;
+			}
+
+			if (errno == EILSEQ) {
+				*p2++ = '?';
+				out_left--;
+
+				const auto firstByte = static_cast<unsigned char>(*p1);
+				const size_t codePointLength
+					= (firstByte < 0x80) ? 1
+					: (firstByte < 0xE0) ? 2
+					: (firstByte < 0xF0) ? 3
+					: (firstByte < 0xF8) ? 4
+					: 1;
+
+				p1 += codePointLength;
+				in_left -= codePointLength;
+				continue;
+			}
+
+			return s;
 		}
 	}
 	out_buf[out_buf_size-out_left] = 0;
