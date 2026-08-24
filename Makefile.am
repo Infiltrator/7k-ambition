@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = --install -I m4
 
 SUBDIRS = data include src po
 
-doc_DATA = COPYING README CHANGELOG.md
+doc_DATA = COPYING README
 
 # these are included recursively by dist
 EXTRA_DIST = README doc packaging tools
