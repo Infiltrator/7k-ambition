@@ -22,6 +22,7 @@
 //Filename    : LocaleRes.cpp
 //Description : Locale Resources
 
+#include <cassert>
 #include <cerrno>
 #include <stdlib.h>
 #ifdef ENABLE_NLS
@@ -201,6 +202,8 @@ void LocaleRes::load(const char *locale)
 #define BUF_INCR 1000
 const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 {
+	assert(s != nullptr);
+
 	if( cd == (iconv_t)-1 )
 		return s;
 
