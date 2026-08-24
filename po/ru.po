@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-24 13:33+1000\n"
-"PO-Revision-Date: 2026-08-11 21:43+1000\n"
+"PO-Revision-Date: 2026-08-24 17:35+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -293,7 +293,7 @@ msgstr "Умертвить"
 #: src/ambition/Ambition_vga.cc:382
 #, c-format
 msgid "Hit Points: %.0f"
-msgstr ""
+msgstr "Очки здоровья: %.0f"
 
 #: src/ambition/Ambition_vga.cc:421
 msgid "Speed: "
@@ -321,7 +321,7 @@ msgstr "Скоро уйдёт"
 
 #: src/ambition/Ambition_vga.cc:470
 msgid "Enjoying stay"
-msgstr ""
+msgstr "Доволен"
 
 #: src/ambition/Ambition_vga.cc:495
 msgid "*"
@@ -329,16 +329,16 @@ msgstr ""
 
 #: src/ambition/Ambition_vga.cc:522
 msgid "Steal Reports"
-msgstr ""
+msgstr "Украсть донесения"
 
 #: src/ambition/Ambition_vga.cc:615
 msgid "Goods supplied"
-msgstr ""
+msgstr "Товаров достав."
 
 #: src/ambition/Ambition_vga.cc:704
 #, c-format
 msgid "Level: %d"
-msgstr ""
+msgstr "Уровень: %d"
 
 #. TRANSLATORS: The short form of Clay.  Used when space is limited.
 #: src/ambition/Ambition_vga.cc:711
@@ -2987,7 +2987,7 @@ msgstr "Любого"
 # data/resource/std/00007-FIRM.dbf
 #: src/OF_MARK.cpp:524 src/OR_TRADE.cpp:80
 msgid "Factory"
-msgstr "Завод"
+msgstr "Мануфактура"
 
 # data/resource/std/00007-FIRM.dbf
 #: src/OF_MARK.cpp:525 src/OR_TRADE.cpp:81
@@ -3440,7 +3440,7 @@ msgstr "Ваше королевство потерпело бесславное 
 #: src/OGAMEND.cpp:409
 #, c-format
 msgid "You Retired on %s."
-msgstr "Вы сложили власть %s."
+msgstr "Вы сложили корону %s."
 
 #: src/OGAMEND.cpp:424
 msgid "Duration of Your Rule"
@@ -3448,7 +3448,7 @@ msgstr "Лета вашего правления"
 
 #: src/OGAMEND.cpp:425
 msgid "Total Gaming Time"
-msgstr "Общее время игры"
+msgstr "Всего времени в игре"
 
 #: src/OGAMEND.cpp:427
 msgid "Final Population"
@@ -6426,7 +6426,7 @@ msgstr "Стоимость"
 
 #: src/OSKILL.cpp:31
 msgid "Construction"
-msgstr "Строительство"
+msgstr "Зодчество"
 
 #: src/OSKILL.cpp:33
 msgid "Mining"
@@ -6434,7 +6434,7 @@ msgstr "Горнодобыча"
 
 #: src/OSKILL.cpp:34
 msgid "Manufacture"
-msgstr "Производство"
+msgstr "Произв."
 
 #: src/OSKILL.cpp:35
 msgid "Research"
@@ -8307,7 +8307,7 @@ msgstr "Зулус"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "Fort"
-msgstr "Форт"
+msgstr "Крепость"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "Fryhtan Lair"
@@ -8319,7 +8319,7 @@ msgstr "Гавань"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "Inn"
-msgstr "Постоялый двор"
+msgstr "Трактир"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "Prayer"
@@ -8335,7 +8335,7 @@ msgstr "Солдат"
 
 # data/resource/std/00007-FIRM.dbf
 msgid "War Factory"
-msgstr "Военный Завод"
+msgstr "Военная Мануфактура"
 
 # data/resource/tut_intr/00000-1BAS_MIL.txt:1
 msgid ""
