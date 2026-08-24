@@ -597,7 +597,7 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 	str += ": ";
 	str += overseerUnit->skill.get_skill(SKILL_LEADING);
 
-	font_san.disp( x1, y, str, INFO_X2-10 );
+	font_san.disp( x1, y, str, INFO_X2-(Ambition::Config::enhancementsAvailable() ? 4 : 10) );
 	y+=14;
 
 	//--------- display loyalty ----------//
