@@ -75,155 +75,155 @@ msgid "Compare %s's Kingdom%s"
 msgstr ""
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:113
+#: src/ambition/Ambition_config.cc:114
 msgid "classic"
 msgstr ""
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:116
+#: src/ambition/Ambition_config.cc:117
 msgid "enhanced"
 msgstr ""
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:119
+#: src/ambition/Ambition_config.cc:120
 msgid "advanced"
 msgstr ""
 
 # data/SCENARIO/ERADICAT.SCT:1
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:122
+#: src/ambition/Ambition_config.cc:123
 msgid "ambition"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:125
+#: src/ambition/Ambition_config.cc:126
 msgid "ERROR:UNKNOWN"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:192
+#: src/ambition/Ambition_config.cc:193
 msgid "Current mode:"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:226
+#: src/ambition/Ambition_config.cc:227
 #, c-format
 msgid "Error in %s at lines:\n"
 msgstr ""
 
 #. TRANSLATORS: The separator for config.txt file error line numbers.
-#: src/ambition/Ambition_config.cc:229
+#: src/ambition/Ambition_config.cc:230
 #, c-format
 msgid "%d, "
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:233
+#: src/ambition/Ambition_config.cc:234
 msgid ""
 "Seven Kingdoms: Ambition will continue loading using the valid lines only."
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:253
+#: src/ambition/Ambition_config.cc:254
 msgid "Select Locale"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:270
+#: src/ambition/Ambition_config.cc:271
 msgid ""
 "The locale setting has been saved to your config.txt file and will take "
 "effect the next time that Seven Kingdoms: Ambition starts.\n"
 "Would you like to exit now?"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:274 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
+#: src/ambition/Ambition_config.cc:275 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
 #: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
 #: src/OR_NAT.cpp:334 src/OR_NAT.cpp:552
 msgid "Yes"
 msgstr "Tak"
 
-#: src/ambition/Ambition_config.cc:275 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
+#: src/ambition/Ambition_config.cc:276 src/OGAMEND.cpp:219 src/OINGMENU.cpp:252
 #: src/OINGMENU.cpp:277 src/OINGMENU.cpp:293 src/OR_NAT.cpp:333
 #: src/OR_NAT.cpp:334 src/OR_NAT.cpp:553
 msgid "No"
 msgstr "Nie"
 
-#: src/ambition/Ambition_config.cc:352
+#: src/ambition/Ambition_config.cc:353
 msgid "Error opening config.txt file for reading:"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:417
+#: src/ambition/Ambition_config.cc:418
 msgid "Error opening config.txt file for writing:"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:428
+#: src/ambition/Ambition_config.cc:429
 #, fuzzy
 msgid "Error writing to config.txt file:"
 msgstr "Błąd podczas tworzenia pliku zapisu gry"
 
-#: src/ambition/Ambition_config.cc:496
+#: src/ambition/Ambition_config.cc:497
 msgid "Detect System Locale"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:497
+#: src/ambition/Ambition_config.cc:498
 msgid "Catalan"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:498
+#: src/ambition/Ambition_config.cc:499
 msgid "German"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:499
+#: src/ambition/Ambition_config.cc:500
 msgid "English"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:500
+#: src/ambition/Ambition_config.cc:501
 msgid "Esperanto"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:501
+#: src/ambition/Ambition_config.cc:502
 msgid "Spanish"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:502
+#: src/ambition/Ambition_config.cc:503
 msgid "French"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:503
+#: src/ambition/Ambition_config.cc:504
 msgid "Latin"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:504
+#: src/ambition/Ambition_config.cc:505
 msgid "Dutch"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:505
+#: src/ambition/Ambition_config.cc:506
 msgid "Polish"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:506
+#: src/ambition/Ambition_config.cc:507
 msgid "Portuguese (Brazil)"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:507
+#: src/ambition/Ambition_config.cc:508
 msgid "Russian"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:597
+#: src/ambition/Ambition_config.cc:599
 msgid "Select Mode"
 msgstr ""
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:601
+#: src/ambition/Ambition_config.cc:603
 msgid "I. Classic"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:602
+#: src/ambition/Ambition_config.cc:604
 msgid ""
 "Run everything the exact same as 7Kfans' 7kaa.  Allows for multiplayer with "
 "7K:AA."
 msgstr ""
 
 #. TRANSLATORS: The name of the running mode.
-#: src/ambition/Ambition_config.cc:608
+#: src/ambition/Ambition_config.cc:610
 msgid "II. Enhanced"
 msgstr ""
 
-#: src/ambition/Ambition_config.cc:609
+#: src/ambition/Ambition_config.cc:611
 msgid ""
 "Add enhancements that do not affect gameplay.  Allows for multiplayer with "
 "7K:AA."
@@ -250,21 +250,21 @@ msgstr ""
 msgid "End of replay"
 msgstr ""
 
-#: src/ambition/Ambition_news.cc:201
+#: src/ambition/Ambition_news.cc:193
 msgid ""
 "Scroll using the mouse wheel, up/down keys, pg-up/pg-dwn keys, or left/right "
 "keys."
 msgstr ""
 
-#: src/ambition/Ambition_news.cc:294
+#: src/ambition/Ambition_news.cc:286
 msgid "scroll up for more"
 msgstr ""
 
-#: src/ambition/Ambition_news.cc:378
+#: src/ambition/Ambition_news.cc:370
 msgid "scroll down for more"
 msgstr ""
 
-#: src/ambition/Ambition_news.cc:379
+#: src/ambition/Ambition_news.cc:380
 msgid "WHAT'S NEW"
 msgstr ""
 
