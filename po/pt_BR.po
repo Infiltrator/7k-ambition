@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-24 13:33+1000\n"
+"POT-Creation-Date: 2026-08-24 16:29+1000\n"
 "PO-Revision-Date: 2025-10-21 15:48+1100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -632,6 +632,10 @@ msgid "Fixed Catalan translation not working for countries other than Spain."
 msgstr ""
 
 #: src/ambition/version_details.cc
+msgid "Fixed some typos and minor errors in the Russian translation."
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed issue with \"Building Complete\" (and other) sounds not being audible "
 "when they are far away from the current screen location because they became "
@@ -649,13 +653,30 @@ msgid "Fixed the scrollbar thumbs appearing to overlap the scroll buttons."
 msgstr ""
 
 #: src/ambition/version_details.cc
+msgid "Fixed the What's New screen not getting translated."
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid ""
 "Fixed the What's New heading getting cut off when it's too long (i.e. in "
 "other languages)."
 msgstr ""
 
 #: src/ambition/version_details.cc
+msgid ""
+"Fixed the Feedback link getting cut off when the translation is too long."
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid "Updated the Catalan translation, thanks to Júlia Rosell Saldaña."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Updated the German translation, thanks to Einheit-101."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Improved the Russian translation somewhat."
 msgstr ""
 
 #: src/ambition/version_details.cc
