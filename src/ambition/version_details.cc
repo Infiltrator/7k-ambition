@@ -18,6 +18,12 @@ std::vector<VersionUpdates> getVersionDetails(
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+      {
+        .heading = HEADING_CHANGED,
+        .items = {
+          _("Select sortied units only if the Fort is still selected, instead of overriding the selection, preventing accidentally giving orders to the wrong units in multiplayer."),
+        },
+      },
     },
   },
   {
