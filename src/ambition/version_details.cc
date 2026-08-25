@@ -27,6 +27,12 @@ std::vector<VersionUpdates> getVersionDetails(
         },
       },
       {
+        .heading = HEADING_FIXED,
+        .items = {
+          _("Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These can be bound to actions with and without modifiers."),
+        },
+      },
+      {
         .heading = HEADING_CHANGED,
         .items = {
           _("Select sortied units only if the Fort is still selected, instead of overriding the selection, preventing accidentally giving orders to the wrong units in multiplayer."),
