@@ -1405,6 +1405,11 @@ int Mouse::is_key(unsigned scanCode, unsigned short skeyState, unsigned short ch
 	case SDLK_AT: priChar = shiftChar = capitalChar = '@'; break;
 	case SDLK_COLON: priChar = shiftChar = capitalChar = ':'; break;
 	case SDLK_UNDERSCORE: priChar = shiftChar = capitalChar = '_'; break;
+
+	case '!': priChar = capitalChar = shiftChar = '!'; break;
+	case '#': priChar = capitalChar = shiftChar = '#'; break;
+	case '$': priChar = capitalChar = shiftChar = '$'; break;
+
 	default:
 		MSG("unhandled key %x\n", scanCode);
 	}

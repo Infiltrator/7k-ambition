@@ -26,6 +26,11 @@ speaking, considered to be the player's experience.
   `KEYEVENT_SPEED_DECREASE_SMALL` and `KEYEVENT_SPEED_INCREASE_SMALL` bindings
   in the config.txt file.
 
+### Fixed
+
+- Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These
+  can be bound to actions with and without modifiers.
+
 ### Changed
 
 - Select sortied units only if the Fort is still selected, instead of overriding
