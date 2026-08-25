@@ -22,6 +22,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_ADDED,
         .items = {
           _("Added access to speeds 9 and 10 using the `9` and `0` keys.  Unlimited speed has been moved to `\\`, and pause toggle is already done with Space.  These can be rebound using the `KEYEVENT_ _SPEED_ _SET_ _TO_ _UNLIMITED` and `KEYEVENT_ _SPEED_ _TOGGLE_ _PAUSE` bindings in the config.txt file."),
+          _("Added access to cycling through all speeds 1–32 using the `-` and `=` keys.  These can be rebound using the `KEYEVENT_ _SPEED_ _DECREASE_ _STANDARD` and `KEYEVENT_ _SPEED_ _INCREASE_ _STANDARD` bindings in the config.txt file."),
         },
       },
       {

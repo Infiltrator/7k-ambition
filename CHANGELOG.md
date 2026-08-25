@@ -16,6 +16,9 @@ speaking, considered to be the player's experience.
   has been moved to `\`, and pause toggle is already done with Space.  These can
   be rebound using the `KEYEVENT_SPEED_SET_TO_UNLIMITED` and
   `KEYEVENT_SPEED_TOGGLE_PAUSE` bindings in the config.txt file.
+- Added access to cycling through all speeds 1–32 using the `-` and `=` keys.
+  These can be rebound using the `KEYEVENT_SPEED_DECREASE_STANDARD` and
+  `KEYEVENT_SPEED_INCREASE_STANDARD` bindings in the config.txt file.
 
 ### Changed
 
