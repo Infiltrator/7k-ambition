@@ -3,6 +3,7 @@
  *
  * Copyright 1997,1998 Enlight Software Ltd.
  * Copyright 2010,2015 Jesse Allen
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -135,6 +136,13 @@ enum KeyEventType : int
 
    KEYEVENT_CANCEL,
 	KEYEVENT_CONFIRM,
+
+	KEYEVENT_SPEED_DECREASE_SMALL,
+	KEYEVENT_SPEED_DECREASE_STANDARD,
+	KEYEVENT_SPEED_INCREASE_SMALL,
+	KEYEVENT_SPEED_INCREASE_STANDARD,
+	KEYEVENT_SPEED_SET_TO_UNLIMITED,
+	KEYEVENT_SPEED_TOGGLE_PAUSE,
 
 	KEYEVENT_UNIT_REWARD,
 

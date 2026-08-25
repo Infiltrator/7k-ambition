@@ -33,6 +33,7 @@
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <ALL.h>
 #include <OAUDIO.h>
@@ -2569,6 +2570,10 @@ int Sys::detect_set_speed(unsigned scanCode, unsigned skeyState)
       return 0;
 
    //------- determine the speed to set of the key pressed -------//
+
+	if (Ambition::Input::detectSpeedChangeKeys(keyCode)) {
+		return 1;
+	}
 
    if( keyCode >= '1' && keyCode <= '8' )
    {

@@ -30,6 +30,7 @@
 #include <SDL.h>
 
 #include "pragma_silence_7kaa_warnings.hh"
+#include "OCONFIG.h"
 #include "KEY.h"
 #include "OBUTT3D.h"
 #include "OFIRMA.h"
@@ -183,6 +184,13 @@ const std::map<Action, KeyEventType> KEY_EVENT_MAP = {
   { Action::Common_Cancel, KEYEVENT_CANCEL },
   { Action::Common_Confirm, KEYEVENT_CONFIRM },
   { Action::Common_Reward, KEYEVENT_UNIT_REWARD },
+
+  { Action::Speed_Decrease_Small, KEYEVENT_SPEED_DECREASE_SMALL },
+  { Action::Speed_Decrease_Standard, KEYEVENT_SPEED_DECREASE_STANDARD },
+  { Action::Speed_Increase_Small, KEYEVENT_SPEED_INCREASE_SMALL },
+  { Action::Speed_Increase_Standard, KEYEVENT_SPEED_INCREASE_STANDARD },
+  { Action::Speed_SetToUnlimited, KEYEVENT_SPEED_SET_TO_UNLIMITED },
+  { Action::Speed_TogglePause, KEYEVENT_SPEED_TOGGLE_PAUSE },
 
   { Action::Spy_Assassinate, KEYEVENT_SPY_ASSASSINATE },
   { Action::Spy_Bribe, KEYEVENT_SPY_BRIBE },
@@ -783,6 +791,71 @@ void detectScenarioScroll(
     },
     []() { return SLOT_COUNT - 1; }
   );
+}
+
+bool detectSpeedChangeKeys(
+  const unsigned int keyCode
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  constexpr auto STEP_SMALL = 1;
+  constexpr auto STEP_STANDARD = 3;
+  constexpr auto SPEED_UNLIMITED = 99;
+
+  if (keyCode == getKeyEvent(Action::Speed_Decrease_Small)
+    || keyCode == getKeyEvent(Action::Speed_Decrease_Standard)
+  ) {
+    /* sys.set_speed(0) actually toggles between paused and not, so we do not
+     * want to call it if we are already paused. */
+    if (config.frame_speed > 0) {
+      const auto step = keyCode == getKeyEvent(Action::Speed_Decrease_Small)
+        ? STEP_SMALL : STEP_STANDARD;
+      sys.set_speed(std::max(0, config.frame_speed - step));
+      sys.user_pause_flag = !config.frame_speed;
+    }
+    return true;
+  }
+
+  if (keyCode == getKeyEvent(Action::Speed_Increase_Small)
+    || keyCode == getKeyEvent(Action::Speed_Increase_Standard)
+  ) {
+    const auto step = keyCode == getKeyEvent(Action::Speed_Increase_Small)
+      ? STEP_SMALL : STEP_STANDARD;
+    sys.set_speed(std::min(SPEED_UNLIMITED, config.frame_speed + step));
+    sys.user_pause_flag = 0;
+    return true;
+  }
+
+  if (keyCode == getKeyEvent(Action::Speed_SetToUnlimited)) {
+    sys.set_speed(SPEED_UNLIMITED);
+    sys.user_pause_flag = 0;
+    return true;
+  }
+
+  if (keyCode == getKeyEvent(Action::Speed_TogglePause)) {
+    sys.set_speed(0);
+    sys.user_pause_flag = !config.frame_speed;
+    return true;
+  }
+
+  /* 1–8 are already handled by 7kaa.
+   *
+   * These are here after the above bound events, to allow people to rebind `9`
+   * and `0` back to unlimited and pause, if they wish. */
+  if (keyCode == '9') {
+    sys.set_speed(9 * STEP_STANDARD);
+    sys.user_pause_flag = 0;
+    return true;
+  }
+  if (keyCode == '0') {
+    sys.set_speed(10 * STEP_STANDARD);
+    sys.user_pause_flag = 0;
+    return true;
+  }
+
+  return false;
 }
 
 bool detectSpyScroll(

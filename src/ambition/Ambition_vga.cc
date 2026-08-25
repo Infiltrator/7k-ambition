@@ -426,6 +426,15 @@ void displayGameSpeed(
   } else {
     str += speed / 3;
   }
+  switch (speed % 3) {
+  case 1:
+    str += ".3";
+    break;
+  case 2:
+    str += ".7";
+    break;
+  }
+
   font_news.right_put(
     ZOOM_X2 - 4,
     ZOOM_Y1 + 4,
