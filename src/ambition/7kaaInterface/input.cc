@@ -185,7 +185,9 @@ const std::map<Action, KeyEventType> KEY_EVENT_MAP = {
   { Action::Common_Confirm, KEYEVENT_CONFIRM },
   { Action::Common_Reward, KEYEVENT_UNIT_REWARD },
 
+  { Action::Speed_Decrease_Small, KEYEVENT_SPEED_DECREASE_SMALL },
   { Action::Speed_Decrease_Standard, KEYEVENT_SPEED_DECREASE_STANDARD },
+  { Action::Speed_Increase_Small, KEYEVENT_SPEED_INCREASE_SMALL },
   { Action::Speed_Increase_Standard, KEYEVENT_SPEED_INCREASE_STANDARD },
   { Action::Speed_SetToUnlimited, KEYEVENT_SPEED_SET_TO_UNLIMITED },
   { Action::Speed_TogglePause, KEYEVENT_SPEED_TOGGLE_PAUSE },
@@ -798,22 +800,29 @@ bool detectSpeedChangeKeys(
     return false;
   }
 
+  constexpr auto STEP_SMALL = 1;
   constexpr auto STEP_STANDARD = 3;
   constexpr auto SPEED_UNLIMITED = 99;
 
-  if (keyCode == getKeyEvent(Action::Speed_Decrease_Standard)) {
+  if (keyCode == getKeyEvent(Action::Speed_Decrease_Small)
+    || keyCode == getKeyEvent(Action::Speed_Decrease_Standard)
+  ) {
     /* sys.set_speed(0) actually toggles between paused and not, so we do not
      * want to call it if we are already paused. */
     if (config.frame_speed > 0) {
-      const auto step = STEP_STANDARD;
+      const auto step = keyCode == getKeyEvent(Action::Speed_Decrease_Small)
+        ? STEP_SMALL : STEP_STANDARD;
       sys.set_speed(std::max(0, config.frame_speed - step));
       sys.user_pause_flag = !config.frame_speed;
     }
     return true;
   }
 
-  if (keyCode == getKeyEvent(Action::Speed_Increase_Standard)) {
-    const auto step = STEP_STANDARD;
+  if (keyCode == getKeyEvent(Action::Speed_Increase_Small)
+    || keyCode == getKeyEvent(Action::Speed_Increase_Standard)
+  ) {
+    const auto step = keyCode == getKeyEvent(Action::Speed_Increase_Small)
+      ? STEP_SMALL : STEP_STANDARD;
     sys.set_speed(std::min(SPEED_UNLIMITED, config.frame_speed + step));
     sys.user_pause_flag = 0;
     return true;

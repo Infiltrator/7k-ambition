@@ -41,7 +41,9 @@ enum class Action {
   Common_Confirm,
   Common_Reward,
 
+  Speed_Decrease_Small,
   Speed_Decrease_Standard,
+  Speed_Increase_Small,
   Speed_Increase_Standard,
   Speed_SetToUnlimited,
   Speed_TogglePause,
