@@ -301,6 +301,7 @@ AM_CXXFLAGS += --std=c++11
 if SILENCE_7KAA_WARNINGS
 AM_CXXFLAGS += -Wno-char-subscripts
 AM_CXXFLAGS += -Wno-class-memaccess
+AM_CXXFLAGS += -Wno-comment
 AM_CXXFLAGS += -Wno-delete-non-virtual-dtor
 AM_CXXFLAGS += -Wno-maybe-uninitialized
 AM_CXXFLAGS += -Wno-overloaded-virtual
