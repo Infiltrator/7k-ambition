@@ -28,6 +28,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Added access to cycling through all speeds 1–10,922.3* using the `-` and `=` keys.  These can be rebound using the `KEYEVENT_ _SPEED_ _DECREASE_ _STANDARD` and `KEYEVENT_ _SPEED_ _INCREASE_ _STANDARD` bindings in the config.txt file."),
           _("* With the exception of speed 33, which is used internally to represent unlimited speed, and will be skipped over."),
           _("Added access to cycling through all the intermediate speeds (there are three steps from each standard speed level to the next; and the two intermediate speeds are shown as .3 and .7).  These can be accessed using the `shift+-` and `shift+=` keys and can be rebound using the `KEYEVENT_ _SPEED_ _DECREASE_ _SMALL` and `KEYEVENT_ _SPEED_ _INCREASE_ _SMALL` bindings in the config.txt file."),
+          _("Added scrolling with the pg up/pg down keys to the Inn guest list and the Harbour ship list."),
         },
       },
       {
