@@ -235,9 +235,9 @@ void Mouse::init_key()
 	bind_key(KEYEVENT_CONFIRM, "Return");
 
 	bind_key(KEYEVENT_SPEED_DECREASE_STANDARD, "-");
-	bind_key(KEYEVENT_SPEED_DECREASE_SMALL, "shift+-");
+	bind_key(KEYEVENT_SPEED_DECREASE_SMALL, "_");
 	bind_key(KEYEVENT_SPEED_INCREASE_STANDARD, "=");
-	bind_key(KEYEVENT_SPEED_INCREASE_SMALL, "shift+=");
+	bind_key(KEYEVENT_SPEED_INCREASE_SMALL, "+");
 	bind_key(KEYEVENT_SPEED_SET_TO_UNLIMITED, "\\");
 
 	bind_key(KEYEVENT_UNIT_REWARD, "W");
@@ -1679,7 +1679,7 @@ int Mouse::bind_key(KeyEventType key_event, const char *key)
 	unsigned int *ke;
 	const char *key2;
 
-	key2 = strchr(key, '+');
+	key2 = strlen(key) > 2 ? strchr(key, '+') : nullptr;
 	if( !key2 )
 	{
 		kc = SDL_GetKeyFromName(key);

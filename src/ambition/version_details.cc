@@ -32,6 +32,7 @@ std::vector<VersionUpdates> getVersionDetails(
       {
         .heading = HEADING_FIXED,
         .items = {
+          _("Allow `shift+=` to be bound using the key sequence `+`."),
           _("Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These can be bound to actions with and without modifiers."),
         },
       },
