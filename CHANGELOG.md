@@ -28,6 +28,7 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Allow `shift+=` to be bound using the key sequence `+`.
 - Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These
   can be bound to actions with and without modifiers.
 

@@ -1679,7 +1679,7 @@ int Mouse::bind_key(KeyEventType key_event, const char *key)
 	unsigned int *ke;
 	const char *key2;
 
-	key2 = strchr(key, '+');
+	key2 = strlen(key) > 2 ? strchr(key, '+') : nullptr;
 	if( !key2 )
 	{
 		kc = SDL_GetKeyFromName(key);
