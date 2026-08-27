@@ -27,6 +27,8 @@ speaking, considered to be the player's experience.
   `shift+=` keys and can be rebound using the
   `KEYEVENT_SPEED_DECREASE_SMALL` and `KEYEVENT_SPEED_INCREASE_SMALL` bindings
   in the config.txt file.
+- Added scrolling with the pg up/pg down keys to the Inn guest list and the
+  Harbour ship list.
 
 ### Fixed
 

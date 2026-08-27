@@ -344,7 +344,7 @@ bool detectUnitListScroll(
   return Ambition::Input::detectScroll(
     true,
     Ambition::UserInterface::INFO_PANE_CONTENTS,
-    Ambition::Input::BASE_ACTIVATIONS,
+    Ambition::Input::STANDARD_ACTIVATIONS,
     {
       {
         Ambition::Input::ScrollOrientation::Vertical,
