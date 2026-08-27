@@ -421,7 +421,7 @@ void displayGameSpeed(
   String str = _("Speed: ");
   if (speed == 0) {
     str += _("PAUSED");
-  } else if (speed >= 99) {
+  } else if (speed == 99) {
     str += _("UNLIMITED");
   } else {
     str += speed / 3;

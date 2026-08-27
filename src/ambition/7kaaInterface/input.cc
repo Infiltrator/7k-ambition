@@ -812,7 +812,12 @@ bool detectSpeedChangeKeys(
     if (config.frame_speed > 0) {
       const auto step = keyCode == getKeyEvent(Action::Speed_Decrease_Small)
         ? STEP_SMALL : STEP_STANDARD;
-      sys.set_speed(std::max(0, config.frame_speed - step));
+      auto newSpeed = std::max(0, config.frame_speed - step);
+      if (newSpeed == SPEED_UNLIMITED) {
+        newSpeed -= STEP_SMALL;
+      }
+
+      sys.set_speed(newSpeed);
       sys.user_pause_flag = !config.frame_speed;
     }
     return true;
@@ -823,7 +828,16 @@ bool detectSpeedChangeKeys(
   ) {
     const auto step = keyCode == getKeyEvent(Action::Speed_Increase_Small)
       ? STEP_SMALL : STEP_STANDARD;
-    sys.set_speed(std::min(SPEED_UNLIMITED, config.frame_speed + step));
+    auto newSpeed = std::clamp(
+      static_cast<short>(config.frame_speed + step),
+      static_cast<short>(0),
+      std::numeric_limits<short>::max()
+    );
+    if (newSpeed == SPEED_UNLIMITED) {
+      newSpeed += STEP_SMALL;
+    }
+
+    sys.set_speed(newSpeed);
     sys.user_pause_flag = 0;
     return true;
   }
