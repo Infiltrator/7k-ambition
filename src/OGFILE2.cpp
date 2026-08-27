@@ -918,7 +918,7 @@ int TownRes::read_file(File* filePtr)
 {
 	if(!game_file_array.same_version)
 	{
-		memset(town_name_used_array, 0, sizeof(town_name_used_array));
+		memset(town_name_used_array, 0, sizeof(town_name_used_array[0]) * town_name_count);
 		return filePtr->file_read( town_name_used_array, sizeof(town_name_used_array[0]) * VERSION_1_TOWNRES_TOWN_NAME_COUNT );
 	}
 	else
