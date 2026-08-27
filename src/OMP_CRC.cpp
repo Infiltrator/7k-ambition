@@ -497,7 +497,7 @@ void UnitMarine::init_crc(UnitMarineCrc *c)
 
 	memcpy(&c->unit_recno_array, &unit_recno_array, sizeof(short)*MAX_UNIT_IN_SHIP);
 	c->unit_count = unit_count;
-	RTRIM_ARRAY(&c->unit_recno_array, unit_count);
+	RTRIM_ARRAY(c->unit_recno_array, unit_count);
 
 	c->journey_status = journey_status;
 	c->dest_stop_id = dest_stop_id;
