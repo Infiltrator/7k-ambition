@@ -11,7 +11,10 @@ std::vector<VersionUpdates> getVersionDetails(
   const auto HEADING_ADDED = _("Added");
   const auto HEADING_FIXED = _("Fixed");
   const auto HEADING_CHANGED = _("Changed");
-  const auto HEADING_REMOVED = _("Removed");
+  /* There are none of these sections yet, but will be in future, so we do not
+   * want to remove it, so suppress the warning for now.
+   */
+  const auto HEADING_REMOVED [[maybe_unused]] = _("Removed");
   const auto IDENTIFIER_PREVIEW = _("Preview Version -- not yet released");
 
   return {
@@ -36,6 +39,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_CHANGED,
         .items = {
           _("Select sortied units only if the Fort is still selected, instead of overriding the selection, preventing accidentally giving orders to the wrong units in multiplayer."),
+          _("Made development slightly easier."),
         },
       },
     },
