@@ -568,9 +568,10 @@ void FirmInn::update_del_hire_list()
 	{
 		if( !inn_unit_array[i-1].spy_recno && --inn_unit_array[i-1].stay_count==0 )
 		{
+			Ambition::Inn::guestLeaving(this, browse_hire, i);
+
 			del_inn_unit(i);
 
-			Ambition::Inn::guestLeft(this, browse_hire, Ambition::Inn::getSelectedRecordNumber(this, i - 1));
 			if (Ambition::Inn::refreshBrowser(firm_recno, this, browse_hire, i, button_hire)) {
 				continue;
 			}

@@ -42,8 +42,8 @@ int getSelectedRecordNumber(
   const int browserRecordNumber
 );
 
-void guestLeft(
-  FirmInn* inn,
+void guestLeaving(
+  const FirmInn* inn,
   const VBrowseIF& guestBrowser,
   const int recordNumber
 );

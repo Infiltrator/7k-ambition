@@ -79,8 +79,8 @@ int getSelectedRecordNumber(
   return Ambition::getInnSelectedRecordNumber(inn, browserRecordNumber);
 }
 
-void guestLeft(
-  FirmInn* inn,
+void guestLeaving(
+  const FirmInn* inn,
   const VBrowseIF& guestBrowser,
   const int recordNumber
 ) {
@@ -92,7 +92,9 @@ void guestLeft(
     return;
   }
 
-  if (guestBrowser.rec_no == recordNumber) {
+  if (Ambition::getInnSelectedRecordNumber(inn, guestBrowser.rec_no)
+      == recordNumber
+  ) {
     guestSelectionValid = false;
   }
 }
