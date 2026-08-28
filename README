@@ -77,6 +77,11 @@ an officially released version of the game as it is already provided in the
 source archive. Compiling and using git snapshots for general use is dis-
 couraged and instead use the latest officially released version of the game.
 
+### MSYS2
+
+If you're building on MSYS2, after installing `mingw-w64-x86_64-boost` and
+`mingw-w64-x86_64-boost-libs`, you will need to pass the installation path to
+configure, e.g. `./configure --with-boost=/mingw64/`
 
 Running locally from source build
 --------
