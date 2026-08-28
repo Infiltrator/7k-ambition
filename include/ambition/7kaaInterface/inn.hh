@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,8 +42,8 @@ int getSelectedRecordNumber(
   const int browserRecordNumber
 );
 
-void guestLeft(
-  FirmInn* inn,
+void guestLeaving(
+  const FirmInn* inn,
   const VBrowseIF& guestBrowser,
   const int recordNumber
 );
@@ -57,7 +57,7 @@ void overrideHireButtonStatus(
   Button3D& hireButton
 );
 
-void refreshBrowser(
+bool refreshBrowser(
   const short firmRecordNumber,
   FirmInn* inn,
   VBrowseIF& browser,

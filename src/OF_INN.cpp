@@ -551,7 +551,7 @@ void FirmInn::update_add_hire_list()
 			if( unitId )
 				add_inn_unit(unitId);
 
-			Ambition::Inn::refreshBrowser(firm_recno, this, browse_hire, inn_unit_count + 1, button_hire);
+			Ambition::Inn::refreshBrowser(firm_recno, this, browse_hire, -1, button_hire);
 		}
 	}
 }
@@ -568,14 +568,18 @@ void FirmInn::update_del_hire_list()
 	{
 		if( !inn_unit_array[i-1].spy_recno && --inn_unit_array[i-1].stay_count==0 )
 		{
+			Ambition::Inn::guestLeaving(this, browse_hire, i);
+
 			del_inn_unit(i);
 
-			Ambition::Inn::guestLeft(this, browse_hire, Ambition::Inn::getSelectedRecordNumber(this, i - 1));
+			if (Ambition::Inn::refreshBrowser(firm_recno, this, browse_hire, i, button_hire)) {
+				continue;
+			}
 
 			if( firm_recno == firm_array.selected_recno &&
 				should_show_info() )
 			{
-				if( Ambition::Inn::getSelectedRecordNumber(this, browse_hire.recno()) > i && Ambition::Inn::getSelectedRecordNumber(this, browse_hire.recno()) > 1 )
+				if( browse_hire.recno() > i && browse_hire.recno() > 1 )
 					browse_hire.refresh( browse_hire.recno()-1, inn_unit_count );
 			}
 		}

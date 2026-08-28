@@ -32,6 +32,12 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed the Inn guest selection sometimes changing when a guest leaves,
+  resulting in sometimes hiring the wrong unit.
+- Fixed the Inn hire button not getting disabled properly when a guest leaves,
+  resulting in sometimes hiring the wrong unit.
+- Fixed the Inn hire button getting randomly re-enabled after disabling but
+  without a selection change.
 - Allow `shift+=` to be bound using the key sequence `+`.
 - Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These
   can be bound to actions with and without modifiers.
