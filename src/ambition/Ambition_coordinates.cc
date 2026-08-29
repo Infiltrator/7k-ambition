@@ -59,14 +59,6 @@ bool Point::within(
   );
 }
 
-bool Point::operator==(
-  const Point& rhs
-) const noexcept {
-    return
-    x == rhs.x
-    && y == rhs.y;
-}
-
 Interval Point::operator-(const Point& rhs) const {
   return {
     .x = x - rhs.x,

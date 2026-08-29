@@ -62,7 +62,7 @@ struct Point {
     const Rectangle& rectangle
   ) const;
 
-  bool operator==(const Point& rhs) const noexcept;
+  constexpr bool operator==(const Point& rhs) const noexcept;
 
   Interval operator-(const Point& rhs) const;
 
@@ -80,6 +80,14 @@ struct Point {
     archive & BOOST_SERIALIZATION_NVP(y);
   }
 };
+
+constexpr bool Point::operator==(const Point& rhs) const noexcept {
+  return (
+    x == rhs.x
+    && y == rhs.y
+  );
+}
+
 
 struct Interval {
   long long int x;
@@ -144,7 +152,7 @@ struct Rectangle {
     const _7kaaCoordinates _7kaaCoordinatesEnd
   );
 
-  bool operator==(const Rectangle& rhs) const noexcept {
+  constexpr bool operator==(const Rectangle& rhs) const noexcept {
     return start == rhs.start && end == rhs.end;
   }
 
@@ -164,7 +172,7 @@ struct Rectangle {
 private:
   struct SubrectangleRange;
 public:
-  SubrectangleRange subrectangles(
+  constexpr SubrectangleRange subrectangles(
     const Interval step = _7KAA_COORDINATE_STEP
   ) const {
     return SubrectangleRange(*this, step);
@@ -187,11 +195,11 @@ public:
 
 private:
   struct SubrectangleRange {
-    auto begin() { return Iterator(rectangle, step, 0); }
-    auto end() {
+    constexpr auto begin() { return Iterator(rectangle, step, 0); }
+    constexpr auto end() {
       return Iterator(rectangle, step, rectangle.subrectangleCount(step));
     }
-    SubrectangleRange(
+    constexpr SubrectangleRange(
       const Rectangle& rectangle,
       const Interval step
     ): rectangle(rectangle),
@@ -203,14 +211,14 @@ private:
       constexpr auto operator*() const {
         return rectangle.subrectangle(index, step);
       }
-      inline auto& operator++() { index++; return *this; }
-      inline bool operator!=(const Iterator& rhs) {
+      constexpr auto& operator++() { index++; return *this; }
+      constexpr bool operator!=(const Iterator& rhs) {
         return rectangle != rhs.rectangle
           || step != rhs.step
           || index != rhs.index;
       }
 
-      Iterator(
+      constexpr Iterator(
         const Rectangle& rectangle,
         const Interval step,
         const unsigned int index
