@@ -489,7 +489,7 @@ void displayInnGuestLeavingSoonMark(
   constexpr auto STAY_CYCLE_LOW_THRESHOLD = 2;
 
   if (_7kaaInnGuest->stay_count <= STAY_CYCLE_LOW_THRESHOLD) {
-    const auto textArea = Ambition::UserInterface::Rectangle::fromPoint(
+    const auto textArea = UserInterface::Rectangle::fromPixel(
       {
         .left = 750,
         .top = top + 2,
@@ -1469,9 +1469,9 @@ void drawBuildMarkerGridLines(
 }
 
 void drawBuildModeHighlighting(
-  const Coordinates::Point locationCoordinates,
-  const UserInterface::Point screenCoordinates,
-  const Coordinates::Rectangle worldBounds
+  const Coordinates::Rectangle& location,
+  const UserInterface::Pixel screenCoordinates,
+  const Coordinates::Rectangle& worldBounds
 ) {
   const auto firmId = power.command_para;
   const auto firmInfo = firm_res[firmId];
@@ -1485,28 +1485,22 @@ void drawBuildModeHighlighting(
     ? firmInfo->loc_height
     : STD_TOWN_LOC_HEIGHT;
 
+  const auto buildStartArea = Coordinates::Rectangle::fromPoint(
+    location.bottomRight(),
+    Coordinates::Interval{ -width, height } * Coordinates::SCALING_FACTOR
+  );
+
   auto canBuild = false;
   auto ideal = false;
   if (firmId == FIRM_HARBOR) {
-    const auto rectangle = Coordinates::Rectangle::fromPoint(
-      locationCoordinates,
-      {
-        -(width - 1) * Coordinates::SCALING_FACTOR,
-        (height - 1) * Coordinates::SCALING_FACTOR,
-      }
-    );
-
-    for (const auto point
-           : rectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
-    ) {
-      if (!point.within(worldBounds)) {
+    for (const auto buildStartTile : buildStartArea.subrectangles()) {
+      if (!buildStartTile.within(worldBounds)) {
         continue;
       }
 
-      const auto _7kaaPoint = point.to7kaaCoordinates();
       if (world.can_build_firm(
-          _7kaaPoint.x,
-          _7kaaPoint.y,
+          buildStartTile.to7kaaCoordinates().x,
+          buildStartTile.to7kaaCoordinates().y,
           FIRM_HARBOR,
           unit_array.selected_recno
         )
@@ -1517,11 +1511,9 @@ void drawBuildModeHighlighting(
           nation_array.player_recno,
           firmId,
           Coordinates::Rectangle::fromPoint(
-            point,
-            {
-              (width - 1) * Coordinates::SCALING_FACTOR,
-              -(height - 1) * Coordinates::SCALING_FACTOR,
-            }
+            buildStartTile.topLeft(),
+            Coordinates::Interval{ width, -height }
+              * Coordinates::SCALING_FACTOR
           )
         );
 
@@ -1539,47 +1531,29 @@ void drawBuildModeHighlighting(
       ideal = true;
     }
 
-    const auto rectangle = Coordinates::Rectangle::fromPoint(
-      locationCoordinates,
-      {
-        -(width - 1) * Coordinates::SCALING_FACTOR,
-        (height - 1) * Coordinates::SCALING_FACTOR,
-      }
-    );
-
-    for (const auto point
-           : rectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
-    ) {
-      if (!point.within(worldBounds)) {
+    for (const auto buildStartTile : buildStartArea.subrectangles()) {
+      if (!buildStartTile.within(worldBounds)) {
         continue;
       }
 
       const auto buildRectangle = Coordinates::Rectangle::fromPoint(
-        point,
-        {
-          (width - 1) * Coordinates::SCALING_FACTOR,
-          -(height - 1) * Coordinates::SCALING_FACTOR,
-        }
+        buildStartTile.topLeft(),
+        Coordinates::Interval{ width, -height } * Coordinates::SCALING_FACTOR
       );
       auto space = true;
       auto rawMaterial = false;
-      for (const auto buildPoint
-             : buildRectangle.points(Coordinates::_7KAA_COORDINATE_STEP)
-      ) {
+      for (const auto buildPoint : buildRectangle.subrectangles()) {
         if (!buildPoint.within(worldBounds)) {
           continue;
         }
 
-        const auto location = world.get_loc(
-          buildPoint.to7kaaCoordinates().x,
-          buildPoint.to7kaaCoordinates().y
-        );
-        if (location->has_site()) {
+        const auto _7kaaLocation = Coordinates::get7kaaLocation(buildPoint);
+        if (_7kaaLocation->has_site()) {
           rawMaterial = true;
         }
-        if (!(location->loc_flag & LOCATE_WALK_LAND)
-          || (location->has_site() && firmId != FIRM_MINE)
-          || location->is_power_off()
+        if (!(_7kaaLocation->loc_flag & LOCATE_WALK_LAND)
+          || (_7kaaLocation->has_site() && firmId != FIRM_MINE)
+          || _7kaaLocation->is_power_off()
         ) {
           space = false;
           break;
@@ -1596,13 +1570,7 @@ void drawBuildModeHighlighting(
           const auto linkCounts = Building::countLinks(
             nation_array.player_recno,
             firmId,
-            Coordinates::Rectangle::fromPoint(
-              point,
-              {
-                (width - 1) * Coordinates::SCALING_FACTOR,
-                -(height - 1) * Coordinates::SCALING_FACTOR,
-              }
-            )
+            buildRectangle
           );
 
           switch (firmId) {
@@ -1679,7 +1647,7 @@ void drawBuildModeHighlighting(
     ideal = false;
   }
 
-  const auto _7kaaCoordinates = locationCoordinates.to7kaaCoordinates();
+  const auto _7kaaCoordinates = location.to7kaaCoordinates();
   int colour;
   if (ideal) {
     colour = V_WHITE;
@@ -1781,7 +1749,7 @@ void drawFirmBuilderIcon(
 
     const auto iconSize = UserInterface::bitmapSize(icon);
 
-    const auto textArea = UserInterface::Rectangle::fromPoint(
+    const auto textArea = UserInterface::Rectangle::fromPixel(
       {
         .left = x,
         .top = y,
@@ -1899,8 +1867,10 @@ void drawMinimapLine(
   anim_line.bound_x2 = MAP_X2;
   anim_line.bound_y2 = MAP_Y2;
 
-  const auto _7kaaFrom = from.to7kaaCoordinates();
-  const auto _7kaaTo = to.to7kaaCoordinates();
+  const auto _7kaaFrom
+    = Coordinates::Rectangle::_7kaaTile(from).to7kaaCoordinates();
+  const auto _7kaaTo
+    = Coordinates::Rectangle::_7kaaTile(to).to7kaaCoordinates();
   anim_line.draw_line(
     &vga_back,
     MAP_X1 + _7kaaFrom.x,
@@ -1920,7 +1890,7 @@ void drawMinimapLine(
 void drawOutsideLeadershipIcon(
   const ::Unit* _7kaaUnit
 ) {
-  const UserInterface::Point displayLocation = {
+  const UserInterface::Pixel displayLocation = {
     .left = ZOOM_X1 + _7kaaUnit->cur_x - World::view_top_x + 10,
     .top = calculateUnitIconY(
       ZOOM_Y1 + _7kaaUnit->cur_y - World::view_top_y - 23
@@ -2360,7 +2330,7 @@ void printVillagesReportTownPopulations(
 ) {
   using namespace UserInterface::Report::Villages::Towns;
 
-  const auto rowArea = UserInterface::Rectangle::fromPoint(
+  const auto rowArea = UserInterface::Rectangle::fromPixel(
     {
       .left = AREA.start.left,
       .top = top,

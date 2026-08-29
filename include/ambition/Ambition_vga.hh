@@ -52,7 +52,7 @@ struct Rectangle;
 }
 
 namespace UserInterface {
-struct Point;
+struct Pixel;
 struct Rectangle;
 struct Size;
 }
@@ -225,9 +225,9 @@ void drawBuildMarkerGridLines(
 );
 
 void drawBuildModeHighlighting(
-  const Coordinates::Point locationCoordinates,
-  const UserInterface::Point screenCoordinates,
-  const Coordinates::Rectangle worldBounds
+  const Coordinates::Rectangle& location,
+  const UserInterface::Pixel screenCoordinates,
+  const Coordinates::Rectangle& worldBounds
 );
 
 void drawButtonOverlay(

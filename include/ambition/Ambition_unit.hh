@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -269,6 +269,14 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(retiredAt);
     archive & BOOST_SERIALIZATION_NVP(status);
     archive & BOOST_SERIALIZATION_NVP(waypoints);
+    if (version < 3) {
+      /* Align all waypoints to the centres of 7kaa tiles. */
+      constexpr auto VERSION_3_SCALING_FACTOR = 16;
+      for (auto& waypoint : waypoints) {
+        waypoint.point.x -= waypoint.point.x % VERSION_3_SCALING_FACTOR;
+        waypoint.point.y -= waypoint.point.y % VERSION_3_SCALING_FACTOR;
+      }
+    }
     archive & BOOST_SERIALIZATION_NVP(workerIdentifier);
     if (version == 1) {
       archive & BOOST_SERIALIZATION_NVP(lastWaypointOrderIssuedAt);
@@ -278,4 +286,4 @@ protected:
 
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Unit, 2)
+BOOST_CLASS_VERSION(Ambition::Unit, 3)

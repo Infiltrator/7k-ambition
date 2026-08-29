@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -320,12 +320,12 @@ bool toggleWaypoint(
         .action = (allowAction && location->explored())
           ? Ambition::Unit::Waypoint::Action::InteractWithBuilding
           : Ambition::Unit::Waypoint::Action::MoveOnly,
-        .point = Ambition::Coordinates::Point::from7kaaCoordinates(
+        .point = Ambition::Coordinates::Rectangle::from7kaaCoordinates(
           {
             .x = _7kaaX,
             .y = _7kaaY,
           }
-        ),
+        ).centre(),
       }
     );
   }

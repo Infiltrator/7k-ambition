@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -107,7 +107,7 @@ public:
   static std::vector<int> countLinks(
     const short targetNation7kaaRecordNumber,
     const int targetFirmId,
-    const Coordinates::Rectangle target
+    const Coordinates::Rectangle& target
   );
 
   bool canProduce(
@@ -227,6 +227,12 @@ protected:
     archive & BOOST_SERIALIZATION_NVP(destroyedAt);
     archive & BOOST_SERIALIZATION_NVP_CONST(erected);
     archive & BOOST_SERIALIZATION_NVP(rally);
+    if (version < 2) {
+      /* Align all rally points to the centres of 7kaa tiles. */
+      constexpr auto VERSION_2_SCALING_FACTOR = 16;
+      rally.point.x -= rally.point.x % VERSION_2_SCALING_FACTOR;
+      rally.point.y -= rally.point.y % VERSION_2_SCALING_FACTOR;
+    }
     if (version < 1) {
       archive & boost::serialization::make_nvp("trainingQueue", productionQueue);
     } else {
@@ -244,4 +250,4 @@ void setOrClearRallyPoint(
 
 } // namespace Ambition
 
-BOOST_CLASS_VERSION(Ambition::Building, 1)
+BOOST_CLASS_VERSION(Ambition::Building, 2)

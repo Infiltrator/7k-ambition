@@ -75,7 +75,7 @@ static void displaySlideBall(
 
 void display(
 ) {
-  constexpr Ambition::UserInterface::Point START_BUTTON = {
+  constexpr UserInterface::Pixel START_BUTTON = {
     .left = 317,
     .top = 535,
   };

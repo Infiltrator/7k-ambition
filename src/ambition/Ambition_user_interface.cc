@@ -224,7 +224,7 @@ std::vector<Section> processCodes(
 Rectangle Rectangle::fromWorldRectangle(
   const Coordinates::Rectangle& coordinateRectangle
 ) {
-  return fromPoint(
+  return fromPixel(
     fromWorldPoint(coordinateRectangle.topLeft()),
     {
       .width = static_cast<int>(
@@ -239,11 +239,11 @@ Rectangle Rectangle::fromWorldRectangle(
 
 
 bool Rectangle::contains(
-  const Point& point
+  const Pixel pixel
 ) const {
   return (
-    point.left >= start.left && point.left <= end.left
-    && point.top >= start.top && point.top <= end.top
+    pixel.left >= start.left && pixel.left <= end.left
+    && pixel.top >= start.top && pixel.top <= end.top
   );
 }
 bool Rectangle::contains(
@@ -557,7 +557,7 @@ std::string keyString(
   return "UNKNOWN";
 }
 
-Point fromWorldPoint(
+Pixel fromWorldPoint(
   Ambition::Coordinates::Point worldPoint,
   Ambition::Coordinates::Rectangle viewport
 ) {
@@ -726,7 +726,7 @@ void printText(
   const auto bufferPitch
     = withinBounds ? vga.active_buf->buf_pitch() : drawArea.width();
 
-  auto printArea = Rectangle::fromPoint(
+  auto printArea = Rectangle::fromPixel(
     { .left = 0, .top = 0 },
     drawArea.size()
   );
@@ -763,7 +763,7 @@ void printText(
 
   if (!withinBounds) {
     const auto inside = bounds.intersection(drawArea);
-    const auto sourceArea = Rectangle::fromPoint(
+    const auto sourceArea = Rectangle::fromPixel(
       {
         .left = inside.start.left - drawArea.start.left,
         .top = inside.start.top - drawArea.start.top,

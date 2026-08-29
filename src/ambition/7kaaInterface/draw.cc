@@ -63,7 +63,7 @@ namespace _7kaaAmbitionInterface::Draw {
 
 const std::map<
   int,
-  Ambition::UserInterface::Point
+  Ambition::UserInterface::Pixel
 > BUILDING_DRAWING_OFFSETS = {
   { 11, { 0, -8 } }, /* Fort. */
   { 12, { 2, -10 } }, /* Factory. */
@@ -555,16 +555,14 @@ void buildModeHighlighting(
   using Ambition::Coordinates::Point;
 
   Ambition::drawBuildModeHighlighting(
-    Point::from7kaaCoordinates({ _7kaaX, _7kaaY }),
+    Ambition::Coordinates::Rectangle::from7kaaCoordinates({ _7kaaX, _7kaaY }),
     { left, top },
-    Ambition::Coordinates::Rectangle::fromPoint(
-      Point::from7kaaCoordinates({ 0, 0 }),
-      Point::from7kaaCoordinates(
-        {
+    Ambition::Coordinates::Rectangle::from7kaaRectangle(
+      { 0, 0 },
+      {
           static_cast<short>(maximum7kaaX - 1),
           static_cast<short>(maximum7kaaY - 1),
-        }
-      ) - Point::from7kaaCoordinates({ 0, 0 })
+      }
     )
   );
 }
@@ -1259,7 +1257,7 @@ bool printSaveFileDate(
     return false;
   }
 
-  const auto slotArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto slotArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left - 60,
       .top = top
@@ -1293,7 +1291,7 @@ bool printSaveFilename(
     return false;
   }
 
-  const auto slotArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto slotArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left - 60,
       .top = top
@@ -1432,7 +1430,7 @@ void queueCount(
   }
 
   Ambition::drawButtonOverlay(
-    Ambition::UserInterface::Rectangle::fromPoint(
+    Ambition::UserInterface::Rectangle::fromPixel(
       {
         .left = button.x1,
         .top = button.y1,
@@ -1461,7 +1459,7 @@ void queueCount(
   }
 
   Ambition::drawButtonOverlay(
-    Ambition::UserInterface::Rectangle::fromPoint(
+    Ambition::UserInterface::Rectangle::fromPixel(
       {
         .left = 585,
         .top = 500,
@@ -1490,7 +1488,7 @@ void queueCount(
   }
 
   Ambition::drawButtonOverlay(
-    Ambition::UserInterface::Rectangle::fromPoint(
+    Ambition::UserInterface::Rectangle::fromPixel(
       {
         .left = 637,
         .top = 471,
@@ -1609,7 +1607,7 @@ void warMachineTechnologyLevel(
     return;
   }
 
-  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left,
       .top = top,
@@ -1652,7 +1650,7 @@ void workerSpyIcon(
   }
 
   const auto iconBitmap = image_icon.get_ptr(*spyIconName);
-  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPoint(
+  const auto portraitArea = Ambition::UserInterface::Rectangle::fromPixel(
     {
       .left = left,
       .top = top,
