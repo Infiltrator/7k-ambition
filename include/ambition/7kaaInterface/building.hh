@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -95,6 +95,10 @@ bool enqueueTraining(
   const char _7kaaRaceId,
   const char _7kaaSkillId,
   const unsigned int amount
+);
+
+std::size_t getTownNameArrayIndex(
+  const int _7kaaRecordNumber
 );
 
 void playCaravanHireSound(
