@@ -192,11 +192,15 @@ short Polity::findNearest7kaaMarket(
     }
 
     const auto _7kaaRectangle = location.to7kaaRectangle();
-    const auto distance = misc.points_distance(
+    const auto distance = misc.rects_distance(
       _7kaaFirm->loc_x1,
       _7kaaFirm->loc_y1,
+      _7kaaFirm->loc_x2,
+      _7kaaFirm->loc_y2,
       _7kaaRectangle.x1,
-      _7kaaRectangle.y1
+      _7kaaRectangle.y1,
+      _7kaaRectangle.x2,
+      _7kaaRectangle.y2
     );
 
     if (distance < nearest7kaaMarketDistance) {
