@@ -1485,25 +1485,22 @@ void drawBuildModeHighlighting(
     ? firmInfo->loc_height
     : STD_TOWN_LOC_HEIGHT;
 
+  const auto buildStartArea = Coordinates::Rectangle::fromPoint(
+    locationCoordinates.bottomRight(),
+    Coordinates::Interval{ -width, height } * Coordinates::SCALING_FACTOR
+  );
+
   auto canBuild = false;
   auto ideal = false;
   if (firmId == FIRM_HARBOR) {
-    const auto rectangle = Coordinates::Rectangle::fromPoint(
-      locationCoordinates.bottomRight(),
-      Coordinates::Interval{ -width, height } * Coordinates::SCALING_FACTOR
-    );
-
-    for (const auto point
-           : rectangle.subrectangles(Coordinates::_7KAA_COORDINATE_STEP)
-    ) {
-      if (!point.within(worldBounds)) {
+    for (const auto buildStartTile : buildStartArea.subrectangles()) {
+      if (!buildStartTile.within(worldBounds)) {
         continue;
       }
 
-      const auto _7kaaPoint = point.to7kaaCoordinates();
       if (world.can_build_firm(
-          _7kaaPoint.x,
-          _7kaaPoint.y,
+          buildStartTile.to7kaaCoordinates().x,
+          buildStartTile.to7kaaCoordinates().y,
           FIRM_HARBOR,
           unit_array.selected_recno
         )
@@ -1514,8 +1511,9 @@ void drawBuildModeHighlighting(
           nation_array.player_recno,
           firmId,
           Coordinates::Rectangle::fromPoint(
-            point.topLeft(),
-            Coordinates::Interval{ width, -height } * Coordinates::SCALING_FACTOR
+            buildStartTile.topLeft(),
+            Coordinates::Interval{ width, -height }
+              * Coordinates::SCALING_FACTOR
           )
         );
 
@@ -1533,38 +1531,29 @@ void drawBuildModeHighlighting(
       ideal = true;
     }
 
-    const auto rectangle = Coordinates::Rectangle::fromPoint(
-      locationCoordinates.bottomRight(),
-      Coordinates::Interval{ -width, height } * Coordinates::SCALING_FACTOR
-    );
-
-    for (const auto point
-           : rectangle.subrectangles(Coordinates::_7KAA_COORDINATE_STEP)
-    ) {
-      if (!point.within(worldBounds)) {
+    for (const auto buildStartTile : buildStartArea.subrectangles()) {
+      if (!buildStartTile.within(worldBounds)) {
         continue;
       }
 
       const auto buildRectangle = Coordinates::Rectangle::fromPoint(
-        point.topLeft(),
+        buildStartTile.topLeft(),
         Coordinates::Interval{ width, -height } * Coordinates::SCALING_FACTOR
       );
       auto space = true;
       auto rawMaterial = false;
-      for (const auto buildPoint
-             : buildRectangle.subrectangles(Coordinates::_7KAA_COORDINATE_STEP)
-      ) {
+      for (const auto buildPoint : buildRectangle.subrectangles()) {
         if (!buildPoint.within(worldBounds)) {
           continue;
         }
 
-        const auto location = Coordinates::get7kaaLocation(buildPoint);
-        if (location->has_site()) {
+        const auto _7kaaLocation = Coordinates::get7kaaLocation(buildPoint);
+        if (_7kaaLocation->has_site()) {
           rawMaterial = true;
         }
-        if (!(location->loc_flag & LOCATE_WALK_LAND)
-          || (location->has_site() && firmId != FIRM_MINE)
-          || location->is_power_off()
+        if (!(_7kaaLocation->loc_flag & LOCATE_WALK_LAND)
+          || (_7kaaLocation->has_site() && firmId != FIRM_MINE)
+          || _7kaaLocation->is_power_off()
         ) {
           space = false;
           break;

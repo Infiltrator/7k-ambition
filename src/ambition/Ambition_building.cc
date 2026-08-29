@@ -181,9 +181,7 @@ std::vector<int> Building::countLinks(
       }
 
       if (world.get_loc(town->center_x, town->center_y)->is_plateau()
-        != Coordinates::get7kaaLocation(
-          target.subrectangle(0, Coordinates::_7KAA_COORDINATE_STEP)
-        )->is_plateau()
+        != Coordinates::get7kaaLocation(target.subrectangle(0))->is_plateau()
       ) {
         continue;
       }
@@ -237,9 +235,7 @@ std::vector<int> Building::countLinks(
     }
 
     if (world.get_loc(firm->center_x, firm->center_y)->is_plateau()
-      != Coordinates::get7kaaLocation(
-        target.subrectangle(0, Coordinates::_7KAA_COORDINATE_STEP)
-      )->is_plateau()
+      != Coordinates::get7kaaLocation(target.subrectangle(0))->is_plateau()
     ) {
       continue;
     }
@@ -591,8 +587,7 @@ void Building::drawRallyPoint(
     (widthTileCount * halfHeightTileCountRoundedUp)
       - halfWidthTileCountRoundedUp
       + 1
-      - 1,
-    Coordinates::_7KAA_COORDINATE_STEP
+      - 1
   );
   drawMinimapLine(centralTile.centre(), rally.point, 2);
 }

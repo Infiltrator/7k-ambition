@@ -109,6 +109,12 @@ struct Interval {
   }
 };
 
+constexpr auto _7KAA_COORDINATE_STEP = Interval {
+  SCALING_FACTOR,
+  SCALING_FACTOR,
+};
+
+
 struct Rectangle {
   Point start;
   Point end;
@@ -149,17 +155,17 @@ struct Rectangle {
 
   constexpr Rectangle subrectangle(
     const long int index,
-    const Interval step
+    const Interval step = _7KAA_COORDINATE_STEP
   ) const;
   constexpr long int subrectangleCount(
-    const Interval step
+    const Interval step = _7KAA_COORDINATE_STEP
   ) const;
 
 private:
   struct SubrectangleRange;
 public:
   SubrectangleRange subrectangles(
-    const Interval step = { 1, 1 }
+    const Interval step = _7KAA_COORDINATE_STEP
   ) const {
     return SubrectangleRange(*this, step);
   }
@@ -254,12 +260,6 @@ constexpr long int Rectangle::subrectangleCount(
   return ((std::max(start.x, end.x) - std::min(start.x, end.x)) / step.x)
     * ((std::max(start.y, end.y) - std::min(start.y, end.y)) / step.y);
 }
-
-
-constexpr auto _7KAA_COORDINATE_STEP = Interval {
-  SCALING_FACTOR,
-  SCALING_FACTOR,
-};
 
 
 Location* get7kaaLocation(
