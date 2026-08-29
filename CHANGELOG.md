@@ -32,6 +32,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed a crash that happens when selecting certain Mayan towns and Norman and
+  Greek units.
 - Fixed the Inn guest selection sometimes changing when a guest leaves,
   resulting in sometimes hiring the wrong unit.
 - Fixed the Inn hire button not getting disabled properly when a guest leaves,

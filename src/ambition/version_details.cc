@@ -34,6 +34,7 @@ std::vector<VersionUpdates> getVersionDetails(
       {
         .heading = HEADING_FIXED,
         .items = {
+          _("Fixed a crash that happens when selecting certain Mayan towns and Norman and Greek units."),
           _("Fixed the Inn guest selection sometimes changing when a guest leaves, resulting in sometimes hiring the wrong unit."),
           _("Fixed the Inn hire button not getting disabled properly when a guest leaves, resulting in sometimes hiring the wrong unit."),
           _("Fixed the Inn hire button getting randomly re-enabled after disabling but without a selection change."),

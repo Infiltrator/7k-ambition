@@ -22,6 +22,7 @@
 //Filename    : LocaleRes.cpp
 //Description : Locale Resources
 
+#include <algorithm>
 #include <cassert>
 #include <cerrno>
 #include <stdlib.h>
@@ -31,7 +32,6 @@
 #endif
 
 #ifdef USE_WINDOWS
-#include <algorithm>
 #include <windows.h>
 #endif
 
@@ -249,8 +249,9 @@ const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 					: (firstByte < 0xF8) ? 4
 					: 1;
 
-				p1 += codePointLength;
-				in_left -= codePointLength;
+				const auto bytesToAdvance = std::min(in_left, codePointLength);
+				p1 += bytesToAdvance;
+				in_left -= bytesToAdvance;
 				continue;
 			}
 
