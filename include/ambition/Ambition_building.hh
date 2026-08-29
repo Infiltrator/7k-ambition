@@ -107,7 +107,7 @@ public:
   static std::vector<int> countLinks(
     const short targetNation7kaaRecordNumber,
     const int targetFirmId,
-    const Coordinates::Rectangle target
+    const Coordinates::Rectangle& target
   );
 
   bool canProduce(

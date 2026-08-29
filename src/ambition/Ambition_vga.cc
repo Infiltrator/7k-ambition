@@ -1471,7 +1471,7 @@ void drawBuildMarkerGridLines(
 void drawBuildModeHighlighting(
   const Coordinates::Rectangle& locationCoordinates,
   const UserInterface::Pixel screenCoordinates,
-  const Coordinates::Rectangle worldBounds
+  const Coordinates::Rectangle& worldBounds
 ) {
   const auto firmId = power.command_para;
   const auto firmInfo = firm_res[firmId];

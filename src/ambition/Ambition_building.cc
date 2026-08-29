@@ -128,7 +128,7 @@ std::shared_ptr<Building> Building::findBy7kaaTownRecordNumber(
 std::vector<int> Building::countLinks(
   const short targetNation7kaaRecordNumber,
   const int targetFirmId,
-  const Coordinates::Rectangle target
+  const Coordinates::Rectangle& target
 ) {
   constexpr auto FIRM_ID_TOWN = 0;
 

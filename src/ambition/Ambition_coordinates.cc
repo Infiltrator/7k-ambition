@@ -172,13 +172,13 @@ Rectangle Rectangle::_7kaaTile(
 }
 
 Rectangle Rectangle::from7kaaCoordinates(
-  const _7kaaCoordinates& _7kaaCoordinates
+  const _7kaaCoordinates _7kaaCoordinates
 ) {
   return from7kaaRectangle(_7kaaCoordinates, _7kaaCoordinates);
 }
 Rectangle Rectangle::from7kaaRectangle(
-  const _7kaaCoordinates& _7kaaCoordinatesStart,
-  const _7kaaCoordinates& _7kaaCoordinatesEnd
+  const _7kaaCoordinates _7kaaCoordinatesStart,
+  const _7kaaCoordinates _7kaaCoordinatesEnd
 ) {
   return {
     .start = {

@@ -137,11 +137,11 @@ struct Rectangle {
   );
 
   static Rectangle from7kaaCoordinates(
-    const _7kaaCoordinates& _7kaaCoordinates
+    const _7kaaCoordinates _7kaaCoordinates
   );
   static Rectangle from7kaaRectangle(
-    const _7kaaCoordinates& _7kaaCoordinatesStart,
-    const _7kaaCoordinates& _7kaaCoordinatesEnd
+    const _7kaaCoordinates _7kaaCoordinatesStart,
+    const _7kaaCoordinates _7kaaCoordinatesEnd
   );
 
   bool operator==(const Rectangle& rhs) const noexcept {
