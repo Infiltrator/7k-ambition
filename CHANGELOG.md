@@ -40,6 +40,8 @@ speaking, considered to be the player's experience.
   resulting in sometimes hiring the wrong unit.
 - Fixed the Inn hire button getting randomly re-enabled after disabling but
   without a selection change.
+- Fixed the corrupted display of a Mayan Town name, a Norman unit name, and a
+  Greek unit name in the Esperanto, Polish, and Russian translations.
 - Fixed the calculation of the nearest Market, which sometimes resulted in
   hiring a Caravan from a slightly further away Market.
 - Allow `shift+=` to be bound using the key sequence `+`.
