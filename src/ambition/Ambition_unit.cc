@@ -358,13 +358,13 @@ void Unit::sendToDestination(
 
   const auto destinationTile
     = Coordinates::Rectangle::_7kaaTile(destination.point);
-  const auto location = Coordinates::get7kaaLocation(destinationTile);
+  const auto _7kaaLocation = Coordinates::get7kaaLocation(destinationTile);
   const auto _7kaaCoordinates = destinationTile.to7kaaCoordinates();
 
   if (destination.action > Unit::Waypoint::Action::MoveOnly
-    && location->is_firm()
+    && _7kaaLocation->is_firm()
   ) {
-    const auto target = firm_array[location->firm_recno()];
+    const auto target = firm_array[_7kaaLocation->firm_recno()];
     if (target->hit_points > 0) {
       const auto nation = nation_array[
         unit_array[_7kaaUnitRecordNumbers[0]]->nation_recno

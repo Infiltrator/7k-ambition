@@ -1469,7 +1469,7 @@ void drawBuildMarkerGridLines(
 }
 
 void drawBuildModeHighlighting(
-  const Coordinates::Rectangle& locationCoordinates,
+  const Coordinates::Rectangle& location,
   const UserInterface::Pixel screenCoordinates,
   const Coordinates::Rectangle& worldBounds
 ) {
@@ -1486,7 +1486,7 @@ void drawBuildModeHighlighting(
     : STD_TOWN_LOC_HEIGHT;
 
   const auto buildStartArea = Coordinates::Rectangle::fromPoint(
-    locationCoordinates.bottomRight(),
+    location.bottomRight(),
     Coordinates::Interval{ -width, height } * Coordinates::SCALING_FACTOR
   );
 
@@ -1647,7 +1647,7 @@ void drawBuildModeHighlighting(
     ideal = false;
   }
 
-  const auto _7kaaCoordinates = locationCoordinates.to7kaaCoordinates();
+  const auto _7kaaCoordinates = location.to7kaaCoordinates();
   int colour;
   if (ideal) {
     colour = V_WHITE;
