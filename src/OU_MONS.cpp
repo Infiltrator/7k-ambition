@@ -207,7 +207,8 @@ void UnitMonster::die()
 //
 void UnitMonster::king_leave_scroll()
 {
-	#define SCROLL_SCAN_RANGE	10
+#define HIGHEST_HUMAN_RANGE 6
+#define SCROLL_SCAN_RANGE ((HIGHEST_HUMAN_RANGE + 2) * 2 + 1)
 
 	int		 xOffset, yOffset;
 	int		 xLoc, yLoc;
