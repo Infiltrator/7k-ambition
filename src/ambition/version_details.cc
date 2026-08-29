@@ -37,6 +37,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Fixed the Inn guest selection sometimes changing when a guest leaves, resulting in sometimes hiring the wrong unit."),
           _("Fixed the Inn hire button not getting disabled properly when a guest leaves, resulting in sometimes hiring the wrong unit."),
           _("Fixed the Inn hire button getting randomly re-enabled after disabling but without a selection change."),
+          _("Fixed the calculation of the nearest Market, which sometimes resulted in hiring a Caravan from a slightly further away Market."),
           _("Allow `shift+=` to be bound using the key sequence `+`."),
           _("Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These can be bound to actions with and without modifiers."),
         },
