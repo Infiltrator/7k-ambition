@@ -324,14 +324,17 @@ int Town::draw_detect_link_line(int actionDetect)
 				anim_line.draw_line(&vga_back, srcX, srcY, townX, townY, 1 /*-animated*/);
 			}
 
+#define HALF_MIGRATION_ICON_WIDTH 16
+#define HALF_MIGRATION_ICON_HEIGHT 16
+
 			// Only perform checks on migration (draw/detect) when the 'active' part of the town is within
 			// the zoom matrix
-			if ( world.zoom_matrix->is_bitmap_clip( townX-11, townY-11, bitmapPtr ) &&
+			if ( world.zoom_matrix->is_bitmap_clip( townX-HALF_MIGRATION_ICON_WIDTH, townY-HALF_MIGRATION_ICON_HEIGHT, bitmapPtr ) &&
 				 can_migrate(townRecno) )
 			{
 				if( actionDetect )
 				{
-					int detectClick = world.zoom_matrix->detect_bitmap_clip( townX-11, townY-11, bitmapPtr );
+					int detectClick = world.zoom_matrix->detect_bitmap_clip( townX-HALF_MIGRATION_ICON_WIDTH, townY-HALF_MIGRATION_ICON_HEIGHT, bitmapPtr );
 					if( detectClick )
 					{
 						mouse.reset_click();		// reset queued mouse click for fast single clicking
@@ -349,7 +352,7 @@ int Town::draw_detect_link_line(int actionDetect)
 				}
 				else
 				{
-					world.zoom_matrix->put_bitmap_clip( townX-11, townY-11, bitmapPtr );
+					world.zoom_matrix->put_bitmap_clip( townX-HALF_MIGRATION_ICON_WIDTH, townY-HALF_MIGRATION_ICON_HEIGHT, bitmapPtr );
 				}
 			}
 		}
