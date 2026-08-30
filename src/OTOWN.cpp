@@ -4333,13 +4333,16 @@ void Town::verify_slot_object_id_array()
 // the program will adjust auto tax level to 90. And if the player
 // sets the auto grant level to 100, auto tax will be disabled.
 //
+// See the town_if_grant_tax_adjust setting for the exact adjust
+// value.
+//
 void Town::set_auto_collect_tax_loyalty(int loyaltyLevel)
 {
 	auto_collect_tax_loyalty = loyaltyLevel;
 
 	if( loyaltyLevel && auto_grant_loyalty >= auto_collect_tax_loyalty )
 	{
-		auto_grant_loyalty = auto_collect_tax_loyalty-10;
+		auto_grant_loyalty = auto_collect_tax_loyalty-config_adv.town_if_grant_tax_adjust;
 	}
 }
 //------ End of function Town::set_auto_collect_tax_loyalty -----//
@@ -4353,7 +4356,7 @@ void Town::set_auto_grant_loyalty(int loyaltyLevel)
 
 	if( loyaltyLevel && auto_grant_loyalty >= auto_collect_tax_loyalty )
 	{
-		auto_collect_tax_loyalty = auto_grant_loyalty+10;
+		auto_collect_tax_loyalty = auto_grant_loyalty+config_adv.town_if_grant_tax_adjust;
 
 		if( auto_collect_tax_loyalty > 100 )
 			auto_collect_tax_loyalty = 0;					// disable auto collect tax if it's over 100

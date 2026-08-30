@@ -119,6 +119,7 @@ public:
 	// town settings
 	int			town_ai_emerge_nation_pop_limit;
 	int			town_ai_emerge_town_pop_limit;
+	int			town_if_grant_tax_adjust;
 	char			town_migration;
 	char			town_loyalty_qol;
 
