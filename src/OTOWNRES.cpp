@@ -21,6 +21,8 @@
 //Filename    : OTOWNRES.CPP
 //Description : Town resource object
 
+#include "ambition/7kaaInterface/building.hh"
+
 #include <OGAMESET.h>
 #include <OIMGRES.h>
 #include <ORACERES.h>
@@ -426,7 +428,7 @@ char* TownRes::get_name(int recNo)
 	err_if( recNo<1 || recNo>town_name_count )
 		err_now( "TownRes::get_name()" );
 
-	return town_name_array[recNo-1].name;
+	return town_name_array[Ambition::Building::getTownNameArrayIndex(recNo)].name;
 }
 //------------ End of function TownRes::get_name -----------//
 

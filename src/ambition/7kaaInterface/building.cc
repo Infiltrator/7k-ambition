@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–26 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@
 #include "OFIRM.h"
 #include "OFONT.h"
 #include "OMOUSE.h"
+#include "ORACERES.h"
 #include "OREMOTE.h"
 #include "OSERES.h"
 #include "OTECHRES.h"
@@ -263,6 +264,26 @@ bool enqueueTraining(
     order
   );
   return true;
+}
+
+std::size_t getTownNameArrayIndex(
+  const int _7kaaRecordNumber
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaRecordNumber - 1;
+  }
+
+  for (auto i = 1; i <= race_res.race_count; i++) {
+    const auto _7kaaRaceResource = race_res[i];
+    const auto first = _7kaaRaceResource->first_town_name_recno;
+    const auto last = first + _7kaaRaceResource->town_name_count - 1;
+    if (_7kaaRecordNumber >= first && _7kaaRecordNumber <= last) {
+      const auto range = last - first + 1;
+      return (_7kaaRecordNumber + info.random_seed) % range + first - 1;
+    }
+  }
+
+  return _7kaaRecordNumber - 1;
 }
 
 void playCaravanHireSound(
