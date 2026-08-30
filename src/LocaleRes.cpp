@@ -193,6 +193,10 @@ void LocaleRes::load(const char *locale)
 #define BUF_INCR 1000
 const char *LocaleRes::conv_str(iconv_t cd, const char *s)
 {
+	err_when( !s );
+	if( !s )
+		return "(0)"; // fix bug on fly in the release version
+
 	if( cd == (iconv_t)-1 )
 		return s;
 
