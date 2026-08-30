@@ -272,6 +272,7 @@ void ConfigAdv::reset()
 	game_new_default_frame_speed = 12;
 
 	game_file_patching = 1;
+	game_file_sort = GAME_FILE_SORT_BY_NAME;
 
 	locale[0] = 0;
 
@@ -419,6 +420,15 @@ int ConfigAdv::set(char *name, char *value)
 		if( !read_bool(value, &game_file_patching) )
 			return 0;
 		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "game_file_sort") )
+	{
+		if( !strcmpi(value, "name") )
+			game_file_sort = GAME_FILE_SORT_BY_NAME;
+		else if( !strcmpi(value, "time") )
+			game_file_sort = GAME_FILE_SORT_BY_TIME;
+		else
+			return 0;
 	}
 	else if( !strcmp(name, "locale") )
 	{

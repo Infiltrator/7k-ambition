@@ -42,6 +42,11 @@ public:
 	};
 
 	enum {
+		GAME_FILE_SORT_BY_NAME = 1,
+		GAME_FILE_SORT_BY_TIME = 2,
+	};
+
+	enum {
 		LOCALE_LEN = 40,
 	};
 
@@ -67,6 +72,7 @@ public:
 
 	// game file settings
 	char			game_file_patching;
+	char			game_file_sort;
 
 	// locale settings
 	char			locale[LOCALE_LEN+1];

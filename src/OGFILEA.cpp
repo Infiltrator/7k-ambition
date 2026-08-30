@@ -53,6 +53,7 @@
 #include <dbglog.h>
 #include <ONATIONA.h>
 #include "gettext.h"
+#include "ConfigAdv.h"
 
 #include <string.h> //strncpy
 #include <posix_string_compat.h> //strnicmp
@@ -110,6 +111,7 @@ static short	browse_top_recno;
 static short	menu_x1, menu_y1;
 
 static int     sort_game_file_function( const void *a, const void *b );
+static int     sort_game_file_by_time( const void *a, const void *b );
 static void    disp_scroll_bar_func(SlideVBar *scroll, int);
 
 
@@ -831,7 +833,10 @@ int GameFileArray::save_new_game(const char* fileName)
 			{
 				linkin(&gameFile);
 
-				quick_sort( sort_game_file_function );
+				if( config_adv.game_file_sort == ConfigAdv::GAME_FILE_SORT_BY_NAME )
+					quick_sort( sort_game_file_function );
+				else if( config_adv.game_file_sort == ConfigAdv::GAME_FILE_SORT_BY_TIME )
+					quick_sort( sort_game_file_by_time );
 			}
 			else
 			{
@@ -995,7 +1000,10 @@ void GameFileArray::load_all_game_header(const char *extStr)
 		}
 	}
 
-	quick_sort( sort_game_file_function );
+	if( config_adv.game_file_sort == ConfigAdv::GAME_FILE_SORT_BY_NAME )
+		quick_sort( sort_game_file_function );
+	else if( config_adv.game_file_sort == ConfigAdv::GAME_FILE_SORT_BY_TIME )
+		quick_sort( sort_game_file_by_time );
 }
 //------ End of function GameFileArray::load_all_game_header --------//
 
@@ -1022,6 +1030,26 @@ static int sort_game_file_function( const void *a, const void *b )
 		return strcmpi( ((GameFile*)a)->file_name, ((GameFile*)b)->file_name );
 }
 //------- End of function sort_game_file_function ------//
+
+
+//------ Begin of function sort_game_file_by_time ------//
+//
+// Sort files by file time descending.
+//
+static int sort_game_file_by_time( const void *a, const void *b )
+{
+	GameFile* gameFileA = (GameFile*) a;
+	GameFile* gameFileB = (GameFile*) b;
+
+	if( gameFileA->file_date.dwHighDateTime != gameFileB->file_date.dwHighDateTime )
+		return gameFileA->file_date.dwHighDateTime > gameFileB->file_date.dwHighDateTime ? -1 : 1;
+
+	if( gameFileA->file_date.dwLowDateTime != gameFileB->file_date.dwLowDateTime )
+		return gameFileA->file_date.dwLowDateTime > gameFileB->file_date.dwLowDateTime ? -1 : 1;
+
+	return strcmpi( gameFileA->file_name, gameFileB->file_name );
+}
+//------- End of function sort_game_file_by_time ------//
 
 
 //------- Begin of function GameFileArray::operator[] -----//
