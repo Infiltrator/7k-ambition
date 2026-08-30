@@ -309,6 +309,7 @@ void ConfigAdv::reset()
 	town_ai_emerge_nation_pop_limit = 60 * MAX_NATION;
 	town_ai_emerge_town_pop_limit = 1000;
 	town_if_grant_tax_adjust = 20;
+	town_if_grant_tax_sync = 0;
 	town_migration = 1;
 	town_loyalty_qol = 1;
 
@@ -575,6 +576,12 @@ int ConfigAdv::set(char *name, char *value)
 		if( !read_int(value, &town_if_grant_tax_adjust) )
 			return 0;
 		if( CHECK_BOUND(town_if_grant_tax_adjust, 10, 30) )
+			return 0;
+		update_check_sum(name, value);
+	}
+	else if( !strcmp(name, "town_if_grant_tax_sync") )
+	{
+		if( !read_bool(value, &town_if_grant_tax_sync) )
 			return 0;
 		update_check_sum(name, value);
 	}

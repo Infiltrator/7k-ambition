@@ -4340,7 +4340,10 @@ void Town::set_auto_collect_tax_loyalty(int loyaltyLevel)
 {
 	auto_collect_tax_loyalty = loyaltyLevel;
 
-	if( loyaltyLevel && auto_grant_loyalty >= auto_collect_tax_loyalty )
+	if( !loyaltyLevel )
+		return;
+
+	if( config_adv.town_if_grant_tax_sync || auto_grant_loyalty>0 && auto_grant_loyalty >= auto_collect_tax_loyalty )
 	{
 		auto_grant_loyalty = auto_collect_tax_loyalty-config_adv.town_if_grant_tax_adjust;
 	}
@@ -4354,7 +4357,10 @@ void Town::set_auto_grant_loyalty(int loyaltyLevel)
 {
 	auto_grant_loyalty = loyaltyLevel;
 
-	if( loyaltyLevel && auto_grant_loyalty >= auto_collect_tax_loyalty )
+	if( !loyaltyLevel )
+		return;
+
+	if( config_adv.town_if_grant_tax_sync || auto_collect_tax_loyalty>0 && auto_grant_loyalty >= auto_collect_tax_loyalty )
 	{
 		auto_collect_tax_loyalty = auto_grant_loyalty+config_adv.town_if_grant_tax_adjust;
 
