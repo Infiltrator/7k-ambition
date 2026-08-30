@@ -1888,14 +1888,6 @@ int Town::recruit(int trainSkillId, int raceId, char remoteAction)
       unitPtr->unit_mode_para = town_recno;
 	}
 
-	//--- mobilize_pop() will delete the current Town if population goes down to 0 ---//
-
-	if( town_recno == town_array.selected_recno )
-	{
-		if( town_array.is_deleted(townRecno) )
-			info.disp();
-	}
-
 	return unitRecno;
 }
 //----------- End of function Town::recruit -----------//
