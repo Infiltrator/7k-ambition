@@ -97,8 +97,6 @@ void Town::draw(int displayLayer)
 				break;
 		}
 	}
-
-	Ambition::Draw::buildingProgressBar(this);
 }
 //-------- End of function Town::draw -----------//
 

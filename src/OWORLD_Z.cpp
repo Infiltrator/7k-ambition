@@ -1003,7 +1003,7 @@ void ZoomMatrix::disp_text()
 			if( !world.get_loc(townPtr->center_x, townPtr->center_y)->explored() )
 				continue;
 
-			if (Ambition::Draw::buildingInformationPanel(townPtr)) {
+			if (Ambition::Draw::willDrawBuildingInformationPanel(townPtr)) {
 				continue;
 			}
 
@@ -1041,7 +1041,7 @@ void ZoomMatrix::disp_text()
 
 			firmPtr = firm_array[i];
 
-			if (Ambition::Draw::buildingInformationPanel(firmPtr)) {
+			if (Ambition::Draw::willDrawBuildingInformationPanel(firmPtr)) {
 				continue;
 			}
 

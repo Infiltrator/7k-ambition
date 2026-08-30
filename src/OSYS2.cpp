@@ -1019,6 +1019,8 @@ void Sys::disp_zoom()
 
 	info.draw_selected();
 
+	Ambition::Draw::buildingInformationLayer();
+
 	//-------- display news messages ---------//
 
 	news_array.disp();

@@ -318,6 +318,15 @@ void buildingHitBar(
   Ambition::drawFirmHitBar(firm);
 }
 
+void buildingInformationLayer(
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  Ambition::Vga::drawBuildingInformationLayer();
+}
+
 void buildingLinkLine(
   const int sourceFirmId,
   const int destinationFirmId,
@@ -405,47 +414,23 @@ bool buildingOccupantHitbar(
   );
 }
 
-bool buildingInformationPanel(
+bool willDrawBuildingInformationPanel(
   const Firm* _7kaaFirm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return false;
   }
 
-  if (!world.get_loc(_7kaaFirm->center_x, _7kaaFirm->center_y)->explored()) {
-    return false;
-  }
-
-  return Ambition::Vga::drawBuildingInformationPanel(_7kaaFirm);
+  return Ambition::Vga::shouldDrawBuildingInformationPanel(_7kaaFirm);
 }
-bool buildingInformationPanel(
+bool willDrawBuildingInformationPanel(
   const Town* _7kaaTown
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return false;
   }
 
-  return Ambition::Vga::drawBuildingInformationPanel(_7kaaTown);
-}
-
-void buildingProgressBar(
-  const Firm* firm
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawBuildingProgressBar(firm);
-}
-
-void buildingProgressBar(
-  const Town* town
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawTownTrainingProgressBar(town);
+  return Ambition::Vga::shouldDrawBuildingInformationPanel(_7kaaTown);
 }
 
 void buildingRallyButton(

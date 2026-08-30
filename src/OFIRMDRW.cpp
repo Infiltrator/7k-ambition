@@ -111,10 +111,6 @@ void Firm::draw(int displayLayer)
 			draw_frame(cur_frame, displayLayer);
 		}
 	}
-
-	Ambition::Draw::buildingHitBar(this);
-	Ambition::Draw::buildingProgressBar(this);
-	Ambition::Draw::buildingBuilderIcon(this);
 }
 //--------- End of function Firm::draw -----------//
 
