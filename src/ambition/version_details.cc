@@ -39,6 +39,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Fixed the Inn hire button not getting disabled properly when a guest leaves, resulting in sometimes hiring the wrong unit."),
           _("Fixed the Inn hire button getting randomly re-enabled after disabling but without a selection change."),
           _("Fixed the corrupted display of a Mayan Town name, a Norman unit name, and a Greek unit name in the Esperanto, Polish, and Russian translations."),
+          _("Fixed the alignment of the town migration button (pink cross with arrows in a box) not being in the centre."),
           _("Fixed the calculation of the nearest Market, which sometimes resulted in hiring a Caravan from a slightly further away Market."),
           _("Allow `shift+=` to be bound using the key sequence `+`."),
           _("Give users of Programmer Dvorak access to their `$`, `!`, and `#` keys.  These can be bound to actions with and without modifiers."),

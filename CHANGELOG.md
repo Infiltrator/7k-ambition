@@ -42,6 +42,8 @@ speaking, considered to be the player's experience.
   without a selection change.
 - Fixed the corrupted display of a Mayan Town name, a Norman unit name, and a
   Greek unit name in the Esperanto, Polish, and Russian translations.
+- Fixed the alignment of the town migration button (pink cross with arrows in a
+  box) not being in the centre.
 - Fixed the calculation of the nearest Market, which sometimes resulted in
   hiring a Caravan from a slightly further away Market.
 - Allow `shift+=` to be bound using the key sequence `+`.
