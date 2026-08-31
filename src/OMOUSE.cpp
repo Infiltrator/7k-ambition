@@ -464,6 +464,8 @@ void Mouse::add_event(MouseEventType type)
 	ev->x = cur_x;
 	ev->y = cur_y;
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wswitch"
 	switch(type)
 	{
 	case LEFT_BUTTON:
@@ -479,6 +481,7 @@ void Mouse::add_event(MouseEventType type)
 		right_press = 0;
 		break;
 	}
+#pragma GCC diagnostic pop
 
 	if(++head_ptr >= EVENT_BUFFER_SIZE)       // increment the head ptr
 		head_ptr = 0;
