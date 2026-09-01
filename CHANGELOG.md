@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.12] — 2026-09-01
+
 ### Added
 
 - Added access to speeds 9 and 10 using the `9` and `0` keys.  Unlimited speed

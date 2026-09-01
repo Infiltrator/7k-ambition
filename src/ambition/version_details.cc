@@ -21,6 +21,11 @@ std::vector<VersionUpdates> getVersionDetails(
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+    },
+  },
+  {
+    .identifier = _("v3.2.12 — 2026-09-01"),
+    .sections = {
       {
         .heading = HEADING_ADDED,
         .items = {
