@@ -30,6 +30,8 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Added access to cycling through all the intermediate speeds (there are three steps from each standard speed level to the next; and the two intermediate speeds are shown as .3 and .7).  These can be accessed using the `shift+-` and `shift+=` keys and can be rebound using the `KEYEVENT_ _SPEED_ _DECREASE_ _SMALL` and `KEYEVENT_ _SPEED_ _INCREASE_ _SMALL` bindings in the config.txt file."),
           _("Added scrolling with the pg up/pg down keys to the Inn guest list and the Harbour ship list."),
           _("Added a \"too close\" message to Inns when they're too close to other Inns and so will have fewer guests."),
+          _("Show the number of units a leader is leading in the leadership status on the info pane."),
+          _("Added clicking on the leadership status on the info pane to go to the location of the leader of the current unit."),
         },
       },
       {
@@ -40,6 +42,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Fixed the Inn hire button not getting disabled properly when a guest leaves, resulting in sometimes hiring the wrong unit."),
           _("Fixed the Inn hire button getting randomly re-enabled after disabling but without a selection change."),
           _("Draw the building information (builder icon, hit points bar, progress bar, and information panel) above the link lines and buttons."),
+          _("Fixed Phoenix not revealing the leadership status (icon and info pane field) of units."),
           _("Fixed the corrupted display of a Mayan Town name, a Norman unit name, and a Greek unit name in the Esperanto, Polish, and Russian translations."),
           _("Fixed the alignment of the town migration button (pink cross with arrows in a box) not being in the centre."),
           _("Fixed the calculation of the nearest Market, which sometimes resulted in hiring a Caravan from a slightly further away Market."),

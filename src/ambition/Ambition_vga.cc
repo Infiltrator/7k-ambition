@@ -2226,11 +2226,17 @@ void printHarbourShipCount(
   );
 }
 
-void printLeadershipStatus(
+bool printLeadershipStatus(
   ::Unit *_7kaaUnit,
   const int top,
   const int refreshFlag
 ) {
+  if (!Unit::canReceiveLeadershipBonus(_7kaaUnit)
+    && !Unit::isLeader(_7kaaUnit)
+  ) {
+    return false;
+  }
+
   constexpr auto PANEL_HEIGHT = 17;
   const auto PANEL = UserInterface::Rectangle {
     .start = {
@@ -2249,7 +2255,17 @@ void printLeadershipStatus(
   }
 
   std::string statusText;
-  if (!_7kaaUnit->leader_unit_recno) {
+  if (Unit::isLeader(_7kaaUnit)) {
+    const auto count = Unit::ledUnitCount(_7kaaUnit);
+    if (count) {
+      statusText = format(
+        ngettext("Leading %d unit", "Leading %d units", count),
+        count
+      );
+    } else {
+      statusText = _("No units assigned");
+    }
+  } else if (!_7kaaUnit->leader_unit_recno) {
     statusText = _("No leader assigned");
   } else if (!Unit::isReceivingLeadershipBonus(_7kaaUnit)) {
     statusText = _("Leader out of range");
@@ -2257,6 +2273,8 @@ void printLeadershipStatus(
     statusText = _("Leader is providing bonuses");
   }
   printText(font_san, statusText, TEXT_BOX, UserInterface::Clear::EntireArea);
+
+  return true;
 }
 
 void printMilitaryReportCostHeadings(

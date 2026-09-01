@@ -1136,7 +1136,7 @@ void outsideLeadershipIcon(
     return;
   }
 
-  if (!_7kaaUnit->is_own() && !config.show_ai_info) {
+  if (!_7kaaUnit->should_show_info()) {
     return;
   }
 
@@ -1190,11 +1190,7 @@ bool printLeadershipStatus(
     return false;
   }
 
-  if (!_7kaaUnit->is_own() && !config.show_ai_info) {
-    return false;
-  }
-
-  if (!Ambition::Unit::canReceiveLeadershipBonus(_7kaaUnit)) {
+  if (!_7kaaUnit->should_show_info()) {
     return false;
   }
 
@@ -1202,8 +1198,7 @@ bool printLeadershipStatus(
     return false;
   }
 
-  Ambition::printLeadershipStatus(_7kaaUnit, top, refreshFlag);
-  return true;
+  return Ambition::printLeadershipStatus(_7kaaUnit, top, refreshFlag);
 }
 
 

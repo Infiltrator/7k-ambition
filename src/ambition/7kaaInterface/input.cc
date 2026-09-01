@@ -334,6 +334,50 @@ void detectCaravanCloneButton(
   Ambition::Trade::detectCaravanCloneButton(_7kaaCaravan);
 }
 
+bool detectUnitLeadershipStatusClick(
+  ::Unit* _7kaaUnit
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (!_7kaaUnit->should_show_info()) {
+    return false;
+  }
+
+  if (!Ambition::Unit::canReceiveLeadershipBonus(_7kaaUnit)
+    || !_7kaaUnit->leader_unit_recno
+  ) {
+    return false;
+  }
+
+  constexpr auto UNIT_COMMON_INFORMATION_HEIGHT = 98;
+  unsigned int top = UNIT_COMMON_INFORMATION_HEIGHT;
+  if (_7kaaUnit->race_id) {
+    constexpr auto HUMAN_INFORMATION_HEIGHT = 89;
+    top += HUMAN_INFORMATION_HEIGHT;
+  }
+  if (Ambition::Unit::isWarMachine(_7kaaUnit)) {
+    constexpr auto WAR_MACHINE_INFORMATION_HEIGHT = 43;
+    top += WAR_MACHINE_INFORMATION_HEIGHT;
+  }
+
+  constexpr auto PANEL_HEIGHT = 17;
+  const auto panelClickArea
+    = Ambition::UserInterface::INFO_PANE_CONTENTS
+    .inner({ .top = top })
+    .internal({ .height = PANEL_HEIGHT })
+    .outer(2);
+
+  if (Ambition::UserInterface::detectMouseClick(panelClickArea)) {
+    const auto leader7kaaUnit = unit_array[_7kaaUnit->leader_unit_recno];
+    world.go_loc(leader7kaaUnit->next_x_loc(), leader7kaaUnit->next_y_loc());
+    return true;
+  }
+
+  return false;
+}
+
 bool detectUnitListScroll(
   VBrowseIF& guestBrowser
 ) {
