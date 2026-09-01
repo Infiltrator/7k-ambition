@@ -18,32 +18,32 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. TRANSLATORS: Single-letter war machine identifier for Catapult.
-#: src/ambition/7kaaInterface/building.cc:328
+#: src/ambition/7kaaInterface/building.cc:349
 msgid "C"
 msgstr "C"
 
 #. TRANSLATORS: Single-letter war machine identifier for Ballista.
-#: src/ambition/7kaaInterface/building.cc:330
+#: src/ambition/7kaaInterface/building.cc:351
 msgid "B"
 msgstr "B"
 
 #. TRANSLATORS: Single-letter war machine identifier for Spitfire.
-#: src/ambition/7kaaInterface/building.cc:332
+#: src/ambition/7kaaInterface/building.cc:353
 msgid "S"
 msgstr "F"
 
 #. TRANSLATORS: Single-letter war machine identifier for Cannon.
-#: src/ambition/7kaaInterface/building.cc:334
+#: src/ambition/7kaaInterface/building.cc:355
 msgid "N"
 msgstr "T"
 
 #. TRANSLATORS: Single-letter war machine identifier for Porcupine.
-#: src/ambition/7kaaInterface/building.cc:336
+#: src/ambition/7kaaInterface/building.cc:357
 msgid "P"
 msgstr "H"
 
 #. TRANSLATORS: Single-letter war machine identifier for Unicorn.
-#: src/ambition/7kaaInterface/building.cc:338
+#: src/ambition/7kaaInterface/building.cc:359
 msgid "U"
 msgstr "U"
 
@@ -63,7 +63,7 @@ msgstr "$%.1f per unitatem cibi.  Summa totalis sumptus: $%'.0f."
 
 #. TRANSLATORS: affix to Inn's name to indicate that this Inn is too close
 #. * to another Inn, and so will have fewer mercenaries.
-#: src/ambition/7kaaInterface/inn.cc:64
+#: src/ambition/7kaaInterface/inn.cc:67
 msgid "(too close)"
 msgstr ""
 
@@ -302,106 +302,106 @@ msgstr ""
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:377
-#: src/ambition/Ambition_vga.cc:350
+#: src/ambition/Ambition_vga.cc:382
 msgid "Assassinate"
 msgstr "Interfice"
 
-#: src/ambition/Ambition_vga.cc:382
+#: src/ambition/Ambition_vga.cc:414
 #, c-format
 msgid "Hit Points: %.0f"
 msgstr "Puncta Ictus: %.0f"
 
-#: src/ambition/Ambition_vga.cc:421
+#: src/ambition/Ambition_vga.cc:453
 msgid "Speed: "
 msgstr "Celeritas: "
 
-#: src/ambition/Ambition_vga.cc:423
+#: src/ambition/Ambition_vga.cc:455
 msgid "PAUSED"
 msgstr "SUSPENSUS"
 
-#: src/ambition/Ambition_vga.cc:425
+#: src/ambition/Ambition_vga.cc:457
 msgid "UNLIMITED"
 msgstr "INFINITUM"
 
-#: src/ambition/Ambition_vga.cc:441
+#: src/ambition/Ambition_vga.cc:482
 msgid "GAME IS PAUSED"
 msgstr "LUDUS SUSPENSUS EST"
 
-#: src/ambition/Ambition_vga.cc:468 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
+#: src/ambition/Ambition_vga.cc:509 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
 msgid "Status"
 msgstr "Status"
 
-#: src/ambition/Ambition_vga.cc:470
+#: src/ambition/Ambition_vga.cc:511
 msgid "Leaving soon"
 msgstr "Mox relinquo"
 
-#: src/ambition/Ambition_vga.cc:470
+#: src/ambition/Ambition_vga.cc:511
 msgid "Enjoying stay"
 msgstr "Usura maneat"
 
-#: src/ambition/Ambition_vga.cc:495
+#: src/ambition/Ambition_vga.cc:536
 msgid "*"
 msgstr "*"
 
-#: src/ambition/Ambition_vga.cc:522
+#: src/ambition/Ambition_vga.cc:563
 msgid "Steal Reports"
 msgstr "Relationes furantur"
 
-#: src/ambition/Ambition_vga.cc:615
+#: src/ambition/Ambition_vga.cc:656
 msgid "Goods supplied"
 msgstr "merces suppleverunt"
 
-#: src/ambition/Ambition_vga.cc:704
+#: src/ambition/Ambition_vga.cc:710
 #, c-format
 msgid "Level: %d"
 msgstr "Gradus: %d"
 
 #. TRANSLATORS: The short form of Clay.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:711
+#: src/ambition/Ambition_vga.cc:717
 msgid "Cl"
 msgstr "Ar"
 
 #. TRANSLATORS: The short form of Copper.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:713
+#: src/ambition/Ambition_vga.cc:719
 msgid "Co"
 msgstr "Cu"
 
 #. TRANSLATORS: The short form of Iron.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:715
+#: src/ambition/Ambition_vga.cc:721
 msgid "Ir"
 msgstr "Fe"
 
-#: src/ambition/Ambition_vga.cc:729 src/ambition/Ambition_vga.cc:2467
-#: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:596 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
+#: src/ambition/Ambition_vga.cc:735 src/ambition/Ambition_vga.cc:2568
+#: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:597 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
 msgid "Leadership"
 msgstr "Ductus"
 
-#: src/ambition/Ambition_vga.cc:734 src/ambition/Ambition_vga.cc:749
+#: src/ambition/Ambition_vga.cc:740 src/ambition/Ambition_vga.cc:755
 msgid "No general"
 msgstr "Nullus dux"
 
 #. TRANSLATORS: Short form of Leadership, with the value following.
-#: src/ambition/Ambition_vga.cc:744
+#: src/ambition/Ambition_vga.cc:750
 #, c-format
 msgid "Ldr: %d"
 msgstr "Dct: %d"
 
-#: src/ambition/Ambition_vga.cc:758
+#: src/ambition/Ambition_vga.cc:764
 #, c-format
 msgid "Ordos: %d"
 msgstr "Ordines: %d"
 
 #. TRANSLATORS: Short form of "no resources".
-#: src/ambition/Ambition_vga.cc:790
+#: src/ambition/Ambition_vga.cc:796
 msgid "No res"
 msgstr "Non res"
 
-#: src/ambition/Ambition_vga.cc:802
+#: src/ambition/Ambition_vga.cc:808
 msgid "Idle"
 msgstr "Otiosus"
 
 #. TRANSLATORS: Short form of "<number> workers (<average skill>)".
-#: src/ambition/Ambition_vga.cc:816
+#: src/ambition/Ambition_vga.cc:822
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
@@ -409,7 +409,7 @@ msgstr[0] "%d opr (%d)"
 msgstr[1] "%d opr (%d)"
 
 #. TRANSLATORS: Short form of "<number> workers".
-#: src/ambition/Ambition_vga.cc:830
+#: src/ambition/Ambition_vga.cc:836
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
@@ -418,7 +418,7 @@ msgstr[1] "%d oper"
 
 #. TRANSLATORS: Short form of "<number> soldiers (<combined combat
 #. rating>)".
-#: src/ambition/Ambition_vga.cc:844
+#: src/ambition/Ambition_vga.cc:850
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
@@ -434,56 +434,56 @@ msgctxt "standard_panel"
 msgid "(too close)"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:857
+#: src/ambition/Ambition_vga.cc:870
 #, c-format
 msgid "%d guest"
 msgid_plural "%d guests"
 msgstr[0] "%d hospes"
 msgstr[1] "%d hospites"
 
-#: src/ambition/Ambition_vga.cc:869
+#: src/ambition/Ambition_vga.cc:882
 #, c-format
 msgid "Ships: %d/%d"
 msgstr "Naves: %d/%d"
 
 #. TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:895
+#: src/ambition/Ambition_vga.cc:908
 msgid "Raw Cl"
 msgstr "Rudis Ar"
 
 #. TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:897
+#: src/ambition/Ambition_vga.cc:910
 msgid "Raw Co"
 msgstr "Rudis Cu"
 
 #. TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:899
+#: src/ambition/Ambition_vga.cc:912
 msgid "Raw Ir"
 msgstr "Rudis Fe"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:900
+#: src/ambition/Ambition_vga.cc:913
 msgid "Clay"
 msgstr "Argilla"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:901
+#: src/ambition/Ambition_vga.cc:914
 msgid "Copper"
 msgstr "Cuprum"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:902
+#: src/ambition/Ambition_vga.cc:915
 msgid "Iron"
 msgstr "Ferrum"
 
-#: src/ambition/Ambition_vga.cc:923
+#: src/ambition/Ambition_vga.cc:936
 msgid "Empty"
 msgstr "Vacuus"
 
-#: src/ambition/Ambition_vga.cc:939
+#: src/ambition/Ambition_vga.cc:952
 #, c-format
 msgctxt "narrow_panel"
 msgid "(%s%d Spy)"
@@ -491,7 +491,7 @@ msgid_plural "(%s%d Sp)"
 msgstr[0] "(%s%d Sp)"
 msgstr[1] "(%s%d Sp)"
 
-#: src/ambition/Ambition_vga.cc:945
+#: src/ambition/Ambition_vga.cc:958
 #, c-format
 msgctxt "standard_panel"
 msgid "(%s%d Spy)"
@@ -500,114 +500,114 @@ msgstr[0] "(%s%d Specul)"
 msgstr[1] "(%s%d Specul)"
 
 #. TRANSLATORS: Short for "General", when the General is a spy.
-#: src/ambition/Ambition_vga.cc:950
+#: src/ambition/Ambition_vga.cc:963
 msgid "G+"
 msgstr "D+"
 
 #. TRANSLATORS: Short for "population".
-#: src/ambition/Ambition_vga.cc:1012
+#: src/ambition/Ambition_vga.cc:998
 msgid "Pop"
 msgstr "Pop"
 
 #. TRANSLATORS: Short for "loyalty" and "resistance".
-#: src/ambition/Ambition_vga.cc:1020
+#: src/ambition/Ambition_vga.cc:1006
 msgid "Lty"
 msgstr "Fid"
 
-#: src/ambition/Ambition_vga.cc:1020
+#: src/ambition/Ambition_vga.cc:1006
 msgid "Rst"
 msgstr "Rep"
 
-#: src/ambition/Ambition_vga.cc:1079
+#: src/ambition/Ambition_vga.cc:1065
 #, c-format
 msgid "(%d Spy)"
 msgid_plural "(%d Spies)"
 msgstr[0] "(%d Speculator)"
 msgstr[1] "(%d Speculatores)"
 
-#: src/ambition/Ambition_vga.cc:1732
+#: src/ambition/Ambition_vga.cc:1813
 msgid "Feedback"
 msgstr "Responsio"
 
-#: src/ambition/Ambition_vga.cc:1862
+#: src/ambition/Ambition_vga.cc:1943
 msgid "Guests"
 msgstr "Hospites"
 
-#: src/ambition/Ambition_vga.cc:2063
+#: src/ambition/Ambition_vga.cc:2146
 #, c-format
 msgid "Your spy estimates a success chance of %d%%."
 msgstr "Speculator tuus successum possibilitas aestimat de %d%%."
 
-#: src/ambition/Ambition_vga.cc:2107
+#: src/ambition/Ambition_vga.cc:2190
 #, c-format
 msgid "Your spy suggests a bribe of $%'d."
 msgstr "Speculator tuus praemium  $%'d suggerit."
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/TUT_LIST.RES
-#: src/ambition/Ambition_vga.cc:2134
+#: src/ambition/Ambition_vga.cc:2217
 msgid "Ships"
 msgstr "Naves"
 
-#: src/ambition/Ambition_vga.cc:2264
+#: src/ambition/Ambition_vga.cc:2262
 #, c-format
 msgid "Leading %d unit"
 msgid_plural "Leading %d units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:2268
+#: src/ambition/Ambition_vga.cc:2266
 #, fuzzy
 msgid "No units assigned"
 msgstr "Nullus dux constitutus"
 
-#: src/ambition/Ambition_vga.cc:2170
+#: src/ambition/Ambition_vga.cc:2269
 msgid "No leader assigned"
 msgstr "Nullus dux constitutus"
 
-#: src/ambition/Ambition_vga.cc:2172
+#: src/ambition/Ambition_vga.cc:2271
 msgid "Leader out of range"
 msgstr "Dux extra ambitum"
 
-#: src/ambition/Ambition_vga.cc:2174
+#: src/ambition/Ambition_vga.cc:2273
 msgid "Leader is providing bonuses"
 msgstr "Dux beneficia praebet"
 
-#: src/ambition/Ambition_vga.cc:2183 src/OR_TOWN.cpp:112
+#: src/ambition/Ambition_vga.cc:2284 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
 msgstr "Pretium Unitarium"
 
-#: src/ambition/Ambition_vga.cc:2190 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
+#: src/ambition/Ambition_vga.cc:2291 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
 msgid "Yearly Expense"
 msgstr "Sumptus Annuus"
 
-#: src/ambition/Ambition_vga.cc:2223 src/ambition/Ambition_vga.cc:2242
-#: src/ambition/Ambition_vga.cc:2308
+#: src/ambition/Ambition_vga.cc:2324 src/ambition/Ambition_vga.cc:2343
+#: src/ambition/Ambition_vga.cc:2409
 msgid "$"
 msgstr "$"
 
-#: src/ambition/Ambition_vga.cc:2411
+#: src/ambition/Ambition_vga.cc:2512
 #, c-format
 msgid "Surplus Peasants: %'d"
 msgstr "Superfluum rustici: %'d"
 
-#: src/ambition/Ambition_vga.cc:2461 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
+#: src/ambition/Ambition_vga.cc:2562 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
 #: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:409
-#: src/OF_CAMP.cpp:607 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
+#: src/OF_CAMP.cpp:608 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
-#: src/OUNITIF.cpp:1177 src/OU_MARIF.cpp:512
+#: src/OUNITIF.cpp:1181 src/OU_MARIF.cpp:512
 msgid "Loyalty"
 msgstr "Fidelitas"
 
-#: src/ambition/Ambition_vga.cc:2478 src/ambition/Ambition_vga.cc:2543
+#: src/ambition/Ambition_vga.cc:2579 src/ambition/Ambition_vga.cc:2644
 msgid "Yearly Upkeep"
 msgstr "Cura Annua"
 
-#: src/ambition/Ambition_vga.cc:2491 src/ambition/Ambition_vga.cc:2554
+#: src/ambition/Ambition_vga.cc:2592 src/ambition/Ambition_vga.cc:2655
 msgid "Attack Range"
 msgstr "Spatium Impet."
 
-#: src/ambition/Ambition_vga.cc:2597
+#: src/ambition/Ambition_vga.cc:2698
 #, c-format
 msgid "Your spy estimates an escape chance of %d%%."
 msgstr "Speculator tuus effugium possibilitas aestimat de %d%%."
@@ -616,7 +616,7 @@ msgstr "Speculator tuus effugium possibilitas aestimat de %d%%."
 #. number>. … Your config.txt file can be found here: <config directory
 #. path and path separator>config.txt …
 #. The name of the file—config.txt—does not change with language.
-#: src/ambition/Ambition_vga.cc:2638
+#: src/ambition/Ambition_vga.cc:2797
 #, c-format
 msgid ""
 "Your game version may not match the host's version.\n"
@@ -3415,7 +3415,7 @@ msgstr "Bene"
 #: src/OBOX.cpp:213 src/OBOX.cpp:267 src/OFIRMIF3.cpp:250 src/OF_RESE.cpp:291
 #: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:2092
 #: src/OGAMEMP.cpp:2195 src/OGAMEMP.cpp:2259 src/OSPYA.cpp:364
-#: src/OTOWNIF.cpp:1368 src/OUNITIF.cpp:1061 src/OUNITIF.cpp:1099
+#: src/OTOWNIF.cpp:1368 src/OUNITIF.cpp:1065 src/OUNITIF.cpp:1103
 msgid "Cancel"
 msgstr "Recusa"
 
@@ -3548,7 +3548,7 @@ msgstr "Dec"
 
 #. TRANSLATORS: <Town> <Short Firm Name> <Firm #>
 #. This is the name of the firm when there are multiple linked firms to a town.
-#: src/OFIRM.cpp:489
+#: src/OFIRM.cpp:490
 #, c-format
 msgctxt "FirmUI|Name"
 msgid "%s %s %d"
@@ -3556,7 +3556,7 @@ msgstr "%s %s %d"
 
 #. TRANSLATORS: <Town> <Short Firm Name>
 #. This is the name of the firm.
-#: src/OFIRM.cpp:495
+#: src/OFIRM.cpp:496
 #, c-format
 msgctxt "FirmUI|Name"
 msgid "%s %s"
@@ -3576,7 +3576,7 @@ msgid "N/A"
 msgstr "N/A"
 
 #: src/OFIRMIF.cpp:763 src/OFIRMIF.cpp:813 src/OF_INN.cpp:452
-#: src/OF_INN.cpp:505 src/OUNITIF.cpp:1189 src/OU_MARIF.cpp:516
+#: src/OF_INN.cpp:505 src/OUNITIF.cpp:1193 src/OU_MARIF.cpp:516
 msgid "Combat"
 msgstr "Pugna"
 
@@ -3633,8 +3633,8 @@ msgstr "Speculator tuus evasit."
 msgid "Assassination Failed."
 msgstr "Interfectio defecit."
 
-#: src/OF_BASE.cpp:384 src/OF_CAMP.cpp:582 src/OGAMHALL.cpp:251
-#: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1251
+#: src/OF_BASE.cpp:384 src/OF_CAMP.cpp:583 src/OGAMHALL.cpp:251
+#: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1255
 msgid "King"
 msgstr "Rex"
 
@@ -6520,11 +6520,11 @@ msgstr "Producta Cuprea"
 msgid "Iron Products"
 msgstr "Ferri Producta"
 
-#: src/OREMOTEM.cpp:471 src/OSYS2.cpp:1040
+#: src/OREMOTEM.cpp:471 src/OSYS2.cpp:1042
 msgid "Multiplayer Random Seed Sync Error"
 msgstr "Multi Ludens Random Semen Sync Erratum"
 
-#: src/OREMOTEM.cpp:2912 src/OSYS2.cpp:1042
+#: src/OREMOTEM.cpp:2912 src/OSYS2.cpp:1044
 msgid "Multiplayer Object Sync Error"
 msgstr "Multi Ludens Object Sync Erratum"
 
@@ -6940,7 +6940,7 @@ msgstr "Progressus Investigationis"
 msgid "Tower of Science"
 msgstr "Turris Scientiae"
 
-#: src/OR_TECH.cpp:143 src/OUNITIF.cpp:1272
+#: src/OR_TECH.cpp:143 src/OUNITIF.cpp:1276
 msgid "Greater Being"
 msgstr "Ens Maius"
 
@@ -7130,7 +7130,7 @@ msgstr "Fabricatio"
 msgid "Research"
 msgstr "Investigatio"
 
-#: src/OSKILL.cpp:36 src/OUNITIF.cpp:1209
+#: src/OSKILL.cpp:36 src/OUNITIF.cpp:1213
 msgid "Spying"
 msgstr "Speculatio"
 
@@ -7178,29 +7178,29 @@ msgstr "Espionagium"
 msgid "Steal which type of secrets?"
 msgstr "Furantur cuius generis mysteria?"
 
-#: src/OSYS.cpp:536
+#: src/OSYS.cpp:537
 msgid "Unable to determine a location for storing the game configuration"
 msgstr "Potest determinare locum recondere ludum configuratione"
 
 #. TRANSLATORS: Waiting for <King>'s Kingdom
-#: src/OSYS.cpp:916
+#: src/OSYS.cpp:917
 #, c-format
 msgid "Waiting for %s's Kingdom"
 msgstr "Expectans %s regnum"
 
-#: src/OSYS.cpp:1558
+#: src/OSYS.cpp:1559
 msgid "Cheat Mode Enabled."
 msgstr "Decipiat modus Enabled."
 
-#: src/OSYS.cpp:1698
+#: src/OSYS.cpp:1699
 msgid "Opaque report mode"
 msgstr "Opaca fama modus"
 
-#: src/OSYS.cpp:1700
+#: src/OSYS.cpp:1701
 msgid "Transparent report mode"
 msgstr "Perspicuus modus fama"
 
-#: src/OSYS.cpp:1906
+#: src/OSYS.cpp:1907
 msgid ""
 "Your technology has advanced.\n"
 "You can now invoke all Greater Beings."
@@ -7208,40 +7208,40 @@ msgstr ""
 "Ars tuus processit.\n"
 "Nunc potes omnia maiora invocare."
 
-#: src/OSYS.cpp:1938
+#: src/OSYS.cpp:1939
 msgid "Your king is now immortal."
 msgstr "Rex nunc tuum immortale est."
 
-#: src/OSYS.cpp:1940
+#: src/OSYS.cpp:1941
 msgid "King immortal mode is now disabled."
 msgstr "Rex Immortalis modus est nunc erret."
 
-#: src/OSYS.cpp:1968
+#: src/OSYS.cpp:1969
 msgid "Fast build is now disabled."
 msgstr "Fast constructum nunc erret."
 
-#: src/OSYS.cpp:1970
+#: src/OSYS.cpp:1971
 msgid "Fast build is now enabled."
 msgstr "Fast constructum nunc para."
 
-#: src/OSYS.cpp:2719
+#: src/OSYS.cpp:2724
 #, c-format
 msgid "The current screen has been written to file %s."
 msgstr "Praesens scrinii %s lima scripta est."
 
-#: src/OSYS.cpp:2761
+#: src/OSYS.cpp:2766
 msgid "Failed Loading Game"
 msgstr "Deficio Oneratur Ludus"
 
-#: src/OSYS.cpp:2772
+#: src/OSYS.cpp:2777
 msgid "Game Loaded Successfully"
 msgstr "Ludus Loaded Feliciter"
 
-#: src/OSYS.cpp:2804
+#: src/OSYS.cpp:2809
 msgid "Game Saved Successfully"
 msgstr "Ludus Servatum Feliciter"
 
-#: src/OSYS.cpp:2893
+#: src/OSYS.cpp:2898
 msgid "Unable to locate the game resources"
 msgstr "Posse collocare ludum opibus"
 
@@ -8594,112 +8594,112 @@ msgstr "Desine Exercitationem"
 msgid "Tutorial files not found."
 msgstr "Documenta doceo non inveni."
 
-#: src/OUNIT.cpp:753 src/OUNITIF.cpp:1257
+#: src/OUNIT.cpp:753 src/OUNITIF.cpp:1261
 msgid "Rebel Leader"
 msgstr "Dux Rebellorum"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNIT.cpp:766 src/OUNITIF.cpp:1259
+#: src/OUNIT.cpp:766 src/OUNITIF.cpp:1263
 msgid "General"
 msgstr "Dux"
 
 #. TRANSLATORS: Please select a location to build the <Firm>.
-#: src/OUNITIF.cpp:1028
+#: src/OUNITIF.cpp:1032
 msgid "Please select a location to build the Seat of Power."
 msgstr "Placere eligere locum ad sedem Potentiae aedificandam."
 
-#: src/OUNITIF.cpp:1029
+#: src/OUNITIF.cpp:1033
 msgid "Please select a location to build the Factory."
 msgstr "Placere eligere locum ad Officina aedificare."
 
-#: src/OUNITIF.cpp:1030
+#: src/OUNITIF.cpp:1034
 msgid "Please select a location to build the Inn."
 msgstr "Quaeso elige locum aedificandi Deversorium."
 
-#: src/OUNITIF.cpp:1031
+#: src/OUNITIF.cpp:1035
 msgid "Please select a location to build the Market."
 msgstr "Placere eligere locum ad Forum aedificandum."
 
-#: src/OUNITIF.cpp:1032
+#: src/OUNITIF.cpp:1036
 msgid "Please select a location to build the Fort."
 msgstr "Placere eligere locum munimenti aedificandi."
 
-#: src/OUNITIF.cpp:1033
+#: src/OUNITIF.cpp:1037
 msgid "Please select a location to build the Mine."
 msgstr "Placere eligere locum ad aedificandum meum."
 
-#: src/OUNITIF.cpp:1034
+#: src/OUNITIF.cpp:1038
 msgid "Please select a location to build the Tower of Science."
 msgstr "Placere eligere locum ad Turris Scientiae aedificandum."
 
-#: src/OUNITIF.cpp:1035
+#: src/OUNITIF.cpp:1039
 msgid "Please select a location to build the War Factory."
 msgstr "Placere eligere locum ad officinam Bellum aedificandam."
 
-#: src/OUNITIF.cpp:1036
+#: src/OUNITIF.cpp:1040
 msgid "Please select a location to build the Harbor."
 msgstr "Placere eligere locum ad portum aedificare."
 
-#: src/OUNITIF.cpp:1097
+#: src/OUNITIF.cpp:1101
 msgid "Please select a location to settle."
 msgstr "Placere eligere locum componere."
 
-#: src/OUNITIF.cpp:1217
+#: src/OUNITIF.cpp:1221
 msgid "Contribution"
 msgstr "Contributio"
 
-#: src/OUNITIF.cpp:1264
+#: src/OUNITIF.cpp:1268
 msgid "Defending Villager"
 msgstr "Vicanus Defendens"
 
-#: src/OUNITIF.cpp:1268
+#: src/OUNITIF.cpp:1272
 msgid "Rebel"
 msgstr "Rebellis"
 
-#: src/OUNITIF.cpp:1281 src/OUNITIF.cpp:1312
+#: src/OUNITIF.cpp:1285 src/OUNITIF.cpp:1316
 msgid "Soldier"
 msgstr "Miles"
 
-#: src/OUNITIF.cpp:1285
+#: src/OUNITIF.cpp:1289
 msgid "Construction Worker"
 msgstr "Operarius Aedificatorius"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1289
+#: src/OUNITIF.cpp:1293
 msgid "Miner"
 msgstr "Fossor"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1293
+#: src/OUNITIF.cpp:1297
 msgid "Worker"
 msgstr "Operarius"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1297
+#: src/OUNITIF.cpp:1301
 msgid "Scientist"
 msgstr "Scientiae peritus"
 
-#: src/OUNITIF.cpp:1301
+#: src/OUNITIF.cpp:1305
 msgid "Spy"
 msgstr "Speculator"
 
-#: src/OUNITIF.cpp:1305
+#: src/OUNITIF.cpp:1309
 msgid "Peasant"
 msgstr "Rusticus"
 
-#: src/OUNITIF.cpp:1315
+#: src/OUNITIF.cpp:1319
 msgid "Civilian"
 msgstr "Civilis"
 
-#: src/OUNITIF.cpp:1398
+#: src/OUNITIF.cpp:1402
 msgid "Enemies Nearby"
 msgstr "Hostes Propinqui"
 
-#: src/OUNITIF.cpp:1409
+#: src/OUNITIF.cpp:1413
 msgid "Spy Cloak:"
 msgstr "Sagum spionum:"
 
