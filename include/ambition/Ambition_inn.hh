@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025, 2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,14 @@ class VBrowseIF;
 
 
 namespace Ambition {
+
+namespace Inn {
+
+int competingInnCount(
+  const FirmInn* _7kaaInn
+);
+
+} // namespace Ambition::Inn
 
 int getInnSelectedRecordNumber(
   const FirmInn* inn,

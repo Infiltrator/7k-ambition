@@ -35,6 +35,22 @@
 
 namespace Ambition {
 
+namespace Inn {
+
+int competingInnCount(
+  const FirmInn* _7kaaInn
+) {
+  auto count = 0;
+  for (auto i = 0; i < _7kaaInn->linked_firm_count; i++) {
+    if (firm_array[_7kaaInn->linked_firm_array[i]]->firm_id == FIRM_INN) {
+      count++;
+    }
+  }
+  return count;
+}
+
+} // namespace Ambition::Inn
+
 int getInnSelectedRecordNumber(
   const FirmInn* inn,
   const int browserRecordNumber
