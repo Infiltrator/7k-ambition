@@ -30,6 +30,7 @@ class GetA;
 class SlideVBar;
 class Spy;
 class Town;
+class Unit;
 class UnitCaravan;
 class VBrowseIF;
 
@@ -185,6 +186,10 @@ void detectTutorialScroll(
   SlideVBar& scrollBar,
   SlideVBar& descriptionScrollBar,
   int& refreshFlag
+);
+
+bool detectUnitLeadershipStatusClick(
+  ::Unit* _7kaaUnit
 );
 
 bool detectUnitListScroll(

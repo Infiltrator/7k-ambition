@@ -295,6 +295,10 @@ void Unit::detect_main_menu()
 	if( detect_unit_profile() )
 		return;
 
+	if (Ambition::Input::detectUnitLeadershipStatusClick(this)) {
+		return;
+	}
+
 	if( is_own_spy() )
 		detect_spy_menu(INFO_Y1+187);
 

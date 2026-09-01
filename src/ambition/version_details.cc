@@ -31,6 +31,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Added scrolling with the pg up/pg down keys to the Inn guest list and the Harbour ship list."),
           _("Added a \"too close\" message to Inns when they're too close to other Inns and so will have fewer guests."),
           _("Show the number of units a leader is leading in the leadership status on the info pane."),
+          _("Added clicking on the leadership status on the info pane to go to the location of the leader of the current unit."),
         },
       },
       {

@@ -33,6 +33,8 @@ speaking, considered to be the player's experience.
   so will have fewer guests.
 - Show the number of units a leader is leading in the leadership status on the
   info pane.
+- Added clicking on the leadership status on the info pane to go to the location
+  of the leader of the current unit.
 
 ### Fixed
 
