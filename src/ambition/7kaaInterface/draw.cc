@@ -298,26 +298,6 @@ void buildingAnimationFrame(
   Ambition::drawFirmFrame(firm, displayLayer);
 }
 
-void buildingBuilderIcon(
-  const Firm* firm
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawFirmBuilderIcon(firm);
-}
-
-void buildingHitBar(
-  const Firm* firm
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawFirmHitBar(firm);
-}
-
 void buildingInformationLayer(
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
