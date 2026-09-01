@@ -50,6 +50,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Select sortied units only if the Fort is still selected, instead of overriding the selection, preventing accidentally giving orders to the wrong units in multiplayer."),
           _("Use the full list of available town names, by randomising the starting ones, instead of always using the same town names every time."),
           _("Improved the performance of building placement highlighting."),
+          _("Updated the PDF manual."),
           _("Made development slightly easier."),
         },
       },
