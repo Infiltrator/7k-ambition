@@ -44,6 +44,8 @@ speaking, considered to be the player's experience.
   without a selection change.
 - Draw the building information (builder icon, hit points bar, progress bar, and
   information panel) above the link lines and buttons.
+- Fixed Phoenix not revealing the leadership status (icon and info pane field)
+  of units.
 - Fixed the corrupted display of a Mayan Town name, a Norman unit name, and a
   Greek unit name in the Esperanto, Polish, and Russian translations.
 - Fixed the alignment of the town migration button (pink cross with arrows in a
