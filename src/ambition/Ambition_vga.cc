@@ -77,6 +77,7 @@
 #include "7kaaInterface/input.hh"
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_inn.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_population.hh"
 #include "Ambition_spy.hh"
@@ -857,6 +858,13 @@ bool drawBuildingInformationPanel(
     case FIRM_INN: {
       const auto _7kaaInn = dynamic_cast<const FirmInn*>(_7kaaFirm);
       assert(_7kaaInn);
+      if (Inn::competingInnCount(_7kaaInn)) {
+        /* TRANSLATORS: Indicator on the building information panel for an Inn
+         * to indicate that this Inn is too close to another Inn, and so will
+         * have fewer mercenaries.  There is less room here than next to the
+         * name. */
+        lines.push_back(pgettext("standard_panel", "(too close)"));
+      }
       lines.push_back(
         format(
           ngettext("%d guest", "%d guests", _7kaaInn->inn_unit_count),

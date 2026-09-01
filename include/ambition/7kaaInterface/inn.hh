@@ -25,12 +25,19 @@
 
 #pragma once
 
+#include <string>
+
 class Button3D;
+class Firm;
 class FirmInn;
 class VBrowseIF;
 
 
 namespace _7kaaAmbitionInterface::Inn {
+
+std::string crowdingMessage(
+  const Firm* _7kaaFirm
+);
 
 void detectBrowserClick(
   FirmInn* inn,

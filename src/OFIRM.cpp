@@ -22,6 +22,7 @@
 //Description : Object Firm
 
 #include "ambition/7kaaInterface/building.hh"
+#include "ambition/7kaaInterface/inn.hh"
 #include "ambition/7kaaInterface/unit.hh"
 
 #include <string.h>
@@ -495,6 +496,8 @@ char* Firm::firm_name()
 			snprintf( str, MAX_STR_LEN+1, pgettext ("FirmUI|Name", "%s %s"), town_res.get_name(closest_town_name_id), _(firm_res[firm_id]->short_name) );
 		}
 	}
+
+	str += Ambition::Inn::crowdingMessage(this).c_str();
 
 	return str;
 }

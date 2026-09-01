@@ -29,6 +29,8 @@ speaking, considered to be the player's experience.
   in the config.txt file.
 - Added scrolling with the pg up/pg down keys to the Inn guest list and the
   Harbour ship list.
+- Added a "too close" message to Inns when they're too close to other Inns and
+  so will have fewer guests.
 
 ### Fixed
 

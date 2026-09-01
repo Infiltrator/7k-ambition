@@ -26,10 +26,14 @@
 #define _AMBITION_IMPLEMENTATION
 #include "inn.hh"
 
+#include <cassert>
+
 #include "pragma_silence_7kaa_warnings.hh"
+#include "gettext.h"
 #include "OBUTT3D.h"
 #include "OF_INN.h"
 #include "OMOUSE.h"
+#include "ONATIONA.h"
 #include "OVBROWIF.h"
 #pragma GCC diagnostic pop
 
@@ -41,6 +45,30 @@ namespace _7kaaAmbitionInterface::Inn {
 
 bool guestSelectionValid = false;
 
+
+std::string crowdingMessage(
+  const Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return "";
+  }
+
+  if (_7kaaFirm->nation_recno != nation_array.player_recno
+    || _7kaaFirm->firm_id != FIRM_INN
+  ) {
+    return "";
+  }
+
+  const auto _7kaaInn = dynamic_cast<const FirmInn*>(_7kaaFirm);
+  assert(_7kaaInn);
+  if (Ambition::Inn::competingInnCount(_7kaaInn)) {
+    /* TRANSLATORS: affix to Inn's name to indicate that this Inn is too close
+     * to another Inn, and so will have fewer mercenaries. */
+    return std::string(" ") + _("(too close)");
+  }
+
+  return "";
+}
 
 void detectBrowserClick(
   FirmInn* inn,

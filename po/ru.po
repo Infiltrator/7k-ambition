@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-24 16:29+1000\n"
-"PO-Revision-Date: 2026-08-24 17:35+1000\n"
+"POT-Creation-Date: 2026-09-01 13:59+1000\n"
+"PO-Revision-Date: 2026-09-01 14:03+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -63,6 +63,12 @@ msgstr "Какую цену Вы предлагаете за меру продо
 #, c-format
 msgid "$%.1f per unit of food.  Total cost: $%'.0f."
 msgstr "$%.1f за меру продовольствия.  Общая стоимость: $%'.0f."
+
+#. TRANSLATORS: affix to Inn's name to indicate that this Inn is too close
+#. * to another Inn, and so will have fewer mercenaries.
+#: src/ambition/7kaaInterface/inn.cc:64
+msgid "(too close)"
+msgstr "(слишком близко)"
 
 #: src/ambition/7kaaInterface/score.cc:104
 #, c-format
@@ -411,6 +417,15 @@ msgid_plural "%d sld (%.0f)"
 msgstr[0] "%d слд (%.0f)"
 msgstr[1] "%d слд (%.0f)"
 msgstr[2] "%d слд (%.0f)"
+
+#. TRANSLATORS: Indicator on the building information panel for an Inn
+#. * to indicate that this Inn is too close to another Inn, and so will
+#. * have fewer mercenaries.  There is less room here than next to the
+#. * name.
+#: src/ambition/Ambition_vga.cc:866
+msgctxt "standard_panel"
+msgid "(too close)"
+msgstr "(сл. близко)"
 
 #: src/ambition/Ambition_vga.cc:857
 #, c-format
