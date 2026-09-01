@@ -175,11 +175,7 @@ void displayUnitContribution(
 
 namespace Vga {
 
-bool drawBuildingInformationPanel(
-  const Firm* _7kaaFirm
-);
-bool drawBuildingInformationPanel(
-  const Town* _7kaaTown
+void drawBuildingInformationLayer(
 );
 
 } // namespace Ambition::Vga
@@ -389,6 +385,17 @@ void printStealReportsEstimate(
   const ::Spy* _7kaaSpy,
   const char report
 );
+
+namespace Vga {
+
+bool shouldDrawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+);
+bool shouldDrawBuildingInformationPanel(
+  const Town* _7kaaTown
+);
+
+} // namespace Ambition::Vga
 
 /**
  * Unlock a VgaBuf, overriding the usual buffer unlock steps as necessary.

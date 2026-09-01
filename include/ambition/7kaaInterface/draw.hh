@@ -58,24 +58,7 @@ void buildingAnimationFrame(
   const int displayLayer
 );
 
-/**
- * Draw a builder icon for the firm if it has a builder.
- *
- * Also animate it if repair is currently in progress.
- *
- * @param firm A pointer to the Firm for which to draw the icon.
- */
-void buildingBuilderIcon(
-  const Firm* firm
-);
-
-/**
- * Draw the hitbar for a Firm.
- *
- * @param firm The Firm for which to draw a hitbar.
- */
-void buildingHitBar(
-  const Firm* firm
+void buildingInformationLayer(
 );
 
 void buildingLinkLine(
@@ -114,14 +97,6 @@ bool buildingInformationPanel(
 );
 bool buildingInformationPanel(
   const Town* _7kaaTown
-);
-
-void buildingProgressBar(
-  const Firm* firm
-);
-
-void buildingProgressBar(
-  const Town* town
 );
 
 void buildingRallyButton(
@@ -479,6 +454,13 @@ void warMachineTechnologyLevel(
 );
 
 void whatsNewButton(
+);
+
+bool willDrawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+);
+bool willDrawBuildingInformationPanel(
+  const Town* _7kaaTown
 );
 
 void workerSpyIcon(

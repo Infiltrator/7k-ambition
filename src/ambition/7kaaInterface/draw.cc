@@ -32,28 +32,22 @@
 #include "OBUTT3D.h"
 #include "OBUTTCUS.h"
 #include "OCONFIG.h"
-#include "OF_BASE.h"
 #include "OF_HARB.h"
-#include "OF_MONS.h"
 #include "OF_WAR.h"
 #include "OFIRM.h"
-#include "OFONT.h"
 #include "OHELP.h"
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
-#include "ORACERES.h"
-#include "OTOWN.h"
-#include "OUNIT.h"
 #include "vga_util.h"
 #pragma GCC diagnostic pop
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_coordinates.hh"
 #include "Ambition_minimap.hh"
 #include "Ambition_remote.hh"
 #include "Ambition_trade.hh"
-#include "Ambition_unit.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
 #include "format.hh"
@@ -304,24 +298,13 @@ void buildingAnimationFrame(
   Ambition::drawFirmFrame(firm, displayLayer);
 }
 
-void buildingBuilderIcon(
-  const Firm* firm
+void buildingInformationLayer(
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return;
   }
 
-  Ambition::drawFirmBuilderIcon(firm);
-}
-
-void buildingHitBar(
-  const Firm* firm
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawFirmHitBar(firm);
+  Ambition::Vga::drawBuildingInformationLayer();
 }
 
 void buildingLinkLine(
@@ -411,47 +394,23 @@ bool buildingOccupantHitbar(
   );
 }
 
-bool buildingInformationPanel(
+bool willDrawBuildingInformationPanel(
   const Firm* _7kaaFirm
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return false;
   }
 
-  if (!world.get_loc(_7kaaFirm->center_x, _7kaaFirm->center_y)->explored()) {
-    return false;
-  }
-
-  return Ambition::Vga::drawBuildingInformationPanel(_7kaaFirm);
+  return Ambition::Vga::shouldDrawBuildingInformationPanel(_7kaaFirm);
 }
-bool buildingInformationPanel(
+bool willDrawBuildingInformationPanel(
   const Town* _7kaaTown
 ) {
   if (!Ambition::config.enhancementsAvailable()) {
     return false;
   }
 
-  return Ambition::Vga::drawBuildingInformationPanel(_7kaaTown);
-}
-
-void buildingProgressBar(
-  const Firm* firm
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawBuildingProgressBar(firm);
-}
-
-void buildingProgressBar(
-  const Town* town
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return;
-  }
-
-  Ambition::drawTownTrainingProgressBar(town);
+  return Ambition::Vga::shouldDrawBuildingInformationPanel(_7kaaTown);
 }
 
 void buildingRallyButton(

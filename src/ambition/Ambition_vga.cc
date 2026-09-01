@@ -68,6 +68,7 @@
 #include "OSYS.h"
 #include "OTECHRES.h"
 #include "OTERRAIN.h"
+#include "OTownNetwork.h"
 #include "OUNIT.h"
 #include "vga_util.h"
 #pragma GCC diagnostic pop
@@ -102,6 +103,36 @@ void drawHitbar(
   const int width,
   const int height
 );
+
+namespace Vga {
+
+UserInterface::Rectangle buildingArea(
+  const Firm* _7kaaFirm
+);
+UserInterface::Rectangle buildingArea(
+  const Town* _7kaaTown
+);
+
+bool drawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+);
+bool drawBuildingInformationPanel(
+  const Town* _7kaaTown
+);
+
+void drawIfHoveringIcon(
+  const UserInterface::Rectangle& area,
+  char* const bitmap
+);
+
+UserInterface::Rectangle informationPanelArea(
+  const Firm* _7kaaFirm
+);
+UserInterface::Rectangle informationPanelArea(
+  const Town* _7kaaTown
+);
+
+} // namespace Ambition::Vga
 
 
 short calculateAnimatedLinePhase(
@@ -663,42 +694,7 @@ namespace Vga {
 bool drawBuildingInformationPanel(
   const Firm* _7kaaFirm
 ) {
-  if (_7kaaFirm->under_construction) {
-    return false;
-  }
-
-  if (::config.help_mode == NO_HELP) {
-    return false;
-  }
-
-  const auto firmArea = UserInterface::Rectangle::fromWorldRectangle(
-    Coordinates::Rectangle::from7kaaRectangle(
-      { .x = _7kaaFirm->loc_x1, .y = _7kaaFirm->loc_y1 },
-      { .x = _7kaaFirm->loc_x2, .y = _7kaaFirm->loc_y2 }
-    )
-  );
-
-  if (::config.help_mode == BRIEF_HELP
-    && firm_array.selected_recno != _7kaaFirm->firm_recno
-    && !UserInterface::mouseCursorInArea(firmArea)
-  ) {
-    return false;
-  }
-
-  constexpr auto BUILDER_ICON_CLEARANCE = 12;
-  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
-
-  const auto height = _7kaaFirm->firm_id == FIRM_BASE ? 70 : 54;
-  const auto panelArea
-    = firmArea
-    .inner(0, BUILDER_ICON_CLEARANCE, 0, 0)
-    .internal(
-      { .width = firmArea.width() - PANEL_SIDE_MARGINS, .height = height },
-      UserInterface::HorizontalAlignment::Centre,
-      UserInterface::VerticalAlignment::Centre
-    );
-
-  if (!UserInterface::VIEWPORT.intersects(panelArea)) {
+  if (!shouldDrawBuildingInformationPanel(_7kaaFirm)) {
     return false;
   }
 
@@ -968,41 +964,14 @@ bool drawBuildingInformationPanel(
 
   return UserInterface::drawInformationPanel(
     UserInterface::VIEWPORT,
-    panelArea,
+    informationPanelArea(_7kaaFirm),
     lines
   );
 }
 bool drawBuildingInformationPanel(
   const Town* _7kaaTown
 ) {
-  if (::config.help_mode == NO_HELP) {
-    return false;
-  }
-
-  const auto townArea = UserInterface::Rectangle::fromWorldRectangle(
-    Coordinates::Rectangle::from7kaaRectangle(
-      { .x = _7kaaTown->loc_x1, .y = _7kaaTown->loc_y1 },
-      { .x = _7kaaTown->loc_x2, .y = _7kaaTown->loc_y2 }
-    )
-  );
-
-  if (::config.help_mode == BRIEF_HELP
-    && town_array.selected_recno != _7kaaTown->town_recno
-    && !UserInterface::mouseCursorInArea(townArea)
-  ) {
-    return false;
-  }
-
-  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
-  constexpr auto PANEL_HEIGHT = 70;
-
-  const auto panelArea = townArea.internal(
-    { .width = townArea.width() - PANEL_SIDE_MARGINS, .height = PANEL_HEIGHT },
-    UserInterface::HorizontalAlignment::Centre,
-    UserInterface::VerticalAlignment::Centre
-  );
-
-  if (!UserInterface::VIEWPORT.intersects(panelArea)) {
+  if (!shouldDrawBuildingInformationPanel(_7kaaTown)) {
     return false;
   }
 
@@ -1095,9 +1064,136 @@ bool drawBuildingInformationPanel(
 
   return UserInterface::drawInformationPanel(
     UserInterface::VIEWPORT,
-    panelArea,
+    informationPanelArea(_7kaaTown),
     lines
   );
+}
+
+void drawBuildingInformationLayer(
+) {
+  if (::config.disp_spy_sign) {
+    for (auto i = firm_array.size(); i > 0; i--) {
+      if (firm_array.is_deleted(i)) {
+        continue;
+      }
+      const auto _7kaaFirm = firm_array[i];
+
+      if (!world.get_loc(_7kaaFirm->center_x, _7kaaFirm->center_y)->explored()) {
+        continue;
+      }
+
+      drawFirmHitBar(_7kaaFirm);
+      drawBuildingProgressBar(_7kaaFirm);
+      drawFirmBuilderIcon(_7kaaFirm);
+      drawBuildingInformationPanel(_7kaaFirm);
+    }
+  }
+
+  if (::config.disp_town_name || ::config.disp_spy_sign) {
+    for (auto i = town_array.size(); i > 0; i--) {
+      if (town_array.is_deleted(i)) {
+        continue;
+      }
+      const auto _7kaaTown = town_array[i];
+
+      if (!world.get_loc(_7kaaTown->center_x, _7kaaTown->center_y)->explored()) {
+        continue;
+      }
+
+      drawTownTrainingProgressBar(_7kaaTown);
+      drawBuildingInformationPanel(_7kaaTown);
+    }
+  }
+
+  if (firm_array.selected_recno
+    && firm_array[firm_array.selected_recno]->nation_recno
+      == nation_array.player_recno
+  ) {
+    const auto selected7kaaFirm = firm_array[firm_array.selected_recno];
+
+    for (auto i = 0; i < selected7kaaFirm->linked_firm_count; i++) {
+      const auto linked7kaaFirm
+        = firm_array[selected7kaaFirm->linked_firm_array[i]];
+
+      if (linked7kaaFirm->firm_id == FIRM_INN) {
+        continue;
+      }
+
+      if (!selected7kaaFirm->can_toggle_firm_link(linked7kaaFirm->firm_recno)) {
+        continue;
+      }
+
+      const auto bitmap = power.get_link_icon(
+        selected7kaaFirm->linked_firm_enable_array[i],
+        selected7kaaFirm->nation_recno == linked7kaaFirm->nation_recno
+      );
+
+      drawIfHoveringIcon(buildingArea(linked7kaaFirm), bitmap);
+    }
+
+    if (selected7kaaFirm->can_toggle_town_link()) {
+      for (auto i = 0; i < selected7kaaFirm->linked_town_count; i++) {
+        const auto linked7kaaTown
+          = town_array[selected7kaaFirm->linked_town_array[i]];
+
+        const auto bitmap = power.get_link_icon(
+          selected7kaaFirm->linked_town_enable_array[i],
+          selected7kaaFirm->nation_recno == linked7kaaTown->nation_recno
+        );
+
+        drawIfHoveringIcon(buildingArea(linked7kaaTown), bitmap);
+      }
+    }
+  }
+
+  if (town_array.selected_recno
+    && town_array[town_array.selected_recno]->nation_recno
+      == nation_array.player_recno
+  ) {
+    const auto selected7kaaTown = town_array[town_array.selected_recno];
+
+    for (auto i = 0; i < selected7kaaTown->linked_firm_count; i++) {
+      const auto linked7kaaFirm
+        = firm_array[selected7kaaTown->linked_firm_array[i]];
+
+      if (!selected7kaaTown->can_toggle_firm_link(linked7kaaFirm->firm_recno)) {
+        continue;
+      }
+
+      const auto bitmap = power.get_link_icon(
+        selected7kaaTown->linked_firm_enable_array[i],
+        selected7kaaTown->nation_recno == linked7kaaFirm->nation_recno
+      );
+
+      drawIfHoveringIcon(buildingArea(linked7kaaFirm), bitmap);
+    }
+
+    if (selected7kaaTown->town_network_recno
+      && selected7kaaTown->nation_recno == nation_array.player_recno
+    ) {
+      auto& townNetwork
+        = *town_network_array[selected7kaaTown->town_network_recno];
+
+      const auto bitmap = image_icon.get_ptr("MIGRATE");
+
+      for (auto i = 0; i < townNetwork.size(); i++) {
+        const auto linkedTown7kaaRecordNumber = townNetwork[i];
+        const auto linked7kaaTown = town_array[linkedTown7kaaRecordNumber];
+
+        if (linkedTown7kaaRecordNumber == selected7kaaTown->town_recno) {
+          continue;
+        }
+
+        if (!selected7kaaTown->can_migrate(linkedTown7kaaRecordNumber)) {
+          continue;
+        }
+
+        drawIfHoveringIcon(buildingArea(linked7kaaTown), bitmap);
+      }
+    }
+  }
+
+  return;
 }
 
 } // namespace Ambition::Vga
@@ -2584,6 +2680,64 @@ void printStealReportsEstimate(
   );
 }
 
+
+namespace Vga {
+
+bool shouldDrawBuildingInformationPanel(
+  const Firm* _7kaaFirm
+) {
+  if (!world.get_loc(_7kaaFirm->center_x, _7kaaFirm->center_y)->explored()) {
+    return false;
+  }
+
+  if (_7kaaFirm->under_construction) {
+    return false;
+  }
+
+  if (::config.help_mode == NO_HELP) {
+    return false;
+  }
+
+  if (::config.help_mode == BRIEF_HELP
+    && firm_array.selected_recno != _7kaaFirm->firm_recno
+    && !UserInterface::mouseCursorInArea(buildingArea(_7kaaFirm))
+  ) {
+    return false;
+  }
+
+  if (!UserInterface::VIEWPORT.intersects(informationPanelArea(_7kaaFirm))) {
+    return false;
+  }
+
+  return true;
+}
+bool shouldDrawBuildingInformationPanel(
+  const Town* _7kaaTown
+) {
+  if (!world.get_loc(_7kaaTown->center_x, _7kaaTown->center_y)->explored()) {
+    return false;
+  }
+
+  if (::config.help_mode == NO_HELP) {
+    return false;
+  }
+
+  if (::config.help_mode == BRIEF_HELP
+    && town_array.selected_recno != _7kaaTown->town_recno
+    && !UserInterface::mouseCursorInArea(buildingArea(_7kaaTown))
+  ) {
+    return false;
+  }
+
+  if (!UserInterface::VIEWPORT.intersects(informationPanelArea(_7kaaTown))) {
+    return false;
+  }
+
+  return true;
+}
+
+} // namespace Ambition::Vga
+
 void unlockBuffer(
   VgaBuf& buffer
 ) {
@@ -2761,5 +2915,86 @@ void drawHitbarOutline(
 
   world.zoom_matrix->put_bitmap_clip(x - 1, y - 1, sys.common_data_buf);
 }
+
+
+namespace Vga {
+
+UserInterface::Rectangle buildingArea(
+  const Firm* _7kaaFirm
+) {
+  return UserInterface::Rectangle::fromWorldRectangle(
+    Coordinates::Rectangle::from7kaaRectangle(
+      { .x = _7kaaFirm->loc_x1, .y = _7kaaFirm->loc_y1 },
+      { .x = _7kaaFirm->loc_x2, .y = _7kaaFirm->loc_y2 }
+    )
+  );
+}
+UserInterface::Rectangle buildingArea(
+  const Town* _7kaaTown
+) {
+  return UserInterface::Rectangle::fromWorldRectangle(
+    Coordinates::Rectangle::from7kaaRectangle(
+      { .x = _7kaaTown->loc_x1, .y = _7kaaTown->loc_y1 },
+      { .x = _7kaaTown->loc_x2, .y = _7kaaTown->loc_y2 }
+    )
+  );
+}
+
+void drawIfHoveringIcon(
+  const UserInterface::Rectangle& area,
+  char* const bitmap
+) {
+  const auto iconArea = area.internal(
+    UserInterface::bitmapSize(bitmap),
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+
+  if (!UserInterface::mouseCursorInArea(iconArea)) {
+    return;
+  }
+
+  world.zoom_matrix->put_bitmap_clip(
+    iconArea.start.left,
+    iconArea.start.top,
+    bitmap
+  );
+}
+
+UserInterface::Rectangle informationPanelArea(
+  const Firm* _7kaaFirm
+) {
+  const auto firmArea = buildingArea(_7kaaFirm);
+
+  constexpr auto BUILDER_ICON_CLEARANCE = 12;
+  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
+  const auto height = _7kaaFirm->firm_id == FIRM_BASE ? 70 : 54;
+
+  return (
+    firmArea
+    .inner({ .top = BUILDER_ICON_CLEARANCE })
+    .internal(
+      { .width = firmArea.width() - PANEL_SIDE_MARGINS, .height = height },
+      UserInterface::HorizontalAlignment::Centre,
+      UserInterface::VerticalAlignment::Centre
+    )
+  );
+}
+UserInterface::Rectangle informationPanelArea(
+  const Town* _7kaaTown
+) {
+  const auto townArea = buildingArea(_7kaaTown);
+
+  constexpr auto PANEL_SIDE_MARGINS = 2 * 8;
+  constexpr auto PANEL_HEIGHT = 70;
+
+  return townArea.internal(
+    { .width = townArea.width() - PANEL_SIDE_MARGINS, .height = PANEL_HEIGHT },
+    UserInterface::HorizontalAlignment::Centre,
+    UserInterface::VerticalAlignment::Centre
+  );
+}
+
+} // namespace Ambition::Vga
 
 } // namespace Ambition

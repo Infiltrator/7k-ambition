@@ -97,8 +97,6 @@ void Town::draw(int displayLayer)
 				break;
 		}
 	}
-
-	Ambition::Draw::buildingProgressBar(this);
 }
 //-------- End of function Town::draw -----------//
 
@@ -332,12 +330,12 @@ int Town::draw_detect_link_line(int actionDetect)
 
 			// Only perform checks on migration (draw/detect) when the 'active' part of the town is within
 			// the zoom matrix
-			if ( world.zoom_matrix->is_bitmap_clip( townX-11, townY-11, bitmapPtr ) &&
+			if ( world.zoom_matrix->is_bitmap_clip( townX-(Ambition::Config::enhancementsAvailable() ? 16 : 11), townY-(Ambition::Config::enhancementsAvailable() ? 16 : 11), bitmapPtr ) &&
 				 can_migrate(townRecno) )
 			{
 				if( actionDetect )
 				{
-					int detectClick = world.zoom_matrix->detect_bitmap_clip( townX-11, townY-11, bitmapPtr );
+					int detectClick = world.zoom_matrix->detect_bitmap_clip( townX-(Ambition::Config::enhancementsAvailable() ? 16 : 11), townY-(Ambition::Config::enhancementsAvailable() ? 16 : 11), bitmapPtr );
 					if( detectClick )
 					{
 						mouse.reset_click();		// reset queued mouse click for fast single clicking
@@ -355,7 +353,7 @@ int Town::draw_detect_link_line(int actionDetect)
 				}
 				else
 				{
-					world.zoom_matrix->put_bitmap_clip( townX-11, townY-11, bitmapPtr );
+					world.zoom_matrix->put_bitmap_clip( townX-(Ambition::Config::enhancementsAvailable() ? 16 : 11), townY-(Ambition::Config::enhancementsAvailable() ? 16 : 11), bitmapPtr );
 				}
 			}
 		}
