@@ -44,6 +44,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Draw the building information (builder icon, hit points bar, progress bar, and information panel) above the link lines and buttons."),
           _("Fixed Phoenix not revealing the leadership status (icon and info pane field) of units."),
           _("Fixed the corrupted display of a Mayan Town name, a Norman unit name, and a Greek unit name in the Esperanto, Polish, and Russian translations."),
+          _("Fixed the mouse cursor appearing under instead of over some text."),
           _("Fixed the alignment of the town migration button (pink cross with arrows in a box) not being in the centre."),
           _("Fixed the calculation of the nearest Market, which sometimes resulted in hiring a Caravan from a slightly further away Market."),
           _("Allow `shift+=` to be bound using the key sequence `+`."),

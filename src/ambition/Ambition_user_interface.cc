@@ -731,6 +731,16 @@ void printText(
     drawArea.size()
   );
 
+  const auto inside = bounds.intersection(drawArea);
+  if (!::Vga::use_back_buf) {
+    mouse.hide_area(
+      inside.start.left,
+      inside.start.top,
+      inside.end.left,
+      inside.end.top
+    );
+  }
+
   for (const auto& section : sections) {
     if (section.bitmap) {
       const auto iconArea
@@ -762,7 +772,6 @@ void printText(
   }
 
   if (!withinBounds) {
-    const auto inside = bounds.intersection(drawArea);
     const auto sourceArea = Rectangle::fromPixel(
       {
         .left = inside.start.left - drawArea.start.left,
@@ -780,6 +789,10 @@ void printText(
       sourceArea.end.left,
       sourceArea.end.top
     );
+  }
+
+  if (!::Vga::use_back_buf) {
+    mouse.show_area();
   }
 }
 
