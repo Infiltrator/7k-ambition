@@ -121,8 +121,16 @@ public:
     ::Unit* _7kaaUnit
   );
 
+  static bool isLeader(
+    const ::Unit* _7kaaUnit
+  );
+
   static bool isReceivingLeadershipBonus(
     ::Unit* _7kaaUnit
+  );
+
+  static int ledUnitCount(
+    const ::Unit* _7kaaUnit
   );
 
   static uint8_t attackRange(

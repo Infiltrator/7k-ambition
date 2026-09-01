@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 13:59+1000\n"
+"POT-Creation-Date: 2026-09-01 17:38+1000\n"
 "PO-Revision-Date: 2026-07-15 15:21+0200\n"
 "Last-Translator: Júlia Rosell Saldaña <contacte@juliars.cat>\n"
 "Language-Team: \n"
@@ -548,6 +548,18 @@ msgstr "Speculator tuus praemium  $%'d suggerit."
 #: src/ambition/Ambition_vga.cc:2134
 msgid "Ships"
 msgstr "Naves"
+
+#: src/ambition/Ambition_vga.cc:2264
+#, c-format
+msgid "Leading %d unit"
+msgid_plural "Leading %d units"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/ambition/Ambition_vga.cc:2268
+#, fuzzy
+msgid "No units assigned"
+msgstr "Nullus dux constitutus"
 
 #: src/ambition/Ambition_vga.cc:2170
 msgid "No leader assigned"

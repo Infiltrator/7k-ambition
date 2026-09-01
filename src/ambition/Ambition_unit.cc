@@ -317,10 +317,40 @@ bool Unit::canReceiveLeadershipBonus(
   );
 }
 
+bool Unit::isLeader(
+  const ::Unit* _7kaaUnit
+) {
+  return (
+    _7kaaUnit->skill.skill_id == SKILL_LEADING
+    && _7kaaUnit->rank_id != RANK_SOLDIER
+  );
+}
+
 bool Unit::isReceivingLeadershipBonus(
   ::Unit* _7kaaUnit
 ) {
   return _7kaaUnit->is_leader_in_range();
+}
+
+int Unit::ledUnitCount(
+  const ::Unit* _7kaaUnit
+) {
+  if (!_7kaaUnit->team_id) {
+    return 0;
+  }
+
+  auto count = -1; /* Discount the leader himself. */
+  for (auto i = unit_array.size(); i > 0; i--) {
+    if (unit_array.is_deleted(i)) {
+      continue;
+    }
+
+    if (unit_array[i]->team_id == _7kaaUnit->team_id) {
+      count++;
+    }
+  }
+
+  return count;
 }
 
 uint8_t Unit::attackRange(

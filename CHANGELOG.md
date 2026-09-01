@@ -31,6 +31,8 @@ speaking, considered to be the player's experience.
   Harbour ship list.
 - Added a "too close" message to Inns when they're too close to other Inns and
   so will have fewer guests.
+- Show the number of units a leader is leading in the leadership status on the
+  info pane.
 
 ### Fixed
 

@@ -1194,16 +1194,11 @@ bool printLeadershipStatus(
     return false;
   }
 
-  if (!Ambition::Unit::canReceiveLeadershipBonus(_7kaaUnit)) {
-    return false;
-  }
-
   if (_7kaaUnit->is_own_spy()) {
     return false;
   }
 
-  Ambition::printLeadershipStatus(_7kaaUnit, top, refreshFlag);
-  return true;
+  return Ambition::printLeadershipStatus(_7kaaUnit, top, refreshFlag);
 }
 
 

@@ -341,7 +341,7 @@ void printHarbourShipCount(
   const int refreshFlag
 );
 
-void printLeadershipStatus(
+bool printLeadershipStatus(
   ::Unit *_7kaaUnit,
   const int top,
   const int refreshFlag
