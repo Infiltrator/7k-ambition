@@ -56,6 +56,7 @@ speaking, considered to be the player's experience.
 - Use the full list of available town names, by randomising the starting ones,
   instead of always using the same town names every time.
 - Improved the performance of building placement highlighting.
+- Updated the PDF manual.
 - Made development slightly easier.
 
 
