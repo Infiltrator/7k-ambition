@@ -40,6 +40,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Caravans now show as idle (with an asterisk) on the Trade Report when they are considered idle by the automatic caravan replacement and cloning system."),
           _("Draw ship washes (the waves around, and the wake behind, ships) at a constant FPS, independent of game speed."),
           _("Do not show ship washes for ships that are stopped and not moving."),
+          _("Made development slightly easier."),
         },
       },
     },

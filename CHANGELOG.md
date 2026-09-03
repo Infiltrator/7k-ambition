@@ -36,6 +36,7 @@ speaking, considered to be the player's experience.
 - Draw ship washes (the waves around, and the wake behind, ships) at a constant
   FPS, independent of game speed.
 - Do not show ship washes for ships that are stopped and not moving.
+- Made development slightly easier.
 
 
 ## [3.2.12] — 2026-09-01
