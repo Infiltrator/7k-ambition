@@ -77,6 +77,7 @@
 #include "7kaaInterface/input.hh"
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_inn.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_population.hh"
@@ -712,7 +713,7 @@ bool drawBuildingInformationPanel(
 
   if (_7kaaFirm->firm_id == FIRM_MONSTER) {
     const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
-    assert(_7kaaFryhtanLair);
+    assume(_7kaaFryhtanLair);
 
     lines.push_back(_7kaaFryhtanLair->firm_name());
     lines.push_back(
@@ -733,7 +734,7 @@ bool drawBuildingInformationPanel(
     switch (_7kaaFirm->firm_id) {
     case FIRM_BASE: {
       const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(_7kaaFirm);
-      assert(_7kaaSeatOfPower);
+      assume(_7kaaSeatOfPower);
       lines.push_back(
         _(unit_res[god_res[_7kaaSeatOfPower->god_id]->unit_id]->name)
       );
@@ -767,7 +768,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_MONSTER: {
       const auto _7kaaFryhtanLair = dynamic_cast<const FirmMonster*>(_7kaaFirm);
-      assert(_7kaaFryhtanLair);
+      assume(_7kaaFryhtanLair);
 
       lines.push_back(
         format(_("Ordos: %d"), _7kaaFryhtanLair->monster_general_count)
@@ -777,7 +778,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_FACTORY: {
       const auto _7kaaFactory = dynamic_cast<const FirmFactory*>(_7kaaFirm);
-      assert(_7kaaFactory);
+      assume(_7kaaFactory);
       lines.push_back(
         format(
           "%s: %'.0f/%'.0f",
@@ -791,7 +792,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_MINE: {
       const auto _7kaaMine = dynamic_cast<const FirmMine*>(_7kaaFirm);
-      assert(_7kaaMine);
+      assume(_7kaaMine);
       if (_7kaaMine->raw_id > 0) {
         lines.push_back(
           format(
@@ -809,7 +810,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_WAR_FACTORY: {
       const auto _7kaaWarFactory = dynamic_cast<const FirmWar*>(_7kaaFirm);
-      assert(_7kaaWarFactory);
+      assume(_7kaaWarFactory);
 
       if (_7kaaWarFactory->build_unit_id) {
         lines.push_back(_(unit_res[_7kaaWarFactory->build_unit_id]->name));
@@ -851,7 +852,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_CAMP: {
       const auto _7kaaCamp = dynamic_cast<const FirmCamp*>(_7kaaFirm);
-      assert(_7kaaCamp);
+      assume(_7kaaCamp);
       lines.push_back(
         format(
           // TRANSLATORS: Short form of "<number> soldiers (<combined combat
@@ -866,7 +867,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_INN: {
       const auto _7kaaInn = dynamic_cast<const FirmInn*>(_7kaaFirm);
-      assert(_7kaaInn);
+      assume(_7kaaInn);
       if (Inn::competingInnCount(_7kaaInn)) {
         /* TRANSLATORS: Indicator on the building information panel for an Inn
          * to indicate that this Inn is too close to another Inn, and so will
@@ -885,7 +886,7 @@ bool drawBuildingInformationPanel(
 
     case FIRM_HARBOR: {
       const auto _7kaaHarbour = dynamic_cast<const FirmHarbor*>(_7kaaFirm);
-      assert(_7kaaHarbour);
+      assume(_7kaaHarbour);
       lines.push_back(
         format(
           _("Ships: %d/%d"),
@@ -902,7 +903,7 @@ bool drawBuildingInformationPanel(
       break;
 
     default:
-      assert(false);
+      assume(false, "firmId is an unknown value");
     }
   }
 
@@ -925,7 +926,7 @@ bool drawBuildingInformationPanel(
     };
 
     const auto _7kaaMarket = dynamic_cast<const FirmMarket*>(_7kaaFirm);
-    assert(_7kaaMarket);
+    assume(_7kaaMarket);
 
     for (const auto& marketGoods : _7kaaMarket->market_goods_array) {
       if (!marketGoods.raw_id && !marketGoods.product_raw_id) {
@@ -1452,7 +1453,7 @@ void drawBuildingProgressBar(
       / unit_res[((FirmWar*) firm)->build_unit_id]->build_days;
   } else if (firm->firm_id == FIRM_BASE) {
     const auto _7kaaSeatOfPower = dynamic_cast<const FirmBase*>(firm);
-    assert(_7kaaSeatOfPower);
+    assume(_7kaaSeatOfPower);
 
     progress = _7kaaSeatOfPower->pray_points / MAX_PRAY_POINTS;
   }
@@ -1503,7 +1504,7 @@ void drawBuildMarkerGridLines(
   const UserInterface::Rectangle marker
 ) {
   int colour;
-  assert(::config.terrain_set >= 1 && ::config.terrain_set <= 3);
+  assume(::config.terrain_set >= 1 && ::config.terrain_set <= 3);
   switch (::config.terrain_set) {
   case 1:
     colour = VGA_GRAY + 13;
@@ -1741,7 +1742,7 @@ void drawBuildModeHighlighting(
             }
             break;
           default:
-            assert(false);
+            assume(false, "firmId is an unknown value");
           }
           if (firmId == FIRM_BASE || firmId == FIRM_INN) {
             if (!ideal) {

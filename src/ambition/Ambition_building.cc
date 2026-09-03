@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@
 #include "vga_util.h"
 #pragma GCC diagnostic pop
 
+#include "Ambition_error_handling.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_unit.hh"
@@ -386,14 +387,13 @@ void Building::dequeueTraining(
 void Building::destroy(
   Time::Stamp stamp
 ) {
-  if (stamp == Time::START) {
-    throw std::invalid_argument(
+  assume(
+    stamp != Time::START,
       format(
         "[%d] Cannot set destruction timestamp to beginning",
         recordNumber
       )
-    );
-  }
+  );
 
   destroyedAt = stamp;
 }
@@ -824,7 +824,7 @@ bool Building::mainMenuActive(
     return commonFirmMenu;
   }
 
-  assert((type == _7kaaType::Town || type == _7kaaType::Firm) && false);
+  assume((type == _7kaaType::Town || type == _7kaaType::Firm) && false);
 }
 
 void Building::productionAccepted(
@@ -874,7 +874,7 @@ void Building::sendUnitsToRallyPoint(
   std::erase_if(
     _7kaaUnitRecordNumbers,
     [](const short _7kaaUnitRecordNumber) {
-      assert(!unit_array.is_deleted(_7kaaUnitRecordNumber));
+      assume(!unit_array.is_deleted(_7kaaUnitRecordNumber));
       const auto _7kaaUnit = unit_array[_7kaaUnitRecordNumber];
       return _7kaaUnit->skill.skill_id == SKILL_CONSTRUCTION;
     }
@@ -968,45 +968,43 @@ void setOrClearRallyPoint(
 
 Building::Underlying7kaaObject Building::underlying7kaaObject(
 ) const {
-  if (destroyed()) {
-    throw std::domain_error(
+  assume(
+    !destroyed(),
       format(
         "[%llu] 7kaa Firm/Town %d was destroyed.",
         recordNumber,
         _7kaaRecordNumber
       )
-    );
-  }
+  );
 
   if (type == _7kaaType::Firm) {
-    if (firm_array.is_deleted(_7kaaRecordNumber)) {
-      throw std::domain_error(
+    assume(
+      !firm_array.is_deleted(_7kaaRecordNumber),
         format(
           "[%llu] 7kaa Firm record number %d is deleted.",
           recordNumber,
           _7kaaRecordNumber
         )
-      );
-    }
+    );
 
     return Underlying7kaaObject(firm_array[_7kaaRecordNumber]);
   }
 
   if (type == _7kaaType::Town) {
-    if (town_array.is_deleted(_7kaaRecordNumber)) {
-      throw std::domain_error(
+    assume(
+      !town_array.is_deleted(_7kaaRecordNumber),
         format(
           "[%llu] 7kaa Town record number %d is deleted.",
           recordNumber,
           _7kaaRecordNumber
         )
-      );
-    }
+    );
 
     return Underlying7kaaObject(town_array[_7kaaRecordNumber]);
   }
 
-  throw std::logic_error(
+  assume(
+    false,
     format("[%llu] Must be either a 7kaa Firm or Town.", recordNumber)
   );
 }

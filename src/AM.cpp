@@ -297,6 +297,8 @@ static void extra_error_handler();
 //
 int main(int argc, char **argv)
 {
+	Ambition::Control::initialiseErrorReporting();
+
 	misc2.randomize();
 
 	if (!sys.set_game_dir())

@@ -48,6 +48,7 @@
 #include "Ambition_repository.hh"
 #include "Ambition_unit.hh"
 #include "Ambition_version.hh"
+#include "Ambition_error_handling.hh"
 #include "format.hh"
 
 
@@ -109,7 +110,10 @@ void read(
   const long startingPosition
 ) {
   std::ifstream saveFile(filename);
-  assert(saveFile.good());
+  enforce(
+    saveFile.good(),
+    std::runtime_error("Unable to open file for reading")
+  );
 
   saveFile.seekg(startingPosition);
 
@@ -156,13 +160,14 @@ void read(
   const auto lastSavingVersion = rollingBuffer;
 
   try {
-    if (savefileVersion > SAVEFILE_VERSION) {
-      throw ErrorHandling::Exceptions::newer_type_version(
+    enforce(
+      savefileVersion <= SAVEFILE_VERSION,
+      ErrorHandling::Exceptions::newer_type_version(
         "FILE",
         savefileVersion,
         SAVEFILE_VERSION
-      );
-    }
+      )
+    );
 
     boost::archive::xml_iarchive archive(saveFile);
     registerTypes(archive);
@@ -206,7 +211,10 @@ void write(
   flags |= HeaderFlags::BoostXml;
 
   std::ofstream saveFile(filename, std::ios::app);
-  assert(saveFile.good());
+  enforce(
+    saveFile.good(),
+    std::runtime_error("Unable to open file for writing")
+  );
 
   saveFile << BOOKMARK << std::endl;
   saveFile << HEADER_START << std::endl;

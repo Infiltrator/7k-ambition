@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,7 @@
 #include "OSYS.h"
 
 #include "Ambition_entity.hh"
+#include "Ambition_error_handling.hh"
 #include "format.hh"
 
 
@@ -46,9 +47,10 @@ void Repository::reset(
 
 unsigned long long int Repository::takeRecordNumber(
 ) {
-  if (nextRecordNumber == std::numeric_limits<unsigned long long int>::max()) {
-    throw std::range_error("(Somehow) ran out of record numbers.");
-  }
+  enforce(
+    nextRecordNumber < std::numeric_limits<unsigned long long int>::max(),
+    std::range_error("(Somehow) ran out of record numbers.")
+  );
 
   return nextRecordNumber++;
 }
@@ -60,11 +62,10 @@ std::shared_ptr<Entity> Repository::_get(
 ) const {
   auto result = records.find(recordNumber);
 
-  if (result == records.end()) {
-    throw std::out_of_range(
+  assume(
+    result != records.end(),
       format("Entity with given key %d does not exist.", recordNumber)
-    );
-  }
+  );
 
   auto record = result->second;
   if (record.state != Record::State::Loaded) {
@@ -94,14 +95,15 @@ void Repository::_insert(
     )
   );
 
-  if (!result.second) {
-    throw std::runtime_error(
+  enforce(
+    result.second && result.first->second.entity == entity,
+    std::runtime_error(
       format(
         "Unable to add entity with record number %d to repository.",
         entity->recordNumber
       )
-    );
-  }
+    )
+  );
 }
 
 unsigned long long int Repository::timestamp(

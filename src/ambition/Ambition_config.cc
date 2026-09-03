@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,6 @@
 #include "Ambition_config.hh"
 
 #include <algorithm>
-#include <cassert>
 #include <fstream>
 #include <map>
 #include <optional>
@@ -54,6 +53,7 @@
 #pragma GCC diagnostic pop
 
 #include "7kaaInterface/input.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_input.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
@@ -323,7 +323,7 @@ bool shouldDrawFirmHitBar(
     return _7kaaFirm->hit_points < _7kaaFirm->max_hit_points;
 
   default:
-    assert(false);
+    assume(false, "::config.help_mode is in an unknown state");
   }
 }
 
