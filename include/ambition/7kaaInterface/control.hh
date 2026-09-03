@@ -119,6 +119,9 @@ void unlockBuffer(
   VgaBuf& buffer
 );
 
+void useGraphicalErrorReporting(
+);
+
 } // namespace _7kaaAmbitionInterface::Control
 
 #ifndef _AMBITION_IMPLEMENTATION

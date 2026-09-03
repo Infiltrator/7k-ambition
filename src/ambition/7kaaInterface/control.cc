@@ -291,6 +291,11 @@ void unlockBuffer(
   Ambition::unlockBuffer(buffer);
 }
 
+void useGraphicalErrorReporting(
+) {
+  Ambition::Control::useGraphicalErrorReporting();
+}
+
 
 /* Private functions */
 

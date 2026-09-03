@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show a message to the user when Seven Kingdoms: Ambition crashes instead of
+  just disappearing, to aid in reporting bugs.  If you do receive a crash
+  message, please take a screenshot and report it.
+
 ### Fixed
 
 - Fixed caravans with no stops not being counted as idle, and so never being

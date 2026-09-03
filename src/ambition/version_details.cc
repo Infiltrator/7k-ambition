@@ -22,6 +22,12 @@ std::vector<VersionUpdates> getVersionDetails(
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
       {
+        .heading = HEADING_ADDED,
+        .items = {
+          _("Show a message to the user when Seven Kingdoms: Ambition crashes instead of just disappearing, to aid in reporting bugs.  If you do receive a crash message, please take a screenshot and report it."),
+        },
+      },
+      {
         .heading = HEADING_FIXED,
         .items = {
           _("Fixed caravans with no stops not being counted as idle, and so never being retired or re-used."),
