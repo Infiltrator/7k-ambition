@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,10 +28,35 @@
 #include <boost/serialization/version.hpp>
 #include <string>
 
+#include "Ambition_error_handling.hh"
+
 class GameFile;
 
 
 namespace Ambition {
+
+namespace Serialisation {
+
+template <typename Object>
+inline void enforceVersion(
+  Object* object,
+  std::string_view typeName,
+  const unsigned int archiveVersion
+) {
+  const auto currentVersion
+    = boost::serialization::version<std::remove_cvref_t<decltype(*object)>>
+      ::value;
+  if (archiveVersion > currentVersion) {
+    throw ErrorHandling::Exceptions::newer_type_version(
+      typeName,
+      archiveVersion,
+      currentVersion
+    );
+  }
+}
+
+} // namespace Ambition::Serialisation
+
 
 struct SavefileInformation {
   template<class Archive>
@@ -39,6 +64,7 @@ struct SavefileInformation {
     Archive& archive,
     const unsigned int version
   ) {
+    Serialisation::enforceVersion(this, "SavefileInformation", version);
   }
 };
 

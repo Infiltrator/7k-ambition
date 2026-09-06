@@ -266,6 +266,8 @@ protected:
     Archive& archive,
     const unsigned int version
   ) {
+    Serialisation::enforceVersion(this, "Unit", version);
+
     archive & boost::serialization::make_nvp(
       "entity",
       boost::serialization::base_object<Entity>(*this)
