@@ -128,7 +128,7 @@ void UnitMarine::update_abs_pos(SpriteFrame *spriteFrame)
 
 //------- Begin of function UnitMarine::draw -------//
 
-void UnitMarine::draw()
+void UnitMarine::draw(const int outlined)
 {
 	// -------- update splash parameter --------//
 	// ###### begin Gilbert 8/9 #######//
@@ -173,7 +173,7 @@ void UnitMarine::draw()
 	if( cur_action != SPRITE_DIE )
 		splash.draw();
 	// ###### end Gilbert 24/9 #######//
-	Unit::draw();
+	Unit::draw(outlined);
 
 	#ifdef DEBUG2
 		if(selected_flag && 0)
@@ -207,75 +207,7 @@ void UnitMarine::draw()
 
 void UnitMarine::draw_outlined()
 {
-	// -------- update splash parameter --------//
-	// ###### begin Gilbert 8/9 #######//
-	char oldSplashAction = splash.cur_action;
-
-	switch(cur_action)
-	{
-	case SPRITE_MOVE:
-		splash.cur_action = SPRITE_MOVE;
-		if( splash.cur_action != oldSplashAction)
-			splash.cur_frame = 1;
-		else
-		{
-			++splash.cur_frame;
-			if( splash.cur_frame < 1 || splash.cur_frame > splash.cur_sprite_move()->frame_count )
-				splash.cur_frame = 1;
-		}
-		break;
-
-	default:
-		splash.cur_action = SPRITE_IDLE;
-		if( splash.cur_action != oldSplashAction)
-			splash.cur_frame = 1;
-		else
-		{
-			++splash.cur_frame;
-			if( splash.cur_frame < 1 || splash.cur_frame > splash.cur_sprite_stop()->frame_count)
-				splash.cur_frame = 1;
-		}
-		break;
-	}
-	// ###### end Gilbert 8/9 #######//
-
-	splash.cur_x = cur_x;
-	splash.cur_y = cur_y - wave_height(7);
-	splash.cur_dir = cur_dir;
-	splash.final_dir = final_dir;
-	splash.turn_delay = turn_delay;
-
-	// --------- draw splash and then the unit --------//
-	// ###### begin Gilbert 24/9 #######//
-	if( cur_action != SPRITE_DIE )
-		splash.draw();
-	// ###### end Gilbert 24/9 #######//
-	Unit::draw_outlined();
-
-	#ifdef DEBUG2
-		if(selected_flag && 0)
-		{
-			vga_util.d3_panel_up( INFO_X1, INFO_Y1+144, INFO_X2, INFO_Y1+144+87 );
-
-			int 	 x=INFO_X1+4, y=INFO_Y1+200, refreshFlag=INFO_REPAINT;
-			font_san.field( x, y, " " , x+2, sprite_recno, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+20, y, " " , x+22, next_x_loc(), 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+50, y, " " , x+52, next_y_loc(), 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+70, y, " " , x+72, nation_recno, 1, INFO_X2-2, refreshFlag);
-
-			font_san.field( x+100, y, " " , x+102, action_mode, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+120, y, " " , x+122, action_para, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+140, y, " " , x+142, action_x_loc, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+160, y, " " , x+162, action_y_loc, 1, INFO_X2-2, refreshFlag);
-			y-=20;
-			font_san.field( x+100, y, " " , x+102, action_mode2, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+120, y, " " , x+122, action_para2, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+140, y, " " , x+142, action_x_loc2, 1, INFO_X2-2, refreshFlag);
-			font_san.field( x+160, y, " " , x+162, action_y_loc2, 1, INFO_X2-2, refreshFlag);
-			y-=20;
-			font_san.field( x+160, y, " " , x+162, cur_action, 1, INFO_X2-2, refreshFlag);
-		}
-	#endif
+	draw(2);
 }
 //------- End of function UnitMarine::draw_outlined -------//
 

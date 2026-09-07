@@ -19,6 +19,8 @@ speaking, considered to be the player's experience.
 - Preserve all the user options (Report Backgrounds, News Display, Unit Identity
   Display, and Unit Path Display) when loading a save file or starting a
   scenario (which loads a save file, internally).
+- Fixed ship washes (the waves around, and the wake behind, ships) appearing
+  only when hovering over ships.
 - Avoid potential issues from loading newer incompatible save files that may be
   saved by future versions with more features.
 

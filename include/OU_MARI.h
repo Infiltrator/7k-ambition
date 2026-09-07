@@ -154,7 +154,7 @@ public:
 
 	int 	should_show_info();
 
-	void  draw();
+	virtual void draw(const int outlined = 0) override;
 	void	draw_outlined();
 	void  update_abs_pos(SpriteFrame* =0);
 
