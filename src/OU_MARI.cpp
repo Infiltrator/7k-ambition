@@ -21,6 +21,8 @@
 // Filename    : OU_MARI.CPP
 // Description : sea unit
 
+#include "ambition/7kaaInterface/draw.hh"
+
 #include <OSYS.h>
 #include <OTERRAIN.h>
 #include <OU_CARA.h>
@@ -172,7 +174,7 @@ void UnitMarine::draw(const int outlined)
 
 	// --------- draw splash and then the unit --------//
 	// ###### begin Gilbert 24/9 #######//
-	if( cur_action != SPRITE_DIE )
+	if( cur_action != SPRITE_DIE && Ambition::Draw::shouldDrawShipWash(this) )
 		splash.draw();
 	// ###### end Gilbert 24/9 #######//
 	Unit::draw(outlined);

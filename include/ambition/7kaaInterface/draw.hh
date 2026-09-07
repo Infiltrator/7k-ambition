@@ -44,6 +44,7 @@ class Spy;
 class Town;
 class Unit;
 class UnitCaravan;
+class UnitMarine;
 class VBrowseIF;
 class Worker;
 struct FirmBitmap;
@@ -431,6 +432,10 @@ void queueCount(
 );
 void queueCount(
   const Town* _7kaaTown
+);
+
+bool shouldDrawShipWash(
+  const UnitMarine* _7kaaUnitMarine
 );
 
 bool shouldDrawUnitIcon(

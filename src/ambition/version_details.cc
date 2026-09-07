@@ -35,6 +35,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_CHANGED,
         .items = {
           _("Draw ship washes (the waves around, and the wake behind, ships) at a constant FPS, independent of game speed."),
+          _("Do not show ship washes for ships that are stopped and not moving."),
         },
       },
     },

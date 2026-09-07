@@ -39,6 +39,7 @@
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
+#include "OU_MARI.h"
 #include "vga_util.h"
 #pragma GCC diagnostic pop
 
@@ -1469,6 +1470,20 @@ void queueCount(
       Ambition::UserInterface::BUTTON_SIZE
     ),
     format("%'d", productionCount)
+  );
+}
+
+bool shouldDrawShipWash(
+  const UnitMarine* _7kaaUnitMarine
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return true;
+  }
+
+  return (
+    _7kaaUnitMarine->cur_action == SPRITE_MOVE
+    || _7kaaUnitMarine->cur_action == SPRITE_WAIT
+    || _7kaaUnitMarine->cur_action == SPRITE_TURN
   );
 }
 
