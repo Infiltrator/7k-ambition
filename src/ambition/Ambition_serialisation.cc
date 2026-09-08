@@ -42,6 +42,7 @@
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_control.hh"
 #include "Ambition_entity.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
@@ -154,7 +155,31 @@ void read(
   saveFile >> rollingBuffer;
   const auto lastSavingVersion = rollingBuffer;
 
-  if (savefileVersion > SAVEFILE_VERSION) {
+  try {
+    if (savefileVersion > SAVEFILE_VERSION) {
+      throw ErrorHandling::Exceptions::newer_type_version(
+        "FILE",
+        savefileVersion,
+        SAVEFILE_VERSION
+      );
+    }
+
+    boost::archive::xml_iarchive archive(saveFile);
+    registerTypes(archive);
+
+    SavefileInformation savefileInformation;
+    archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
+
+    size_t recordCount;
+    archive >> BOOST_SERIALIZATION_NVP(recordCount);
+
+    for (auto i = 0u; i < recordCount; i++) {
+      Entity* entity;
+      archive >> BOOST_SERIALIZATION_NVP(entity);
+      entityRepository.insert(std::shared_ptr<Entity>(entity));
+    }
+  } catch(ErrorHandling::Exceptions::newer_type_version& exception) {
+    const auto currentVersion = versionString();
     box.msg(
       format(
         _("Save game version is too new."
@@ -167,22 +192,10 @@ void read(
       ).c_str(),
       0
     );
+
+    resetGameState();
+
     return;
-  }
-
-  boost::archive::xml_iarchive archive(saveFile);
-  registerTypes(archive);
-
-  SavefileInformation savefileInformation;
-  archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
-
-  size_t recordCount;
-  archive >> BOOST_SERIALIZATION_NVP(recordCount);
-
-  for (auto i = 0u; i < recordCount; i++) {
-    Entity* entity;
-    archive >> BOOST_SERIALIZATION_NVP(entity);
-    entityRepository.insert(std::shared_ptr<Entity>(entity));
   }
 }
 
