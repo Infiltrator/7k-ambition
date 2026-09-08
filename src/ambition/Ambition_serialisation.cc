@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ namespace Ambition {
 
 constexpr auto BOOKMARK = "0xFAB0";
 constexpr auto HEADER_START = "[Ambition_header]";
-constexpr auto SAVEFILE_VERSION = 1;
+constexpr auto SAVEFILE_VERSION = 2;
 
 enum HeaderFlags : uint64_t {
   Compressed = 1 << 0,
