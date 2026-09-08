@@ -860,7 +860,7 @@ void TalkRes::reply_talk_msg(int talkMsgRecno, char replyType, char remoteAction
 
 	//-- a nation can be deleted before a remote message is processed --//
 
-	if( nation_array.is_deleted(talkMsgPtr->from_nation_recno) || nation_array.is_deleted(talkMsgPtr->to_nation_recno) )
+	if( !talkMsgPtr->is_valid_to_reply() )
 		return;
 
 	Nation*  fromNation = nation_array[talkMsgPtr->from_nation_recno];
