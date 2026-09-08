@@ -25,6 +25,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_FIXED,
         .items = {
           _("Fixed an issue where accepting a friendly treaty would override a declaration of war."),
+          _("Preserve all the user options (Report Backgrounds, News Display, Unit Identity Display, and Unit Path Display) when loading a save file or starting a scenario (which loads a save file, internally)."),
           _("Avoid potential issues from loading newer incompatible save files that may be saved by future versions with more features."),
         },
       },

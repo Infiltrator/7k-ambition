@@ -1316,6 +1316,10 @@ int Config::read_file(File* filePtr, int keepSysSettings)
 	char	soundEffectFlag = sound_effect_flag;
 	short	soundEffectVol  = sound_effect_volume;
 	char	helpMode			 = help_mode;
+	char opaqueReport = opaque_report;
+	char dispNewsFlag = disp_news_flag;
+	char showAllUnitIcon = show_all_unit_icon;
+	char showUnitPath = show_unit_path;
 
 	if( !filePtr->file_read(&gf_rec, sizeof(ConfigGF)) )
 		return 0;
@@ -1329,6 +1333,13 @@ int Config::read_file(File* filePtr, int keepSysSettings)
 		sound_effect_flag = soundEffectFlag;
 		sound_effect_volume = soundEffectVol;
 		help_mode			= helpMode;
+	}
+
+	if (Ambition::Config::enhancementsAvailable() && keepSysSettings) {
+		opaque_report = opaqueReport;
+		disp_news_flag = dispNewsFlag;
+		show_all_unit_icon = showAllUnitIcon;
+		show_unit_path = showUnitPath;
 	}
 
 	return 1;
