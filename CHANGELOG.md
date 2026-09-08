@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed diagonal lines (unit paths, waypoints, rally points, building links)
+  looking stretched out compared to orthogonal lines.
 - Fixed an issue where accepting a friendly treaty would override a declaration
   of war.
 - Preserve all the user options (Report Backgrounds, News Display, Unit Identity

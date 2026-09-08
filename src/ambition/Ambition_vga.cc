@@ -138,7 +138,9 @@ UserInterface::Rectangle informationPanelArea(
 
 short calculateAnimatedLinePhase(
   const int animatedFlag,
-  const int lineProgress
+  const int orthogonalLength,
+  const int perpendicularLength,
+  const int orthogonalProgress
 ) {
   constexpr auto PHASE_COUNT = 8;
   constexpr auto PHASES_PER_SECOND = 60;
@@ -148,6 +150,13 @@ short calculateAnimatedLinePhase(
     ? SDL_GetTicks64() / PHASES_PER_SECOND
     : 0;
 
+  const auto lineProgress
+    = std::sqrt(
+      1 + std::pow(
+        static_cast<double>(perpendicularLength) / orthogonalLength,
+        2
+      )
+    ) * orthogonalProgress;
   return (unsigned short)(lineProgress - timeProgress) % PHASE_COUNT;
 }
 

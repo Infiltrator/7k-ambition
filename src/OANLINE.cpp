@@ -351,7 +351,7 @@ void AnimLine::basic_line(VgaBuf *vgabuf, short x1, short y1, short x2, short y2
 		do
 		{
 			x += inc_x;
-			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, x * inc_x);
+			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, dx, dy, x * inc_x);
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -382,7 +382,7 @@ void AnimLine::basic_line(VgaBuf *vgabuf, short x1, short y1, short x2, short y2
 		do
 		{
 			y += inc_y;
-			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, y * inc_y);
+			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, dy, dx, y * inc_y);
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -422,7 +422,7 @@ void AnimLine::basic_hline(VgaBuf *vgabuf, short x1, short x2, short y1, int ani
 		// from left to right
 		for(short x = x1; x <= x2; ++x, ++bufPtr)
 		{
-			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, x);
+			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, abs(x2 - x1), 0, x);
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -433,7 +433,7 @@ void AnimLine::basic_hline(VgaBuf *vgabuf, short x1, short x2, short y1, int ani
 		// from right to left
 		for( short x = x1; x >= x2; --x, --bufPtr)
 		{
-			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, -x);
+			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, abs(x2 - x1), 0, -x);
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -462,7 +462,7 @@ void AnimLine::basic_vline(VgaBuf *vgabuf, short x1, short y1, short y2, int ani
 		// from top to bottom
 		for(short y = y1; y <= y2; ++y, bufPtr += lPitch)
 		{
-			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, y);
+			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, abs(y2 - y1), 0, y);
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
@@ -473,7 +473,7 @@ void AnimLine::basic_vline(VgaBuf *vgabuf, short x1, short y1, short y2, int ani
 		// from bottom to top
 		for( short y = y1; y >= y2; --y, bufPtr -= lPitch)
 		{
-			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, -y);
+			linePhase = Ambition::Draw::calculateAnimatedLinePhase(linePhase, animatedFlag, abs(y2 - y1), 0, -y);
 			*bufPtr = colorCode[linePhase];
 			if(++linePhase >= ANIMLINE_PERIOD )
 				linePhase = 0;
