@@ -91,3 +91,19 @@ folder. The game data folder is set by the environment variable SKDATA. In
 a bash shell, this can be accomplished by
 
     $ SKDATA=data src/7k-ambition
+
+#### Translations when running locally from source build
+
+In order to get translations working when running from the source build, you'll
+need to link the translations into data/locale:
+
+```
+mkdir data/locale
+cd data/locale
+for i in ../../po/*.po; do
+  base="${i%%.po}"
+  language="${base##../../po/}"
+  mkdir -p "${language}/LC_MESSAGES"
+  ln -s "../../${base}.gmo" "${language}/LC_MESSAGES/7k-ambition.mo"
+done
+```
