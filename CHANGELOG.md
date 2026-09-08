@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Avoid potential issues from loading newer incompatible save files that may be
+  saved by future versions with more features.
+
 
 ## [3.2.12] — 2026-09-01
 

@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,6 +42,7 @@
 
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
+#include "Ambition_control.hh"
 #include "Ambition_entity.hh"
 #include "Ambition_polity.hh"
 #include "Ambition_repository.hh"
@@ -54,7 +55,7 @@ namespace Ambition {
 
 constexpr auto BOOKMARK = "0xFAB0";
 constexpr auto HEADER_START = "[Ambition_header]";
-constexpr auto SAVEFILE_VERSION = 1;
+constexpr auto SAVEFILE_VERSION = 2;
 
 enum HeaderFlags : uint64_t {
   Compressed = 1 << 0,
@@ -90,6 +91,18 @@ std::string calculateFileDateString(
 }
 
 } // namespace Ambition::Serialisation
+
+
+template<typename Archive>
+void registerTypes(
+  Archive& archive
+) {
+  archive.template register_type<SavefileInformation>();
+  archive.template register_type<Entity>();
+  archive.template register_type<Building>();
+  archive.template register_type<Polity>();
+  archive.template register_type<Unit>();
+}
 
 void read(
   const std::string filename,
@@ -142,7 +155,31 @@ void read(
   saveFile >> rollingBuffer;
   const auto lastSavingVersion = rollingBuffer;
 
-  if (savefileVersion > SAVEFILE_VERSION) {
+  try {
+    if (savefileVersion > SAVEFILE_VERSION) {
+      throw ErrorHandling::Exceptions::newer_type_version(
+        "FILE",
+        savefileVersion,
+        SAVEFILE_VERSION
+      );
+    }
+
+    boost::archive::xml_iarchive archive(saveFile);
+    registerTypes(archive);
+
+    SavefileInformation savefileInformation;
+    archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
+
+    size_t recordCount;
+    archive >> BOOST_SERIALIZATION_NVP(recordCount);
+
+    for (auto i = 0u; i < recordCount; i++) {
+      Entity* entity;
+      archive >> BOOST_SERIALIZATION_NVP(entity);
+      entityRepository.insert(std::shared_ptr<Entity>(entity));
+    }
+  } catch(ErrorHandling::Exceptions::newer_type_version& exception) {
+    const auto currentVersion = versionString();
     box.msg(
       format(
         _("Save game version is too new."
@@ -155,26 +192,10 @@ void read(
       ).c_str(),
       0
     );
+
+    resetGameState();
+
     return;
-  }
-
-  boost::archive::xml_iarchive archive(saveFile);
-  archive.register_type<SavefileInformation>();
-  archive.register_type<Entity>();
-  archive.register_type<Building>();
-  archive.register_type<Polity>();
-  archive.register_type<Unit>();
-
-  SavefileInformation savefileInformation;
-  archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
-
-  size_t recordCount;
-  archive >> BOOST_SERIALIZATION_NVP(recordCount);
-
-  for (auto i = 0u; i < recordCount; i++) {
-    Entity* entity;
-    archive >> BOOST_SERIALIZATION_NVP(entity);
-    entityRepository.insert(std::shared_ptr<Entity>(entity));
   }
 }
 
@@ -194,11 +215,7 @@ void write(
   saveFile << versionString() << std::endl;
 
   boost::archive::xml_oarchive archive(saveFile);
-  archive.register_type<SavefileInformation>();
-  archive.register_type<Entity>();
-  archive.register_type<Building>();
-  archive.register_type<Polity>();
-  archive.register_type<Unit>();
+  registerTypes(archive);
 
   SavefileInformation savefileInformation;
   archive << BOOST_SERIALIZATION_NVP(savefileInformation);

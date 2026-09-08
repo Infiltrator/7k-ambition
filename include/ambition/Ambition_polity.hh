@@ -34,6 +34,7 @@
 
 #include "Ambition_entity.hh"
 #include "Ambition_time.hh"
+#include "Ambition_serialisation.hh"
 #include "boost-macros.hh"
 
 class Nation;
@@ -128,6 +129,8 @@ protected:
     Archive& archive,
     const unsigned int version
   ) {
+    Serialisation::enforceVersion(this, "Polity", version);
+
     archive & boost::serialization::make_nvp(
       "entity",
       boost::serialization::base_object<Entity>(*this)

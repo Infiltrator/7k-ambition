@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +29,9 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/version.hpp>
 
+#include "Ambition_serialisation.hh"
+#include "boost-macros.hh"
+
 
 namespace Ambition {
 
@@ -55,7 +58,9 @@ protected:
     Archive& archive,
     const unsigned int version
   ) {
-    archive & boost::serialization::make_nvp("recordNumber", const_cast<unsigned long long int&>(recordNumber));
+    Serialisation::enforceVersion(this, "Entity", version);
+
+    archive & BOOST_SERIALIZATION_NVP_CONST(recordNumber);
   }
 };
 

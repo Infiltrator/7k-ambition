@@ -21,6 +21,12 @@ std::vector<VersionUpdates> getVersionDetails(
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+      {
+        .heading = HEADING_FIXED,
+        .items = {
+          _("Avoid potential issues from loading newer incompatible save files that may be saved by future versions with more features."),
+        },
+      },
     },
   },
   {

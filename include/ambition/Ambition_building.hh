@@ -31,6 +31,7 @@
 
 #include "Ambition_coordinates.hh"
 #include "Ambition_entity.hh"
+#include "Ambition_serialisation.hh"
 #include "Ambition_time.hh"
 #include "Ambition_unit.hh"
 #include "boost-macros.hh"
@@ -219,6 +220,8 @@ protected:
     Archive& archive,
     const unsigned int version
   ) {
+    Serialisation::enforceVersion(this, "Building", version);
+
     archive & boost::serialization::make_nvp(
       "entity",
       boost::serialization::base_object<Entity>(*this)
