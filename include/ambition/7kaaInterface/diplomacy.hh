@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,10 @@
 
 #pragma once
 
+#include "../pragma_silence_7kaa_warnings.hh"
+#include "ONATIONA.h"
 #include "OSTR.h"
+#pragma GCC diagnostic pop
 
 class Nation;
 class TalkMsg;
@@ -33,6 +36,11 @@ class TalkRes;
 
 
 namespace _7kaaAmbitionInterface::Diplomacy {
+
+bool canReplyToMessage(
+  const short _7kaaTalkRecordNumber,
+  const bool _7kaaCalculation
+);
 
 String& getFoodPurchasePriceDescription(
   String& _7kaaCalculation,

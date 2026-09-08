@@ -1062,7 +1062,7 @@ int TalkRes::detect_talk()
 
 	if( reply_talk_msg_recno )
 	{
-		if( !is_talk_msg_deleted(reply_talk_msg_recno) )		// the message may become invalid during the replying period
+		if( Ambition::Diplomacy::canReplyToMessage(reply_talk_msg_recno, !is_talk_msg_deleted(reply_talk_msg_recno)) )		// the message may become invalid during the replying period
 		{
 			if( choicePara==1 )
 				reply_talk_msg(reply_talk_msg_recno, REPLY_ACCEPT, COMMAND_PLAYER);

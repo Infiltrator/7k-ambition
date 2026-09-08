@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,6 +51,20 @@ void add7kaaTalkChoice(
   const short parameter
 );
 
+
+bool canReplyToMessage(
+  const short _7kaaTalkRecordNumber,
+  const bool _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return (
+    _7kaaCalculation
+    && talk_res.get_talk_msg(_7kaaTalkRecordNumber)->is_valid_to_reply()
+  );
+}
 
 String& getFoodPurchasePriceDescription(
   String& _7kaaCalculation,
