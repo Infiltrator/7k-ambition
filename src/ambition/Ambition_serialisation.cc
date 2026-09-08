@@ -91,6 +91,18 @@ std::string calculateFileDateString(
 
 } // namespace Ambition::Serialisation
 
+
+template<typename Archive>
+void registerTypes(
+  Archive& archive
+) {
+  archive.template register_type<SavefileInformation>();
+  archive.template register_type<Entity>();
+  archive.template register_type<Building>();
+  archive.template register_type<Polity>();
+  archive.template register_type<Unit>();
+}
+
 void read(
   const std::string filename,
   const long startingPosition
@@ -159,11 +171,7 @@ void read(
   }
 
   boost::archive::xml_iarchive archive(saveFile);
-  archive.register_type<SavefileInformation>();
-  archive.register_type<Entity>();
-  archive.register_type<Building>();
-  archive.register_type<Polity>();
-  archive.register_type<Unit>();
+  registerTypes(archive);
 
   SavefileInformation savefileInformation;
   archive >> BOOST_SERIALIZATION_NVP(savefileInformation);
@@ -194,11 +202,7 @@ void write(
   saveFile << versionString() << std::endl;
 
   boost::archive::xml_oarchive archive(saveFile);
-  archive.register_type<SavefileInformation>();
-  archive.register_type<Entity>();
-  archive.register_type<Building>();
-  archive.register_type<Polity>();
-  archive.register_type<Unit>();
+  registerTypes(archive);
 
   SavefileInformation savefileInformation;
   archive << BOOST_SERIALIZATION_NVP(savefileInformation);
