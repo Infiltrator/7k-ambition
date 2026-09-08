@@ -24,6 +24,7 @@ std::vector<VersionUpdates> getVersionDetails(
       {
         .heading = HEADING_FIXED,
         .items = {
+          _("Fixed an issue where accepting a friendly treaty would override a declaration of war."),
           _("Avoid potential issues from loading newer incompatible save files that may be saved by future versions with more features."),
         },
       },

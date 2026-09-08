@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed an issue where accepting a friendly treaty would override a declaration
+  of war.
 - Avoid potential issues from loading newer incompatible save files that may be
   saved by future versions with more features.
 
