@@ -30,6 +30,7 @@
 #include <boost/serialization/version.hpp>
 
 #include "Ambition_serialisation.hh"
+#include "boost-macros.hh"
 
 
 namespace Ambition {
@@ -59,7 +60,7 @@ protected:
   ) {
     Serialisation::enforceVersion(this, "Entity", version);
 
-    archive & boost::serialization::make_nvp("recordNumber", const_cast<unsigned long long int&>(recordNumber));
+    archive & BOOST_SERIALIZATION_NVP_CONST(recordNumber);
   }
 };
 
