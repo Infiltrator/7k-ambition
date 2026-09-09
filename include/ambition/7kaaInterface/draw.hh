@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -164,7 +164,9 @@ void buttonKeybind(
 short calculateAnimatedLinePhase(
   const short _7kaaCalculation,
   const int animatedFlag,
-  const int lineProgress
+  const int orthogonalLength,
+  const int perpendicularLength,
+  const int orthogonalProgress
 );
 
 int calculateBuildMarkerColour(
