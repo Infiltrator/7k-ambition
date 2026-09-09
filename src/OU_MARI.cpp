@@ -145,6 +145,7 @@ void UnitMarine::draw(const int outlined)
 			++splash.cur_frame;
 			if( splash.cur_frame < 1 || splash.cur_frame > splash.cur_sprite_move()->frame_count )
 				splash.cur_frame = 1;
+			splash.cur_frame = Ambition::Draw::calculateShipWashFrame(splash.cur_frame, splash);
 		}
 		break;
 
@@ -157,6 +158,7 @@ void UnitMarine::draw(const int outlined)
 			++splash.cur_frame;
 			if( splash.cur_frame < 1 || splash.cur_frame > splash.cur_sprite_stop()->frame_count)
 				splash.cur_frame = 1;
+			splash.cur_frame = Ambition::Draw::calculateShipWashFrame(splash.cur_frame, splash);
 		}
 		break;
 	}

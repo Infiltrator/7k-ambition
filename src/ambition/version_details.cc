@@ -31,6 +31,12 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Avoid potential issues from loading newer incompatible save files that may be saved by future versions with more features."),
         },
       },
+      {
+        .heading = HEADING_CHANGED,
+        .items = {
+          _("Draw ship washes (the waves around, and the wake behind, ships) at a constant FPS, independent of game speed."),
+        },
+      },
     },
   },
   {

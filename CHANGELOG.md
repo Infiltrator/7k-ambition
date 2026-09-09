@@ -24,6 +24,11 @@ speaking, considered to be the player's experience.
 - Avoid potential issues from loading newer incompatible save files that may be
   saved by future versions with more features.
 
+### Changed
+
+- Draw ship washes (the waves around, and the wake behind, ships) at a constant
+  FPS, independent of game speed.
+
 
 ## [3.2.12] — 2026-09-01
 

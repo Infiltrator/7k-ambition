@@ -844,6 +844,21 @@ char calculateRockRemainingDelay(
   return Ambition::calculateRockRemainingDelay(_7kaaCalculation);
 }
 
+uint8_t calculateShipWashFrame(
+  const uint8_t _7kaaCalculation,
+  Sprite& wash7kaaSprite
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return (
+    ((SDL_GetTicks64() / 400)
+      % wash7kaaSprite.cur_sprite_move()->frame_count
+    ) + 1
+  );
+}
+
 char* calculateTerrainBitmap(
   char* _7kaaCalculation,
   const short terrainId,

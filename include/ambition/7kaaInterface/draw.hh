@@ -39,6 +39,7 @@ class Font;
 class InnUnit;
 class MapMatrix;
 class SnowLayer;
+class Sprite;
 class Spy;
 class Town;
 class Unit;
@@ -211,6 +212,11 @@ short calculateRockBitmapRecordNumber(
 
 char calculateRockRemainingDelay(
   const char _7kaaCalculation
+);
+
+uint8_t calculateShipWashFrame(
+  const uint8_t _7kaaCalculation,
+  Sprite& wash7kaaSprite
 );
 
 char* calculateTerrainBitmap(
