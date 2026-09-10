@@ -39,10 +39,12 @@ class Font;
 class InnUnit;
 class MapMatrix;
 class SnowLayer;
+class Sprite;
 class Spy;
 class Town;
 class Unit;
 class UnitCaravan;
+class UnitMarine;
 class VBrowseIF;
 class Worker;
 struct FirmBitmap;
@@ -211,6 +213,11 @@ short calculateRockBitmapRecordNumber(
 
 char calculateRockRemainingDelay(
   const char _7kaaCalculation
+);
+
+uint8_t calculateShipWashFrame(
+  const uint8_t _7kaaCalculation,
+  Sprite& wash7kaaSprite
 );
 
 char* calculateTerrainBitmap(
@@ -425,6 +432,10 @@ void queueCount(
 );
 void queueCount(
   const Town* _7kaaTown
+);
+
+bool shouldDrawShipWash(
+  const UnitMarine* _7kaaUnitMarine
 );
 
 bool shouldDrawUnitIcon(

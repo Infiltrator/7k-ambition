@@ -39,6 +39,7 @@
 #include "OIMGRES.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
+#include "OU_MARI.h"
 #include "vga_util.h"
 #pragma GCC diagnostic pop
 
@@ -844,6 +845,21 @@ char calculateRockRemainingDelay(
   return Ambition::calculateRockRemainingDelay(_7kaaCalculation);
 }
 
+uint8_t calculateShipWashFrame(
+  const uint8_t _7kaaCalculation,
+  Sprite& wash7kaaSprite
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return (
+    ((SDL_GetTicks64() / 400)
+      % wash7kaaSprite.cur_sprite_move()->frame_count
+    ) + 1
+  );
+}
+
 char* calculateTerrainBitmap(
   char* _7kaaCalculation,
   const short terrainId,
@@ -1454,6 +1470,20 @@ void queueCount(
       Ambition::UserInterface::BUTTON_SIZE
     ),
     format("%'d", productionCount)
+  );
+}
+
+bool shouldDrawShipWash(
+  const UnitMarine* _7kaaUnitMarine
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return true;
+  }
+
+  return (
+    _7kaaUnitMarine->cur_action == SPRITE_MOVE
+    || _7kaaUnitMarine->cur_action == SPRITE_WAIT
+    || _7kaaUnitMarine->cur_action == SPRITE_TURN
   );
 }
 
