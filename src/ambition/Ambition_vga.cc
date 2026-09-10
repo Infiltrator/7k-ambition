@@ -1331,6 +1331,7 @@ void drawBuildingLinkLine(
 
   if (direction == Direction::INWARD
       || (direction == Direction::BI_DIRECTIONAL
+          && animated
           && (SDL_GetTicks64() / BI_DIRECTIONAL_CHANGE_TIME_MILLISECONDS) % 2 == 0)
   ) {
     std::swap(sourceLeft, destinationLeft);
