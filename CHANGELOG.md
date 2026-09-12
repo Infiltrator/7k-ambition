@@ -26,6 +26,8 @@ speaking, considered to be the player's experience.
   of war.
 - Fixed the corruption of the feedback request accept button text in the Russian
   translation.
+- Fixed the corruption of the auto-tax and auto-grant help text in the Russian
+  translation.
 - Preserve all the user options (Report Backgrounds, News Display, Unit Identity
   Display, and Unit Path Display) when loading a save file or starting a
   scenario (which loads a save file, internally).

@@ -34,6 +34,7 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Fixed diagonal lines (unit paths, waypoints, rally points, building links) looking stretched out compared to orthogonal lines."),
           _("Fixed an issue where accepting a friendly treaty would override a declaration of war."),
           _("Fixed the corruption of the feedback request accept button text in the Russian translation."),
+          _("Fixed the corruption of the auto-tax and auto-grant help text in the Russian translation."),
           _("Preserve all the user options (Report Backgrounds, News Display, Unit Identity Display, and Unit Path Display) when loading a save file or starting a scenario (which loads a save file, internally)."),
           _("Fixed ship washes (the waves around, and the wake behind, ships) appearing only when hovering over ships."),
           _("Fixed disabled bi-directional links looking jerky at certain angles when they're disabled."),
