@@ -7,6 +7,7 @@ src/ambition/Ambition_config.cc
 src/ambition/Ambition_control.cc
 src/ambition/Ambition_news.cc
 src/ambition/Ambition_serialisation.cc
+src/ambition/Ambition_trade.cc
 src/ambition/Ambition_vga.cc
 src/ambition/version_details.cc
 src/AM.cpp

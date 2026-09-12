@@ -28,6 +28,7 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Idle caravans now show a message in place of the clone button.
 - Draw ship washes (the waves around, and the wake behind, ships) at a constant
   FPS, independent of game speed.
 - Do not show ship washes for ships that are stopped and not moving.
