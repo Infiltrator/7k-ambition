@@ -24,6 +24,8 @@ speaking, considered to be the player's experience.
   looking stretched out compared to orthogonal lines.
 - Fixed an issue where accepting a friendly treaty would override a declaration
   of war.
+- Fixed the corruption of the feedback request accept button text in the Russian
+  translation.
 - Preserve all the user options (Report Backgrounds, News Display, Unit Identity
   Display, and Unit Path Display) when loading a save file or starting a
   scenario (which loads a save file, internally).
