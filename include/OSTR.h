@@ -31,7 +31,7 @@
 #define NOCLIP          0
 #define CLIP            1
 
-#define MAX_STR_LEN  200
+#define MAX_STR_LEN  511
 
 //------- Define class String --------------//
 

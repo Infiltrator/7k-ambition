@@ -43,7 +43,7 @@ class Font;
 class Button
 {
 public:
-	enum  { STR_BUF_LEN=40, HELP_CODE_LEN=8 };
+	enum  { STR_BUF_LEN=127, HELP_CODE_LEN=8 };
 
 	char  	  		is_pushed;
 	char  	  		enable_flag;   // either 1(Yes) or 0(No)
