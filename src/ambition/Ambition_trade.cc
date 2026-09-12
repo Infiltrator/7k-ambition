@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@
 
 #define _AMBITION_IMPLEMENTATION
 #include "pragma_silence_7kaa_warnings.hh"
+#include "gettext.h"
 #include "OBUTT3D.h"
 #include "OF_FACT.h"
 #include "OF_MINE.h"
@@ -138,6 +139,25 @@ bool detectReportCaravanCloneButton(
 void drawCaravanCloneButton(
   const UnitCaravan* _7kaaCaravan
 ) {
+  if (isCaravanIdle(_7kaaCaravan)) {
+    const auto panelArea
+      = UserInterface::BUTTON_ROW_LOWER.internal({ height: 22 });
+    UserInterface::drawPanel(panelArea);
+    UserInterface::printText(
+      font_san,
+      _("Caravan is idle."),
+      panelArea.inner(
+        {
+          .left = 8,
+          .right = 8,
+          .top = 4,
+          .bottom = 4,
+        }
+      )
+    );
+    return;
+  }
+
   caravanCloneButton.paint(
     UserInterface::BUTTON_ROW_LOWER.start.left,
     UserInterface::BUTTON_ROW_LOWER.start.top,
@@ -295,7 +315,7 @@ bool isCaravanIdle(
       return true;
     }
   }
-  if (_7kaaCaravan->stop_defined_num == 1
+  if (_7kaaCaravan->stop_defined_num <= 1
     && carriedGoodCount == 0) {
     return true;
   }

@@ -24,6 +24,7 @@ std::vector<VersionUpdates> getVersionDetails(
       {
         .heading = HEADING_FIXED,
         .items = {
+          _("Fixed caravans with no stops not being counted as idle, and so never being retired or re-used."),
           _("Fixed diagonal lines (unit paths, waypoints, rally points, building links) looking stretched out compared to orthogonal lines."),
           _("Fixed an issue where accepting a friendly treaty would override a declaration of war."),
           _("Preserve all the user options (Report Backgrounds, News Display, Unit Identity Display, and Unit Path Display) when loading a save file or starting a scenario (which loads a save file, internally)."),
@@ -35,6 +36,8 @@ std::vector<VersionUpdates> getVersionDetails(
       {
         .heading = HEADING_CHANGED,
         .items = {
+          _("Idle caravans now show a message in place of the clone button."),
+          _("Caravans now show as idle (with an asterisk) on the Trade Report when they are considered idle by the automatic caravan replacement and cloning system."),
           _("Draw ship washes (the waves around, and the wake behind, ships) at a constant FPS, independent of game speed."),
           _("Do not show ship washes for ships that are stopped and not moving."),
         },

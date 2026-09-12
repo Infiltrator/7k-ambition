@@ -37,10 +37,21 @@
 #include "Ambition_config.hh"
 #include "Ambition_coordinates.hh"
 #include "Ambition_time.hh"
+#include "Ambition_trade.hh"
 #include "Ambition_unit.hh"
 
 
 namespace _7kaaAmbitionInterface::Unit {
+
+bool caravanIdle(
+  const UnitCaravan* _7kaaCaravan
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  return Ambition::Trade::isCaravanIdle(_7kaaCaravan);
+}
 
 void clearWaypoints(
   const std::vector<short> _7kaaUnitRecordNumbers

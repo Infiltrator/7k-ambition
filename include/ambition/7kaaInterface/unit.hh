@@ -31,10 +31,15 @@ class Firm;
 class Spy;
 class Town;
 class Unit;
+class UnitCaravan;
 struct Worker;
 
 
 namespace _7kaaAmbitionInterface::Unit {
+
+bool caravanIdle(
+  const UnitCaravan* _7kaaCaravan
+);
 
 void clearWaypoints(
   const std::vector<short> _7kaaUnitRecordNumbers

@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed caravans with no stops not being counted as idle, and so never being
+  retired or re-used.
 - Fixed diagonal lines (unit paths, waypoints, rally points, building links)
   looking stretched out compared to orthogonal lines.
 - Fixed an issue where accepting a friendly treaty would override a declaration
@@ -28,6 +30,9 @@ speaking, considered to be the player's experience.
 
 ### Changed
 
+- Idle caravans now show a message in place of the clone button.
+- Caravans now show as idle (with an asterisk) on the Trade Report when they are
+  considered idle by the automatic caravan replacement and cloning system.
 - Draw ship washes (the waves around, and the wake behind, ships) at a constant
   FPS, independent of game speed.
 - Do not show ship washes for ships that are stopped and not moving.

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 22:43+1000\n"
-"PO-Revision-Date: 2026-09-01 18:34+1000\n"
+"POT-Creation-Date: 2026-09-12 21:28+1000\n"
+"PO-Revision-Date: 2026-09-12 21:42+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -290,6 +290,10 @@ msgid ""
 "Saved by: v%s.\n"
 "Current: v%s."
 msgstr ""
+
+#: src/ambition/Ambition_trade.cc:148
+msgid "Caravan is idle."
+msgstr "Караван стоит без дела."
 
 # data/resource/help.res:377
 #: src/ambition/Ambition_vga.cc:382
@@ -643,6 +647,10 @@ msgstr "Удалено"
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
 msgstr "Предварительная версия — ещё не выпущена"
+
+#: src/ambition/version_details.cc
+msgid "Idle caravans now show a message in place of the clone button."
+msgstr ""
 
 #: src/ambition/version_details.cc
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 7kaa 2.14.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 22:43+1000\n"
+"POT-Creation-Date: 2026-09-12 21:28+1000\n"
 "PO-Revision-Date: 2026-08-22 08:39+0200\n"
 "Last-Translator: <toaster@hush.com>\n"
 "Language-Team: German\n"
@@ -300,6 +300,10 @@ msgstr ""
 "Das Spiel wird laden, aber alle Ambition-Features werden zurückgesetzt.\n"
 "Gespeichert von: v%s.\n"
 "Aktuell: v%s."
+
+#: src/ambition/Ambition_trade.cc:148
+msgid "Caravan is idle."
+msgstr ""
 
 #: src/ambition/Ambition_vga.cc:382
 msgid "Assassinate"
@@ -647,6 +651,10 @@ msgstr "Entfernt"
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Idle caravans now show a message in place of the clone button."
 msgstr ""
 
 #: src/ambition/version_details.cc

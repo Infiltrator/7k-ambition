@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 22:43+1000\n"
+"POT-Creation-Date: 2026-09-12 21:28+1000\n"
 "PO-Revision-Date: 2025-10-21 15:48+1100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -284,6 +284,10 @@ msgid ""
 "The game will load, but all Ambition features will be reset.\n"
 "Saved by: v%s.\n"
 "Current: v%s."
+msgstr ""
+
+#: src/ambition/Ambition_trade.cc:148
+msgid "Caravan is idle."
 msgstr ""
 
 # data/resource/help.res:377
@@ -630,6 +634,10 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Idle caravans now show a message in place of the clone button."
 msgstr ""
 
 #: src/ambition/version_details.cc
