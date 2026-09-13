@@ -27,7 +27,6 @@
 #include "diplomacy.hh"
 
 #include <array>
-#include <cassert>
 
 #include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
@@ -36,6 +35,7 @@
 #pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
+#include "Ambition_error_handling.hh"
 #include "format.hh"
 
 
@@ -197,7 +197,7 @@ bool setThronePurchaseAmounts(
   };
 
   for (const auto amount : AMOUNTS) {
-    assert (amount / 10 <= std::numeric_limits<short>::max());
+    assume(amount / 10 <= std::numeric_limits<short>::max());
 
     if (source7kaaNation->cash < amount) {
       break;
@@ -233,7 +233,7 @@ bool setTributeQuantities(
   };
 
   for (const auto& amount : AMOUNTS) {
-    assert (amount <= std::numeric_limits<short>::max());
+    assume(amount <= std::numeric_limits<short>::max());
 
     if (_7kaaDiplomaticMessageResource->cur_talk_msg.talk_id != TALK_DEMAND_TRIBUTE
       && _7kaaDiplomaticMessageResource->cur_talk_msg.talk_id != TALK_DEMAND_AID
@@ -259,7 +259,7 @@ void add7kaaTalkChoice(
   const std::string string,
   const short parameter
 ) {
-  assert(_7kaaDiplomaticMessageResource->talk_choice_count < MAX_TALK_CHOICE);
+  assume(_7kaaDiplomaticMessageResource->talk_choice_count < MAX_TALK_CHOICE);
 
   strncpy(choicesBuffer[choicesBufferIndex], string.c_str(), STRING_LENGTH);
 

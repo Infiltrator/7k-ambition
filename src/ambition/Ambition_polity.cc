@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,8 +25,6 @@
 
 #include "Ambition_polity.hh"
 
-#include <cassert>
-
 #define _AMBITION_IMPLEMENTATION
 #include "pragma_silence_7kaa_warnings.hh"
 #include "ONATION.h"
@@ -37,6 +35,7 @@
 #pragma GCC diagnostic pop
 
 #include "Ambition_coordinates.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_trade.hh"
 #include "utility.hh"
@@ -145,14 +144,14 @@ void Polity::cloneCaravan(
         }
       )
     );
-    assert(
+    assume(
       _7kaaMarketRecordNumber
       && !firm_array.is_deleted(_7kaaMarketRecordNumber)
     );
     const auto _7kaaMarket = dynamic_cast<FirmMarket*>(
       firm_array[_7kaaMarketRecordNumber]
     );
-    assert(_7kaaMarket);
+    assume(_7kaaMarket);
     _7kaaMarket->hire_caravan(COMMAND_PLAYER);
   }
 
@@ -228,7 +227,7 @@ std::vector<short> Polity::idleCaravans(
     }
 
     const auto _7kaaCaravan = dynamic_cast<UnitCaravan*>(_7kaaUnit);
-    assert(_7kaaCaravan);
+    assume(_7kaaCaravan);
     if (Trade::isCaravanIdle(_7kaaCaravan)
       && !_7kaaCaravansToRetireRecordNumbers.contains(
         _7kaaCaravan->sprite_recno
@@ -298,7 +297,7 @@ void Polity::processIdleCaravan(
     auto _7kaaCaravanToRetire = dynamic_cast<UnitCaravan*>(
       unit_array[_7kaaCaravanToCopyRecordNumber]
     );
-    assert(_7kaaCaravanToRetire);
+    assume(_7kaaCaravanToRetire);
     replaceCaravan(_7kaaCaravanToRetire);
   }
 }

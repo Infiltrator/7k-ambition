@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,6 +42,7 @@
 #pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_repository.hh"
 #include "Ambition_user_interface.hh"
 
@@ -49,6 +50,10 @@
 namespace Ambition {
 
 namespace Control {
+
+void graphicalErrorReporter(
+  std::string_view message
+) noexcept;
 
 std::chrono::time_point<std::chrono::system_clock> lastFeedbackRequestTime(
 );
@@ -184,8 +189,27 @@ void startMusic(
   }
 }
 
+void useGraphicalErrorReporting(
+) {
+  ErrorHandling::set_up_error_reporting(graphicalErrorReporter);
+}
+
 
 /* Private functions. */
+
+void graphicalErrorReporter(
+  std::string_view message
+) noexcept {
+  ErrorHandling::console_reporter(message);
+
+  constexpr auto NO_TIMEOUT = 0;
+  box.msg(
+    std::string("Seven Kingdoms: Ambition has encountered an error.\n")
+      .append(message)
+      .c_str(),
+    NO_TIMEOUT
+  );
+}
 
 std::chrono::time_point<std::chrono::system_clock> lastFeedbackRequestTime(
 ) {

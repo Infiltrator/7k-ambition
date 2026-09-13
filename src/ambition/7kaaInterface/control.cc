@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@
 
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_news.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_version.hh"
@@ -105,6 +106,11 @@ void finishReplay(
   }
 
   Ambition::Control::finishReplay();
+}
+
+void initialiseErrorReporting(
+) {
+  Ambition::ErrorHandling::set_up_error_reporting();
 }
 
 void migrateLocalDataDirectories(
@@ -283,6 +289,11 @@ void unlockBuffer(
   VgaBuf& buffer
 ) {
   Ambition::unlockBuffer(buffer);
+}
+
+void useGraphicalErrorReporting(
+) {
+  Ambition::Control::useGraphicalErrorReporting();
 }
 
 

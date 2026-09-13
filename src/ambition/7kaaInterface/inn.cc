@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,8 +26,6 @@
 #define _AMBITION_IMPLEMENTATION
 #include "inn.hh"
 
-#include <cassert>
-
 #include "pragma_silence_7kaa_warnings.hh"
 #include "gettext.h"
 #include "OBUTT3D.h"
@@ -38,6 +36,7 @@
 #pragma GCC diagnostic pop
 
 #include "Ambition_config.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_inn.hh"
 
 
@@ -60,7 +59,7 @@ std::string crowdingMessage(
   }
 
   const auto _7kaaInn = dynamic_cast<const FirmInn*>(_7kaaFirm);
-  assert(_7kaaInn);
+  assume(_7kaaInn);
   if (Ambition::Inn::competingInnCount(_7kaaInn)) {
     /* TRANSLATORS: affix to Inn's name to indicate that this Inn is too close
      * to another Inn, and so will have fewer mercenaries. */

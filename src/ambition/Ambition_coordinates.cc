@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@
 #include "pragma_silence_7kaa_warnings.hh"
 #include "OWORLD.h"
 #pragma GCC diagnostic pop
+
+#include "Ambition_error_handling.hh"
 
 
 namespace Ambition::Coordinates {
@@ -158,7 +160,7 @@ Rectangle Rectangle::_7kaaTile(
    * 7kaa tiles. */
   const auto corner
     = point - Interval{ SCALING_FACTOR / 2, SCALING_FACTOR / 2 };
-  assert(corner.x % SCALING_FACTOR != 0 && corner.y % SCALING_FACTOR != 0);
+  assume(corner.x % SCALING_FACTOR != 0 && corner.y % SCALING_FACTOR != 0);
 
   return fromPoint(corner, _7KAA_COORDINATE_STEP);
 }
@@ -190,9 +192,10 @@ Rectangle Rectangle::from7kaaRectangle(
 
 _7kaaCoordinates Rectangle::to7kaaCoordinates(
 ) const {
-  if (width() > SCALING_FACTOR || height() > SCALING_FACTOR) {
-    throw std::invalid_argument("Rectangle is too large for 7kaa.");
-  }
+  assume(
+    width() <= SCALING_FACTOR && height() <= SCALING_FACTOR,
+    "Rectangle is too large for 7kaa."
+  );
 
   const auto rectangle = to7kaaRectangle();
   return {
@@ -202,11 +205,10 @@ _7kaaCoordinates Rectangle::to7kaaCoordinates(
 }
 _7kaaRectangle Rectangle::to7kaaRectangle(
 ) const {
-  if (width() == 0 || height() == 0) {
-    throw std::invalid_argument(
+  assume(
+    width() > 0 && height() > 0,
       "Zero-size Rectangle cannot be reliably converted to 7kaa co-ordinates."
-    );
-  }
+  );
 
   const auto corner = topLeft();
   const auto x1 = static_cast<short>(

@@ -297,6 +297,8 @@ static void extra_error_handler();
 //
 int main(int argc, char **argv)
 {
+	Ambition::Control::initialiseErrorReporting();
+
 	misc2.randomize();
 
 	if (!sys.set_game_dir())
@@ -362,6 +364,8 @@ int main(int argc, char **argv)
 		vga.save_status_report();
 		return 1;
 	}
+
+	Ambition::Control::useGraphicalErrorReporting();
 
 	err.set_extra_handler( extra_error_handler );   // set extra error handler, save the game when a error happens
 

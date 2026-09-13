@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,6 +50,7 @@
 #include "Ambition_building.hh"
 #include "Ambition_config.hh"
 #include "Ambition_control.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_input.hh"
 #include "Ambition_news.hh"
 #include "Ambition_spy.hh"
@@ -305,7 +306,11 @@ bool detectBuildingMenu(
     break;
 
   case Ambition::UserInterface::BuildingMenu::AssassinationConfirmation:
-    assert(false);
+    assume(
+      Ambition::UserInterface::buildingMenu
+        != Ambition::UserInterface::BuildingMenu::AssassinationConfirmation,
+      "This should not be reached."
+    );
     break;
 
   case Ambition::UserInterface::BuildingMenu::StealReportConfirmation:
@@ -1182,7 +1187,7 @@ unsigned int getTrainingKeyEvent(
     return SDLK_UNKNOWN;
   }
 
-  assert(_7kaaSkillIndex >= 1 && _7kaaSkillIndex <= MAX_TRAINABLE_SKILL);
+  assume(_7kaaSkillIndex >= 1 && _7kaaSkillIndex <= MAX_TRAINABLE_SKILL);
 
   return getKeyEvent(TRAINING_KEY_ACTIONS[_7kaaSkillIndex - 1]);
 }

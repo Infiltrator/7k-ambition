@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,6 +45,7 @@
 #include "Ambition_repository.hh"
 #include "Ambition_user_interface.hh"
 #include "Ambition_vga.hh"
+#include "Ambition_error_handling.hh"
 #include "format.hh"
 
 
@@ -296,7 +297,8 @@ uint8_t Unit::_7kaaRegionId(
     return _7kaaRegionId(unit_array[_7kaaUnit->unit_mode_para]);
   }
 
-  throw std::domain_error(
+  assume(
+    false,
     format(
       "Unable to determine 7kaa Unit [%d]'s 7kaa region ID with unit mode %d"
       " and parameter %d.",
