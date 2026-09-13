@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.13] — 2026-09-13
+
 ### Added
 
 - Show a message to the user when Seven Kingdoms: Ambition crashes instead of
