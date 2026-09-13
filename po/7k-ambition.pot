@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-12 21:28+1000\n"
+"POT-Creation-Date: 2026-09-13 14:58+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -638,7 +638,97 @@ msgid "Preview Version -- not yet released"
 msgstr ""
 
 #: src/ambition/version_details.cc
+msgid ""
+"Show a message to the user when Seven Kingdoms: Ambition crashes instead of "
+"just disappearing, to aid in reporting bugs.  If you do receive a crash "
+"message, please take a screenshot and report it."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed caravans with no stops not being counted as idle, and so never being "
+"retired or re-used."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed diagonal lines (unit paths, waypoints, rally points, building links) "
+"looking stretched out compared to orthogonal lines."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed an issue where accepting a friendly treaty would override a "
+"declaration of war."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the corruption of the feedback request accept button text in the "
+"Russian translation."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed the corruption of the auto-tax and auto-grant help text in the Russian "
+"translation."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Preserve all the user options (Report Backgrounds, News Display, Unit "
+"Identity Display, and Unit Path Display) when loading a save file or "
+"starting a scenario (which loads a save file, internally)."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed ship washes (the waves around, and the wake behind, ships) appearing "
+"only when hovering over ships."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Fixed disabled bi-directional links looking jerky at certain angles when "
+"they're disabled."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Avoid potential issues from loading newer incompatible save files that may "
+"be saved by future versions with more features."
+msgstr ""
+
+#: src/ambition/version_details.cc
 msgid "Idle caravans now show a message in place of the clone button."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Caravans now show as idle (with an asterisk) on the Trade Report when they "
+"are considered idle by the automatic caravan replacement and cloning system."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Draw building link icons at a constant FPS, independent of game speed."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Draw ship washes (the waves around, and the wake behind, ships) at a "
+"constant FPS, independent of game speed."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Do not show ship washes for ships that are stopped and not moving."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "Made development slightly easier."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.12 — 2026-09-01"
 msgstr ""
 
 #: src/ambition/version_details.cc
@@ -784,10 +874,6 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Updated the PDF manual."
-msgstr ""
-
-#: src/ambition/version_details.cc
-msgid "Made development slightly easier."
 msgstr ""
 
 #: src/ambition/version_details.cc
