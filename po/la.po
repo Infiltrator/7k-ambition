@@ -47,23 +47,23 @@ msgstr "H"
 msgid "U"
 msgstr "U"
 
-#: src/ambition/7kaaInterface/diplomacy.cc:75
+#: src/ambition/7kaaInterface/diplomacy.cc:89
 #, c-format
 msgid "%s's Kingdom%s offers $%.1f per unit of food, for a total of $%'.0f."
 msgstr "Regnum %s%s offert $%.1f per unitatem cibi, pro summa $%'.0f."
 
-#: src/ambition/7kaaInterface/diplomacy.cc:145
+#: src/ambition/7kaaInterface/diplomacy.cc:159
 msgid "What price do you offer per unit of food?"
 msgstr "Pretium quid offeres per unitatem cibi?"
 
-#: src/ambition/7kaaInterface/diplomacy.cc:155
+#: src/ambition/7kaaInterface/diplomacy.cc:169
 #, c-format
 msgid "$%.1f per unit of food.  Total cost: $%'.0f."
 msgstr "$%.1f per unitatem cibi.  Summa totalis sumptus: $%'.0f."
 
 #. TRANSLATORS: affix to Inn's name to indicate that this Inn is too close
 #. * to another Inn, and so will have fewer mercenaries.
-#: src/ambition/7kaaInterface/inn.cc:67
+#: src/ambition/7kaaInterface/inn.cc:66
 msgid "(too close)"
 msgstr ""
 
@@ -238,7 +238,7 @@ msgstr ""
 "Adde amplificationes quae lusionis lusionem non tangunt.  Permittit pluribus "
 "lusoribus cum 7K:AA."
 
-#: src/ambition/Ambition_control.cc:77
+#: src/ambition/Ambition_control.cc:82
 msgid ""
 "We hope that you have enjoyed playing Seven Kingdoms: Ambition!\n"
 "We would appreciate your feedback on the game and to hear what else you "
@@ -251,15 +251,15 @@ msgstr ""
 "ludo videre velis.\n"
 "Visne opiniones tuas nunc communicare?  (In navigatro interreti aperietur.)"
 
-#: src/ambition/Ambition_control.cc:83
+#: src/ambition/Ambition_control.cc:88
 msgid "I want to be heard!"
 msgstr "Audiri cupio!"
 
-#: src/ambition/Ambition_control.cc:84
+#: src/ambition/Ambition_control.cc:89
 msgid "Later"
 msgstr "Postea"
 
-#: src/ambition/Ambition_control.cc:108
+#: src/ambition/Ambition_control.cc:113
 msgid "End of replay"
 msgstr "Finis iterationis"
 
@@ -283,11 +283,11 @@ msgstr "volumen usque ad plus"
 msgid "WHAT'S NEW"
 msgstr "QUID NOVI"
 
-#: src/ambition/Ambition_serialisation.cc:81 src/OGFILEA.cpp:707
+#: src/ambition/Ambition_serialisation.cc:83 src/OGFILEA.cpp:707
 msgid "File Date"
 msgstr "Dies Limae"
 
-#: src/ambition/Ambition_serialisation.cc:148
+#: src/ambition/Ambition_serialisation.cc:190
 #, c-format
 msgid ""
 "Save game version is too new.\n"
@@ -306,106 +306,106 @@ msgstr ""
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:377
-#: src/ambition/Ambition_vga.cc:382
+#: src/ambition/Ambition_vga.cc:392
 msgid "Assassinate"
 msgstr "Interfice"
 
-#: src/ambition/Ambition_vga.cc:414
+#: src/ambition/Ambition_vga.cc:424
 #, c-format
 msgid "Hit Points: %.0f"
 msgstr "Puncta Ictus: %.0f"
 
-#: src/ambition/Ambition_vga.cc:453
+#: src/ambition/Ambition_vga.cc:463
 msgid "Speed: "
 msgstr "Celeritas: "
 
-#: src/ambition/Ambition_vga.cc:455
+#: src/ambition/Ambition_vga.cc:465
 msgid "PAUSED"
 msgstr "SUSPENSUS"
 
-#: src/ambition/Ambition_vga.cc:457
+#: src/ambition/Ambition_vga.cc:467
 msgid "UNLIMITED"
 msgstr "INFINITUM"
 
-#: src/ambition/Ambition_vga.cc:482
+#: src/ambition/Ambition_vga.cc:492
 msgid "GAME IS PAUSED"
 msgstr "LUDUS SUSPENSUS EST"
 
-#: src/ambition/Ambition_vga.cc:509 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
+#: src/ambition/Ambition_vga.cc:519 src/OR_MIL.cpp:103 src/OR_NAT.cpp:138
 msgid "Status"
 msgstr "Status"
 
-#: src/ambition/Ambition_vga.cc:511
+#: src/ambition/Ambition_vga.cc:521
 msgid "Leaving soon"
 msgstr "Mox relinquo"
 
-#: src/ambition/Ambition_vga.cc:511
+#: src/ambition/Ambition_vga.cc:521
 msgid "Enjoying stay"
 msgstr "Usura maneat"
 
-#: src/ambition/Ambition_vga.cc:536
+#: src/ambition/Ambition_vga.cc:546
 msgid "*"
 msgstr "*"
 
-#: src/ambition/Ambition_vga.cc:563
+#: src/ambition/Ambition_vga.cc:573
 msgid "Steal Reports"
 msgstr "Relationes furantur"
 
-#: src/ambition/Ambition_vga.cc:656
+#: src/ambition/Ambition_vga.cc:666
 msgid "Goods supplied"
 msgstr "merces suppleverunt"
 
-#: src/ambition/Ambition_vga.cc:710
+#: src/ambition/Ambition_vga.cc:720
 #, c-format
 msgid "Level: %d"
 msgstr "Gradus: %d"
 
 #. TRANSLATORS: The short form of Clay.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:717
+#: src/ambition/Ambition_vga.cc:727
 msgid "Cl"
 msgstr "Ar"
 
 #. TRANSLATORS: The short form of Copper.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:719
+#: src/ambition/Ambition_vga.cc:729
 msgid "Co"
 msgstr "Cu"
 
 #. TRANSLATORS: The short form of Iron.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:721
+#: src/ambition/Ambition_vga.cc:731
 msgid "Ir"
 msgstr "Fe"
 
-#: src/ambition/Ambition_vga.cc:735 src/ambition/Ambition_vga.cc:2568
+#: src/ambition/Ambition_vga.cc:745 src/ambition/Ambition_vga.cc:2579
 #: src/OF_BASE.cpp:398 src/OF_CAMP.cpp:597 src/OR_MIL.cpp:99 src/OSKILL.cpp:32
 msgid "Leadership"
 msgstr "Ductus"
 
-#: src/ambition/Ambition_vga.cc:740 src/ambition/Ambition_vga.cc:755
+#: src/ambition/Ambition_vga.cc:750 src/ambition/Ambition_vga.cc:765
 msgid "No general"
 msgstr "Nullus dux"
 
 #. TRANSLATORS: Short form of Leadership, with the value following.
-#: src/ambition/Ambition_vga.cc:750
+#: src/ambition/Ambition_vga.cc:760
 #, c-format
 msgid "Ldr: %d"
 msgstr "Dct: %d"
 
-#: src/ambition/Ambition_vga.cc:764
+#: src/ambition/Ambition_vga.cc:774
 #, c-format
 msgid "Ordos: %d"
 msgstr "Ordines: %d"
 
 #. TRANSLATORS: Short form of "no resources".
-#: src/ambition/Ambition_vga.cc:796
+#: src/ambition/Ambition_vga.cc:806
 msgid "No res"
 msgstr "Non res"
 
-#: src/ambition/Ambition_vga.cc:808
+#: src/ambition/Ambition_vga.cc:818
 msgid "Idle"
 msgstr "Otiosus"
 
 #. TRANSLATORS: Short form of "<number> workers (<average skill>)".
-#: src/ambition/Ambition_vga.cc:822
+#: src/ambition/Ambition_vga.cc:832
 #, c-format
 msgid "%d wrk (%d)"
 msgid_plural "%d wrk (%d)"
@@ -413,7 +413,7 @@ msgstr[0] "%d opr (%d)"
 msgstr[1] "%d opr (%d)"
 
 #. TRANSLATORS: Short form of "<number> workers".
-#: src/ambition/Ambition_vga.cc:836
+#: src/ambition/Ambition_vga.cc:846
 #, c-format
 msgid "%d wrk"
 msgid_plural "%d wrk"
@@ -422,7 +422,7 @@ msgstr[1] "%d oper"
 
 #. TRANSLATORS: Short form of "<number> soldiers (<combined combat
 #. rating>)".
-#: src/ambition/Ambition_vga.cc:850
+#: src/ambition/Ambition_vga.cc:860
 #, c-format
 msgid "%d sld (%.0f)"
 msgid_plural "%d sld (%.0f)"
@@ -433,61 +433,61 @@ msgstr[1] "%d mil (%.0f)"
 #. * to indicate that this Inn is too close to another Inn, and so will
 #. * have fewer mercenaries.  There is less room here than next to the
 #. * name.
-#: src/ambition/Ambition_vga.cc:866
+#: src/ambition/Ambition_vga.cc:876
 msgctxt "standard_panel"
 msgid "(too close)"
 msgstr ""
 
-#: src/ambition/Ambition_vga.cc:870
+#: src/ambition/Ambition_vga.cc:880
 #, c-format
 msgid "%d guest"
 msgid_plural "%d guests"
 msgstr[0] "%d hospes"
 msgstr[1] "%d hospites"
 
-#: src/ambition/Ambition_vga.cc:882
+#: src/ambition/Ambition_vga.cc:892
 #, c-format
 msgid "Ships: %d/%d"
 msgstr "Naves: %d/%d"
 
 #. TRANSLATORS: The short form of Raw Clay.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:908
+#: src/ambition/Ambition_vga.cc:918
 msgid "Raw Cl"
 msgstr "Rudis Ar"
 
 #. TRANSLATORS: The short form of Raw Copper.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:910
+#: src/ambition/Ambition_vga.cc:920
 msgid "Raw Co"
 msgstr "Rudis Cu"
 
 #. TRANSLATORS: The short form of Raw Iron.  Used when space is limited.
-#: src/ambition/Ambition_vga.cc:912
+#: src/ambition/Ambition_vga.cc:922
 msgid "Raw Ir"
 msgstr "Rudis Fe"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:913
+#: src/ambition/Ambition_vga.cc:923
 msgid "Clay"
 msgstr "Argilla"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:914
+#: src/ambition/Ambition_vga.cc:924
 msgid "Copper"
 msgstr "Cuprum"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00003-RAW.dbf
-#: src/ambition/Ambition_vga.cc:915
+#: src/ambition/Ambition_vga.cc:925
 msgid "Iron"
 msgstr "Ferrum"
 
-#: src/ambition/Ambition_vga.cc:936
+#: src/ambition/Ambition_vga.cc:946
 msgid "Empty"
 msgstr "Vacuus"
 
-#: src/ambition/Ambition_vga.cc:952
+#: src/ambition/Ambition_vga.cc:962
 #, c-format
 msgctxt "narrow_panel"
 msgid "(%s%d Spy)"
@@ -495,7 +495,7 @@ msgid_plural "(%s%d Sp)"
 msgstr[0] "(%s%d Sp)"
 msgstr[1] "(%s%d Sp)"
 
-#: src/ambition/Ambition_vga.cc:958
+#: src/ambition/Ambition_vga.cc:968
 #, c-format
 msgctxt "standard_panel"
 msgid "(%s%d Spy)"
@@ -504,98 +504,98 @@ msgstr[0] "(%s%d Specul)"
 msgstr[1] "(%s%d Specul)"
 
 #. TRANSLATORS: Short for "General", when the General is a spy.
-#: src/ambition/Ambition_vga.cc:963
+#: src/ambition/Ambition_vga.cc:973
 msgid "G+"
 msgstr "D+"
 
 #. TRANSLATORS: Short for "population".
-#: src/ambition/Ambition_vga.cc:998
+#: src/ambition/Ambition_vga.cc:1008
 msgid "Pop"
 msgstr "Pop"
 
 #. TRANSLATORS: Short for "loyalty" and "resistance".
-#: src/ambition/Ambition_vga.cc:1006
+#: src/ambition/Ambition_vga.cc:1016
 msgid "Lty"
 msgstr "Fid"
 
-#: src/ambition/Ambition_vga.cc:1006
+#: src/ambition/Ambition_vga.cc:1016
 msgid "Rst"
 msgstr "Rep"
 
-#: src/ambition/Ambition_vga.cc:1065
+#: src/ambition/Ambition_vga.cc:1075
 #, c-format
 msgid "(%d Spy)"
 msgid_plural "(%d Spies)"
 msgstr[0] "(%d Speculator)"
 msgstr[1] "(%d Speculatores)"
 
-#: src/ambition/Ambition_vga.cc:1813
+#: src/ambition/Ambition_vga.cc:1824
 msgid "Feedback"
 msgstr "Responsio"
 
-#: src/ambition/Ambition_vga.cc:1943
+#: src/ambition/Ambition_vga.cc:1954
 msgid "Guests"
 msgstr "Hospites"
 
-#: src/ambition/Ambition_vga.cc:2146
+#: src/ambition/Ambition_vga.cc:2157
 #, c-format
 msgid "Your spy estimates a success chance of %d%%."
 msgstr "Speculator tuus successum possibilitas aestimat de %d%%."
 
-#: src/ambition/Ambition_vga.cc:2190
+#: src/ambition/Ambition_vga.cc:2201
 #, c-format
 msgid "Your spy suggests a bribe of $%'d."
 msgstr "Speculator tuus praemium  $%'d suggerit."
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/TUT_LIST.RES
-#: src/ambition/Ambition_vga.cc:2217
+#: src/ambition/Ambition_vga.cc:2228
 msgid "Ships"
 msgstr "Naves"
 
-#: src/ambition/Ambition_vga.cc:2262
+#: src/ambition/Ambition_vga.cc:2273
 #, c-format
 msgid "Leading %d unit"
 msgid_plural "Leading %d units"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/ambition/Ambition_vga.cc:2266
+#: src/ambition/Ambition_vga.cc:2277
 #, fuzzy
 msgid "No units assigned"
 msgstr "Nullus dux constitutus"
 
-#: src/ambition/Ambition_vga.cc:2269
+#: src/ambition/Ambition_vga.cc:2280
 msgid "No leader assigned"
 msgstr "Nullus dux constitutus"
 
-#: src/ambition/Ambition_vga.cc:2271
+#: src/ambition/Ambition_vga.cc:2282
 msgid "Leader out of range"
 msgstr "Dux extra ambitum"
 
-#: src/ambition/Ambition_vga.cc:2273
+#: src/ambition/Ambition_vga.cc:2284
 msgid "Leader is providing bonuses"
 msgstr "Dux beneficia praebet"
 
-#: src/ambition/Ambition_vga.cc:2284 src/OR_TOWN.cpp:112
+#: src/ambition/Ambition_vga.cc:2295 src/OR_TOWN.cpp:112
 msgid "Unit Cost"
 msgstr "Pretium Unitarium"
 
-#: src/ambition/Ambition_vga.cc:2291 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
+#: src/ambition/Ambition_vga.cc:2302 src/OR_ECO.cpp:103 src/OR_TOWN.cpp:118
 msgid "Yearly Expense"
 msgstr "Sumptus Annuus"
 
-#: src/ambition/Ambition_vga.cc:2324 src/ambition/Ambition_vga.cc:2343
-#: src/ambition/Ambition_vga.cc:2409
+#: src/ambition/Ambition_vga.cc:2335 src/ambition/Ambition_vga.cc:2354
+#: src/ambition/Ambition_vga.cc:2420
 msgid "$"
 msgstr "$"
 
-#: src/ambition/Ambition_vga.cc:2512
+#: src/ambition/Ambition_vga.cc:2523
 #, c-format
 msgid "Surplus Peasants: %'d"
 msgstr "Superfluum rustici: %'d"
 
-#: src/ambition/Ambition_vga.cc:2562 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
+#: src/ambition/Ambition_vga.cc:2573 src/OFIRMIF.cpp:728 src/OFIRMIF.cpp:735
 #: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:409
 #: src/OF_CAMP.cpp:608 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
@@ -603,15 +603,15 @@ msgstr "Superfluum rustici: %'d"
 msgid "Loyalty"
 msgstr "Fidelitas"
 
-#: src/ambition/Ambition_vga.cc:2579 src/ambition/Ambition_vga.cc:2644
+#: src/ambition/Ambition_vga.cc:2590 src/ambition/Ambition_vga.cc:2655
 msgid "Yearly Upkeep"
 msgstr "Cura Annua"
 
-#: src/ambition/Ambition_vga.cc:2592 src/ambition/Ambition_vga.cc:2655
+#: src/ambition/Ambition_vga.cc:2603 src/ambition/Ambition_vga.cc:2666
 msgid "Attack Range"
 msgstr "Spatium Impet."
 
-#: src/ambition/Ambition_vga.cc:2698
+#: src/ambition/Ambition_vga.cc:2709
 #, c-format
 msgid "Your spy estimates an escape chance of %d%%."
 msgstr "Speculator tuus effugium possibilitas aestimat de %d%%."
@@ -620,7 +620,7 @@ msgstr "Speculator tuus effugium possibilitas aestimat de %d%%."
 #. number>. … Your config.txt file can be found here: <config directory
 #. path and path separator>config.txt …
 #. The name of the file—config.txt—does not change with language.
-#: src/ambition/Ambition_vga.cc:2797
+#: src/ambition/Ambition_vga.cc:2808
 #, c-format
 msgid ""
 "Your game version may not match the host's version.\n"
@@ -3677,7 +3677,7 @@ msgid "Combat"
 msgstr "Pugna"
 
 #: src/OFIRMIF.cpp:772 src/OFIRMIF.cpp:822 src/OR_MIL.cpp:101
-#: src/OR_TECH.cpp:144 src/OR_TRADE.cpp:152 src/OU_MARIF.cpp:526
+#: src/OR_TECH.cpp:144 src/OR_TRADE.cpp:153 src/OU_MARIF.cpp:526
 msgid "Hit Points"
 msgstr "Puncta Ictus"
 
@@ -3763,7 +3763,7 @@ msgstr "Copia Materiae Rudis"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:317
-#: src/OF_FACT.cpp:406 src/OR_TRADE.cpp:991
+#: src/OF_FACT.cpp:406 src/OR_TRADE.cpp:996
 msgid "Product Stock"
 msgstr "Producta Copia"
 
@@ -3809,19 +3809,19 @@ msgstr "Venditiones"
 msgid "Demand"
 msgstr "Postulatio"
 
-#: src/OF_MARK.cpp:523 src/OR_TRADE.cpp:82
+#: src/OF_MARK.cpp:523 src/OR_TRADE.cpp:83
 msgid "Any"
 msgstr "Quilibet"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OF_MARK.cpp:524 src/OR_TRADE.cpp:80
+#: src/OF_MARK.cpp:524 src/OR_TRADE.cpp:81
 msgid "Factory"
 msgstr "Officina"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OF_MARK.cpp:525 src/OR_TRADE.cpp:81
+#: src/OF_MARK.cpp:525 src/OR_TRADE.cpp:82
 msgid "Mine"
 msgstr "Fodina"
 
@@ -4507,7 +4507,7 @@ msgstr "Dux Iaponicus"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00005-UNIT.dbf
-#: src/OHELP.cpp:522 src/OHELP.cpp:570 src/OR_TRADE.cpp:88 src/OR_TRADE.cpp:146
+#: src/OHELP.cpp:522 src/OHELP.cpp:570 src/OR_TRADE.cpp:89 src/OR_TRADE.cpp:147
 msgid "Caravan"
 msgstr "Caravana"
 
@@ -7001,7 +7001,7 @@ msgstr "Nomen Speculatoris"
 msgid "Cloak"
 msgstr "Pallium"
 
-#: src/OR_SPY.cpp:76 src/OR_TRADE.cpp:206
+#: src/OR_SPY.cpp:76 src/OR_TRADE.cpp:207
 msgid "Location"
 msgstr "Locus"
 
@@ -7101,80 +7101,80 @@ msgstr "Summa"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OR_TRADE.cpp:79
+#: src/OR_TRADE.cpp:80
 msgid "Market"
 msgstr "Forum"
 
-#: src/OR_TRADE.cpp:89 src/OR_TRADE.cpp:148
+#: src/OR_TRADE.cpp:90 src/OR_TRADE.cpp:149
 msgid "Ship"
 msgstr "Navis"
 
-#: src/OR_TRADE.cpp:154
+#: src/OR_TRADE.cpp:155
 msgid "Stop 1"
 msgstr "Subsisto 1"
 
-#: src/OR_TRADE.cpp:155
+#: src/OR_TRADE.cpp:156
 msgid "Stop 2"
 msgstr "Subsisto 2"
 
-#: src/OR_TRADE.cpp:156
+#: src/OR_TRADE.cpp:157
 msgid "Stop 3"
 msgstr "Subsisto 3"
 
-#: src/OR_TRADE.cpp:157
+#: src/OR_TRADE.cpp:158
 msgid "Goods Carried"
 msgstr "Merces Vectae"
 
-#: src/OR_TRADE.cpp:207
+#: src/OR_TRADE.cpp:208
 msgid "Stock/Sales/Demand"
 msgstr "Copia/Venditio/Postulatio"
 
-#: src/OR_TRADE.cpp:209
+#: src/OR_TRADE.cpp:210
 msgid "(In Range of Unit)"
 msgstr "(In Iactus Unitarum)"
 
-#: src/OR_TRADE.cpp:496
+#: src/OR_TRADE.cpp:497
 #, c-format
 msgid "Total Caravans: %s"
 msgstr "Summa Caravanae: %s"
 
-#: src/OR_TRADE.cpp:498
+#: src/OR_TRADE.cpp:499
 #, c-format
 msgid "Total Ships: %s"
 msgstr "Summa Navium: %s"
 
-#: src/OR_TRADE.cpp:504
+#: src/OR_TRADE.cpp:505
 #, c-format
 msgid "*Idle Caravans: %s"
 msgstr "*Vana Caravanae: %s"
 
-#: src/OR_TRADE.cpp:515
+#: src/OR_TRADE.cpp:516
 #, c-format
 msgid "Total Locations: %s"
 msgstr "Numerus locorum totalium: %s"
 
-#: src/OR_TRADE.cpp:519
+#: src/OR_TRADE.cpp:520
 #, c-format
 msgid "*Idle Locations: %s"
 msgstr "* Otiosum Locations: %s"
 
-#: src/OR_TRADE.cpp:980 src/OR_TRADE.cpp:1016
+#: src/OR_TRADE.cpp:985 src/OR_TRADE.cpp:1021
 msgid "Raw Stock"
 msgstr "Crudum iusculum"
 
-#: src/OR_TRADE.cpp:1005 src/OSITEDRW.cpp:53
+#: src/OR_TRADE.cpp:1010 src/OSITEDRW.cpp:53
 msgid "Reserve"
 msgstr "Reserva"
 
-#: src/OR_TRADE.cpp:1026
+#: src/OR_TRADE.cpp:1031
 msgid "Markets"
 msgstr "Fora"
 
-#: src/OR_TRADE.cpp:1033
+#: src/OR_TRADE.cpp:1038
 msgid "Factories"
 msgstr "Officinae"
 
-#: src/OR_TRADE.cpp:1040
+#: src/OR_TRADE.cpp:1045
 msgid "Mines"
 msgstr "Fodinae"
 
