@@ -5,7 +5,7 @@
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -25,7 +25,11 @@
 
 #pragma once
 
+#include <cmath>
+#include <SDL_timer.h>
 #include <string>
+
+#include "Ambition_error_handling.hh"
 
 class Button3D;
 class Firm;
@@ -69,6 +73,21 @@ FirmBitmap* calculateFirmBitmap(
   FirmBitmap* _7kaaCalculation,
   Firm* firm
 );
+
+namespace Vga {
+
+inline int calculateFrameNumber(
+  const double frameRate,
+  const unsigned int frameCount
+) {
+  const auto millisecondsPerFrame
+    = static_cast<unsigned int>(std::round(1000.0 / frameRate));
+  assume(millisecondsPerFrame != 0);
+
+  return (SDL_GetTicks64() / millisecondsPerFrame) % frameCount;
+}
+
+} // namespace Ambition::Vga
 
 int calculateHitbarBaseColour(
   const double maximumHitpoints

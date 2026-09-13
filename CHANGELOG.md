@@ -43,6 +43,7 @@ speaking, considered to be the player's experience.
 - Idle caravans now show a message in place of the clone button.
 - Caravans now show as idle (with an asterisk) on the Trade Report when they are
   considered idle by the automatic caravan replacement and cloning system.
+- Draw building link icons at a constant FPS, independent of game speed.
 - Draw ship washes (the waves around, and the wake behind, ships) at a constant
   FPS, independent of game speed.
 - Do not show ship washes for ships that are stopped and not moving.
