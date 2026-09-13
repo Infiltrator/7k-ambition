@@ -806,6 +806,14 @@ int calculateHitbarWidth(
   return Ambition::calculateHitbarWidth(availableWidth, maximumHitpoints);
 }
 
+int calculateLinkIconFrameNumber(
+  const int _7kaaCalculation
+) {
+  constexpr auto FRAME_RATE = 8.0;
+  constexpr auto FRAME_COUNT = 3;
+  return Ambition::Vga::calculateFrameNumber(FRAME_RATE, FRAME_COUNT);
+}
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 ) {

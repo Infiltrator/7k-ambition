@@ -203,6 +203,10 @@ int calculateHitbarWidth(
   const double maximumHitpoints
 );
 
+int calculateLinkIconFrameNumber(
+  const int _7kaaCalculation
+);
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 );

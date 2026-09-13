@@ -21,6 +21,7 @@
 //Filename	  : OPOWER.CPP
 //Description : Object Power
 
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
 #include "ambition/7kaaInterface/unit.hh"
 
@@ -1488,7 +1489,7 @@ void Power::reset_selection()
 char* Power::get_link_icon(char linkStatus, int sameNation)
 {
 	char  goodLinkName[9] = "LINK_EE1";
-	goodLinkName[7] = '1'+ (char) (sys.frame_count/2%3);
+	goodLinkName[7] = '1'+ (char) (Ambition::Draw::calculateLinkIconFrameNumber(sys.frame_count/2%3));
 
 	switch( linkStatus )
 	{
