@@ -27,6 +27,12 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Added a random civilisation selection button (the question mark) to the game setup screen."),
         },
       },
+      {
+        .heading = HEADING_CHANGED,
+        .items = {
+          _("Instantly show unit loyalty target changes, instead of waiting up to a month, so effects are immediately visible."),
+        },
+      },
     },
   },
   {

@@ -23,6 +23,7 @@
 
 #include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/unit.hh"
 
 #include <KEY.h>
 #include <OVGA.h>
@@ -1182,7 +1183,7 @@ void Unit::disp_unit_info(int dispY1, int refreshFlag)
 		}
 		else if( nation_recno )
 		{
-			info.disp_loyalty( x, y, x+92, loyalty, target_loyalty, nation_recno, refreshFlag );
+			info.disp_loyalty( x, y, x+92, loyalty, Ambition::Unit::calculateTargetLoyalty(this, target_loyalty), nation_recno, refreshFlag );
 		}
 
 		y+=16;

@@ -452,6 +452,53 @@ void Unit::sendToDestination(
   );
 }
 
+char Unit::targetLoyalty(
+  ::Unit* _7kaaUnit
+) {
+  if (_7kaaUnit->rank_id == RANK_SOLDIER) {
+    if (!_7kaaUnit->is_leader_in_range()) {
+      return 0;
+    }
+
+    const auto leader7kaaUnit = unit_array[_7kaaUnit->leader_unit_recno];
+    return std::clamp(
+      (30
+        + leader7kaaUnit->skill.get_skill(SKILL_LEADING)
+        - (_7kaaUnit->skill.combat_level / 2)
+        - _7kaaUnit->skill.skill_level
+        + (leader7kaaUnit->rank_id == RANK_KING ? 20 : 0)
+        + (_7kaaUnit->race_id == leader7kaaUnit->race_id ? 20 : 0)
+      ),
+      0,
+      100
+    );
+  } else if(_7kaaUnit->rank_id == RANK_GENERAL) {
+    const auto _7kaaNation = nation_array[_7kaaUnit->nation_recno];
+    return std::clamp(
+      (_7kaaUnit->commander_power()
+        + (_7kaaUnit->race_id == _7kaaNation->race_id ? 20 : 0)
+        + static_cast<int>(_7kaaNation->reputation / 4)
+        + (_7kaaNation->king_unit_recno
+          ? unit_array[_7kaaNation->king_unit_recno]->skill.skill_level / 4
+          : 0)
+        - std::clamp(
+          (_7kaaUnit->nation_contribution - _7kaaUnit->total_reward * 2) / 2,
+          0,
+          50
+        )
+      ),
+      0,
+      100
+    );
+  }
+
+  assume(
+    (_7kaaUnit->rank_id == RANK_SOLDIER
+      || _7kaaUnit->rank_id == RANK_GENERAL)
+    && false
+  );
+}
+
 
 bool Unit::active (
 ) {

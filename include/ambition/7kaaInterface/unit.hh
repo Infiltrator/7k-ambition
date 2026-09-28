@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,6 +36,11 @@ struct Worker;
 
 
 namespace _7kaaAmbitionInterface::Unit {
+
+char calculateTargetLoyalty(
+  ::Unit* _7kaaUnit,
+  const char _7kaaCalculation
+);
 
 bool caravanIdle(
   const UnitCaravan* _7kaaCaravan

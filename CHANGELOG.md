@@ -15,6 +15,11 @@ speaking, considered to be the player's experience.
 - Added a random civilisation selection button (the question mark) to the game
   setup screen.
 
+### Changed
+
+- Instantly show unit loyalty target changes, instead of waiting up to a month,
+  so effects are immediately visible.
+
 
 ## [3.2.13] — 2026-09-13
 
