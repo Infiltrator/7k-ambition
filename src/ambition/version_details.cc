@@ -21,6 +21,12 @@ std::vector<VersionUpdates> getVersionDetails(
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+      {
+        .heading = HEADING_ADDED,
+        .items = {
+          _("Added a random civilisation selection button (the question mark) to the game setup screen."),
+        },
+      },
     },
   },
   {

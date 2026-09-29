@@ -22,6 +22,7 @@
 //Description : Main Game Object - Multiplayer Game (using Imagic multiplayer SDK)
 
 #include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/menu.hh"
 
 #include <version.h>
@@ -2445,7 +2446,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 	// --------- initialize race button group ---------- //
 
-	ButtonCustomGroup raceGroup(MAX_RACE);
+	ButtonCustomGroup raceGroup(Ambition::Menu::civilisationSelectionButtonCount(MAX_RACE));
 	for( i = 0; i < MAX_RACE; ++i )
 	{
 #if(MAX_RACE == 10)
@@ -2460,6 +2461,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 		#define Y_SHIFT_FLAG 0
 #endif
 	}
+
+	Ambition::Menu::initialiseRandomCivilisationSelectionButton(true, raceGroup, disp_virtual_button);
 
 	// --------- initialize color button group ---------- //
 
@@ -2804,10 +2807,13 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					image_menu2.put_to_buf( &vga_back, "MPG-BSC");
 #endif
 					image_menu.put_back( 234, 15, menuTitleBitmap);
+
+					Ambition::Draw::randomCivilisationSelectionButton(true);
+
 					vga_util.blt_buf(0,0,VGA_WIDTH-1,VGA_HEIGHT-1,0);
 				}
 				if( refreshFlag & SGOPTION_RACE )
-					raceGroup.paint( reverse_race_table[tempConfig.race_id-1] );
+					raceGroup.paint( Ambition::Menu::calculateSelectedCivilisationSelectionButton(reverse_race_table[tempConfig.race_id-1]) );
 				if( refreshFlag & SGOPTION_COLOR )
 					colorGroup.paint( tempConfig.player_nation_color-1 );
 				if( refreshFlag & SGOPTION_AI_NATION )
@@ -3482,6 +3488,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 				if( raceGroup.detect() >= 0)
 				{
 					int r = tempConfig.race_id = raceGroup[raceGroup()].custom_para.value;
+
+					r = Ambition::Menu::calculateSelectedCivilisation7kaaRaceId(r);
+
 					if( remote.is_host )
 					{
 						int p;

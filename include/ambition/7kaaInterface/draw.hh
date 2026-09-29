@@ -438,6 +438,10 @@ void queueCount(
   const Town* _7kaaTown
 );
 
+void randomCivilisationSelectionButton(
+  bool multiplayer
+);
+
 bool shouldDrawShipWash(
   const UnitMarine* _7kaaUnitMarine
 );

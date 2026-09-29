@@ -22,7 +22,9 @@
 //Description : Single player game interface
 
 #include "ambition/7kaaInterface/control.hh"
+#include "ambition/7kaaInterface/draw.hh"
 #include "ambition/7kaaInterface/input.hh"
+#include "ambition/7kaaInterface/menu.hh"
 
 #include <OVGA.h>
 #include <vga_util.h>
@@ -173,7 +175,7 @@ static int select_option()
 
 	// --------- initialize race button group ---------- //
 
-	ButtonCustomGroup raceGroup(MAX_RACE);
+	ButtonCustomGroup raceGroup(Ambition::Menu::civilisationSelectionButtonCount(MAX_RACE));
 	for( i = 0; i < MAX_RACE; ++i )
 	{
 #if(MAX_RACE == 10)
@@ -189,6 +191,8 @@ static int select_option()
 #define Y_SHIFT_FLAG 0
 #endif
 	}
+
+	Ambition::Menu::initialiseRandomCivilisationSelectionButton(false, raceGroup, disp_virtual_button);
 
 	// --------- initialize color button group ---------- //
 
@@ -530,10 +534,13 @@ static int select_option()
 					image_menu2.put_to_buf( &vga_back, "SPG-BSC");
 #endif
 					image_menu.put_back( 234, 15, menuTitleBitmap);
+
+					Ambition::Draw::randomCivilisationSelectionButton(false);
+
 					vga_util.blt_buf(0,0,VGA_WIDTH-1,VGA_HEIGHT-1,0);
 				}
 				if( refreshFlag & SGOPTION_RACE )
-					raceGroup.paint( reverse_race_table[tempConfig.race_id-1] );
+					raceGroup.paint( Ambition::Menu::calculateSelectedCivilisationSelectionButton(reverse_race_table[tempConfig.race_id-1]) );
 				if( refreshFlag & SGOPTION_COLOR )
 					colorGroup.paint( tempConfig.player_nation_color-1 );
 				if( refreshFlag & SGOPTION_AI_NATION )
@@ -700,6 +707,8 @@ static int select_option()
 			{
 				tempConfig.race_id = raceGroup[raceGroup()].custom_para.value;
 				//refreshFlag |= SGOPTION_RACE;
+
+				tempConfig.race_id = Ambition::Menu::calculateSelectedCivilisation7kaaRaceId(tempConfig.race_id);
 			}
 			else if( colorGroup.detect() >= 0)
 			{
