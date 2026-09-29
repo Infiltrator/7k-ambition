@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,12 +36,24 @@
 
 #include "Ambition_config.hh"
 #include "Ambition_coordinates.hh"
+#include "Ambition_error_handling.hh"
 #include "Ambition_time.hh"
 #include "Ambition_trade.hh"
 #include "Ambition_unit.hh"
 
 
 namespace _7kaaAmbitionInterface::Unit {
+
+char calculateTargetLoyalty(
+  ::Unit* _7kaaUnit,
+  const char _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  return Ambition::Unit::targetLoyalty(_7kaaUnit);
+}
 
 bool caravanIdle(
   const UnitCaravan* _7kaaCaravan

@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -150,6 +150,10 @@ public:
   static void sendToDestination(
     std::vector<short> _7kaaUnitRecordNumbers,
     const Waypoint& destination
+  );
+
+  static char targetLoyalty(
+    ::Unit* _7kaaUnit
   );
 
   bool active (
