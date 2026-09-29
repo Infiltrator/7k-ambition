@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,10 +25,31 @@
 
 #pragma once
 
+#include <stdint.h>
 #include <string>
+
+#include "OBUTTCUS.h"
 
 
 namespace _7kaaAmbitionInterface::Menu {
+
+int calculateSelectedCivilisationSelectionButton(
+  const int _7kaaCalculation
+);
+
+int calculateSelectedCivilisation7kaaRaceId(
+  const int _7kaaCalculation
+);
+
+int civilisationSelectionButtonCount(
+  const int _7kaaCalculation
+);
+
+void initialiseRandomCivilisationSelectionButton(
+  bool multiplayer,
+  ButtonCustomGroup& _7kaaButtonGroup,
+  const ButtonCustomFP _7kaaButtonDrawer
+);
 
 std::string versionMismatchMessage(
   const std::string _7kaaCalculation

@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -216,6 +216,28 @@ const auto VIEWPORT = BOUNDS.internal(
 constexpr auto TEXT_BOX_PADDING = 13;
 
 extern const Size SCROLL_BUTTON_SIZE;
+
+namespace Singleplayer {
+
+namespace GameSetup {
+
+extern const Rectangle POLITY_COUNT_BUTTON;
+extern const Rectangle RANDOM_CIVILISATION_BUTTON;
+
+} // namespace Singleplayer::GameSetup
+
+} // namespace Singleplayer
+
+namespace Multiplayer {
+
+namespace GameSetup {
+
+extern const Rectangle POLITY_COUNT_BUTTON;
+extern const Rectangle RANDOM_CIVILISATION_BUTTON;
+
+} // namespace Multiplayer::GameSetup
+
+} // namespace Multiplayer
 
 namespace SelectionListScreen {
 

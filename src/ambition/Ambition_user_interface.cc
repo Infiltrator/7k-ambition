@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,6 +63,43 @@ BuildingMenu buildingMenu = BuildingMenu::_7kaa;
 int reportType = -1;
 short selected7kaaFirmOrTownRecordNumber = 0;
 
+
+const Size RANDOM_CIVILISATION_BUTTON_SIZE = { 35, 32 };
+const Size POLITY_COUNT_BUTTON_SIZE = { 36, 32 };
+
+namespace Singleplayer {
+
+namespace GameSetup {
+
+const Rectangle POLITY_COUNT_BUTTON = Rectangle::fromPixel(
+  { 559, 287 },
+  POLITY_COUNT_BUTTON_SIZE
+);
+const Rectangle RANDOM_CIVILISATION_BUTTON = Rectangle::fromPixel(
+  { 629, 219 },
+  RANDOM_CIVILISATION_BUTTON_SIZE
+);
+
+} // namespace Singleplayer::GameSetup
+
+} // namespace Singleplayer
+
+namespace Multiplayer {
+
+namespace GameSetup {
+
+const Rectangle POLITY_COUNT_BUTTON = Rectangle::fromPixel(
+  { 557, 364 },
+  POLITY_COUNT_BUTTON_SIZE
+);
+const Rectangle RANDOM_CIVILISATION_BUTTON = Rectangle::fromPixel(
+  { 627, 298 },
+  RANDOM_CIVILISATION_BUTTON_SIZE
+);
+
+} // namespace Multiplayer::GameSetup
+
+} // namespace Multiplayer
 
 namespace TitleScreen {
 

@@ -1481,6 +1481,65 @@ void queueCount(
   );
 }
 
+void randomCivilisationSelectionButton(
+  bool multiplayer
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  const auto polityCountButtonArea
+    = multiplayer
+    ? Ambition::UserInterface::Multiplayer::GameSetup::POLITY_COUNT_BUTTON
+    : Ambition::UserInterface::Singleplayer::GameSetup::POLITY_COUNT_BUTTON;
+  const auto randomCivilisationButtonArea
+    = multiplayer
+    ? Ambition::UserInterface::Multiplayer::GameSetup
+      ::RANDOM_CIVILISATION_BUTTON
+    : Ambition::UserInterface::Singleplayer::GameSetup
+      ::RANDOM_CIVILISATION_BUTTON;
+
+  constexpr auto HEADER_SIZE = 2 + 2; /* Width and height information. */
+  const auto bitmapSize
+    = HEADER_SIZE
+    + polityCountButtonArea.width() * polityCountButtonArea.height();
+  const auto bitmapBuffer = static_cast<char*>(malloc(bitmapSize));
+
+  IMGread(
+    vga_back.buf_ptr(),
+    vga_back.buf_pitch(),
+    polityCountButtonArea.start.left,
+    polityCountButtonArea.start.top,
+    polityCountButtonArea.end.left,
+    polityCountButtonArea.end.top,
+    bitmapBuffer
+  );
+  vga_back.put_bitmap(
+    randomCivilisationButtonArea.start.left,
+    /* The black frame for the selected button is not sized correctly, so we
+     * adjust the drawing position to make it slightly better. */
+    randomCivilisationButtonArea.start.top + 1,
+    bitmapBuffer
+  );
+  free(bitmapBuffer);
+
+  const auto saveUseBack = vga.use_back_buf;
+  vga.use_back();
+
+  Ambition::UserInterface::printText(
+    font_bible,
+    "?",
+    randomCivilisationButtonArea.inner({ .bottom = 1 }),
+    Ambition::UserInterface::Clear::None,
+    Ambition::UserInterface::HorizontalAlignment::Centre,
+    Ambition::UserInterface::VerticalAlignment::Centre
+  );
+
+  if (!saveUseBack) {
+    vga.use_front();
+  }
+}
+
 bool shouldDrawShipWash(
   const UnitMarine* _7kaaUnitMarine
 ) {
