@@ -25,6 +25,7 @@
 
 #include "ambition/7kaaInterface/config.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/input.hh"
 
 #include <OVGA.h>
 #include <OSYS.h>
@@ -835,6 +836,9 @@ void ZoomMatrix::draw_build_marker()
 	int xLoc = (mouse.cur_x-ZOOM_X1)/ZOOM_LOC_WIDTH;
 	int yLoc = (mouse.cur_y-ZOOM_Y1)/ZOOM_LOC_HEIGHT;
 	int locWidth, locHeight, validAction;
+
+	Ambition::Input::calculateBuildingLocation(0, 0, xLoc, yLoc);
+
 	Location* locPtr = world.get_loc(top_x_loc+xLoc, top_y_loc+yLoc);
 
 	//------- if it's in firm building mode now ----//

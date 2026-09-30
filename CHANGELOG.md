@@ -19,6 +19,8 @@ speaking, considered to be the player's experience.
 
 - Instantly show unit loyalty target changes, instead of waiting up to a month,
   so effects are immediately visible.
+- Point to the middle of the build marker when placing new buildings and Towns,
+  instead of the top-left tile.
 
 
 ## [3.2.13] — 2026-09-13

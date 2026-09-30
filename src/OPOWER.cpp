@@ -278,6 +278,8 @@ int Power::detect_frame()
 					int curXLoc = world.zoom_matrix->top_x_loc + (mouseX-ZOOM_X1)/ZOOM_LOC_WIDTH;
 					int curYLoc = world.zoom_matrix->top_y_loc + (mouseY-ZOOM_Y1)/ZOOM_LOC_HEIGHT;
 
+					Ambition::Input::calculateBuildingLocation(world.zoom_matrix->top_x_loc, world.zoom_matrix->top_y_loc, curXLoc, curYLoc);
+
 					locPtr = world.get_loc(curXLoc, curYLoc);
 
 					//-------- set boundary of mouse -------//

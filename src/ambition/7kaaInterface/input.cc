@@ -38,6 +38,7 @@
 #include "OINFO.h"
 #include "OMOUSE.h"
 #include "OMOUSE2.h"
+#include "OPOWER.h"
 #include "OSLIDCUS.h"
 #include "OSPY.h"
 #include "OSYS.h"
@@ -232,6 +233,42 @@ char* stripUnprintable7kaaCharacters(
   char* input
 );
 
+
+void calculateBuildingLocation(
+  const int baseX,
+  const int baseY,
+  int& output7kaaLocationX,
+  int& output7kaaLocationY
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  int width = 1;
+  int height = 1;
+
+  if (power.command_id == COMMAND_BUILD_FIRM) {
+    const auto firmInfo = firm_res[power.command_para];
+    width = firmInfo->loc_width;
+    height = firmInfo->loc_height;
+  } else if (power.command_id == COMMAND_SETTLE && unit_array.selected_recno) {
+    width  = STD_TOWN_LOC_WIDTH;
+    height = STD_TOWN_LOC_HEIGHT;
+  }
+
+  output7kaaLocationX
+    = baseX
+    + (mouse.cur_x
+      - ZOOM_X1
+      - (width - 1) * ZOOM_LOC_WIDTH / 2
+    ) / ZOOM_LOC_WIDTH;
+  output7kaaLocationY
+    = baseY
+    + (mouse.cur_y
+      - ZOOM_Y1
+      - (height - 1) * ZOOM_LOC_HEIGHT / 2
+    ) / ZOOM_LOC_HEIGHT;
+}
 
 bool detectBuildingMenu(
   char& menu,
