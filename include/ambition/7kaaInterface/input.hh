@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms: Ambition
  *
- * Copyright 2025–26 Tim Sviridov
+ * Copyright 2025–2026 Tim Sviridov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,6 +86,13 @@ enum class ReportType {
   News,
 };
 
+
+void calculateBuildingLocation(
+  const int baseX,
+  const int baseY,
+  int& output7kaaLocationX,
+  int& output7kaaLocationY
+);
 
 unsigned int cancelKeyEvent(
 );

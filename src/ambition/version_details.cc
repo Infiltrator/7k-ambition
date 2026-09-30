@@ -31,6 +31,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_CHANGED,
         .items = {
           _("Instantly show unit loyalty target changes, instead of waiting up to a month, so effects are immediately visible."),
+          _("Point to the middle of the build marker when placing new buildings and Towns, instead of the top-left tile."),
         },
       },
     },
