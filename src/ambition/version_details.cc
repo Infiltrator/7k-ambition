@@ -25,6 +25,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_ADDED,
         .items = {
           _("Added a random civilisation selection button (the question mark) to the game setup screen."),
+          _("Add yellow highlighting for buildings on hover, the same as with units."),
         },
       },
       {
