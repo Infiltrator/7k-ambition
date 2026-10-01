@@ -26,6 +26,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .items = {
           _("Added a random civilisation selection button (the question mark) to the game setup screen."),
           _("Add yellow highlighting for buildings on hover, the same as with units."),
+          _("Add ctrl+click to the Sail button on Harbours to put all ships to sea, instead of just the selected one."),
         },
       },
       {

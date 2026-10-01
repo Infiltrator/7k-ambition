@@ -26,6 +26,7 @@
 #pragma once
 
 class Firm;
+class FirmHarbor;
 class GetA;
 class SlideVBar;
 class Spy;
@@ -148,6 +149,10 @@ bool detectModeSelectClick(
 );
 
 bool detectRallyButtonClick(
+);
+
+bool detectSailAll(
+  FirmHarbor* _7kaaHarbour
 );
 
 void detectReportScroll(
