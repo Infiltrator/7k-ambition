@@ -37,6 +37,7 @@
 #include "OFIRM.h"
 #include "OHELP.h"
 #include "OIMGRES.h"
+#include "OMOUSE.h"
 #include "ONATIONA.h"
 #include "OPOWER.h"
 #include "OU_MARI.h"
@@ -812,6 +813,37 @@ int calculateLinkIconFrameNumber(
   constexpr auto FRAME_RATE = 8.0;
   constexpr auto FRAME_COUNT = 3;
   return Ambition::Vga::calculateFrameNumber(FRAME_RATE, FRAME_COUNT);
+}
+
+int calculateOutlineType(
+  const int _7kaaCalculation,
+  const Firm* _7kaaFirm
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  const auto _7kaaLocation = power.test_detect(mouse.cur_x, mouse.cur_y);
+  if (_7kaaLocation && _7kaaLocation->firm_recno() == _7kaaFirm->firm_recno) {
+    return 2;
+  }
+
+  return _7kaaCalculation;
+}
+int calculateOutlineType(
+  const int _7kaaCalculation,
+  const Town* _7kaaTown
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  const auto _7kaaLocation = power.test_detect(mouse.cur_x, mouse.cur_y);
+  if (_7kaaLocation && _7kaaLocation->town_recno() == _7kaaTown->town_recno) {
+    return 2;
+  }
+
+  return _7kaaCalculation;
 }
 
 short calculateRainSpeed(

@@ -207,6 +207,15 @@ int calculateLinkIconFrameNumber(
   const int _7kaaCalculation
 );
 
+int calculateOutlineType(
+  const int _7kaaCalculation,
+  const Firm* _7kaaFirm
+);
+int calculateOutlineType(
+  const int _7kaaCalculation,
+  const Town* _7kaaTown
+);
+
 short calculateRainSpeed(
   const short _7kaaCalculation
 );
