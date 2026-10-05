@@ -680,9 +680,19 @@ bool detectSailAll(
     return false;
   }
 
+  power.reset_selection();
+
   for (auto i = _7kaaHarbour->ship_count - 1; i >= 0; i--) {
-    _7kaaHarbour->sail_ship(_7kaaHarbour->ship_recno_array[i], COMMAND_PLAYER);
+    auto _7kaaShip = unit_array[_7kaaHarbour->ship_recno_array[i]];
+
+    _7kaaHarbour->sail_ship(_7kaaShip->sprite_recno, COMMAND_PLAYER);
+
+    _7kaaShip->selected_flag = 1;
+    unit_array.selected_recno = _7kaaShip->sprite_recno;
+    unit_array.selected_count++;
   }
+
+  info.disp();
 
   return true;
 }
