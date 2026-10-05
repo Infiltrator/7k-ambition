@@ -256,18 +256,35 @@ void calculateBuildingLocation(
     height = STD_TOWN_LOC_HEIGHT;
   }
 
-  output7kaaLocationX
+  const auto _7kaaLocationX
     = baseX
     + (mouse.cur_x
       - ZOOM_X1
       - (width - 1) * ZOOM_LOC_WIDTH / 2
     ) / ZOOM_LOC_WIDTH;
-  output7kaaLocationY
+  const auto _7kaaLocationY
     = baseY
     + (mouse.cur_y
       - ZOOM_Y1
       - (height - 1) * ZOOM_LOC_HEIGHT / 2
     ) / ZOOM_LOC_HEIGHT;
+
+  if (power.command_id == COMMAND_SETTLE && unit_array.selected_recno) {
+    const auto centre7kaaLocation = world.get_loc(
+      output7kaaLocationX - baseX + world.zoom_matrix->top_x_loc,
+      output7kaaLocationY - baseY + world.zoom_matrix->top_y_loc
+    );
+    const auto corner7kaaLocation = world.get_loc(
+      _7kaaLocationX - baseX + world.zoom_matrix->top_x_loc,
+      _7kaaLocationY - baseY + world.zoom_matrix->top_y_loc
+    );
+    if (centre7kaaLocation->is_town() || corner7kaaLocation->is_town()) {
+      return;
+    }
+  }
+
+  output7kaaLocationX = _7kaaLocationX;
+  output7kaaLocationY = _7kaaLocationY;
 }
 
 bool detectBuildingMenu(
