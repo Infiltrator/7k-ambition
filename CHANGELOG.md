@@ -10,6 +10,9 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+
+## [3.2.14] — 2026-10-13
+
 ### Added
 
 - Added a random civilisation selection button (the question mark) to the game
