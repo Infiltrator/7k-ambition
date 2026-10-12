@@ -34,6 +34,7 @@
 #include "KEY.h"
 #include "OBUTT3D.h"
 #include "OFIRMA.h"
+#include "OF_HARB.h"
 #include "OGETA.h"
 #include "OINFO.h"
 #include "OMOUSE.h"
@@ -666,6 +667,34 @@ bool detectRallyButtonClick(
   }
 
   return false;
+}
+
+bool detectSailAll(
+  FirmHarbor* _7kaaHarbour
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return false;
+  }
+
+  if (!(mouse.skey_state & CONTROL_KEY_MASK)) {
+    return false;
+  }
+
+  power.reset_selection();
+
+  for (auto i = _7kaaHarbour->ship_count - 1; i >= 0; i--) {
+    auto _7kaaShip = unit_array[_7kaaHarbour->ship_recno_array[i]];
+
+    _7kaaHarbour->sail_ship(_7kaaShip->sprite_recno, COMMAND_PLAYER);
+
+    _7kaaShip->selected_flag = 1;
+    unit_array.selected_recno = _7kaaShip->sprite_recno;
+    unit_array.selected_count++;
+  }
+
+  info.disp();
+
+  return true;
 }
 
 void detectReportScroll(

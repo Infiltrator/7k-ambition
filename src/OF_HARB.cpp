@@ -402,6 +402,10 @@ int FirmHarbor::detect_main_menu()
 
 	if( button_sail.detect(GETKEY(KEYEVENT_FIRM_PATROL)) && browse_ship.recno() > 0 )
 	{
+		if (Ambition::Input::detectSailAll(this)) {
+			return 1;
+		}
+
 		sail_ship( ship_recno_array[browse_ship.recno()-1], COMMAND_PLAYER );
 		return 1;
 	}
