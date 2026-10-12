@@ -14,9 +14,11 @@ speaking, considered to be the player's experience.
 
 - Added a random civilisation selection button (the question mark) to the game
   setup screen.
-- Add yellow highlighting for buildings on hover, the same as with units.
-- Add ctrl+click to the Sail button on Harbours to put all ships to sea, instead
-  of just the selected one.
+- Added yellow highlighting to buildings when hovering over them, the same as
+  with units.
+- Added the ability to put all Ships inside a Harbour to sea at the same time,
+  instead of only the selected one, by holding Ctrl when clicking the Sail
+  button (or using the hotkey).
 
 ### Changed
 

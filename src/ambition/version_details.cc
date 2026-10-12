@@ -25,8 +25,8 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_ADDED,
         .items = {
           _("Added a random civilisation selection button (the question mark) to the game setup screen."),
-          _("Add yellow highlighting for buildings on hover, the same as with units."),
-          _("Add ctrl+click to the Sail button on Harbours to put all ships to sea, instead of just the selected one."),
+          _("Added yellow highlighting to buildings when hovering over them, the same as with units."),
+          _("Added the ability to put all Ships inside a Harbour to sea at the same time, instead of only the selected one, by holding Ctrl when clicking the Sail button (or using the hotkey)."),
         },
       },
       {
