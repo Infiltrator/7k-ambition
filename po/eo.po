@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-13 14:58+1000\n"
+"POT-Creation-Date: 2026-10-13 08:45+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: Jorge Maldonado Ventura <jorgesumle@freakspot.net>\n"
 "Language-Team: \n"
@@ -633,6 +633,41 @@ msgstr ""
 
 #: src/ambition/version_details.cc
 msgid "Preview Version -- not yet released"
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Added a random civilisation selection button (the question mark) to the game "
+"setup screen."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Added yellow highlighting to buildings when hovering over them, the same as "
+"with units."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Added the ability to put all Ships inside a Harbour to sea at the same time, "
+"instead of only the selected one, by holding Ctrl when clicking the Sail "
+"button (or using the hotkey)."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Instantly show unit loyalty target changes, instead of waiting up to a "
+"month, so effects are immediately visible."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid ""
+"Point to the middle of the build marker when placing new buildings and "
+"Towns, instead of the top-left tile."
+msgstr ""
+
+#: src/ambition/version_details.cc
+msgid "v3.2.13 — 2026-09-13"
 msgstr ""
 
 #: src/ambition/version_details.cc
