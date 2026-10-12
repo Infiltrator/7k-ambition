@@ -580,7 +580,7 @@ msgstr ""
 #: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:409
 #: src/OF_CAMP.cpp:608 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
-#: src/OUNITIF.cpp:1181 src/OU_MARIF.cpp:512
+#: src/OUNITIF.cpp:1182 src/OU_MARIF.cpp:512
 msgid "Loyalty"
 msgstr "Loyauté"
 
@@ -2984,23 +2984,23 @@ msgid "Multiple startup mode options present on the command line."
 msgstr "Options de mode de démarrage présentes dans la ligne de commande."
 
 #: src/OBOX.cpp:180 src/OBOX.cpp:207 src/OBOX.cpp:210 src/OBOX.cpp:264
-#: src/OGAMEMP.cpp:1523 src/OGAMEMP.cpp:1624 src/OGAMEMP.cpp:3032
-#: src/OGAMEMP.cpp:3097 src/OGAMEMP.cpp:3402 src/OGAMEMP.cpp:3405
-#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:3414
-#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:3468
-#: src/OGAMEMP.cpp:4946 src/OGAMEMP.cpp:5012 src/OGAMEMP.cpp:5191
-#: src/OGAMEMP.cpp:5194 src/OGAMEMP.cpp:5197 src/OGAMEMP.cpp:5200
+#: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:3038
+#: src/OGAMEMP.cpp:3103 src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:3411
+#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:3420
+#: src/OGAMEMP.cpp:3423 src/OGAMEMP.cpp:3426 src/OGAMEMP.cpp:3474
+#: src/OGAMEMP.cpp:4955 src/OGAMEMP.cpp:5021 src/OGAMEMP.cpp:5200
 #: src/OGAMEMP.cpp:5203 src/OGAMEMP.cpp:5206 src/OGAMEMP.cpp:5209
-#: src/OGAMEMP.cpp:5257
+#: src/OGAMEMP.cpp:5212 src/OGAMEMP.cpp:5215 src/OGAMEMP.cpp:5218
+#: src/OGAMEMP.cpp:5266
 msgid "Ok"
 msgstr "Ok"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:70
 #: src/OBOX.cpp:213 src/OBOX.cpp:267 src/OFIRMIF3.cpp:250 src/OF_RESE.cpp:291
-#: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:2092
-#: src/OGAMEMP.cpp:2195 src/OGAMEMP.cpp:2259 src/OSPYA.cpp:364
-#: src/OTOWNIF.cpp:1368 src/OUNITIF.cpp:1065 src/OUNITIF.cpp:1103
+#: src/OGAMEMP.cpp:1525 src/OGAMEMP.cpp:1626 src/OGAMEMP.cpp:2093
+#: src/OGAMEMP.cpp:2196 src/OGAMEMP.cpp:2260 src/OSPYA.cpp:364
+#: src/OTOWNIF.cpp:1368 src/OUNITIF.cpp:1066 src/OUNITIF.cpp:1104
 msgid "Cancel"
 msgstr "Abandon"
 
@@ -3161,7 +3161,7 @@ msgid "N/A"
 msgstr "N/A"
 
 #: src/OFIRMIF.cpp:763 src/OFIRMIF.cpp:813 src/OF_INN.cpp:452
-#: src/OF_INN.cpp:505 src/OUNITIF.cpp:1193 src/OU_MARIF.cpp:516
+#: src/OF_INN.cpp:505 src/OUNITIF.cpp:1194 src/OU_MARIF.cpp:516
 msgid "Combat"
 msgstr "Combat"
 
@@ -3219,7 +3219,7 @@ msgid "Assassination Failed."
 msgstr "L'assassinat échoue."
 
 #: src/OF_BASE.cpp:384 src/OF_CAMP.cpp:583 src/OGAMHALL.cpp:251
-#: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1255
+#: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1256
 msgid "King"
 msgstr "Roi"
 
@@ -3256,15 +3256,15 @@ msgstr "Matériaux bruts"
 msgid "Product Stock"
 msgstr "Produits finis"
 
-#: src/OF_HARB.cpp:482 src/OU_MARIF.cpp:88
+#: src/OF_HARB.cpp:486 src/OU_MARIF.cpp:88
 msgid "Units"
 msgstr "Unités"
 
-#: src/OF_HARB.cpp:483 src/OU_MARIF.cpp:89
+#: src/OF_HARB.cpp:487 src/OU_MARIF.cpp:89
 msgid "Goods"
 msgstr "Marchandises"
 
-#: src/OF_HARB.cpp:656 src/OF_WAR.cpp:307 src/OTOWNIF.cpp:967
+#: src/OF_HARB.cpp:660 src/OF_WAR.cpp:307 src/OTOWNIF.cpp:967
 msgid "Done"
 msgstr "Terminé"
 
@@ -3413,83 +3413,83 @@ msgstr "Antre de Holgh"
 msgid "Ordos"
 msgstr "Ordo Ick"
 
-#: src/OGAMEMP.cpp:533
+#: src/OGAMEMP.cpp:534
 msgid "Create multiplayer session"
 msgstr "Créer une session 'multi-joueurs'"
 
-#: src/OGAMEMP.cpp:534
+#: src/OGAMEMP.cpp:535
 msgid "Session Name:"
 msgstr "Nom de session:"
 
-#: src/OGAMEMP.cpp:535
+#: src/OGAMEMP.cpp:536
 msgid "Set Password:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:580 src/OGAMEMP.cpp:842
+#: src/OGAMEMP.cpp:581 src/OGAMEMP.cpp:843
 msgid "Unable to connect from lobby"
 msgstr ""
 
-#: src/OGAMEMP.cpp:587 src/OGAMEMP.cpp:849
+#: src/OGAMEMP.cpp:588 src/OGAMEMP.cpp:850
 msgid "Cannot initialize ENet"
 msgstr ""
 
-#: src/OGAMEMP.cpp:603 src/OGAMEMP.cpp:865
+#: src/OGAMEMP.cpp:604 src/OGAMEMP.cpp:866
 msgid "Unable to retrieve leaderboard"
 msgstr ""
 
-#: src/OGAMEMP.cpp:631 src/OGAMEMP.cpp:900
+#: src/OGAMEMP.cpp:632 src/OGAMEMP.cpp:901
 msgid "Invalid game name"
 msgstr "Nom de jeu invalide"
 
-#: src/OGAMEMP.cpp:640 src/OGAMEMP.cpp:909
+#: src/OGAMEMP.cpp:641 src/OGAMEMP.cpp:910
 msgid "Cannot create the game"
 msgstr "Impossible de créer le jeu"
 
-#: src/OGAMEMP.cpp:672 src/OGAMEMP.cpp:938
+#: src/OGAMEMP.cpp:673 src/OGAMEMP.cpp:939
 msgid "Enter the game's address:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:680 src/OGAMEMP.cpp:946
+#: src/OGAMEMP.cpp:681 src/OGAMEMP.cpp:947
 msgid "Service not supported"
 msgstr "Service non supporté"
 
-#: src/OGAMEMP.cpp:1055
+#: src/OGAMEMP.cpp:1056
 msgid "Local Area Network"
 msgstr ""
 
 #. TRANSLATORS: This is a button label for entering a web or IP Address for connecting to an online game
-#: src/OGAMEMP.cpp:1057
+#: src/OGAMEMP.cpp:1058
 msgid "Enter Address"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1062
+#: src/OGAMEMP.cpp:1063
 msgid "Host or join a game using the local area network"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1063
+#: src/OGAMEMP.cpp:1064
 msgid "Join a game by entering an address"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1064
+#: src/OGAMEMP.cpp:1065
 msgid "Host or join a game over the internet"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1212
+#: src/OGAMEMP.cpp:1213
 msgid ""
 "Enter your 7kfans.com/forums account credentials to continue.\n"
 "TIP: If you have just previously logged in using the same username, you can "
 "leave your password blank, and the previous session is used."
 msgstr ""
 
-#: src/OGAMEMP.cpp:1213
+#: src/OGAMEMP.cpp:1214
 msgid "Username:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1214
+#: src/OGAMEMP.cpp:1215
 msgid "Password:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1402
+#: src/OGAMEMP.cpp:1403
 msgid ""
 "It is not recommended to use this save game file name. Do you wish to "
 "continue?"
@@ -3497,32 +3497,32 @@ msgstr ""
 "Il n'est pas recommandé d'utiliser ce nom de fichier pour cette sauvegarde. "
 "Voulez vous continuer?"
 
-#: src/OGAMEMP.cpp:1460
+#: src/OGAMEMP.cpp:1461
 msgid "Unable to connect to 7kfans.com"
 msgstr "Impossible de se connecter à 7kfans.com"
 
-#: src/OGAMEMP.cpp:1753
+#: src/OGAMEMP.cpp:1754
 msgid ""
 "Unable to connect to the 7kfans.com service. Verify your account information "
 "and try again."
 msgstr ""
 
-#: src/OGAMEMP.cpp:1755
+#: src/OGAMEMP.cpp:1756
 #, fuzzy
 msgid ""
 "Unable to connect to the 7kfans service.\n"
 "(No libcurl)"
 msgstr "Impossible de se connecter à 7kfans.com"
 
-#: src/OGAMEMP.cpp:1944
+#: src/OGAMEMP.cpp:1945
 msgid "Unable to communicate with the network"
 msgstr "Impossible de communiquer avec le réseau"
 
-#: src/OGAMEMP.cpp:1947
+#: src/OGAMEMP.cpp:1948
 msgid "Trying to connect to the service provider"
 msgstr ""
 
-#: src/OGAMEMP.cpp:1962
+#: src/OGAMEMP.cpp:1963
 #, fuzzy
 msgid ""
 "There is a new version of Seven Kingdoms: Ambition at https://seven-kingdoms-"
@@ -3531,127 +3531,127 @@ msgstr ""
 "Il y a une nouvelle version de Seven Kingdoms: Ancient Adversaries sur "
 "www.7kfans.com"
 
-#: src/OGAMEMP.cpp:2080
+#: src/OGAMEMP.cpp:2081
 msgid "Enter the game's password:"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2087
+#: src/OGAMEMP.cpp:2088
 msgid "Attempting to connect"
 msgstr "Essai de connexion"
 
-#: src/OGAMEMP.cpp:2157
+#: src/OGAMEMP.cpp:2158
 msgid "The session you selected no longer exists."
 msgstr ""
 
-#: src/OGAMEMP.cpp:2163
+#: src/OGAMEMP.cpp:2164
 msgid "Unable to connect"
 msgstr "Impossible de se connecter"
 
-#: src/OGAMEMP.cpp:2168
+#: src/OGAMEMP.cpp:2169
 msgid "Failed to initiate connection"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2190
+#: src/OGAMEMP.cpp:2191
 msgid "Please wait while disconnecting..."
 msgstr ""
 
-#: src/OGAMEMP.cpp:2254
+#: src/OGAMEMP.cpp:2255
 msgid "Retrieving leaderboard"
 msgstr ""
 
-#: src/OGAMEMP.cpp:2957 src/OGAMEMP.cpp:4870
+#: src/OGAMEMP.cpp:2963 src/OGAMEMP.cpp:4879
 msgid "?anonymous?"
 msgstr "?anonyme?"
 
-#: src/OGAMEMP.cpp:3032 src/OGAMEMP.cpp:4946
+#: src/OGAMEMP.cpp:3038 src/OGAMEMP.cpp:4955
 msgid "The game host has disconnected."
 msgstr "Serveur de jeu déconnecté."
 
-#: src/OGAMEMP.cpp:3097 src/OGAMEMP.cpp:5012
+#: src/OGAMEMP.cpp:3103 src/OGAMEMP.cpp:5021
 msgid "The game host has aborted the game."
 msgstr "Le serveur de jeu a interrompu le jeu."
 
-#: src/OGAMEMP.cpp:3402 src/OGAMEMP.cpp:5191
+#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:5200
 msgid "Your game version does not match the host's version."
 msgstr "Votre version du jeu n'est pas compatible avec celle du serveur."
 
-#: src/OGAMEMP.cpp:3405 src/OGAMEMP.cpp:5194
+#: src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:5203
 msgid "The game you tried to join is currently full."
 msgstr "La partie que vous essayez de rejoindre est complète."
 
-#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:5197
+#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:5206
 msgid "The host refused to authorize your connection."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:5200
+#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:5209
 msgid "You cannot join the game because the host is loading a save."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:5203
+#: src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:5212
 msgid "You cannot join the game because the host is not loading a save."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:5206
+#: src/OGAMEMP.cpp:3423 src/OGAMEMP.cpp:5215
 msgid ""
 "You cannot join the game because the saved multiplayer game you selected is "
 "different."
 msgstr ""
 
-#: src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:5209
+#: src/OGAMEMP.cpp:3426 src/OGAMEMP.cpp:5218
 msgid "The host refused the connection."
 msgstr "Le serveur refuse la connexion."
 
-#: src/OGAMEMP.cpp:3468 src/OGAMEMP.cpp:5257
+#: src/OGAMEMP.cpp:3474 src/OGAMEMP.cpp:5266
 msgid "The host is using a modified game which you are not running."
 msgstr ""
 
-#: src/OGAMEMP.cpp:4162 src/OGAMEMP.cpp:5606
+#: src/OGAMEMP.cpp:4171 src/OGAMEMP.cpp:5615
 msgid "Connection string from host is corrupted"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4169
+#: src/OGAMEMP.cpp:4178
 msgid "Cannot get random seeds from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4175
+#: src/OGAMEMP.cpp:4184
 msgid "Cannot get game configuration information from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4181 src/OGAMEMP.cpp:5613
+#: src/OGAMEMP.cpp:4190 src/OGAMEMP.cpp:5622
 msgid "Cannot get kingdom information from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4187 src/OGAMEMP.cpp:5619
+#: src/OGAMEMP.cpp:4196 src/OGAMEMP.cpp:5628
 msgid "The host cannot recognize your machine."
 msgstr ""
 
-#: src/OGAMEMP.cpp:4193 src/OGAMEMP.cpp:5625
+#: src/OGAMEMP.cpp:4202 src/OGAMEMP.cpp:5634
 msgid "Cannot receive important information from the host"
 msgstr ""
 
-#: src/OGAMEMP.cpp:4240 src/OGAMEMP.cpp:5665
+#: src/OGAMEMP.cpp:4249 src/OGAMEMP.cpp:5674
 msgid "Some player(s) encountered errors when initializing the game."
 msgstr ""
 
-#: src/OGAMEMP.cpp:5347 src/OGAMEMP.cpp:5506
+#: src/OGAMEMP.cpp:5356 src/OGAMEMP.cpp:5515
 #, c-format
 msgid "This multiplayer saved game needs %d human player"
 msgid_plural "This multiplayer saved game needs %d human players"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/OGAMEMP.cpp:5350 src/OGAMEMP.cpp:5509
+#: src/OGAMEMP.cpp:5359 src/OGAMEMP.cpp:5518
 #, c-format
 msgid "while now there is %d human player."
 msgid_plural "while now there are %d human players."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/OGAMEMP.cpp:5353 src/OGAMEMP.cpp:5512
+#: src/OGAMEMP.cpp:5362 src/OGAMEMP.cpp:5521
 msgid "The game cannot start."
 msgstr "Le jeu ne peut pas démarrer."
 
-#: src/OGAMEMP.cpp:5572
+#: src/OGAMEMP.cpp:5581
 msgid "Incorrect kingdom information received from the host."
 msgstr ""
 
@@ -6593,7 +6593,7 @@ msgstr "Avancement  Recherche"
 msgid "Tower of Science"
 msgstr "Tour du Savoir"
 
-#: src/OR_TECH.cpp:143 src/OUNITIF.cpp:1276
+#: src/OR_TECH.cpp:143 src/OUNITIF.cpp:1277
 msgid "Greater Being"
 msgstr "Entité Supérieure"
 
@@ -6783,7 +6783,7 @@ msgstr "Ouvrier"
 msgid "Research"
 msgstr "Chercheur"
 
-#: src/OSKILL.cpp:36 src/OUNITIF.cpp:1213
+#: src/OSKILL.cpp:36 src/OUNITIF.cpp:1214
 msgid "Spying"
 msgstr "Espion"
 
@@ -8406,112 +8406,112 @@ msgstr "Quitter les leçons"
 msgid "Tutorial files not found."
 msgstr "Fichiers de leçons introuvables."
 
-#: src/OUNIT.cpp:753 src/OUNITIF.cpp:1261
+#: src/OUNIT.cpp:753 src/OUNITIF.cpp:1262
 msgid "Rebel Leader"
 msgstr "Dirigeant rebelle"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNIT.cpp:766 src/OUNITIF.cpp:1263
+#: src/OUNIT.cpp:766 src/OUNITIF.cpp:1264
 msgid "General"
 msgstr "Général"
 
 #. TRANSLATORS: Please select a location to build the <Firm>.
-#: src/OUNITIF.cpp:1032
+#: src/OUNITIF.cpp:1033
 msgid "Please select a location to build the Seat of Power."
 msgstr "Choisissez un emplacement pour construire le Temple du Pouvoir."
 
-#: src/OUNITIF.cpp:1033
+#: src/OUNITIF.cpp:1034
 msgid "Please select a location to build the Factory."
 msgstr "Choisissez un emplacement pour construire la Fabrique."
 
-#: src/OUNITIF.cpp:1034
+#: src/OUNITIF.cpp:1035
 msgid "Please select a location to build the Inn."
 msgstr "Choisissez un emplacement pour construire la Taverne."
 
-#: src/OUNITIF.cpp:1035
+#: src/OUNITIF.cpp:1036
 msgid "Please select a location to build the Market."
 msgstr "Choisissez un emplacement pour construire le Marché."
 
-#: src/OUNITIF.cpp:1036
+#: src/OUNITIF.cpp:1037
 msgid "Please select a location to build the Fort."
 msgstr "Choisissez un emplacement pour construire le Fort."
 
-#: src/OUNITIF.cpp:1037
+#: src/OUNITIF.cpp:1038
 msgid "Please select a location to build the Mine."
 msgstr "Choisissez un emplacement pour construire la Mine."
 
-#: src/OUNITIF.cpp:1038
+#: src/OUNITIF.cpp:1039
 msgid "Please select a location to build the Tower of Science."
 msgstr "Choisissez un emplacement pour construire la Tour du savoir."
 
-#: src/OUNITIF.cpp:1039
+#: src/OUNITIF.cpp:1040
 msgid "Please select a location to build the War Factory."
 msgstr "Choisissez un emplacement pour construire la Manufacture d'Armes."
 
-#: src/OUNITIF.cpp:1040
+#: src/OUNITIF.cpp:1041
 msgid "Please select a location to build the Harbor."
 msgstr "Choisissez un emplacement pour construire le Port."
 
-#: src/OUNITIF.cpp:1101
+#: src/OUNITIF.cpp:1102
 msgid "Please select a location to settle."
 msgstr "Choisissez un emplacement à coloniser."
 
-#: src/OUNITIF.cpp:1221
+#: src/OUNITIF.cpp:1222
 msgid "Contribution"
 msgstr ""
 
-#: src/OUNITIF.cpp:1268
+#: src/OUNITIF.cpp:1269
 msgid "Defending Villager"
 msgstr "Vilageois défenseur"
 
-#: src/OUNITIF.cpp:1272
+#: src/OUNITIF.cpp:1273
 msgid "Rebel"
 msgstr "Rebelle"
 
-#: src/OUNITIF.cpp:1285 src/OUNITIF.cpp:1316
+#: src/OUNITIF.cpp:1286 src/OUNITIF.cpp:1317
 msgid "Soldier"
 msgstr "Soldat"
 
-#: src/OUNITIF.cpp:1289
+#: src/OUNITIF.cpp:1290
 msgid "Construction Worker"
 msgstr "Bâtisseur"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1293
+#: src/OUNITIF.cpp:1294
 msgid "Miner"
 msgstr "Mineur"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1297
+#: src/OUNITIF.cpp:1298
 msgid "Worker"
 msgstr "Ouvrier"
 
 # #-#-#-#-#  7kaa.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1301
+#: src/OUNITIF.cpp:1302
 msgid "Scientist"
 msgstr "Scientifique"
 
-#: src/OUNITIF.cpp:1305
+#: src/OUNITIF.cpp:1306
 msgid "Spy"
 msgstr "Espion"
 
-#: src/OUNITIF.cpp:1309
+#: src/OUNITIF.cpp:1310
 msgid "Peasant"
 msgstr "Paysan"
 
-#: src/OUNITIF.cpp:1319
+#: src/OUNITIF.cpp:1320
 msgid "Civilian"
 msgstr "Civil"
 
-#: src/OUNITIF.cpp:1402
+#: src/OUNITIF.cpp:1403
 msgid "Enemies Nearby"
 msgstr "Ennemis proches"
 
-#: src/OUNITIF.cpp:1413
+#: src/OUNITIF.cpp:1414
 msgid "Spy Cloak:"
 msgstr ""
 
@@ -8640,7 +8640,7 @@ msgstr ""
 msgid "An error occurred creating the back surface!"
 msgstr ""
 
-#: src/OWORLD_Z.cpp:1027 src/OWORLD_Z.cpp:1051
+#: src/OWORLD_Z.cpp:1031 src/OWORLD_Z.cpp:1055
 msgid "(Spy)"
 msgstr "(Esp.)"
 

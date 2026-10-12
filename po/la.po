@@ -599,7 +599,7 @@ msgstr "Superfluum rustici: %'d"
 #: src/OFIRMIF2.cpp:93 src/OFIRMIF3.cpp:532 src/OF_BASE.cpp:409
 #: src/OF_CAMP.cpp:608 src/OINFO.cpp:764 src/OR_MIL.cpp:100 src/OR_SPY.cpp:78
 #: src/OR_TOWN.cpp:86 src/OTOWNIF.cpp:322 src/OTOWNIF.cpp:1518
-#: src/OUNITIF.cpp:1181 src/OU_MARIF.cpp:512
+#: src/OUNITIF.cpp:1182 src/OU_MARIF.cpp:512
 msgid "Loyalty"
 msgstr "Fidelitas"
 
@@ -3530,23 +3530,23 @@ msgid "Multiple startup mode options present on the command line."
 msgstr "Satus modus multiplex optiones rectae in imperio adessent."
 
 #: src/OBOX.cpp:180 src/OBOX.cpp:207 src/OBOX.cpp:210 src/OBOX.cpp:264
-#: src/OGAMEMP.cpp:1523 src/OGAMEMP.cpp:1624 src/OGAMEMP.cpp:3032
-#: src/OGAMEMP.cpp:3097 src/OGAMEMP.cpp:3402 src/OGAMEMP.cpp:3405
-#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:3414
-#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:3468
-#: src/OGAMEMP.cpp:4946 src/OGAMEMP.cpp:5012 src/OGAMEMP.cpp:5191
-#: src/OGAMEMP.cpp:5194 src/OGAMEMP.cpp:5197 src/OGAMEMP.cpp:5200
+#: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:3038
+#: src/OGAMEMP.cpp:3103 src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:3411
+#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:3420
+#: src/OGAMEMP.cpp:3423 src/OGAMEMP.cpp:3426 src/OGAMEMP.cpp:3474
+#: src/OGAMEMP.cpp:4955 src/OGAMEMP.cpp:5021 src/OGAMEMP.cpp:5200
 #: src/OGAMEMP.cpp:5203 src/OGAMEMP.cpp:5206 src/OGAMEMP.cpp:5209
-#: src/OGAMEMP.cpp:5257
+#: src/OGAMEMP.cpp:5212 src/OGAMEMP.cpp:5215 src/OGAMEMP.cpp:5218
+#: src/OGAMEMP.cpp:5266
 msgid "Ok"
 msgstr "Bene"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/HELP.RES:70
 #: src/OBOX.cpp:213 src/OBOX.cpp:267 src/OFIRMIF3.cpp:250 src/OF_RESE.cpp:291
-#: src/OGAMEMP.cpp:1524 src/OGAMEMP.cpp:1625 src/OGAMEMP.cpp:2092
-#: src/OGAMEMP.cpp:2195 src/OGAMEMP.cpp:2259 src/OSPYA.cpp:364
-#: src/OTOWNIF.cpp:1368 src/OUNITIF.cpp:1065 src/OUNITIF.cpp:1103
+#: src/OGAMEMP.cpp:1525 src/OGAMEMP.cpp:1626 src/OGAMEMP.cpp:2093
+#: src/OGAMEMP.cpp:2196 src/OGAMEMP.cpp:2260 src/OSPYA.cpp:364
+#: src/OTOWNIF.cpp:1368 src/OUNITIF.cpp:1066 src/OUNITIF.cpp:1104
 msgid "Cancel"
 msgstr "Recusa"
 
@@ -3707,7 +3707,7 @@ msgid "N/A"
 msgstr "N/A"
 
 #: src/OFIRMIF.cpp:763 src/OFIRMIF.cpp:813 src/OF_INN.cpp:452
-#: src/OF_INN.cpp:505 src/OUNITIF.cpp:1193 src/OU_MARIF.cpp:516
+#: src/OF_INN.cpp:505 src/OUNITIF.cpp:1194 src/OU_MARIF.cpp:516
 msgid "Combat"
 msgstr "Pugna"
 
@@ -3765,7 +3765,7 @@ msgid "Assassination Failed."
 msgstr "Interfectio defecit."
 
 #: src/OF_BASE.cpp:384 src/OF_CAMP.cpp:583 src/OGAMHALL.cpp:251
-#: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1255
+#: src/OGFILEA.cpp:677 src/OUNIT.cpp:761 src/OUNITIF.cpp:1256
 msgid "King"
 msgstr "Rex"
 
@@ -3802,15 +3802,15 @@ msgstr "Copia Materiae Rudis"
 msgid "Product Stock"
 msgstr "Producta Copia"
 
-#: src/OF_HARB.cpp:482 src/OU_MARIF.cpp:88
+#: src/OF_HARB.cpp:486 src/OU_MARIF.cpp:88
 msgid "Units"
 msgstr "Unitates"
 
-#: src/OF_HARB.cpp:483 src/OU_MARIF.cpp:89
+#: src/OF_HARB.cpp:487 src/OU_MARIF.cpp:89
 msgid "Goods"
 msgstr "Merces"
 
-#: src/OF_HARB.cpp:656 src/OF_WAR.cpp:307 src/OTOWNIF.cpp:967
+#: src/OF_HARB.cpp:660 src/OF_WAR.cpp:307 src/OTOWNIF.cpp:967
 msgid "Done"
 msgstr "Factum"
 
@@ -3958,68 +3958,68 @@ msgstr "Holgh Latibulum"
 msgid "Ordos"
 msgstr "Ordos"
 
-#: src/OGAMEMP.cpp:533
+#: src/OGAMEMP.cpp:534
 msgid "Create multiplayer session"
 msgstr "Create pluribus sessionem"
 
-#: src/OGAMEMP.cpp:534
+#: src/OGAMEMP.cpp:535
 msgid "Session Name:"
 msgstr "Sessio nomen:"
 
-#: src/OGAMEMP.cpp:535
+#: src/OGAMEMP.cpp:536
 msgid "Set Password:"
 msgstr "Tessera Constitue:"
 
-#: src/OGAMEMP.cpp:580 src/OGAMEMP.cpp:842
+#: src/OGAMEMP.cpp:581 src/OGAMEMP.cpp:843
 msgid "Unable to connect from lobby"
 msgstr "'Non coniungere ex VESTIBULUM"
 
-#: src/OGAMEMP.cpp:587 src/OGAMEMP.cpp:849
+#: src/OGAMEMP.cpp:588 src/OGAMEMP.cpp:850
 msgid "Cannot initialize ENet"
 msgstr "Non initiare ENet"
 
-#: src/OGAMEMP.cpp:603 src/OGAMEMP.cpp:865
+#: src/OGAMEMP.cpp:604 src/OGAMEMP.cpp:866
 msgid "Unable to retrieve leaderboard"
 msgstr "'Non recuperare tabula ducum'"
 
-#: src/OGAMEMP.cpp:631 src/OGAMEMP.cpp:900
+#: src/OGAMEMP.cpp:632 src/OGAMEMP.cpp:901
 msgid "Invalid game name"
 msgstr "Aliquam ludum nomen"
 
-#: src/OGAMEMP.cpp:640 src/OGAMEMP.cpp:909
+#: src/OGAMEMP.cpp:641 src/OGAMEMP.cpp:910
 msgid "Cannot create the game"
 msgstr "Potest creare ludum"
 
-#: src/OGAMEMP.cpp:672 src/OGAMEMP.cpp:938
+#: src/OGAMEMP.cpp:673 src/OGAMEMP.cpp:939
 msgid "Enter the game's address:"
 msgstr "Ludum inscriptionem intrant:"
 
-#: src/OGAMEMP.cpp:680 src/OGAMEMP.cpp:946
+#: src/OGAMEMP.cpp:681 src/OGAMEMP.cpp:947
 msgid "Service not supported"
 msgstr "Opera non praebetur"
 
-#: src/OGAMEMP.cpp:1055
+#: src/OGAMEMP.cpp:1056
 msgid "Local Area Network"
 msgstr "Rete Locale"
 
 #. TRANSLATORS: This is a button label for entering a web or IP Address for connecting to an online game
-#: src/OGAMEMP.cpp:1057
+#: src/OGAMEMP.cpp:1058
 msgid "Enter Address"
 msgstr "Inscriptionem Inscribe"
 
-#: src/OGAMEMP.cpp:1062
+#: src/OGAMEMP.cpp:1063
 msgid "Host or join a game using the local area network"
 msgstr "Hospes vel iungere ludum utens in area network locali"
 
-#: src/OGAMEMP.cpp:1063
+#: src/OGAMEMP.cpp:1064
 msgid "Join a game by entering an address"
 msgstr "Iungere ludum per intrantes talis oratio"
 
-#: src/OGAMEMP.cpp:1064
+#: src/OGAMEMP.cpp:1065
 msgid "Host or join a game over the internet"
 msgstr "Hospes vel iungere ludum in interrete"
 
-#: src/OGAMEMP.cpp:1212
+#: src/OGAMEMP.cpp:1213
 msgid ""
 "Enter your 7kfans.com/forums account credentials to continue.\n"
 "TIP: If you have just previously logged in using the same username, you can "
@@ -4029,15 +4029,15 @@ msgstr ""
 "TIP: Si modo antea initium usoris eodem utens, tesseram tuam blank "
 "relinquere potes, ac prior sessionis adhibetur."
 
-#: src/OGAMEMP.cpp:1213
+#: src/OGAMEMP.cpp:1214
 msgid "Username:"
 msgstr "Nomen usoris:"
 
-#: src/OGAMEMP.cpp:1214
+#: src/OGAMEMP.cpp:1215
 msgid "Password:"
 msgstr "Signum:"
 
-#: src/OGAMEMP.cpp:1402
+#: src/OGAMEMP.cpp:1403
 msgid ""
 "It is not recommended to use this save game file name. Do you wish to "
 "continue?"
@@ -4045,11 +4045,11 @@ msgstr ""
 "Commendatur ut hoc nisi nomen fasciculi lusionis non commendatur. Vis "
 "permanere?"
 
-#: src/OGAMEMP.cpp:1460
+#: src/OGAMEMP.cpp:1461
 msgid "Unable to connect to 7kfans.com"
 msgstr "'Non coniungere ad 7kfans.com"
 
-#: src/OGAMEMP.cpp:1753
+#: src/OGAMEMP.cpp:1754
 msgid ""
 "Unable to connect to the 7kfans.com service. Verify your account information "
 "and try again."
@@ -4057,7 +4057,7 @@ msgstr ""
 "Non potuit coniungere ad 7kfans.com servitium. Cognoscere rationem vestram "
 "indicio conare iterum."
 
-#: src/OGAMEMP.cpp:1755
+#: src/OGAMEMP.cpp:1756
 msgid ""
 "Unable to connect to the 7kfans service.\n"
 "(No libcurl)"
@@ -4065,15 +4065,15 @@ msgstr ""
 "7Kfans non potuit ad coniungere servitium.\n"
 "(Non libcurl)"
 
-#: src/OGAMEMP.cpp:1944
+#: src/OGAMEMP.cpp:1945
 msgid "Unable to communicate with the network"
 msgstr "Communicare cum retiacula"
 
-#: src/OGAMEMP.cpp:1947
+#: src/OGAMEMP.cpp:1948
 msgid "Trying to connect to the service provider"
 msgstr "Conatur ad coniungere ad servitium provisor"
 
-#: src/OGAMEMP.cpp:1962
+#: src/OGAMEMP.cpp:1963
 msgid ""
 "There is a new version of Seven Kingdoms: Ambition at https://seven-kingdoms-"
 "ambition.sourceforge.io/"
@@ -4081,67 +4081,67 @@ msgstr ""
 "Nova versio septem regnorum est: Ambitio in https://seven-kingdoms-"
 "ambition.sourceforge.io/"
 
-#: src/OGAMEMP.cpp:2080
+#: src/OGAMEMP.cpp:2081
 msgid "Enter the game's password:"
 msgstr "Intrant ludi tesseram:"
 
-#: src/OGAMEMP.cpp:2087
+#: src/OGAMEMP.cpp:2088
 msgid "Attempting to connect"
 msgstr "Conanti coniungere"
 
-#: src/OGAMEMP.cpp:2157
+#: src/OGAMEMP.cpp:2158
 msgid "The session you selected no longer exists."
 msgstr "Sessionem quam elegistis iam non est."
 
-#: src/OGAMEMP.cpp:2163
+#: src/OGAMEMP.cpp:2164
 msgid "Unable to connect"
 msgstr "'Non coniungere"
 
-#: src/OGAMEMP.cpp:2168
+#: src/OGAMEMP.cpp:2169
 msgid "Failed to initiate connection"
 msgstr "Deficio ad initium nexum"
 
-#: src/OGAMEMP.cpp:2190
+#: src/OGAMEMP.cpp:2191
 msgid "Please wait while disconnecting..."
 msgstr "Quaeso expectare dum disconnecting..."
 
-#: src/OGAMEMP.cpp:2254
+#: src/OGAMEMP.cpp:2255
 msgid "Retrieving leaderboard"
 msgstr "Index rerum recuperandus"
 
-#: src/OGAMEMP.cpp:2957 src/OGAMEMP.cpp:4870
+#: src/OGAMEMP.cpp:2963 src/OGAMEMP.cpp:4879
 msgid "?anonymous?"
 msgstr "?anonymus?"
 
-#: src/OGAMEMP.cpp:3032 src/OGAMEMP.cpp:4946
+#: src/OGAMEMP.cpp:3038 src/OGAMEMP.cpp:4955
 msgid "The game host has disconnected."
 msgstr "Ludus hospes divisus est."
 
-#: src/OGAMEMP.cpp:3097 src/OGAMEMP.cpp:5012
+#: src/OGAMEMP.cpp:3103 src/OGAMEMP.cpp:5021
 msgid "The game host has aborted the game."
 msgstr "In ludo exercitum ludum abortivum fecit."
 
-#: src/OGAMEMP.cpp:3402 src/OGAMEMP.cpp:5191
+#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:5200
 msgid "Your game version does not match the host's version."
 msgstr "Versio ludus tuus non congruit versioni hospitii."
 
-#: src/OGAMEMP.cpp:3405 src/OGAMEMP.cpp:5194
+#: src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:5203
 msgid "The game you tried to join is currently full."
 msgstr "Ludum iungere conatus est plenus currently."
 
-#: src/OGAMEMP.cpp:3408 src/OGAMEMP.cpp:5197
+#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:5206
 msgid "The host refused to authorize your connection."
 msgstr "Hospes noluit auctori tuo nexum."
 
-#: src/OGAMEMP.cpp:3411 src/OGAMEMP.cpp:5200
+#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:5209
 msgid "You cannot join the game because the host is loading a save."
 msgstr "Ludum iungere non potes quia hospes salvum oneret."
 
-#: src/OGAMEMP.cpp:3414 src/OGAMEMP.cpp:5203
+#: src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:5212
 msgid "You cannot join the game because the host is not loading a save."
 msgstr "Ludum iungere non potes quia hospes salvum non levat."
 
-#: src/OGAMEMP.cpp:3417 src/OGAMEMP.cpp:5206
+#: src/OGAMEMP.cpp:3423 src/OGAMEMP.cpp:5215
 msgid ""
 "You cannot join the game because the saved multiplayer game you selected is "
 "different."
@@ -4149,61 +4149,61 @@ msgstr ""
 "Ludum iungere non potes quia lusoribus lusoribus conservatus diversus est "
 "quam delegisti."
 
-#: src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:5209
+#: src/OGAMEMP.cpp:3426 src/OGAMEMP.cpp:5218
 msgid "The host refused the connection."
 msgstr "Hospes negavit nexum."
 
-#: src/OGAMEMP.cpp:3468 src/OGAMEMP.cpp:5257
+#: src/OGAMEMP.cpp:3474 src/OGAMEMP.cpp:5266
 msgid "The host is using a modified game which you are not running."
 msgstr "Hospes utitur ludo modulo quem non curritis."
 
-#: src/OGAMEMP.cpp:4162 src/OGAMEMP.cpp:5606
+#: src/OGAMEMP.cpp:4171 src/OGAMEMP.cpp:5615
 msgid "Connection string from host is corrupted"
 msgstr "Nexum filum ab hospite corruptum est"
 
-#: src/OGAMEMP.cpp:4169
+#: src/OGAMEMP.cpp:4178
 msgid "Cannot get random seeds from the host"
 msgstr "Non temere semina ab exercitu"
 
-#: src/OGAMEMP.cpp:4175
+#: src/OGAMEMP.cpp:4184
 msgid "Cannot get game configuration information from the host"
 msgstr "Non potest ludum de configuratione notitia exercitum"
 
-#: src/OGAMEMP.cpp:4181 src/OGAMEMP.cpp:5613
+#: src/OGAMEMP.cpp:4190 src/OGAMEMP.cpp:5622
 msgid "Cannot get kingdom information from the host"
 msgstr "Non potest regnum notitia de exercitu"
 
-#: src/OGAMEMP.cpp:4187 src/OGAMEMP.cpp:5619
+#: src/OGAMEMP.cpp:4196 src/OGAMEMP.cpp:5628
 msgid "The host cannot recognize your machine."
 msgstr "Hospes non potest cognoscere machinam tuam."
 
-#: src/OGAMEMP.cpp:4193 src/OGAMEMP.cpp:5625
+#: src/OGAMEMP.cpp:4202 src/OGAMEMP.cpp:5634
 msgid "Cannot receive important information from the host"
 msgstr "Non potest accipere magna notitia ab exercitu"
 
-#: src/OGAMEMP.cpp:4240 src/OGAMEMP.cpp:5665
+#: src/OGAMEMP.cpp:4249 src/OGAMEMP.cpp:5674
 msgid "Some player(s) encountered errors when initializing the game."
 msgstr "Quidam lusor (s) errores offendit cum ludum initializationem."
 
-#: src/OGAMEMP.cpp:5347 src/OGAMEMP.cpp:5506
+#: src/OGAMEMP.cpp:5356 src/OGAMEMP.cpp:5515
 #, c-format
 msgid "This multiplayer saved game needs %d human player"
 msgid_plural "This multiplayer saved game needs %d human players"
 msgstr[0] "Hoc ludum servatum lusorum lusorum requirit %d lusorem humanum"
 msgstr[1] "Hoc ludum servatum multi-lusorum %d lusores humanos requirit"
 
-#: src/OGAMEMP.cpp:5350 src/OGAMEMP.cpp:5509
+#: src/OGAMEMP.cpp:5359 src/OGAMEMP.cpp:5518
 #, c-format
 msgid "while now there is %d human player."
 msgid_plural "while now there are %d human players."
 msgstr[0] "dum nunc est %d lusor humanus."
 msgstr[1] "dum nunc sunt %d lusores humani."
 
-#: src/OGAMEMP.cpp:5353 src/OGAMEMP.cpp:5512
+#: src/OGAMEMP.cpp:5362 src/OGAMEMP.cpp:5521
 msgid "The game cannot start."
 msgstr "Ludus non potest incipere."
 
-#: src/OGAMEMP.cpp:5572
+#: src/OGAMEMP.cpp:5581
 msgid "Incorrect kingdom information received from the host."
 msgstr "Recta regnum notitia ab exercitu recepta."
 
@@ -7071,7 +7071,7 @@ msgstr "Progressus Investigationis"
 msgid "Tower of Science"
 msgstr "Turris Scientiae"
 
-#: src/OR_TECH.cpp:143 src/OUNITIF.cpp:1276
+#: src/OR_TECH.cpp:143 src/OUNITIF.cpp:1277
 msgid "Greater Being"
 msgstr "Ens Maius"
 
@@ -7261,7 +7261,7 @@ msgstr "Fabricatio"
 msgid "Research"
 msgstr "Investigatio"
 
-#: src/OSKILL.cpp:36 src/OUNITIF.cpp:1213
+#: src/OSKILL.cpp:36 src/OUNITIF.cpp:1214
 msgid "Spying"
 msgstr "Speculatio"
 
@@ -8725,112 +8725,112 @@ msgstr "Desine Exercitationem"
 msgid "Tutorial files not found."
 msgstr "Documenta doceo non inveni."
 
-#: src/OUNIT.cpp:753 src/OUNITIF.cpp:1261
+#: src/OUNIT.cpp:753 src/OUNITIF.cpp:1262
 msgid "Rebel Leader"
 msgstr "Dux Rebellorum"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNIT.cpp:766 src/OUNITIF.cpp:1263
+#: src/OUNIT.cpp:766 src/OUNITIF.cpp:1264
 msgid "General"
 msgstr "Dux"
 
 #. TRANSLATORS: Please select a location to build the <Firm>.
-#: src/OUNITIF.cpp:1032
+#: src/OUNITIF.cpp:1033
 msgid "Please select a location to build the Seat of Power."
 msgstr "Placere eligere locum ad sedem Potentiae aedificandam."
 
-#: src/OUNITIF.cpp:1033
+#: src/OUNITIF.cpp:1034
 msgid "Please select a location to build the Factory."
 msgstr "Placere eligere locum ad Officina aedificare."
 
-#: src/OUNITIF.cpp:1034
+#: src/OUNITIF.cpp:1035
 msgid "Please select a location to build the Inn."
 msgstr "Quaeso elige locum aedificandi Deversorium."
 
-#: src/OUNITIF.cpp:1035
+#: src/OUNITIF.cpp:1036
 msgid "Please select a location to build the Market."
 msgstr "Placere eligere locum ad Forum aedificandum."
 
-#: src/OUNITIF.cpp:1036
+#: src/OUNITIF.cpp:1037
 msgid "Please select a location to build the Fort."
 msgstr "Placere eligere locum munimenti aedificandi."
 
-#: src/OUNITIF.cpp:1037
+#: src/OUNITIF.cpp:1038
 msgid "Please select a location to build the Mine."
 msgstr "Placere eligere locum ad aedificandum meum."
 
-#: src/OUNITIF.cpp:1038
+#: src/OUNITIF.cpp:1039
 msgid "Please select a location to build the Tower of Science."
 msgstr "Placere eligere locum ad Turris Scientiae aedificandum."
 
-#: src/OUNITIF.cpp:1039
+#: src/OUNITIF.cpp:1040
 msgid "Please select a location to build the War Factory."
 msgstr "Placere eligere locum ad officinam Bellum aedificandam."
 
-#: src/OUNITIF.cpp:1040
+#: src/OUNITIF.cpp:1041
 msgid "Please select a location to build the Harbor."
 msgstr "Placere eligere locum ad portum aedificare."
 
-#: src/OUNITIF.cpp:1101
+#: src/OUNITIF.cpp:1102
 msgid "Please select a location to settle."
 msgstr "Placere eligere locum componere."
 
-#: src/OUNITIF.cpp:1221
+#: src/OUNITIF.cpp:1222
 msgid "Contribution"
 msgstr "Contributio"
 
-#: src/OUNITIF.cpp:1268
+#: src/OUNITIF.cpp:1269
 msgid "Defending Villager"
 msgstr "Vicanus Defendens"
 
-#: src/OUNITIF.cpp:1272
+#: src/OUNITIF.cpp:1273
 msgid "Rebel"
 msgstr "Rebellis"
 
-#: src/OUNITIF.cpp:1285 src/OUNITIF.cpp:1316
+#: src/OUNITIF.cpp:1286 src/OUNITIF.cpp:1317
 msgid "Soldier"
 msgstr "Miles"
 
-#: src/OUNITIF.cpp:1289
+#: src/OUNITIF.cpp:1290
 msgid "Construction Worker"
 msgstr "Operarius Aedificatorius"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1293
+#: src/OUNITIF.cpp:1294
 msgid "Miner"
 msgstr "Fossor"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1297
+#: src/OUNITIF.cpp:1298
 msgid "Worker"
 msgstr "Operarius"
 
 # #-#-#-#-#  7k-ambition.res.pot  #-#-#-#-#
 # data/RESOURCE/STD/00007-FIRM.dbf
-#: src/OUNITIF.cpp:1301
+#: src/OUNITIF.cpp:1302
 msgid "Scientist"
 msgstr "Scientiae peritus"
 
-#: src/OUNITIF.cpp:1305
+#: src/OUNITIF.cpp:1306
 msgid "Spy"
 msgstr "Speculator"
 
-#: src/OUNITIF.cpp:1309
+#: src/OUNITIF.cpp:1310
 msgid "Peasant"
 msgstr "Rusticus"
 
-#: src/OUNITIF.cpp:1319
+#: src/OUNITIF.cpp:1320
 msgid "Civilian"
 msgstr "Civilis"
 
-#: src/OUNITIF.cpp:1402
+#: src/OUNITIF.cpp:1403
 msgid "Enemies Nearby"
 msgstr "Hostes Propinqui"
 
-#: src/OUNITIF.cpp:1413
+#: src/OUNITIF.cpp:1414
 msgid "Spy Cloak:"
 msgstr "Sagum spionum:"
 
@@ -8959,7 +8959,7 @@ msgstr "Error occurrit creando frontem!"
 msgid "An error occurred creating the back surface!"
 msgstr "Error occurrit in superficie posteriori creantis!"
 
-#: src/OWORLD_Z.cpp:1027 src/OWORLD_Z.cpp:1051
+#: src/OWORLD_Z.cpp:1031 src/OWORLD_Z.cpp:1055
 msgid "(Spy)"
 msgstr "(Speculator)"
 
