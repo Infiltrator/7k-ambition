@@ -10,6 +10,11 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed the printing of the path separator (/ instead of \) in the path of the
+  config file in the version mismatch message on Windows.
+
 
 ## [3.2.14] — 2026-10-13
 
