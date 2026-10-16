@@ -427,7 +427,9 @@ void Unit::sendToDestination(
             _7kaaUnitRecordNumbers.size()
           );
           return;
-        } else if (unit_res[unit->unit_id]->race_id > 0) {
+        } else if (unit_res[unit->unit_id]->race_id > 0
+          || target->firm_id == FIRM_HARBOR
+        ) {
           unit_array.assign(
             _7kaaCoordinates.x,
             _7kaaCoordinates.y,
