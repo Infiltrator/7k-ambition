@@ -79,6 +79,18 @@ const std::map<
 };
 
 
+std::string checksumMismatchMessage(
+  const std::string _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  SDL_SetClipboardText(Ambition::DirectoryPath::config().string().c_str());
+
+  return Ambition::Vga::checksumMismatchExtraMessage();
+}
+
 void displayChatMessages(
   DynArray& messageList,
   long& refreshFlag

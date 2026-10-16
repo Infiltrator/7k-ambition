@@ -46,6 +46,10 @@ enum PlayerStatusTransition {
 };
 
 
+std::string checksumMismatchMessage(
+  const std::string _7kaaCalculation
+);
+
 void displayChatMessages(
   DynArray& messageList,
   long& refreshFlag

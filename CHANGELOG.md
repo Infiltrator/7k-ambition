@@ -23,6 +23,11 @@ speaking, considered to be the player's experience.
 - Fixed the printing of the path separator (/ instead of \) in the path of the
   config file in the version mismatch message on Windows.
 
+### Changed
+
+- Show a more understandable message when joining a multiplayer game with
+  different config.txt settings, including the location of the file to change.
+
 
 ## [3.2.14] — 2026-10-13
 

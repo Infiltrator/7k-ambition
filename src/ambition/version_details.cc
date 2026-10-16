@@ -35,6 +35,12 @@ std::vector<VersionUpdates> getVersionDetails(
           _("Fixed the printing of the path separator (/ instead of \\) in the path of the config file in the version mismatch message on Windows."),
         },
       },
+      {
+        .heading = HEADING_CHANGED,
+        .items = {
+          _("Show a more understandable message when joining a multiplayer game with different config.txt settings, including the location of the file to change."),
+        },
+      },
     },
   },
   {

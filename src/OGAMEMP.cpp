@@ -3496,7 +3496,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 				case MPMSG_VERSION_CHECKSUM:
 					if( !remote.is_host && ((MpStructVersionChecksum*)recvPtr)->checksum != config_adv.checksum )
 					{
-						mp_info_box_show(&info_box, _("The host is using a modified game which you are not running."), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::checksumMismatchMessage(_("The host is using a modified game which you are not running.")).c_str(), _("Ok"));
 					}
 					break;
 				default:		// if the game is started, any other thing is received
@@ -5315,7 +5315,7 @@ int Game::mp_select_load_option(char *fileName)
 				case MPMSG_VERSION_CHECKSUM:
 					if( !remote.is_host && ((MpStructVersionChecksum*)recvPtr)->checksum != config_adv.checksum )
 					{
-						mp_info_box_show(&info_box, _("The host is using a modified game which you are not running."), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::checksumMismatchMessage(_("The host is using a modified game which you are not running.")).c_str(), _("Ok"));
 					}
 					break;
 				default:		// if the game is started, any other thing is received
