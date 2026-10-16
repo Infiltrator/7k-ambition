@@ -12,6 +12,8 @@ speaking, considered to be the player's experience.
 
 ### Fixed
 
+- Fixed Ships moving up to but not entering Harbours when given a waypoint to on
+  top of a Harbour.
 - Fixed the printing of the path separator (/ instead of \) in the path of the
   config file in the version mismatch message on Windows.
 
