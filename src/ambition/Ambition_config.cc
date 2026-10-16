@@ -452,12 +452,12 @@ std::filesystem::path config(
     return std::filesystem::path(sys.dir_config);
   }
 
-  return path / "config/";
+  return path / "config" / "";
 }
 
 std::filesystem::path multiplayerSave(
 ) {
-  return std::filesystem::path(sys.dir_config) / "save" / "multiplayer/";
+  return std::filesystem::path(sys.dir_config) / "save" / "multiplayer" / "";
 }
 
 std::filesystem::path save(
@@ -474,12 +474,12 @@ std::filesystem::path save(
 
 std::filesystem::path screenshot(
 ) {
-  return std::filesystem::path(sys.dir_config) / "screenshot/";
+  return std::filesystem::path(sys.dir_config) / "screenshot" / "";
 }
 
 std::filesystem::path singleplayerSave(
 ) {
-  return std::filesystem::path(sys.dir_config) / "save" / "singleplayer/";
+  return std::filesystem::path(sys.dir_config) / "save" / "singleplayer" / "";
 }
 
 } // namespace Ambition::DirectoryPath

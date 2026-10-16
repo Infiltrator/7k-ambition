@@ -21,6 +21,12 @@ std::vector<VersionUpdates> getVersionDetails(
   {
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
+      {
+        .heading = HEADING_FIXED,
+        .items = {
+          _("Fixed the printing of the path separator (/ instead of \\) in the path of the config file in the version mismatch message on Windows."),
+        },
+      },
     },
   },
   {
