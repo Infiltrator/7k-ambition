@@ -22,6 +22,12 @@ std::vector<VersionUpdates> getVersionDetails(
     .identifier = IDENTIFIER_PREVIEW,
     .sections = {
       {
+        .heading = HEADING_ADDED,
+        .items = {
+          _("Show player status changes (joined, left, ready, etc.) messages in the multiplayer lobby chat."),
+        },
+      },
+      {
         .heading = HEADING_FIXED,
         .items = {
           _("Fixed Ships moving up to but not entering Harbours when given a waypoint to on top of a Harbour."),
