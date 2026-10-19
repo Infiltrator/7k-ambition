@@ -30,6 +30,7 @@
 #include <string>
 
 #include "Ambition_error_handling.hh"
+#include "Ambition_remote.hh"
 
 class Button3D;
 class Firm;
@@ -175,6 +176,14 @@ void displayInnGuestLeavingSoonMark(
   const InnUnit* _7kaaInnGuest,
   const int top
 );
+
+namespace Vga {
+
+void displayLobbyChat(
+  const std::vector<Remote::LobbyChatMessage> messages
+);
+
+} // namespace Ambition::Vga
 
 void displayStealReportsConfirmationMenu(
   const int refreshFlag,

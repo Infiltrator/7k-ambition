@@ -62,8 +62,24 @@ struct MpStructChatMsg {
   }
 };
 
-} // namespace Ambition::Remote
 
+std::vector<LobbyChatMessage> decode7kaaMessageList(
+  DynArray& messageList
+) {
+  std::vector<LobbyChatMessage> lobbyChatMessages;
+
+  for (auto i = 1; i <= messageList.size(); i++) {
+    const auto base7kaaMessage
+      = static_cast<MpStructChatMsg*>(messageList.get(i));
+    auto message
+      = LobbyChatMessage(base7kaaMessage->sender, base7kaaMessage->content);
+    lobbyChatMessages.push_back(message);
+  }
+
+  return lobbyChatMessages;
+}
+
+} // namespace Ambition::Remote
 
 void printSyncError(
 ) {

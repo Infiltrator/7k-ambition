@@ -35,6 +35,7 @@
 #include "Ambition_config.hh"
 #include "Ambition_error_handling.hh"
 #include "Ambition_remote.hh"
+#include "Ambition_vga.hh"
 #include "format.hh"
 
 
@@ -46,6 +47,8 @@ const std::map<
 > PLAYER_STATUS_TRANSITION_MESSAGES = {
   {
     RefusedVersion,
+    /* TRANSLATORS: These ones are preceded by the player name, and are used in
+     * the multiplayer lobby. */
     N_("attempted to join the game, but has a mismatching version.>"),
   },
   {
@@ -74,6 +77,25 @@ const std::map<
   { Unready, N_("is no longer ready to start.>") },
 };
 
+
+void displayChatMessages(
+  DynArray& messageList,
+  long& refreshFlag
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  constexpr auto REFRESH_MESSAGES_AREA = 0x2;
+  if (!(refreshFlag & REFRESH_MESSAGES_AREA)) {
+    return;
+  }
+
+  Ambition::Vga::displayLobbyChat(
+    Ambition::Remote::decode7kaaMessageList(messageList)
+  );
+  refreshFlag &= ~REFRESH_MESSAGES_AREA;
+}
 
 void sendChatHistory(
   const int _7kaaPlayerId,

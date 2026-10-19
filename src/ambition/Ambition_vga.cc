@@ -551,6 +551,40 @@ void displayInnGuestLeavingSoonMark(
   }
 }
 
+namespace Vga {
+
+void displayLobbyChat(
+  const std::vector<Remote::LobbyChatMessage> messages
+) {
+  auto textArea = UserInterface::Multiplayer::GameSetup::Chat::AREA;
+  copyBackBufferToFront(textArea);
+
+  for (size_t i = 0; i < messages.size(); i++) {
+    const auto message = messages[i];
+
+    auto text = message.sender;
+    if (message.sender[0] == '<'
+      && message.contents[message.contents.length() - 1] == '>'
+    ) {
+      text += " ";
+      text += _(message.contents.c_str());
+    } else {
+      text += ": " + message.contents;
+    }
+
+    UserInterface::printParagraph(font_san, text, textArea);
+
+    textArea = UserInterface::Multiplayer::GameSetup::Chat::AREA.inner({
+      .top = static_cast<unsigned int>(
+        (font_san.next_text_y - font_san.font_height)
+        - UserInterface::Multiplayer::GameSetup::Chat::AREA.start.top
+      ),
+    });
+  }
+}
+
+} // namespace Ambition::Vga
+
 void displayStealReportsConfirmationMenu(
   const int refreshFlag,
   const ::Spy* _7kaaSpy,

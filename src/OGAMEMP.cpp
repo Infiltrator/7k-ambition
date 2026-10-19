@@ -2972,6 +2972,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 			}
 
 			// ------------- display incoming chat message --------//
+
+			Ambition::Lobby::displayChatMessages(messageList, mRefreshFlag);
+
 			if( mRefreshFlag & MGOPTION_IN_MESSAGE )
 			{
 				vga_util.blt_buf( 101, 135, 700, 202, 0 );
@@ -4909,6 +4912,9 @@ int Game::mp_select_load_option(char *fileName)
 			}
 
 			// ------------- display incoming chat message --------//
+
+			Ambition::Lobby::displayChatMessages(messageList, mRefreshFlag);
+
 			if( mRefreshFlag & MGOPTION_IN_MESSAGE )
 			{
 				vga_util.blt_buf( 101, 135, 700, 202, 0 );

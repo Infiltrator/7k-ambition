@@ -26,11 +26,26 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class DynArray;
 
 
 namespace Ambition {
+
+namespace Remote {
+
+struct LobbyChatMessage {
+  std::string sender;
+  std::string contents;
+};
+
+
+std::vector<LobbyChatMessage> decode7kaaMessageList(
+  DynArray& messageList
+);
+
+} // namespace Ambition::Remote
 
 void printSyncError();
 
