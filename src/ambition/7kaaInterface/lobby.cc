@@ -27,6 +27,7 @@
 #include "lobby.hh"
 
 #include <map>
+#include <SDL2/SDL_clipboard.h>
 
 #include "gettext.h"
 #include "multiplayer.h"
@@ -143,6 +144,18 @@ void sendPlayerNotification(
     messageList,
     refreshFlag
   );
+}
+
+std::string versionMismatchMessage(
+  const std::string _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  SDL_SetClipboardText(Ambition::DirectoryPath::config().string().c_str());
+
+  return Ambition::Vga::versionMismatchExtraMessage();
 }
 
 } // namespace _7kaaAmbitionInterface::Lobby

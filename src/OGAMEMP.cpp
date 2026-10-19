@@ -3430,7 +3430,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					switch (((MpStructRefuseNewPlayer *)recvPtr)->reason)
 					{
 					case REFUSE_REASON_SKVER_MISMATCH:
-						mp_info_box_show(&info_box, Ambition::Menu::versionMismatchMessage(_("Your game version does not match the host's version.")).c_str(), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::versionMismatchMessage(_("Your game version does not match the host's version.")).c_str(), _("Ok"));
 						break;
 					case REFUSE_REASON_GAME_FULL:
 						mp_info_box_show(&info_box, _("The game you tried to join is currently full."), _("Ok"));

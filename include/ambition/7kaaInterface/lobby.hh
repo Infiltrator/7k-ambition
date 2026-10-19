@@ -69,6 +69,10 @@ void sendPlayerNotification(
   long& refreshFlag
 );
 
+std::string versionMismatchMessage(
+  const std::string _7kaaCalculation
+);
+
 } // namespace _7kaaAmbitionInterface::Lobby
 
 #ifndef _AMBITION_IMPLEMENTATION

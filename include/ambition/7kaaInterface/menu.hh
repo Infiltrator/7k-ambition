@@ -51,10 +51,6 @@ void initialiseRandomCivilisationSelectionButton(
   const ButtonCustomFP _7kaaButtonDrawer
 );
 
-std::string versionMismatchMessage(
-  const std::string _7kaaCalculation
-);
-
 } // namespace _7kaaAmbitionInterface::Menu
 
 #ifndef _AMBITION_IMPLEMENTATION
