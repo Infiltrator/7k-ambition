@@ -68,11 +68,36 @@ std::vector<LobbyChatMessage> decode7kaaMessageList(
 ) {
   std::vector<LobbyChatMessage> lobbyChatMessages;
 
+  std::vector<bool> _7kaaMessageProcessed(messageList.size() + 1, false);
   for (auto i = 1; i <= messageList.size(); i++) {
+    if (_7kaaMessageProcessed[i]) {
+      continue;
+    }
+
     const auto base7kaaMessage
       = static_cast<MpStructChatMsg*>(messageList.get(i));
-    auto message
-      = LobbyChatMessage(base7kaaMessage->sender, base7kaaMessage->content);
+    auto message = LobbyChatMessage(base7kaaMessage->sender, {});
+
+    for (auto j = i; j <= messageList.size(); j++) {
+      const auto _7kaaMessage
+        = static_cast<MpStructChatMsg*>(messageList.get(j));
+
+      if (_7kaaMessage->sender != message.sender) {
+        continue;
+      }
+
+      _7kaaMessageProcessed[j] = true;
+      message.contents += _7kaaMessage->content;
+
+      const auto contentsLength
+        = strnlen(_7kaaMessage->content, sizeof(_7kaaMessage->content));
+      if (contentsLength == sizeof(_7kaaMessage->content)
+        || _7kaaMessage->content[contentsLength + 1] != SDLK_BACKSPACE
+      ) {
+        break;
+      }
+    }
+
     lobbyChatMessages.push_back(message);
   }
 
@@ -114,19 +139,47 @@ void sendLobbyChatMessage(
   DynArray& messageList,
   long& refreshFlag
 ) {
-  MpStructChatMsg message(from, contents);
+  std::string::size_type charactersSent = 0;
 
-  /* Bypass sending/receiving own message and add it in directly.  (Less than
-   * ideal, but that's the way that 7kaa works.) */
-  while (messageList.size() >= 4) {
-    messageList.linkout(1);
+  while(charactersSent < contents.length()) {
+    constexpr auto MAXIMUM_SIZE = sizeof(MpStructChatMsg::content) - 2;
+    auto substring = contents.substr(charactersSent, MAXIMUM_SIZE);
+
+    if (charactersSent + MAXIMUM_SIZE < contents.length()) {
+      const auto splitPosition = substring.find_last_of(" -");
+
+      constexpr auto MAXIMUM_CUTOFF = 20;
+      constexpr auto MINIMUM_SPLIT_POSITION = MAXIMUM_SIZE - MAXIMUM_CUTOFF;
+      if (splitPosition != std::string::npos
+        && splitPosition > MINIMUM_SPLIT_POSITION
+      ) {
+        substring = contents.substr(
+          charactersSent,
+          splitPosition + (substring[splitPosition] == '-' ? 1 : 0)
+        );
+      }
+    }
+
+    MpStructChatMsg message(from, substring);
+
+    if (charactersSent + substring.length() < contents.length()) {
+      message.content[substring.length() + 1] = SDLK_BACKSPACE;
+    }
+
+    /* Bypass sending/receiving own message and add it in directly.  (Less than
+     * ideal, but that's the way that 7kaa works.) */
+    while (messageList.size() >= 4) {
+      messageList.linkout(1);
+    }
+    messageList.linkin(&message);
+    constexpr auto REFRESH_MESSAGES_AREA = 0x2;
+    refreshFlag |= REFRESH_MESSAGES_AREA;
+
+    /* Send the message to the other players. */
+    mp_obj.send(BROADCAST_PID, &message, sizeof(message));
+
+    charactersSent += substring.length();
   }
-  messageList.linkin(&message);
-  constexpr auto REFRESH_MESSAGES_AREA = 0x2;
-  refreshFlag |= REFRESH_MESSAGES_AREA;
-
-  /* Send the message to the other players. */
-  mp_obj.send(BROADCAST_PID, &message, sizeof(message));
 }
 
 } // namespace Ambition::Remote
