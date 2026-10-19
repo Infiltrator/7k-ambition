@@ -36,6 +36,11 @@ void printSyncError();
 
 namespace Remote {
 
+void sendLobbyChatHistory(
+  const int _7kaaPlayerId,
+  DynArray& messageList
+);
+
 void sendLobbyChatMessage(
   const std::string from,
   const std::string contents,

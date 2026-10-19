@@ -3237,6 +3237,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 								}
 							}
 
+							Ambition::Lobby::sendChatHistory(from, messageList);
 							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Connected, newPlayerMsg->name, messageList, mRefreshFlag);
 
 							MpStructVersionChecksum msgVerCksum(config_adv.checksum);
@@ -5160,6 +5161,7 @@ int Game::mp_select_load_option(char *fileName)
 								}
 							}
 
+							Ambition::Lobby::sendChatHistory(from, messageList);
 							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Connected, newPlayerMsg->name, messageList, mRefreshFlag);
 
 							MpStructVersionChecksum msgVerCksum(config_adv.checksum);

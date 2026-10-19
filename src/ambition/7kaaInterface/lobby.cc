@@ -75,6 +75,21 @@ const std::map<
 };
 
 
+void sendChatHistory(
+  const int _7kaaPlayerId,
+  DynArray& messageList
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return;
+  }
+
+  if (!remote.is_host) {
+    return;
+  }
+
+  Ambition::Remote::sendLobbyChatHistory(_7kaaPlayerId, messageList);
+}
+
 void sendPlayerNotification(
   const PlayerStatusTransition transition,
   const int _7kaaPlayerId,

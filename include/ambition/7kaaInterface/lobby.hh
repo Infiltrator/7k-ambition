@@ -46,6 +46,11 @@ enum PlayerStatusTransition {
 };
 
 
+void sendChatHistory(
+  const int _7kaaPlayerId,
+  DynArray& messageList
+);
+
 void sendPlayerNotification(
   const PlayerStatusTransition transition,
   const int _7kaaPlayerId,

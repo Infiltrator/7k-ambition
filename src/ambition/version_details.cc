@@ -25,6 +25,7 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_ADDED,
         .items = {
           _("Show player status changes (joined, left, ready, etc.) messages in the multiplayer lobby chat."),
+          _("Multiplayer lobby chat history is now sent to players joining the game."),
         },
       },
       {

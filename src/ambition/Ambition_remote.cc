@@ -81,6 +81,17 @@ void printSyncError(
 
 namespace Remote {
 
+void sendLobbyChatHistory(
+  const int _7kaaPlayerId,
+  DynArray& messageList
+) {
+  for (auto i = 1; i <= messageList.size(); i++) {
+    const auto storedMessage = static_cast<MpStructChatMsg*>(messageList.get(i));
+    MpStructChatMsg message(storedMessage->sender, storedMessage->content);
+    mp_obj.send(_7kaaPlayerId, &message, sizeof(message));
+  }
+}
+
 void sendLobbyChatMessage(
   const std::string from,
   const std::string contents,

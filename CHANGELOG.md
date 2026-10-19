@@ -14,6 +14,7 @@ speaking, considered to be the player's experience.
 
 - Show player status changes (joined, left, ready, etc.) messages in the
   multiplayer lobby chat.
+- Multiplayer lobby chat history is now sent to players joining the game.
 
 ### Fixed
 
