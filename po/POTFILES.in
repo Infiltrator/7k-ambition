@@ -2,6 +2,7 @@
 src/ambition/7kaaInterface/building.cc
 src/ambition/7kaaInterface/diplomacy.cc
 src/ambition/7kaaInterface/inn.cc
+src/ambition/7kaaInterface/lobby.cc
 src/ambition/7kaaInterface/score.cc
 src/ambition/Ambition_config.cc
 src/ambition/Ambition_control.cc

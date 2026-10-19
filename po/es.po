@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 08:45+1000\n"
+"POT-Creation-Date: 2026-10-19 19:48+1000\n"
 "PO-Revision-Date: 2026-06-02 11:37+1000\n"
 "Last-Translator: Jorge Maldonado Ventura\n"
 "Language-Team: \n"
@@ -67,6 +67,55 @@ msgstr ""
 #. * to another Inn, and so will have fewer mercenaries.
 #: src/ambition/7kaaInterface/inn.cc:66
 msgid "(too close)"
+msgstr ""
+
+#. TRANSLATORS: These ones are preceded by the player name, and are used in
+#. * the multiplayer lobby.
+#: src/ambition/7kaaInterface/lobby.cc:52
+msgid "attempted to join the game, but has a mismatching version.>"
+msgstr ""
+
+#: src/ambition/7kaaInterface/lobby.cc:56
+#, fuzzy
+msgid "was unable to join the game, because it is already full.>"
+msgstr ""
+"No se puede unir al juego porque el anfitrión esta cargando una partida "
+"guardada."
+
+#: src/ambition/7kaaInterface/lobby.cc:60
+msgid "attempted to join the game, but did not provide the correct password.>"
+msgstr ""
+
+#: src/ambition/7kaaInterface/lobby.cc:62
+msgid "joined the game.>"
+msgstr ""
+
+#: src/ambition/7kaaInterface/lobby.cc:65
+msgid "attempted to join the game, but did not choose a save file.>"
+msgstr ""
+
+#: src/ambition/7kaaInterface/lobby.cc:69
+#, fuzzy
+msgid "attempted to join the game, but was trying to load a save file.>"
+msgstr ""
+"No se puede conectar al juego porque el anfitrión no esta cargando una "
+"partida guardada."
+
+#: src/ambition/7kaaInterface/lobby.cc:73
+msgid "attempted to join the game, but did not choose a matching save file.>"
+msgstr ""
+
+#: src/ambition/7kaaInterface/lobby.cc:75
+#, fuzzy
+msgid "has left the game.>"
+msgstr "No se puede crear el juego"
+
+#: src/ambition/7kaaInterface/lobby.cc:76
+msgid "is ready to start.>"
+msgstr ""
+
+#: src/ambition/7kaaInterface/lobby.cc:77
+msgid "is no longer ready to start.>"
 msgstr ""
 
 #: src/ambition/7kaaInterface/score.cc:104

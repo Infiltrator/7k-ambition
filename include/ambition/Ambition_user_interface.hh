@@ -232,6 +232,12 @@ namespace Multiplayer {
 
 namespace GameSetup {
 
+namespace Chat {
+
+extern const Rectangle AREA;
+
+} // namespace Multiplayer::GameSetup::Chat
+
 extern const Rectangle POLITY_COUNT_BUTTON;
 extern const Rectangle RANDOM_CIVILISATION_BUTTON;
 

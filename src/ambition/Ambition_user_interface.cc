@@ -88,6 +88,12 @@ namespace Multiplayer {
 
 namespace GameSetup {
 
+namespace Chat {
+
+const Rectangle AREA = Rectangle::fromPixel({ 100, 134 }, { 600, 70 });
+
+} // namespace Multiplayer::GameSetup::Chat
+
 const Rectangle POLITY_COUNT_BUTTON = Rectangle::fromPixel(
   { 557, 364 },
   POLITY_COUNT_BUTTON_SIZE

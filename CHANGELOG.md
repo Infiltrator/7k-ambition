@@ -10,6 +10,12 @@ speaking, considered to be the player's experience.
 
 ## [Unreleased]
 
+### Added
+
+- Show player status changes (joined, left, ready, etc.) messages in the
+  multiplayer lobby chat.
+- Multiplayer lobby chat history is now sent to players joining the game.
+
 ### Fixed
 
 - Fixed Ships moving up to but not entering Harbours when given a waypoint to on

@@ -23,6 +23,7 @@
 
 #include "ambition/7kaaInterface/control.hh"
 #include "ambition/7kaaInterface/draw.hh"
+#include "ambition/7kaaInterface/lobby.hh"
 #include "ambition/7kaaInterface/menu.hh"
 
 #include <version.h>
@@ -2971,6 +2972,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 			}
 
 			// ------------- display incoming chat message --------//
+
+			Ambition::Lobby::displayChatMessages(messageList, mRefreshFlag);
+
 			if( mRefreshFlag & MGOPTION_IN_MESSAGE )
 			{
 				vga_util.blt_buf( 101, 135, 700, 202, 0 );
@@ -3041,6 +3045,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 			if( remote.is_host )
 			{
 				// inform clients of player disconnection
+
+				Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Disconnected, from, messageList, mRefreshFlag);
+
 				MpStructPlayerDisconnect msgDisconnect(from);
 				mp_obj.send(BROADCAST_PID, &msgDisconnect, sizeof(msgDisconnect));
 				mp_obj.delete_player(from);
@@ -3129,18 +3136,27 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SKVER_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedVersion, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 						if( regPlayerCount >= MAX_NATION )
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_GAME_FULL);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedFull, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 						if( !mp_obj.auth_player(from, newPlayerMsg->name, newPlayerMsg->pass) )
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_NOT_AUTHORIZED);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedAuthorisation, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 
@@ -3224,6 +3240,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 								}
 							}
 
+							Ambition::Lobby::sendChatHistory(from, messageList);
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Connected, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							MpStructVersionChecksum msgVerCksum(config_adv.checksum);
 							mp_obj.send(from, &msgVerCksum, sizeof(msgVerCksum));
 
@@ -3246,6 +3265,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						// client has incorrect game mode, reject
 						MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SAVEFILE_NOT_REQUIRED);
 						mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+						Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedNoSaveFileRequired, ((MpStructLoadGameNewPlayer*)recvPtr)->name, messageList, mRefreshFlag);
 					}
 					break;
 				case MPMSG_ACCEPT_NEW_PLAYER:
@@ -3371,6 +3392,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							{
 								playerReadyFlag[p] = 1;
 								mRefreshFlag |= MGOPTION_PLAYERS;
+
+								Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Ready, regPlayerId[p], messageList, mRefreshFlag);
 							}
 						}
 					}
@@ -3383,6 +3406,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							{
 								playerReadyFlag[p] = 0;
 								mRefreshFlag |= MGOPTION_PLAYERS;
+
+								Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Unready, regPlayerId[p], messageList, mRefreshFlag);
 							}
 						}
 					}
@@ -4887,6 +4912,9 @@ int Game::mp_select_load_option(char *fileName)
 			}
 
 			// ------------- display incoming chat message --------//
+
+			Ambition::Lobby::displayChatMessages(messageList, mRefreshFlag);
+
 			if( mRefreshFlag & MGOPTION_IN_MESSAGE )
 			{
 				vga_util.blt_buf( 101, 135, 700, 202, 0 );
@@ -4958,6 +4986,9 @@ int Game::mp_select_load_option(char *fileName)
 			if( remote.is_host )
 			{
 				// inform clients of player disconnection
+
+				Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Disconnected, from, messageList, mRefreshFlag);
+
 				MpStructPlayerDisconnect msgDisconnect(from);
 				mp_obj.send(BROADCAST_PID, &msgDisconnect, sizeof(msgDisconnect));
 				mp_obj.delete_player(from);
@@ -5040,6 +5071,8 @@ int Game::mp_select_load_option(char *fileName)
 						// client has incorrect game mode, reject
 						MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SAVEFILE_REQUIRED);
 						mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+						Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedSaveFileRequired, ((MpStructLoadGameNewPlayer*)recvPtr)->name, messageList, mRefreshFlag);
 					}
 					break;
 				case MPMSG_LOAD_GAME_NEW_PLAYER:
@@ -5053,12 +5086,18 @@ int Game::mp_select_load_option(char *fileName)
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SKVER_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedVersion, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 						if( regPlayerCount >= MAX_NATION )
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_GAME_FULL);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedFull, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 						if(
@@ -5073,12 +5112,18 @@ int Game::mp_select_load_option(char *fileName)
 							// client's save file doesn't match the host's
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SAVEFILE_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedSaveFileMismatch, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 						if( !mp_obj.auth_player(from, newPlayerMsg->name, newPlayerMsg->pass) )
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_NOT_AUTHORIZED);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
+
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::RefusedAuthorisation, newPlayerMsg->name, messageList, mRefreshFlag);
+
 							break;
 						}
 
@@ -5121,6 +5166,9 @@ int Game::mp_select_load_option(char *fileName)
 									mp_obj.send(from, &msgReady, sizeof(msgReady));
 								}
 							}
+
+							Ambition::Lobby::sendChatHistory(from, messageList);
+							Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Connected, newPlayerMsg->name, messageList, mRefreshFlag);
 
 							MpStructVersionChecksum msgVerCksum(config_adv.checksum);
 							mp_obj.send(from, &msgVerCksum, sizeof(msgVerCksum));
@@ -5166,6 +5214,8 @@ int Game::mp_select_load_option(char *fileName)
 							{
 								playerReadyFlag[p] = 1;
 								mRefreshFlag |= MGOPTION_PLAYERS;
+
+								Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Ready, regPlayerId[p], messageList, mRefreshFlag);
 							}
 						}
 					}
@@ -5178,6 +5228,8 @@ int Game::mp_select_load_option(char *fileName)
 							{
 								playerReadyFlag[p] = 0;
 								mRefreshFlag |= MGOPTION_PLAYERS;
+
+								Ambition::Lobby::sendPlayerNotification(Ambition::Lobby::PlayerStatusTransition::Unready, regPlayerId[p], messageList, mRefreshFlag);
 							}
 						}
 					}
