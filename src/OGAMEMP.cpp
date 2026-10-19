@@ -3132,7 +3132,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						if( newPlayerMsg->ver1 != SKVERMAJ ||
 							newPlayerMsg->ver2 != SKVERMED ||
 							newPlayerMsg->ver3 != SKVERMIN ||
-							newPlayerMsg->flags != config_adv.flags)
+							!Ambition::Lobby::configFlagsMatch(newPlayerMsg->flags, newPlayerMsg->flags != config_adv.flags))
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SKVER_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
@@ -5082,7 +5082,7 @@ int Game::mp_select_load_option(char *fileName)
 						if( newPlayerMsg->ver1 != SKVERMAJ ||
 							newPlayerMsg->ver2 != SKVERMED ||
 							newPlayerMsg->ver3 != SKVERMIN ||
-							newPlayerMsg->flags != config_adv.flags)
+							!Ambition::Lobby::configFlagsMatch(newPlayerMsg->flags, newPlayerMsg->flags != config_adv.flags))
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SKVER_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));

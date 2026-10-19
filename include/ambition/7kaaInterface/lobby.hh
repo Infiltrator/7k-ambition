@@ -50,6 +50,11 @@ std::string checksumMismatchMessage(
   const std::string _7kaaCalculation
 );
 
+bool configFlagsMatch(
+  const unsigned int incomingClientFlags,
+  const bool _7kaaCalculation
+);
+
 void displayChatMessages(
   DynArray& messageList,
   long& refreshFlag
