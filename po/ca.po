@@ -4341,7 +4341,7 @@ msgstr ""
 
 #: src/OGAMEMP.cpp:3420 src/OGAMEMP.cpp:5212
 msgid "You cannot join the game because the host is not loading a save."
-msgstr "You cannot join the game because the host is not loading a save."
+msgstr ""
 
 #: src/OGAMEMP.cpp:3423 src/OGAMEMP.cpp:5215
 msgid ""
