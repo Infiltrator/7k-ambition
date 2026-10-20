@@ -3132,7 +3132,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						if( newPlayerMsg->ver1 != SKVERMAJ ||
 							newPlayerMsg->ver2 != SKVERMED ||
 							newPlayerMsg->ver3 != SKVERMIN ||
-							newPlayerMsg->flags != config_adv.flags)
+							!Ambition::Lobby::configFlagsMatch(newPlayerMsg->flags, newPlayerMsg->flags != config_adv.flags))
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SKVER_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
@@ -3430,7 +3430,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					switch (((MpStructRefuseNewPlayer *)recvPtr)->reason)
 					{
 					case REFUSE_REASON_SKVER_MISMATCH:
-						mp_info_box_show(&info_box, Ambition::Menu::versionMismatchMessage(_("Your game version does not match the host's version.")).c_str(), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::versionMismatchMessage(_("Your game version does not match the host's version.")).c_str(), _("Ok"));
 						break;
 					case REFUSE_REASON_GAME_FULL:
 						mp_info_box_show(&info_box, _("The game you tried to join is currently full."), _("Ok"));
@@ -3496,7 +3496,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 				case MPMSG_VERSION_CHECKSUM:
 					if( !remote.is_host && ((MpStructVersionChecksum*)recvPtr)->checksum != config_adv.checksum )
 					{
-						mp_info_box_show(&info_box, _("The host is using a modified game which you are not running."), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::checksumMismatchMessage(_("The host is using a modified game which you are not running.")).c_str(), _("Ok"));
 					}
 					break;
 				default:		// if the game is started, any other thing is received
@@ -5082,7 +5082,7 @@ int Game::mp_select_load_option(char *fileName)
 						if( newPlayerMsg->ver1 != SKVERMAJ ||
 							newPlayerMsg->ver2 != SKVERMED ||
 							newPlayerMsg->ver3 != SKVERMIN ||
-							newPlayerMsg->flags != config_adv.flags)
+							!Ambition::Lobby::configFlagsMatch(newPlayerMsg->flags, newPlayerMsg->flags != config_adv.flags))
 						{
 							MpStructRefuseNewPlayer msgRefuse(REFUSE_REASON_SKVER_MISMATCH);
 							mp_obj.send(from, &msgRefuse, sizeof(msgRefuse));
@@ -5249,7 +5249,7 @@ int Game::mp_select_load_option(char *fileName)
 					switch (((MpStructRefuseNewPlayer *)recvPtr)->reason)
 					{
 					case REFUSE_REASON_SKVER_MISMATCH:
-						mp_info_box_show(&info_box, _("Your game version does not match the host's version."), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::versionMismatchMessage(_("Your game version does not match the host's version.")).c_str(), _("Ok"));
 						break;
 					case REFUSE_REASON_GAME_FULL:
 						mp_info_box_show(&info_box, _("The game you tried to join is currently full."), _("Ok"));
@@ -5315,7 +5315,7 @@ int Game::mp_select_load_option(char *fileName)
 				case MPMSG_VERSION_CHECKSUM:
 					if( !remote.is_host && ((MpStructVersionChecksum*)recvPtr)->checksum != config_adv.checksum )
 					{
-						mp_info_box_show(&info_box, _("The host is using a modified game which you are not running."), _("Ok"));
+						mp_info_box_show(&info_box, Ambition::Lobby::checksumMismatchMessage(_("The host is using a modified game which you are not running.")).c_str(), _("Ok"));
 					}
 					break;
 				default:		// if the game is started, any other thing is received

@@ -46,6 +46,15 @@ enum PlayerStatusTransition {
 };
 
 
+std::string checksumMismatchMessage(
+  const std::string _7kaaCalculation
+);
+
+bool configFlagsMatch(
+  const unsigned int incomingClientFlags,
+  const bool _7kaaCalculation
+);
+
 void displayChatMessages(
   DynArray& messageList,
   long& refreshFlag
@@ -67,6 +76,10 @@ void sendPlayerNotification(
   const std::string name,
   DynArray& messageList,
   long& refreshFlag
+);
+
+std::string versionMismatchMessage(
+  const std::string _7kaaCalculation
 );
 
 } // namespace _7kaaAmbitionInterface::Lobby

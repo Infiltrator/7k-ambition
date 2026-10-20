@@ -120,16 +120,4 @@ void initialiseRandomCivilisationSelectionButton(
   );
 }
 
-std::string versionMismatchMessage(
-  const std::string _7kaaCalculation
-) {
-  if (!Ambition::config.enhancementsAvailable()) {
-    return _7kaaCalculation;
-  }
-
-  SDL_SetClipboardText(Ambition::DirectoryPath::config().string().c_str());
-
-  return Ambition::Vga::versionMismatchExtraMessage();
-}
-
 } // namespace _7kaaAmbitionInterface::Menu

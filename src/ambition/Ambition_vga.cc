@@ -295,6 +295,24 @@ int calculateWorkerPortraitX(
     + ((workerIndex % COLUMN_COUNT) * COLUMN_SIZE);
 }
 
+namespace Vga {
+
+std::string checksumMismatchExtraMessage(
+) {
+  return format(_(
+      /* TRANSLATORS: … Your config.txt file can be found here: <config
+       * directory path and path separator>config.txt …
+       * The name of the file—config.txt—does not change with language. */
+      "Your config.txt settings do not match the host's."
+      "\nYour config.txt file can be found here: %sconfig.txt"
+      "\n(The path has been copied to your clipboard.)"
+    ),
+    Ambition::DirectoryPath::config().string().c_str()
+  );
+}
+
+}
+
 void copyVgaBufferToBuffer(
   const UserInterface::Rectangle& area,
   VgaBuf& from,

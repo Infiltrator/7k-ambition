@@ -134,6 +134,13 @@ int centreHitbar(
   const int currentWidth
 );
 
+namespace Vga {
+
+std::string checksumMismatchExtraMessage(
+);
+
+}
+
 void copyVgaBufferToBuffer(
   const UserInterface::Rectangle& area,
   VgaBuf& from,

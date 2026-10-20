@@ -27,7 +27,9 @@
 #include "lobby.hh"
 
 #include <map>
+#include <SDL2/SDL_clipboard.h>
 
+#include "ConfigAdv.h"
 #include "gettext.h"
 #include "multiplayer.h"
 #include "OREMOTE.h"
@@ -77,6 +79,35 @@ const std::map<
   { Unready, N_("is no longer ready to start.>") },
 };
 
+
+std::string checksumMismatchMessage(
+  const std::string _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  SDL_SetClipboardText(Ambition::DirectoryPath::config().string().c_str());
+
+  return Ambition::Vga::checksumMismatchExtraMessage();
+}
+
+bool configFlagsMatch(
+  const unsigned int incomingClientFlags,
+  const bool _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  /* Ignore the checksum flag because the checksum will be sent and compared
+   * anyway; but otherwise the error message (about the version not matching) is
+   * misleading. */
+  return (
+    (incomingClientFlags & ~ConfigAdv::FLAG_CKSUM_REQ)
+    == (config_adv.flags & ~ConfigAdv::FLAG_CKSUM_REQ)
+  );
+}
 
 void displayChatMessages(
   DynArray& messageList,
@@ -143,6 +174,18 @@ void sendPlayerNotification(
     messageList,
     refreshFlag
   );
+}
+
+std::string versionMismatchMessage(
+  const std::string _7kaaCalculation
+) {
+  if (!Ambition::config.enhancementsAvailable()) {
+    return _7kaaCalculation;
+  }
+
+  SDL_SetClipboardText(Ambition::DirectoryPath::config().string().c_str());
+
+  return Ambition::Vga::versionMismatchExtraMessage();
 }
 
 } // namespace _7kaaAmbitionInterface::Lobby

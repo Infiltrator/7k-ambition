@@ -32,7 +32,14 @@ std::vector<VersionUpdates> getVersionDetails(
         .heading = HEADING_FIXED,
         .items = {
           _("Fixed Ships moving up to but not entering Harbours when given a waypoint to on top of a Harbour."),
+          _("Show the correct error message about the config.txt file settings, instead of a version mismatch, when the version matches but there are no config.txt settings changes."),
           _("Fixed the printing of the path separator (/ instead of \\) in the path of the config file in the version mismatch message on Windows."),
+        },
+      },
+      {
+        .heading = HEADING_CHANGED,
+        .items = {
+          _("Show a more understandable message when joining a multiplayer game with different config.txt settings, including the location of the file to change."),
         },
       },
     },
